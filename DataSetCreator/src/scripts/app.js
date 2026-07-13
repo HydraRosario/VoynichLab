@@ -80,6 +80,7 @@ class App {
 
     this.setupCallbacks();
     this.setupUIEvents();
+    this.updateAnnotationsVisibilityButton();
     this.setupShortcuts();
     this.updateEditControls();
     await this.setupMoleculeEvents();
@@ -281,7 +282,7 @@ class App {
     this.sidebarLabelsBtn?.addEventListener('click', () => {
       this.annotationsVisible = !this.annotationsVisible;
       this.imageViewer.setAnnotationsVisible(this.annotationsVisible);
-      this.sidebarLabelsBtn.classList.toggle('sidebar__labels-btn--hidden', !this.annotationsVisible);
+      this.updateAnnotationsVisibilityButton();
     });
 
     this.editModeBtn?.addEventListener('click', () => this.toggleEditMode());
@@ -1626,6 +1627,8 @@ class App {
     const centers = (explanation.gap_centers || explanation.gapCenters || [])
       .map((value) => this.formatMetric(value))
       .join(' / ');
+    const microThreshold = explanation.micro_threshold ?? explanation.microThreshold;
+    const macroThreshold = explanation.macro_threshold ?? explanation.macroThreshold;
     const moleculeGaps = explanation.molecule_gaps || explanation.moleculeGaps || [];
     const particleRows = explanation.particle_rows || explanation.particleRows || [];
     const moleculeAudits = packet.molecule_audits || packet.moleculeAudits || [];
@@ -1642,8 +1645,8 @@ class App {
           ${this.renderClusterMetric('Moleculas', (packet.molecules || []).length)}
           ${this.renderClusterMetric('Revisar', suspiciousMolecules.length)}
           ${this.renderClusterMetric('Contactos', particleLinks.length)}
-          ${this.renderClusterMetric('Micro gap', this.formatMetric(explanation.micro_threshold ?? explanation.microThreshold))}
-          ${this.renderClusterMetric('Macro gap', this.formatMetric(explanation.macro_threshold ?? explanation.macroThreshold))}
+          ${this.renderOptionalClusterMetric('Micro gap', microThreshold)}
+          ${this.renderOptionalClusterMetric('Macro gap', macroThreshold)}
         </div>
         <div class="cluster-debug__legend">
           <span class="cluster-debug__key"><i class="cluster-debug__line cluster-debug__line--particle"></i>particula</span>
@@ -1654,7 +1657,7 @@ class App {
           <span>${particleLinks.length} contactos aceptados forman ${(packet.particles || []).length} particula${(packet.particles || []).length !== 1 ? 's' : ''}.</span>
           <span>${(packet.molecules || []).length} molecula${(packet.molecules || []).length !== 1 ? 's' : ''} por renglon y gap horizontal.</span>
           ${suspiciousMolecules.length ? `<span>${suspiciousMolecules.length} molecula${suspiciousMolecules.length !== 1 ? 's' : ''} de una sola particula: revisar posible corte sobrante.</span>` : ''}
-          <span>Centros: ${this.escapeHtml(centers || '15 / 57 / 96')}.</span>
+          ${centers ? `<span>Centros: ${this.escapeHtml(centers)}.</span>` : ''}
           <button class="cluster-debug__undo-btn" type="button" data-clear-latest-particle-merge>deshacer ultima fusion</button>
         </div>
         ${this.renderSelectedMoleculeAudit(moleculeAudits, packet, moleculeGaps, particleRows)}
@@ -2417,6 +2420,40 @@ class App {
         <span>${this.escapeHtml(label)}</span>
         <strong>${this.escapeHtml(String(value ?? '0'))}</strong>
       </div>
+    `;
+  }
+
+  renderOptionalClusterMetric(label, value) {
+    const number = Number(value);
+    if (!Number.isFinite(number)) return '';
+    return this.renderClusterMetric(label, this.formatMetric(number));
+  }
+
+  updateAnnotationsVisibilityButton() {
+    if (!this.sidebarLabelsBtn) return;
+    const visible = Boolean(this.annotationsVisible);
+    this.sidebarLabelsBtn.classList.toggle('sidebar__labels-btn--hidden', !visible);
+    this.sidebarLabelsBtn.dataset.tooltip = visible ? 'Ocultar capas' : 'Mostrar capas';
+    this.sidebarLabelsBtn.setAttribute('aria-label', visible ? 'Ocultar capas' : 'Mostrar capas');
+    this.sidebarLabelsBtn.innerHTML = this.renderEyeIcon(visible);
+  }
+
+  renderEyeIcon(open) {
+    if (open) {
+      return `
+        <svg class="sidebar__labels-svg" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"></path>
+          <circle cx="12" cy="12" r="2.8"></circle>
+        </svg>
+      `;
+    }
+    return `
+      <svg class="sidebar__labels-svg" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M9.7 5.5A9.9 9.9 0 0 1 12 5.2c6 0 9.5 6.8 9.5 6.8a17.1 17.1 0 0 1-3 3.8"></path>
+        <path d="M14.1 14.1A3 3 0 0 1 9.9 9.9"></path>
+        <path d="M4.4 4.4 19.6 19.6"></path>
+        <path d="M6.1 7.1A17.1 17.1 0 0 0 2.5 12s3.5 6.8 9.5 6.8a9.8 9.8 0 0 0 3.1-.5"></path>
+      </svg>
     `;
   }
 

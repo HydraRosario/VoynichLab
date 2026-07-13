@@ -281,6 +281,14 @@ export class ImageViewer {
 
   setAnnotationsVisible(visible) {
     this.annotationsVisible = Boolean(visible);
+    if (!this.annotationsVisible) {
+      this.hoveredMoleculeId = null;
+      this.hoveredParticleId = null;
+      this.hoveredParticleSourceIndex = 0;
+      this.canvas.style.cursor = this.spaceHeld ? 'grab' : 'default';
+    } else {
+      this._updateCursor();
+    }
     this._dirty = true;
   }
 
@@ -482,6 +490,8 @@ export class ImageViewer {
     if (e.button === 0 && this.image) {
       const imgPos = this._screenToImage(pos.x, pos.y);
 
+      if (!this.annotationsVisible) return;
+
       const rowEdgeHit = this.rowEditMode ? this._hitTestRowGuide(pos.x, pos.y, false) : null;
       if (rowEdgeHit) {
         e.preventDefault();
@@ -642,6 +652,16 @@ export class ImageViewer {
     }
 
     if (this.image) {
+      if (!this.annotationsVisible) {
+        if (this.hoveredMoleculeId || this.hoveredParticleId || this.hoveredParticleSourceIndex) {
+          this.hoveredMoleculeId = null;
+          this.hoveredParticleId = null;
+          this.hoveredParticleSourceIndex = 0;
+          this._dirty = true;
+        }
+        this.canvas.style.cursor = this.spaceHeld ? 'grab' : 'default';
+        return;
+      }
       const imgPos = this._screenToImage(pos.x, pos.y);
       const rowEdgeHit = this.rowEditMode ? this._hitTestRowGuide(pos.x, pos.y, false) : null;
       if (rowEdgeHit) {
@@ -723,7 +743,7 @@ export class ImageViewer {
     // Ignore if typing in an input
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'SELECT') return;
 
-    if (e.key.toLowerCase() === 'h' && this.drawMode === 'stroke' && this.forceDraw && this.image) {
+    if (e.key.toLowerCase() === 'h' && this.drawMode === 'stroke' && this.forceDraw && this.image && this.annotationsVisible) {
       e.preventDefault();
       if (this.keyboardStrokeHeld || this.isDrawing) return;
       if (!this.lastMousePos || !this._isPointInsideCanvas(this.lastMousePos)) return;
@@ -795,6 +815,10 @@ export class ImageViewer {
   }
 
   _updateCursor() {
+    if (!this.annotationsVisible) {
+      this.canvas.style.cursor = this.spaceHeld ? 'grab' : 'default';
+      return;
+    }
     if (this.spaceHeld) {
       this.canvas.style.cursor = 'grab';
     } else {
@@ -980,6 +1004,7 @@ export class ImageViewer {
   }
 
   _hitTestMolecule(imgX, imgY) {
+    if (!this.annotationsVisible) return null;
     let best = null;
     for (const molecule of this.molecules) {
       if (
@@ -997,6 +1022,7 @@ export class ImageViewer {
   }
 
   _hitTestMoleculeGap(imgX, imgY) {
+    if (!this.annotationsVisible) return null;
     if (!this.moleculeGaps.length) return null;
     const tolerance = Math.max(4, 9 / Math.max(this.zoom, 0.1));
     let best = null;
@@ -1021,6 +1047,7 @@ export class ImageViewer {
   }
 
   _hitTestRowGuide(screenX, screenY, includeBand = false) {
+    if (!this.annotationsVisible) return null;
     if (!this.particleRows.length) return null;
     const tolerance = 7;
     let best = null;
@@ -1131,10 +1158,8 @@ export class ImageViewer {
     ctx.restore();
 
     const viewport = this._visibleImageBounds();
-    this._drawHierarchy(ctx, viewport);
-
-    // Draw regions
     if (this.annotationsVisible) {
+      this._drawHierarchy(ctx, viewport);
       for (const region of this.regions) {
         const isSelected = String(region.id) === String(this.selectedRegionId);
         const isDeletePending = this.pendingDeleteRegionIds.has(String(region.id));
@@ -1150,13 +1175,12 @@ export class ImageViewer {
         if (!this._boxIntersects(region.bounds, viewport)) continue;
         this._drawPendingPaintRegion(ctx, region);
       }
-    }
 
-    // Draw preview (drawing mode)
-    if (this.isDrawing && this.drawMode === 'stroke') {
-      this._drawStrokePreview(ctx);
-    } else if (this.forceDraw && this.drawMode === 'stroke' && this.atomPreview && this.lastMousePos) {
-      this._drawAtomPreview(ctx);
+      if (this.isDrawing && this.drawMode === 'stroke') {
+        this._drawStrokePreview(ctx);
+      } else if (this.forceDraw && this.drawMode === 'stroke' && this.atomPreview && this.lastMousePos) {
+        this._drawAtomPreview(ctx);
+      }
     }
   }
 
@@ -1306,9 +1330,6 @@ export class ImageViewer {
     if (!this.moleculeGaps.length) return;
 
     ctx.save();
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.font = '700 10px Inter, sans-serif';
 
     for (const gap of this.moleculeGaps) {
       const row = this.particleRows.find((item) => Number(item.rowIndex) === Number(gap.rowIndex));
@@ -1323,11 +1344,9 @@ export class ImageViewer {
       const top = this._imageToScreen(gap.x, topY);
       const bottom = this._imageToScreen(gap.x, bottomY);
       const center = this._imageToScreen(gap.x, gap.y);
-      const height = Math.max(10, Math.abs(bottom.y - top.y));
       const isManual = Boolean(gap.overrideDecision);
       const color = isManual ? 'rgba(255, 95, 31, 0.96)' : gap.cut ? 'rgba(255, 210, 96, 0.92)' : 'rgba(88, 210, 164, 0.78)';
       const fill = isManual ? 'rgba(255, 95, 31, 0.18)' : gap.cut ? 'rgba(255, 210, 96, 0.16)' : 'rgba(88, 210, 164, 0.13)';
-      const label = isManual ? 'manual' : gap.cut ? 'corte' : 'une';
 
       ctx.fillStyle = fill;
       ctx.fillRect(center.x - 4, top.y, 8, bottom.y - top.y);
@@ -1339,18 +1358,6 @@ export class ImageViewer {
       ctx.lineTo(center.x, bottom.y);
       ctx.stroke();
       ctx.setLineDash([]);
-
-      if (height >= 26 || this.zoom >= 1.35) {
-        const tagW = Math.max(34, Math.min(58, label.length * 8 + 12));
-        const tagH = 16;
-        ctx.fillStyle = 'rgba(10, 10, 15, 0.78)';
-        this._roundRect(ctx, center.x - tagW / 2, center.y - tagH - 5, tagW, tagH, 4);
-        ctx.fill();
-        ctx.strokeStyle = color;
-        ctx.stroke();
-        ctx.fillStyle = color;
-        ctx.fillText(label, center.x, center.y - tagH / 2 - 5);
-      }
     }
 
     ctx.restore();

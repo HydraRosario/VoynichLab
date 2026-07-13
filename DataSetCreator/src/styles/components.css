@@ -318,33 +318,20 @@
   background: var(--accent-surface);
 }
 
-.sidebar__labels-icon {
+.sidebar__labels-svg {
   width: 18px;
   height: 18px;
   display: block;
-  position: relative;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
 }
 
-.sidebar__labels-icon::before {
-  content: '';
-  position: absolute;
-  left: 2px;
-  top: 5px;
-  width: 14px;
-  height: 8px;
-  border: 1.5px solid currentColor;
-  border-radius: 999px / 70%;
-}
-
-.sidebar__labels-icon::after {
-  content: '';
-  position: absolute;
-  left: 7px;
-  top: 7px;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: currentColor;
+.sidebar__labels-svg circle {
+  fill: currentColor;
+  stroke: none;
 }
 
 .sidebar__labels-btn--hidden {
@@ -353,18 +340,8 @@
   background: var(--accent-surface);
 }
 
-.sidebar__labels-btn--hidden .sidebar__labels-icon {
+.sidebar__labels-btn--hidden .sidebar__labels-svg {
   opacity: 0.95;
-}
-
-.sidebar__labels-btn--hidden .sidebar__labels-icon::after {
-  left: 1px;
-  top: 8px;
-  width: 16px;
-  height: 2px;
-  border-radius: 2px;
-  background: currentColor;
-  transform: rotate(-35deg);
 }
 
 .app--sidebar-collapsed .sidebar {
