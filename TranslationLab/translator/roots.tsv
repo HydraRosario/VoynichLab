@@ -1,0 +1,12 @@
+root	language	gloss	weight	notes
+o	proto	particle/o	0.4	placeholder seed; replace with researched root
+h	proto	breath/aspiration	0.4	placeholder seed; red base family
+ra	proto	ra/root	0.4	placeholder seed
+e	proto	e/vowel	0.3	placeholder seed
+a	proto	a/vowel	0.3	placeholder seed
+i	proto	i/vowel	0.3	placeholder seed
+me	proto	me/root	0.4	placeholder seed
+rin	proto	rin-family	0.5	curve-ending family seed
+rim	proto	rim-family	0.5	curve-ending family seed
+rine	proto	rine-family	0.5	curve-ending family seed
+rime	proto	rime-family	0.5	curve-ending family seed

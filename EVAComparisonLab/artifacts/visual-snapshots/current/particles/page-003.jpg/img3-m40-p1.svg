@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="94" height="111" viewBox="0 0 94 111">
+  <title>particle img3-m40-p1 e:1 h:1</title>
+  <metadata>{&quot;entityType&quot;:&quot;particle&quot;,&quot;entityId&quot;:&quot;img3-m40-p1&quot;,&quot;token&quot;:&quot;e:1 h:1&quot;,&quot;signature&quot;:&quot;e:1 h:1&quot;,&quot;imageName&quot;:&quot;page-003.jpg&quot;,&quot;imageId&quot;:3,&quot;bounds&quot;:{&quot;x&quot;:1999,&quot;y&quot;:847,&quot;w&quot;:94,&quot;h&quot;:111},&quot;atoms&quot;:[{&quot;id&quot;:1726,&quot;token&quot;:&quot;e:1&quot;,&quot;particle_id&quot;:&quot;img3-m40-p1&quot;,&quot;molecule_id&quot;:&quot;img3-m40&quot;,&quot;atom_order&quot;:1},{&quot;id&quot;:1727,&quot;token&quot;:&quot;h:1&quot;,&quot;particle_id&quot;:&quot;img3-m40-p1&quot;,&quot;molecule_id&quot;:&quot;img3-m40&quot;,&quot;atom_order&quot;:2}]}</metadata>
+  <rect x="0" y="0" width="94" height="111" fill="#f8f0d8"/>
+  <image href="file:///C:/Users/HHHES/AppData/Roaming/com.voynichlab.datasetcreator/images/1/35a70f63-88ab-4986-b441-b78046a10087.jpg" x="-1999" y="-847" width="2972" height="3766" opacity="0.92"/>
+  <rect x="0.5" y="0.5" width="93" height="110" fill="none" stroke="#111827" stroke-width="1" opacity="0.35"/>
+  <polyline points="68,31 68,32 67,32 66,32 66,33 65,33 64,33 64,34 63,34 62,34 61,34 60,34 59,34 58,34 58,33 57,33 57,32 56,32 56,31 55,31 55,30 54,30 54,29 54,28 54,27 54,26 54,25 55,25 55,24 55,23 56,23 56,22 56,21 57,21 57,20 58,20 58,19 59,19 59,18 60,18 61,18 61,17 62,17 63,17 64,17 64,16 65,16 66,16 67,16 68,16 69,16 69,17 70,17" fill="none" stroke="#f2e45c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.95">
+    <title>1726 e:1</title>
+  </polyline>
+  <polyline points="69,17 70,17 71,17 71,18 72,19 72,20 73,20 73,21 74,22 74,23 75,23 75,24 75,25 76,25 76,26 76,27 76,28 76,29 76,30 77,30 77,31 77,32 77,33 78,33 78,34 78,35 78,36 78,37 78,38 78,39 78,40 78,41 78,42 78,43 78,44 78,45 78,46 78,47 78,48 78,49 77,50 77,51 77,52 76,53 76,54 75,54 75,55 75,56 74,56 74,57 74,58 73,58 73,59 72,59 72,60 71,60 71,61 70,61 70,62 69,62 69,63 68,63 68,64 67,64 67,65 66,65 66,66 65,66 65,67 64,67 63,68 62,68 62,69 61,69 61,70 60,70 59,71 58,72 57,72 57,73 56,73 56,74 55,74 54,74 54,75 53,76 52,77 51,77 51,78 50,78 50,79 49,79 48,80 47,80 47,81 46,81 45,82 44,82 43,83 42,83 41,84 40,84 39,85 38,85 38,86 37,86 36,86 35,86 34,87 33,87 32,88 31,88 30,88 29,88 29,89 28,89 27,89 27,90 26,90 25,91 24,91 23,91 23,92 22,92 21,92 21,93 20,93 19,93 19,94 18,94 18,95 17,95 16,95" fill="none" stroke="#ff8c00" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.95">
+    <title>1727 h:1</title>
+  </polyline>
+</svg>

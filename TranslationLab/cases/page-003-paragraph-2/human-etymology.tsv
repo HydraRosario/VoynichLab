@@ -1,0 +1,47 @@
+token	count	levels	confidence	status	noise	wiktionary_languages	has_etymology	top_wiktionary_candidates	top_wikipedia_candidates	top_datamuse_candidates
+crime	3	user_segmentation	12.80	inspect		6	yes	English:A specific act committed in violation of the law, especially criminal law./Any great sin or wickedness; iniquity. | Asturian:murder | Dutch:hassle, struggle, pain in the neck | French:a category of severe offences within French law, comparable to a felony under United States laws. Crime are tied to the strongest of penalties, 10 years and more according to law. | Italian:	Crime | CRIME | Organized crime	crime:n (countable) A specific act committed in violation of the law, especially criminal law. | prime:adj First in importance, degree, or rank. | rime:n Archaic in the form rimes: originally, any frozen dew forming a white deposit on exposed surfaces; hoar frost (sense 1). | grime:n Dirt, grease, soot, etc. that is ingrained and difficult to remove. | chime:n (music) A musical instrument producing a sound when struck, similar to a bell (e.g. a tubular metal bar) or actually a bell. Often used in the plural to refer to the set: the chimes.
+hate	1	user_segmentation	11.56	inspect		9	yes	English:An object of hatred./Hatred. | Bola:liver | Cia-Cia:liver | Middle English:, hatred, anger, wroth./Something that causes or induces hate; insults, demeaning words. | Norwegian Bokmål:to (somebody / something)	Hate (disambiguation) | Hatred | Hate That I Made You Love Me	hate:v (transitive) To dislike intensely or greatly.
+hete	1	user_segmentation	11.32	inspect		7	yes	Finnish:quagmire, morass; swampy, soggy spot; a relatively small soggy area, but big enough to stop a man or horse | Middle English:Heat; thermal energy ./The condition of being hot; a hot thing: | Norwegian Bokmål:heat/To be called; to have as a name | Norwegian Nynorsk:heat/a heating | Old English:hatred	HETE | HETE 2 | Vâlcele, Covasna	hete:
+ra	3	user_segmentation	7.92	weak	two-letter root: medium false-positive risk | many Wiktionary languages (28): likely noisy	28	yes	Albanian:it fell (off)/it tumbled, flopped | Anguthimri:stomach/to wash | Atampaya:throw/spill | Borôro:bone | Cebuano:only, just, nothing else/too, so, but not too much	Ra | Ra (disambiguation) | Ra Ra Riot	ra:n (Egyptian mythology) The Egyptian god of the Sun.
+hora	8	user_segmentation	7.13	inspect	no explicit etymology found	0	no		Hora | Hora (surname) | Horas	hora:n (dance) A circle dance popular in the Balkans, Israel and Yiddish culture worldwide.
+hi	2	user_segmentation	5.10	weak	two-letter root: medium false-positive risk | many Wiktionary languages (28): likely noisy	28	yes	Translingual: | English:The word "hi" used as a greeting. | Albanian:ash, ashes/dust of corpses | Antigua and Barbuda Creole English:he/his | Basque:; you		hi:n The word "hi" used as a greeting.
+o	3	user_segmentation	3.80	weak	single-letter root: high false-positive risk | many Wiktionary languages (87): likely noisy	87	yes	Translingual:a ./{{lb|mul|superscript |IPA}} -coloring (such as -like labialization of a consonant) or a weak, fleeting, epenthetic or echo . | English:, the fifteenth letter of the Classical and Modern Greek alphabets, called omicron and used as an abbreviation of omicron in star names./A zero . | Achang:to like | Albanian:() | Aragonese:the	O | Unicode subscripts and superscripts | Fraktur	o:n The name of the Latin-script letter O/o.
+laol	3	user_segmentation	2.00	noisy	no explicit etymology found	0	no			
+heteo	2	user_segmentation	1.58	noisy	no explicit etymology found	0	no			
+ora	2	user_segmentation	1.58	noisy	no explicit etymology found	0	no			
+ria	2	user_segmentation	1.58	noisy	no explicit etymology found	0	no			
+mirrii	1	user_segmentation	1.00	noisy	no explicit etymology found	0	no			
+nirrii	1	user_segmentation	1.00	noisy	no explicit etymology found	0	no			
+tlolme	1	user_segmentation	1.00	noisy	no explicit etymology found	0	no			
+atera	1	user_segmentation	1.00	noisy	no explicit etymology found	0	no			
+crima	1	user_segmentation	1.00	noisy	no explicit etymology found	0	no			
+crine	1	user_segmentation	1.00	noisy	no explicit etymology found	0	no			
+hetra	1	user_segmentation	1.00	noisy	no explicit etymology found	0	no			
+olaol	1	user_segmentation	1.00	noisy	no explicit etymology found	0	no			
+olola	1	user_segmentation	1.00	noisy	no explicit etymology found	0	no			
+teora	1	user_segmentation	1.00	noisy	no explicit etymology found	0	no			
+tetra	1	user_segmentation	1.00	noisy	no explicit etymology found	0	no			
+tluol	1	user_segmentation	1.00	noisy	no explicit etymology found	0	no			
+ateo	1	user_segmentation	1.00	noisy	no explicit etymology found	0	no			
+eteo	1	user_segmentation	1.00	noisy	no explicit etymology found	0	no			
+imir	1	user_segmentation	1.00	noisy	no explicit etymology found	0	no			
+inir	1	user_segmentation	1.00	noisy	no explicit etymology found	0	no			
+loli	1	user_segmentation	1.00	noisy	no explicit etymology found	0	no			
+mera	1	user_segmentation	1.00	noisy	no explicit etymology found	0	no			
+meto	1	user_segmentation	1.00	noisy	no explicit etymology found	0	no			
+otra	1	user_segmentation	1.00	noisy	no explicit etymology found	0	no			
+rine	1	user_segmentation	1.00	noisy	no explicit etymology found	0	no			
+teoa	1	user_segmentation	1.00	noisy	no explicit etymology found	0	no			
+ate	1	user_segmentation	1.00	noisy	no explicit etymology found	0	no			
+cri	1	user_segmentation	1.00	noisy	no explicit etymology found	0	no			
+eto	1	user_segmentation	1.00	noisy	no explicit etymology found	0	no			
+ime	1	user_segmentation	1.00	noisy	no explicit etymology found	0	no			
+met	1	user_segmentation	1.00	noisy	no explicit etymology found	0	no			
+rae	1	user_segmentation	1.00	noisy	no explicit etymology found	0	no			
+toa	1	user_segmentation	1.00	noisy	no explicit etymology found	0	no			
+tra	1	user_segmentation	1.00	noisy	no explicit etymology found	0	no			
+he	1	user_segmentation	0.00	noisy	two-letter root: medium false-positive risk | no explicit etymology found	0	no			
+ir	1	user_segmentation	0.00	noisy	two-letter root: medium false-positive risk | no explicit etymology found	0	no			
+oa	1	user_segmentation	0.00	noisy	two-letter root: medium false-positive risk | no explicit etymology found	0	no			
+oi	1	user_segmentation	0.00	noisy	two-letter root: medium false-positive risk | no explicit etymology found	0	no			
+to	1	user_segmentation	0.00	noisy	two-letter root: medium false-positive risk | no explicit etymology found	0	no			

@@ -1,0 +1,4 @@
+atom_ids	status	note
+2430 2421 2422	known-anomaly	page-003 img3-m85-p1; current rare window a:1 e:1 g:1 vs dominant a:1 g:1 e:1.
+2429 2430 2421 2422	known-anomaly	page-003 img3-m85-p1; current rare window c:1 a:1 e:1 g:1 vs dominant c:1 a:1 g:1 e:1.
+2423 2429 2430 2421	known-anomaly	page-003 img3-m85-p1; current rare window b:1 c:1 a:1 e:1 vs dominant a:1 e:1 b:1 c:1.

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="82" viewBox="0 0 64 82">
+  <title>particle img94-m3-p3 f:1 j:1</title>
+  <metadata>{&quot;entityType&quot;:&quot;particle&quot;,&quot;entityId&quot;:&quot;img94-m3-p3&quot;,&quot;token&quot;:&quot;f:1 j:1&quot;,&quot;signature&quot;:&quot;f:1 j:1&quot;,&quot;imageName&quot;:&quot;page-094.jpg&quot;,&quot;imageId&quot;:94,&quot;bounds&quot;:{&quot;x&quot;:1345,&quot;y&quot;:523,&quot;w&quot;:64,&quot;h&quot;:82},&quot;atoms&quot;:[{&quot;id&quot;:2659,&quot;token&quot;:&quot;f:1&quot;,&quot;particle_id&quot;:&quot;img94-m3-p3&quot;,&quot;molecule_id&quot;:&quot;img94-m3&quot;,&quot;atom_order&quot;:1},{&quot;id&quot;:2660,&quot;token&quot;:&quot;j:1&quot;,&quot;particle_id&quot;:&quot;img94-m3-p3&quot;,&quot;molecule_id&quot;:&quot;img94-m3&quot;,&quot;atom_order&quot;:2}]}</metadata>
+  <rect x="0" y="0" width="64" height="82" fill="#f8f0d8"/>
+  <image href="file:///C:/Users/HHHES/AppData/Roaming/com.voynichlab.datasetcreator/images/1/33b1988f-7aaa-4207-bfa8-f26b742ac4b1.jpg" x="-1345" y="-523" width="2932" height="3769" opacity="0.92"/>
+  <rect x="0.5" y="0.5" width="63" height="81" fill="none" stroke="#111827" stroke-width="1" opacity="0.35"/>
+  <polyline points="26,24 27,25 27,26 28,26 28,27 29,27 29,28 30,29 30,30 31,30 31,31 32,32 32,33 33,33 33,34 34,34 34,35 35,35 35,36 36,36 36,37 36,38 37,38 37,39 38,39 38,40 39,40 39,41 39,42 40,42 40,43 41,43 41,44 41,45 42,45 42,46 43,47 43,48 44,48" fill="none" stroke="#00a2ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.95">
+    <title>2659 f:1</title>
+  </polyline>
+  <polyline points="26,25 27,25 27,24 28,24 28,23 29,23 30,22 31,21 32,21 32,20 33,20 34,20 34,19 35,19 35,18 36,18 37,18 37,17 38,17 39,17 40,17 41,17 41,16 42,16 43,16 44,16 44,17 45,17 46,17 46,18 47,18 47,19 47,20 47,21 48,21 48,22 48,23 48,24 47,24 47,25 47,26 46,26 46,27 46,28 45,28 45,29 45,30 44,30 44,31 44,32 43,32 43,33 42,33 42,34 42,35 41,35 41,36 40,37 40,38 39,38 39,39 38,40 38,41 37,41 37,42 36,42 36,43 35,43 35,44 34,45 34,46 33,46 32,47 32,48 31,48 31,49 30,49 30,50 29,51 29,52 28,52 27,53 26,54 25,55 25,56 24,56 24,57 23,57 23,58 22,58 22,59 21,59 21,60 20,60 20,61 19,62 18,62 18,63 17,63 17,64 16,65 16,66" fill="none" stroke="#4a9e6a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.95">
+    <title>2660 j:1</title>
+  </polyline>
+</svg>

@@ -1,0 +1,38 @@
+token	count	levels	confidence	status	noise	wiktionary_languages	has_etymology	top_wiktionary_candidates	top_wikipedia_candidates	top_datamuse_candidates
+hete	7	visual_part	13.32	inspect		7	yes	Finnish:quagmire, morass; swampy, soggy spot; a relatively small soggy area, but big enough to stop a man or horse | Middle English:Heat; thermal energy ./The condition of being hot; a hot thing: | Norwegian Bokmål:heat/To be called; to have as a name | Norwegian Nynorsk:heat/a heating | Old English:hatred	HETE | HETE 2 | Vâlcele, Covasna	hete:
+hate	5	visual_part	13.14	inspect		9	yes	English:An object of hatred./Hatred. | Bola:liver | Cia-Cia:liver | Middle English:, hatred, anger, wroth./Something that causes or induces hate; insults, demeaning words. | Norwegian Bokmål:to (somebody / something)	Hate (disambiguation) | Hatred | Hate That I Made You Love Me	hate:v (transitive) To dislike intensely or greatly.
+h	55	stroke,visual_part	11.25	weak	single-letter root: high false-positive risk | many Wiktionary languages (14): likely noisy	14	yes	Translingual:SI symbol for the prefix hecto-, indicating multiplication by 100 (10²)/hour | English:, the number of hits by a player. | Finnish:B | German:{{ng|the letter h, see }}/hour | Irish:{{ng|marker of }}	H | Planck constant | Aspirated consonant	h:n A pencil of grade H.
+ra	21	stroke	10.38	weak	two-letter root: medium false-positive risk | many Wiktionary languages (28): likely noisy	28	yes	Albanian:it fell (off)/it tumbled, flopped | Anguthimri:stomach/to wash | Atampaya:throw/spill | Borôro:bone | Cebuano:only, just, nothing else/too, so, but not too much	Ra | Ra (disambiguation) | Ra Ra Riot	ra:n (Egyptian mythology) The Egyptian god of the Sun.
+l	16	stroke	9.89	inspect	single-letter root: high false-positive risk	10	yes	Translingual:an alveolar lateral approximant./litre, liter. | Dutch:the twelfth letter of the Dutch alphabet | Haitian Creole: | Kankanaey: | Ladin:the	L | Unicode subscripts and superscripts | Laplace transform	l:n (Internet slang, by extension) A fail.
+te	17	stroke	8.97	weak	two-letter root: medium false-positive risk | many Wiktionary languages (80): likely noisy	80	yes	Translingual: | English:In solfège, the seventh note of a major scale (the note B in the fixed-do system): ti./In solfège, the lowered seventh note of a major scale (the note B-flat in the fixed-do system): ta. | Afrikaans:indicating excess: too/modifying an infinitive verb: to | Äiwoo:to see | Akan:to understand, perceive/to hear	TE | TE Connectivity | Te Kakapi-o-te-rangi Te Wharepōuri	te:n (music) In solfège, the lowered seventh note of a major scale (the note B-flat in the fixed-do system): ta.
+o	55	visual_part,stroke	7.61	weak	single-letter root: high false-positive risk | many Wiktionary languages (87): likely noisy	87	yes	Translingual:a ./{{lb|mul|superscript |IPA}} -coloring (such as -like labialization of a consonant) or a weak, fleeting, epenthetic or echo . | English:, the fifteenth letter of the Classical and Modern Greek alphabets, called omicron and used as an abbreviation of omicron in star names./A zero . | Achang:to like | Albanian:() | Aragonese:the	O | Unicode subscripts and superscripts | Fraktur	o:n The name of the Latin-script letter O/o.
+hora	9	visual_part	7.28	inspect	no explicit etymology found	0	no		Hora | Hora (surname) | Horas	hora:n (dance) A circle dance popular in the Balkans, Israel and Yiddish culture worldwide.
+hi	7	visual_part	6.52	weak	two-letter root: medium false-positive risk | many Wiktionary languages (28): likely noisy	28	yes	Translingual: | English:The word "hi" used as a greeting. | Albanian:ash, ashes/dust of corpses | Antigua and Barbuda Creole English:he/his | Basque:; you		hi:n The word "hi" used as a greeting.
+i	16	stroke	5.89	weak	single-letter root: high false-positive risk | many Wiktionary languages (120): likely noisy	120	yes	Translingual:The imaginary unit; a fixed square root of -1. Graphically, i is shown on the vertical (y-axis) plane./The unit vector in the x direction. | English: | Acehnese:water | Adangme:I | Albanian:of (+ dative)/the	I | Imaginary unit | Unicode subscripts and superscripts	i:n The name of the Latin-script letter I/i.
+hra	10	visual_part	4.90	weak	no explicit etymology found	0	no			hra:n Initialism of health reimbursement arrangement.
+rime	5	stroke	2.58	noisy	no explicit etymology found	0	no			
+a	14	visual_part,stroke	2.51	noisy	single-letter root: high false-positive risk | no explicit etymology found	0	no			a:n Adult; as used in film rating.
+irime	4	visual_part	2.32	noisy	no explicit etymology found	0	no			
+mirriaa	2	visual_part,stroke	1.58	noisy	no explicit etymology found	0	no			
+nirriaa	2	visual_part,stroke	1.58	noisy	no explicit etymology found	0	no			
+mirrii	2	visual_part,stroke	1.58	noisy	no explicit etymology found	0	no			
+nirrii	2	visual_part,stroke	1.58	noisy	no explicit etymology found	0	no			
+rine	2	stroke	1.58	noisy	no explicit etymology found	0	no			
+e	11	stroke	1.34	noisy	single-letter root: high false-positive risk | no explicit etymology found	0	no			e:n The name of the Latin-script letter E/e.
+hlaolmehte	1	visual_part	1.00	noisy	no explicit etymology found	0	no			
+hlaolmeth	1	visual_part	1.00	noisy	no explicit etymology found	0	no			
+tlhaolte	1	visual_part	1.00	noisy	no explicit etymology found	0	no			
+tlolmeht	1	visual_part	1.00	noisy	no explicit etymology found	0	no			
+hetera	1	visual_part	1.00	noisy	no explicit etymology found	0	no			
+hrima	1	visual_part	1.00	noisy	no explicit etymology found	0	no			
+hrime	1	visual_part	1.00	noisy	no explicit etymology found	0	no			
+hrine	1	visual_part	1.00	noisy	no explicit etymology found	0	no			
+irine	1	visual_part	1.00	noisy	no explicit etymology found	0	no			
+lhaol	1	visual_part	1.00	noisy	no explicit etymology found	0	no			
+laol	1	visual_part	1.00	noisy	no explicit etymology found	0	no			
+loli	1	visual_part	1.00	noisy	no explicit etymology found	0	no			
+lol	1	visual_part	1.00	noisy	no explicit etymology found	0	no			
+rim	1	stroke	1.00	noisy	no explicit etymology found	0	no			
+tra	1	visual_part	1.00	noisy	no explicit etymology found	0	no			
+t	5	stroke,visual_part	0.00	noisy	single-letter root: high false-positive risk | no explicit etymology found	0	no			
+me	3	stroke	0.00	noisy	two-letter root: medium false-positive risk | no explicit etymology found	0	no			

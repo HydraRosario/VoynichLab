@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="46" height="62" viewBox="0 0 46 62">
+  <title>particle img4-m45-p3 f:1 j:1</title>
+  <metadata>{&quot;entityType&quot;:&quot;particle&quot;,&quot;entityId&quot;:&quot;img4-m45-p3&quot;,&quot;token&quot;:&quot;f:1 j:1&quot;,&quot;signature&quot;:&quot;f:1 j:1&quot;,&quot;imageName&quot;:&quot;page-004.jpg&quot;,&quot;imageId&quot;:4,&quot;bounds&quot;:{&quot;x&quot;:1614,&quot;y&quot;:2447,&quot;w&quot;:46,&quot;h&quot;:62},&quot;atoms&quot;:[{&quot;id&quot;:5369,&quot;token&quot;:&quot;f:1&quot;,&quot;particle_id&quot;:&quot;img4-m45-p3&quot;,&quot;molecule_id&quot;:&quot;img4-m45&quot;,&quot;atom_order&quot;:1},{&quot;id&quot;:5456,&quot;token&quot;:&quot;j:1&quot;,&quot;particle_id&quot;:&quot;img4-m45-p3&quot;,&quot;molecule_id&quot;:&quot;img4-m45&quot;,&quot;atom_order&quot;:2}]}</metadata>
+  <rect x="0" y="0" width="46" height="62" fill="#f8f0d8"/>
+  <image href="file:///C:/Users/HHHES/AppData/Roaming/com.voynichlab.datasetcreator/images/1/aff30327-ced8-4ab4-8c9b-190205ebe022.jpg" x="-1614" y="-2447" width="2804" height="3797" opacity="0.92"/>
+  <rect x="0.5" y="0.5" width="45" height="61" fill="none" stroke="#111827" stroke-width="1" opacity="0.35"/>
+  <polyline points="17,22 17,23 17,24 18,24 18,25 18,26 19,26 19,27 20,28 20,29 21,29 21,30 22,31 22,32 23,32 23,33 24,33 24,34 25,34 25,35 25,36 26,36 26,37 26,38 27,38 27,39 28,39 28,40 29,41 29,42 30,42 30,43" fill="none" stroke="#00a2ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.95">
+    <title>5369 f:1</title>
+  </polyline>
+  <polyline points="17,23 17,22 17,21 17,20 18,20 18,19 19,19 19,18 20,17 21,17 21,16 22,16 23,16 24,16 25,16 26,16 27,16 28,16 29,17 29,18 30,18 30,19 30,20 30,21 30,22 29,22 29,23 29,24 28,25 28,26 27,27 27,28 27,29 26,30 26,31 25,32 25,33 24,33 24,34 23,34 23,35 23,36 22,36 22,37 22,38 21,38 21,39 20,40 20,41 19,42 18,43 18,44 17,44 17,45 16,46" fill="none" stroke="#4a9e6a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.95">
+    <title>5456 j:1</title>
+  </polyline>
+</svg>

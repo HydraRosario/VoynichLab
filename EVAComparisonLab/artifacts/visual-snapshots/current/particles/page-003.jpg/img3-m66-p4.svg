@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="62" height="53" viewBox="0 0 62 53">
+  <title>particle img3-m66-p4 e:1 f:1</title>
+  <metadata>{&quot;entityType&quot;:&quot;particle&quot;,&quot;entityId&quot;:&quot;img3-m66-p4&quot;,&quot;token&quot;:&quot;e:1 f:1&quot;,&quot;signature&quot;:&quot;e:1 f:1&quot;,&quot;imageName&quot;:&quot;page-003.jpg&quot;,&quot;imageId&quot;:3,&quot;bounds&quot;:{&quot;x&quot;:1012,&quot;y&quot;:1490,&quot;w&quot;:62,&quot;h&quot;:53},&quot;atoms&quot;:[{&quot;id&quot;:2148,&quot;token&quot;:&quot;e:1&quot;,&quot;particle_id&quot;:&quot;img3-m66-p4&quot;,&quot;molecule_id&quot;:&quot;img3-m66&quot;,&quot;atom_order&quot;:1},{&quot;id&quot;:2141,&quot;token&quot;:&quot;f:1&quot;,&quot;particle_id&quot;:&quot;img3-m66-p4&quot;,&quot;molecule_id&quot;:&quot;img3-m66&quot;,&quot;atom_order&quot;:2}]}</metadata>
+  <rect x="0" y="0" width="62" height="53" fill="#f8f0d8"/>
+  <image href="file:///C:/Users/HHHES/AppData/Roaming/com.voynichlab.datasetcreator/images/1/35a70f63-88ab-4986-b441-b78046a10087.jpg" x="-1012" y="-1490" width="2972" height="3766" opacity="0.92"/>
+  <rect x="0.5" y="0.5" width="61" height="52" fill="none" stroke="#111827" stroke-width="1" opacity="0.35"/>
+  <polyline points="28,34 27,34 27,35 26,35 26,36 25,36 24,36 23,36 22,36 21,36 20,36 19,36 19,35 18,35 18,34 17,34 17,33 16,33 16,32 16,31 16,30 16,29 16,28 17,27 17,26 17,25 18,25 18,24 19,24 19,23 20,22 20,21 21,21 22,20 23,20 23,19 24,19 25,19 25,18 26,18 27,18 28,18 29,18 29,17 30,17 31,17 32,17 33,17" fill="none" stroke="#f2e45c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.95">
+    <title>2148 e:1</title>
+  </polyline>
+  <polyline points="33,16 33,17 33,18 34,18 34,19 34,20 35,20 35,21 36,22 36,23 37,23 37,24 38,25 38,26 39,26 39,27 40,27 40,28 41,28 41,29 41,30 42,30 42,31 42,32 43,32 43,33 44,33 44,34 45,35 45,36 46,36 46,37" fill="none" stroke="#00a2ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.95">
+    <title>2141 f:1</title>
+  </polyline>
+</svg>

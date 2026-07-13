@@ -1,0 +1,22 @@
+{
+  "name": "voynichlab-eva-comparison",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "compare": "node scripts/positional-entropy.js",
+    "export:atoms": "node scripts/export-datasetcreator-atoms.js",
+    "build:parallel": "node scripts/build-parallel.js",
+    "role-entropy": "node scripts/role-entropy.js",
+    "extract:ivtff": "node scripts/extract-ivtff-page.js",
+    "conditional-entropy": "node scripts/conditional-entropy.js",
+    "variant-ablation": "node scripts/variant-ablation.js",
+    "cross-folio": "node scripts/cross-folio-validation.js",
+    "snapshots": "node scripts/export-visual-snapshots.js",
+    "morphology": "node scripts/morphology-family-analysis.js",
+    "current": "node scripts/run-current-analysis.js",
+    "current:report": "node scripts/build-current-report.js",
+    "complete:report": "node scripts/build-complete-report.js",
+    "audit:labeling": "node scripts/labeling-anomaly-audit.js"
+  }
+}

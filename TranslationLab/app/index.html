@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VoynichLab TranslationLab</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="left">
+        <header>
+          <div>
+            <span class="mark">V</span>
+            <h1>TranslationLab</h1>
+          </div>
+          <p>Export del DataSetCreator -> separaciones -> raices -> traduccion.</p>
+        </header>
+
+        <div class="toolbar">
+          <button id="loadLatest">Cargar ultimo export</button>
+          <button id="translate">Traducir</button>
+        </div>
+
+        <div class="dataset-box">
+          <div>
+            <span>Fuente</span>
+            <strong>Ultimo export del DataSetCreator</strong>
+          </div>
+          <small id="datasetMeta">Sin cargar.</small>
+        </div>
+
+        <label for="romanizationList">Romanizaciones exportadas</label>
+        <ol id="romanizationList" class="romanization-list"></ol>
+
+        <div class="settings">
+          <label>
+            Profundidad de busqueda
+            <input id="maxTokens" type="number" min="20" max="500" value="180" />
+          </label>
+          <label>
+            Raiz minima
+            <input id="minLen" type="number" min="1" max="5" value="2" />
+          </label>
+        </div>
+        <p class="settings-help">
+          Mas profundidad busca mas separaciones posibles. Raiz minima evita que el motor abuse de letras sueltas.
+        </p>
+      </section>
+
+      <section class="right">
+        <div class="status" id="status">Listo.</div>
+        <div id="results" class="results" hidden>
+          <section class="translation-card">
+            <h2>Traduccion propuesta</h2>
+            <div id="translationDraft" class="translation-draft"></div>
+            <ul id="supportNotes" class="support-notes"></ul>
+          </section>
+
+          <section class="roots-card">
+            <h2>Raices usadas</h2>
+            <div id="rootsTable" class="roots-table"></div>
+          </section>
+
+          <section class="units-card">
+            <h2>Explorador por unidad</h2>
+            <div id="unitExplorer" class="unit-explorer"></div>
+          </section>
+
+          <details class="raw-report">
+            <summary>Reporte crudo</summary>
+            <pre id="output"></pre>
+          </details>
+        </div>
+      </section>
+    </main>
+    <script src="/main.js"></script>
+  </body>
+</html>

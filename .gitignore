@@ -1,0 +1,41 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+dist-ssr/
+target/
+DataSetCreator/src-tauri/target/
+
+# Logs and local env
+*.log
+*.local
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Local manuscript assets and generated research artifacts
+DataSetCreator/manuscript-pages-yale/
+DataSetCreator/evidence/
+DataSetCreator/backups/
+DataSetCreator/*.db
+EVAComparisonLab/backups/
+TranslationLab/outputs/
+TranslationLab/translator/cache/
+TranslationLab/inputs/run-*.txt
+
+# Local Git scratch directories created outside `git init`
+.git/
+.agents/
+
+# Editor and OS files
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

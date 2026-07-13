@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="53" height="51" viewBox="0 0 53 51">
+  <title>particle img3-m14-p3 e:1 f:1</title>
+  <metadata>{&quot;entityType&quot;:&quot;particle&quot;,&quot;entityId&quot;:&quot;img3-m14-p3&quot;,&quot;token&quot;:&quot;e:1 f:1&quot;,&quot;signature&quot;:&quot;e:1 f:1&quot;,&quot;imageName&quot;:&quot;page-003.jpg&quot;,&quot;imageId&quot;:3,&quot;bounds&quot;:{&quot;x&quot;:1614,&quot;y&quot;:590,&quot;w&quot;:53,&quot;h&quot;:51},&quot;atoms&quot;:[{&quot;id&quot;:1201,&quot;token&quot;:&quot;e:1&quot;,&quot;particle_id&quot;:&quot;img3-m14-p3&quot;,&quot;molecule_id&quot;:&quot;img3-m14&quot;,&quot;atom_order&quot;:1},{&quot;id&quot;:1202,&quot;token&quot;:&quot;f:1&quot;,&quot;particle_id&quot;:&quot;img3-m14-p3&quot;,&quot;molecule_id&quot;:&quot;img3-m14&quot;,&quot;atom_order&quot;:2}]}</metadata>
+  <rect x="0" y="0" width="53" height="51" fill="#f8f0d8"/>
+  <image href="file:///C:/Users/HHHES/AppData/Roaming/com.voynichlab.datasetcreator/images/1/35a70f63-88ab-4986-b441-b78046a10087.jpg" x="-1614" y="-590" width="2972" height="3766" opacity="0.92"/>
+  <rect x="0.5" y="0.5" width="52" height="50" fill="none" stroke="#111827" stroke-width="1" opacity="0.35"/>
+  <polyline points="27,32 27,33 26,33 25,33 25,34 24,34 23,34 23,35 22,35 21,35 20,35 19,35 18,35 17,35 16,35 16,34 16,33 16,32 16,31 16,30 16,29 16,28 17,27 17,26 17,25 18,25 18,24 18,23 19,23 19,22 20,22 21,22 21,21 22,21 22,20 23,20 24,20 24,19 25,19 26,19 26,18 27,18 28,18 28,17 29,17 30,17 30,16" fill="none" stroke="#f2e45c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.95">
+    <title>1201 e:1</title>
+  </polyline>
+  <polyline points="30,16 30,17 31,17 31,18 31,19 32,19 32,20 32,21 33,21 33,22 33,23 34,23 34,24 34,25 34,26 35,26 35,27 35,28 36,28 36,29 36,30 37,30 37,31 37,32" fill="none" stroke="#00a2ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.95">
+    <title>1202 f:1</title>
+  </polyline>
+</svg>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="163" height="66" viewBox="0 0 163 66">
+  <title>molecule img94-m83 e:1 g:1 e:1 c:1 f:1 j:1</title>
+  <metadata>{&quot;entityType&quot;:&quot;molecule&quot;,&quot;entityId&quot;:&quot;img94-m83&quot;,&quot;token&quot;:&quot;e:1 g:1 e:1 c:1 f:1 j:1&quot;,&quot;signature&quot;:&quot;e:1 g:1 e:1 c:1 f:1 j:1&quot;,&quot;imageName&quot;:&quot;page-094.jpg&quot;,&quot;imageId&quot;:94,&quot;bounds&quot;:{&quot;x&quot;:778,&quot;y&quot;:3081,&quot;w&quot;:163,&quot;h&quot;:66},&quot;atoms&quot;:[{&quot;id&quot;:4459,&quot;token&quot;:&quot;e:1&quot;,&quot;particle_id&quot;:&quot;img94-m83-p1&quot;,&quot;molecule_id&quot;:&quot;img94-m83&quot;,&quot;atom_order&quot;:1},{&quot;id&quot;:4483,&quot;token&quot;:&quot;g:1&quot;,&quot;particle_id&quot;:&quot;img94-m83-p1&quot;,&quot;molecule_id&quot;:&quot;img94-m83&quot;,&quot;atom_order&quot;:2},{&quot;id&quot;:4460,&quot;token&quot;:&quot;e:1&quot;,&quot;particle_id&quot;:&quot;img94-m83-p1&quot;,&quot;molecule_id&quot;:&quot;img94-m83&quot;,&quot;atom_order&quot;:3},{&quot;id&quot;:4519,&quot;token&quot;:&quot;c:1&quot;,&quot;particle_id&quot;:&quot;img94-m83-p2&quot;,&quot;molecule_id&quot;:&quot;img94-m83&quot;,&quot;atom_order&quot;:1},{&quot;id&quot;:4571,&quot;token&quot;:&quot;f:1&quot;,&quot;particle_id&quot;:&quot;img94-m83-p3&quot;,&quot;molecule_id&quot;:&quot;img94-m83&quot;,&quot;atom_order&quot;:1},{&quot;id&quot;:4574,&quot;token&quot;:&quot;j:1&quot;,&quot;particle_id&quot;:&quot;img94-m83-p3&quot;,&quot;molecule_id&quot;:&quot;img94-m83&quot;,&quot;atom_order&quot;:2}]}</metadata>
+  <rect x="0" y="0" width="163" height="66" fill="#f8f0d8"/>
+  <image href="file:///C:/Users/HHHES/AppData/Roaming/com.voynichlab.datasetcreator/images/1/33b1988f-7aaa-4207-bfa8-f26b742ac4b1.jpg" x="-778" y="-3081" width="2932" height="3769" opacity="0.92"/>
+  <rect x="0.5" y="0.5" width="162" height="65" fill="none" stroke="#111827" stroke-width="1" opacity="0.35"/>
+  <polyline points="31,39 31,40 30,40 30,41 29,41 28,41 28,42 27,42 26,42 25,42 24,42 23,42 22,42 21,42 21,41 20,41 19,41 18,41 18,40 17,40 16,40 16,39 16,38 16,37 16,36 16,35 16,34 16,33 17,33 17,32 17,31 17,30 18,30 18,29 18,28 19,28 19,27 19,26 20,26 21,26 21,25 22,25 22,24 23,24 24,24 24,23 25,23 26,23 27,23 27,22" fill="none" stroke="#f2e45c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.95">
+    <title>4459 e:1</title>
+  </polyline>
+  <polyline points="25,23 26,22 28,21 31,21 33,21 35,20 36,20 38,20 42,20 47,21 52,21 53,21 54,21 55,21 58,21 61,22 63,22 64,22 65,22 66,23 67,23 68,23 69,23 70,23 71,23 72,23 72,24 73,24" fill="none" stroke="#7c3cff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.95">
+    <title>4483 g:1</title>
+  </polyline>
+  <polyline points="78,40 78,41 77,41 77,42 76,42 75,42 75,43 74,43 73,43 72,43 71,43 70,43 69,43 68,43 68,42 67,42 66,42 65,42 65,41 64,41 63,41 63,40 63,39 63,38 63,37 63,36 63,35 63,34 64,34 64,33 64,32 64,31 65,31 65,30 65,29 66,29 66,28 66,27 67,27 68,27 68,26 69,26 69,25 70,25 71,25 71,24 72,24 73,24 74,24 74,23" fill="none" stroke="#f2e45c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.95">
+    <title>4460 e:1</title>
+  </polyline>
+  <polyline points="97,29 97,30 96,30 96,31 96,32 95,32 95,33 95,34 95,35 95,36 95,37 95,38 95,39 96,39 96,40 97,40 97,41 98,42 99,42 100,42 101,42 101,43 102,43 103,43 104,43 105,43 106,43 107,43 108,43 109,43 109,42 110,42 111,42 111,41 111,40 112,40 112,39 113,39 113,38 113,37 114,37 114,36 114,35 115,35 115,34 115,33 115,32 115,31 115,30 115,29 114,29 114,28 114,27 113,27 113,26 112,26 112,25 111,25 111,24 110,24 109,24 109,23 108,23 107,23 106,23 105,23 104,23 103,23 102,23 101,24 100,24 100,25 99,25 99,26 98,26 97,26 97,27 96,27 96,28 96,29" fill="none" stroke="#8aff00" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.95">
+    <title>4519 c:1</title>
+  </polyline>
+  <polyline points="130,22 130,23 130,24 131,24 131,25 131,26 132,26 132,27 133,28 133,29 134,29 134,30 135,31 135,32 136,32 136,33 137,33 137,34 138,34 138,35 138,36 139,36 139,37 139,38 140,38 140,39 141,39 141,40 142,41 142,42 143,42 143,43" fill="none" stroke="#00a2ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.95">
+    <title>4571 f:1</title>
+  </polyline>
+  <polyline points="130,25 130,24 131,24 131,23 132,23 133,22 134,21 135,21 135,20 136,20 136,19 137,19 137,18 138,18 139,17 140,17 140,16 141,16 142,16 143,16 144,16 145,16 146,16 146,17 147,18 147,19 147,20 147,21 147,22 147,23 146,23 146,24 145,25 145,26 144,26 144,27 144,28 143,28 143,29 142,29 142,30 141,30 141,31 140,31 140,32 139,32 139,33 138,33 138,34 137,34 137,35 136,35 136,36 135,36 135,37 134,37 134,38 133,38 132,39 131,39 131,40 130,41 129,41 129,42 128,43 127,43 127,44 126,44 126,45 125,45 125,46 124,47 123,47 123,48 122,48 122,49 121,49 121,50 120,50" fill="none" stroke="#4a9e6a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.95">
+    <title>4574 j:1</title>
+  </polyline>
+</svg>

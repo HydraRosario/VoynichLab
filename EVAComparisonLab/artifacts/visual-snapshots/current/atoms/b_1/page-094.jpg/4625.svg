@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="97" height="42" viewBox="0 0 97 42">
+  <title>atom 4625 b:1</title>
+  <metadata>{&quot;entityType&quot;:&quot;atom&quot;,&quot;entityId&quot;:&quot;4625&quot;,&quot;token&quot;:&quot;b:1&quot;,&quot;signature&quot;:&quot;b:1&quot;,&quot;imageName&quot;:&quot;page-094.jpg&quot;,&quot;imageId&quot;:94,&quot;bounds&quot;:{&quot;x&quot;:1383,&quot;y&quot;:2906,&quot;w&quot;:97,&quot;h&quot;:42},&quot;atoms&quot;:[{&quot;id&quot;:4625,&quot;token&quot;:&quot;b:1&quot;,&quot;particle_id&quot;:&quot;img94-m80-p5&quot;,&quot;molecule_id&quot;:&quot;img94-m80&quot;,&quot;atom_order&quot;:3}]}</metadata>
+  <rect x="0" y="0" width="97" height="42" fill="#f8f0d8"/>
+  <image href="file:///C:/Users/HHHES/AppData/Roaming/com.voynichlab.datasetcreator/images/1/33b1988f-7aaa-4207-bfa8-f26b742ac4b1.jpg" x="-1383" y="-2906" width="2932" height="3769" opacity="0.92"/>
+  <rect x="0.5" y="0.5" width="96" height="41" fill="none" stroke="#111827" stroke-width="1" opacity="0.35"/>
+  <polyline points="16,23 17,23 18,23 19,23 19,24 20,24 21,24 22,24 22,25 23,25 24,25 25,25 26,25 27,25 29,25 30,25 31,26 32,26 33,26 34,26 35,26 36,26 37,26 38,25 39,25 40,25 41,25 42,25 43,25 44,25 45,25 47,25 48,24 50,24 52,24 54,23 55,23 56,23 58,23 60,22 62,22 64,22 66,21 67,21 69,21 71,21 72,20 74,19 76,18 78,17 80,17 81,16" fill="none" stroke="#2f7df6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.95">
+    <title>4625 b:1</title>
+  </polyline>
+</svg>

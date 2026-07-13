@@ -1,0 +1,175 @@
+image	scope	symbol	role	test	token	discovery_total	discovery_share	count	total	share	status	examples
+page-003.jpg	particle	d:1	medial	has_after	e:1	16	1.0000	13	13	1.0000	perfect	
+page-003.jpg	particle	d:1	medial	has_prior	a:1	16	1.0000	13	13	1.0000	perfect	
+page-003.jpg	particle	d:1	medial	has_prior	c:1	16	1.0000	13	13	1.0000	perfect	
+page-003.jpg	particle	d:1	medial	has_prior	e:1	16	1.0000	13	13	1.0000	perfect	
+page-003.jpg	particle	d:1	medial	ends_with	e:1	16	0.9375	12	13	0.9231	survives	img3-m136/img3-m136-p4:a:1 e:1 b:1 c:1 a:1 b:1 d:1 e:1 b:1 c:1
+page-003.jpg	particle	d:1	medial	has_after	g:1	16	0.9375	12	13	0.9231	survives	img3-m136/img3-m136-p4:a:1 e:1 b:1 c:1 a:1 b:1 d:1 e:1 b:1 c:1
+page-003.jpg	particle	d:1	medial	next_is	g:1	16	0.9375	12	13	0.9231	survives	img3-m136/img3-m136-p4:a:1 e:1 b:1 c:1 a:1 b:1 d:1 e:1 b:1 c:1
+page-003.jpg	particle	d:1	medial	has_prior	b:1	16	0.9375	13	13	1.0000	perfect	
+page-003.jpg	particle	d:1	medial	prev_is	b:1	16	0.9375	13	13	1.0000	perfect	
+page-003.jpg	particle	d:1	medial	starts_with	e:1	16	0.9375	12	13	0.9231	survives	img3-m136/img3-m136-p4:a:1 e:1 b:1 c:1 a:1 b:1 d:1 e:1 b:1 c:1
+page-003.jpg	particle	d:1	final	has_prior	i:1	171	0.9298	114	118	0.9661	survives	img3-m1/img3-m1-p1:a:1 b:1 c:1 a:1 b:1 d:1; img3-m118/img3-m118-p1:e:1 a:1 e:1 b:1 c:1 a:1 b:1 d:1; img3-m149/img3-m149-p1:e:1 a:1 e:1 b:1 c:1 a:1 b:1 d:1; img3-m166/img3-m166-p1:e:1 a:1 b:1 c:1 a:1 b:1 d:1
+page-003.jpg	particle	d:1	final	prev_is	i:1	171	0.9298	114	118	0.9661	survives	img3-m1/img3-m1-p1:a:1 b:1 c:1 a:1 b:1 d:1; img3-m118/img3-m118-p1:e:1 a:1 e:1 b:1 c:1 a:1 b:1 d:1; img3-m149/img3-m149-p1:e:1 a:1 e:1 b:1 c:1 a:1 b:1 d:1; img3-m166/img3-m166-p1:e:1 a:1 b:1 c:1 a:1 b:1 d:1
+page-003.jpg	particle	e:1	final	has_prior	g:1	242	1.0000	126	126	1.0000	perfect	
+page-003.jpg	particle	e:1	final	prev_is	g:1	242	1.0000	126	126	1.0000	perfect	
+page-003.jpg	particle	e:1	medial	has_prior	a:1	58	0.9310	40	43	0.9302	survives	img3-m122/img3-m122-p2:e:1 h:1 e:1 c:1 h:2; img3-m45/img3-m45-p2:e:1 h:1 e:1 c:1 h:2; img3-m48/img3-m48-p2:c:1 g:1 e:1 h:1
+page-003.jpg	particle	e:1	medial	has_after	c:1	58	0.9138	39	43	0.9070	survives	img3-m121/img3-m121-p3:e:1 a:1 e:1 b:1 c:1 a:1 c:2 g:1 e:1 h:1; img3-m29/img3-m29-p1:e:1 a:1 e:1 b:1 c:1 a:1 g:1 e:1 f:1; img3-m48/img3-m48-p2:c:1 g:1 e:1 h:1; img3-m85/img3-m85-p1:e:1 a:1 e:1 b:1 c:1 a:1 e:1 g:1 e:1
+page-003.jpg	particle	f:1	final	has_prior	e:1	125	1.0000	86	86	1.0000	perfect	
+page-003.jpg	particle	f:1	final	starts_with	e:1	125	1.0000	86	86	1.0000	perfect	
+page-003.jpg	particle	f:1	final	prev_is	e:1	125	0.9920	85	86	0.9884	survives	img3-m121/img3-m121-p2:e:1 l:1 f:1
+page-003.jpg	particle	f:1	medial	ends_with	d:1	68	0.9706	51	53	0.9623	survives	img3-m174/img3-m174-p3:k:1 f:1 i:1; img3-m82/img3-m82-p5:k:1 f:1 j:1
+page-003.jpg	particle	f:1	medial	has_after	d:1	68	0.9706	51	53	0.9623	survives	img3-m174/img3-m174-p3:k:1 f:1 i:1; img3-m82/img3-m82-p5:k:1 f:1 j:1
+page-003.jpg	particle	f:1	medial	has_after	i:1	68	0.9559	52	53	0.9811	survives	img3-m82/img3-m82-p5:k:1 f:1 j:1
+page-003.jpg	particle	f:1	medial	next_is	i:1	68	0.9559	52	53	0.9811	survives	img3-m82/img3-m82-p5:k:1 f:1 j:1
+page-003.jpg	particle	a:1	final	has_prior	c:1	102	0.9902	55	55	1.0000	perfect	
+page-003.jpg	particle	a:1	final	prev_is	c:1	102	0.9902	55	55	1.0000	perfect	
+page-003.jpg	particle	a:1	initial	has_after	c:1	113	0.9823	59	59	1.0000	perfect	
+page-003.jpg	particle	a:1	medial	has_prior	e:1	126	0.9603	85	87	0.9770	survives	img3-m1/img3-m1-p1:a:1 b:1 c:1 a:1 b:1 d:1; img3-m182/img3-m182-p1:a:1 b:1 c:1 a:1 c:2 g:1 e:1
+page-003.jpg	particle	a:1	medial	starts_with	e:1	126	0.9524	84	87	0.9655	survives	img3-m1/img3-m1-p1:a:1 b:1 c:1 a:1 b:1 d:1; img3-m136/img3-m136-p4:a:1 e:1 b:1 c:1 a:1 b:1 d:1 e:1 b:1 c:1; img3-m182/img3-m182-p1:a:1 b:1 c:1 a:1 c:2 g:1 e:1
+page-003.jpg	particle	h:1	final	has_prior	e:1	159	0.9811	76	77	0.9870	survives	img3-m111/img3-m111-p4:f:1 i:1 c:1 h:1
+page-003.jpg	particle	h:1	final	prev_is	e:1	159	0.9811	76	77	0.9870	survives	img3-m111/img3-m111-p4:f:1 i:1 c:1 h:1
+page-003.jpg	particle	h:1	final	starts_with	e:1	159	0.9686	75	77	0.9740	survives	img3-m111/img3-m111-p4:f:1 i:1 c:1 h:1; img3-m48/img3-m48-p2:c:1 g:1 e:1 h:1
+page-003.jpg	particle	h:2	final	has_prior	e:1	126	1.0000	63	63	1.0000	perfect	
+page-003.jpg	particle	h:2	final	starts_with	e:1	126	1.0000	63	63	1.0000	perfect	
+page-003.jpg	particle	h:2	final	has_prior	c:1	126	0.9048	56	63	0.8889	weak	img3-m11/img3-m11-p4:e:1 c:2 h:2; img3-m22/img3-m22-p1:e:1 c:2 h:2; img3-m72/img3-m72-p2:e:1 c:2 h:2; img3-m78/img3-m78-p4:e:1 c:2 h:2
+page-003.jpg	particle	h:2	final	prev_is	c:1	126	0.9048	56	63	0.8889	weak	img3-m11/img3-m11-p4:e:1 c:2 h:2; img3-m22/img3-m22-p1:e:1 c:2 h:2; img3-m72/img3-m72-p2:e:1 c:2 h:2; img3-m78/img3-m78-p4:e:1 c:2 h:2
+page-003.jpg	particle	m:1	medial	has_prior	a:1	41	1.0000	15	15	1.0000	perfect	
+page-003.jpg	particle	m:1	medial	prev_is	a:1	41	1.0000	15	15	1.0000	perfect	
+page-003.jpg	particle	m:1	medial	has_after	c:1	41	0.9756	15	15	1.0000	perfect	
+page-003.jpg	particle	m:1	medial	next_is	c:1	41	0.9756	15	15	1.0000	perfect	
+page-003.jpg	particle	m:1	medial	has_after	a:1	41	0.9024	15	15	1.0000	perfect	
+page-003.jpg	particle	g:1	medial	has_after	e:1	245	1.0000	129	129	1.0000	perfect	
+page-003.jpg	particle	g:1	medial	next_is	e:1	245	1.0000	129	129	1.0000	perfect	
+page-003.jpg	particle	g:1	medial	ends_with	e:1	245	0.9878	126	129	0.9767	survives	img3-m121/img3-m121-p3:e:1 a:1 e:1 b:1 c:1 a:1 c:2 g:1 e:1 h:1; img3-m29/img3-m29-p1:e:1 a:1 e:1 b:1 c:1 a:1 g:1 e:1 f:1; img3-m48/img3-m48-p2:c:1 g:1 e:1 h:1
+page-003.jpg	particle	g:1	medial	has_prior	e:1	245	0.9388	124	129	0.9612	survives	img3-m136/img3-m136-p2:c:2 g:1 e:1; img3-m151/img3-m151-p2:c:2 g:1 e:1; img3-m182/img3-m182-p1:a:1 b:1 c:1 a:1 c:2 g:1 e:1; img3-m197/img3-m197-p2:c:2 g:1 e:1
+page-003.jpg	particle	g:1	medial	starts_with	e:1	245	0.9388	124	129	0.9612	survives	img3-m136/img3-m136-p2:c:2 g:1 e:1; img3-m151/img3-m151-p2:c:2 g:1 e:1; img3-m182/img3-m182-p1:a:1 b:1 c:1 a:1 c:2 g:1 e:1; img3-m197/img3-m197-p2:c:2 g:1 e:1
+page-003.jpg	particle	j:1	final	has_prior	f:1	85	1.0000	32	32	1.0000	perfect	
+page-003.jpg	particle	j:1	final	prev_is	f:1	85	1.0000	32	32	1.0000	perfect	
+page-003.jpg	particle	j:1	final	starts_with	f:1	85	0.9882	31	32	0.9688	survives	img3-m82/img3-m82-p5:k:1 f:1 j:1
+page-003.jpg	particle	k:1	initial	has_after	f:1	44	0.9773	32	32	1.0000	perfect	
+page-003.jpg	particle	k:1	initial	next_is	f:1	44	0.9773	32	32	1.0000	perfect	
+page-003.jpg	particle	k:1	initial	ends_with	d:1	44	0.9318	30	32	0.9375	survives	img3-m174/img3-m174-p3:k:1 f:1 i:1; img3-m82/img3-m82-p5:k:1 f:1 j:1
+page-003.jpg	particle	k:1	initial	has_after	d:1	44	0.9318	30	32	0.9375	survives	img3-m174/img3-m174-p3:k:1 f:1 i:1; img3-m82/img3-m82-p5:k:1 f:1 j:1
+page-003.jpg	particle	k:1	initial	has_after	i:1	44	0.9318	31	32	0.9688	survives	img3-m82/img3-m82-p5:k:1 f:1 j:1
+page-003.jpg	particle	l:1	initial	ends_with	d:1	22	1.0000	19	19	1.0000	perfect	
+page-003.jpg	particle	l:1	initial	has_after	d:1	22	1.0000	19	19	1.0000	perfect	
+page-003.jpg	particle	l:1	initial	has_after	f:1	22	1.0000	19	19	1.0000	perfect	
+page-003.jpg	particle	l:1	initial	next_is	f:1	22	1.0000	19	19	1.0000	perfect	
+page-003.jpg	particle	l:1	initial	has_after	i:1	22	0.9545	19	19	1.0000	perfect	
+page-004.jpg	particle	d:1	medial	has_after	e:1	16	1.0000	2	2	1.0000	perfect	
+page-004.jpg	particle	d:1	medial	has_prior	a:1	16	1.0000	2	2	1.0000	perfect	
+page-004.jpg	particle	d:1	medial	has_prior	c:1	16	1.0000	2	2	1.0000	perfect	
+page-004.jpg	particle	d:1	medial	has_prior	e:1	16	1.0000	2	2	1.0000	perfect	
+page-004.jpg	particle	d:1	medial	ends_with	e:1	16	0.9375	2	2	1.0000	perfect	
+page-004.jpg	particle	d:1	medial	has_after	g:1	16	0.9375	2	2	1.0000	perfect	
+page-004.jpg	particle	d:1	medial	next_is	g:1	16	0.9375	2	2	1.0000	perfect	
+page-004.jpg	particle	d:1	medial	has_prior	b:1	16	0.9375	2	2	1.0000	perfect	
+page-004.jpg	particle	d:1	medial	prev_is	b:1	16	0.9375	2	2	1.0000	perfect	
+page-004.jpg	particle	d:1	medial	starts_with	e:1	16	0.9375	2	2	1.0000	perfect	
+page-004.jpg	particle	d:1	final	has_prior	i:1	171	0.9298	21	23	0.9130	survives	img4-m30/img4-m30-p1:e:1 a:1 b:1 c:1 a:1 b:1 d:1; img4-m87/img4-m87-p1:e:1 a:1 e:1 b:1 c:1 a:1 b:1 d:1
+page-004.jpg	particle	d:1	final	prev_is	i:1	171	0.9298	21	23	0.9130	survives	img4-m30/img4-m30-p1:e:1 a:1 b:1 c:1 a:1 b:1 d:1; img4-m87/img4-m87-p1:e:1 a:1 e:1 b:1 c:1 a:1 b:1 d:1
+page-004.jpg	particle	e:1	final	has_prior	g:1	242	1.0000	54	54	1.0000	perfect	
+page-004.jpg	particle	e:1	final	prev_is	g:1	242	1.0000	54	54	1.0000	perfect	
+page-004.jpg	particle	e:1	medial	has_prior	a:1	58	0.9310	5	5	1.0000	perfect	
+page-004.jpg	particle	e:1	medial	has_after	c:1	58	0.9138	5	5	1.0000	perfect	
+page-004.jpg	particle	f:1	final	has_prior	e:1	125	1.0000	19	19	1.0000	perfect	
+page-004.jpg	particle	f:1	final	starts_with	e:1	125	1.0000	19	19	1.0000	perfect	
+page-004.jpg	particle	f:1	final	prev_is	e:1	125	0.9920	19	19	1.0000	perfect	
+page-004.jpg	particle	f:1	medial	ends_with	d:1	68	0.9706	5	5	1.0000	perfect	
+page-004.jpg	particle	f:1	medial	has_after	d:1	68	0.9706	5	5	1.0000	perfect	
+page-004.jpg	particle	f:1	medial	has_after	i:1	68	0.9559	5	5	1.0000	perfect	
+page-004.jpg	particle	f:1	medial	next_is	i:1	68	0.9559	5	5	1.0000	perfect	
+page-004.jpg	particle	a:1	final	has_prior	c:1	102	0.9902	26	26	1.0000	perfect	
+page-004.jpg	particle	a:1	final	prev_is	c:1	102	0.9902	26	26	1.0000	perfect	
+page-004.jpg	particle	a:1	initial	has_after	c:1	113	0.9823	29	29	1.0000	perfect	
+page-004.jpg	particle	a:1	medial	has_prior	e:1	126	0.9603	20	22	0.9091	survives	img4-m13/img4-m13-p1:a:1 b:1 c:1 a:1 c:2 g:1 e:1; img4-m13/img4-m13-p3:a:1 b:1 c:1 a:1 c:2 g:1 e:1
+page-004.jpg	particle	a:1	medial	starts_with	e:1	126	0.9524	20	22	0.9091	survives	img4-m13/img4-m13-p1:a:1 b:1 c:1 a:1 c:2 g:1 e:1; img4-m13/img4-m13-p3:a:1 b:1 c:1 a:1 c:2 g:1 e:1
+page-004.jpg	particle	h:1	final	has_prior	e:1	159	0.9811	34	36	0.9444	survives	img4-m11/img4-m11-p2:f:1 i:1 c:1 h:1; img4-m24/img4-m24-p2:f:1 i:1 c:1 h:1
+page-004.jpg	particle	h:1	final	prev_is	e:1	159	0.9811	34	36	0.9444	survives	img4-m11/img4-m11-p2:f:1 i:1 c:1 h:1; img4-m24/img4-m24-p2:f:1 i:1 c:1 h:1
+page-004.jpg	particle	h:1	final	starts_with	e:1	159	0.9686	34	36	0.9444	survives	img4-m11/img4-m11-p2:f:1 i:1 c:1 h:1; img4-m24/img4-m24-p2:f:1 i:1 c:1 h:1
+page-004.jpg	particle	h:2	final	has_prior	e:1	126	1.0000	34	34	1.0000	perfect	
+page-004.jpg	particle	h:2	final	starts_with	e:1	126	1.0000	34	34	1.0000	perfect	
+page-004.jpg	particle	h:2	final	has_prior	c:1	126	0.9048	34	34	1.0000	perfect	
+page-004.jpg	particle	h:2	final	prev_is	c:1	126	0.9048	34	34	1.0000	perfect	
+page-004.jpg	particle	m:1	medial	has_prior	a:1	41	1.0000	12	12	1.0000	perfect	
+page-004.jpg	particle	m:1	medial	prev_is	a:1	41	1.0000	12	12	1.0000	perfect	
+page-004.jpg	particle	m:1	medial	has_after	c:1	41	0.9756	12	12	1.0000	perfect	
+page-004.jpg	particle	m:1	medial	next_is	c:1	41	0.9756	12	12	1.0000	perfect	
+page-004.jpg	particle	m:1	medial	has_after	a:1	41	0.9024	11	12	0.9167	survives	img4-m49/img4-m49-p1:a:1 m:1 c:1
+page-004.jpg	particle	g:1	medial	has_after	e:1	245	1.0000	54	54	1.0000	perfect	
+page-004.jpg	particle	g:1	medial	next_is	e:1	245	1.0000	54	54	1.0000	perfect	
+page-004.jpg	particle	g:1	medial	ends_with	e:1	245	0.9878	54	54	1.0000	perfect	
+page-004.jpg	particle	g:1	medial	has_prior	e:1	245	0.9388	49	54	0.9074	survives	img4-m13/img4-m13-p1:a:1 b:1 c:1 a:1 c:2 g:1 e:1; img4-m13/img4-m13-p3:a:1 b:1 c:1 a:1 c:2 g:1 e:1; img4-m21/img4-m21-p4:c:2 g:1 e:1; img4-m54/img4-m54-p1:c:2 g:1 e:1
+page-004.jpg	particle	g:1	medial	starts_with	e:1	245	0.9388	49	54	0.9074	survives	img4-m13/img4-m13-p1:a:1 b:1 c:1 a:1 c:2 g:1 e:1; img4-m13/img4-m13-p3:a:1 b:1 c:1 a:1 c:2 g:1 e:1; img4-m21/img4-m21-p4:c:2 g:1 e:1; img4-m54/img4-m54-p1:c:2 g:1 e:1
+page-004.jpg	particle	j:1	final	has_prior	f:1	85	1.0000	35	35	1.0000	perfect	
+page-004.jpg	particle	j:1	final	prev_is	f:1	85	1.0000	35	35	1.0000	perfect	
+page-004.jpg	particle	j:1	final	starts_with	f:1	85	0.9882	35	35	1.0000	perfect	
+page-004.jpg	particle	k:1	initial	has_after	f:1	44	0.9773	3	3	1.0000	perfect	
+page-004.jpg	particle	k:1	initial	next_is	f:1	44	0.9773	3	3	1.0000	perfect	
+page-004.jpg	particle	k:1	initial	ends_with	d:1	44	0.9318	3	3	1.0000	perfect	
+page-004.jpg	particle	k:1	initial	has_after	d:1	44	0.9318	3	3	1.0000	perfect	
+page-004.jpg	particle	k:1	initial	has_after	i:1	44	0.9318	3	3	1.0000	perfect	
+page-004.jpg	particle	l:1	initial	ends_with	d:1	22	1.0000	2	2	1.0000	perfect	
+page-004.jpg	particle	l:1	initial	has_after	d:1	22	1.0000	2	2	1.0000	perfect	
+page-004.jpg	particle	l:1	initial	has_after	f:1	22	1.0000	2	2	1.0000	perfect	
+page-004.jpg	particle	l:1	initial	next_is	f:1	22	1.0000	2	2	1.0000	perfect	
+page-004.jpg	particle	l:1	initial	has_after	i:1	22	0.9545	2	2	1.0000	perfect	
+page-094.jpg	particle	d:1	medial	has_after	e:1	16	1.0000	1	1	1.0000	perfect	
+page-094.jpg	particle	d:1	medial	has_prior	a:1	16	1.0000	1	1	1.0000	perfect	
+page-094.jpg	particle	d:1	medial	has_prior	c:1	16	1.0000	1	1	1.0000	perfect	
+page-094.jpg	particle	d:1	medial	has_prior	e:1	16	1.0000	1	1	1.0000	perfect	
+page-094.jpg	particle	d:1	medial	ends_with	e:1	16	0.9375	1	1	1.0000	perfect	
+page-094.jpg	particle	d:1	medial	has_after	g:1	16	0.9375	1	1	1.0000	perfect	
+page-094.jpg	particle	d:1	medial	next_is	g:1	16	0.9375	1	1	1.0000	perfect	
+page-094.jpg	particle	d:1	medial	has_prior	b:1	16	0.9375	0	1	0.0000	weak	img94-m7/img94-m7-p1:e:1 a:1 m:1 c:1 a:1 d:1 g:1 e:1
+page-094.jpg	particle	d:1	medial	prev_is	b:1	16	0.9375	0	1	0.0000	weak	img94-m7/img94-m7-p1:e:1 a:1 m:1 c:1 a:1 d:1 g:1 e:1
+page-094.jpg	particle	d:1	medial	starts_with	e:1	16	0.9375	1	1	1.0000	perfect	
+page-094.jpg	particle	d:1	final	has_prior	i:1	171	0.9298	24	30	0.8000	weak	img94-m1/img94-m1-p1:e:1 a:1 e:1 b:1 c:1 a:1 b:1 d:1; img94-m4/img94-m4-p3:e:1 a:1 b:1 c:1 a:1 b:1 d:1; img94-m40/img94-m40-p1:e:1 a:1 e:1 b:1 c:1 a:1 b:1 d:1; img94-m42/img94-m42-p3:l:1 f:1 j:1 d:1
+page-094.jpg	particle	d:1	final	prev_is	i:1	171	0.9298	24	30	0.8000	weak	img94-m1/img94-m1-p1:e:1 a:1 e:1 b:1 c:1 a:1 b:1 d:1; img94-m4/img94-m4-p3:e:1 a:1 b:1 c:1 a:1 b:1 d:1; img94-m40/img94-m40-p1:e:1 a:1 e:1 b:1 c:1 a:1 b:1 d:1; img94-m42/img94-m42-p3:l:1 f:1 j:1 d:1
+page-094.jpg	particle	e:1	final	has_prior	g:1	242	1.0000	62	62	1.0000	perfect	
+page-094.jpg	particle	e:1	final	prev_is	g:1	242	1.0000	62	62	1.0000	perfect	
+page-094.jpg	particle	e:1	medial	has_prior	a:1	58	0.9310	9	10	0.9000	survives	img94-m11/img94-m11-p3:k:1 e:1 h:1
+page-094.jpg	particle	e:1	medial	has_after	c:1	58	0.9138	9	10	0.9000	survives	img94-m11/img94-m11-p3:k:1 e:1 h:1
+page-094.jpg	particle	f:1	final	has_prior	e:1	125	1.0000	20	20	1.0000	perfect	
+page-094.jpg	particle	f:1	final	starts_with	e:1	125	1.0000	20	20	1.0000	perfect	
+page-094.jpg	particle	f:1	final	prev_is	e:1	125	0.9920	20	20	1.0000	perfect	
+page-094.jpg	particle	f:1	medial	ends_with	d:1	68	0.9706	10	10	1.0000	perfect	
+page-094.jpg	particle	f:1	medial	has_after	d:1	68	0.9706	10	10	1.0000	perfect	
+page-094.jpg	particle	f:1	medial	has_after	i:1	68	0.9559	8	10	0.8000	weak	img94-m42/img94-m42-p3:l:1 f:1 j:1 d:1; img94-m58/img94-m58-p3:k:1 f:1 j:1 d:1
+page-094.jpg	particle	f:1	medial	next_is	i:1	68	0.9559	8	10	0.8000	weak	img94-m42/img94-m42-p3:l:1 f:1 j:1 d:1; img94-m58/img94-m58-p3:k:1 f:1 j:1 d:1
+page-094.jpg	particle	a:1	final	has_prior	c:1	102	0.9902	20	21	0.9524	survives	img94-m20/img94-m20-p2:a:1 m:1 c:2 a:1
+page-094.jpg	particle	a:1	final	prev_is	c:1	102	0.9902	20	21	0.9524	survives	img94-m20/img94-m20-p2:a:1 m:1 c:2 a:1
+page-094.jpg	particle	a:1	initial	has_after	c:1	113	0.9823	23	25	0.9200	survives	img94-m20/img94-m20-p2:a:1 m:1 c:2 a:1; img94-m71/img94-m71-p3:a:1 b:1 a:1 c:2
+page-094.jpg	particle	a:1	medial	has_prior	e:1	126	0.9603	16	17	0.9412	survives	img94-m71/img94-m71-p3:a:1 b:1 a:1 c:2
+page-094.jpg	particle	a:1	medial	starts_with	e:1	126	0.9524	16	17	0.9412	survives	img94-m71/img94-m71-p3:a:1 b:1 a:1 c:2
+page-094.jpg	particle	h:1	final	has_prior	e:1	159	0.9811	46	46	1.0000	perfect	
+page-094.jpg	particle	h:1	final	prev_is	e:1	159	0.9811	46	46	1.0000	perfect	
+page-094.jpg	particle	h:1	final	starts_with	e:1	159	0.9686	45	46	0.9783	survives	img94-m11/img94-m11-p3:k:1 e:1 h:1
+page-094.jpg	particle	h:2	final	has_prior	e:1	126	1.0000	29	29	1.0000	perfect	
+page-094.jpg	particle	h:2	final	starts_with	e:1	126	1.0000	29	29	1.0000	perfect	
+page-094.jpg	particle	h:2	final	has_prior	c:1	126	0.9048	24	29	0.8276	weak	img94-m11/img94-m11-p1:e:1 c:2 h:2; img94-m35/img94-m35-p1:e:1 c:2 h:2; img94-m48/img94-m48-p1:e:1 c:2 h:2; img94-m64/img94-m64-p1:e:1 c:2 h:2
+page-094.jpg	particle	h:2	final	prev_is	c:1	126	0.9048	24	29	0.8276	weak	img94-m11/img94-m11-p1:e:1 c:2 h:2; img94-m35/img94-m35-p1:e:1 c:2 h:2; img94-m48/img94-m48-p1:e:1 c:2 h:2; img94-m64/img94-m64-p1:e:1 c:2 h:2
+page-094.jpg	particle	m:1	medial	has_prior	a:1	41	1.0000	14	14	1.0000	perfect	
+page-094.jpg	particle	m:1	medial	prev_is	a:1	41	1.0000	14	14	1.0000	perfect	
+page-094.jpg	particle	m:1	medial	has_after	c:1	41	0.9756	13	14	0.9286	survives	img94-m20/img94-m20-p2:a:1 m:1 c:2 a:1
+page-094.jpg	particle	m:1	medial	next_is	c:1	41	0.9756	13	14	0.9286	survives	img94-m20/img94-m20-p2:a:1 m:1 c:2 a:1
+page-094.jpg	particle	m:1	medial	has_after	a:1	41	0.9024	11	14	0.7857	weak	img94-m24/img94-m24-p1:a:1 m:1 c:1; img94-m25/img94-m25-p1:a:1 m:1 c:1; img94-m53/img94-m53-p1:a:1 m:1 c:1
+page-094.jpg	particle	g:1	medial	has_after	e:1	245	1.0000	62	62	1.0000	perfect	
+page-094.jpg	particle	g:1	medial	next_is	e:1	245	1.0000	62	62	1.0000	perfect	
+page-094.jpg	particle	g:1	medial	ends_with	e:1	245	0.9878	62	62	1.0000	perfect	
+page-094.jpg	particle	g:1	medial	has_prior	e:1	245	0.9388	57	62	0.9194	survives	img94-m17/img94-m17-p1:c:2 g:1 e:1; img94-m53/img94-m53-p3:c:2 g:1 e:1; img94-m57/img94-m57-p3:c:2 g:1 e:1; img94-m59/img94-m59-p8:c:2 g:1 e:1
+page-094.jpg	particle	g:1	medial	starts_with	e:1	245	0.9388	57	62	0.9194	survives	img94-m17/img94-m17-p1:c:2 g:1 e:1; img94-m53/img94-m53-p3:c:2 g:1 e:1; img94-m57/img94-m57-p3:c:2 g:1 e:1; img94-m59/img94-m59-p8:c:2 g:1 e:1
+page-094.jpg	particle	j:1	final	has_prior	f:1	85	1.0000	18	18	1.0000	perfect	
+page-094.jpg	particle	j:1	final	prev_is	f:1	85	1.0000	18	18	1.0000	perfect	
+page-094.jpg	particle	j:1	final	starts_with	f:1	85	0.9882	18	18	1.0000	perfect	
+page-094.jpg	particle	k:1	initial	has_after	f:1	44	0.9773	8	9	0.8889	weak	img94-m11/img94-m11-p3:k:1 e:1 h:1
+page-094.jpg	particle	k:1	initial	next_is	f:1	44	0.9773	8	9	0.8889	weak	img94-m11/img94-m11-p3:k:1 e:1 h:1
+page-094.jpg	particle	k:1	initial	ends_with	d:1	44	0.9318	8	9	0.8889	weak	img94-m11/img94-m11-p3:k:1 e:1 h:1
+page-094.jpg	particle	k:1	initial	has_after	d:1	44	0.9318	8	9	0.8889	weak	img94-m11/img94-m11-p3:k:1 e:1 h:1
+page-094.jpg	particle	k:1	initial	has_after	i:1	44	0.9318	7	9	0.7778	weak	img94-m11/img94-m11-p3:k:1 e:1 h:1; img94-m58/img94-m58-p3:k:1 f:1 j:1 d:1
+page-094.jpg	particle	l:1	initial	ends_with	d:1	22	1.0000	1	1	1.0000	perfect	
+page-094.jpg	particle	l:1	initial	has_after	d:1	22	1.0000	1	1	1.0000	perfect	
+page-094.jpg	particle	l:1	initial	has_after	f:1	22	1.0000	1	1	1.0000	perfect	
+page-094.jpg	particle	l:1	initial	next_is	f:1	22	1.0000	1	1	1.0000	perfect	
+page-094.jpg	particle	l:1	initial	has_after	i:1	22	0.9545	0	1	0.0000	weak	img94-m42/img94-m42-p3:l:1 f:1 j:1 d:1

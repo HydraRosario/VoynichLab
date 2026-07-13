@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# Generated app and research outputs
+outputs/
+translator/cache/
+inputs/run-*.txt
+
+# Logs and local env
+*.log
+*.local
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Editor and OS files
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

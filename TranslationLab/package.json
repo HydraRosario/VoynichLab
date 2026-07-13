@@ -1,0 +1,12 @@
+{
+  "name": "voynichlab-translation-lab",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "app": "node scripts/server.js",
+    "audit:pilot": "node scripts/etymology-search.js --romanizations inputs/page-003-paragraph-2_romanizations.txt --maxTokens 80 --out outputs/page-003-paragraph-2_raw-etymology.md --tsv outputs/page-003-paragraph-2_raw-etymology.tsv",
+    "audit:human": "node scripts/key-pressure-audit.js --user cases/page-003-paragraph-2/human-segmentation.tsv --etymology cases/page-003-paragraph-2/human-etymology.tsv --out outputs/page-003-paragraph-2_key-pressure-audit.md",
+    "translate:pilot": "node scripts/cherry-pick-translate.js --romanizations inputs/page-003-paragraph-2_romanizations.txt --etymology outputs/page-003-paragraph-2_raw-etymology.tsv --out outputs/page-003-paragraph-2_cherry-translation.md"
+  }
+}

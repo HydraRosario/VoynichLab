@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DataSetCreator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+</head>
+
+<body>
+  <div id="app">
+    <header class="toolbar" role="banner">
+      <div class="toolbar__brand">
+        <span class="toolbar__brand-icon">D</span>
+        <span class="toolbar__brand-text">DataSetCreator</span>
+      </div>
+      <div class="edit-controls" id="edit-controls" aria-label="Controles de edicion">
+        <button class="btn btn--secondary edit-controls__toggle" id="edit-mode-btn" type="button" data-tooltip="Editar en lote y guardar al final">Edicion</button>
+        <div class="edit-controls__tools" role="group" aria-label="Herramientas de edicion">
+          <button class="btn btn--secondary edit-controls__tool" id="edit-tool-paint-btn" type="button" data-edit-tool="paint" disabled>Pintar</button>
+          <button class="btn btn--secondary edit-controls__tool" id="edit-tool-delete-btn" type="button" data-edit-tool="delete" disabled>Borrar</button>
+          <button class="btn btn--secondary edit-controls__tool" id="edit-tool-rows-btn" type="button" data-edit-tool="rows" disabled>Renglones</button>
+          <button class="btn btn--secondary edit-controls__tool" id="edit-tool-molecule-btn" type="button" data-edit-tool="molecule" disabled>Molecula</button>
+        </div>
+        <span class="edit-controls__count" id="edit-count">0</span>
+        <button class="btn btn--primary edit-controls__commit" id="edit-commit-btn" type="button" disabled>Guardar</button>
+        <button class="btn btn--secondary edit-controls__cancel" id="edit-cancel-btn" type="button" disabled>Cancelar</button>
+      </div>
+      <form class="locator" id="locator-form" role="search" aria-label="Localizar molecula o atomo">
+        <input class="locator__input" id="locator-search-input" type="search" placeholder="m39 / 1651" autocomplete="off" spellcheck="false" />
+        <button class="btn btn--secondary locator__btn" id="locator-search-btn" type="submit">Buscar</button>
+      </form>
+      <div class="toolbar__spacer"></div>
+    </header>
+
+    <aside class="sidebar" role="navigation" aria-label="Paginas del manuscrito">
+      <div class="sidebar__header">
+        <button class="btn btn--icon sidebar__collapse-btn" id="sidebar-collapse-btn" data-tooltip="Plegar paginas" aria-label="Plegar paginas">
+          <span class="sidebar__collapse-icon" aria-hidden="true"></span>
+        </button>
+        <button class="btn btn--icon sidebar__filter-btn" id="sidebar-filter-btn" data-tooltip="Mostrar solo paginas con atomos" aria-label="Mostrar solo paginas con atomos">
+          <span class="sidebar__filter-icon" aria-hidden="true"></span>
+        </button>
+        <button class="btn btn--icon sidebar__labels-btn" id="sidebar-labels-btn" data-tooltip="Ocultar etiquetas" aria-label="Ocultar etiquetas">
+          <span class="sidebar__labels-icon" aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="sidebar__list" id="image-list-container">
+        <div class="sidebar__empty" id="image-list-empty">
+          <span class="sidebar__empty-icon">...</span>
+          <span>Cargando paginas.</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="canvas-container" id="canvas-container" role="main">
+      <canvas id="main-canvas"></canvas>
+
+      <div class="canvas-empty" id="canvas-empty">
+        <span class="canvas-empty__icon">D</span>
+        <span class="canvas-empty__text">Cargando...</span>
+      </div>
+
+      <div class="zoom-controls" id="zoom-controls">
+        <button class="btn btn--icon" id="zoom-out-btn" data-tooltip="Alejar">-</button>
+        <span class="zoom-controls__level" id="zoom-level" data-tooltip="Reset zoom">100%</span>
+        <button class="btn btn--icon" id="zoom-in-btn" data-tooltip="Acercar">+</button>
+      </div>
+    </main>
+
+    <aside class="annotation-panel" role="complementary" aria-label="Panel de anotacion">
+      <div class="annotation-panel__body" id="annotation-panel-body">
+        <div id="trace-info-container" class="hidden"></div>
+      </div>
+    </aside>
+
+  </div>
+
+  <div class="modal-overlay" id="atom-name-modal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="atom-name-title">
+      <form id="atom-name-form">
+        <div class="modal__header">
+          <div class="modal__title" id="atom-name-title">Guardar patron</div>
+          <button class="modal__close" id="atom-name-cancel-x" type="button" aria-label="Cerrar">x</button>
+        </div>
+        <div class="modal__body">
+          <label class="field__label" for="atom-name-input">Nombre</label>
+          <input class="field__input" id="atom-name-input" name="atom-name" autocomplete="off" spellcheck="false" />
+        </div>
+        <div class="modal__footer">
+          <button class="btn btn--secondary" id="atom-name-cancel" type="button">Cancelar</button>
+          <button class="btn btn--primary" type="submit">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast-container" id="toast-container"></div>
+  <script type="module" src="scripts/app.js"></script>
+</body>
+</html>

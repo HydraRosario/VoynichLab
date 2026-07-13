@@ -1,0 +1,68 @@
+token	level	count	colors	unit_examples	current_role	candidate_language	candidate_root	candidate_gloss	confidence	notes
+h	stroke	52	#dc7864	1, 2, 3, 4, 5, 6, 7, 8	stroke value					
+o	stroke	36	#64b4dc	1, 2, 3, 4, 6, 7, 9, 10	stroke value					
+ra	stroke	21	#4a9e6a	1, 2, 3, 4, 7, 8, 9, 10	stroke value					
+te	stroke	17	#dc7864	2, 3, 5, 7, 8, 9, 10, 11	stroke value					
+i	stroke	16	#b48cdc, #e05aa0	1, 2, 4, 6, 7, 11, 14, 15	stroke value					
+l	stroke	16	#e05aa0	3, 6, 10, 11, 12, 16, 19, 23	stroke value					
+a	stroke	11	#56c0a8	3, 6, 10, 11, 12, 13, 15, 16	stroke value					
+e	stroke	11	#f2e45c	2, 5, 7, 8, 9, 11, 18, 19	stroke value					
+rime	stroke	5	#d4a04a	1, 4, 5, 7, 15	stroke value					
+t	stroke	4	#dc7864	6, 8, 12, 19	stroke value					
+me	stroke	3	#ffffff	3, 6, 19	stroke value					
+rine	stroke	2	#d4a04a	13, 22	stroke value					
+mirriaa	stroke	1	#2f7df6	6	stroke value					
+mirrii	stroke	1	#2f7df6	17	stroke value					
+nirriaa	stroke	1	#2f7df6	14	stroke value					
+nirrii	stroke	1	#2f7df6	21	stroke value					
+rim	stroke	1	#d4a04a	16	stroke value					
+o	visual_part	19		1, 2, 3, 4, 6, 7, 9, 10	morphological chunk					
+hra	visual_part	10		3, 4, 7, 8, 9, 10, 12, 13	morphological chunk					
+hora	visual_part	9		1, 4, 7, 9, 14, 17, 20, 21	morphological chunk					
+hete	visual_part	7		2, 5, 7, 8, 9, 18, 20	morphological chunk					
+hi	visual_part	7		1, 4, 6, 7, 14, 17, 21	morphological chunk					
+hate	visual_part	5		10, 11, 12, 13, 15	morphological chunk					
+irime	visual_part	4		1, 4, 7, 15	morphological chunk					
+a	visual_part	3		2, 11, 19	morphological chunk					
+h	visual_part	3		8, 12, 18	morphological chunk					
+hetera	visual_part	1		2	morphological chunk					
+hlaolmehte	visual_part	1		3	morphological chunk					
+hlaolmeth	visual_part	1		6	morphological chunk					
+hrima	visual_part	1		16	morphological chunk					
+hrime	visual_part	1		5	morphological chunk					
+hrine	visual_part	1		13	morphological chunk					
+irine	visual_part	1		22	morphological chunk					
+laol	visual_part	1		11	morphological chunk					
+lhaol	visual_part	1		23	morphological chunk					
+lol	visual_part	1		10	morphological chunk					
+loli	visual_part	1		16	morphological chunk					
+mirriaa	visual_part	1		6	morphological chunk					
+mirrii	visual_part	1		17	morphological chunk					
+nirriaa	visual_part	1		14	morphological chunk					
+nirrii	visual_part	1		21	morphological chunk					
+t	visual_part	1		23	morphological chunk					
+tlhaolte	visual_part	1		12	morphological chunk					
+tlolmeht	visual_part	1		19	morphological chunk					
+tra	visual_part	1		8	morphological chunk					
+heteohorahra	unit	2		9, 20	romanized unit					
+hatehtluoltra	unit	1		12	romanized unit					
+hateoirime	unit	1		15	romanized unit					
+hetecrime	unit	1		5	romanized unit					
+heteohorahiirimehra	unit	1		7	romanized unit					
+hetoh	unit	1		18	romanized unit					
+hetraheteoa	unit	1		2	romanized unit					
+hlaolmethohimirriaa	unit	1		6	romanized unit					
+hlaolmethotra	unit	1		3	romanized unit					
+horahimirrii	unit	1		17	romanized unit					
+horahinirriaa	unit	1		14	romanized unit					
+horahinirrii	unit	1		21	romanized unit					
+hrahetehtra	unit	1		8	romanized unit					
+lhaoltohorahra	unit	1		23	romanized unit					
+loliocrima	unit	1		16	romanized unit					
+ocrinehatehra	unit	1		13	romanized unit					
+ohorahiirime	unit	1		1	romanized unit					
+ohrahorahiirime	unit	1		4	romanized unit					
+oirine	unit	1		22	romanized unit					
+olaolhateoa	unit	1		11	romanized unit					
+ololhateohra	unit	1		10	romanized unit					
+tlolmehtoa	unit	1		19	romanized unit					

@@ -1,0 +1,3169 @@
+{
+  "page": "page-003.jpg",
+  "manuscriptPage": 1,
+  "paragraphNumber": 2,
+  "unitCount": 23,
+  "reading": "ohorahiirime hetraheteoa hlaolmethotra ohrahorahiirime hetecrime hlaolmethohimirriaa heteohorahiirimehra hrahetehtra heteohorahra ololhateohra olaolhateoa hatehtluoltra ocrinehatehra horahinirriaa hateoirime loliocrima horahimirrii hetoh tlolmehtoa heteohorahra horahinirrii oirine lhaoltohorahra",
+  "segmentedReading": "o|hora|hi|irime / hetera|hete|o|a / hlaolmehte|o|hra / o|hra|hora|hi|irime / hete|hrime / hlaolmeth|o|hi|mirriaa / hete|hora|o|hi|irime|hra / hra|hete|h|tra / hete|hora|o|hra / o|lol|hate|o|hra / o|laol|hate|o|a / hate|h|tlhaolte|hra / o|hrine|hate|hra / hora|hi|nirriaa / hate|o|irime / loli|o|hrima / hora|hi|mirrii / hete|o|h / tlolmeht|o|a / hete|o|hora|hra / hora|hi|nirrii / o|irine / lhaol|t|o|hora|hra",
+  "evidenceScore": 0.4777950310559006,
+  "riskScore": 0.8485362318840578,
+  "units": [
+    {
+      "order": 1,
+      "id": 9,
+      "reading": "ohorahiirime",
+      "segmentation": "o|hora|hi|irime",
+      "evidenceScore": 0.5798214285714286,
+      "riskScore": 0.86,
+      "status": "fragile-candidate",
+      "segments": [
+        {
+          "order": 1,
+          "token": "o",
+          "status": "weak",
+          "confidence": 7.61,
+          "evidenceScore": 0.7135714285714286,
+          "riskScore": 1,
+          "glossHints": [
+            "Translingual:a ./{{lb",
+            "mul",
+            "superscript",
+            "IPA}} -coloring (such as -like labialization of a consonant) or a weak, fleeting, epenthetic or echo .",
+            "o:n The name of the Latin-script letter O/o."
+          ],
+          "sourceHints": [
+            "wiktionary",
+            "wikipedia",
+            "datamuse"
+          ],
+          "warnings": [
+            "single-letter root: high false-positive risk",
+            "many Wiktionary languages (87): likely noisy"
+          ],
+          "candidate": {
+            "token": "o",
+            "count": "55",
+            "levels": "visual_part,stroke",
+            "confidence": "7.61",
+            "status": "weak",
+            "noise": "single-letter root: high false-positive risk | many Wiktionary languages (87): likely noisy",
+            "wiktionary_languages": "87",
+            "has_etymology": "yes",
+            "top_wiktionary_candidates": "Translingual:a ./{{lb|mul|superscript |IPA}} -coloring (such as -like labialization of a consonant) or a weak, fleeting, epenthetic or echo . | English:, the fifteenth letter of the Classical and Modern Greek alphabets, called omicron and used as an abbreviation of omicron in star names./A zero . | Achang:to like | Albanian:() | Aragonese:the",
+            "top_wikipedia_candidates": "O | Unicode subscripts and superscripts | Fraktur",
+            "top_datamuse_candidates": "o:n The name of the Latin-script letter O/o."
+          }
+        },
+        {
+          "order": 2,
+          "token": "hora",
+          "status": "inspect",
+          "confidence": 7.28,
+          "evidenceScore": 0.92,
+          "riskScore": 0.51,
+          "glossHints": [
+            "hora:n (dance) A circle dance popular in the Balkans, Israel and Yiddish culture worldwide."
+          ],
+          "sourceHints": [
+            "wikipedia",
+            "datamuse"
+          ],
+          "warnings": [
+            "no explicit etymology found"
+          ],
+          "candidate": {
+            "token": "hora",
+            "count": "9",
+            "levels": "visual_part",
+            "confidence": "7.28",
+            "status": "inspect",
+            "noise": "no explicit etymology found",
+            "wiktionary_languages": "0",
+            "has_etymology": "no",
+            "top_wiktionary_candidates": "",
+            "top_wikipedia_candidates": "Hora | Hora (surname) | Horas",
+            "top_datamuse_candidates": "hora:n (dance) A circle dance popular in the Balkans, Israel and Yiddish culture worldwide."
+          }
+        },
+        {
+          "order": 3,
+          "token": "hi",
+          "status": "weak",
+          "confidence": 6.52,
+          "evidenceScore": 0.6857142857142857,
+          "riskScore": 0.93,
+          "glossHints": [
+            "Translingual:",
+            "English:The word \"hi\" used as a greeting.",
+            "Albanian:ash, ashes/dust of corpses",
+            "Antigua and Barbuda Creole English:he/his",
+            "hi:n The word \"hi\" used as a greeting."
+          ],
+          "sourceHints": [
+            "wiktionary",
+            "datamuse"
+          ],
+          "warnings": [
+            "two-letter root: medium false-positive risk",
+            "many Wiktionary languages (28): likely noisy"
+          ],
+          "candidate": {
+            "token": "hi",
+            "count": "7",
+            "levels": "visual_part",
+            "confidence": "6.52",
+            "status": "weak",
+            "noise": "two-letter root: medium false-positive risk | many Wiktionary languages (28): likely noisy",
+            "wiktionary_languages": "28",
+            "has_etymology": "yes",
+            "top_wiktionary_candidates": "Translingual: | English:The word \"hi\" used as a greeting. | Albanian:ash, ashes/dust of corpses | Antigua and Barbuda Creole English:he/his | Basque:; you",
+            "top_wikipedia_candidates": "",
+            "top_datamuse_candidates": "hi:n The word \"hi\" used as a greeting."
+          }
+        },
+        {
+          "order": 4,
+          "token": "irime",
+          "status": "unknown",
+          "confidence": 0,
+          "evidenceScore": 0,
+          "riskScore": 1,
+          "glossHints": [],
+          "sourceHints": [],
+          "warnings": [],
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "id": 10,
+      "reading": "hetraheteoa",
+      "segmentation": "hetera|hete|o|a",
+      "evidenceScore": 0.42839285714285713,
+      "riskScore": 0.8125,
+      "status": "fragile-candidate",
+      "segments": [
+        {
+          "order": 1,
+          "token": "hetera",
+          "status": "unknown",
+          "confidence": 0,
+          "evidenceScore": 0,
+          "riskScore": 1,
+          "glossHints": [],
+          "sourceHints": [],
+          "warnings": [],
+          "candidate": null
+        },
+        {
+          "order": 2,
+          "token": "hete",
+          "status": "inspect",
+          "confidence": 13.32,
+          "evidenceScore": 1,
+          "riskScore": 0.25,
+          "glossHints": [
+            "Finnish:quagmire, morass; swampy, soggy spot; a relatively small soggy area, but big enough to stop a man or horse",
+            "Middle English:Heat; thermal energy ./The condition of being hot; a hot thing:",
+            "Norwegian Bokmål:heat/To be called; to have as a name",
+            "Norwegian Nynorsk:heat/a heating",
+            "hete:"
+          ],
+          "sourceHints": [
+            "wiktionary",
+            "wikipedia",
+            "datamuse"
+          ],
+          "warnings": [],
+          "candidate": {
+            "token": "hete",
+            "count": "7",
+            "levels": "visual_part",
+            "confidence": "13.32",
+            "status": "inspect",
+            "noise": "",
+            "wiktionary_languages": "7",
+            "has_etymology": "yes",
+            "top_wiktionary_candidates": "Finnish:quagmire, morass; swampy, soggy spot; a relatively small soggy area, but big enough to stop a man or horse | Middle English:Heat; thermal energy ./The condition of being hot; a hot thing: | Norwegian Bokmål:heat/To be called; to have as a name | Norwegian Nynorsk:heat/a heating | Old English:hatred",
+            "top_wikipedia_candidates": "HETE | HETE 2 | Vâlcele, Covasna",
+            "top_datamuse_candidates": "hete:"
+          }
+        },
+        {
+          "order": 3,
+          "token": "o",
+          "status": "weak",
+          "confidence": 7.61,
+          "evidenceScore": 0.7135714285714286,
+          "riskScore": 1,
+          "glossHints": [
+            "Translingual:a ./{{lb",
+            "mul",
+            "superscript",
+            "IPA}} -coloring (such as -like labialization of a consonant) or a weak, fleeting, epenthetic or echo .",
+            "o:n The name of the Latin-script letter O/o."
+          ],
+          "sourceHints": [
+            "wiktionary",
+            "wikipedia",
+            "datamuse"
+          ],
+          "warnings": [
+            "single-letter root: high false-positive risk",
+            "many Wiktionary languages (87): likely noisy"
+          ],
+          "candidate": {
+            "token": "o",
+            "count": "55",
+            "levels": "visual_part,stroke",
+            "confidence": "7.61",
+            "status": "weak",
+            "noise": "single-letter root: high false-positive risk | many Wiktionary languages (87): likely noisy",
+            "wiktionary_languages": "87",
+            "has_etymology": "yes",
+            "top_wiktionary_candidates": "Translingual:a ./{{lb|mul|superscript |IPA}} -coloring (such as -like labialization of a consonant) or a weak, fleeting, epenthetic or echo . | English:, the fifteenth letter of the Classical and Modern Greek alphabets, called omicron and used as an abbreviation of omicron in star names./A zero . | Achang:to like | Albanian:() | Aragonese:the",
+            "top_wikipedia_candidates": "O | Unicode subscripts and superscripts | Fraktur",
+            "top_datamuse_candidates": "o:n The name of the Latin-script letter O/o."
+          }
+        },
+        {
+          "order": 4,
+          "token": "a",
+          "status": "noisy",
+          "confidence": 2.51,
+          "evidenceScore": 0,
+          "riskScore": 1,
+          "glossHints": [
+            "a:n Adult; as used in film rating."
+          ],
+          "sourceHints": [
+            "datamuse"
+          ],
+          "warnings": [
+            "single-letter root: high false-positive risk",
+            "no explicit etymology found"
+          ],
+          "candidate": {
+            "token": "a",
+            "count": "14",
+            "levels": "visual_part,stroke",
+            "confidence": "2.51",
+            "status": "noisy",
+            "noise": "single-letter root: high false-positive risk | no explicit etymology found",
+            "wiktionary_languages": "0",
+            "has_etymology": "no",
+            "top_wiktionary_candidates": "",
+            "top_wikipedia_candidates": "",
+            "top_datamuse_candidates": "a:n Adult; as used in film rating."
+          }
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "id": 11,
+      "reading": "hlaolmethotra",
+      "segmentation": "hlaolmehte|o|hra",
+      "evidenceScore": 0.4045238095238095,
+      "riskScore": 0.91,
+      "status": "fragile-candidate",
+      "segments": [
+        {
+          "order": 1,
+          "token": "hlaolmehte",
+          "status": "unknown",
+          "confidence": 0,
+          "evidenceScore": 0,
+          "riskScore": 1,
+          "glossHints": [],
+          "sourceHints": [],
+          "warnings": [],
+          "candidate": null
+        },
+        {
+          "order": 2,
+          "token": "o",
+          "status": "weak",
+          "confidence": 7.61,
+          "evidenceScore": 0.7135714285714286,
+          "riskScore": 1,
+          "glossHints": [
+            "Translingual:a ./{{lb",
+            "mul",
+            "superscript",
+            "IPA}} -coloring (such as -like labialization of a consonant) or a weak, fleeting, epenthetic or echo .",
+            "o:n The name of the Latin-script letter O/o."
+          ],
+          "sourceHints": [
+            "wiktionary",
+            "wikipedia",
+            "datamuse"
+          ],
+          "warnings": [
+            "single-letter root: high false-positive risk",
+            "many Wiktionary languages (87): likely noisy"
+          ],
+          "candidate": {
+            "token": "o",
+            "count": "55",
+            "levels": "visual_part,stroke",
+            "confidence": "7.61",
+            "status": "weak",
+            "noise": "single-letter root: high false-positive risk | many Wiktionary languages (87): likely noisy",
+            "wiktionary_languages": "87",
+            "has_etymology": "yes",
+            "top_wiktionary_candidates": "Translingual:a ./{{lb|mul|superscript |IPA}} -coloring (such as -like labialization of a consonant) or a weak, fleeting, epenthetic or echo . | English:, the fifteenth letter of the Classical and Modern Greek alphabets, called omicron and used as an abbreviation of omicron in star names./A zero . | Achang:to like | Albanian:() | Aragonese:the",
+            "top_wikipedia_candidates": "O | Unicode subscripts and superscripts | Fraktur",
+            "top_datamuse_candidates": "o:n The name of the Latin-script letter O/o."
+          }
+        },
+        {
+          "order": 3,
+          "token": "hra",
+          "status": "weak",
+          "confidence": 4.9,
+          "evidenceScore": 0.5,
+          "riskScore": 0.7299999999999999,
+          "glossHints": [
+            "hra:n Initialism of health reimbursement arrangement."
+          ],
+          "sourceHints": [
+            "datamuse"
+          ],
+          "warnings": [
+            "no explicit etymology found"
+          ],
+          "candidate": {
+            "token": "hra",
+            "count": "10",
+            "levels": "visual_part",
+            "confidence": "4.90",
+            "status": "weak",
+            "noise": "no explicit etymology found",
+            "wiktionary_languages": "0",
+            "has_etymology": "no",
+            "top_wiktionary_candidates": "",
+            "top_wikipedia_candidates": "",
+            "top_datamuse_candidates": "hra:n Initialism of health reimbursement arrangement."
+          }
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "id": 12,
+      "reading": "ohrahorahiirime",
+      "segmentation": "o|hra|hora|hi|irime",
+      "evidenceScore": 0.5638571428571428,
+      "riskScore": 0.834,
+      "status": "fragile-candidate",
+      "segments": [
+        {
+          "order": 1,
+          "token": "o",
+          "status": "weak",
+          "confidence": 7.61,
+          "evidenceScore": 0.7135714285714286,
+          "riskScore": 1,
+          "glossHints": [
+            "Translingual:a ./{{lb",
+            "mul",
+            "superscript",
+            "IPA}} -coloring (such as -like labialization of a consonant) or a weak, fleeting, epenthetic or echo .",
+            "o:n The name of the Latin-script letter O/o."
+          ],
+          "sourceHints": [
+            "wiktionary",
+            "wikipedia",
+            "datamuse"
+          ],
+          "warnings": [
+            "single-letter root: high false-positive risk",
+            "many Wiktionary languages (87): likely noisy"
+          ],
+          "candidate": {
+            "token": "o",
+            "count": "55",
+            "levels": "visual_part,stroke",
+            "confidence": "7.61",
+            "status": "weak",
+            "noise": "single-letter root: high false-positive risk | many Wiktionary languages (87): likely noisy",
+            "wiktionary_languages": "87",
+            "has_etymology": "yes",
+            "top_wiktionary_candidates": "Translingual:a ./{{lb|mul|superscript |IPA}} -coloring (such as -like labialization of a consonant) or a weak, fleeting, epenthetic or echo . | English:, the fifteenth letter of the Classical and Modern Greek alphabets, called omicron and used as an abbreviation of omicron in star names./A zero . | Achang:to like | Albanian:() | Aragonese:the",
+            "top_wikipedia_candidates": "O | Unicode subscripts and superscripts | Fraktur",
+            "top_datamuse_candidates": "o:n The name of the Latin-script letter O/o."
+          }
+        },
+        {
+          "order": 2,
+          "token": "hra",
+          "status": "weak",
+          "confidence": 4.9,
+          "evidenceScore": 0.5,
+          "riskScore": 0.7299999999999999,
+          "glossHints": [
+            "hra:n Initialism of health reimbursement arrangement."
+          ],
+          "sourceHints": [
+            "datamuse"
+          ],
+          "warnings": [
+            "no explicit etymology found"
+          ],
+          "candidate": {
+            "token": "hra",
+            "count": "10",
+            "levels": "visual_part",
+            "confidence": "4.90",
+            "status": "weak",
+            "noise": "no explicit etymology found",
+            "wiktionary_languages": "0",
+            "has_etymology": "no",
+            "top_wiktionary_candidates": "",
+            "top_wikipedia_candidates": "",
+            "top_datamuse_candidates": "hra:n Initialism of health reimbursement arrangement."
+          }
+        },
+        {
+          "order": 3,
+          "token": "hora",
+          "status": "inspect",
+          "confidence": 7.28,
+          "evidenceScore": 0.92,
+          "riskScore": 0.51,
+          "glossHints": [
+            "hora:n (dance) A circle dance popular in the Balkans, Israel and Yiddish culture worldwide."
+          ],
+          "sourceHints": [
+            "wikipedia",
+            "datamuse"
+          ],
+          "warnings": [
+            "no explicit etymology found"
+          ],
+          "candidate": {
+            "token": "hora",
+            "count": "9",
+            "levels": "visual_part",
+            "confidence": "7.28",
+            "status": "inspect",
+            "noise": "no explicit etymology found",
+            "wiktionary_languages": "0",
+            "has_etymology": "no",
+            "top_wiktionary_candidates": "",
+            "top_wikipedia_candidates": "Hora | Hora (surname) | Horas",
+            "top_datamuse_candidates": "hora:n (dance) A circle dance popular in the Balkans, Israel and Yiddish culture worldwide."
+          }
+        },
+        {
+          "order": 4,
+          "token": "hi",
+          "status": "weak",
+          "confidence": 6.52,
+          "evidenceScore": 0.6857142857142857,
+          "riskScore": 0.93,
+          "glossHints": [
+            "Translingual:",
+            "English:The word \"hi\" used as a greeting.",
+            "Albanian:ash, ashes/dust of corpses",
+            "Antigua and Barbuda Creole English:he/his",
+            "hi:n The word \"hi\" used as a greeting."
+          ],
+          "sourceHints": [
+            "wiktionary",
+            "datamuse"
+          ],
+          "warnings": [
+            "two-letter root: medium false-positive risk",
+            "many Wiktionary languages (28): likely noisy"
+          ],
+          "candidate": {
+            "token": "hi",
+            "count": "7",
+            "levels": "visual_part",
+            "confidence": "6.52",
+            "status": "weak",
+            "noise": "two-letter root: medium false-positive risk | many Wiktionary languages (28): likely noisy",
+            "wiktionary_languages": "28",
+            "has_etymology": "yes",
+            "top_wiktionary_candidates": "Translingual: | English:The word \"hi\" used as a greeting. | Albanian:ash, ashes/dust of corpses | Antigua and Barbuda Creole English:he/his | Basque:; you",
+            "top_wikipedia_candidates": "",
+            "top_datamuse_candidates": "hi:n The word \"hi\" used as a greeting."
+          }
+        },
+        {
+          "order": 5,
+          "token": "irime",
+          "status": "unknown",
+          "confidence": 0,
+          "evidenceScore": 0,
+          "riskScore": 1,
+          "glossHints": [],
+          "sourceHints": [],
+          "warnings": [],
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "order": 5,
+      "id": 13,
+      "reading": "hetecrime",
+      "segmentation": "hete|hrime",
+      "evidenceScore": 0.5,
+      "riskScore": 0.625,
+      "status": "usable-candidate",
+      "segments": [
+        {
+          "order": 1,
+          "token": "hete",
+          "status": "inspect",
+          "confidence": 13.32,
+          "evidenceScore": 1,
+          "riskScore": 0.25,
+          "glossHints": [
+            "Finnish:quagmire, morass; swampy, soggy spot; a relatively small soggy area, but big enough to stop a man or horse",
+            "Middle English:Heat; thermal energy ./The condition of being hot; a hot thing:",
+            "Norwegian Bokmål:heat/To be called; to have as a name",
+            "Norwegian Nynorsk:heat/a heating",
+            "hete:"
+          ],
+          "sourceHints": [
+            "wiktionary",
+            "wikipedia",
+            "datamuse"
+          ],
+          "warnings": [],
+          "candidate": {
+            "token": "hete",
+            "count": "7",
+            "levels": "visual_part",
+            "confidence": "13.32",
+            "status": "inspect",
+            "noise": "",
+            "wiktionary_languages": "7",
+            "has_etymology": "yes",
+            "top_wiktionary_candidates": "Finnish:quagmire, morass; swampy, soggy spot; a relatively small soggy area, but big enough to stop a man or horse | Middle English:Heat; thermal energy ./The condition of being hot; a hot thing: | Norwegian Bokmål:heat/To be called; to have as a name | Norwegian Nynorsk:heat/a heating | Old English:hatred",
+            "top_wikipedia_candidates": "HETE | HETE 2 | Vâlcele, Covasna",
+            "top_datamuse_candidates": "hete:"
+          }
+        },
+        {
+          "order": 2,
+          "token": "hrime",
+          "status": "unknown",
+          "confidence": 0,
+          "evidenceScore": 0,
+          "riskScore": 1,
+          "glossHints": [],
+          "sourceHints": [],
+          "warnings": [],
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "order": 6,
+      "id": 15,
+      "reading": "hlaolmethohimirriaa",
+      "segmentation": "hlaolmeth|o|hi|mirriaa",
+      "evidenceScore": 0.3498214285714286,
+      "riskScore": 0.9825,
+      "status": "fragile-candidate",
+      "segments": [
+        {
+          "order": 1,
+          "token": "hlaolmeth",
+          "status": "unknown",
+          "confidence": 0,
+          "evidenceScore": 0,
+          "riskScore": 1,
+          "glossHints": [],
+          "sourceHints": [],
+          "warnings": [],
+          "candidate": null
+        },
+        {
+          "order": 2,
+          "token": "o",
+          "status": "weak",
+          "confidence": 7.61,
+          "evidenceScore": 0.7135714285714286,
+          "riskScore": 1,
+          "glossHints": [
+            "Translingual:a ./{{lb",
+            "mul",
+            "superscript",
+            "IPA}} -coloring (such as -like labialization of a consonant) or a weak, fleeting, epenthetic or echo .",
+            "o:n The name of the Latin-script letter O/o."
+          ],
+          "sourceHints": [
+            "wiktionary",
+            "wikipedia",
+            "datamuse"
+          ],
+          "warnings": [
+            "single-letter root: high false-positive risk",
+            "many Wiktionary languages (87): likely noisy"
+          ],
+          "candidate": {
+            "token": "o",
+            "count": "55",
+            "levels": "visual_part,stroke",
+            "confidence": "7.61",
+            "status": "weak",
+            "noise": "single-letter root: high false-positive risk | many Wiktionary languages (87): likely noisy",
+            "wiktionary_languages": "87",
+            "has_etymology": "yes",
+            "top_wiktionary_candidates": "Translingual:a ./{{lb|mul|superscript |IPA}} -coloring (such as -like labialization of a consonant) or a weak, fleeting, epenthetic or echo . | English:, the fifteenth letter of the Classical and Modern Greek alphabets, called omicron and used as an abbreviation of omicron in star names./A zero . | Achang:to like | Albanian:() | Aragonese:the",
+            "top_wikipedia_candidates": "O | Unicode subscripts and superscripts | Fraktur",
+            "top_datamuse_candidates": "o:n The name of the Latin-script letter O/o."
+          }
+        },
+        {
+          "order": 3,
+          "token": "hi",
+          "status": "weak",
+          "confidence": 6.52,
+          "evidenceScore": 0.6857142857142857,
+          "riskScore": 0.93,
+          "glossHints": [
+            "Translingual:",
+            "English:The word \"hi\" used as a greeting.",
+            "Albanian:ash, ashes/dust of corpses",
+            "Antigua and Barbuda Creole English:he/his",
+            "hi:n The word \"hi\" used as a greeting."
+          ],
+          "sourceHints": [
+            "wiktionary",
+            "datamuse"
+          ],
+          "warnings": [
+            "two-letter root: medium false-positive risk",
+            "many Wiktionary languages (28): likely noisy"
+          ],
+          "candidate": {
+            "token": "hi",
+            "count": "7",
+            "levels": "visual_part",
+            "confidence": "6.52",
+            "status": "weak",
+            "noise": "two-letter root: medium false-positive risk | many Wiktionary languages (28): likely noisy",
+            "wiktionary_languages": "28",
+            "has_etymology": "yes",
+            "top_wiktionary_candidates": "Translingual: | English:The word \"hi\" used as a greeting. | Albanian:ash, ashes/dust of corpses | Antigua and Barbuda Creole English:he/his | Basque:; you",
+            "top_wikipedia_candidates": "",
+            "top_datamuse_candidates": "hi:n The word \"hi\" used as a greeting."
+          }
+        },
+        {
+          "order": 4,
+          "token": "mirriaa",
+          "status": "unknown",
+          "confidence": 0,
+          "evidenceScore": 0,
+          "riskScore": 1,
+          "glossHints": [],
+          "sourceHints": [],
+          "warnings": [],
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "order": 7,
+      "id": 17,
+      "reading": "heteohorahiirimehra",
+      "segmentation": "hete|hora|o|hi|irime|hra",
+      "evidenceScore": 0.636547619047619,
+      "riskScore": 0.7366666666666667,
+      "status": "fragile-candidate",
+      "segments": [
+        {
+          "order": 1,
+          "token": "hete",
+          "status": "inspect",
+          "confidence": 13.32,
+          "evidenceScore": 1,
+          "riskScore": 0.25,
+          "glossHints": [
+            "Finnish:quagmire, morass; swampy, soggy spot; a relatively small soggy area, but big enough to stop a man or horse",
+            "Middle English:Heat; thermal energy ./The condition of being hot; a hot thing:",
+            "Norwegian Bokmål:heat/To be called; to have as a name",
+            "Norwegian Nynorsk:heat/a heating",
+            "hete:"
+          ],
+          "sourceHints": [
+            "wiktionary",
+            "wikipedia",
+            "datamuse"
+          ],
+          "warnings": [],
+          "candidate": {
+            "token": "hete",
+            "count": "7",
+            "levels": "visual_part",
+            "confidence": "13.32",
+            "status": "inspect",
+            "noise": "",
+            "wiktionary_languages": "7",
+            "has_etymology": "yes",
+            "top_wiktionary_candidates": "Finnish:quagmire, morass; swampy, soggy spot; a relatively small soggy area, but big enough to stop a man or horse | Middle English:Heat; thermal energy ./The condition of being hot; a hot thing: | Norwegian Bokmål:heat/To be called; to have as a name | Norwegian Nynorsk:heat/a heating | Old English:hatred",
+            "top_wikipedia_candidates": "HETE | HETE 2 | Vâlcele, Covasna",
+            "top_datamuse_candidates": "hete:"
+          }
+        },
+        {
+          "order": 2,
+          "token": "hora",
+          "status": "inspect",
+          "confidence": 7.28,
+          "evidenceScore": 0.92,
+          "riskScore": 0.51,
+          "glossHints": [
+            "hora:n (dance) A circle dance popular in the Balkans, Israel and Yiddish culture worldwide."
+          ],
+          "sourceHints": [
+            "wikipedia",
+            "datamuse"
+          ],
+          "warnings": [
+            "no explicit etymology found"
+          ],
+          "candidate": {
+            "token": "hora",
+            "count": "9",
+            "levels": "visual_part",
+            "confidence": "7.28",
+            "status": "inspect",
+            "noise": "no explicit etymology found",
+            "wiktionary_languages": "0",
+            "has_etymology": "no",
+            "top_wiktionary_candidates": "",
+            "top_wikipedia_candidates": "Hora | Hora (surname) | Horas",
+            "top_datamuse_candidates": "hora:n (dance) A circle dance popular in the Balkans, Israel and Yiddish culture worldwide."
+          }
+        },
+        {
+          "order": 3,
+          "token": "o",
+          "status": "weak",
+          "confidence": 7.61,
+          "evidenceScore": 0.7135714285714286,
+          "riskScore": 1,
+          "glossHints": [
+            "Translingual:a ./{{lb",
+            "mul",
+            "superscript",
+            "IPA}} -coloring (such as -like labialization of a consonant) or a weak, fleeting, epenthetic or echo .",
+            "o:n The name of the Latin-script letter O/o."
+          ],
+          "sourceHints": [
+            "wiktionary",
+            "wikipedia",
+            "datamuse"
+          ],
+          "warnings": [
+            "single-letter root: high false-positive risk",
+            "many Wiktionary languages (87): likely noisy"
+          ],
+          "candidate": {
+            "token": "o",
+            "count": "55",
+            "levels": "visual_part,stroke",
+            "confidence": "7.61",
+            "status": "weak",
+            "noise": "single-letter root: high false-positive risk | many Wiktionary languages (87): likely noisy",
+            "wiktionary_languages": "87",
+            "has_etymology": "yes",
+            "top_wiktionary_candidates": "Translingual:a ./{{lb|mul|superscript |IPA}} -coloring (such as -like labialization of a consonant) or a weak, fleeting, epenthetic or echo . | English:, the fifteenth letter of the Classical and Modern Greek alphabets, called omicron and used as an abbreviation of omicron in star names./A zero . | Achang:to like | Albanian:() | Aragonese:the",
+            "top_wikipedia_candidates": "O | Unicode subscripts and superscripts | Fraktur",
+            "top_datamuse_candidates": "o:n The name of the Latin-script letter O/o."
+          }
+        },
+        {
+          "order": 4,
+          "token": "hi",
+          "status": "weak",
+          "confidence": 6.52,
+          "evidenceScore": 0.6857142857142857,
+          "riskScore": 0.93,
+          "glossHints": [
+            "Translingual:",
+            "English:The word \"hi\" used as a greeting.",
+            "Albanian:ash, ashes/dust of corpses",
+            "Antigua and Barbuda Creole English:he/his",
+            "hi:n The word \"hi\" used as a greeting."
+          ],
+          "sourceHints": [
+            "wiktionary",
+            "datamuse"
+          ],
+          "warnings": [
+            "two-letter root: medium false-positive risk",
+            "many Wiktionary languages (28): likely noisy"
+          ],
+          "candidate": {
+            "token": "hi",
+            "count": "7",
+            "levels": "visual_part",
+            "confidence": "6.52",
+            "status": "weak",
+            "noise": "two-letter root: medium false-positive risk | many Wiktionary languages (28): likely noisy",
+            "wiktionary_languages": "28",
+            "has_etymology": "yes",
+            "top_wiktionary_candidates": "Translingual: | English:The word \"hi\" used as a greeting. | Albanian:ash, ashes/dust of corpses | Antigua and Barbuda Creole English:he/his | Basque:; you",
+            "top_wikipedia_candidates": "",
+            "top_datamuse_candidates": "hi:n The word \"hi\" used as a greeting."
+          }
+        },
+        {
+          "order": 5,
+          "token": "irime",
+          "status": "unknown",
+          "confidence": 0,
+          "evidenceScore": 0,
+          "riskScore": 1,
+          "glossHints": [],
+          "sourceHints": [],
+          "warnings": [],
+          "candidate": null
+        },
+        {
+          "order": 6,
+          "token": "hra",
+          "status": "weak",
+          "confidence": 4.9,
+          "evidenceScore": 0.5,
+          "riskScore": 0.7299999999999999,
+          "glossHints": [
+            "hra:n Initialism of health reimbursement arrangement."
+          ],
+          "sourceHints": [
+            "datamuse"
+          ],
+          "warnings": [
+            "no explicit etymology found"
+          ],
+          "candidate": {
+            "token": "hra",
+            "count": "10",
+            "levels": "visual_part",
+            "confidence": "4.90",
+            "status": "weak",
+            "noise": "no explicit etymology found",
+            "wiktionary_languages": "0",
+            "has_etymology": "no",
+            "top_wiktionary_candidates": "",
+            "top_wikipedia_candidates": "",
+            "top_datamuse_candidates": "hra:n Initialism of health reimbursement arrangement."
+          }
+        }
+      ]
+    },
+    {
+      "order": 8,
+      "id": 18,
+      "reading": "hrahetehtra",
+      "segmentation": "hra|hete|h|tra",
+      "evidenceScore": 0.6183928571428572,
+      "riskScore": 0.72,
+      "status": "fragile-candidate",
+      "segments": [
+        {
+          "order": 1,
+          "token": "hra",
+          "status": "weak",
+          "confidence": 4.9,
+          "evidenceScore": 0.5,
+          "riskScore": 0.7299999999999999,
+          "glossHints": [
+            "hra:n Initialism of health reimbursement arrangement."
+          ],
+          "sourceHints": [
+            "datamuse"
+          ],
+          "warnings": [
+            "no explicit etymology found"
+          ],
+          "candidate": {
+            "token": "hra",
+            "count": "10",
+            "levels": "visual_part",
+            "confidence": "4.90",
+            "status": "weak",
+            "noise": "no explicit etymology found",
+            "wiktionary_languages": "0",
+            "has_etymology": "no",
+            "top_wiktionary_candidates": "",
+            "top_wikipedia_candidates": "",
+            "top_datamuse_candidates": "hra:n Initialism of health reimbursement arrangement."
+          }
+        },
+        {
+          "order": 2,
+          "token": "hete",
+          "status": "inspect",
+          "confidence": 13.32,
+          "evidenceScore": 1,
+          "riskScore": 0.25,
+          "glossHints": [
+            "Finnish:quagmire, morass; swampy, soggy spot; a relatively small soggy area, but big enough to stop a man or horse",
+            "Middle English:Heat; thermal energy ./The condition of being hot; a hot thing:",
+            "Norwegian Bokmål:heat/To be called; to have as a name",
+            "Norwegian Nynorsk:heat/a heating",
+            "hete:"
+          ],
+          "sourceHints": [
+            "wiktionary",
+            "wikipedia",
+            "datamuse"
+          ],
+          "warnings": [],
+          "candidate": {
+            "token": "hete",
+            "count": "7",
+            "levels": "visual_part",
+            "confidence": "13.32",
+            "status": "inspect",
+            "noise": "",
+            "wiktionary_languages": "7",
+            "has_etymology": "yes",
+            "top_wiktionary_candidates": "Finnish:quagmire, morass; swampy, soggy spot; a relatively small soggy area, but big enough to stop a man or horse | Middle English:Heat; thermal energy ./The condition of being hot; a hot thing: | Norwegian Bokmål:heat/To be called; to have as a name | Norwegian Nynorsk:heat/a heating | Old English:hatred",
+            "top_wikipedia_candidates": "HETE | HETE 2 | Vâlcele, Covasna",
+            "top_datamuse_candidates": "hete:"
+          }
+        },
+        {
+          "order": 3,
+          "token": "h",
+          "status": "weak",
+          "confidence": 11.25,
+          "evidenceScore": 0.9735714285714286,
+          "riskScore": 0.8999999999999999,
+          "glossHints": [
+            "Translingual:SI symbol for the prefix hecto-, indicating multiplication by 100 (10²)/hour",
+            "English:, the number of hits by a player.",
+            "Finnish:B",
+            "German:{{ng",
+            "h:n A pencil of grade H."
+          ],
+          "sourceHints": [
+            "wiktionary",
+            "wikipedia",
+            "datamuse"
+          ],
+          "warnings": [
+            "single-letter root: high false-positive risk",
+            "many Wiktionary languages (14): likely noisy"
+          ],
+          "candidate": {
+            "token": "h",
+            "count": "55",
+            "levels": "stroke,visual_part",
+            "confidence": "11.25",
+            "status": "weak",
+            "noise": "single-letter root: high false-positive risk | many Wiktionary languages (14): likely noisy",
+            "wiktionary_languages": "14",
+            "has_etymology": "yes",
+            "top_wiktionary_candidates": "Translingual:SI symbol for the prefix hecto-, indicating multiplication by 100 (10²)/hour | English:, the number of hits by a player. | Finnish:B | German:{{ng|the letter h, see }}/hour | Irish:{{ng|marker of }}",
+            "top_wikipedia_candidates": "H | Planck constant | Aspirated consonant",
+            "top_datamuse_candidates": "h:n A pencil of grade H."
+          }
+        },
+        {
+          "order": 4,
+          "token": "tra",
+          "status": "unknown",
+          "confidence": 0,
+          "evidenceScore": 0,
+          "riskScore": 1,
+          "glossHints": [],
+          "sourceHints": [],
+          "warnings": [],
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "order": 9,
+      "id": 22,
+      "reading": "heteohorahra",
+      "segmentation": "hete|hora|o|hra",
+      "evidenceScore": 0.7833928571428571,
+      "riskScore": 0.6224999999999999,
+      "status": "usable-candidate",
+      "segments": [
+        {
+          "order": 1,
+          "token": "hete",
+          "status": "inspect",
+          "confidence": 13.32,
+          "evidenceScore": 1,
+          "riskScore": 0.25,
+          "glossHints": [
+            "Finnish:quagmire, morass; swampy, soggy spot; a relatively small soggy area, but big enough to stop a man or horse",
+            "Middle English:Heat; thermal energy ./The condition of being hot; a hot thing:",
+            "Norwegian Bokmål:heat/To be called; to have as a name",
+            "Norwegian Nynorsk:heat/a heating",
+            "hete:"
+          ],
+          "sourceHints": [
+            "wiktionary",
+            "wikipedia",
+            "datamuse"
+          ],
+          "warnings": [],
+          "candidate": {
+            "token": "hete",
+            "count": "7",
+            "levels": "visual_part",
+            "confidence": "13.32",
+            "status": "inspect",
+            "noise": "",
+            "wiktionary_languages": "7",
+            "has_etymology": "yes",
+            "top_wiktionary_candidates": "Finnish:quagmire, morass; swampy, soggy spot; a relatively small soggy area, but big enough to stop a man or horse | Middle English:Heat; thermal energy ./The condition of being hot; a hot thing: | Norwegian Bokmål:heat/To be called; to have as a name | Norwegian Nynorsk:heat/a heating | Old English:hatred",
+            "top_wikipedia_candidates": "HETE | HETE 2 | Vâlcele, Covasna",
+            "top_datamuse_candidates": "hete:"
+          }
+        },
+        {
+          "order": 2,
+          "token": "hora",
+          "status": "inspect",
+          "confidence": 7.28,
+          "evidenceScore": 0.92,
+          "riskScore": 0.51,
+          "glossHints": [
+            "hora:n (dance) A circle dance popular in the Balkans, Israel and Yiddish culture worldwide."
+          ],
+          "sourceHints": [
+            "wikipedia",
+            "datamuse"
+          ],
+          "warnings": [
+            "no explicit etymology found"
+          ],
+          "candidate": {
+            "token": "hora",
+            "count": "9",
+            "levels": "visual_part",
+            "confidence": "7.28",
+            "status": "inspect",
+            "noise": "no explicit etymology found",
+            "wiktionary_languages": "0",
+            "has_etymology": "no",
+            "top_wiktionary_candidates": "",
+            "top_wikipedia_candidates": "Hora | Hora (surname) | Horas",
+            "top_datamuse_candidates": "hora:n (dance) A circle dance popular in the Balkans, Israel and Yiddish culture worldwide."
+          }
+        },
+        {
+          "order": 3,
+          "token": "o",
+          "status": "weak",
+          "confidence": 7.61,
+          "evidenceScore": 0.7135714285714286,
+          "riskScore": 1,
+          "glossHints": [
+            "Translingual:a ./{{lb",
+            "mul",
+            "superscript",
+            "IPA}} -coloring (such as -like labialization of a consonant) or a weak, fleeting, epenthetic or echo .",
+            "o:n The name of the Latin-script letter O/o."
+          ],
+          "sourceHints": [
+            "wiktionary",
+            "wikipedia",
+            "datamuse"
+          ],
+          "warnings": [
+            "single-letter root: high false-positive risk",
+            "many Wiktionary languages (87): likely noisy"
+          ],
+          "candidate": {
+            "token": "o",
+            "count": "55",
+            "levels": "visual_part,stroke",
+            "confidence": "7.61",
+            "status": "weak",
+            "noise": "single-letter root: high false-positive risk | many Wiktionary languages (87): likely noisy",
+            "wiktionary_languages": "87",
+            "has_etymology": "yes",
+            "top_wiktionary_candidates": "Translingual:a ./{{lb|mul|superscript |IPA}} -coloring (such as -like labialization of a consonant) or a weak, fleeting, epenthetic or echo . | English:, the fifteenth letter of the Classical and Modern Greek alphabets, called omicron and used as an abbreviation of omicron in star names./A zero . | Achang:to like | Albanian:() | Aragonese:the",
+            "top_wikipedia_candidates": "O | Unicode subscripts and superscripts | Fraktur",
+            "top_datamuse_candidates": "o:n The name of the Latin-script letter O/o."
+          }
+        },
+        {
+          "order": 4,
+          "token": "hra",
+          "status": "weak",
+          "confidence": 4.9,
+          "evidenceScore": 0.5,
+          "riskScore": 0.7299999999999999,
+          "glossHints": [
+            "hra:n Initialism of health reimbursement arrangement."
+          ],
+          "sourceHints": [
+            "datamuse"
+          ],
+          "warnings": [
+            "no explicit etymology found"
+          ],
+          "candidate": {
+            "token": "hra",
+            "count": "10",
+            "levels": "visual_part",
+            "confidence": "4.90",
+            "status": "weak",
+            "noise": "no explicit etymology found",
+            "wiktionary_languages": "0",
+            "has_etymology": "no",
+            "top_wiktionary_candidates": "",
+            "top_wikipedia_candidates": "",
+            "top_datamuse_candidates": "hra:n Initialism of health reimbursement arrangement."
+          }
+        }
+      ]
+    },
+    {
+      "order": 10,
+      "id": 23,
+      "reading": "ololhateohra",
+      "segmentation": "o|lol|hate|o|hra",
+      "evidenceScore": 0.38542857142857145,
+      "riskScore": 0.946,
+      "status": "fragile-candidate",
+      "segments": [
+        {
+          "order": 1,
+          "token": "o",
+          "status": "weak",
+          "confidence": 7.61,
+          "evidenceScore": 0.7135714285714286,
+          "riskScore": 1,
+          "glossHints": [
+            "Translingual:a ./{{lb",
+            "mul",
+            "superscript",
+            "IPA}} -coloring (such as -like labialization of a consonant) or a weak, fleeting, epenthetic or echo .",
+            "o:n The name of the Latin-script letter O/o."
+          ],
+          "sourceHints": [
+            "wiktionary",
+            "wikipedia",
+            "datamuse"
+          ],
+          "warnings": [
+            "single-letter root: high false-positive risk",
+            "many Wiktionary languages (87): likely noisy"
+          ],
+          "candidate": {
+            "token": "o",
+            "count": "55",
+            "levels": "visual_part,stroke",
+            "confidence": "7.61",
+            "status": "weak",
+            "noise": "single-letter root: high false-positive risk | many Wiktionary languages (87): likely noisy",
+            "wiktionary_languages": "87",
+            "has_etymology": "yes",
+            "top_wiktionary_candidates": "Translingual:a ./{{lb|mul|superscript |IPA}} -coloring (such as -like labialization of a consonant) or a weak, fleeting, epenthetic or echo . | English:, the fifteenth letter of the Classical and Modern Greek alphabets, called omicron and used as an abbreviation of omicron in star names./A zero . | Achang:to like | Albanian:() | Aragonese:the",
+            "top_wikipedia_candidates": "O | Unicode subscripts and superscripts | Fraktur",
+            "top_datamuse_candidates": "o:n The name of the Latin-script letter O/o."
+          }
+        },
+        {
+          "order": 2,
+          "token": "lol",
+          "status": "unknown",
+          "confidence": 0,
+          "evidenceScore": 0,
+          "riskScore": 1,
+          "glossHints": [],
+          "sourceHints": [],
+          "warnings": [],
+          "candidate": null
+        },
+        {
+          "order": 3,
+          "token": "hate",
+          "status": "unknown",
+          "confidence": 0,
+          "evidenceScore": 0,
+          "riskScore": 1,
+          "glossHints": [],
+          "sourceHints": [],
+          "warnings": [],
+          "candidate": null
+        },
+        {
+          "order": 4,
+          "token": "o",
+          "status": "weak",
+          "confidence": 7.61,
+          "evidenceScore": 0.7135714285714286,
+          "riskScore": 1,
+          "glossHints": [
+            "Translingual:a ./{{lb",
+            "mul",
+            "superscript",
+            "IPA}} -coloring (such as -like labialization of a consonant) or a weak, fleeting, epenthetic or echo .",
+            "o:n The name of the Latin-script letter O/o."
+          ],
+          "sourceHints": [
+            "wiktionary",
+            "wikipedia",
+            "datamuse"
+          ],
+          "warnings": [
+            "single-letter root: high false-positive risk",
+            "many Wiktionary languages (87): likely noisy"
+          ],
+          "candidate": {
+            "token": "o",
+            "count": "55",
+            "levels": "visual_part,stroke",
+            "confidence": "7.61",
+            "status": "weak",
+            "noise": "single-letter root: high false-positive risk | many Wiktionary languages (87): likely noisy",
+            "wiktionary_languages": "87",
+            "has_etymology": "yes",
+            "top_wiktionary_candidates": "Translingual:a ./{{lb|mul|superscript |IPA}} -coloring (such as -like labialization of a consonant) or a weak, fleeting, epenthetic or echo . | English:, the fifteenth letter of the Classical and Modern Greek alphabets, called omicron and used as an abbreviation of omicron in star names./A zero . | Achang:to like | Albanian:() | Aragonese:the",
+            "top_wikipedia_candidates": "O | Unicode subscripts and superscripts | Fraktur",
+            "top_datamuse_candidates": "o:n The name of the Latin-script letter O/o."
+          }
+        },
+        {
+          "order": 5,
+          "token": "hra",
+          "status": "weak",
+          "confidence": 4.9,
+          "evidenceScore": 0.5,
+          "riskScore": 0.7299999999999999,
+          "glossHints": [
+            "hra:n Initialism of health reimbursement arrangement."
+          ],
+          "sourceHints": [
+            "datamuse"
+          ],
+          "warnings": [
+            "no explicit etymology found"
+          ],
+          "candidate": {
+            "token": "hra",
+            "count": "10",
+            "levels": "visual_part",
+            "confidence": "4.90",
+            "status": "weak",
+            "noise": "no explicit etymology found",
+            "wiktionary_languages": "0",
+            "has_etymology": "no",
+            "top_wiktionary_candidates": "",
+            "top_wikipedia_candidates": "",
+            "top_datamuse_candidates": "hra:n Initialism of health reimbursement arrangement."
+          }
+        }
+      ]
+    },
+    {
+      "order": 11,
+      "id": 24,
+      "reading": "olaolhateoa",
+      "segmentation": "o|laol|hate|o|a",
+      "evidenceScore": 0.2854285714285715,
+      "riskScore": 1,
+      "status": "too-ambiguous",
+      "segments": [
+        {
+          "order": 1,
+          "token": "o",
+          "status": "weak",
+          "confidence": 7.61,
+          "evidenceScore": 0.7135714285714286,
+          "riskScore": 1,
+          "glossHints": [
+            "Translingual:a ./{{lb",
+            "mul",
+            "superscript",
+            "IPA}} -coloring (such as -like labialization of a consonant) or a weak, fleeting, epenthetic or echo .",
+            "o:n The name of the Latin-script letter O/o."
+          ],
+          "sourceHints": [
+            "wiktionary",
+            "wikipedia",
+            "datamuse"
+          ],
+          "warnings": [
+            "single-letter root: high false-positive risk",
+            "many Wiktionary languages (87): likely noisy"
+          ],
+          "candidate": {
+            "token": "o",
+            "count": "55",
+            "levels": "visual_part,stroke",
+            "confidence": "7.61",
+            "status": "weak",
+            "noise": "single-letter root: high false-positive risk | many Wiktionary languages (87): likely noisy",
+            "wiktionary_languages": "87",
+            "has_etymology": "yes",
+            "top_wiktionary_candidates": "Translingual:a ./{{lb|mul|superscript |IPA}} -coloring (such as -like labialization of a consonant) or a weak, fleeting, epenthetic or echo . | English:, the fifteenth letter of the Classical and Modern Greek alphabets, called omicron and used as an abbreviation of omicron in star names./A zero . | Achang:to like | Albanian:() | Aragonese:the",
+            "top_wikipedia_candidates": "O | Unicode subscripts and superscripts | Fraktur",
+            "top_datamuse_candidates": "o:n The name of the Latin-script letter O/o."
+          }
+        },
+        {
+          "order": 2,
+          "token": "laol",
+          "status": "unknown",
+          "confidence": 0,
+          "evidenceScore": 0,
+          "riskScore": 1,
+          "glossHints": [],
+          "sourceHints": [],
+          "warnings": [],
+          "candidate": null
+        },
+        {
+          "order": 3,
+          "token": "hate",
+          "status": "unknown",
+          "confidence": 0,
+          "evidenceScore": 0,
+          "riskScore": 1,
+          "glossHints": [],
+          "sourceHints": [],
+          "warnings": [],
+          "candidate": null
+        },
+        {
+          "order": 4,
+          "token": "o",
+          "status": "weak",
+          "confidence": 7.61,
+          "evidenceScore": 0.7135714285714286,
+          "riskScore": 1,
+          "glossHints": [
+            "Translingual:a ./{{lb",
+            "mul",
+            "superscript",
+            "IPA}} -coloring (such as -like labialization of a consonant) or a weak, fleeting, epenthetic or echo .",
+            "o:n The name of the Latin-script letter O/o."
+          ],
+          "sourceHints": [
+            "wiktionary",
+            "wikipedia",
+            "datamuse"
+          ],
+          "warnings": [
+            "single-letter root: high false-positive risk",
+            "many Wiktionary languages (87): likely noisy"
+          ],
+          "candidate": {
+            "token": "o",
+            "count": "55",
+            "levels": "visual_part,stroke",
+            "confidence": "7.61",
+            "status": "weak",
+            "noise": "single-letter root: high false-positive risk | many Wiktionary languages (87): likely noisy",
+            "wiktionary_languages": "87",
+            "has_etymology": "yes",
+            "top_wiktionary_candidates": "Translingual:a ./{{lb|mul|superscript |IPA}} -coloring (such as -like labialization of a consonant) or a weak, fleeting, epenthetic or echo . | English:, the fifteenth letter of the Classical and Modern Greek alphabets, called omicron and used as an abbreviation of omicron in star names./A zero . | Achang:to like | Albanian:() | Aragonese:the",
+            "top_wikipedia_candidates": "O | Unicode subscripts and superscripts | Fraktur",
+            "top_datamuse_candidates": "o:n The name of the Latin-script letter O/o."
+          }
+        },
+        {
+          "order": 5,
+          "token": "a",
+          "status": "noisy",
+          "confidence": 2.51,
+          "evidenceScore": 0,
+          "riskScore": 1,
+          "glossHints": [
+            "a:n Adult; as used in film rating."
+          ],
+          "sourceHints": [
+            "datamuse"
+          ],
+          "warnings": [
+            "single-letter root: high false-positive risk",
+            "no explicit etymology found"
+          ],
+          "candidate": {
+            "token": "a",
+            "count": "14",
+            "levels": "visual_part,stroke",
+            "confidence": "2.51",
+            "status": "noisy",
+            "noise": "single-letter root: high false-positive risk | no explicit etymology found",
+            "wiktionary_languages": "0",
+            "has_etymology": "no",
+            "top_wiktionary_candidates": "",
+            "top_wikipedia_candidates": "",
+            "top_datamuse_candidates": "a:n Adult; as used in film rating."
+          }
+        }
+      ]
+    },
+    {
+      "order": 12,
+      "id": 26,
+      "reading": "hatehtluoltra",
+      "segmentation": "hate|h|tlhaolte|hra",
+      "evidenceScore": 0.3683928571428572,
+      "riskScore": 0.9075,
+      "status": "fragile-candidate",
+      "segments": [
+        {
+          "order": 1,
+          "token": "hate",
+          "status": "unknown",
+          "confidence": 0,
+          "evidenceScore": 0,
+          "riskScore": 1,
+          "glossHints": [],
+          "sourceHints": [],
+          "warnings": [],
+          "candidate": null
+        },
+        {
+          "order": 2,
+          "token": "h",
+          "status": "weak",
+          "confidence": 11.25,
+          "evidenceScore": 0.9735714285714286,
+          "riskScore": 0.8999999999999999,
+          "glossHints": [
+            "Translingual:SI symbol for the prefix hecto-, indicating multiplication by 100 (10²)/hour",
+            "English:, the number of hits by a player.",
+            "Finnish:B",
+            "German:{{ng",
+            "h:n A pencil of grade H."
+          ],
+          "sourceHints": [
+            "wiktionary",
+            "wikipedia",
+            "datamuse"
+          ],
+          "warnings": [
+            "single-letter root: high false-positive risk",
+            "many Wiktionary languages (14): likely noisy"
+          ],
+          "candidate": {
+            "token": "h",
+            "count": "55",
+            "levels": "stroke,visual_part",
+            "confidence": "11.25",
+            "status": "weak",
+            "noise": "single-letter root: high false-positive risk | many Wiktionary languages (14): likely noisy",
+            "wiktionary_languages": "14",
+            "has_etymology": "yes",
+            "top_wiktionary_candidates": "Translingual:SI symbol for the prefix hecto-, indicating multiplication by 100 (10²)/hour | English:, the number of hits by a player. | Finnish:B | German:{{ng|the letter h, see }}/hour | Irish:{{ng|marker of }}",
+            "top_wikipedia_candidates": "H | Planck constant | Aspirated consonant",
+            "top_datamuse_candidates": "h:n A pencil of grade H."
+          }
+        },
+        {
+          "order": 3,
+          "token": "tlhaolte",
+          "status": "unknown",
+          "confidence": 0,
+          "evidenceScore": 0,
+          "riskScore": 1,
+          "glossHints": [],
+          "sourceHints": [],
+          "warnings": [],
+          "candidate": null
+        },
+        {
+          "order": 4,
+          "token": "hra",
+          "status": "weak",
+          "confidence": 4.9,
+          "evidenceScore": 0.5,
+          "riskScore": 0.7299999999999999,
+          "glossHints": [
+            "hra:n Initialism of health reimbursement arrangement."
+          ],
+          "sourceHints": [
+            "datamuse"
+          ],
+          "warnings": [
+            "no explicit etymology found"
+          ],
+          "candidate": {
+            "token": "hra",
+            "count": "10",
+            "levels": "visual_part",
+            "confidence": "4.90",
+            "status": "weak",
+            "noise": "no explicit etymology found",
+            "wiktionary_languages": "0",
+            "has_etymology": "no",
+            "top_wiktionary_candidates": "",
+            "top_wikipedia_candidates": "",
+            "top_datamuse_candidates": "hra:n Initialism of health reimbursement arrangement."
+          }
+        }
+      ]
+    },
+    {
+      "order": 13,
+      "id": 27,
+      "reading": "ocrinehatehra",
+      "segmentation": "o|hrine|hate|hra",
+      "evidenceScore": 0.30339285714285713,
+      "riskScore": 0.9325,
+      "status": "fragile-candidate",
+      "segments": [
+        {
+          "order": 1,
+          "token": "o",
+          "status": "weak",
+          "confidence": 7.61,
+          "evidenceScore": 0.7135714285714286,
+          "riskScore": 1,
+          "glossHints": [
+            "Translingual:a ./{{lb",
+            "mul",
+            "superscript",
+            "IPA}} -coloring (such as -like labialization of a consonant) or a weak, fleeting, epenthetic or echo .",
+            "o:n The name of the Latin-script letter O/o."
+          ],
+          "sourceHints": [
+            "wiktionary",
+            "wikipedia",
+            "datamuse"
+          ],
+          "warnings": [
+            "single-letter root: high false-positive risk",
+            "many Wiktionary languages (87): likely noisy"
+          ],
+          "candidate": {
+            "token": "o",
+            "count": "55",
+            "levels": "visual_part,stroke",
+            "confidence": "7.61",
+            "status": "weak",
+            "noise": "single-letter root: high false-positive risk | many Wiktionary languages (87): likely noisy",
+            "wiktionary_languages": "87",
+            "has_etymology": "yes",
+            "top_wiktionary_candidates": "Translingual:a ./{{lb|mul|superscript |IPA}} -coloring (such as -like labialization of a consonant) or a weak, fleeting, epenthetic or echo . | English:, the fifteenth letter of the Classical and Modern Greek alphabets, called omicron and used as an abbreviation of omicron in star names./A zero . | Achang:to like | Albanian:() | Aragonese:the",
+            "top_wikipedia_candidates": "O | Unicode subscripts and superscripts | Fraktur",
+            "top_datamuse_candidates": "o:n The name of the Latin-script letter O/o."
+          }
+        },
+        {
+          "order": 2,
+          "token": "hrine",
+          "status": "unknown",
+          "confidence": 0,
+          "evidenceScore": 0,
+          "riskScore": 1,
+          "glossHints": [],
+          "sourceHints": [],
+          "warnings": [],
+          "candidate": null
+        },
+        {
+          "order": 3,
+          "token": "hate",
+          "status": "unknown",
+          "confidence": 0,
+          "evidenceScore": 0,
+          "riskScore": 1,
+          "glossHints": [],
+          "sourceHints": [],
+          "warnings": [],
+          "candidate": null
+        },
+        {
+          "order": 4,
+          "token": "hra",
+          "status": "weak",
+          "confidence": 4.9,
+          "evidenceScore": 0.5,
+          "riskScore": 0.7299999999999999,
+          "glossHints": [
+            "hra:n Initialism of health reimbursement arrangement."
+          ],
+          "sourceHints": [
+            "datamuse"
+          ],
+          "warnings": [
+            "no explicit etymology found"
+          ],
+          "candidate": {
+            "token": "hra",
+            "count": "10",
+            "levels": "visual_part",
+            "confidence": "4.90",
+            "status": "weak",
+            "noise": "no explicit etymology found",
+            "wiktionary_languages": "0",
+            "has_etymology": "no",
+            "top_wiktionary_candidates": "",
+            "top_wikipedia_candidates": "",
+            "top_datamuse_candidates": "hra:n Initialism of health reimbursement arrangement."
+          }
+        }
+      ]
+    },
+    {
+      "order": 14,
+      "id": 30,
+      "reading": "horahinirriaa",
+      "segmentation": "hora|hi|nirriaa",
+      "evidenceScore": 0.5352380952380953,
+      "riskScore": 0.8133333333333334,
+      "status": "fragile-candidate",
+      "segments": [
+        {
+          "order": 1,
+          "token": "hora",
+          "status": "inspect",
+          "confidence": 7.28,
+          "evidenceScore": 0.92,
+          "riskScore": 0.51,
+          "glossHints": [
+            "hora:n (dance) A circle dance popular in the Balkans, Israel and Yiddish culture worldwide."
+          ],
+          "sourceHints": [
+            "wikipedia",
+            "datamuse"
+          ],
+          "warnings": [
+            "no explicit etymology found"
+          ],
+          "candidate": {
+            "token": "hora",
+            "count": "9",
+            "levels": "visual_part",
+            "confidence": "7.28",
+            "status": "inspect",
+            "noise": "no explicit etymology found",
+            "wiktionary_languages": "0",
+            "has_etymology": "no",
+            "top_wiktionary_candidates": "",
+            "top_wikipedia_candidates": "Hora | Hora (surname) | Horas",
+            "top_datamuse_candidates": "hora:n (dance) A circle dance popular in the Balkans, Israel and Yiddish culture worldwide."
+          }
+        },
+        {
+          "order": 2,
+          "token": "hi",
+          "status": "weak",
+          "confidence": 6.52,
+          "evidenceScore": 0.6857142857142857,
+          "riskScore": 0.93,
+          "glossHints": [
+            "Translingual:",
+            "English:The word \"hi\" used as a greeting.",
+            "Albanian:ash, ashes/dust of corpses",
+            "Antigua and Barbuda Creole English:he/his",
+            "hi:n The word \"hi\" used as a greeting."
+          ],
+          "sourceHints": [
+            "wiktionary",
+            "datamuse"
+          ],
+          "warnings": [
+            "two-letter root: medium false-positive risk",
+            "many Wiktionary languages (28): likely noisy"
+          ],
+          "candidate": {
+            "token": "hi",
+            "count": "7",
+            "levels": "visual_part",
+            "confidence": "6.52",
+            "status": "weak",
+            "noise": "two-letter root: medium false-positive risk | many Wiktionary languages (28): likely noisy",
+            "wiktionary_languages": "28",
+            "has_etymology": "yes",
+            "top_wiktionary_candidates": "Translingual: | English:The word \"hi\" used as a greeting. | Albanian:ash, ashes/dust of corpses | Antigua and Barbuda Creole English:he/his | Basque:; you",
+            "top_wikipedia_candidates": "",
+            "top_datamuse_candidates": "hi:n The word \"hi\" used as a greeting."
+          }
+        },
+        {
+          "order": 3,
+          "token": "nirriaa",
+          "status": "unknown",
+          "confidence": 0,
+          "evidenceScore": 0,
+          "riskScore": 1,
+          "glossHints": [],
+          "sourceHints": [],
+          "warnings": [],
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "order": 15,
+      "id": 31,
+      "reading": "hateoirime",
+      "segmentation": "hate|o|irime",
+      "evidenceScore": 0.23785714285714288,
+      "riskScore": 1,
+      "status": "too-ambiguous",
+      "segments": [
+        {
+          "order": 1,
+          "token": "hate",
+          "status": "unknown",
+          "confidence": 0,
+          "evidenceScore": 0,
+          "riskScore": 1,
+          "glossHints": [],
+          "sourceHints": [],
+          "warnings": [],
+          "candidate": null
+        },
+        {
+          "order": 2,
+          "token": "o",
+          "status": "weak",
+          "confidence": 7.61,
+          "evidenceScore": 0.7135714285714286,
+          "riskScore": 1,
+          "glossHints": [
+            "Translingual:a ./{{lb",
+            "mul",
+            "superscript",
+            "IPA}} -coloring (such as -like labialization of a consonant) or a weak, fleeting, epenthetic or echo .",
+            "o:n The name of the Latin-script letter O/o."
+          ],
+          "sourceHints": [
+            "wiktionary",
+            "wikipedia",
+            "datamuse"
+          ],
+          "warnings": [
+            "single-letter root: high false-positive risk",
+            "many Wiktionary languages (87): likely noisy"
+          ],
+          "candidate": {
+            "token": "o",
+            "count": "55",
+            "levels": "visual_part,stroke",
+            "confidence": "7.61",
+            "status": "weak",
+            "noise": "single-letter root: high false-positive risk | many Wiktionary languages (87): likely noisy",
+            "wiktionary_languages": "87",
+            "has_etymology": "yes",
+            "top_wiktionary_candidates": "Translingual:a ./{{lb|mul|superscript |IPA}} -coloring (such as -like labialization of a consonant) or a weak, fleeting, epenthetic or echo . | English:, the fifteenth letter of the Classical and Modern Greek alphabets, called omicron and used as an abbreviation of omicron in star names./A zero . | Achang:to like | Albanian:() | Aragonese:the",
+            "top_wikipedia_candidates": "O | Unicode subscripts and superscripts | Fraktur",
+            "top_datamuse_candidates": "o:n The name of the Latin-script letter O/o."
+          }
+        },
+        {
+          "order": 3,
+          "token": "irime",
+          "status": "unknown",
+          "confidence": 0,
+          "evidenceScore": 0,
+          "riskScore": 1,
+          "glossHints": [],
+          "sourceHints": [],
+          "warnings": [],
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "order": 16,
+      "id": 32,
+      "reading": "loliocrima",
+      "segmentation": "loli|o|hrima",
+      "evidenceScore": 0.23785714285714288,
+      "riskScore": 1,
+      "status": "too-ambiguous",
+      "segments": [
+        {
+          "order": 1,
+          "token": "loli",
+          "status": "unknown",
+          "confidence": 0,
+          "evidenceScore": 0,
+          "riskScore": 1,
+          "glossHints": [],
+          "sourceHints": [],
+          "warnings": [],
+          "candidate": null
+        },
+        {
+          "order": 2,
+          "token": "o",
+          "status": "weak",
+          "confidence": 7.61,
+          "evidenceScore": 0.7135714285714286,
+          "riskScore": 1,
+          "glossHints": [
+            "Translingual:a ./{{lb",
+            "mul",
+            "superscript",
+            "IPA}} -coloring (such as -like labialization of a consonant) or a weak, fleeting, epenthetic or echo .",
+            "o:n The name of the Latin-script letter O/o."
+          ],
+          "sourceHints": [
+            "wiktionary",
+            "wikipedia",
+            "datamuse"
+          ],
+          "warnings": [
+            "single-letter root: high false-positive risk",
+            "many Wiktionary languages (87): likely noisy"
+          ],
+          "candidate": {
+            "token": "o",
+            "count": "55",
+            "levels": "visual_part,stroke",
+            "confidence": "7.61",
+            "status": "weak",
+            "noise": "single-letter root: high false-positive risk | many Wiktionary languages (87): likely noisy",
+            "wiktionary_languages": "87",
+            "has_etymology": "yes",
+            "top_wiktionary_candidates": "Translingual:a ./{{lb|mul|superscript |IPA}} -coloring (such as -like labialization of a consonant) or a weak, fleeting, epenthetic or echo . | English:, the fifteenth letter of the Classical and Modern Greek alphabets, called omicron and used as an abbreviation of omicron in star names./A zero . | Achang:to like | Albanian:() | Aragonese:the",
+            "top_wikipedia_candidates": "O | Unicode subscripts and superscripts | Fraktur",
+            "top_datamuse_candidates": "o:n The name of the Latin-script letter O/o."
+          }
+        },
+        {
+          "order": 3,
+          "token": "hrima",
+          "status": "unknown",
+          "confidence": 0,
+          "evidenceScore": 0,
+          "riskScore": 1,
+          "glossHints": [],
+          "sourceHints": [],
+          "warnings": [],
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "order": 17,
+      "id": 33,
+      "reading": "horahimirrii",
+      "segmentation": "hora|hi|mirrii",
+      "evidenceScore": 0.5352380952380953,
+      "riskScore": 0.8133333333333334,
+      "status": "fragile-candidate",
+      "segments": [
+        {
+          "order": 1,
+          "token": "hora",
+          "status": "inspect",
+          "confidence": 7.28,
+          "evidenceScore": 0.92,
+          "riskScore": 0.51,
+          "glossHints": [
+            "hora:n (dance) A circle dance popular in the Balkans, Israel and Yiddish culture worldwide."
+          ],
+          "sourceHints": [
+            "wikipedia",
+            "datamuse"
+          ],
+          "warnings": [
+            "no explicit etymology found"
+          ],
+          "candidate": {
+            "token": "hora",
+            "count": "9",
+            "levels": "visual_part",
+            "confidence": "7.28",
+            "status": "inspect",
+            "noise": "no explicit etymology found",
+            "wiktionary_languages": "0",
+            "has_etymology": "no",
+            "top_wiktionary_candidates": "",
+            "top_wikipedia_candidates": "Hora | Hora (surname) | Horas",
+            "top_datamuse_candidates": "hora:n (dance) A circle dance popular in the Balkans, Israel and Yiddish culture worldwide."
+          }
+        },
+        {
+          "order": 2,
+          "token": "hi",
+          "status": "weak",
+          "confidence": 6.52,
+          "evidenceScore": 0.6857142857142857,
+          "riskScore": 0.93,
+          "glossHints": [
+            "Translingual:",
+            "English:The word \"hi\" used as a greeting.",
+            "Albanian:ash, ashes/dust of corpses",
+            "Antigua and Barbuda Creole English:he/his",
+            "hi:n The word \"hi\" used as a greeting."
+          ],
+          "sourceHints": [
+            "wiktionary",
+            "datamuse"
+          ],
+          "warnings": [
+            "two-letter root: medium false-positive risk",
+            "many Wiktionary languages (28): likely noisy"
+          ],
+          "candidate": {
+            "token": "hi",
+            "count": "7",
+            "levels": "visual_part",
+            "confidence": "6.52",
+            "status": "weak",
+            "noise": "two-letter root: medium false-positive risk | many Wiktionary languages (28): likely noisy",
+            "wiktionary_languages": "28",
+            "has_etymology": "yes",
+            "top_wiktionary_candidates": "Translingual: | English:The word \"hi\" used as a greeting. | Albanian:ash, ashes/dust of corpses | Antigua and Barbuda Creole English:he/his | Basque:; you",
+            "top_wikipedia_candidates": "",
+            "top_datamuse_candidates": "hi:n The word \"hi\" used as a greeting."
+          }
+        },
+        {
+          "order": 3,
+          "token": "mirrii",
+          "status": "unknown",
+          "confidence": 0,
+          "evidenceScore": 0,
+          "riskScore": 1,
+          "glossHints": [],
+          "sourceHints": [],
+          "warnings": [],
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "order": 18,
+      "id": 34,
+      "reading": "hetoh",
+      "segmentation": "hete|o|h",
+      "evidenceScore": 0.8957142857142858,
+      "riskScore": 0.7166666666666667,
+      "status": "fragile-candidate",
+      "segments": [
+        {
+          "order": 1,
+          "token": "hete",
+          "status": "inspect",
+          "confidence": 13.32,
+          "evidenceScore": 1,
+          "riskScore": 0.25,
+          "glossHints": [
+            "Finnish:quagmire, morass; swampy, soggy spot; a relatively small soggy area, but big enough to stop a man or horse",
+            "Middle English:Heat; thermal energy ./The condition of being hot; a hot thing:",
+            "Norwegian Bokmål:heat/To be called; to have as a name",
+            "Norwegian Nynorsk:heat/a heating",
+            "hete:"
+          ],
+          "sourceHints": [
+            "wiktionary",
+            "wikipedia",
+            "datamuse"
+          ],
+          "warnings": [],
+          "candidate": {
+            "token": "hete",
+            "count": "7",
+            "levels": "visual_part",
+            "confidence": "13.32",
+            "status": "inspect",
+            "noise": "",
+            "wiktionary_languages": "7",
+            "has_etymology": "yes",
+            "top_wiktionary_candidates": "Finnish:quagmire, morass; swampy, soggy spot; a relatively small soggy area, but big enough to stop a man or horse | Middle English:Heat; thermal energy ./The condition of being hot; a hot thing: | Norwegian Bokmål:heat/To be called; to have as a name | Norwegian Nynorsk:heat/a heating | Old English:hatred",
+            "top_wikipedia_candidates": "HETE | HETE 2 | Vâlcele, Covasna",
+            "top_datamuse_candidates": "hete:"
+          }
+        },
+        {
+          "order": 2,
+          "token": "o",
+          "status": "weak",
+          "confidence": 7.61,
+          "evidenceScore": 0.7135714285714286,
+          "riskScore": 1,
+          "glossHints": [
+            "Translingual:a ./{{lb",
+            "mul",
+            "superscript",
+            "IPA}} -coloring (such as -like labialization of a consonant) or a weak, fleeting, epenthetic or echo .",
+            "o:n The name of the Latin-script letter O/o."
+          ],
+          "sourceHints": [
+            "wiktionary",
+            "wikipedia",
+            "datamuse"
+          ],
+          "warnings": [
+            "single-letter root: high false-positive risk",
+            "many Wiktionary languages (87): likely noisy"
+          ],
+          "candidate": {
+            "token": "o",
+            "count": "55",
+            "levels": "visual_part,stroke",
+            "confidence": "7.61",
+            "status": "weak",
+            "noise": "single-letter root: high false-positive risk | many Wiktionary languages (87): likely noisy",
+            "wiktionary_languages": "87",
+            "has_etymology": "yes",
+            "top_wiktionary_candidates": "Translingual:a ./{{lb|mul|superscript |IPA}} -coloring (such as -like labialization of a consonant) or a weak, fleeting, epenthetic or echo . | English:, the fifteenth letter of the Classical and Modern Greek alphabets, called omicron and used as an abbreviation of omicron in star names./A zero . | Achang:to like | Albanian:() | Aragonese:the",
+            "top_wikipedia_candidates": "O | Unicode subscripts and superscripts | Fraktur",
+            "top_datamuse_candidates": "o:n The name of the Latin-script letter O/o."
+          }
+        },
+        {
+          "order": 3,
+          "token": "h",
+          "status": "weak",
+          "confidence": 11.25,
+          "evidenceScore": 0.9735714285714286,
+          "riskScore": 0.8999999999999999,
+          "glossHints": [
+            "Translingual:SI symbol for the prefix hecto-, indicating multiplication by 100 (10²)/hour",
+            "English:, the number of hits by a player.",
+            "Finnish:B",
+            "German:{{ng",
+            "h:n A pencil of grade H."
+          ],
+          "sourceHints": [
+            "wiktionary",
+            "wikipedia",
+            "datamuse"
+          ],
+          "warnings": [
+            "single-letter root: high false-positive risk",
+            "many Wiktionary languages (14): likely noisy"
+          ],
+          "candidate": {
+            "token": "h",
+            "count": "55",
+            "levels": "stroke,visual_part",
+            "confidence": "11.25",
+            "status": "weak",
+            "noise": "single-letter root: high false-positive risk | many Wiktionary languages (14): likely noisy",
+            "wiktionary_languages": "14",
+            "has_etymology": "yes",
+            "top_wiktionary_candidates": "Translingual:SI symbol for the prefix hecto-, indicating multiplication by 100 (10²)/hour | English:, the number of hits by a player. | Finnish:B | German:{{ng|the letter h, see }}/hour | Irish:{{ng|marker of }}",
+            "top_wikipedia_candidates": "H | Planck constant | Aspirated consonant",
+            "top_datamuse_candidates": "h:n A pencil of grade H."
+          }
+        }
+      ]
+    },
+    {
+      "order": 19,
+      "id": 37,
+      "reading": "tlolmehtoa",
+      "segmentation": "tlolmeht|o|a",
+      "evidenceScore": 0.23785714285714288,
+      "riskScore": 1,
+      "status": "too-ambiguous",
+      "segments": [
+        {
+          "order": 1,
+          "token": "tlolmeht",
+          "status": "unknown",
+          "confidence": 0,
+          "evidenceScore": 0,
+          "riskScore": 1,
+          "glossHints": [],
+          "sourceHints": [],
+          "warnings": [],
+          "candidate": null
+        },
+        {
+          "order": 2,
+          "token": "o",
+          "status": "weak",
+          "confidence": 7.61,
+          "evidenceScore": 0.7135714285714286,
+          "riskScore": 1,
+          "glossHints": [
+            "Translingual:a ./{{lb",
+            "mul",
+            "superscript",
+            "IPA}} -coloring (such as -like labialization of a consonant) or a weak, fleeting, epenthetic or echo .",
+            "o:n The name of the Latin-script letter O/o."
+          ],
+          "sourceHints": [
+            "wiktionary",
+            "wikipedia",
+            "datamuse"
+          ],
+          "warnings": [
+            "single-letter root: high false-positive risk",
+            "many Wiktionary languages (87): likely noisy"
+          ],
+          "candidate": {
+            "token": "o",
+            "count": "55",
+            "levels": "visual_part,stroke",
+            "confidence": "7.61",
+            "status": "weak",
+            "noise": "single-letter root: high false-positive risk | many Wiktionary languages (87): likely noisy",
+            "wiktionary_languages": "87",
+            "has_etymology": "yes",
+            "top_wiktionary_candidates": "Translingual:a ./{{lb|mul|superscript |IPA}} -coloring (such as -like labialization of a consonant) or a weak, fleeting, epenthetic or echo . | English:, the fifteenth letter of the Classical and Modern Greek alphabets, called omicron and used as an abbreviation of omicron in star names./A zero . | Achang:to like | Albanian:() | Aragonese:the",
+            "top_wikipedia_candidates": "O | Unicode subscripts and superscripts | Fraktur",
+            "top_datamuse_candidates": "o:n The name of the Latin-script letter O/o."
+          }
+        },
+        {
+          "order": 3,
+          "token": "a",
+          "status": "noisy",
+          "confidence": 2.51,
+          "evidenceScore": 0,
+          "riskScore": 1,
+          "glossHints": [
+            "a:n Adult; as used in film rating."
+          ],
+          "sourceHints": [
+            "datamuse"
+          ],
+          "warnings": [
+            "single-letter root: high false-positive risk",
+            "no explicit etymology found"
+          ],
+          "candidate": {
+            "token": "a",
+            "count": "14",
+            "levels": "visual_part,stroke",
+            "confidence": "2.51",
+            "status": "noisy",
+            "noise": "single-letter root: high false-positive risk | no explicit etymology found",
+            "wiktionary_languages": "0",
+            "has_etymology": "no",
+            "top_wiktionary_candidates": "",
+            "top_wikipedia_candidates": "",
+            "top_datamuse_candidates": "a:n Adult; as used in film rating."
+          }
+        }
+      ]
+    },
+    {
+      "order": 20,
+      "id": 38,
+      "reading": "heteohorahra",
+      "segmentation": "hete|o|hora|hra",
+      "evidenceScore": 0.7833928571428571,
+      "riskScore": 0.6224999999999999,
+      "status": "usable-candidate",
+      "segments": [
+        {
+          "order": 1,
+          "token": "hete",
+          "status": "inspect",
+          "confidence": 13.32,
+          "evidenceScore": 1,
+          "riskScore": 0.25,
+          "glossHints": [
+            "Finnish:quagmire, morass; swampy, soggy spot; a relatively small soggy area, but big enough to stop a man or horse",
+            "Middle English:Heat; thermal energy ./The condition of being hot; a hot thing:",
+            "Norwegian Bokmål:heat/To be called; to have as a name",
+            "Norwegian Nynorsk:heat/a heating",
+            "hete:"
+          ],
+          "sourceHints": [
+            "wiktionary",
+            "wikipedia",
+            "datamuse"
+          ],
+          "warnings": [],
+          "candidate": {
+            "token": "hete",
+            "count": "7",
+            "levels": "visual_part",
+            "confidence": "13.32",
+            "status": "inspect",
+            "noise": "",
+            "wiktionary_languages": "7",
+            "has_etymology": "yes",
+            "top_wiktionary_candidates": "Finnish:quagmire, morass; swampy, soggy spot; a relatively small soggy area, but big enough to stop a man or horse | Middle English:Heat; thermal energy ./The condition of being hot; a hot thing: | Norwegian Bokmål:heat/To be called; to have as a name | Norwegian Nynorsk:heat/a heating | Old English:hatred",
+            "top_wikipedia_candidates": "HETE | HETE 2 | Vâlcele, Covasna",
+            "top_datamuse_candidates": "hete:"
+          }
+        },
+        {
+          "order": 2,
+          "token": "o",
+          "status": "weak",
+          "confidence": 7.61,
+          "evidenceScore": 0.7135714285714286,
+          "riskScore": 1,
+          "glossHints": [
+            "Translingual:a ./{{lb",
+            "mul",
+            "superscript",
+            "IPA}} -coloring (such as -like labialization of a consonant) or a weak, fleeting, epenthetic or echo .",
+            "o:n The name of the Latin-script letter O/o."
+          ],
+          "sourceHints": [
+            "wiktionary",
+            "wikipedia",
+            "datamuse"
+          ],
+          "warnings": [
+            "single-letter root: high false-positive risk",
+            "many Wiktionary languages (87): likely noisy"
+          ],
+          "candidate": {
+            "token": "o",
+            "count": "55",
+            "levels": "visual_part,stroke",
+            "confidence": "7.61",
+            "status": "weak",
+            "noise": "single-letter root: high false-positive risk | many Wiktionary languages (87): likely noisy",
+            "wiktionary_languages": "87",
+            "has_etymology": "yes",
+            "top_wiktionary_candidates": "Translingual:a ./{{lb|mul|superscript |IPA}} -coloring (such as -like labialization of a consonant) or a weak, fleeting, epenthetic or echo . | English:, the fifteenth letter of the Classical and Modern Greek alphabets, called omicron and used as an abbreviation of omicron in star names./A zero . | Achang:to like | Albanian:() | Aragonese:the",
+            "top_wikipedia_candidates": "O | Unicode subscripts and superscripts | Fraktur",
+            "top_datamuse_candidates": "o:n The name of the Latin-script letter O/o."
+          }
+        },
+        {
+          "order": 3,
+          "token": "hora",
+          "status": "inspect",
+          "confidence": 7.28,
+          "evidenceScore": 0.92,
+          "riskScore": 0.51,
+          "glossHints": [
+            "hora:n (dance) A circle dance popular in the Balkans, Israel and Yiddish culture worldwide."
+          ],
+          "sourceHints": [
+            "wikipedia",
+            "datamuse"
+          ],
+          "warnings": [
+            "no explicit etymology found"
+          ],
+          "candidate": {
+            "token": "hora",
+            "count": "9",
+            "levels": "visual_part",
+            "confidence": "7.28",
+            "status": "inspect",
+            "noise": "no explicit etymology found",
+            "wiktionary_languages": "0",
+            "has_etymology": "no",
+            "top_wiktionary_candidates": "",
+            "top_wikipedia_candidates": "Hora | Hora (surname) | Horas",
+            "top_datamuse_candidates": "hora:n (dance) A circle dance popular in the Balkans, Israel and Yiddish culture worldwide."
+          }
+        },
+        {
+          "order": 4,
+          "token": "hra",
+          "status": "weak",
+          "confidence": 4.9,
+          "evidenceScore": 0.5,
+          "riskScore": 0.7299999999999999,
+          "glossHints": [
+            "hra:n Initialism of health reimbursement arrangement."
+          ],
+          "sourceHints": [
+            "datamuse"
+          ],
+          "warnings": [
+            "no explicit etymology found"
+          ],
+          "candidate": {
+            "token": "hra",
+            "count": "10",
+            "levels": "visual_part",
+            "confidence": "4.90",
+            "status": "weak",
+            "noise": "no explicit etymology found",
+            "wiktionary_languages": "0",
+            "has_etymology": "no",
+            "top_wiktionary_candidates": "",
+            "top_wikipedia_candidates": "",
+            "top_datamuse_candidates": "hra:n Initialism of health reimbursement arrangement."
+          }
+        }
+      ]
+    },
+    {
+      "order": 21,
+      "id": 39,
+      "reading": "horahinirrii",
+      "segmentation": "hora|hi|nirrii",
+      "evidenceScore": 0.5352380952380953,
+      "riskScore": 0.8133333333333334,
+      "status": "fragile-candidate",
+      "segments": [
+        {
+          "order": 1,
+          "token": "hora",
+          "status": "inspect",
+          "confidence": 7.28,
+          "evidenceScore": 0.92,
+          "riskScore": 0.51,
+          "glossHints": [
+            "hora:n (dance) A circle dance popular in the Balkans, Israel and Yiddish culture worldwide."
+          ],
+          "sourceHints": [
+            "wikipedia",
+            "datamuse"
+          ],
+          "warnings": [
+            "no explicit etymology found"
+          ],
+          "candidate": {
+            "token": "hora",
+            "count": "9",
+            "levels": "visual_part",
+            "confidence": "7.28",
+            "status": "inspect",
+            "noise": "no explicit etymology found",
+            "wiktionary_languages": "0",
+            "has_etymology": "no",
+            "top_wiktionary_candidates": "",
+            "top_wikipedia_candidates": "Hora | Hora (surname) | Horas",
+            "top_datamuse_candidates": "hora:n (dance) A circle dance popular in the Balkans, Israel and Yiddish culture worldwide."
+          }
+        },
+        {
+          "order": 2,
+          "token": "hi",
+          "status": "weak",
+          "confidence": 6.52,
+          "evidenceScore": 0.6857142857142857,
+          "riskScore": 0.93,
+          "glossHints": [
+            "Translingual:",
+            "English:The word \"hi\" used as a greeting.",
+            "Albanian:ash, ashes/dust of corpses",
+            "Antigua and Barbuda Creole English:he/his",
+            "hi:n The word \"hi\" used as a greeting."
+          ],
+          "sourceHints": [
+            "wiktionary",
+            "datamuse"
+          ],
+          "warnings": [
+            "two-letter root: medium false-positive risk",
+            "many Wiktionary languages (28): likely noisy"
+          ],
+          "candidate": {
+            "token": "hi",
+            "count": "7",
+            "levels": "visual_part",
+            "confidence": "6.52",
+            "status": "weak",
+            "noise": "two-letter root: medium false-positive risk | many Wiktionary languages (28): likely noisy",
+            "wiktionary_languages": "28",
+            "has_etymology": "yes",
+            "top_wiktionary_candidates": "Translingual: | English:The word \"hi\" used as a greeting. | Albanian:ash, ashes/dust of corpses | Antigua and Barbuda Creole English:he/his | Basque:; you",
+            "top_wikipedia_candidates": "",
+            "top_datamuse_candidates": "hi:n The word \"hi\" used as a greeting."
+          }
+        },
+        {
+          "order": 3,
+          "token": "nirrii",
+          "status": "unknown",
+          "confidence": 0,
+          "evidenceScore": 0,
+          "riskScore": 1,
+          "glossHints": [],
+          "sourceHints": [],
+          "warnings": [],
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "order": 22,
+      "id": 40,
+      "reading": "oirine",
+      "segmentation": "o|irine",
+      "evidenceScore": 0.3567857142857143,
+      "riskScore": 1,
+      "status": "fragile-candidate",
+      "segments": [
+        {
+          "order": 1,
+          "token": "o",
+          "status": "weak",
+          "confidence": 7.61,
+          "evidenceScore": 0.7135714285714286,
+          "riskScore": 1,
+          "glossHints": [
+            "Translingual:a ./{{lb",
+            "mul",
+            "superscript",
+            "IPA}} -coloring (such as -like labialization of a consonant) or a weak, fleeting, epenthetic or echo .",
+            "o:n The name of the Latin-script letter O/o."
+          ],
+          "sourceHints": [
+            "wiktionary",
+            "wikipedia",
+            "datamuse"
+          ],
+          "warnings": [
+            "single-letter root: high false-positive risk",
+            "many Wiktionary languages (87): likely noisy"
+          ],
+          "candidate": {
+            "token": "o",
+            "count": "55",
+            "levels": "visual_part,stroke",
+            "confidence": "7.61",
+            "status": "weak",
+            "noise": "single-letter root: high false-positive risk | many Wiktionary languages (87): likely noisy",
+            "wiktionary_languages": "87",
+            "has_etymology": "yes",
+            "top_wiktionary_candidates": "Translingual:a ./{{lb|mul|superscript |IPA}} -coloring (such as -like labialization of a consonant) or a weak, fleeting, epenthetic or echo . | English:, the fifteenth letter of the Classical and Modern Greek alphabets, called omicron and used as an abbreviation of omicron in star names./A zero . | Achang:to like | Albanian:() | Aragonese:the",
+            "top_wikipedia_candidates": "O | Unicode subscripts and superscripts | Fraktur",
+            "top_datamuse_candidates": "o:n The name of the Latin-script letter O/o."
+          }
+        },
+        {
+          "order": 2,
+          "token": "irine",
+          "status": "unknown",
+          "confidence": 0,
+          "evidenceScore": 0,
+          "riskScore": 1,
+          "glossHints": [],
+          "sourceHints": [],
+          "warnings": [],
+          "candidate": null
+        }
+      ]
+    },
+    {
+      "order": 23,
+      "id": 41,
+      "reading": "lhaoltohorahra",
+      "segmentation": "lhaol|t|o|hora|hra",
+      "evidenceScore": 0.42671428571428577,
+      "riskScore": 0.8479999999999999,
+      "status": "fragile-candidate",
+      "segments": [
+        {
+          "order": 1,
+          "token": "lhaol",
+          "status": "unknown",
+          "confidence": 0,
+          "evidenceScore": 0,
+          "riskScore": 1,
+          "glossHints": [],
+          "sourceHints": [],
+          "warnings": [],
+          "candidate": null
+        },
+        {
+          "order": 2,
+          "token": "t",
+          "status": "unknown",
+          "confidence": 0,
+          "evidenceScore": 0,
+          "riskScore": 1,
+          "glossHints": [],
+          "sourceHints": [],
+          "warnings": [],
+          "candidate": null
+        },
+        {
+          "order": 3,
+          "token": "o",
+          "status": "weak",
+          "confidence": 7.61,
+          "evidenceScore": 0.7135714285714286,
+          "riskScore": 1,
+          "glossHints": [
+            "Translingual:a ./{{lb",
+            "mul",
+            "superscript",
+            "IPA}} -coloring (such as -like labialization of a consonant) or a weak, fleeting, epenthetic or echo .",
+            "o:n The name of the Latin-script letter O/o."
+          ],
+          "sourceHints": [
+            "wiktionary",
+            "wikipedia",
+            "datamuse"
+          ],
+          "warnings": [
+            "single-letter root: high false-positive risk",
+            "many Wiktionary languages (87): likely noisy"
+          ],
+          "candidate": {
+            "token": "o",
+            "count": "55",
+            "levels": "visual_part,stroke",
+            "confidence": "7.61",
+            "status": "weak",
+            "noise": "single-letter root: high false-positive risk | many Wiktionary languages (87): likely noisy",
+            "wiktionary_languages": "87",
+            "has_etymology": "yes",
+            "top_wiktionary_candidates": "Translingual:a ./{{lb|mul|superscript |IPA}} -coloring (such as -like labialization of a consonant) or a weak, fleeting, epenthetic or echo . | English:, the fifteenth letter of the Classical and Modern Greek alphabets, called omicron and used as an abbreviation of omicron in star names./A zero . | Achang:to like | Albanian:() | Aragonese:the",
+            "top_wikipedia_candidates": "O | Unicode subscripts and superscripts | Fraktur",
+            "top_datamuse_candidates": "o:n The name of the Latin-script letter O/o."
+          }
+        },
+        {
+          "order": 4,
+          "token": "hora",
+          "status": "inspect",
+          "confidence": 7.28,
+          "evidenceScore": 0.92,
+          "riskScore": 0.51,
+          "glossHints": [
+            "hora:n (dance) A circle dance popular in the Balkans, Israel and Yiddish culture worldwide."
+          ],
+          "sourceHints": [
+            "wikipedia",
+            "datamuse"
+          ],
+          "warnings": [
+            "no explicit etymology found"
+          ],
+          "candidate": {
+            "token": "hora",
+            "count": "9",
+            "levels": "visual_part",
+            "confidence": "7.28",
+            "status": "inspect",
+            "noise": "no explicit etymology found",
+            "wiktionary_languages": "0",
+            "has_etymology": "no",
+            "top_wiktionary_candidates": "",
+            "top_wikipedia_candidates": "Hora | Hora (surname) | Horas",
+            "top_datamuse_candidates": "hora:n (dance) A circle dance popular in the Balkans, Israel and Yiddish culture worldwide."
+          }
+        },
+        {
+          "order": 5,
+          "token": "hra",
+          "status": "weak",
+          "confidence": 4.9,
+          "evidenceScore": 0.5,
+          "riskScore": 0.7299999999999999,
+          "glossHints": [
+            "hra:n Initialism of health reimbursement arrangement."
+          ],
+          "sourceHints": [
+            "datamuse"
+          ],
+          "warnings": [
+            "no explicit etymology found"
+          ],
+          "candidate": {
+            "token": "hra",
+            "count": "10",
+            "levels": "visual_part",
+            "confidence": "4.90",
+            "status": "weak",
+            "noise": "no explicit etymology found",
+            "wiktionary_languages": "0",
+            "has_etymology": "no",
+            "top_wiktionary_candidates": "",
+            "top_wikipedia_candidates": "",
+            "top_datamuse_candidates": "hra:n Initialism of health reimbursement arrangement."
+          }
+        }
+      ]
+    }
+  ],
+  "inventory": [
+    {
+      "token": "hete",
+      "count": 7,
+      "units": [
+        2,
+        5,
+        7,
+        8,
+        9,
+        18,
+        20
+      ],
+      "status": "inspect",
+      "confidence": 13.32,
+      "evidenceScore": 1,
+      "riskScore": 0.25,
+      "glossHints": [
+        "Finnish:quagmire, morass; swampy, soggy spot; a relatively small soggy area, but big enough to stop a man or horse",
+        "Middle English:Heat; thermal energy ./The condition of being hot; a hot thing:",
+        "Norwegian Bokmål:heat/To be called; to have as a name",
+        "Norwegian Nynorsk:heat/a heating",
+        "hete:"
+      ],
+      "warnings": []
+    },
+    {
+      "token": "h",
+      "count": 3,
+      "units": [
+        8,
+        12,
+        18
+      ],
+      "status": "weak",
+      "confidence": 11.25,
+      "evidenceScore": 0.9735714285714286,
+      "riskScore": 0.8999999999999999,
+      "glossHints": [
+        "Translingual:SI symbol for the prefix hecto-, indicating multiplication by 100 (10²)/hour",
+        "English:, the number of hits by a player.",
+        "Finnish:B",
+        "German:{{ng",
+        "h:n A pencil of grade H."
+      ],
+      "warnings": [
+        "single-letter root: high false-positive risk",
+        "many Wiktionary languages (14): likely noisy"
+      ]
+    },
+    {
+      "token": "hora",
+      "count": 9,
+      "units": [
+        1,
+        4,
+        7,
+        9,
+        14,
+        17,
+        20,
+        21,
+        23
+      ],
+      "status": "inspect",
+      "confidence": 7.28,
+      "evidenceScore": 0.92,
+      "riskScore": 0.51,
+      "glossHints": [
+        "hora:n (dance) A circle dance popular in the Balkans, Israel and Yiddish culture worldwide."
+      ],
+      "warnings": [
+        "no explicit etymology found"
+      ]
+    },
+    {
+      "token": "o",
+      "count": 19,
+      "units": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        7,
+        9,
+        10,
+        11,
+        13,
+        15,
+        16,
+        18,
+        19,
+        20,
+        22,
+        23
+      ],
+      "status": "weak",
+      "confidence": 7.61,
+      "evidenceScore": 0.7135714285714286,
+      "riskScore": 1,
+      "glossHints": [
+        "Translingual:a ./{{lb",
+        "mul",
+        "superscript",
+        "IPA}} -coloring (such as -like labialization of a consonant) or a weak, fleeting, epenthetic or echo .",
+        "o:n The name of the Latin-script letter O/o."
+      ],
+      "warnings": [
+        "single-letter root: high false-positive risk",
+        "many Wiktionary languages (87): likely noisy"
+      ]
+    },
+    {
+      "token": "hi",
+      "count": 7,
+      "units": [
+        1,
+        4,
+        6,
+        7,
+        14,
+        17,
+        21
+      ],
+      "status": "weak",
+      "confidence": 6.52,
+      "evidenceScore": 0.6857142857142857,
+      "riskScore": 0.93,
+      "glossHints": [
+        "Translingual:",
+        "English:The word \"hi\" used as a greeting.",
+        "Albanian:ash, ashes/dust of corpses",
+        "Antigua and Barbuda Creole English:he/his",
+        "hi:n The word \"hi\" used as a greeting."
+      ],
+      "warnings": [
+        "two-letter root: medium false-positive risk",
+        "many Wiktionary languages (28): likely noisy"
+      ]
+    },
+    {
+      "token": "hra",
+      "count": 10,
+      "units": [
+        3,
+        4,
+        7,
+        8,
+        9,
+        10,
+        12,
+        13,
+        20,
+        23
+      ],
+      "status": "weak",
+      "confidence": 4.9,
+      "evidenceScore": 0.5,
+      "riskScore": 0.7299999999999999,
+      "glossHints": [
+        "hra:n Initialism of health reimbursement arrangement."
+      ],
+      "warnings": [
+        "no explicit etymology found"
+      ]
+    },
+    {
+      "token": "hate",
+      "count": 5,
+      "units": [
+        10,
+        11,
+        12,
+        13,
+        15
+      ],
+      "status": "unknown",
+      "confidence": 0,
+      "evidenceScore": 0,
+      "riskScore": 1,
+      "glossHints": [],
+      "warnings": []
+    },
+    {
+      "token": "irime",
+      "count": 4,
+      "units": [
+        1,
+        4,
+        7,
+        15
+      ],
+      "status": "unknown",
+      "confidence": 0,
+      "evidenceScore": 0,
+      "riskScore": 1,
+      "glossHints": [],
+      "warnings": []
+    },
+    {
+      "token": "a",
+      "count": 3,
+      "units": [
+        2,
+        11,
+        19
+      ],
+      "status": "noisy",
+      "confidence": 2.51,
+      "evidenceScore": 0,
+      "riskScore": 1,
+      "glossHints": [
+        "a:n Adult; as used in film rating."
+      ],
+      "warnings": [
+        "single-letter root: high false-positive risk",
+        "no explicit etymology found"
+      ]
+    },
+    {
+      "token": "hetera",
+      "count": 1,
+      "units": [
+        2
+      ],
+      "status": "unknown",
+      "confidence": 0,
+      "evidenceScore": 0,
+      "riskScore": 1,
+      "glossHints": [],
+      "warnings": []
+    },
+    {
+      "token": "hlaolmehte",
+      "count": 1,
+      "units": [
+        3
+      ],
+      "status": "unknown",
+      "confidence": 0,
+      "evidenceScore": 0,
+      "riskScore": 1,
+      "glossHints": [],
+      "warnings": []
+    },
+    {
+      "token": "hlaolmeth",
+      "count": 1,
+      "units": [
+        6
+      ],
+      "status": "unknown",
+      "confidence": 0,
+      "evidenceScore": 0,
+      "riskScore": 1,
+      "glossHints": [],
+      "warnings": []
+    },
+    {
+      "token": "hrima",
+      "count": 1,
+      "units": [
+        16
+      ],
+      "status": "unknown",
+      "confidence": 0,
+      "evidenceScore": 0,
+      "riskScore": 1,
+      "glossHints": [],
+      "warnings": []
+    },
+    {
+      "token": "hrime",
+      "count": 1,
+      "units": [
+        5
+      ],
+      "status": "unknown",
+      "confidence": 0,
+      "evidenceScore": 0,
+      "riskScore": 1,
+      "glossHints": [],
+      "warnings": []
+    },
+    {
+      "token": "hrine",
+      "count": 1,
+      "units": [
+        13
+      ],
+      "status": "unknown",
+      "confidence": 0,
+      "evidenceScore": 0,
+      "riskScore": 1,
+      "glossHints": [],
+      "warnings": []
+    },
+    {
+      "token": "irine",
+      "count": 1,
+      "units": [
+        22
+      ],
+      "status": "unknown",
+      "confidence": 0,
+      "evidenceScore": 0,
+      "riskScore": 1,
+      "glossHints": [],
+      "warnings": []
+    },
+    {
+      "token": "laol",
+      "count": 1,
+      "units": [
+        11
+      ],
+      "status": "unknown",
+      "confidence": 0,
+      "evidenceScore": 0,
+      "riskScore": 1,
+      "glossHints": [],
+      "warnings": []
+    },
+    {
+      "token": "lhaol",
+      "count": 1,
+      "units": [
+        23
+      ],
+      "status": "unknown",
+      "confidence": 0,
+      "evidenceScore": 0,
+      "riskScore": 1,
+      "glossHints": [],
+      "warnings": []
+    },
+    {
+      "token": "lol",
+      "count": 1,
+      "units": [
+        10
+      ],
+      "status": "unknown",
+      "confidence": 0,
+      "evidenceScore": 0,
+      "riskScore": 1,
+      "glossHints": [],
+      "warnings": []
+    },
+    {
+      "token": "loli",
+      "count": 1,
+      "units": [
+        16
+      ],
+      "status": "unknown",
+      "confidence": 0,
+      "evidenceScore": 0,
+      "riskScore": 1,
+      "glossHints": [],
+      "warnings": []
+    },
+    {
+      "token": "mirriaa",
+      "count": 1,
+      "units": [
+        6
+      ],
+      "status": "unknown",
+      "confidence": 0,
+      "evidenceScore": 0,
+      "riskScore": 1,
+      "glossHints": [],
+      "warnings": []
+    },
+    {
+      "token": "mirrii",
+      "count": 1,
+      "units": [
+        17
+      ],
+      "status": "unknown",
+      "confidence": 0,
+      "evidenceScore": 0,
+      "riskScore": 1,
+      "glossHints": [],
+      "warnings": []
+    },
+    {
+      "token": "nirriaa",
+      "count": 1,
+      "units": [
+        14
+      ],
+      "status": "unknown",
+      "confidence": 0,
+      "evidenceScore": 0,
+      "riskScore": 1,
+      "glossHints": [],
+      "warnings": []
+    },
+    {
+      "token": "nirrii",
+      "count": 1,
+      "units": [
+        21
+      ],
+      "status": "unknown",
+      "confidence": 0,
+      "evidenceScore": 0,
+      "riskScore": 1,
+      "glossHints": [],
+      "warnings": []
+    },
+    {
+      "token": "t",
+      "count": 1,
+      "units": [
+        23
+      ],
+      "status": "unknown",
+      "confidence": 0,
+      "evidenceScore": 0,
+      "riskScore": 1,
+      "glossHints": [],
+      "warnings": []
+    },
+    {
+      "token": "tlhaolte",
+      "count": 1,
+      "units": [
+        12
+      ],
+      "status": "unknown",
+      "confidence": 0,
+      "evidenceScore": 0,
+      "riskScore": 1,
+      "glossHints": [],
+      "warnings": []
+    },
+    {
+      "token": "tlolmeht",
+      "count": 1,
+      "units": [
+        19
+      ],
+      "status": "unknown",
+      "confidence": 0,
+      "evidenceScore": 0,
+      "riskScore": 1,
+      "glossHints": [],
+      "warnings": []
+    },
+    {
+      "token": "tra",
+      "count": 1,
+      "units": [
+        8
+      ],
+      "status": "unknown",
+      "confidence": 0,
+      "evidenceScore": 0,
+      "riskScore": 1,
+      "glossHints": [],
+      "warnings": []
+    }
+  ],
+  "formulas": [
+    {
+      "formula": "hora|hi",
+      "count": 5,
+      "units": [
+        1,
+        4,
+        14,
+        17,
+        21
+      ]
+    },
+    {
+      "formula": "o|hra",
+      "count": 4,
+      "units": [
+        3,
+        4,
+        9,
+        10
+      ]
+    },
+    {
+      "formula": "hi|irime",
+      "count": 3,
+      "units": [
+        1,
+        4,
+        7
+      ]
+    },
+    {
+      "formula": "o|hora",
+      "count": 3,
+      "units": [
+        1,
+        20,
+        23
+      ]
+    },
+    {
+      "formula": "hete|o",
+      "count": 3,
+      "units": [
+        2,
+        18,
+        20
+      ]
+    },
+    {
+      "formula": "hate|o",
+      "count": 3,
+      "units": [
+        10,
+        11,
+        15
+      ]
+    },
+    {
+      "formula": "o|a",
+      "count": 3,
+      "units": [
+        2,
+        11,
+        19
+      ]
+    },
+    {
+      "formula": "hora|hi|irime",
+      "count": 2,
+      "units": [
+        1,
+        4
+      ]
+    },
+    {
+      "formula": "hete|hora|o",
+      "count": 2,
+      "units": [
+        7,
+        9
+      ]
+    },
+    {
+      "formula": "o|hora|hra",
+      "count": 2,
+      "units": [
+        20,
+        23
+      ]
+    },
+    {
+      "formula": "hete|hora",
+      "count": 2,
+      "units": [
+        7,
+        9
+      ]
+    },
+    {
+      "formula": "hora|hra",
+      "count": 2,
+      "units": [
+        20,
+        23
+      ]
+    },
+    {
+      "formula": "hora|o",
+      "count": 2,
+      "units": [
+        7,
+        9
+      ]
+    },
+    {
+      "formula": "o|hi",
+      "count": 2,
+      "units": [
+        6,
+        7
+      ]
+    }
+  ]
+}
