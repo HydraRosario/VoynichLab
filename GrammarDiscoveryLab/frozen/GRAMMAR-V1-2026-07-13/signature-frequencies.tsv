@@ -1,0 +1,306 @@
+signature	count	atom_count	folios	folio_count	images	example_molecules
+e:1 g:1 e:1 c:1 f:1 j:1	20	6	f1r,f1v,f2r,f47v	4	page-003.jpg,page-004.jpg,page-005.jpg,page-094.jpg	p003-m091 p003-m105 p003-m106 p003-m110 p003-m150 p003-m156 p003-m192 p004-m041
+e:1 c:1 h:2 e:1 f:1 k:1 f:1 i:1 d:1	13	9	f1r,f1v,f2r,f47v	4	page-003.jpg,page-004.jpg,page-005.jpg,page-094.jpg	p003-m033 p003-m059 p003-m082 p003-m099 p003-m169 p003-m177 p004-m072 p005-m004
+e:1 c:1 h:2 e:1 f:1 f:1 i:1 d:1	10	8	f1r,f1v,f2r	3	page-003.jpg,page-004.jpg,page-005.jpg	p003-m096 p003-m154 p003-m159 p003-m162 p004-m035 p004-m078 p004-m082 p005-m032
+e:1 c:1 h:2 e:1 f:1 l:1 f:1 i:1 d:1	9	9	f1r,f1v,f2r	3	page-003.jpg,page-004.jpg,page-005.jpg	p003-m056 p003-m063 p003-m089 p003-m132 p003-m143 p003-m157 p004-m026 p004-m033
+e:1 g:1 e:1 e:1 h:1	9	5	f1v,f2r,f47v	3	page-004.jpg,page-005.jpg,page-094.jpg	p004-m049 p005-m018 p005-m083 p005-m091 p094-m061 p094-m065 p094-m070 p094-m073
+n:1 e:1 g:1 e:1	9	4	f1v,f2r	2	page-004.jpg,page-005.jpg	p004-m073 p005-m011 p005-m029 p005-m043 p005-m049 p005-m062 p005-m074 p005-m079
+c:1 f:1 j:1 n:1 e:1 g:1 e:1	7	7	f1r,f1v,f2r,f47v	4	page-003.jpg,page-004.jpg,page-005.jpg,page-094.jpg	p003-m005 p003-m127 p004-m032 p004-m043 p004-m079 p005-m055 p094-m014
+c:1 f:1 i:1 d:1	7	4	f1r,f1v,f2r	3	page-003.jpg,page-004.jpg,page-005.jpg	p003-m022 p003-m035 p003-m064 p004-m010 p004-m074 p005-m012 p005-m044
+e:1 g:1 e:1 c:1	6	4	f1r,f1v,f47v	3	page-003.jpg,page-004.jpg,page-094.jpg	p003-m108 p003-m165 p003-m191 p004-m029 p094-m063 p094-m071
+e:1 g:1 e:1 c:1 e:1 c:1 h:2 e:1 h:1	6	9	f1v,f47v	2	page-004.jpg,page-094.jpg	p004-m015 p004-m022 p004-m070 p004-m087 p094-m035 p094-m054
+e:1 a:1 e:1 b:1 c:1 a:1 g:1 e:1 e:1 h:1	5	10	f1r,f1v,f2r,f47v	4	page-003.jpg,page-004.jpg,page-005.jpg,page-094.jpg	p003-m097 p003-m124 p004-m050 p005-m013 p094-m027
+e:1 g:1 e:1 e:1 f:1 f:1 i:1 d:1	5	8	f1r,f1v,f2r,f47v	4	page-003.jpg,page-004.jpg,page-005.jpg,page-094.jpg	p003-m102 p004-m005 p004-m009 p005-m096 p094-m015
+e:1 g:1 e:1 c:1 f:1 i:1 d:1	5	7	f1r,f2r,f47v	3	page-003.jpg,page-005.jpg,page-094.jpg	p003-m057 p003-m141 p005-m017 p005-m092 p094-m030
+n:1 e:1 g:1 e:1 c:1	5	5	f1r,f2r,f47v	3	page-003.jpg,page-005.jpg,page-094.jpg	p003-m087 p003-m109 p003-m116 p005-m100 p094-m024
+a:1 b:1 c:1 a:1 c:1 f:1 j:1	4	7	f1r,f1v,f2r,f47v	4	page-003.jpg,page-004.jpg,page-005.jpg,page-094.jpg	p003-m104 p004-m064 p005-m060 p094-m023
+e:1 c:1 h:2 e:1 f:1 f:1 j:1	4	7	f1r,f1v,f2r	3	page-003.jpg,page-004.jpg,page-005.jpg	p003-m189 p004-m023 p004-m086 p005-m082
+e:1 c:1 h:2 e:1 g:1 e:1 e:1 h:1	4	8	f1r,f2r,f47v	3	page-003.jpg,page-005.jpg,page-094.jpg	p003-m094 p005-m041 p094-m059 p094-m064
+e:1 g:1 e:1 e:1 e:1 h:1	4	6	f1r,f1v,f2r	3	page-003.jpg,page-004.jpg,page-005.jpg	p003-m142 p004-m036 p004-m046 p005-m102
+c:1 f:1 j:1	4	3	f1v,f2r	2	page-004.jpg,page-005.jpg	p004-m003 p004-m052 p004-m063 p005-m073
+e:1 i:1 d:1 e:1 f:1 k:1 f:1 i:1 d:1	4	9	f2r,f47v	2	page-005.jpg,page-094.jpg	p005-m035 p005-m069 p005-m097 p094-m037
+n:1 e:1 g:1 e:1 c:1 e:1 c:1 h:2 e:1 h:1	4	10	f1r,f1v	2	page-003.jpg,page-004.jpg	p003-m051 p003-m062 p003-m183 p004-m083
+e:1 c:1 h:2 c:1 f:1 j:1	4	6	f1v	1	page-004.jpg	p004-m024 p004-m045 p004-m055 p004-m058
+c:1 a:1 b:1 c:1 a:1 c:1 f:1 j:1	3	8	f1r,f1v,f2r	3	page-003.jpg,page-004.jpg,page-005.jpg	p003-m168 p004-m075 p005-m090
+e:1 g:1 e:1 e:1 a:1 e:1 b:1 c:1 a:1 e:1 h:1	3	11	f1r,f2r,f47v	3	page-003.jpg,page-005.jpg,page-094.jpg	p003-m119 p005-m098 p094-m049
+n:1 e:1 g:1 e:1 e:1 e:1 e:1 h:1	3	8	f1r,f2r,f47v	3	page-003.jpg,page-005.jpg,page-094.jpg	p003-m050 p005-m061 p094-m022
+e:1 f:1 f:1 i:1 d:1	3	5	f1r,f2r	2	page-003.jpg,page-005.jpg	p003-m003 p005-m086 p005-m095
+e:1 g:1 e:1 e:1 f:1 k:1 f:1 i:1 d:1	3	9	f2r,f47v	2	page-005.jpg,page-094.jpg	p005-m007 p005-m020 p094-m080
+n:1 e:1 g:1 e:1 e:1 h:1	3	6	f1v,f47v	2	page-004.jpg,page-094.jpg	p004-m018 p094-m009 p094-m032
+c:1 a:1 e:1 b:1 c:1 a:1 e:1 e:1 e:1 h:1	2	10	f1r,f47v	2	page-003.jpg,page-094.jpg	p003-m030 p094-m062
+c:1 e:1 c:1 h:2 e:1 f:1 k:1 f:1 i:1 d:1	2	10	f1r,f2r	2	page-003.jpg,page-005.jpg	p003-m092 p005-m030
+c:1 e:1 g:1 e:1 e:1 h:1	2	6	f1r,f1v	2	page-003.jpg,page-004.jpg	p003-m118 p004-m011
+e:1 a:1 b:1 c:1 a:1 e:1 h:1	2	7	f2r,f47v	2	page-005.jpg,page-094.jpg	p005-m075 p094-m066
+e:1 a:1 b:1 c:1 a:1 g:1 e:1 c:1 f:1 i:1 d:1	2	11	f1r,f2r	2	page-003.jpg,page-005.jpg	p003-m101 p005-m080
+e:1 a:1 m:1 c:1 a:1 g:1 e:1 e:1 h:1	2	9	f1r,f1v	2	page-003.jpg,page-004.jpg	p003-m185 p004-m020
+e:1 c:1 h:2 c:1 f:1 i:1 d:1	2	7	f1r,f47v	2	page-003.jpg,page-094.jpg	p003-m114 p094-m017
+e:1 c:1 h:2 e:1 g:1 e:1 c:1 f:1 j:1	2	9	f1v,f2r	2	page-004.jpg,page-005.jpg	p004-m012 p005-m040
+e:1 f:1 k:1 f:1 i:1 d:1	2	6	f1r,f2r	2	page-003.jpg,page-005.jpg	p003-m020 p005-m050
+e:1 g:1 e:1 c:1 e:1 c:1 h:2 e:1 f:1 f:1 i:1 d:1	2	12	f1r,f1v	2	page-003.jpg,page-004.jpg	p003-m111 p004-m090
+e:1 g:1 e:1 c:1 e:1 c:1 h:2 e:1 f:1 k:1 f:1 i:1 d:1	2	13	f1r,f1v	2	page-003.jpg,page-004.jpg	p003-m115 p004-m002
+e:1 g:1 e:1 c:1 f:1 i:1 d:1 e:1 h:1	2	9	f1r,f47v	2	page-003.jpg,page-094.jpg	p003-m153 p094-m012
+e:1 h:1 a:1 b:1 c:1 a:1 n:1 e:1 g:1 e:1	2	10	f1r,f2r	2	page-003.jpg,page-005.jpg	p003-m112 p005-m054
+e:1 h:1 c:1 f:1 i:1 d:1	2	6	f1r,f2r	2	page-003.jpg,page-005.jpg	p003-m012 p005-m094
+e:1 i:1 d:1 n:1 e:1 g:1 e:1	2	7	f1r,f2r	2	page-003.jpg,page-005.jpg	p003-m047 p005-m052
+n:1 e:1 g:1 e:1 c:1 n:1 e:1 g:1 e:1 e:1 h:1	2	11	f1r,f1v	2	page-003.jpg,page-004.jpg	p003-m071 p004-m039
+a:1 b:1 c:1 a:1 c:1 e:1 c:1 h:2 e:1 h:1	2	10	f1v	1	page-004.jpg	p004-m013 p004-m030
+a:1 b:1 c:1 a:1 e:1 e:1 e:1 h:1	2	8	f1r	1	page-003.jpg	p003-m187 p003-m188
+c:1 a:1 b:1 c:1 a:1 e:1 f:1 k:1 f:1 i:1 d:1	2	11	f1r	1	page-003.jpg	p003-m034 p003-m166
+c:1 a:1 b:1 c:1 a:1 e:1 g:1 e:1 e:1 e:1 h:1	2	11	f1r	1	page-003.jpg	p003-m178 p003-m186
+e:1 a:1 b:1 c:1 a:1 g:1 e:1 e:1 e:1 h:1	2	10	f1r	1	page-003.jpg	p003-m084 p003-m144
+e:1 a:1 m:1 c:1 a:1 g:1 e:1 c:1 f:1 j:1	2	10	f1v	1	page-004.jpg	p004-m042 p004-m069
+e:1 a:1 m:1 c:1 a:1 g:1 e:1 e:1 f:1 f:1 i:1 d:1	2	12	f1r	1	page-003.jpg	p003-m017 p003-m164
+e:1 e:1 e:1 h:1	2	4	f2r	1	page-005.jpg	p005-m056 p005-m089
+e:1 g:1 e:1 e:1 c:1 f:1 i:1 d:1	2	8	f47v	1	page-094.jpg	p094-m002 p094-m036
+e:1 h:1 a:1 b:1 c:1 a:1 c:1 f:1 j:1	2	9	f1v	1	page-004.jpg	p004-m057 p004-m060
+e:1 i:1 d:1 e:1 f:1 f:1 i:1 d:1 e:1 h:1	2	10	f47v	1	page-094.jpg	p094-m007 p094-m034
+e:1 i:1 d:1 e:1 f:1 f:1 j:1	2	7	f47v	1	page-094.jpg	p094-m006 p094-m047
+e:1 i:1 d:1 e:1 h:1	2	5	f1r	1	page-003.jpg	p003-m019 p003-m028
+n:1 e:1 g:1 e:1 e:1 e:1 h:1	2	7	f1r	1	page-003.jpg	p003-m103 p003-m163
+a:1 b:1 c:1 a:1 b:1 d:1 f:1 i:1 d:1 e:1 h:1 e:1 f:1 e:1 g:1 e:1	1	16	f1r	1	page-003.jpg	p003-m001
+a:1 b:1 c:1 a:1 c:1 a:1 b:1 c:1 a:1 e:1 f:1 k:1 f:1 i:1 d:1	1	15	f1r	1	page-003.jpg	p003-m179
+a:1 b:1 c:1 a:1 c:1 a:1 m:1 c:1 a:1	1	9	f1v	1	page-004.jpg	p004-m021
+a:1 b:1 c:1 a:1 c:1 e:1 c:1 h:2	1	8	f1r	1	page-003.jpg	p003-m098
+a:1 b:1 c:1 a:1 c:1 e:1 c:1 h:2 e:1 f:1 k:1 f:1 i:1 d:1	1	14	f1r	1	page-003.jpg	p003-m085
+a:1 b:1 c:1 a:1 c:1 e:1 c:1 h:2 e:1 g:1 e:1 e:1 h:1 e:1 c:1 h:2	1	16	f1r	1	page-003.jpg	p003-m181
+a:1 b:1 c:1 a:1 c:1 e:1 c:1 h:2 n:1 e:1 g:1 e:1 e:1 e:1 h:1	1	15	f1r	1	page-003.jpg	p003-m129
+a:1 b:1 c:1 a:1 c:1 e:1 i:1 d:1	1	8	f1r	1	page-003.jpg	p003-m058
+a:1 b:1 c:1 a:1 c:1 f:1 i:1 d:1	1	8	f1r	1	page-003.jpg	p003-m107
+a:1 b:1 c:1 a:1 c:2 g:1 e:1 c:1 a:1 b:1 c:1 a:1 c:2 g:1 e:1 e:1 h:1	1	17	f1v	1	page-004.jpg	p004-m017
+a:1 b:1 c:1 a:1 c:2 g:1 e:1 n:1 e:1 g:1 e:1 e:1 h:1	1	13	f1r	1	page-003.jpg	p003-m184
+a:1 b:1 c:1 a:1 e:1 c:1 f:1 j:1	1	8	f2r	1	page-005.jpg	p005-m078
+a:1 b:1 c:1 a:1 e:1 e:1 e:1 g:1 e:1 e:1 h:1	1	11	f47v	1	page-094.jpg	p094-m025
+a:1 b:1 c:1 a:1 e:1 e:1 e:1 i:1 d:1 e:1 h:1	1	11	f47v	1	page-094.jpg	p094-m072
+a:1 b:1 c:1 a:1 e:1 e:1 g:1 e:1 e:1 h:1	1	10	f1v	1	page-004.jpg	p004-m065
+a:1 b:1 c:1 a:1 e:1 f:1 k:1 f:1 i:1 d:1	1	10	f1r	1	page-003.jpg	p003-m161
+a:1 b:1 c:1 a:1 e:1 g:1 e:1 c:1	1	8	f1r	1	page-003.jpg	p003-m113
+a:1 b:1 c:1 a:1 e:1 g:1 e:1 c:1 f:1 i:1 c:1 h:1	1	12	f1r	1	page-003.jpg	p003-m117
+a:1 b:1 c:1 a:1 e:1 g:1 e:1 e:1 i:1 d:1 e:1 h:1	1	12	f1v	1	page-004.jpg	p004-m001
+a:1 b:1 c:1 a:1 e:1 h:1	1	6	f1v	1	page-004.jpg	p004-m067
+a:1 b:1 c:1 a:1 e:1 h:1 e:1 c:1 h:2 e:1 f:1 l:1 f:1 i:1 d:1	1	15	f2r	1	page-005.jpg	p005-m048
+a:1 b:1 c:1 a:1 e:1 h:1 e:1 c:1 h:2 e:1 f:1 l:1 f:1 i:1 d:1 e:1 h:1	1	17	f2r	1	page-005.jpg	p005-m001
+a:1 b:1 c:1 a:1 e:1 k:1 f:1 i:1 d:1	1	9	f1r	1	page-003.jpg	p003-m013
+a:1 b:1 c:1 a:1 n:1 e:1 g:1 e:1 c:1 e:1 h:1	1	11	f1r	1	page-003.jpg	p003-m074
+a:1 e:1 b:1 c:1 a:1 e:1 c:1 e:1 c:1 h:2 e:1 h:1	1	12	f1r	1	page-003.jpg	p003-m065
+a:1 e:1 b:1 c:1 a:1 f:1 i:1 d:1 c:1 e:1 g:1 e:1 e:1 f:1 c:1	1	15	f47v	1	page-094.jpg	p094-m045
+a:1 e:1 b:1 c:1 a:1 n:1 e:1 g:1 e:1 c:1 e:1 c:1 h:2 e:1 e:1 e:1 i:1 d:1 e:1 h:1	1	20	f1r	1	page-003.jpg	p003-m151
+a:1 m:1 c:1	1	3	f1v	1	page-004.jpg	p004-m051
+a:1 m:1 c:1 a:1 b:1 c:1 a:1 e:1 e:1 h:1	1	10	f2r	1	page-005.jpg	p005-m063
+a:1 m:1 c:1 a:1 c:1 c:1 f:1 i:1 d:1	1	9	f1v	1	page-004.jpg	p004-m084
+a:1 m:1 c:1 a:1 c:1 e:1 c:1 h:2 e:1 h:1	1	10	f1v	1	page-004.jpg	p004-m037
+a:1 m:1 c:1 a:1 e:1 b:1 c:1 a:1 c:1 f:1 j:1	1	11	f47v	1	page-094.jpg	p094-m021
+a:1 m:1 c:1 a:1 e:1 b:1 c:1 a:1 e:1 f:1 k:1 f:1 i:1 d:1	1	14	f2r	1	page-005.jpg	p005-m015
+a:1 m:1 c:1 a:1 e:1 b:1 c:1 a:1 e:1 h:1	1	10	f47v	1	page-094.jpg	p094-m026
+a:1 m:1 c:1 a:1 m:1 c:1 a:1 c:2 g:1 e:1 e:1 e:1 e:1 h:1	1	14	f47v	1	page-094.jpg	p094-m048
+a:1 m:1 c:1 e:1 h:1	1	5	f2r	1	page-005.jpg	p005-m051
+c:1 a:1 b:1 c:1 a:1 c:1 e:1 c:1 h:2 e:1 f:1 f:1 i:1 d:1	1	14	f1v	1	page-004.jpg	p004-m014
+c:1 a:1 b:1 c:1 a:1 c:1 f:1 j:1 n:1 e:1 g:1 e:1	1	12	f1v	1	page-004.jpg	p004-m062
+c:1 a:1 b:1 c:1 a:1 e:1 e:1 e:1	1	8	f1r	1	page-003.jpg	p003-m175
+c:1 a:1 b:1 c:1 a:1 e:1 f:1 f:1 i:1 d:1	1	10	f1r	1	page-003.jpg	p003-m036
+c:1 a:1 b:1 c:1 a:1 e:1 f:1 f:1 j:1	1	9	f1v	1	page-004.jpg	p004-m044
+c:1 a:1 b:1 c:1 a:1 e:1 f:1 k:1 f:1 i:1 d:1 e:1 g:1 e:1 e:1 e:1 h:1	1	17	f1r	1	page-003.jpg	p003-m136
+c:1 a:1 b:1 c:1 a:1 e:1 f:1 l:1 f:1 i:1 d:1	1	11	f1r	1	page-003.jpg	p003-m095
+c:1 a:1 b:1 c:1 a:1 e:1 g:1 e:1 c:1 e:1 h:1	1	11	f1r	1	page-003.jpg	p003-m052
+c:1 a:1 b:1 c:1 a:1 e:1 h:1	1	7	f1r	1	page-003.jpg	p003-m176
+c:1 a:1 b:1 c:1 a:1 n:1 e:1 g:1 e:1 c:1	1	10	f1r	1	page-003.jpg	p003-m073
+c:1 a:1 e:1 b:1 c:1 a:1 c:1 f:1 j:1	1	9	f1r	1	page-003.jpg	p003-m145
+c:1 a:1 e:1 b:1 c:1 a:1 e:1 c:1 f:1 i:1 d:1 e:1 i:1 d:1 c:1 f:1 j:1 c:1 a:1 m:1 c:1 a:1 e:1 h:1	1	24	f1r	1	page-003.jpg	p003-m031
+c:1 a:1 e:1 b:1 c:1 a:1 e:1 c:1 f:1 j:1	1	10	f1r	1	page-003.jpg	p003-m077
+c:1 a:1 e:1 b:1 c:1 a:1 e:1 g:1 e:1 c:1	1	10	f1v	1	page-004.jpg	p004-m081
+c:1 a:1 e:1 b:1 c:1 a:1 e:1 g:1 e:1 e:1 f:1 f:1 j:1	1	13	f2r	1	page-005.jpg	p005-m005
+c:1 a:1 e:1 b:1 c:1 a:1 e:1 h:1	1	8	f1r	1	page-003.jpg	p003-m126
+c:1 a:1 m:1 c:1 a:1 c:1 e:1 f:1 k:1 f:1 i:1 d:1	1	12	f1v	1	page-004.jpg	p004-m038
+c:1 a:1 m:1 c:1 a:1 c:1 e:1 g:1 e:1 c:1 f:1 i:1 d:1	1	13	f2r	1	page-005.jpg	p005-m027
+c:1 a:1 m:1 c:1 a:1 c:2 g:1 e:1 c:1 a:1 m:1 c:1 a:1 e:1 g:1 e:1 e:1 h:1	1	18	f47v	1	page-094.jpg	p094-m057
+c:1 a:1 m:1 c:1 a:1 e:1 f:1 f:1 j:1 e:1 c:2 h:2	1	12	f47v	1	page-094.jpg	p094-m076
+c:1 a:1 m:1 c:1 a:1 e:1 f:1 l:1 f:1 i:1 d:1 l:1 f:1 i:1 d:1	1	15	f1r	1	page-003.jpg	p003-m075
+c:1 a:1 m:1 c:1 a:1 e:1 g:1 e:1 c:1 f:1 j:1	1	11	f1r	1	page-003.jpg	p003-m053
+c:1 a:1 m:1 c:1 a:1 e:1 g:1 e:1 e:1 e:1 h:1	1	11	f47v	1	page-094.jpg	p094-m010
+c:1 a:1 m:1 c:2 a:1 e:1 c:1 f:1 j:1	1	9	f47v	1	page-094.jpg	p094-m016
+c:1 e:1 a:1 b:1 a:1 c:2 e:1 g:1 e:1 c:1 f:1 j:1	1	12	f47v	1	page-094.jpg	p094-m018
+c:1 e:1 c:1 h:2 e:1 f:1 f:1 i:1 d:1	1	9	f1r	1	page-003.jpg	p003-m043
+c:1 e:1 c:1 h:2 e:1 h:1	1	6	f47v	1	page-094.jpg	p094-m031
+c:1 e:1 g:1 e:1 c:1 f:1 j:1	1	7	f1r	1	page-003.jpg	p003-m180
+c:1 e:1 h:1 e:1 c:1 h:2 e:1 f:1 f:1 i:1 d:1	1	11	f1r	1	page-003.jpg	p003-m046
+c:1 e:1 i:1 d:1 e:1 g:1 e:1 e:1 h:1	1	9	f1r	1	page-003.jpg	p003-m055
+c:1 f:1 j:1 a:1 b:1 c:1 a:1 b:1 d:1 c:1 e:1 c:1 h:2 e:1 f:1 f:1 i:1 d:1	1	18	f2r	1	page-005.jpg	p005-m053
+c:1 f:1 j:1 a:1 e:1 b:1 c:1 a:1 e:1 g:1 e:1 e:1 e:1 h:1	1	14	f1v	1	page-004.jpg	p004-m004
+c:1 f:1 j:1 e:1 c:1 h:2 e:1 f:1 l:1 f:1 i:1 d:1 e:1 c:2 h:2	1	15	f1r	1	page-003.jpg	p003-m088
+c:1 f:1 j:1 e:1 i:1 d:1	1	6	f1r	1	page-003.jpg	p003-m068
+c:1 f:1 j:1 e:1 i:1 d:1 e:1 f:1 k:1 f:1 i:1 d:1	1	12	f2r	1	page-005.jpg	p005-m088
+c:1 k:1 f:1 i:1 d:1	1	5	f1r	1	page-003.jpg	p003-m090
+c:2 a:1 m:1 c:1 a:1 g:1 e:1 e:1 h:1	1	9	f2r	1	page-005.jpg	p005-m042
+c:2 g:1 e:1 a:1 b:1 c:1 a:1 e:1 g:1 e:1 e:1 h:1	1	12	f47v	1	page-094.jpg	p094-m019
+c:2 g:1 e:1 c:1 e:1 e:1 e:1 i:1 d:1	1	9	f1v	1	page-004.jpg	p004-m053
+e:1 a:1 b:1 c:1 a:1 b:1 d:1 c:1 a:1 m:1 c:1 a:1 c:1 e:1 h:1	1	15	f1v	1	page-004.jpg	p004-m031
+e:1 a:1 b:1 c:1 a:1 b:1 d:1 e:1 f:1 f:1 i:1 d:1	1	12	f1r	1	page-003.jpg	p003-m170
+e:1 a:1 b:1 c:1 a:1 b:1 d:1 e:1 h:1	1	9	f2r	1	page-005.jpg	p005-m006
+e:1 a:1 b:1 c:1 a:1 b:1 d:1 g:1 e:1 c:1 f:1 j:1	1	12	f1r	1	page-003.jpg	p003-m061
+e:1 a:1 b:1 c:1 a:1 b:1 d:1 g:1 e:1 e:1 f:1 f:1 i:1 d:1	1	14	f1v	1	page-004.jpg	p004-m006
+e:1 a:1 b:1 c:1 a:1 b:1 d:1 g:1 e:1 e:1 f:1 k:1 f:1 i:1 d:1	1	15	f1r	1	page-003.jpg	p003-m041
+e:1 a:1 b:1 c:1 a:1 g:1 e:1 c:1 f:1 j:1 e:1 i:1 d:1 e:1 h:1	1	15	f2r	1	page-005.jpg	p005-m008
+e:1 a:1 b:1 c:1 a:1 g:1 e:1 e:1 c:1 h:2 c:1 e:1 h:1	1	13	f1v	1	page-004.jpg	p004-m016
+e:1 a:1 b:1 c:1 a:1 g:1 e:1 e:1 f:1 f:1 i:1 d:1	1	12	f1r	1	page-003.jpg	p003-m011
+e:1 a:1 b:1 c:1 a:1 g:1 e:1 e:1 h:1	1	9	f2r	1	page-005.jpg	p005-m045
+e:1 a:1 b:1 c:1 a:1 g:1 e:1 e:1 h:1 e:1 c:1 h:2 e:1 i:1	1	14	f1r	1	page-003.jpg	p003-m133
+e:1 a:1 e:1 b:1 c:1 a:1 b:1 d:1 c:1 f:1 j:1	1	11	f1v	1	page-004.jpg	p004-m089
+e:1 a:1 e:1 b:1 c:1 a:1 b:1 d:1 g:1 e:1 c:1	1	11	f1r	1	page-003.jpg	p003-m147
+e:1 a:1 e:1 b:1 c:1 a:1 b:1 d:1 g:1 e:1 c:1 e:1 c:1 h:2 e:1 f:1 f:1 j:1 e:1 e:1 i:1 d:1	1	22	f1r	1	page-003.jpg	p003-m072
+e:1 a:1 e:1 b:1 c:1 a:1 b:1 d:1 g:1 e:1 c:1 e:1 c:1 h:2 e:1 f:1 k:1 f:1 j:1 e:1 i:1 d:1	1	22	f1r	1	page-003.jpg	p003-m086
+e:1 a:1 e:1 b:1 c:1 a:1 b:1 d:1 g:1 e:1 c:1 e:1 f:1 f:1 j:1	1	15	f1v	1	page-004.jpg	p004-m034
+e:1 a:1 e:1 b:1 c:1 a:1 b:1 d:1 g:1 e:1 c:1 e:1 f:1 k:1 f:1 i:1 d:1	1	17	f1r	1	page-003.jpg	p003-m048
+e:1 a:1 e:1 b:1 c:1 a:1 b:1 d:1 g:1 e:1 e:1 e:1 h:1	1	13	f1r	1	page-003.jpg	p003-m069
+e:1 a:1 e:1 b:1 c:1 a:1 b:1 d:1 g:1 e:1 e:1 h:1	1	12	f1r	1	page-003.jpg	p003-m076
+e:1 a:1 e:1 b:1 c:1 a:1 b:1 d:1 k:1 f:1 i:1 d:1 e:1 c:1 h:2 e:1 f:1 e:1 g:1 e:1 c:1	1	21	f47v	1	page-094.jpg	p094-m040
+e:1 a:1 e:1 b:1 c:1 a:1 b:1 d:1 n:1 e:1 c:1 h:2 e:1 g:1 e:1 e:1 e:1 h:1 e:1 h:1 e:1 e:1 e:1 h:1	1	24	f1r	1	page-003.jpg	p003-m152
+e:1 a:1 e:1 b:1 c:1 a:1 b:1 d:1 n:1 e:1 g:1 e:1 c:1 f:1 j:1	1	15	f1r	1	page-003.jpg	p003-m122
+e:1 a:1 e:1 b:1 c:1 a:1 b:1 d:1 n:1 e:1 g:1 e:1 e:1 c:1 a:1 m:1 c:1 a:1	1	18	f47v	1	page-094.jpg	p094-m001
+e:1 a:1 e:1 b:1 c:1 a:1 e:1 g:1 e:1 e:1 h:1	1	11	f1r	1	page-003.jpg	p003-m080
+e:1 a:1 e:1 b:1 c:1 a:1 g:1 c:1	1	8	f2r	1	page-005.jpg	p005-m014
+e:1 a:1 e:1 b:1 c:1 a:1 g:1 e:1 c:1 e:1 f:1 f:1 i:1 d:1 e:1 h:1	1	16	f1r	1	page-003.jpg	p003-m025
+e:1 a:1 e:1 b:1 c:1 a:1 g:1 e:1 c:1 e:1 i:1 d:1	1	12	f1r	1	page-003.jpg	p003-m026
+e:1 a:1 e:1 b:1 c:1 a:1 g:1 e:1 c:1 f:1 i:1 d:1	1	12	f2r	1	page-005.jpg	p005-m093
+e:1 a:1 e:1 b:1 c:1 a:1 g:1 e:1 c:1 f:1 j:1	1	11	f1r	1	page-003.jpg	p003-m171
+e:1 a:1 e:1 b:1 c:1 a:1 g:1 e:1 c:1 f:1 j:1 e:1 c:1 h:2 e:1 f:1 f:1 i:1 d:1	1	19	f1r	1	page-003.jpg	p003-m173
+e:1 a:1 e:1 b:1 c:1 a:1 g:1 e:1 e:1 e:1 h:1	1	11	f2r	1	page-005.jpg	p005-m077
+e:1 a:1 e:1 b:1 c:1 a:1 g:1 e:1 e:1 e:1 h:1 e:1 h:1	1	13	f2r	1	page-005.jpg	p005-m016
+e:1 a:1 e:1 b:1 c:1 a:1 g:1 e:1 e:1 f:1 f:1 i:1 d:1 e:1 c:2 h:2 e:1 f:1 f:1 i:1 d:1	1	21	f1r	1	page-003.jpg	p003-m018
+e:1 a:1 e:1 b:1 c:1 a:1 g:1 e:1 e:1 f:1 j:1 e:1 i:1 d:1	1	14	f1r	1	page-003.jpg	p003-m138
+e:1 a:1 e:1 b:1 c:1 a:1 g:1 e:1 e:1 i:1 d:1 e:1 e:1 i:1 d:1	1	15	f1r	1	page-003.jpg	p003-m007
+e:1 a:1 e:1 b:1 c:1 a:1 g:1 e:1 f:1 c:1 f:1 i:1 d:1	1	13	f1r	1	page-003.jpg	p003-m032
+e:1 a:1 m:1 c:1 a:1 b:1 d:1 g:1 e:1 c:1 e:1 h:1	1	12	f1r	1	page-003.jpg	p003-m045
+e:1 a:1 m:1 c:1 a:1 b:1 d:1 g:1 e:1 e:1 e:1 f:1 f:1 j:1 e:1 h:1	1	16	f1r	1	page-003.jpg	p003-m130
+e:1 a:1 m:1 c:1 a:1 b:1 d:1 g:1 e:1 e:1 e:1 i:1 d:1 e:1 f:1 k:1 f:1 i:1 d:1	1	19	f1r	1	page-003.jpg	p003-m067
+e:1 a:1 m:1 c:1 a:1 b:1 d:1 g:1 e:1 e:1 f:1 f:1 i:1 d:1	1	14	f1r	1	page-003.jpg	p003-m040
+e:1 a:1 m:1 c:1 a:1 b:1 d:1 g:1 e:1 e:1 h:1	1	11	f2r	1	page-005.jpg	p005-m024
+e:1 a:1 m:1 c:1 a:1 c:2 g:1 e:1 e:1 e:1 h:1	1	11	f47v	1	page-094.jpg	p094-m083
+e:1 a:1 m:1 c:1 a:1 d:1 g:1 e:1 e:1 h:1	1	10	f47v	1	page-094.jpg	p094-m003
+e:1 a:1 m:1 c:1 a:1 g:1 e:1 e:1 c:1 h:2 e:1 h:1	1	12	f47v	1	page-094.jpg	p094-m042
+e:1 a:1 m:1 c:1 a:1 g:1 e:1 e:1 e:1 h:1	1	10	f1v	1	page-004.jpg	p004-m056
+e:1 a:1 m:1 c:1 a:1 g:1 e:1 e:1 f:1 f:1 j:1	1	11	f1r	1	page-003.jpg	p003-m158
+e:1 a:1 m:1 c:1 a:1 g:1 e:1 e:1 f:1 k:1 f:1 i:1 d:1	1	13	f1r	1	page-003.jpg	p003-m039
+e:1 c:1 h:2 a:1 b:1 c:1 a:1 c:1 f:1 j:1	1	10	f2r	1	page-005.jpg	p005-m037
+e:1 c:1 h:2 a:1 b:1 c:1 a:1 n:1 c:2 g:1 e:1 e:1 e:1 e:1 h:1	1	15	f1v	1	page-004.jpg	p004-m019
+e:1 c:1 h:2 c:1 f:1 i:1 d:1 e:1 g:1 e:1 c:1 f:1 i:1 d:1 e:1 h:1	1	16	f2r	1	page-005.jpg	p005-m009
+e:1 c:1 h:2 c:1 f:1 j:1 a:1 b:1 c:1 a:1 e:1 h:1	1	12	f1v	1	page-004.jpg	p004-m077
+e:1 c:1 h:2 c:1 f:1 j:1 c:1	1	7	f1v	1	page-004.jpg	p004-m059
+e:1 c:1 h:2 c:1 f:1 j:1 e:1 g:1 e:1 c:1 e:1 c:1 h:2 e:1 h:1	1	15	f1v	1	page-004.jpg	p004-m061
+e:1 c:1 h:2 c:1 k:1 f:1 i:1 d:1	1	8	f1r	1	page-003.jpg	p003-m029
+e:1 c:1 h:2 c:2 c:2 g:1 e:1 c:1 f:1 i:1 d:1	1	11	f1v	1	page-004.jpg	p004-m080
+e:1 c:1 h:2 c:2 g:1 e:1 e:1 f:1 k:1 f:1 i:1 d:1	1	12	f1r	1	page-003.jpg	p003-m196
+e:1 c:1 h:2 e:1 c:1 h:2 e:1 c:1 h:2 e:1 h:1 e:1 h:1	1	13	f1r	1	page-003.jpg	p003-m123
+e:1 c:1 h:2 e:1 f:1 c:1 e:1 a:1 b:1 c:1 a:1 g:1 e:1 c:1	1	14	f1r	1	page-003.jpg	p003-m139
+e:1 c:1 h:2 e:1 f:1 f:1 i:1 d:1 e:1 f:1 l:1 f:1 i:1 d:1	1	14	f1r	1	page-003.jpg	p003-m131
+e:1 c:1 h:2 e:1 f:1 f:1 i:1 d:1 l:1 f:1 i:1 d:1	1	12	f2r	1	page-005.jpg	p005-m070
+e:1 c:1 h:2 e:1 f:1 f:1 j:1 c:1 f:1 i:1 d:1	1	11	f2r	1	page-005.jpg	p005-m084
+e:1 c:1 h:2 e:1 f:1 f:1 j:1 d:1	1	8	f47v	1	page-094.jpg	p094-m055
+e:1 c:1 h:2 e:1 f:1 f:1 j:1 e:1 i:1 d:1	1	10	f2r	1	page-005.jpg	p005-m025
+e:1 c:1 h:2 e:1 f:1 f:1 k:1 f:1 i:1 d:1	1	10	f1r	1	page-003.jpg	p003-m146
+e:1 c:1 h:2 e:1 f:1 k:1 e:1 c:1 h:2 e:1 h:1	1	11	f47v	1	page-094.jpg	p094-m011
+e:1 c:1 h:2 e:1 f:1 k:1 f:1 i:1	1	8	f1r	1	page-003.jpg	p003-m172
+e:1 c:1 h:2 e:1 f:1 k:1 f:1 i:1 d:1 c:1 f:1 j:1	1	12	f2r	1	page-005.jpg	p005-m058
+e:1 c:1 h:2 e:1 f:1 k:1 f:1 i:1 d:1 e:1 h:1	1	11	f2r	1	page-005.jpg	p005-m046
+e:1 c:1 h:2 e:1 f:1 k:1 f:1 j:1 d:1	1	9	f47v	1	page-094.jpg	p094-m060
+e:1 c:1 h:2 e:1 f:1 k:1 f:1 j:1 e:1 c:1 h:2 e:1 h:1	1	13	f2r	1	page-005.jpg	p005-m057
+e:1 c:1 h:2 e:1 f:1 l:1 f:1 i:1 d:1 e:1 c:1 h:2	1	12	f2r	1	page-005.jpg	p005-m036
+e:1 c:1 h:2 e:1 f:1 l:1 f:1 j:1 d:1	1	9	f47v	1	page-094.jpg	p094-m041
+e:1 c:1 h:2 e:1 g:1 e:1 e:1 c:1	1	8	f1r	1	page-003.jpg	p003-m182
+e:1 c:1 h:2 e:1 g:1 e:1 e:1 e:1 e:1 h:1	1	10	f47v	1	page-094.jpg	p094-m081
+e:1 c:1 h:2 e:1 g:1 e:1 e:1 f:1 f:1 i:1 d:1	1	11	f1r	1	page-003.jpg	p003-m134
+e:1 c:1 h:2 e:1 h:1	1	5	f47v	1	page-094.jpg	p094-m058
+e:1 c:1 h:2 e:1 l:1 f:1 e:1 a:1 e:1 b:1 c:1 a:1 c:2 g:1 e:1 h:1	1	16	f1r	1	page-003.jpg	p003-m125
+e:1 c:1 h:2 f:1 i:1 c:1 h:1 e:1 f:1	1	9	f1v	1	page-004.jpg	p004-m027
+e:1 c:1 h:2 f:1 j:1 e:1 f:1 e:1 h:1	1	9	f47v	1	page-094.jpg	p094-m046
+e:1 c:1 h:2 f:1 j:1 e:1 i:1 d:1 n:1 e:1 g:1 e:1 c:1	1	13	f2r	1	page-005.jpg	p005-m059
+e:1 c:1 h:2 n:1 e:1 c:1 g:1 e:1 e:1 e:1 h:1	1	11	f47v	1	page-094.jpg	p094-m008
+e:1 c:1 h:2 n:1 e:1 g:1 e:1 c:1 f:1 j:1 e:1 h:1	1	12	f47v	1	page-094.jpg	p094-m028
+e:1 c:1 h:2 n:1 e:1 g:1 e:1 e:1 h:1	1	9	f47v	1	page-094.jpg	p094-m077
+e:1 c:2 h:2 c:1 e:1 g:1 e:1 c:1 e:1 c:1 h:2	1	11	f47v	1	page-094.jpg	p094-m038
+e:1 c:2 h:2 e:1 f:1 f:1 i:1 d:1 e:1 f:1 k:1 f:1 i:1 d:1	1	14	f1r	1	page-003.jpg	p003-m027
+e:1 c:2 h:2 e:1 f:1 k:1 e:1 h:1	1	8	f47v	1	page-094.jpg	p094-m013
+e:1 c:2 h:2 e:1 f:1 k:1 f:1 i:1 d:1	1	9	f47v	1	page-094.jpg	p094-m069
+e:1 c:2 h:2 e:1 k:1 f:1 i:1 d:1	1	8	f47v	1	page-094.jpg	p094-m052
+e:1 f:1 a:1 b:1 c:1 a:1 e:1 l:1 f:1 i:1 d:1	1	11	f1r	1	page-003.jpg	p003-m078
+e:1 f:1 f:1 i:1 c:1 h:1	1	6	f1v	1	page-004.jpg	p004-m007
+e:1 f:1 l:1 f:1 e:1 c:1 h:2 e:1 h:1	1	9	f2r	1	page-005.jpg	p005-m022
+e:1 f:1 l:1 f:1 i:1 d:1	1	6	f1r	1	page-003.jpg	p003-m016
+e:1 g:1 e:1 a:1 b:1 c:1 a:1 e:1 f:1 f:1 i:1 d:1 e:1 i:1 d:1	1	15	f2r	1	page-005.jpg	p005-m010
+e:1 g:1 e:1 a:1 m:1 c:1 a:1 c:1 e:1 c:1 h:2 e:1 c:1 h:2 e:1 h:1	1	16	f2r	1	page-005.jpg	p005-m023
+e:1 g:1 e:1 a:1 m:1 c:1 a:1 e:1 f:1 k:1 f:1 i:1 d:1	1	13	f1r	1	page-003.jpg	p003-m014
+e:1 g:1 e:1 c:1 a:1 b:1 c:1 a:1 e:1 c:1	1	10	f1v	1	page-004.jpg	p004-m025
+e:1 g:1 e:1 c:1 a:1 b:1 c:1 a:1 e:1 f:1 k:1 f:1 i:1 d:1 e:1 c:1 h:2	1	17	f2r	1	page-005.jpg	p005-m026
+e:1 g:1 e:1 c:1 a:1 b:1 c:1 a:1 e:1 h:1	1	10	f1v	1	page-004.jpg	p004-m040
+e:1 g:1 e:1 c:1 a:1 c:1	1	6	f1r	1	page-003.jpg	p003-m193
+e:1 g:1 e:1 c:1 a:1 c:2 b:1 c:1 a:1 e:1 g:1 e:1 c:1 f:1 j:1 a:1 m:1 c:1 a:1 c:2 g:1 e:1 e:1 e:1 h:1	1	25	f47v	1	page-094.jpg	p094-m056
+e:1 g:1 e:1 c:1 a:1 e:1 b:1 c:1 a:1 e:1 e:1 h:1	1	12	f1r	1	page-003.jpg	p003-m195
+e:1 g:1 e:1 c:1 a:1 m:1 c:1 a:1 e:1 g:1 e:1 e:1 e:1 h:1	1	14	f1v	1	page-004.jpg	p004-m085
+e:1 g:1 e:1 c:1 a:1 m:1 c:1 a:1 e:1 h:1	1	10	f1r	1	page-003.jpg	p003-m194
+e:1 g:1 e:1 c:1 e:1 a:1 b:1 c:1 a:1 b:1 d:1 e:1 g:1 e:1 e:1 h:1	1	16	f47v	1	page-094.jpg	p094-m005
+e:1 g:1 e:1 c:1 e:1 a:1 e:1 b:1 c:1 a:1 g:1 e:1 e:1 h:1	1	14	f1r	1	page-003.jpg	p003-m054
+e:1 g:1 e:1 c:1 e:1 c:1 h:2 c:1	1	8	f1v	1	page-004.jpg	p004-m047
+e:1 g:1 e:1 c:1 e:1 c:2 h:2 e:1 f:1 l:1 f:1 i:1 d:1	1	13	f1r	1	page-003.jpg	p003-m093
+e:1 g:1 e:1 c:1 e:1 g:1 e:1 e:1 h:1	1	9	f47v	1	page-094.jpg	p094-m068
+e:1 g:1 e:1 c:1 f:1 j:1 e:1 c:1 h:2 e:1 f:1 f:1 i:1 d:1	1	14	f2r	1	page-005.jpg	p005-m047
+e:1 g:1 e:1 c:1 f:1 j:1 e:1 f:1 k:1 f:1 i:1 d:1	1	12	f2r	1	page-005.jpg	p005-m072
+e:1 g:1 e:1 c:1 f:1 j:1 n:1 e:1 g:1 e:1 c:1	1	11	f47v	1	page-094.jpg	p094-m004
+e:1 g:1 e:1 e:1	1	4	f47v	1	page-094.jpg	p094-m044
+e:1 g:1 e:1 e:1 a:1 b:1 a:1 c:2 e:1 h:1	1	10	f47v	1	page-094.jpg	p094-m075
+e:1 g:1 e:1 e:1 a:1 b:1 c:1 a:1 e:1 f:1 l:1 f:1 i:1 d:1	1	14	f1r	1	page-003.jpg	p003-m120
+e:1 g:1 e:1 e:1 a:1 e:1 b:1 c:1 a:1 g:1 e:1 e:1 h:1	1	13	f2r	1	page-005.jpg	p005-m104
+e:1 g:1 e:1 e:1 c:1 f:1 j:1	1	7	f1v	1	page-004.jpg	p004-m054
+e:1 g:1 e:1 e:1 c:1 h:2 f:1 j:1 e:1 a:1 e:1 b:1 c:1 a:1 e:1 h:1	1	16	f47v	1	page-094.jpg	p094-m079
+e:1 g:1 e:1 e:1 e:1 f:1 f:1 i:1 d:1	1	9	f1r	1	page-003.jpg	p003-m038
+e:1 g:1 e:1 e:1 h:1 a:1 b:1 c:1 a:1 e:1 h:1	1	11	f47v	1	page-094.jpg	p094-m067
+e:1 g:1 e:1 e:1 h:1 a:1 b:1 c:1 a:1 e:1 h:1 d:1 e:1 j:1 e:1 f:1 f:1 j:1	1	18	f2r	1	page-005.jpg	p005-m099
+e:1 h:1 a:1 b:1 c:1 a:1 c:1 e:1 c:1 h:2 e:1 h:1	1	12	f2r	1	page-005.jpg	p005-m064
+e:1 h:1 a:1 b:1 c:1 a:1 c:1 f:1 i:1 d:1	1	10	f1r	1	page-003.jpg	p003-m008
+e:1 h:1 a:1 b:1 c:1 a:1 e:1 f:1 f:1 j:1	1	10	f1r	1	page-003.jpg	p003-m002
+e:1 h:1 a:1 b:1 c:1 a:1 e:1 f:1 k:1 f:1 i:1 d:1	1	12	f1r	1	page-003.jpg	p003-m023
+e:1 h:1 a:1 b:1 c:1 a:1 e:1 h:1	1	8	f2r	1	page-005.jpg	p005-m067
+e:1 h:1 a:1 e:1 b:1 c:1 a:1 e:1 f:1 k:1 f:1 i:1 d:1	1	13	f1r	1	page-003.jpg	p003-m004
+e:1 h:1 a:1 e:1 b:1 c:1 a:1 e:1 g:1 e:1 e:1 f:1 k:1 f:1 i:1 d:1	1	16	f2r	1	page-005.jpg	p005-m033
+e:1 h:1 a:1 m:1 c:1 a:1 b:1 d:1	1	8	f2r	1	page-005.jpg	p005-m002
+e:1 h:1 a:1 m:1 c:1 a:1 c:1 f:1 j:1 e:1 c:1 h:2 e:1 h:1	1	14	f2r	1	page-005.jpg	p005-m039
+e:1 h:1 a:1 m:1 c:1 a:1 e:1 e:1 c:1	1	9	f1v	1	page-004.jpg	p004-m008
+e:1 h:1 a:1 m:1 c:1 a:1 e:1 f:1 l:1 f:1 i:1 d:1	1	12	f1r	1	page-003.jpg	p003-m070
+e:1 h:1 e:1 a:1 b:1 c:1 a:1 e:1 e:1 h:1	1	10	f2r	1	page-005.jpg	p005-m101
+e:1 h:1 e:1 c:1 h:2 e:1 f:1 f:1 i:1 d:1 e:1 f:1 f:1 n:1 e:1 g:1 e:1 e:1 h:1	1	19	f1r	1	page-003.jpg	p003-m042
+e:1 h:1 e:1 c:1 h:2 e:1 f:1 l:1 f:1 i:1 d:1	1	11	f1r	1	page-003.jpg	p003-m155
+e:1 h:1 e:1 c:1 h:2 e:1 h:1	1	7	f2r	1	page-005.jpg	p005-m019
+e:1 h:1 e:1 c:2 h:2 e:1 f:1 l:1 f:1 i:1 d:1	1	11	f1r	1	page-003.jpg	p003-m066
+e:1 h:1 e:1 g:1 e:1 e:1 e:1 e:1 h:1	1	9	f1r	1	page-003.jpg	p003-m174
+e:1 h:1 e:1 g:1 e:1 e:1 f:1 l:1 f:1 i:1 d:1	1	11	f2r	1	page-005.jpg	p005-m081
+e:1 i:1 c:2 e:1 h:1	1	5	f47v	1	page-094.jpg	p094-m033
+e:1 i:1 d:1 c:1	1	4	f2r	1	page-005.jpg	p005-m065
+e:1 i:1 d:1 c:1 e:1 g:1 e:1 e:1 e:1 h:1	1	10	f1v	1	page-004.jpg	p004-m028
+e:1 i:1 d:1 c:1 f:1 i:1 d:1	1	7	f2r	1	page-005.jpg	p005-m038
+e:1 i:1 d:1 c:1 f:1 i:1 d:1 e:1 h:1	1	9	f1r	1	page-003.jpg	p003-m010
+e:1 i:1 d:1 e:1 a:1 e:1 b:1 c:1 a:1 g:1 e:1 e:1 h:1	1	13	f1r	1	page-003.jpg	p003-m081
+e:1 i:1 d:1 e:1 f:1 l:1 f:1 i:1 d:1 e:1 h:1	1	11	f1r	1	page-003.jpg	p003-m037
+e:1 i:1 d:1 e:1 g:1 e:1 c:1 e:1 c:1 h:2 e:1 h:1	1	12	f1v	1	page-004.jpg	p004-m088
+f:1 j:1 c:1 f:1 j:1	1	5	f1v	1	page-004.jpg	p004-m048
+f:1 j:1 e:1 f:1	1	4	f2r	1	page-005.jpg	p005-m028
+m:1 a:1 n:1 c:1 i:1 a:1 b:1 c:1 a:1 e:1 h:1	1	11	f2r	1	page-005.jpg	p005-m071
+n:1 c:1 g:1 e:1 h:1 n:1 e:1 g:1 e:1 c:1 f:1 j:1	1	12	f1r	1	page-003.jpg	p003-m044
+n:1 c:2 g:1 e:1 c:1 a:1 b:1 c:1 a:1 e:1 g:1 e:1 e:1 e:1 e:1	1	15	f1r	1	page-003.jpg	p003-m149
+n:1 c:2 g:1 e:1 e:1 h:1 a:1 e:1 b:1 c:1 a:1 b:1 d:1 e:1 b:1 c:1 a:1 e:1 b:1 c:1 a:1 c:1 f:1 j:1	1	24	f1r	1	page-003.jpg	p003-m137
+n:1 e:1 g:1 c:1	1	4	f2r	1	page-005.jpg	p005-m021
+n:1 e:1 g:1 e:1 a:1 e:1 b:1 c:1 a:1 c:1 f:1 i:1 d:1	1	13	f1r	1	page-003.jpg	p003-m190
+n:1 e:1 g:1 e:1 c:1 a:1 b:1 c:1 a:1	1	9	f1r	1	page-003.jpg	p003-m140
+n:1 e:1 g:1 e:1 c:1 e:1 c:1 h:2	1	8	f1r	1	page-003.jpg	p003-m024
+n:1 e:1 g:1 e:1 c:1 e:1 c:1 h:2 e:1 f:1 f:1 i:1 d:1 e:1 h:1	1	15	f1r	1	page-003.jpg	p003-m049
+n:1 e:1 g:1 e:1 c:1 e:1 c:2 h:2 e:1 f:1 l:1 f:1 i:1 d:1	1	14	f1r	1	page-003.jpg	p003-m079
+n:1 e:1 g:1 e:1 c:1 e:1 f:1 k:1 f:1 i:1 d:1	1	11	f1r	1	page-003.jpg	p003-m167
+n:1 e:1 g:1 e:1 c:1 e:1 h:1	1	7	f1r	1	page-003.jpg	p003-m083
+n:1 e:1 g:1 e:1 c:1 e:1 i:1 d:1	1	8	f1r	1	page-003.jpg	p003-m060
+n:1 e:1 g:1 e:1 c:1 f:1 j:1 e:1 c:2 h:2 e:1 h:1	1	12	f1r	1	page-003.jpg	p003-m009
+n:1 e:1 g:1 e:1 e:1	1	5	f1r	1	page-003.jpg	p003-m128
+n:1 e:1 g:1 e:1 e:1 a:1 b:1 c:1 a:1 e:1 h:1	1	11	f1r	1	page-003.jpg	p003-m021
+n:1 e:1 g:1 e:1 e:1 a:1 b:1 c:1 a:1 g:1 e:1 e:1 e:1 h:1	1	14	f1r	1	page-003.jpg	p003-m100
+n:1 e:1 g:1 e:1 e:1 a:1 e:1 b:1 c:1 a:1 g:1 e:1 e:1 f:1 k:1 f:1 i:1 d:1	1	18	f1r	1	page-003.jpg	p003-m135
+n:1 e:1 g:1 e:1 e:1 c:1	1	6	f1r	1	page-003.jpg	p003-m121
+n:1 e:1 g:1 e:1 e:1 e:1 e:1 i:1 d:1	1	9	f47v	1	page-094.jpg	p094-m029
+n:1 e:1 g:1 e:1 e:1 e:1 f:1 f:1 i:1 d:1	1	10	f1r	1	page-003.jpg	p003-m160
+n:1 e:1 g:1 e:1 e:1 f:1 f:1 i:1 d:1	1	9	f1r	1	page-003.jpg	p003-m015
+n:1 e:1 g:1 e:1 e:1 f:1 k:1 f:1 i:1 d:1	1	10	f1r	1	page-003.jpg	p003-m148
+n:1 e:1 g:1 e:1 f:1 i:1 d:1 c:1 e:1 h:1	1	10	f1r	1	page-003.jpg	p003-m006
