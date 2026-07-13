@@ -57,3 +57,13 @@ The release tests a narrow claim:
 It does not claim translation or final grammar.
 
 Optional-slot rows may contain new optional values; these are reported separately and are not counted as substitution-slot contradictions.
+
+## Open Science Statement
+
+This release is offered as a gift to the scientific community.
+
+Long live open source. Long live reproducible evidence. Science should be a public method for making claims answer to data, not a private marketplace of authority, dogma, or comfortable consensus.
+
+The intended standard is simple: reason over belief, measurements over mythology, and reproducibility over prestige.
+
+Hail open science.

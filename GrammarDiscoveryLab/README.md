@@ -130,6 +130,18 @@ After `npm run validate`:
 - `docs/LIMITATIONS.md`: scope limits, single-annotator status, image-rights caveat, and interpretation boundaries.
 - `expected-results/REPRODUCIBLE-RELEASE-V1-EXPECTED.md`: expected validation table and input checksums.
 
+## Open Science Statement
+
+This work is published as a gift to the scientific community.
+
+Long live open source. Long live reproducible evidence. Science should not be a private toll road, a prestige market, or a comfortable consensus machine. It should be a public method for forcing ideas to answer to data.
+
+VoynichLab is offered in that spirit: reason over authority, measurements over dogma, reproducibility over belief, and curiosity over institutional comfort. Anyone who wants to challenge this work should do so with better data, better arguments, and runnable evidence.
+
+No sacred claim, academic habit, political fashion, inherited doctrine, or profitable mythology should stand above inspection. Anti-scientific and genocidal ideologies deserve no shelter from reason.
+
+Hail open science.
+
 ## Research Status
 
 This release supports a methodological claim:
