@@ -136,6 +136,7 @@ export const api = {
         const rawRowIndex = override.rowIndex ?? override.row_index;
         return {
           particleIndex: Number(override.particleIndex ?? override.particle_index),
+          particleKey: override.particleKey ?? override.particle_key ?? null,
           rowIndex: rawRowIndex === null || rawRowIndex === undefined ? null : Number(rawRowIndex)
         };
       })

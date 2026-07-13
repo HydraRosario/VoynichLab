@@ -1281,9 +1281,12 @@ pub fn set_particle_row_overrides_batch(
                     return Err("El renglon debe ser 1 o mayor.".to_string());
                 }
             }
-            let particle_key = particle_keys
-                .get(draft.particle_index.max(1) as usize - 1)
+            let particle_key = draft
+                .particle_key
+                .as_ref()
+                .filter(|key| !key.trim().is_empty())
                 .cloned()
+                .or_else(|| particle_keys.get(draft.particle_index.max(1) as usize - 1).cloned())
                 .ok_or_else(|| "No pude resolver la particula actual.".to_string())?;
             Ok((particle_key, draft.row_index))
         })
@@ -3073,6 +3076,7 @@ pub struct MoleculeGapOverrideDraft {
 #[derive(Debug, Clone)]
 pub struct ParticleRowOverrideDraft {
     pub particle_index: i64,
+    pub particle_key: Option<String>,
     pub row_index: Option<i64>,
 }
 
@@ -3530,6 +3534,7 @@ fn particle_row_audits(
                     .into_iter()
                     .map(|particle| ParticlePlacementAudit {
                         source_index: particle.index as i64 + 1,
+                        particle_key: particle_key_for_group(atoms, &particles[particle.index]),
                         row_override: row_overrides
                             .get(&particle_key_for_group(atoms, &particles[particle.index]))
                             .copied(),
@@ -3649,16 +3654,17 @@ fn guided_particle_rows_from_particles(
         })
         .collect::<Vec<_>>();
     let mut overflow_spans = Vec::new();
+    let mut deferred_row_overrides = Vec::new();
 
     for (index, particle) in particles.iter().enumerate() {
         let span = particle_span(atoms, particle, index);
         let particle_key = particle_key_for_group(atoms, particle);
-        if let Some(row_index) = row_overrides
-            .get(&particle_key)
-            .and_then(|row_index| usize::try_from(*row_index - 1).ok())
-            .filter(|row_index| *row_index < rows.len())
-        {
-            rows[row_index].particles.push(span);
+        if let Some(target_row_index) = row_overrides.get(&particle_key).copied() {
+            if let Some(row) = rows.iter_mut().find(|row| row.row_index == target_row_index) {
+                row.particles.push(span);
+            } else {
+                deferred_row_overrides.push((span, target_row_index));
+            }
         } else if let Some(row_index) = containing_manual_row_band(&guides, &span) {
             rows[row_index].particles.push(span);
         } else {
@@ -3677,6 +3683,20 @@ fn guided_particle_rows_from_particles(
         let mut overflow_rows = fallback_particle_rows(overflow_spans, threshold);
         assign_particle_row_indexes(&mut overflow_rows, next_row_index);
         rows.extend(overflow_rows);
+    }
+
+    for (span, target_row_index) in deferred_row_overrides {
+        if let Some(row) = rows.iter_mut().find(|row| row.row_index == target_row_index) {
+            row.particles.push(span);
+        } else {
+            rows.push(ParticleRow {
+                row_index: target_row_index,
+                y: span.baseline_y,
+                top_y: span.y,
+                bottom_y: span.y + span.h,
+                particles: vec![span],
+            });
+        }
     }
 
     rows.sort_by(|a, b| a.y.partial_cmp(&b.y).unwrap_or(std::cmp::Ordering::Equal));

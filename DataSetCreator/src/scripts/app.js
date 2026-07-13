@@ -888,24 +888,40 @@ class App {
     if (!silent) this.showToast('Edicion de cortes cancelada', 'info');
   }
 
-  queueParticleRowOverrideEdit(sourceIndex, rowIndex) {
+  particleRowDraftKey(sourceIndex, particleKey = null) {
+    const cleanKey = String(particleKey || '').trim();
+    return cleanKey ? `key:${cleanKey}` : `source:${Number(sourceIndex || 0)}`;
+  }
+
+  queueParticleRowOverrideEdit(sourceIndex, rowIndex, particleKey = null) {
     const particleIndex = Number(sourceIndex || 0);
+    const cleanParticleKey = String(particleKey || '').trim() || null;
+    const draftKey = this.particleRowDraftKey(particleIndex, cleanParticleKey);
     const cleanRow = rowIndex === null ? null : Number(rowIndex || 0);
     if (!particleIndex || (cleanRow !== null && !cleanRow)) return;
-    if (!this.particleRowOverrideSnapshot.has(String(particleIndex))) {
-      this.particleRowOverrideSnapshot.set(String(particleIndex), this.currentParticleRowOverrideValue(particleIndex));
+    if (!this.particleRowOverrideSnapshot.has(draftKey)) {
+      this.particleRowOverrideSnapshot.set(draftKey, {
+        sourceIndex: particleIndex,
+        particleKey: cleanParticleKey,
+        rowIndex: this.currentParticleRowOverrideValue(particleIndex, cleanParticleKey),
+      });
     }
-    this.pendingParticleRowOverrides.set(String(particleIndex), { particleIndex, rowIndex: cleanRow });
-    this.applyLocalParticleRowOverride(particleIndex, cleanRow);
+    this.pendingParticleRowOverrides.set(draftKey, { particleIndex, particleKey: cleanParticleKey, rowIndex: cleanRow });
+    this.applyLocalParticleRowOverride(particleIndex, cleanRow, cleanParticleKey);
     this.updateEditControls();
   }
 
-  currentParticleRowOverrideValue(sourceIndex) {
+  currentParticleRowOverrideValue(sourceIndex, particleKey = null) {
     const explanation = this.atomPagePacket?.cluster_explanation || this.atomPagePacket?.clusterExplanation || {};
     const particleRows = explanation.particle_rows || explanation.particleRows || [];
+    const cleanParticleKey = String(particleKey || '').trim();
     for (const row of particleRows) {
       for (const particle of row.particles || []) {
-        if (Number(particle.source_index ?? particle.sourceIndex ?? 0) === Number(sourceIndex)) {
+        const matchKey = String(particle.particle_key ?? particle.particleKey ?? '').trim();
+        const matches = cleanParticleKey
+          ? matchKey === cleanParticleKey
+          : Number(particle.source_index ?? particle.sourceIndex ?? 0) === Number(sourceIndex);
+        if (matches) {
           return particle.row_override ?? particle.rowOverride ?? null;
         }
       }
@@ -913,12 +929,17 @@ class App {
     return null;
   }
 
-  applyLocalParticleRowOverride(sourceIndex, rowIndex) {
+  applyLocalParticleRowOverride(sourceIndex, rowIndex, particleKey = null) {
     const explanation = this.atomPagePacket?.cluster_explanation || this.atomPagePacket?.clusterExplanation || {};
     const particleRows = explanation.particle_rows || explanation.particleRows || [];
+    const cleanParticleKey = String(particleKey || '').trim();
     for (const row of particleRows) {
       for (const particle of row.particles || []) {
-        if (Number(particle.source_index ?? particle.sourceIndex ?? 0) !== Number(sourceIndex)) continue;
+        const matchKey = String(particle.particle_key ?? particle.particleKey ?? '').trim();
+        const matches = cleanParticleKey
+          ? matchKey === cleanParticleKey
+          : Number(particle.source_index ?? particle.sourceIndex ?? 0) === Number(sourceIndex);
+        if (!matches) continue;
         particle.row_override = rowIndex;
         particle.rowOverride = rowIndex;
       }
@@ -940,8 +961,8 @@ class App {
   }
 
   clearParticleRowOverrideEdits({ silent = false } = {}) {
-    for (const [sourceIndex, rowIndex] of this.particleRowOverrideSnapshot.entries()) {
-      this.applyLocalParticleRowOverride(Number(sourceIndex), rowIndex);
+    for (const snapshot of this.particleRowOverrideSnapshot.values()) {
+      this.applyLocalParticleRowOverride(snapshot.sourceIndex, snapshot.rowIndex, snapshot.particleKey);
     }
     this.pendingParticleRowOverrides.clear();
     this.particleRowOverrideSnapshot.clear();
@@ -1498,7 +1519,7 @@ class App {
     }
     if (this.pendingParticleRowOverrides.size) {
       for (const draft of this.pendingParticleRowOverrides.values()) {
-        this.applyLocalParticleRowOverride(draft.particleIndex, draft.rowIndex);
+        this.applyLocalParticleRowOverride(draft.particleIndex, draft.rowIndex, draft.particleKey);
       }
     }
     this.imageViewer.setSelectedMolecule(this.selectedMoleculeId);
@@ -1816,12 +1837,13 @@ class App {
     if (!this.currentImage || !button) return;
     if (!this.canSwitchMoleculeDuringEdit()) return;
     const sourceIndex = Number(button.dataset.particleSourceIndex || 0);
+    const particleKey = String(button.dataset.particleKey || '').trim() || null;
     const rowIndex = Number(button.dataset.rowIndex || 0);
     const action = button.dataset.particleRowAction || '';
     if (!sourceIndex || !rowIndex || !['up', 'down', 'auto'].includes(action)) return;
 
     const targetRow = action === 'auto' ? null : action === 'up' ? rowIndex - 1 : rowIndex + 1;
-    this.queueParticleRowOverrideEdit(sourceIndex, targetRow);
+    this.queueParticleRowOverrideEdit(sourceIndex, targetRow, particleKey);
     this.showToast(
       action === 'auto'
         ? 'Particula marcada para renglon automatico'
@@ -2210,16 +2232,19 @@ class App {
     const explanation = packet.cluster_explanation || packet.clusterExplanation || {};
     const particleRows = explanation.particle_rows || explanation.particleRows || [];
     const rowCount = particleRows.length;
-    const pendingRow = this.pendingParticleRowOverrides.get(String(sourceIndex));
     for (const row of particleRows || []) {
       const match = (row.particles || []).find((particle) => Number(particle.source_index ?? particle.sourceIndex ?? 0) === sourceIndex);
       if (match) {
+        const particleKey = String(match.particle_key ?? match.particleKey ?? '').trim();
+        const pendingRow = this.pendingParticleRowOverrides.get(this.particleRowDraftKey(sourceIndex, particleKey))
+          || this.pendingParticleRowOverrides.get(String(sourceIndex));
         const baseRowIndex = Number(row.row_index ?? row.rowIndex ?? 0);
         const displayRowIndex = pendingRow && pendingRow.rowIndex !== null ? Number(pendingRow.rowIndex) : baseRowIndex;
         return {
           rowIndex: displayRowIndex,
           rowCount,
           rowOverride: pendingRow ? pendingRow.rowIndex : match.row_override ?? match.rowOverride ?? null,
+          particleKey,
         };
       }
     }
@@ -2231,13 +2256,15 @@ class App {
     if (!sourceIndex || !rowInfo?.rowIndex) return '';
     const rowIndex = Number(rowInfo.rowIndex || 0);
     const rowCount = Number(rowInfo.rowCount || 0);
+    const particleKey = String(rowInfo.particleKey || '').trim();
+    const particleKeyAttr = this.escapeHtml(particleKey);
     const hasOverride = rowInfo.rowOverride !== null && rowInfo.rowOverride !== undefined;
     return `
       <span class="particle-detail__row-controls">
         <span>R${rowIndex}${hasOverride ? ' manual' : ''}</span>
-        <button class="particle-detail__move-btn" type="button" data-particle-row-action="up" data-particle-source-index="${sourceIndex}" data-row-index="${rowIndex}" ${rowIndex <= 1 ? 'disabled' : ''}>part. arriba</button>
-        <button class="particle-detail__move-btn" type="button" data-particle-row-action="down" data-particle-source-index="${sourceIndex}" data-row-index="${rowIndex}" ${rowCount && rowIndex >= rowCount ? 'disabled' : ''}>part. abajo</button>
-        <button class="particle-detail__move-btn" type="button" data-particle-row-action="auto" data-particle-source-index="${sourceIndex}" data-row-index="${rowIndex}" ${!hasOverride ? 'disabled' : ''}>part. auto</button>
+        <button class="particle-detail__move-btn" type="button" data-particle-row-action="up" data-particle-source-index="${sourceIndex}" data-particle-key="${particleKeyAttr}" data-row-index="${rowIndex}" ${rowIndex <= 1 ? 'disabled' : ''}>part. arriba</button>
+        <button class="particle-detail__move-btn" type="button" data-particle-row-action="down" data-particle-source-index="${sourceIndex}" data-particle-key="${particleKeyAttr}" data-row-index="${rowIndex}" ${rowCount && rowIndex >= rowCount ? 'disabled' : ''}>part. abajo</button>
+        <button class="particle-detail__move-btn" type="button" data-particle-row-action="auto" data-particle-source-index="${sourceIndex}" data-particle-key="${particleKeyAttr}" data-row-index="${rowIndex}" ${!hasOverride ? 'disabled' : ''}>part. auto</button>
       </span>
     `;
   }

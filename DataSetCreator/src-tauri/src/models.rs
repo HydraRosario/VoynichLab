@@ -214,6 +214,7 @@ pub struct ParticleRowAudit {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ParticlePlacementAudit {
     pub source_index: i64,
+    pub particle_key: String,
     pub row_override: Option<i64>,
     pub x: f64,
     pub y: f64,

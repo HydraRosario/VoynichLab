@@ -45,6 +45,7 @@ pub struct MoleculeGapOverrideDraft {
 #[serde(rename_all = "camelCase")]
 pub struct ParticleRowOverrideDraft {
     pub particle_index: i64,
+    pub particle_key: Option<String>,
     pub row_index: Option<i64>,
 }
 
@@ -382,6 +383,7 @@ pub fn set_particle_row_overrides_batch(
         .into_iter()
         .map(|draft| database::ParticleRowOverrideDraft {
             particle_index: draft.particle_index,
+            particle_key: draft.particle_key,
             row_index: draft.row_index,
         })
         .collect::<Vec<_>>();
