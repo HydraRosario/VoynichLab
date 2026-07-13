@@ -1,0 +1,15 @@
+{
+  "name": "voynichlab-grammar-discovery",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "validate": "node scripts/validate-release-v1.js",
+    "validate:grammar-v1": "node scripts/validate-frozen-grammar.js",
+    "current": "node scripts/run-current.js",
+    "export:molecules": "node scripts/export-molecule-table.js",
+    "discover": "node scripts/discover-grammar.js",
+    "validate:f2r": "node scripts/train-test-validation.js",
+    "freeze:v1": "node scripts/freeze-grammar-v1.js"
+  }
+}
