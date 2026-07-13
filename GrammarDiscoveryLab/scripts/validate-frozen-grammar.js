@@ -289,7 +289,7 @@ function writeTsv(filePath, rows, fields) {
   fs.mkdirSync(path.dirname(filePath), { recursive: true });
   fs.writeFileSync(filePath, [
     fields.join("\t"),
-    ...rows.map((row) => fields.map((field) => String(row[field] ?? "").replaceAll("\t", " ")).join("\t")),
+    ...rows.map((row) => fields.map((field) => String(row[field] ?? "").replaceAll("\t", " ")).join("\t").trimEnd()),
   ].join("\n") + "\n", "utf8");
 }
 

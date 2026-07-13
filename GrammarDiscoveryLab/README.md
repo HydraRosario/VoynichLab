@@ -123,12 +123,42 @@ After `npm run validate`:
 - `out/reproducible-release-v1/f2v/grammar-v1-vs-f2v-substitution.tsv`
 - `out/reproducible-release-v1/f2v/grammar-v1-vs-f2v-optional.tsv`
 
+## Current Experiment Commands
+
+The current research milestone can be reproduced with:
+
+```bash
+npm.cmd run validate
+npm.cmd run null-control:v1
+npm.cmd run null-control:v2
+npm.cmd run null-control:v3
+npm.cmd run null-control:v3:diagnostics
+npm.cmd run representation-comparison:v1
+npm.cmd run representation-alignment:v1
+npm.cmd run representation-comparison:v2-regions
+npm.cmd run representation-comparison:v2-question
+```
+
+The key reports are:
+
+- `out/null-control-v1/NULL-CONTROL-V1.md`
+- `out/null-control-v2-contextual/NULL-CONTROL-V2-CONTEXTUAL.md`
+- `out/null-control-v3/NULL-CONTROL-V3-MODEL-COMPARISON.md`
+- `out/null-control-v3/NULL-CONTROL-V3-DIAGNOSTICS.md`
+- `out/representation-comparison-v1/REPRESENTATION-COMPARISON-V1.md`
+- `out/representation-alignment-v1/REPRESENTATION-ALIGNMENT-V1.md`
+- `out/representation-comparison-v2-regions/REPRESENTATION-COMPARISON-V2-REGIONS.md`
+- `out/representation-comparison-v2-regions/EVA-QUESTION-MARK-SENSITIVITY.md`
+
+`REPRESENTATION-COMPARISON-V2-REGIONS` is the current ATOMS-vs-EVA comparison. It is exploratory evidence that ATOMS-V1 preserves more out-of-sample regional predictive structure than EVA under the current local-context protocol. It is not a decipherment claim, not proof of global superiority, and not a claim that ATOMS symbols are letters, phonemes, morphemes, or semantic units.
+
 ## Scientific Documentation
 
 - `docs/METHODOLOGY.md`: exact validation method and train/test separation.
 - `docs/ATOMS-V1-SPECIFICATION.md`: frozen ATOMS-V1 symbol inventory used by this release.
 - `docs/LIMITATIONS.md`: scope limits, single-annotator status, image-rights caveat, and interpretation boundaries.
 - `expected-results/REPRODUCIBLE-RELEASE-V1-EXPECTED.md`: expected validation table and input checksums.
+- `RESEARCH-TIMELINE.md`: chronological record of positive, negative, and weakened experimental results through the ATOMS-vs-EVA regional comparison.
 
 ## Open Science Statement
 
@@ -148,4 +178,8 @@ This release supports a methodological claim:
 
 > A stroke-based ATOMS representation reveals molecule frames with restricted slots that reappear in held-out folios.
 
-It does not claim decipherment, phonetic values, semantic translation, or a complete Voynich grammar.
+The current regional comparison adds a separate exploratory result:
+
+> Under matched regional out-of-sample conditions, ATOMS-V1 produced lower normalized uncertainty, higher top-1 accuracy, and lower unseen-context rate than EVA across aligned manuscript regions.
+
+It does not claim decipherment, phonetic values, semantic translation, global representation optimality, or a complete Voynich grammar.
