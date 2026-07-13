@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="78" height="33" viewBox="0 0 78 33">
   <title>atom 2784 g:1</title>
-  <metadata>{&quot;entityType&quot;:&quot;atom&quot;,&quot;entityId&quot;:&quot;2784&quot;,&quot;token&quot;:&quot;g:1&quot;,&quot;signature&quot;:&quot;g:1&quot;,&quot;imageName&quot;:&quot;page-094.jpg&quot;,&quot;imageId&quot;:94,&quot;bounds&quot;:{&quot;x&quot;:836,&quot;y&quot;:723,&quot;w&quot;:78,&quot;h&quot;:33},&quot;atoms&quot;:[{&quot;id&quot;:2784,&quot;token&quot;:&quot;g:1&quot;,&quot;particle_id&quot;:&quot;img94-m18-p2&quot;,&quot;molecule_id&quot;:&quot;img94-m18&quot;,&quot;atom_order&quot;:2}]}</metadata>
+  <metadata>{&quot;entityType&quot;:&quot;atom&quot;,&quot;entityId&quot;:&quot;2784&quot;,&quot;token&quot;:&quot;g:1&quot;,&quot;signature&quot;:&quot;g:1&quot;,&quot;imageName&quot;:&quot;page-094.jpg&quot;,&quot;imageId&quot;:94,&quot;bounds&quot;:{&quot;x&quot;:836,&quot;y&quot;:723,&quot;w&quot;:78,&quot;h&quot;:33},&quot;atoms&quot;:[{&quot;id&quot;:2784,&quot;token&quot;:&quot;g:1&quot;,&quot;particle_id&quot;:&quot;img94-m18-p4&quot;,&quot;molecule_id&quot;:&quot;img94-m18&quot;,&quot;atom_order&quot;:2}]}</metadata>
   <rect x="0" y="0" width="78" height="33" fill="#f8f0d8"/>
   <image href="file:///C:/Users/HHHES/AppData/Roaming/com.voynichlab.datasetcreator/images/1/33b1988f-7aaa-4207-bfa8-f26b742ac4b1.jpg" x="-836" y="-723" width="2932" height="3769" opacity="0.92"/>
   <rect x="0.5" y="0.5" width="77" height="32" fill="none" stroke="#111827" stroke-width="1" opacity="0.35"/>

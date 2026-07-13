@@ -1,0 +1,31 @@
+severity	category	reason	image_name	molecule_id	particle_id	row_hint	observed	expected	support	atom_ids	particle_ids
+inspect	dominant-role-exception	d:1 is final in 59/61 occurrences	page-005.jpg	img5-m21	img5-m21-p1	y=709	d:1 as medial in e:1 a:1 m:1 c:1 a:1 b:1 d:1 g:1 e:1	d:1 as final	59/61	6331	img5-m21-p1
+inspect	dominant-role-exception	i:1 is medial in 56/57 occurrences	page-005.jpg	img5-m72	img5-m72-p1	y=2618	i:1 as final in m:1 a:1 n:1 c:1 i:1	i:1 as medial	56/57	6508	img5-m72-p1
+inspect	dominant-role-exception	d:1 is final in 59/61 occurrences	page-005.jpg	img5-m92	img5-m92-p5	y=2736	d:1 as initial in d:1 e:1 j:1	d:1 as final	59/61	6380	img5-m92-p5
+inspect	strong-context-exception	f:1 final usually satisfies has_prior e:1	page-005.jpg	img5-m24	img5-m24-p2	y=747	l:1 f:1	has_prior e:1	40/41	6224	img5-m24-p2
+inspect	strong-context-exception	f:1 final usually satisfies prev_is e:1	page-005.jpg	img5-m24	img5-m24-p2	y=747	l:1 f:1	prev_is e:1	40/41	6224	img5-m24-p2
+inspect	strong-context-exception	f:1 final usually satisfies starts_with e:1	page-005.jpg	img5-m24	img5-m24-p2	y=747	l:1 f:1	starts_with e:1	40/41	6224	img5-m24-p2
+inspect	strong-context-exception	g:1 medial usually satisfies has_after e:1	page-005.jpg	img5-m25	img5-m25-p2	y=741	e:1 g:1 c:1	has_after e:1	51/53	6412	img5-m25-p2
+inspect	strong-context-exception	g:1 medial usually satisfies next_is e:1	page-005.jpg	img5-m25	img5-m25-p2	y=741	e:1 g:1 c:1	next_is e:1	51/53	6412	img5-m25-p2
+inspect	strong-context-exception	g:1 medial usually satisfies ends_with e:1	page-005.jpg	img5-m25	img5-m25-p2	y=741	e:1 g:1 c:1	ends_with e:1	51/53	6412	img5-m25-p2
+inspect	strong-context-exception	d:1 final usually satisfies has_prior i:1	page-005.jpg	img5-m3	img5-m3-p2	y=446	a:1 m:1 c:1 a:1 b:1 d:1	has_prior i:1	56/59	6345	img5-m3-p2
+inspect	strong-context-exception	d:1 final usually satisfies prev_is i:1	page-005.jpg	img5-m3	img5-m3-p2	y=446	a:1 m:1 c:1 a:1 b:1 d:1	prev_is i:1	56/59	6345	img5-m3-p2
+inspect	strong-context-exception	d:1 final usually satisfies has_prior i:1	page-005.jpg	img5-m4	img5-m4-p1	y=468	e:1 a:1 b:1 c:1 a:1 b:1 d:1	has_prior i:1	56/59	6347	img5-m4-p1
+inspect	strong-context-exception	d:1 final usually satisfies prev_is i:1	page-005.jpg	img5-m4	img5-m4-p1	y=468	e:1 a:1 b:1 c:1 a:1 b:1 d:1	prev_is i:1	56/59	6347	img5-m4-p1
+inspect	strong-context-exception	f:1 medial usually satisfies has_after d:1	page-005.jpg	img5-m49	img5-m49-p3	y=2433	k:1 f:1 j:1	has_after d:1	23/24	6163	img5-m49-p3
+inspect	strong-context-exception	f:1 medial usually satisfies has_after i:1	page-005.jpg	img5-m49	img5-m49-p3	y=2433	k:1 f:1 j:1	has_after i:1	23/24	6163	img5-m49-p3
+inspect	strong-context-exception	f:1 medial usually satisfies next_is i:1	page-005.jpg	img5-m49	img5-m49-p3	y=2433	k:1 f:1 j:1	next_is i:1	23/24	6163	img5-m49-p3
+inspect	strong-context-exception	f:1 medial usually satisfies ends_with d:1	page-005.jpg	img5-m49	img5-m49-p3	y=2433	k:1 f:1 j:1	ends_with d:1	23/24	6163	img5-m49-p3
+inspect	strong-context-exception	k:1 initial usually satisfies has_after d:1	page-005.jpg	img5-m49	img5-m49-p3	y=2433	k:1 f:1 j:1	has_after d:1	17/18	6233	img5-m49-p3
+inspect	strong-context-exception	k:1 initial usually satisfies has_after i:1	page-005.jpg	img5-m49	img5-m49-p3	y=2433	k:1 f:1 j:1	has_after i:1	17/18	6233	img5-m49-p3
+inspect	strong-context-exception	k:1 initial usually satisfies ends_with d:1	page-005.jpg	img5-m49	img5-m49-p3	y=2433	k:1 f:1 j:1	ends_with d:1	17/18	6233	img5-m49-p3
+inspect	strong-context-exception	d:1 final usually satisfies has_prior i:1	page-005.jpg	img5-m57	img5-m57-p3	y=2436	a:1 b:1 c:1 a:1 b:1 d:1	has_prior i:1	56/59	6391	img5-m57-p3
+inspect	strong-context-exception	d:1 final usually satisfies prev_is i:1	page-005.jpg	img5-m57	img5-m57-p3	y=2436	a:1 b:1 c:1 a:1 b:1 d:1	prev_is i:1	56/59	6391	img5-m57-p3
+inspect	strong-context-exception	g:1 medial usually satisfies has_after e:1	page-005.jpg	img5-m9	img5-m9-p1	y=576	e:1 a:1 e:1 b:1 c:1 a:1 g:1 c:1	has_after e:1	51/53	6400	img5-m9-p1
+inspect	strong-context-exception	g:1 medial usually satisfies next_is e:1	page-005.jpg	img5-m9	img5-m9-p1	y=576	e:1 a:1 e:1 b:1 c:1 a:1 g:1 c:1	next_is e:1	51/53	6400	img5-m9-p1
+inspect	strong-context-exception	g:1 medial usually satisfies ends_with e:1	page-005.jpg	img5-m9	img5-m9-p1	y=576	e:1 a:1 e:1 b:1 c:1 a:1 g:1 c:1	ends_with e:1	51/53	6400	img5-m9-p1
+inspect	strong-context-exception	j:1 final usually satisfies has_prior f:1	page-005.jpg	img5-m92	img5-m92-p5	y=2736	d:1 e:1 j:1	has_prior f:1	25/26	6379	img5-m92-p5
+inspect	strong-context-exception	j:1 final usually satisfies prev_is f:1	page-005.jpg	img5-m92	img5-m92-p5	y=2736	d:1 e:1 j:1	prev_is f:1	25/26	6379	img5-m92-p5
+informational	manual-gap-overrides	manual cut/join overrides exist; audit visually before final freeze if desired	page-005.jpg				0		0 gap overrides		
+informational	manual-row-overrides	manual row overrides exist; these are expected after row editing but worth documenting	page-005.jpg				18		18 row overrides		
+informational	molecule-minority-order	same inventory has a minority order; bag=a:1 a:1 b:1 c:1 e:1 e:1 e:1 e:1 e:1 g:1 h:1	page-005.jpg	img5-m93		y=2741	e:1 g:1 e:1 e:1 a:1 e:1 b:1 c:1 a:1 e:1 h:1	e:1 a:1 e:1 b:1 c:1 a:1 g:1 e:1 e:1 e:1 h:1	minority 1/2; dominant 1/2	5887 6447 5888 5889 5979 5890 6003 6066 5980 5891 5939	img5-m93-p1 img5-m93-p2 img5-m93-p3 img5-m93-p4

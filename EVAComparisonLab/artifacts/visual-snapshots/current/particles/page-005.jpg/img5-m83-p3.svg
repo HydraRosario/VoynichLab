@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="52" height="78" viewBox="0 0 52 78">
+  <title>particle img5-m83-p3 f:1 j:1</title>
+  <metadata>{&quot;entityType&quot;:&quot;particle&quot;,&quot;entityId&quot;:&quot;img5-m83-p3&quot;,&quot;token&quot;:&quot;f:1 j:1&quot;,&quot;signature&quot;:&quot;f:1 j:1&quot;,&quot;imageName&quot;:&quot;page-005.jpg&quot;,&quot;imageId&quot;:5,&quot;bounds&quot;:{&quot;x&quot;:1028,&quot;y&quot;:2717,&quot;w&quot;:52,&quot;h&quot;:78},&quot;atoms&quot;:[{&quot;id&quot;:6196,&quot;token&quot;:&quot;f:1&quot;,&quot;particle_id&quot;:&quot;img5-m83-p3&quot;,&quot;molecule_id&quot;:&quot;img5-m83&quot;,&quot;atom_order&quot;:1},{&quot;id&quot;:6478,&quot;token&quot;:&quot;j:1&quot;,&quot;particle_id&quot;:&quot;img5-m83-p3&quot;,&quot;molecule_id&quot;:&quot;img5-m83&quot;,&quot;atom_order&quot;:2}]}</metadata>
+  <rect x="0" y="0" width="52" height="78" fill="#f8f0d8"/>
+  <image href="file:///C:/Users/HHHES/AppData/Roaming/com.voynichlab.datasetcreator/images/1/a6cd3b6e-2a78-4b30-a4be-5d186aea258e.jpg" x="-1028" y="-2717" width="2691" height="3770" opacity="0.92"/>
+  <rect x="0.5" y="0.5" width="51" height="77" fill="none" stroke="#111827" stroke-width="1" opacity="0.35"/>
+  <polyline points="23,22 23,23 23,24 24,24 24,25 24,26 25,26 25,27 26,28 26,29 27,29 27,30 28,31 28,32 29,32 29,33 30,33 30,34 31,34 31,35 31,36 32,36 32,37 32,38 33,38 33,39 34,39 34,40 35,41 35,42 36,42 36,43" fill="none" stroke="#00a2ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.95">
+    <title>6196 f:1</title>
+  </polyline>
+  <polyline points="23,23 23,22 24,21 24,20 25,20 25,19 26,19 27,18 28,17 29,17 29,16 30,16 31,16 32,16 33,16 33,17 34,17 34,18 34,19 34,20 34,21 34,22 34,23 34,24 34,25 34,26 34,27 34,28 34,29 34,30 33,31 33,32 33,33 33,34 32,35 32,36 32,37 31,38 31,39 31,40 31,41 30,41 30,42 30,43 29,44 29,45 28,46 28,47 27,48 27,49 26,49 26,50 25,51 25,52 24,53 23,54 23,55 22,56 22,57 21,58 20,58 19,59 19,60 18,61 17,62 16,62" fill="none" stroke="#4a9e6a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.95">
+    <title>6478 j:1</title>
+  </polyline>
+</svg>

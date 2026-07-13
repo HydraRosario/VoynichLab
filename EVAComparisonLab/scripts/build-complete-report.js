@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 const root = process.cwd();
-const combinedDir = path.join(root, "cases/combined-f1r-f1v-f47v-full-current");
+const combinedDir = path.join(root, "cases/combined-f1r-f1v-f2r-f47v-full-current");
 const snapshotsDir = path.join(root, "artifacts/visual-snapshots/current");
 const outPath = path.join(root, "cases/FINAL-COMPLETE-REPORT.md");
 

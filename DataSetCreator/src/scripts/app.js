@@ -1643,16 +1643,25 @@ class App {
     const packet = this.atomPagePacket || {};
     const lightweight = Boolean(options.lightweight);
     const explanation = packet.cluster_explanation || packet.clusterExplanation || {};
+    const particles = packet.particles || [];
+    const molecules = packet.molecules || [];
     const links = explanation.links || [];
     const particleLinks = links.filter((link) => (link.stage || '') === 'particle' && link.accepted);
-    const centers = (explanation.gap_centers || explanation.gapCenters || [])
+    const gapCount = Number(explanation.gap_count ?? explanation.gapCount ?? 0);
+    const centers = gapCount >= 12 ? (explanation.gap_centers || explanation.gapCenters || [])
       .map((value) => this.formatMetric(value))
-      .join(' / ');
+      .join(' / ') : '';
     const microThreshold = explanation.micro_threshold ?? explanation.microThreshold;
     const macroThreshold = explanation.macro_threshold ?? explanation.macroThreshold;
     const moleculeGaps = explanation.molecule_gaps || explanation.moleculeGaps || [];
     const particleRows = explanation.particle_rows || explanation.particleRows || [];
     const moleculeAudits = packet.molecule_audits || packet.moleculeAudits || [];
+    const hasSegmentation = particles.length > 0 || molecules.length > 0 || particleRows.length > 0 || moleculeAudits.length > 0;
+    const hasCalibratedGaps = gapCount >= 12;
+    if (!hasSegmentation) {
+      this.annotationPanel.setClusterDebugHtml('');
+      return;
+    }
     const suspiciousMolecules = moleculeAudits.filter((molecule) => {
       const particles = molecule.particles || [];
       return Number(molecule.particle_count ?? molecule.particleCount ?? particles.length) === 1;
@@ -1662,12 +1671,12 @@ class App {
       <section class="cluster-debug-panel">
         <div class="cluster-debug__summary">
           ${this.renderClusterMetric('Atomos', (packet.atoms || []).length)}
-          ${this.renderClusterMetric('Particulas', (packet.particles || []).length)}
-          ${this.renderClusterMetric('Moleculas', (packet.molecules || []).length)}
+          ${this.renderClusterMetric('Particulas', particles.length)}
+          ${this.renderClusterMetric('Moleculas', molecules.length)}
           ${this.renderClusterMetric('Revisar', suspiciousMolecules.length)}
           ${this.renderClusterMetric('Contactos', particleLinks.length)}
-          ${this.renderOptionalClusterMetric('Micro gap', microThreshold)}
-          ${this.renderOptionalClusterMetric('Macro gap', macroThreshold)}
+          ${hasCalibratedGaps ? this.renderOptionalClusterMetric('Micro gap', microThreshold) : ''}
+          ${hasCalibratedGaps ? this.renderOptionalClusterMetric('Macro gap', macroThreshold) : ''}
         </div>
         <div class="cluster-debug__legend">
           <span class="cluster-debug__key"><i class="cluster-debug__line cluster-debug__line--particle"></i>particula</span>
@@ -1675,8 +1684,8 @@ class App {
           <span class="cluster-debug__key"><i class="cluster-debug__line cluster-debug__line--cut"></i>corte</span>
         </div>
         <div class="cluster-debug__notes">
-          <span>${particleLinks.length} contactos aceptados forman ${(packet.particles || []).length} particula${(packet.particles || []).length !== 1 ? 's' : ''}.</span>
-          <span>${(packet.molecules || []).length} molecula${(packet.molecules || []).length !== 1 ? 's' : ''} por renglon y gap horizontal.</span>
+          <span>${particleLinks.length} contactos aceptados forman ${particles.length} particula${particles.length !== 1 ? 's' : ''}.</span>
+          <span>${molecules.length} molecula${molecules.length !== 1 ? 's' : ''} por renglon y gap horizontal.</span>
           ${suspiciousMolecules.length ? `<span>${suspiciousMolecules.length} molecula${suspiciousMolecules.length !== 1 ? 's' : ''} de una sola particula: revisar posible corte sobrante.</span>` : ''}
           ${centers ? `<span>Centros: ${this.escapeHtml(centers)}.</span>` : ''}
           <button class="cluster-debug__undo-btn" type="button" data-clear-latest-particle-merge>deshacer ultima fusion</button>

@@ -1,0 +1,3 @@
+scope	images	atoms	groups	vocabulary	symbols	observed_symbol_role_cells	tests	raw_hypotheses	reported_candidates	min_share	min_delta
+particle	page-003.jpg,page-004.jpg,page-005.jpg,page-094.jpg	4557	1777	16	a:1,b:1,c:1,c:2,d:1,e:1,f:1,g:1,h:1,h:2,i:1,j:1,k:1,l:1,m:1,n:1	38	6	3420	169	0.8	0.45
+molecule	page-003.jpg,page-004.jpg,page-005.jpg,page-094.jpg	4557	473	16	a:1,b:1,c:1,c:2,d:1,e:1,f:1,g:1,h:1,h:2,i:1,j:1,k:1,l:1,m:1,n:1	32	6	2880	184	0.8	0.45

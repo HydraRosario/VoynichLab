@@ -1,0 +1,3 @@
+severity	category	reason	image_name	molecule_id	particle_id	row_hint	observed	expected	support	atom_ids	particle_ids	anomaly_status	anomaly_note
+must_review	strong-context-exception	g:1 medial usually satisfies has_prior e:1	page-005.jpg	img5-m35	img5-m35-p1	y=887	c:2 a:1 m:1 c:1 a:1 g:1 e:1	has_prior e:1	52/53	6417	img5-m35-p1	known-valid	page-005 img5-m35-p1; visually confirmed rare g:1 placement in c:2 a:1 m:1 c:1 a:1 g:1 e:1.
+must_review	strong-context-exception	g:1 medial usually satisfies starts_with e:1	page-005.jpg	img5-m35	img5-m35-p1	y=887	c:2 a:1 m:1 c:1 a:1 g:1 e:1	starts_with e:1	52/53	6417	img5-m35-p1	known-valid	page-005 img5-m35-p1; visually confirmed rare g:1 placement in c:2 a:1 m:1 c:1 a:1 g:1 e:1.

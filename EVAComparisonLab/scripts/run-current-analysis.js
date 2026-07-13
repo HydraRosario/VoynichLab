@@ -6,25 +6,30 @@ const node = process.execPath;
 
 const f1rDir = "cases/f1r-full";
 const f1vDir = "cases/f1v-full";
+const f2rDir = "cases/f2r-full";
 const f47vDir = "cases/f47v-full";
-const combinedDir = "cases/combined-f1r-f1v-f47v-full-current";
-const currentImages = "page-003.jpg,page-004.jpg,page-094.jpg";
-const currentSymbols = "d:1,e:1,c:1,f:1,a:1,h:1,h:2,m:1,g:1,j:1,n:1,k:1,l:1";
+const combinedDir = "cases/combined-f1r-f1v-f2r-f47v-full-current";
+const currentImages = "page-003.jpg,page-004.jpg,page-005.jpg,page-094.jpg";
+const currentSymbols = "d:1,e:1,c:1,c:2,f:1,a:1,h:1,h:2,m:1,g:1,j:1,n:1,k:1,l:1";
 
 const commands = [
   ["Extract full f1r EVA", ["scripts/extract-ivtff-page.js", "--source", "sources/IT2a-n.txt", "--page", "f1r", "--out-dir", f1rDir]],
   ["Extract full f1v EVA", ["scripts/extract-ivtff-page.js", "--source", "sources/IT2a-n.txt", "--page", "f1v", "--out-dir", f1vDir]],
+  ["Extract full f2r EVA", ["scripts/extract-ivtff-page.js", "--source", "sources/IT2a-n.txt", "--page", "f2r", "--out-dir", f2rDir]],
   ["Extract full f47v EVA", ["scripts/extract-ivtff-page.js", "--source", "sources/IT2a-n.txt", "--page", "f47v", "--out-dir", f47vDir]],
   ["Export page-003 atoms", ["scripts/export-datasetcreator-atoms.js", "--image", "page-003.jpg", "--out", `${f1rDir}/atoms-current.tsv`]],
   ["Export page-004 atoms", ["scripts/export-datasetcreator-atoms.js", "--image", "page-004.jpg", "--out", `${f1vDir}/atoms-current.tsv`]],
+  ["Export page-005 atoms", ["scripts/export-datasetcreator-atoms.js", "--image", "page-005.jpg", "--out", `${f2rDir}/atoms-current.tsv`]],
   ["Export page-094 atoms", ["scripts/export-datasetcreator-atoms.js", "--image", "page-094.jpg", "--out", `${f47vDir}/atoms-current.tsv`]],
   ["f1r role entropy", ["scripts/role-entropy.js", "--eva", `${f1rDir}/eva-tokens.tsv`, "--atoms", `${f1rDir}/atoms-current.tsv`, "--out", `${f1rDir}/role-entropy.md`]],
   ["f1v role entropy", ["scripts/role-entropy.js", "--eva", `${f1vDir}/eva-tokens.tsv`, "--atoms", `${f1vDir}/atoms-current.tsv`, "--out", `${f1vDir}/role-entropy.md`]],
+  ["f2r role entropy", ["scripts/role-entropy.js", "--eva", `${f2rDir}/eva-tokens.tsv`, "--atoms", `${f2rDir}/atoms-current.tsv`, "--out", `${f2rDir}/role-entropy.md`]],
   ["f1r atom symbols", ["scripts/list-atom-symbols.js", "--atoms", `${f1rDir}/atoms-current.tsv`, "--out", `${f1rDir}/atom-symbols.md`]],
   ["f1v atom symbols", ["scripts/list-atom-symbols.js", "--atoms", `${f1vDir}/atoms-current.tsv`, "--out", `${f1vDir}/atom-symbols.md`]],
+  ["f2r atom symbols", ["scripts/list-atom-symbols.js", "--atoms", `${f2rDir}/atoms-current.tsv`, "--out", `${f2rDir}/atom-symbols.md`]],
   ["f47v atom symbols", ["scripts/list-atom-symbols.js", "--atoms", `${f47vDir}/atoms-current.tsv`, "--out", `${f47vDir}/atom-symbols.md`]],
-  ["Combine current cases", ["scripts/combine-cases.js", "--cases", `${f1rDir},${f1vDir},${f47vDir}`, "--out-dir", combinedDir]],
-  ["Line alignment audit", ["scripts/line-alignment-audit.js", "--case-dir", combinedDir, "--page-image-map", "f1r=page-003.jpg,f1v=page-004.jpg,f47v=page-094.jpg"]],
+  ["Combine current cases", ["scripts/combine-cases.js", "--cases", `${f1rDir},${f1vDir},${f2rDir},${f47vDir}`, "--out-dir", combinedDir]],
+  ["Line alignment audit", ["scripts/line-alignment-audit.js", "--case-dir", combinedDir, "--page-image-map", "f1r=page-003.jpg,f1v=page-004.jpg,f2r=page-005.jpg,f47v=page-094.jpg"]],
   ["Combined role entropy", ["scripts/role-entropy.js", "--eva", `${combinedDir}/eva-tokens.tsv`, "--atoms", `${combinedDir}/atoms-current.tsv`, "--out", `${combinedDir}/role-entropy.md`]],
   ["Combined atom symbols", ["scripts/list-atom-symbols.js", "--atoms", `${combinedDir}/atoms-current.tsv`, "--out", `${combinedDir}/atom-symbols.md`]],
   ["Particle rule discovery", ["scripts/contextual-rule-discovery.js", "--scope", "particle", "--symbols", currentSymbols, "--images", currentImages, "--out", `${combinedDir}/contextual-rule-discovery.md`, "--tsv", `${combinedDir}/contextual-rule-discovery.tsv`]],

@@ -1,18 +1,22 @@
 import fs from "node:fs";
 import path from "node:path";
 
-const combinedDir = path.resolve(process.cwd(), "cases/combined-f1r-f1v-f47v-full-current");
+const combinedDir = path.resolve(process.cwd(), "cases/combined-f1r-f1v-f2r-f47v-full-current");
 const f1rDir = path.resolve(process.cwd(), "cases/f1r-full");
 const f1vDir = path.resolve(process.cwd(), "cases/f1v-full");
+const f2rDir = path.resolve(process.cwd(), "cases/f2r-full");
 const outPath = path.resolve(process.cwd(), "cases/CURRENT-COMPRESSED-REPORT.md");
 
 const f1rEntropy = parseEntropy(fs.readFileSync(path.join(f1rDir, "role-entropy.md"), "utf8"));
 const f1vEntropy = parseEntropy(fs.readFileSync(path.join(f1vDir, "role-entropy.md"), "utf8"));
+const f2rEntropy = parseEntropy(fs.readFileSync(path.join(f2rDir, "role-entropy.md"), "utf8"));
 const combinedEntropy = parseEntropy(fs.readFileSync(path.join(combinedDir, "role-entropy.md"), "utf8"));
 const f1rAtoms = readTsv(path.join(f1rDir, "atoms-current.tsv"));
 const f1rEvaTokens = readTsv(path.join(f1rDir, "eva-tokens.tsv"));
 const f1vAtoms = readTsv(path.join(f1vDir, "atoms-current.tsv"));
 const f1vEvaTokens = readTsv(path.join(f1vDir, "eva-tokens.tsv"));
+const f2rAtoms = readTsv(path.join(f2rDir, "atoms-current.tsv"));
+const f2rEvaTokens = readTsv(path.join(f2rDir, "eva-tokens.tsv"));
 const combinedAtoms = readTsv(path.join(combinedDir, "atoms-current.tsv"));
 const combinedEvaLines = readTsv(path.join(combinedDir, "eva-lines.tsv"));
 const combinedEvaTokens = readTsv(path.join(combinedDir, "eva-tokens.tsv"));
@@ -71,7 +75,12 @@ lines.push(`- f1v EVA lines: \`${uniqueValues(f1vEvaTokens, "line").length}\`.`)
 lines.push(`- f1v EVA tokens: \`${f1vEvaTokens.length}\`.`);
 lines.push(`- f1v physical atom units: \`${f1vAtoms.length}\`.`);
 lines.push(`- f1v DatasetCreator/exported rows: \`${uniqueValues(f1vAtoms, "row_index").length}\`.`);
-lines.push("- Combined case: full `f1r` page + full `f1v` page + full `f47v` page.");
+lines.push("- New f2r case: full `f2r` page from IVTFF, mapped to `page-005.jpg`.");
+lines.push(`- f2r EVA lines: \`${uniqueValues(f2rEvaTokens, "line").length}\`.`);
+lines.push(`- f2r EVA tokens: \`${f2rEvaTokens.length}\`.`);
+lines.push(`- f2r physical atom units: \`${f2rAtoms.length}\`.`);
+lines.push(`- f2r DatasetCreator/exported rows: \`${uniqueValues(f2rAtoms, "row_index").length}\`.`);
+lines.push("- Combined case: full `f1r` page + full `f1v` page + full `f2r` page + full `f47v` page.");
 lines.push(`- Combined EVA lines: \`${combinedEvaLines.length}\`.`);
 lines.push(`- Combined EVA tokens: \`${combinedEvaTokens.length}\`.`);
 lines.push(`- Combined physical atom units: \`${combinedAtoms.length}\`.`);
@@ -80,9 +89,14 @@ lines.push("Note: stored DatasetCreator row guides are not always the full compu
 lines.push("");
 lines.push(`f1r exported row distribution: ${formatRowDistribution(f1rAtoms)}.`);
 lines.push(`f1v exported row distribution: ${formatRowDistribution(f1vAtoms)}.`);
+lines.push(`f2r exported row distribution: ${formatRowDistribution(f2rAtoms)}.`);
 if (f1rEvaTokens.length !== f1rAtoms.length) {
   lines.push("");
   lines.push(`Alignment note: f1r currently has \`${f1rEvaTokens.length}\` EVA tokens and \`${f1rAtoms.length}\` physical atom units. That mismatch is preserved as evidence and should not be silently normalized.`);
+}
+if (f2rEvaTokens.length !== f2rAtoms.length) {
+  lines.push("");
+  lines.push(`Alignment note: f2r currently has \`${f2rEvaTokens.length}\` EVA tokens and \`${f2rAtoms.length}\` physical atom units. That mismatch is preserved as evidence and should not be silently normalized.`);
 }
 lines.push("");
 lines.push("## Line Alignment Audit");
@@ -101,7 +115,11 @@ lines.push("### f1v Full Page");
 lines.push("");
 pushEntropyTable(lines, f1vEntropy);
 lines.push("");
-lines.push("### Combined f1r + f1v + f47v");
+lines.push("### f2r Full Page");
+lines.push("");
+pushEntropyTable(lines, f2rEntropy);
+lines.push("");
+lines.push("### Combined f1r + f1v + f2r + f47v");
 lines.push("");
 pushEntropyTable(lines, combinedEntropy);
 lines.push("");
@@ -215,21 +233,21 @@ lines.push("- Real rare structures remain in the dataset; only confirmed labelin
 lines.push("");
 lines.push("## Source Files");
 lines.push("");
-lines.push("- `cases/combined-f1r-f1v-f47v-full-current/role-entropy.md`");
-lines.push("- `cases/combined-f1r-f1v-f47v-full-current/contextual-rule-discovery.md`");
-lines.push("- `cases/combined-f1r-f1v-f47v-full-current/contextual-rule-discovery-molecule-scope.md`");
-lines.push("- `cases/combined-f1r-f1v-f47v-full-current/molecule-neighbor-discovery.md`");
-lines.push("- `cases/combined-f1r-f1v-f47v-full-current/line-alignment-audit.md`");
-lines.push("- `cases/combined-f1r-f1v-f47v-full-current/search-space-audit.md`");
-lines.push("- `cases/combined-f1r-f1v-f47v-full-current/conditional-entropy.md`");
-lines.push("- `cases/combined-f1r-f1v-f47v-full-current/variant-ablation.md`");
-lines.push("- `cases/combined-f1r-f1v-f47v-full-current/macro-lexeme-analysis.md`");
-lines.push("- `cases/combined-f1r-f1v-f47v-full-current/morphology-family-analysis.md`");
-lines.push("- `cases/combined-f1r-f1v-f47v-full-current/cross-folio-validation.md`");
-lines.push("- `cases/combined-f1r-f1v-f47v-full-current/e1-final-branch-audit.md`");
-lines.push("- `cases/combined-f1r-f1v-f47v-full-current/labeling-anomaly-audit.md`");
-lines.push("- `cases/combined-f1r-f1v-f47v-full-current/labeling-anomaly-known.tsv`");
-lines.push("- `cases/combined-f1r-f1v-f47v-full-current/atom-symbols.md`");
+lines.push("- `cases/combined-f1r-f1v-f2r-f47v-full-current/role-entropy.md`");
+lines.push("- `cases/combined-f1r-f1v-f2r-f47v-full-current/contextual-rule-discovery.md`");
+lines.push("- `cases/combined-f1r-f1v-f2r-f47v-full-current/contextual-rule-discovery-molecule-scope.md`");
+lines.push("- `cases/combined-f1r-f1v-f2r-f47v-full-current/molecule-neighbor-discovery.md`");
+lines.push("- `cases/combined-f1r-f1v-f2r-f47v-full-current/line-alignment-audit.md`");
+lines.push("- `cases/combined-f1r-f1v-f2r-f47v-full-current/search-space-audit.md`");
+lines.push("- `cases/combined-f1r-f1v-f2r-f47v-full-current/conditional-entropy.md`");
+lines.push("- `cases/combined-f1r-f1v-f2r-f47v-full-current/variant-ablation.md`");
+lines.push("- `cases/combined-f1r-f1v-f2r-f47v-full-current/macro-lexeme-analysis.md`");
+lines.push("- `cases/combined-f1r-f1v-f2r-f47v-full-current/morphology-family-analysis.md`");
+lines.push("- `cases/combined-f1r-f1v-f2r-f47v-full-current/cross-folio-validation.md`");
+lines.push("- `cases/combined-f1r-f1v-f2r-f47v-full-current/e1-final-branch-audit.md`");
+lines.push("- `cases/combined-f1r-f1v-f2r-f47v-full-current/labeling-anomaly-audit.md`");
+lines.push("- `cases/combined-f1r-f1v-f2r-f47v-full-current/labeling-anomaly-known.tsv`");
+lines.push("- `cases/combined-f1r-f1v-f2r-f47v-full-current/atom-symbols.md`");
 lines.push("");
 
 fs.writeFileSync(outPath, lines.join("\n"), "utf8");

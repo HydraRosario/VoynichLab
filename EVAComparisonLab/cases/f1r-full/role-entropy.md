@@ -34,22 +34,22 @@ most_positionally_rigid:
   cth: H=0.6292 rel=0.3970 n=19 initial=16 medial=3 final=0 dominant=initial:0.8421
 
 == atoms role entropy ==
-units: 197
+units: 196
 symbols: 2065
 vocabulary: 16
-weighted_entropy_bits: 0.5058
-weighted_relative_entropy_0_to_1: 0.3191
+weighted_entropy_bits: 0.5246
+weighted_relative_entropy_0_to_1: 0.3310
 zero_entropy_symbols: 7
 rigid_symbols_95pct: 8
 most_positionally_chaotic:
+  j:1: H=0.9284 rel=0.5857 n=32 initial=0 medial=11 final=21 dominant=final:0.6563
   d:1: H=0.9131 rel=0.5761 n=131 initial=0 medial=43 final=88 dominant=final:0.6718
-  j:1: H=0.8571 rel=0.5408 n=32 initial=0 medial=9 final=23 dominant=final:0.7188
-  c:1: H=0.7792 rel=0.4916 n=278 initial=32 medial=233 final=13 dominant=medial:0.8381
-  h:1: H=0.7742 rel=0.4885 n=79 initial=0 medial=18 final=61 dominant=final:0.7722
-  n:1: H=0.7642 rel=0.4822 n=45 initial=35 medial=10 final=0 dominant=initial:0.7778
-  e:1: H=0.7513 rel=0.4740 n=589 initial=110 medial=475 final=4 dominant=medial:0.8065
-  a:1: H=0.5119 rel=0.3230 n=201 initial=20 medial=180 final=1 dominant=medial:0.8955
-  h:2: H=0.3999 rel=0.2523 n=63 initial=0 medial=58 final=5 dominant=medial:0.9206
+  n:1: H=0.8945 rel=0.5643 n=45 initial=31 medial=14 final=0 dominant=initial:0.6889
+  h:1: H=0.8163 rel=0.5150 n=79 initial=0 medial=20 final=59 dominant=final:0.7468
+  e:1: H=0.8048 rel=0.5078 n=589 initial=113 medial=468 final=8 dominant=medial:0.7946
+  c:1: H=0.7894 rel=0.4980 n=278 initial=33 medial=232 final=13 dominant=medial:0.8345
+  a:1: H=0.4959 rel=0.3129 n=201 initial=19 medial=181 final=1 dominant=medial:0.9005
+  h:2: H=0.3412 rel=0.2152 n=63 initial=0 medial=59 final=4 dominant=medial:0.9365
   i:1: H=0.1248 rel=0.0787 n=117 initial=0 medial=115 final=2 dominant=medial:0.9829
   f:1: H=0.0000 rel=0.0000 n=217 initial=0 medial=217 final=0 dominant=medial:1.0000
   g:1: H=0.0000 rel=0.0000 n=129 initial=0 medial=129 final=0 dominant=medial:1.0000
@@ -63,7 +63,7 @@ most_positionally_rigid:
   m:1: H=0.0000 rel=0.0000 n=15 initial=0 medial=15 final=0 dominant=medial:1.0000
   c:2: H=0.0000 rel=0.0000 n=12 initial=0 medial=12 final=0 dominant=medial:1.0000
   i:1: H=0.1248 rel=0.0787 n=117 initial=0 medial=115 final=2 dominant=medial:0.9829
-  h:2: H=0.3999 rel=0.2523 n=63 initial=0 medial=58 final=5 dominant=medial:0.9206
-  a:1: H=0.5119 rel=0.3230 n=201 initial=20 medial=180 final=1 dominant=medial:0.8955
-  e:1: H=0.7513 rel=0.4740 n=589 initial=110 medial=475 final=4 dominant=medial:0.8065
-  n:1: H=0.7642 rel=0.4822 n=45 initial=35 medial=10 final=0 dominant=initial:0.7778
+  h:2: H=0.3412 rel=0.2152 n=63 initial=0 medial=59 final=4 dominant=medial:0.9365
+  a:1: H=0.4959 rel=0.3129 n=201 initial=19 medial=181 final=1 dominant=medial:0.9005
+  c:1: H=0.7894 rel=0.4980 n=278 initial=33 medial=232 final=13 dominant=medial:0.8345
+  e:1: H=0.8048 rel=0.5078 n=589 initial=113 medial=468 final=8 dominant=medial:0.7946

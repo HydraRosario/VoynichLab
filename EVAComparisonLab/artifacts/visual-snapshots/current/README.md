@@ -4,9 +4,9 @@ Generated from DatasetCreator geometry. SVG files reference the original manuscr
 
 ## Counts
 
-- Atoms: `3621`
-- Particles: `1416`
-- Molecules: `370`
+- Atoms: `4557`
+- Particles: `1777`
+- Molecules: `473`
 
 ## Files
 

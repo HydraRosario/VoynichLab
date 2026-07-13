@@ -2085,6 +2085,7 @@ fn particle_groups_match_merge_patterns(
             && pattern.relation == measure.relation
             && pattern.first_token == measure.first_token
             && pattern.second_token == measure.second_token
+            && measure.max_gap <= ATOM_CONTACT_DISTANCE
             && measure.max_gap <= pattern.max_gap
             && measure.min_overlap_ratio + 0.0001 >= pattern.min_overlap_ratio
     })
@@ -2137,8 +2138,8 @@ fn particle_merge_signature_key(relation: &str, first_token: &str, second_token:
     format!("{relation}|{first_token}|{second_token}")
 }
 
-fn learned_particle_merge_gap(gap: f64, local_size: f64) -> f64 {
-    (gap + local_size.max(1.0) * 0.25).max(gap)
+fn learned_particle_merge_gap(gap: f64, _local_size: f64) -> f64 {
+    gap.max(0.0)
 }
 
 fn learned_particle_merge_overlap(overlap_ratio: f64) -> f64 {

@@ -283,6 +283,7 @@ function windowOrderAnomalies(particles) {
           ...particle,
           scope: `particle-window-${size}`,
           window_index: index + 1,
+          full_sequence: tokens.join(" "),
           sequence: slice.join(" "),
           bag: bagSignature(slice),
           atom_ids: atomIds.slice(index, index + size).join(" "),
@@ -296,6 +297,7 @@ function windowOrderAnomalies(particles) {
     minSupport: 5,
     maxRareCount: 1,
     maxRareRatio: 0.12,
+    suppressIfDominantWindowPresent: true,
   }).map((row) => ({
     ...row,
     reason: `ventana interna rara: ${row.reason}`,
@@ -324,6 +326,15 @@ function orderAnomalies(items, options) {
 
       const distance = editDistance(variant.sequence.split(/\s+/), dominant.sequence.split(/\s+/));
       for (const item of variant.items) {
+        if (
+          options.suppressIfDominantWindowPresent
+          && containsContiguousSubsequence(
+            String(item.full_sequence || "").split(/\s+/).filter(Boolean),
+            dominant.sequence.split(/\s+/)
+          )
+        ) {
+          continue;
+        }
         const score = Number(((dominantCount / total) * 100 + distance * 12 + (1 / variantCount) * 10).toFixed(2));
         findings.push({
           scope: options.scope,
@@ -349,6 +360,16 @@ function orderAnomalies(items, options) {
     }
   }
   return findings;
+}
+
+function containsContiguousSubsequence(tokens, subsequence) {
+  if (!tokens.length || !subsequence.length || subsequence.length > tokens.length) return false;
+  for (let index = 0; index <= tokens.length - subsequence.length; index += 1) {
+    if (subsequence.every((token, offset) => tokens[index + offset] === token)) {
+      return true;
+    }
+  }
+  return false;
 }
 
 function atomSort(a, b) {

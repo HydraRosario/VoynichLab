@@ -37,17 +37,17 @@ most_positionally_rigid:
 units: 90
 symbols: 787
 vocabulary: 16
-weighted_entropy_bits: 0.5624
-weighted_relative_entropy_0_to_1: 0.3548
+weighted_entropy_bits: 0.6038
+weighted_relative_entropy_0_to_1: 0.3809
 zero_entropy_symbols: 7
 rigid_symbols_95pct: 8
 most_positionally_chaotic:
-  e:1: H=0.9043 rel=0.5705 n=216 initial=57 medial=157 final=2 dominant=medial:0.7269
-  n:1: H=0.8813 rel=0.5560 n=10 initial=7 medial=3 final=0 dominant=initial:0.7000
+  e:1: H=0.9810 rel=0.6189 n=216 initial=57 medial=154 final=5 dominant=medial:0.7130
+  n:1: H=0.9710 rel=0.6126 n=10 initial=4 medial=6 final=0 dominant=medial:0.6000
   d:1: H=0.8555 rel=0.5397 n=25 initial=0 medial=7 final=18 dominant=final:0.7200
-  c:1: H=0.6911 rel=0.4360 n=150 initial=13 medial=130 final=7 dominant=medial:0.8667
+  j:1: H=0.8224 rel=0.5189 n=35 initial=0 medial=9 final=26 dominant=final:0.7429
+  c:1: H=0.7541 rel=0.4758 n=150 initial=16 medial=127 final=7 dominant=medial:0.8467
   a:1: H=0.6888 rel=0.4346 n=77 initial=11 medial=65 final=1 dominant=medial:0.8442
-  j:1: H=0.6610 rel=0.4170 n=35 initial=0 medial=6 final=29 dominant=final:0.8286
   c:2: H=0.6500 rel=0.4101 n=6 initial=1 medial=5 final=0 dominant=medial:0.8333
   h:1: H=0.5033 rel=0.3175 n=36 initial=0 medial=4 final=32 dominant=final:0.8889
   f:1: H=0.2086 rel=0.1316 n=73 initial=1 medial=71 final=1 dominant=medial:0.9726
@@ -65,5 +65,5 @@ most_positionally_rigid:
   f:1: H=0.2086 rel=0.1316 n=73 initial=1 medial=71 final=1 dominant=medial:0.9726
   h:1: H=0.5033 rel=0.3175 n=36 initial=0 medial=4 final=32 dominant=final:0.8889
   c:2: H=0.6500 rel=0.4101 n=6 initial=1 medial=5 final=0 dominant=medial:0.8333
-  j:1: H=0.6610 rel=0.4170 n=35 initial=0 medial=6 final=29 dominant=final:0.8286
   a:1: H=0.6888 rel=0.4346 n=77 initial=11 medial=65 final=1 dominant=medial:0.8442
+  c:1: H=0.7541 rel=0.4758 n=150 initial=16 medial=127 final=7 dominant=medial:0.8467
