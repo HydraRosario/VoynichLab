@@ -1,23 +1,27 @@
 {
   "schemaVersion": "1.0",
-  "totalAtoms": 4557,
+  "totalAtoms": 6221,
   "totalSymbols": 16,
   "generatedAt": "2026-07-14",
   "atoms": [
     {
       "token": "a:1",
       "label": "Descending left curve",
-      "count": 419,
+      "count": 570,
       "folios": [
         "f1r",
         "f1v",
         "f2r",
+        "f2v",
+        "f3r",
         "f47v"
       ],
       "folioCounts": {
         "f1r": 201,
         "f1v": 77,
         "f2r": 78,
+        "f2v": 41,
+        "f3r": 110,
         "f47v": 63
       },
       "dominantPosition": "solitary (100%)",
@@ -25,7 +29,7 @@
         "initial": 0,
         "medial": 0,
         "final": 0,
-        "solitary": 419
+        "solitary": 570
       },
       "exampleCount": 24,
       "examples": [
@@ -58,18 +62,18 @@
           "checksum": "cd6b81a23e3cb1f7e310900077f2d3e9a2862998efe9325287d33c9c93d9addf"
         },
         {
-          "id": "3220",
+          "id": "3222",
           "folio": "f1r",
           "molecule": "a:1",
-          "svg": "./examples/a_1/3220.svg",
-          "checksum": "ac34556266a6cf555ca0d0a92ebdfce6a6747d7789412726b0305ef6ed888862"
+          "svg": "./examples/a_1/3222.svg",
+          "checksum": "698f6c8ada5a732ad43485516635a3f5d404e952cc2173a0ff4d5db3f847fe13"
         },
         {
-          "id": "3221",
+          "id": "3223",
           "folio": "f1r",
           "molecule": "a:1",
-          "svg": "./examples/a_1/3221.svg",
-          "checksum": "781da8d45e76439cd5cc9f8407620cc2995d5ae08879dc6b45b36cc1cb617cf4"
+          "svg": "./examples/a_1/3223.svg",
+          "checksum": "56a75d96df27cfb20523675903f777d544dea76d2fc1a4e0180be3e3d67185fb"
         },
         {
           "id": "4654",
@@ -156,63 +160,67 @@
           "checksum": "498edc138999943e9527485cce28a4f68a9b5df8de054caf4754ecd85b1c001c"
         },
         {
-          "id": "2610",
-          "folio": "f47v",
+          "id": "6514",
+          "folio": "f2v",
           "molecule": "a:1",
-          "svg": "./examples/a_1/2610.svg",
-          "checksum": "1ba2968ae4cc78805c2039ccb49a47e6225eeba9db3819c3b6c460489126544d"
+          "svg": "./examples/a_1/6514.svg",
+          "checksum": "c34b292d01d794ea65c0e5dedb58d1c8edd23f7c9f831816e57c0f3def0133ae"
         },
         {
-          "id": "2618",
-          "folio": "f47v",
+          "id": "6515",
+          "folio": "f2v",
           "molecule": "a:1",
-          "svg": "./examples/a_1/2618.svg",
-          "checksum": "36896dd9a70eb80971da54c12b0515ce478ae25e94950dcdd10240f7aaafb0b9"
+          "svg": "./examples/a_1/6515.svg",
+          "checksum": "c2c2171a07b0e32fedb77c8ba78c0aeef2313dc50400c0ad9c290bd8c11fc682"
         },
         {
-          "id": "2628",
-          "folio": "f47v",
+          "id": "6529",
+          "folio": "f2v",
           "molecule": "a:1",
-          "svg": "./examples/a_1/2628.svg",
-          "checksum": "443a417368891c25ea91ac68f44f62a8ceee0240595f257e2fa868ec4c155566"
+          "svg": "./examples/a_1/6529.svg",
+          "checksum": "fabfb2aa337feb3388fbf68148bd9bb9492adb8d16c6bb137b99c2d686da99e6"
         },
         {
-          "id": "2631",
-          "folio": "f47v",
+          "id": "6528",
+          "folio": "f2v",
           "molecule": "a:1",
-          "svg": "./examples/a_1/2631.svg",
-          "checksum": "7b5c3aaef233bdee43d29dfcd19e024f7355a9822ac46593ba97319b94bb8222"
+          "svg": "./examples/a_1/6528.svg",
+          "checksum": "0d0477708d7459a5b3db46754a1d16ed926fa7769f0f93fc5c18c3152872fee1"
         },
         {
-          "id": "2747",
-          "folio": "f47v",
+          "id": "6527",
+          "folio": "f2v",
           "molecule": "a:1",
-          "svg": "./examples/a_1/2747.svg",
-          "checksum": "b273968defadd2f3e47bb20c8ea65549eb0368366cced6fdc900e4e7b390dd42"
+          "svg": "./examples/a_1/6527.svg",
+          "checksum": "ac537b47cac6a2daf96c2619708f594ede6d45ff7e623e674e9cae2efddb344f"
         },
         {
-          "id": "2748",
-          "folio": "f47v",
+          "id": "6526",
+          "folio": "f2v",
           "molecule": "a:1",
-          "svg": "./examples/a_1/2748.svg",
-          "checksum": "81a5ec2339c8e8fcbaeaaf5af16e48914b18b721bc99baa59602b505fb9ebb25"
+          "svg": "./examples/a_1/6526.svg",
+          "checksum": "415ab3d9485b89493edb16a55ab6887955656c3b31a0b7976c02e821ba7d512e"
         }
       ]
     },
     {
       "token": "b:1",
       "label": "Short right-top tick",
-      "count": 191,
+      "count": 246,
       "folios": [
         "f1r",
         "f1v",
         "f2r",
+        "f2v",
+        "f3r",
         "f47v"
       ],
       "folioCounts": {
         "f1r": 103,
         "f1v": 31,
         "f2r": 35,
+        "f2v": 16,
+        "f3r": 39,
         "f47v": 22
       },
       "dominantPosition": "solitary (100%)",
@@ -220,7 +228,7 @@
         "initial": 0,
         "medial": 0,
         "final": 0,
-        "solitary": 191
+        "solitary": 246
       },
       "exampleCount": 24,
       "examples": [
@@ -239,32 +247,32 @@
           "checksum": "fcd93906f20446c27d3345ee34185bdc366fcd2f0cfbef649e148566cb28bd81"
         },
         {
+          "id": "3215",
+          "folio": "f1r",
+          "molecule": "b:1",
+          "svg": "./examples/b_1/3215.svg",
+          "checksum": "167f85696690b60a9ef666577220164491e152e4397b47999e94e1b359936f8f"
+        },
+        {
           "id": "3216",
           "folio": "f1r",
           "molecule": "b:1",
           "svg": "./examples/b_1/3216.svg",
-          "checksum": "8e00b1e02b2444884db60ce7d48b30395e09ce6af4d0ed3f68a3310ec92c70eb"
+          "checksum": "0d01c32d6701c640d5b4fbb83930429b5ea28b7cc10bd07aff7c9f6476dd06ea"
         },
         {
           "id": "3214",
           "folio": "f1r",
           "molecule": "b:1",
           "svg": "./examples/b_1/3214.svg",
-          "checksum": "971ec6e9085e7e53b704aa96b596e66e76aee0b1b809f6231a8aa9791acbb1ec"
+          "checksum": "36c795d979f72c12d1affe163c2dc0e95dabbb35ded8c98c6a167cdbe117054e"
         },
         {
           "id": "3217",
           "folio": "f1r",
           "molecule": "b:1",
           "svg": "./examples/b_1/3217.svg",
-          "checksum": "8fca59fff80cc4b70c350e8102ec54fb413da46cb0262f33717bd161245ee0d9"
-        },
-        {
-          "id": "3295",
-          "folio": "f1r",
-          "molecule": "b:1",
-          "svg": "./examples/b_1/3295.svg",
-          "checksum": "9f291f6bac4ca82c1a7a39dd024dc12ec490d09798310e129c6366de62cd09e1"
+          "checksum": "2db3a5e3618f81ecba35a730e19f24a8724cc3790b967de481f4476240c01714"
         },
         {
           "id": "4727",
@@ -351,71 +359,75 @@
           "checksum": "342e4d4316cb42efe05199f6145329b7bac4cdae23159784069f4a3735be2284"
         },
         {
-          "id": "2615",
-          "folio": "f47v",
+          "id": "6557",
+          "folio": "f2v",
           "molecule": "b:1",
-          "svg": "./examples/b_1/2615.svg",
-          "checksum": "f6dfa6059ae9fa8341e1da2c2760aa9324312483f47fa2e2145a121dfb360ba1"
+          "svg": "./examples/b_1/6557.svg",
+          "checksum": "d06a9675c520a77aebd1b35cd4da208af9992f7fa47240fad662af99290c5ca5"
         },
         {
-          "id": "2613",
-          "folio": "f47v",
+          "id": "6562",
+          "folio": "f2v",
           "molecule": "b:1",
-          "svg": "./examples/b_1/2613.svg",
-          "checksum": "9809306a64221dee391815200cb72eb5efcbf2e9f9e539c7f76add35aa0b96a5"
+          "svg": "./examples/b_1/6562.svg",
+          "checksum": "b166a9ca4211bb6dfe954d1d22e048380c3fb4aee997acefb2e51515064971cf"
         },
         {
-          "id": "2833",
-          "folio": "f47v",
+          "id": "6561",
+          "folio": "f2v",
           "molecule": "b:1",
-          "svg": "./examples/b_1/2833.svg",
-          "checksum": "52d6597b13afc71e3d328cfe016b61c9aca2899ff623dec044e712022d050432"
+          "svg": "./examples/b_1/6561.svg",
+          "checksum": "0c13e8d72292fdb56f77f6f8c28664912714e1befc3569a5d1dd8d64ede353ec"
         },
         {
-          "id": "2816",
-          "folio": "f47v",
+          "id": "6565",
+          "folio": "f2v",
           "molecule": "b:1",
-          "svg": "./examples/b_1/2816.svg",
-          "checksum": "77c73bec9d0391233dbf5167e2e6c603a540f66a5bc805d39b9443c0e75d42ab"
+          "svg": "./examples/b_1/6565.svg",
+          "checksum": "31ce47284aef99b73727d7a5a6d25cb23958b99162903b76e389a8d7ad55ad6e"
         },
         {
-          "id": "2904",
-          "folio": "f47v",
+          "id": "6566",
+          "folio": "f2v",
           "molecule": "b:1",
-          "svg": "./examples/b_1/2904.svg",
-          "checksum": "b177a7bed128414a03b6cb5a9aa59e2ad269401b8c467d564445c83b1f3090e7"
+          "svg": "./examples/b_1/6566.svg",
+          "checksum": "204f9a1de59687c9d9be6a229c341ca8e0b6def8625acf4479c15bdc8b5c1796"
         },
         {
-          "id": "2896",
-          "folio": "f47v",
+          "id": "6558",
+          "folio": "f2v",
           "molecule": "b:1",
-          "svg": "./examples/b_1/2896.svg",
-          "checksum": "80c8f68d9fdfed961eaece07056448a3f615b436e24d5e743b46a1d115594c3a"
+          "svg": "./examples/b_1/6558.svg",
+          "checksum": "03cf418374c97919515227381e5a91f5684c46f04a55f30982133ddd3231b3b5"
         }
       ]
     },
     {
       "token": "c:1",
       "label": "Tall right curve",
-      "count": 642,
+      "count": 924,
       "folios": [
         "f1r",
         "f1v",
         "f2r",
+        "f2v",
+        "f3r",
         "f47v"
       ],
       "folioCounts": {
-        "f1r": 278,
+        "f1r": 285,
         "f1v": 150,
         "f2r": 118,
-        "f47v": 96
+        "f2v": 81,
+        "f3r": 195,
+        "f47v": 95
       },
       "dominantPosition": "solitary (100%)",
       "positionDistribution": {
         "initial": 0,
         "medial": 0,
         "final": 0,
-        "solitary": 642
+        "solitary": 924
       },
       "exampleCount": 24,
       "examples": [
@@ -434,32 +446,32 @@
           "checksum": "d97c5f2a91caa2227dcc0b094b4b3385a4af46c3e08ea141597c4cc73566e012"
         },
         {
+          "id": "3174",
+          "folio": "f1r",
+          "molecule": "c:1",
+          "svg": "./examples/c_1/3174.svg",
+          "checksum": "0112bfa140485e25ac81abe7098c26840bcc8742ab0fbe17d23e50d10f2c1b66"
+        },
+        {
+          "id": "3175",
+          "folio": "f1r",
+          "molecule": "c:1",
+          "svg": "./examples/c_1/3175.svg",
+          "checksum": "2dbe9310c02a7e6028b738c9da28477485d7712d73eadf0f10e522885d0f0cb4"
+        },
+        {
           "id": "3172",
           "folio": "f1r",
           "molecule": "c:1",
           "svg": "./examples/c_1/3172.svg",
-          "checksum": "c67a067723b89022ce0050313e61d0156c6a96d073586c93da1ec4275b8ccb7b"
+          "checksum": "0b4b9f575207b64761472a6dd60598b6dce8cea55113477e581e7ac44ee286d9"
         },
         {
           "id": "3173",
           "folio": "f1r",
           "molecule": "c:1",
           "svg": "./examples/c_1/3173.svg",
-          "checksum": "62baf5a85c812074fb8a74bd191029d27c1d9cf6804c78acc0de078871344e1b"
-        },
-        {
-          "id": "3178",
-          "folio": "f1r",
-          "molecule": "c:1",
-          "svg": "./examples/c_1/3178.svg",
-          "checksum": "95e75178ec8400f3a5cb4ba7da2985e8847858073a3380d0ea69596f7b484ae3"
-        },
-        {
-          "id": "3179",
-          "folio": "f1r",
-          "molecule": "c:1",
-          "svg": "./examples/c_1/3179.svg",
-          "checksum": "b6da4525876274cfa0dc2dc7cdb39cafc84696405cdb05f40071510438523329"
+          "checksum": "c58f31a06444cf31cc93d6b06f895d7c3a8420a3a52b31e8ea7cfa1bf6c2c6a0"
         },
         {
           "id": "4762",
@@ -546,115 +558,112 @@
           "checksum": "3c7d630a23e838c85e359148ec4a64b3f034446bebde3760412749c18f82ecf8"
         },
         {
-          "id": "2616",
-          "folio": "f47v",
+          "id": "6573",
+          "folio": "f2v",
           "molecule": "c:1",
-          "svg": "./examples/c_1/2616.svg",
-          "checksum": "0b3e57c4eace05ef1cae50e3c060200c2c49c58d457aec12e9d7760ac07c8ac9"
+          "svg": "./examples/c_1/6573.svg",
+          "checksum": "1de84dca9949e526973523226fd9a03580bba7f85fe2fd115ba590fd9a3a275d"
         },
         {
-          "id": "2627",
-          "folio": "f47v",
+          "id": "6574",
+          "folio": "f2v",
           "molecule": "c:1",
-          "svg": "./examples/c_1/2627.svg",
-          "checksum": "51664f341267e34a6abc5f0dcc5a9ad3893fdf3044be9c0074b9b0655f5c8486"
+          "svg": "./examples/c_1/6574.svg",
+          "checksum": "4783f2f0dfecda159b7d76255b90a380eb57cb61de141128e9ee9f6bd5fc2edf"
         },
         {
-          "id": "2630",
-          "folio": "f47v",
+          "id": "6575",
+          "folio": "f2v",
           "molecule": "c:1",
-          "svg": "./examples/c_1/2630.svg",
-          "checksum": "bbca768bcccc1c86ef2633dd6cfac5453e3b9cc497e2a05497694ed738f61d7c"
+          "svg": "./examples/c_1/6575.svg",
+          "checksum": "8c56d08d823d21d8effd50790d6052d91606f870beccfadf1e7f105fdd8c16cc"
         },
         {
-          "id": "2745",
-          "folio": "f47v",
+          "id": "6593",
+          "folio": "f2v",
           "molecule": "c:1",
-          "svg": "./examples/c_1/2745.svg",
-          "checksum": "60963c43d71ec7e3b60f5b2e4025efd275ded9b7d84fbe07abd789ed4d7dbe4d"
+          "svg": "./examples/c_1/6593.svg",
+          "checksum": "d863c2cd5b96e0dd377b512a8c8488246151bc4b7efa5ac3653d23a43090b6c0"
         },
         {
-          "id": "2746",
-          "folio": "f47v",
+          "id": "6592",
+          "folio": "f2v",
           "molecule": "c:1",
-          "svg": "./examples/c_1/2746.svg",
-          "checksum": "454a1eac7a1e5a33ecbc6691518a270aec2931d988b105300a41032f93180862"
+          "svg": "./examples/c_1/6592.svg",
+          "checksum": "e110bfb9ffd88a8b240184f4b9052f816235b2a609d296e2cc41c0ef9712d38a"
         },
         {
-          "id": "2752",
-          "folio": "f47v",
+          "id": "6591",
+          "folio": "f2v",
           "molecule": "c:1",
-          "svg": "./examples/c_1/2752.svg",
-          "checksum": "bb4fbd9a0f8bf68705e503d282458f06a0abc8b6a27101e8d0fcd97c3505ad85"
+          "svg": "./examples/c_1/6591.svg",
+          "checksum": "924ef114943bae244c64e5629d245c37068add4ec8f727a95673b0d4f5bc2de2"
         }
       ]
     },
     {
       "token": "c:2",
       "label": "Tall right curve (closed variant)",
-      "count": 34,
+      "count": 57,
       "folios": [
         "f1r",
         "f1v",
         "f2r",
+        "f2v",
+        "f3r",
         "f47v"
       ],
       "folioCounts": {
-        "f1r": 12,
-        "f1v": 6,
+        "f1r": 5,
+        "f1v": 3,
         "f2r": 1,
-        "f47v": 15
+        "f2v": 1,
+        "f3r": 31,
+        "f47v": 16
       },
       "dominantPosition": "solitary (100%)",
       "positionDistribution": {
         "initial": 0,
         "medial": 0,
         "final": 0,
-        "solitary": 34
+        "solitary": 57
       },
-      "exampleCount": 19,
+      "exampleCount": 22,
       "examples": [
-        {
-          "id": "1287",
-          "folio": "f1r",
-          "molecule": "c:2",
-          "svg": "./examples/c_2/1287.svg",
-          "checksum": "18bd889f7d899a10e0a84d6224a882aa2674b23523f721321f1d379bf6f12050"
-        },
         {
           "id": "3379",
           "folio": "f1r",
           "molecule": "c:2",
           "svg": "./examples/c_2/3379.svg",
-          "checksum": "ea6bfd7c0c1b0b93ab4c4e9f7d30a4292b7980fa5f3f0cc96dae480b4b3055ce"
+          "checksum": "8904c278da9b8fc7216eb77fa80d440be0b2e92fe8b8aced491f9e9c01b4b3db"
         },
         {
           "id": "5515",
           "folio": "f1r",
           "molecule": "c:2",
           "svg": "./examples/c_2/5515.svg",
-          "checksum": "8dd1f8bf2e4d4e9315843b47abdc3da06e4422bce087411bcaeaac453cffcfd0"
+          "checksum": "fcbc78937ce7f1634c6e410a11fc27ec55a66cd788cea79a4f93231aa0b02d3e"
         },
         {
           "id": "3787",
           "folio": "f1r",
           "molecule": "c:2",
           "svg": "./examples/c_2/3787.svg",
-          "checksum": "8cd967b694c7cc6ec3a3af7ca4f7412f65b1f27953e0dab2f88d790feda6aeac"
+          "checksum": "eab5351ae4ad6e28f1702df8fec9ab6b7a30db2c445f2f456382b63b34e5d692"
         },
         {
           "id": "4162",
           "folio": "f1r",
           "molecule": "c:2",
           "svg": "./examples/c_2/4162.svg",
-          "checksum": "e669f4ca4256409bc33d5fd5a18900d415e76026c0bf982de319315d8f0e6751"
+          "checksum": "df7aa8ee578a0a22e0d30fac09ccd716be8254282b662528b02937bd1f76bd68"
         },
         {
           "id": "4099",
           "folio": "f1r",
           "molecule": "c:2",
           "svg": "./examples/c_2/4099.svg",
-          "checksum": "63709540367fc700152018d32769668508027133245acd9736ab080a6345ab7b"
+          "checksum": "1ba8bc8310f10897df7444c16fa83a2b1d37daf8691d6f0f027be34d409f1ee2"
         },
         {
           "id": "4801",
@@ -678,32 +687,60 @@
           "checksum": "ddb36942b3d5aa46a03b8546c7e7744af6ca32adb65b5ae752d15803ae74eded"
         },
         {
-          "id": "5173",
-          "folio": "f1v",
-          "molecule": "c:2",
-          "svg": "./examples/c_2/5173.svg",
-          "checksum": "bf79fb3d3dd580d7cba48ca3911ada74ccdd6dcdb6c0df44fc80aafa5143c93b"
-        },
-        {
-          "id": "5103",
-          "folio": "f1v",
-          "molecule": "c:2",
-          "svg": "./examples/c_2/5103.svg",
-          "checksum": "5d6f7b325be0a858d6925e1e6ee0d55901a481990b411e70fd332f9a056bc61c"
-        },
-        {
-          "id": "5104",
-          "folio": "f1v",
-          "molecule": "c:2",
-          "svg": "./examples/c_2/5104.svg",
-          "checksum": "6c48f35db1af7ef31c48de45e50f179d5d3fc01801d19b5878f7c0b560bfddb0"
-        },
-        {
           "id": "6488",
           "folio": "f2r",
           "molecule": "c:2",
           "svg": "./examples/c_2/6488.svg",
           "checksum": "b4b68d9443f051c46a7268907b6abc5fbb9007e41b313cb01ead8634f0d61ba3"
+        },
+        {
+          "id": "6651",
+          "folio": "f2v",
+          "molecule": "c:2",
+          "svg": "./examples/c_2/6651.svg",
+          "checksum": "8b7ba5743b6180eea5e7761b558fe2792551c08679ee98556623c75e8f1dec30"
+        },
+        {
+          "id": "7143",
+          "folio": "f3r",
+          "molecule": "c:2",
+          "svg": "./examples/c_2/7143.svg",
+          "checksum": "5ab021ea72bc7983199069a70b4642f3c8051713e33a973926159ffc7fd1f3bd"
+        },
+        {
+          "id": "7161",
+          "folio": "f3r",
+          "molecule": "c:2",
+          "svg": "./examples/c_2/7161.svg",
+          "checksum": "9f568993d28f97e457e1f8cfb7c43bb8230d8bec983aeb7a7dd4ecca9379d190"
+        },
+        {
+          "id": "7159",
+          "folio": "f3r",
+          "molecule": "c:2",
+          "svg": "./examples/c_2/7159.svg",
+          "checksum": "fb1d304ea8f9b3976aefc9d8f546ed5ba6d1fd94801bff4bf3d2eddbfae4ceb0"
+        },
+        {
+          "id": "7168",
+          "folio": "f3r",
+          "molecule": "c:2",
+          "svg": "./examples/c_2/7168.svg",
+          "checksum": "f5ca0138cc226cb38753031fcfb9f6553bf4ac7bc149e089f2e104cfbab4bd42"
+        },
+        {
+          "id": "7167",
+          "folio": "f3r",
+          "molecule": "c:2",
+          "svg": "./examples/c_2/7167.svg",
+          "checksum": "740252969e6e82b40180a8e39f676494c06da53c936dfc1a3adf7dd8d6963485"
+        },
+        {
+          "id": "7136",
+          "folio": "f3r",
+          "molecule": "c:2",
+          "svg": "./examples/c_2/7136.svg",
+          "checksum": "2b18aa0b23607c8e71268a71c5f41ffd75ad0ded31d80796f4c2ad3d04f1394a"
         },
         {
           "id": "2753",
@@ -752,17 +789,21 @@
     {
       "token": "d:1",
       "label": "Left hook stroke",
-      "count": 248,
+      "count": 335,
       "folios": [
         "f1r",
         "f1v",
         "f2r",
+        "f2v",
+        "f3r",
         "f47v"
       ],
       "folioCounts": {
         "f1r": 131,
         "f1v": 25,
         "f2r": 61,
+        "f2v": 31,
+        "f3r": 56,
         "f47v": 31
       },
       "dominantPosition": "solitary (100%)",
@@ -770,7 +811,7 @@
         "initial": 0,
         "medial": 0,
         "final": 0,
-        "solitary": 248
+        "solitary": 335
       },
       "exampleCount": 24,
       "examples": [
@@ -800,21 +841,21 @@
           "folio": "f1r",
           "molecule": "d:1",
           "svg": "./examples/d_1/3197.svg",
-          "checksum": "34f0c3d68f666649e1791ed7199c59c48b067c91a8c9d4fe336bbc15d58999f1"
+          "checksum": "69f075f8b5fa6808aca03848d54ddd3deb0a04adc1985c549bf40579aa77b31a"
         },
         {
           "id": "3199",
           "folio": "f1r",
           "molecule": "d:1",
           "svg": "./examples/d_1/3199.svg",
-          "checksum": "b93eb8cf7c5abd657651de23e6fffa10e208115adf1d73b689224ebfab949585"
+          "checksum": "dcf167631a0f37945d336f224a29053cf2e7ff7bea01898b0461e2b6f963e9f1"
         },
         {
           "id": "3196",
           "folio": "f1r",
           "molecule": "d:1",
           "svg": "./examples/d_1/3196.svg",
-          "checksum": "0825cb485363d83b6dd55f74e81a19761633011aa0b5d25e9e083ffb0688d6ff"
+          "checksum": "80e666632bcd4c155077f130755140a86599234da0c73ad5234570d3bed4c182"
         },
         {
           "id": "5234",
@@ -901,63 +942,67 @@
           "checksum": "5b192e9c08ef9ad7625d18824b00007b45532494809145e4edd505191e134a8a"
         },
         {
-          "id": "2619",
-          "folio": "f47v",
+          "id": "6751",
+          "folio": "f2v",
           "molecule": "d:1",
-          "svg": "./examples/d_1/2619.svg",
-          "checksum": "0e166f5762d9b39d130ffa7d411b9e6ed6885abe632454c796d24e49c190a4a8"
+          "svg": "./examples/d_1/6751.svg",
+          "checksum": "d59bd9146b7414e0a59a6da6b9eb299404e11b2e1ce9f6795a993d5c114c932e"
         },
         {
-          "id": "2763",
-          "folio": "f47v",
+          "id": "6761",
+          "folio": "f2v",
           "molecule": "d:1",
-          "svg": "./examples/d_1/2763.svg",
-          "checksum": "1eeb0fcfcfc64dbdc28414e8c1269b5b5ba3e54b0154cc6f3704766be98d6004"
+          "svg": "./examples/d_1/6761.svg",
+          "checksum": "d21a2f1d3a009d1342e5b6a4ab5efbaaac3142b48cd7b3c75a2faf4b57240967"
         },
         {
-          "id": "2838",
-          "folio": "f47v",
+          "id": "6758",
+          "folio": "f2v",
           "molecule": "d:1",
-          "svg": "./examples/d_1/2838.svg",
-          "checksum": "3b1c5be220291c5504df7c7ee229f646d1df4fd6846d33b3501dd37109d5bdf6"
+          "svg": "./examples/d_1/6758.svg",
+          "checksum": "35233b7ff7f50fda19bdf01390ced19906635d83a1b545e6d414d273a5a57b71"
         },
         {
-          "id": "2807",
-          "folio": "f47v",
+          "id": "6760",
+          "folio": "f2v",
           "molecule": "d:1",
-          "svg": "./examples/d_1/2807.svg",
-          "checksum": "ac46c8e38466f6bd2d72e3b23d907de20990bdb5088d98fd692162a9c5b4bcb8"
+          "svg": "./examples/d_1/6760.svg",
+          "checksum": "d54210bc2e09915e6979fa6a1cdeb34193cc0b072198f6ec5e5a7b37dd0b3134"
         },
         {
-          "id": "2844",
-          "folio": "f47v",
+          "id": "6762",
+          "folio": "f2v",
           "molecule": "d:1",
-          "svg": "./examples/d_1/2844.svg",
-          "checksum": "370f34a0fcae426275409edec2d984ffc467f7184eeaad7073302d4079e2ebba"
+          "svg": "./examples/d_1/6762.svg",
+          "checksum": "2216b19a9aad3f130359085c5869fc686f0f0131da00b86fad9e73e27b2a3148"
         },
         {
-          "id": "2674",
-          "folio": "f47v",
+          "id": "6763",
+          "folio": "f2v",
           "molecule": "d:1",
-          "svg": "./examples/d_1/2674.svg",
-          "checksum": "7d60fdef21ad90b4e2e1599fe8e675ebc9fa12e861ad1cf594adaaf11706e3a0"
+          "svg": "./examples/d_1/6763.svg",
+          "checksum": "cc645b0483328155566e2c7728f42d8ca819371c43df86fcb59a0bcb44870027"
         }
       ]
     },
     {
       "token": "e:1",
       "label": "Vertical line with top serif",
-      "count": 1332,
+      "count": 1763,
       "folios": [
         "f1r",
         "f1v",
         "f2r",
+        "f2v",
+        "f3r",
         "f47v"
       ],
       "folioCounts": {
         "f1r": 589,
-        "f1v": 216,
+        "f1v": 218,
         "f2r": 263,
+        "f2v": 164,
+        "f3r": 265,
         "f47v": 264
       },
       "dominantPosition": "solitary (100%)",
@@ -965,7 +1010,7 @@
         "initial": 0,
         "medial": 0,
         "final": 0,
-        "solitary": 1332
+        "solitary": 1763
       },
       "exampleCount": 24,
       "examples": [
@@ -1096,63 +1141,67 @@
           "checksum": "4c07198c6e4a3a23a211c5ec152d9a5bd52acbf8cb4fb68708003aee7c217a62"
         },
         {
-          "id": "2620",
-          "folio": "f47v",
+          "id": "6828",
+          "folio": "f2v",
           "molecule": "e:1",
-          "svg": "./examples/e_1/2620.svg",
-          "checksum": "bd69ec62cf723b24430e1bb5b0e3d84870746aec54663bc0d7ed2f2a0311a14e"
+          "svg": "./examples/e_1/6828.svg",
+          "checksum": "f76e5db67f59fab9bb553cdcabbd0a22f7dee8928a6cae085e6afcd994d40276"
         },
         {
-          "id": "2617",
-          "folio": "f47v",
+          "id": "6827",
+          "folio": "f2v",
           "molecule": "e:1",
-          "svg": "./examples/e_1/2617.svg",
-          "checksum": "2055c54a6497695b6a5d2856375057d5171083d1eb67eeac5f3ef8ac990a87df"
+          "svg": "./examples/e_1/6827.svg",
+          "checksum": "56054619c371732fd98fe2b9516e3d62f508b377e7f5f54c6562ccfdbf9675b5"
         },
         {
-          "id": "2622",
-          "folio": "f47v",
+          "id": "6826",
+          "folio": "f2v",
           "molecule": "e:1",
-          "svg": "./examples/e_1/2622.svg",
-          "checksum": "5164fbbfbac3ccd1f660c444649c0dfaaa041557303a3915ffe6299dde530111"
+          "svg": "./examples/e_1/6826.svg",
+          "checksum": "3297f26848cde10f81c458235ccbb920c03567327e3a1b19ee5bb6b9d4393ea8"
         },
         {
-          "id": "2623",
-          "folio": "f47v",
+          "id": "6824",
+          "folio": "f2v",
           "molecule": "e:1",
-          "svg": "./examples/e_1/2623.svg",
-          "checksum": "b82db88cbe10761becffe0ab91df2b826bd6c73e9886d0143c99ded89e2737de"
+          "svg": "./examples/e_1/6824.svg",
+          "checksum": "83800a1b85190baecddff68e4e55275ab0fb5e16211d108ac32d41f391741b0a"
         },
         {
-          "id": "2624",
-          "folio": "f47v",
+          "id": "6825",
+          "folio": "f2v",
           "molecule": "e:1",
-          "svg": "./examples/e_1/2624.svg",
-          "checksum": "6bfb920b58aff0ddc44d9fa0d6629683f37c6ab993be28a077fd2e27dca25a7d"
+          "svg": "./examples/e_1/6825.svg",
+          "checksum": "fc2ee088d4bed2a0ba32bba813a5f6d1c7c09886479ecdd5dd8c1c9cb80091f3"
         },
         {
-          "id": "2713",
-          "folio": "f47v",
+          "id": "6823",
+          "folio": "f2v",
           "molecule": "e:1",
-          "svg": "./examples/e_1/2713.svg",
-          "checksum": "29daed0666376f912525dac133fbef142d2dfa68f6e6545684d8e343bed7b46e"
+          "svg": "./examples/e_1/6823.svg",
+          "checksum": "7836922235cc36680dcdcd9ba24563b6276c75e9f47e82c1c6b8a37dc47bac5f"
         }
       ]
     },
     {
       "token": "f:1",
       "label": "Gallows loop (left side)",
-      "count": 459,
+      "count": 637,
       "folios": [
         "f1r",
         "f1v",
         "f2r",
+        "f2v",
+        "f3r",
         "f47v"
       ],
       "folioCounts": {
         "f1r": 217,
         "f1v": 73,
         "f2r": 111,
+        "f2v": 49,
+        "f3r": 129,
         "f47v": 58
       },
       "dominantPosition": "solitary (100%)",
@@ -1160,7 +1209,7 @@
         "initial": 0,
         "medial": 0,
         "final": 0,
-        "solitary": 459
+        "solitary": 637
       },
       "exampleCount": 24,
       "examples": [
@@ -1193,18 +1242,18 @@
           "checksum": "10524eebfa13e719b2930a6064cb1eb994dfebc182636fd6980e46cb6e514748"
         },
         {
+          "id": "3185",
+          "folio": "f1r",
+          "molecule": "f:1",
+          "svg": "./examples/f_1/3185.svg",
+          "checksum": "5c016fdb625409dfeef20bf4b5462dfeca30c3891b9e8a6f91225e3287fe9401"
+        },
+        {
           "id": "3182",
           "folio": "f1r",
           "molecule": "f:1",
           "svg": "./examples/f_1/3182.svg",
-          "checksum": "23fcd85caee803ae6faceecf01b8b046968e2796410d782ec89d7e4cbdfe304e"
-        },
-        {
-          "id": "3188",
-          "folio": "f1r",
-          "molecule": "f:1",
-          "svg": "./examples/f_1/3188.svg",
-          "checksum": "d7c3ae625748517592b6157cef9ac54e363f4d46aa85f766e61d23552c89042f"
+          "checksum": "aa211613ffa00de7b6de912e827074c49798f1ade19db50393e69e2f6b6a4034"
         },
         {
           "id": "5334",
@@ -1291,63 +1340,67 @@
           "checksum": "3a76c8e3d7b7d46eef3daeeac21fe70d8155fe1bd3c9d91b28e748b6897abf1e"
         },
         {
-          "id": "2758",
-          "folio": "f47v",
+          "id": "6669",
+          "folio": "f2v",
           "molecule": "f:1",
-          "svg": "./examples/f_1/2758.svg",
-          "checksum": "3bb6e5dc3e79fae0d8767630c2b53f75c706c9200feab0a9763d6d860e2bfe52"
+          "svg": "./examples/f_1/6669.svg",
+          "checksum": "7a21d158f8195fa634de588111cf41f123dea1118dcfb9861684318ecb47ec08"
         },
         {
-          "id": "2757",
-          "folio": "f47v",
+          "id": "6680",
+          "folio": "f2v",
           "molecule": "f:1",
-          "svg": "./examples/f_1/2757.svg",
-          "checksum": "1b3cbcbd27a06efcaea76e316cde02adcfcb54c39498aa8732f065b613d7db3a"
+          "svg": "./examples/f_1/6680.svg",
+          "checksum": "dcf132c58b3a18f4cd449b31af0679e56887af5ca2ae53197f93eb7675eb5c7d"
         },
         {
-          "id": "2802",
-          "folio": "f47v",
+          "id": "6681",
+          "folio": "f2v",
           "molecule": "f:1",
-          "svg": "./examples/f_1/2802.svg",
-          "checksum": "6bf008ed2bf208818ce6881c82e454da13ca7a3fc82b49c6dd29e7bd4a67e349"
+          "svg": "./examples/f_1/6681.svg",
+          "checksum": "5003923b89e7f7fc3403b11ce68102f01cb39a8aa23dc0ce66ef8d0480cf3478"
         },
         {
-          "id": "2804",
-          "folio": "f47v",
+          "id": "6678",
+          "folio": "f2v",
           "molecule": "f:1",
-          "svg": "./examples/f_1/2804.svg",
-          "checksum": "11aa247a421caf3aecff69a4511ae04c55c2be3fb8bedbb5c9b3abefeb1ae6a3"
+          "svg": "./examples/f_1/6678.svg",
+          "checksum": "aaf805f625658dee3ba598c5a57c5a1d7d36e9faabab31856b0d4324e5e826c3"
         },
         {
-          "id": "2805",
-          "folio": "f47v",
+          "id": "6679",
+          "folio": "f2v",
           "molecule": "f:1",
-          "svg": "./examples/f_1/2805.svg",
-          "checksum": "1c20c213f9db7d420653a83cb13062d254e9505a73ec3401b69ecde97393a4ef"
+          "svg": "./examples/f_1/6679.svg",
+          "checksum": "71d122da23a961afc1f12db7c5907a3a74d0d6eca22fa55769d3a7253ea4e598"
         },
         {
-          "id": "2803",
-          "folio": "f47v",
+          "id": "6682",
+          "folio": "f2v",
           "molecule": "f:1",
-          "svg": "./examples/f_1/2803.svg",
-          "checksum": "726f8bb89144b1978a5b1df46cdc96f017ad46ccd65e1269285d7da226a79c59"
+          "svg": "./examples/f_1/6682.svg",
+          "checksum": "1fac520f376f3a4fbf998de5c970a6ebb999cf158645a6af5dc6d33aef4dc99e"
         }
       ]
     },
     {
       "token": "g:1",
       "label": "Right-curved gallows loop",
-      "count": 298,
+      "count": 408,
       "folios": [
         "f1r",
         "f1v",
         "f2r",
+        "f2v",
+        "f3r",
         "f47v"
       ],
       "folioCounts": {
         "f1r": 129,
         "f1v": 54,
         "f2r": 53,
+        "f2v": 46,
+        "f3r": 64,
         "f47v": 62
       },
       "dominantPosition": "solitary (100%)",
@@ -1355,7 +1408,7 @@
         "initial": 0,
         "medial": 0,
         "final": 0,
-        "solitary": 298
+        "solitary": 408
       },
       "exampleCount": 24,
       "examples": [
@@ -1378,28 +1431,28 @@
           "folio": "f1r",
           "molecule": "g:1",
           "svg": "./examples/g_1/3202.svg",
-          "checksum": "cc1cf4d185540e3d856672425a943bfaaf543a60cae716c603852b3a697a85ce"
+          "checksum": "017be7e402774cc8012005af51bfb3b9a1f6278f32eb8a6ab79bc08567bb3584"
         },
         {
           "id": "3200",
           "folio": "f1r",
           "molecule": "g:1",
           "svg": "./examples/g_1/3200.svg",
-          "checksum": "a2bcefd4d6f2efe7b5549630ed6da9f2c8ed7ecce1ebfb65524a424e783b2358"
+          "checksum": "8f30f666dc335af55ee327fb038c3b8b1b6803a33b4aeafcc80de1f734cb77b5"
         },
         {
           "id": "3201",
           "folio": "f1r",
           "molecule": "g:1",
           "svg": "./examples/g_1/3201.svg",
-          "checksum": "246d50d2f161686503e6e2fefcd0e691e9d5b48a4f086dd63001c11385bbf0a7"
+          "checksum": "88a5e5527d7756d49376a4fe41a6e9359ef6530fbb08573c9f05a826a0a4a73c"
         },
         {
           "id": "3205",
           "folio": "f1r",
           "molecule": "g:1",
           "svg": "./examples/g_1/3205.svg",
-          "checksum": "9935370e384cce1649c6a153b4fd35818462844729e5694ab0885608e5d62a97"
+          "checksum": "4b38d1422ae8b57718150d52bd3cb4e0208216253693a5f94cedf3a9d2a31b45"
         },
         {
           "id": "5138",
@@ -1486,63 +1539,67 @@
           "checksum": "eab9803913c8eebbf0f325e30f2f9eb810bf0f8a6c23d246f013fd7a57edbfcb"
         },
         {
-          "id": "2625",
-          "folio": "f47v",
+          "id": "6965",
+          "folio": "f2v",
           "molecule": "g:1",
-          "svg": "./examples/g_1/2625.svg",
-          "checksum": "d33eff92a94cc2a9f72296e253c197a0548b16842a55176bd2bb8cef62b21d92"
+          "svg": "./examples/g_1/6965.svg",
+          "checksum": "ae7a58cf79b6a3865304ee7052f639d3a8b1959b8eb1954eb32746631c232b0c"
         },
         {
-          "id": "2731",
-          "folio": "f47v",
+          "id": "6964",
+          "folio": "f2v",
           "molecule": "g:1",
-          "svg": "./examples/g_1/2731.svg",
-          "checksum": "f374c9602eac3dac358c3d7942675fd86bd742833bbb1c9560a2d8fe6dbd3623"
+          "svg": "./examples/g_1/6964.svg",
+          "checksum": "3bae30dd2e8ee50118d17faa46ec9514d174e37d1a1facf93468dc24485c4239"
         },
         {
-          "id": "2732",
-          "folio": "f47v",
+          "id": "6970",
+          "folio": "f2v",
           "molecule": "g:1",
-          "svg": "./examples/g_1/2732.svg",
-          "checksum": "3b7cadf875859b8699a1f42170eea41aa9a0a24ba3da01a09ed7e9ba585df279"
+          "svg": "./examples/g_1/6970.svg",
+          "checksum": "5c6b887413a81b5d7f48add6b38be1f34023dab5216e6c180a48cf54cde80eb7"
         },
         {
-          "id": "2727",
-          "folio": "f47v",
+          "id": "6972",
+          "folio": "f2v",
           "molecule": "g:1",
-          "svg": "./examples/g_1/2727.svg",
-          "checksum": "22113705677a5bae5b8e2ae52f15fa37982626809ddbbcc9925c2c2d311cbb39"
+          "svg": "./examples/g_1/6972.svg",
+          "checksum": "f8feb4eca65e700261940bce664a771de12736ff7358bf11cf34b986d8222caf"
         },
         {
-          "id": "2782",
-          "folio": "f47v",
+          "id": "6971",
+          "folio": "f2v",
           "molecule": "g:1",
-          "svg": "./examples/g_1/2782.svg",
-          "checksum": "d58eab24c6449bfe4392e2b15df0439ec4777e63e6b98c026cb2f3081745c026"
+          "svg": "./examples/g_1/6971.svg",
+          "checksum": "e7f7bd9175241b42917fe6dc6df5f0cdc61af89dc098a3122cf818cd92c5932c"
         },
         {
-          "id": "2781",
-          "folio": "f47v",
+          "id": "6976",
+          "folio": "f2v",
           "molecule": "g:1",
-          "svg": "./examples/g_1/2781.svg",
-          "checksum": "658fe241a6b8400ca9ba4df6df7e9a578a17b56e514d4638ca0518d4c54f3726"
+          "svg": "./examples/g_1/6976.svg",
+          "checksum": "48f482ca2f56e0b699440f8b355f27c3e98b8468d9b0a72a20b4837c0b7da05a"
         }
       ]
     },
     {
       "token": "h:1",
       "label": "Left-top diagonal",
-      "count": 209,
+      "count": 276,
       "folios": [
         "f1r",
         "f1v",
         "f2r",
+        "f2v",
+        "f3r",
         "f47v"
       ],
       "folioCounts": {
         "f1r": 79,
         "f1v": 36,
         "f2r": 48,
+        "f2v": 15,
+        "f3r": 52,
         "f47v": 46
       },
       "dominantPosition": "solitary (100%)",
@@ -1550,7 +1607,7 @@
         "initial": 0,
         "medial": 0,
         "final": 0,
-        "solitary": 209
+        "solitary": 276
       },
       "exampleCount": 24,
       "examples": [
@@ -1566,35 +1623,35 @@
           "folio": "f1r",
           "molecule": "h:1",
           "svg": "./examples/h_1/3226.svg",
-          "checksum": "873c92f60b834c98d203c983cf9a38b10dc96d2aaa70c29e11e2060497749394"
+          "checksum": "fefa6fbdbbf68dd14037057ffd157c3d6a4745793160ee5141bb53a0df760636"
         },
         {
           "id": "3227",
           "folio": "f1r",
           "molecule": "h:1",
           "svg": "./examples/h_1/3227.svg",
-          "checksum": "b9faf38632fbedb0d49d298044f75694fba1e3c0cf0fbcd969627994f6aede60"
+          "checksum": "00d0897fce233f4e80bdadeacce5d4cb17800ec375ea03a27005c60e847c8f37"
         },
         {
           "id": "3304",
           "folio": "f1r",
           "molecule": "h:1",
           "svg": "./examples/h_1/3304.svg",
-          "checksum": "1ab3d170524cbeaf41d6d196ba695fdbc40c2208f3fc6c5fdaca75df3cb06f9a"
+          "checksum": "6c3d2264208a8067f44f6f68761f4d5a35e7f998aac5521597888d51b3f44148"
         },
         {
           "id": "3305",
           "folio": "f1r",
           "molecule": "h:1",
           "svg": "./examples/h_1/3305.svg",
-          "checksum": "6bc3fde5d127ebba41048fdbeafb7c40266370c6f0d6ae868a3f91c72b3d2448"
+          "checksum": "e4566ce883500d8e74af7d4fa340dff681d978df0c68b5448928df711e3166dc"
         },
         {
           "id": "3337",
           "folio": "f1r",
           "molecule": "h:1",
           "svg": "./examples/h_1/3337.svg",
-          "checksum": "25138f5a7e4408d22fd4112e250c269e6e723060da3e2a04058fd8de6c77ff4b"
+          "checksum": "4cba3ab02b7950af24d5b3e723538f7a17428933926806ae3f73ee0dc33cc689"
         },
         {
           "id": "5259",
@@ -1681,63 +1738,67 @@
           "checksum": "35ee246331685eea2a17bcffed4d6412e9475542fc636733755932a3393833fd"
         },
         {
-          "id": "2736",
-          "folio": "f47v",
+          "id": "7044",
+          "folio": "f2v",
           "molecule": "h:1",
-          "svg": "./examples/h_1/2736.svg",
-          "checksum": "80ff186771be4b02621d1c9580e33d3547280c34918d2bdffa73b6fd4d1c984b"
+          "svg": "./examples/h_1/7044.svg",
+          "checksum": "992998c1c1300065c014a701c1a1ca6ac72c47edea480a01526438b8c463bca5"
         },
         {
-          "id": "2739",
-          "folio": "f47v",
+          "id": "7046",
+          "folio": "f2v",
           "molecule": "h:1",
-          "svg": "./examples/h_1/2739.svg",
-          "checksum": "68db78f716fe642ea8f17c0caedee5a39b8ead93462da2cd499575eb4b89814c"
+          "svg": "./examples/h_1/7046.svg",
+          "checksum": "8a40efe055b1a3989b97c97b34a2f7b9517563146ce90bfdaaa6927233e97c73"
         },
         {
-          "id": "2738",
-          "folio": "f47v",
+          "id": "7047",
+          "folio": "f2v",
           "molecule": "h:1",
-          "svg": "./examples/h_1/2738.svg",
-          "checksum": "3ee4ad370b2bc5f0589538f2250088122dfb4b2eea7ac3b833551f8584d53bb0"
+          "svg": "./examples/h_1/7047.svg",
+          "checksum": "78a69b6a5429d5f1103ead2e07c22c5c67da0eb47100b6e581b6aa2e222a703c"
         },
         {
-          "id": "2734",
-          "folio": "f47v",
+          "id": "7048",
+          "folio": "f2v",
           "molecule": "h:1",
-          "svg": "./examples/h_1/2734.svg",
-          "checksum": "2d601f8b25ffdce3a2f4cdc4b9b583cb541ebd058350fb4362e4a18a225b03ca"
+          "svg": "./examples/h_1/7048.svg",
+          "checksum": "a80160842a0095955ea06559290477cdf8920dbe513d01342820903cd405136c"
         },
         {
-          "id": "2779",
-          "folio": "f47v",
+          "id": "7043",
+          "folio": "f2v",
           "molecule": "h:1",
-          "svg": "./examples/h_1/2779.svg",
-          "checksum": "3f42151dea84694bb09be3c33cd4d418e538aa9a0702ee2bc4243c0d423377dd"
+          "svg": "./examples/h_1/7043.svg",
+          "checksum": "68dd41be6792fa0359cc43187bb7ef4232d08120717f3d44f7995f7c741a8457"
         },
         {
-          "id": "2909",
-          "folio": "f47v",
+          "id": "7049",
+          "folio": "f2v",
           "molecule": "h:1",
-          "svg": "./examples/h_1/2909.svg",
-          "checksum": "655587d30948a8e56c0d92899cb9d0db7ad864f67c76b75be2e92f92db5d2e7f"
+          "svg": "./examples/h_1/7049.svg",
+          "checksum": "539638ed298830c49a768fdeb85b9d362a2941edc116a730ba8471134a3fc32c"
         }
       ]
     },
     {
       "token": "h:2",
       "label": "Short left-top diagonal",
-      "count": 160,
+      "count": 197,
       "folios": [
         "f1r",
         "f1v",
         "f2r",
+        "f2v",
+        "f3r",
         "f47v"
       ],
       "folioCounts": {
         "f1r": 63,
         "f1v": 34,
         "f2r": 34,
+        "f2v": 15,
+        "f3r": 22,
         "f47v": 29
       },
       "dominantPosition": "solitary (100%)",
@@ -1745,7 +1806,7 @@
         "initial": 0,
         "medial": 0,
         "final": 0,
-        "solitary": 160
+        "solitary": 197
       },
       "exampleCount": 24,
       "examples": [
@@ -1754,42 +1815,42 @@
           "folio": "f1r",
           "molecule": "h:2",
           "svg": "./examples/h_2/3180.svg",
-          "checksum": "ac4945d725158a9ddec25750494a95eeda7ff3c620741e0f4a1267cc5953cb48"
-        },
-        {
-          "id": "1288",
-          "folio": "f1r",
-          "molecule": "h:2",
-          "svg": "./examples/h_2/1288.svg",
-          "checksum": "515ee70b6da4e08a7a0a6a91eb7105090732967137d1d2a2954efc2bb7a662ac"
+          "checksum": "ba0f5756d4f0bbfee8d5f89373f1ef2b1c79a1ac1e55c561416a1ca87f32b8c6"
         },
         {
           "id": "3288",
           "folio": "f1r",
           "molecule": "h:2",
           "svg": "./examples/h_2/3288.svg",
-          "checksum": "8288ea2033cf3909b705add8c1cabb06bbde1f86c4bd0ae6f8609d01dd2f8be9"
+          "checksum": "f2a0fae9d6304531bcb6cd4b22b11c596248e2ac7e5fc2bb804326880bf76899"
         },
         {
           "id": "3284",
           "folio": "f1r",
           "molecule": "h:2",
           "svg": "./examples/h_2/3284.svg",
-          "checksum": "f114923c4da7d2dcc4081497132682f3548d7248bb5d9542161ad407d770caad"
+          "checksum": "b195fd78262dc32e403514130fec5843f40b67f7a04b271bf0711f82054a960f"
         },
         {
           "id": "3285",
           "folio": "f1r",
           "molecule": "h:2",
           "svg": "./examples/h_2/3285.svg",
-          "checksum": "d94bb78f99261b37ad0b8625e6a3276a0085ff2123f03282a62497e7afcb6db3"
+          "checksum": "f0980095b71ba121670d802eeb48e5e27daf739a848ca0251fb783b70e26c6cd"
         },
         {
           "id": "3383",
           "folio": "f1r",
           "molecule": "h:2",
           "svg": "./examples/h_2/3383.svg",
-          "checksum": "b3db26c021be759ca89e3be92c62a0aa4c1e6598b3da6a02a7195d795ecbb75c"
+          "checksum": "0835af642a33dd35b574918ed8789cdd9806b659ead878ddc2abffa25eb1354b"
+        },
+        {
+          "id": "3386",
+          "folio": "f1r",
+          "molecule": "h:2",
+          "svg": "./examples/h_2/3386.svg",
+          "checksum": "49a2cea7247edcb77927eae2c96bb0e13e06cab08d2b401ec4f5bae18b52c1e4"
         },
         {
           "id": "5300",
@@ -1876,63 +1937,67 @@
           "checksum": "a5fed712cd675011fcba2d06a1ddd74f5f803178db1cc28e6a77253de9b6575d"
         },
         {
-          "id": "2761",
-          "folio": "f47v",
+          "id": "7014",
+          "folio": "f2v",
           "molecule": "h:2",
-          "svg": "./examples/h_2/2761.svg",
-          "checksum": "2cfe7011a1a10b8e0759a59dc119da4bc9188b82e9222eee2dd33d53c76a1ff9"
+          "svg": "./examples/h_2/7014.svg",
+          "checksum": "2bbe898ebe8e72a8333c106da84a53f17c53b7886517ddebc126b11f7843b7a0"
         },
         {
-          "id": "5500",
-          "folio": "f47v",
+          "id": "7017",
+          "folio": "f2v",
           "molecule": "h:2",
-          "svg": "./examples/h_2/5500.svg",
-          "checksum": "0c3c8f1fca478b8b5a2816d6b151025fbffe2afa42ff5c84fba88f96ead6d212"
+          "svg": "./examples/h_2/7017.svg",
+          "checksum": "109dd557425418d43d0336314b7086329ac158bc4d925fb2262ed74812d587ab"
         },
         {
-          "id": "2810",
-          "folio": "f47v",
+          "id": "7016",
+          "folio": "f2v",
           "molecule": "h:2",
-          "svg": "./examples/h_2/2810.svg",
-          "checksum": "e3568ea76738efeb0a3e709178352cbd947f47b7a2de2b00de127b71af01dd15"
+          "svg": "./examples/h_2/7016.svg",
+          "checksum": "d90d1d69641493087f7c104100f7da3f50ea0047642815e27042ba077b942ae3"
         },
         {
-          "id": "2966",
-          "folio": "f47v",
+          "id": "7015",
+          "folio": "f2v",
           "molecule": "h:2",
-          "svg": "./examples/h_2/2966.svg",
-          "checksum": "0dc9352807db76a8615bc99bd7dd95fc976b3c6f8c49a57bcdffd9acc681d9c4"
+          "svg": "./examples/h_2/7015.svg",
+          "checksum": "a2d3ad96bd28ec7310708d2efe3c9495e4b9d7cf0b409eaf1518983f64f29e5d"
         },
         {
-          "id": "2968",
-          "folio": "f47v",
+          "id": "7018",
+          "folio": "f2v",
           "molecule": "h:2",
-          "svg": "./examples/h_2/2968.svg",
-          "checksum": "5b49a414a30dd418dfccf5a0ad0896e62fa56c7063425d6d322003394b8a15e1"
+          "svg": "./examples/h_2/7018.svg",
+          "checksum": "ff1e770210467e156fa96d68f00752b3a09799bdab3727aaaa198d8265c0dba4"
         },
         {
-          "id": "3022",
-          "folio": "f47v",
+          "id": "7019",
+          "folio": "f2v",
           "molecule": "h:2",
-          "svg": "./examples/h_2/3022.svg",
-          "checksum": "5321a0fc11f453aae7e9f1ccfdbd4d810a238e350492625b457e36e030cbebdb"
+          "svg": "./examples/h_2/7019.svg",
+          "checksum": "48c28f36c6ad0e287d015c066111ccc24f3a75f8f247541673547e3c6feac058"
         }
       ]
     },
     {
       "token": "i:1",
       "label": "Right-top diagonal",
-      "count": 222,
+      "count": 330,
       "folios": [
         "f1r",
         "f1v",
         "f2r",
+        "f2v",
+        "f3r",
         "f47v"
       ],
       "folioCounts": {
         "f1r": 117,
         "f1v": 23,
-        "f2r": 57,
+        "f2r": 58,
+        "f2v": 30,
+        "f3r": 77,
         "f47v": 25
       },
       "dominantPosition": "solitary (100%)",
@@ -1940,7 +2005,7 @@
         "initial": 0,
         "medial": 0,
         "final": 0,
-        "solitary": 222
+        "solitary": 330
       },
       "exampleCount": 24,
       "examples": [
@@ -1963,28 +2028,28 @@
           "folio": "f1r",
           "molecule": "i:1",
           "svg": "./examples/i_1/3193.svg",
-          "checksum": "ba610ce29e206d16501bc9205c126052e2eb4bbf78ff0e4f9eb5cdfc6167df38"
+          "checksum": "a7a17aed090c0fb40a0c0aec7896a9c6d5dc2ec775ea8aff1c424a5ac45dce7c"
         },
         {
           "id": "3195",
           "folio": "f1r",
           "molecule": "i:1",
           "svg": "./examples/i_1/3195.svg",
-          "checksum": "7303bb1d65786d73491b0cdf1cd47ff8fbcf4a50c2ac66aba56211a5fc3efd5d"
+          "checksum": "2b6460ef458dcf3ce344183d46bf9e34e910784fc25992474eecee97d7a0bc06"
         },
         {
           "id": "3192",
           "folio": "f1r",
           "molecule": "i:1",
           "svg": "./examples/i_1/3192.svg",
-          "checksum": "4727e78cfd845209d83f5c9771593f0c50b599d96490a2a322d35b2f56f6bfa7"
+          "checksum": "e9b6d13ee86bd60bf5e082bae500c94808b771751329c13a2253f29d80152201"
         },
         {
           "id": "3194",
           "folio": "f1r",
           "molecule": "i:1",
           "svg": "./examples/i_1/3194.svg",
-          "checksum": "ac9ac116091ccc4c54a8dff888119215b956cd2bc238c60db3abe9bb66c0b1a0"
+          "checksum": "102ce32d69f19b980729b430b38fcd528fdbe1e29709aaf07e6d4ed9550fd0f2"
         },
         {
           "id": "5195",
@@ -2071,63 +2136,67 @@
           "checksum": "9db2a107fd8a603fc7bd627782a7773e3879e8264198eeed36816d60715c4d87"
         },
         {
-          "id": "2762",
-          "folio": "f47v",
+          "id": "6721",
+          "folio": "f2v",
           "molecule": "i:1",
-          "svg": "./examples/i_1/2762.svg",
-          "checksum": "a54793b57e84235dd35b6df6f10d359bd06ea0999ddc5b4e191e4ef7d81bc88a"
+          "svg": "./examples/i_1/6721.svg",
+          "checksum": "1e84824635f2c3f0d7354949c8b9e8a955bb4bd7db68abd7745c9ce2b81cc8bd"
         },
         {
-          "id": "2837",
-          "folio": "f47v",
+          "id": "6729",
+          "folio": "f2v",
           "molecule": "i:1",
-          "svg": "./examples/i_1/2837.svg",
-          "checksum": "5a5a41820b12f6b931cbcd3e1cba26d6f2cfd384e5d220c29ceff361a480eb7e"
+          "svg": "./examples/i_1/6729.svg",
+          "checksum": "ad59f111dc1d78c6c191115fc18c8f1d4c56bada13dc434fd392e0627531bd69"
         },
         {
-          "id": "2806",
-          "folio": "f47v",
+          "id": "6727",
+          "folio": "f2v",
           "molecule": "i:1",
-          "svg": "./examples/i_1/2806.svg",
-          "checksum": "9536138ed878f97ca63055016b14293d9835905446548d1f682947299155443b"
+          "svg": "./examples/i_1/6727.svg",
+          "checksum": "f584dab435fc63e824170f94e0354fd8bc1656b799b1a7f04573a0bc89df5ff9"
         },
         {
-          "id": "2843",
-          "folio": "f47v",
+          "id": "6728",
+          "folio": "f2v",
           "molecule": "i:1",
-          "svg": "./examples/i_1/2843.svg",
-          "checksum": "fe80ab99f70a426fb62e9d5bde4694f84bc5072a7f3869bf22c347d4542aa723"
+          "svg": "./examples/i_1/6728.svg",
+          "checksum": "988efd22075e6a964f86513a034566bef894343bc0e1e0716f9c470b84d0627c"
         },
         {
-          "id": "2673",
-          "folio": "f47v",
+          "id": "6730",
+          "folio": "f2v",
           "molecule": "i:1",
-          "svg": "./examples/i_1/2673.svg",
-          "checksum": "fd0cca5e66b3e6a93a1c6e723aeb0bac5e14a0e8a4f3dd29b6830f80bc659a9a"
+          "svg": "./examples/i_1/6730.svg",
+          "checksum": "99b83b91b4c96e6513e33bc1114ce752f336aa189e22c935ec918ecf4bf259d2"
         },
         {
-          "id": "2978",
-          "folio": "f47v",
+          "id": "6731",
+          "folio": "f2v",
           "molecule": "i:1",
-          "svg": "./examples/i_1/2978.svg",
-          "checksum": "5fba68acc43297dd02de892e29e794680edb179efc19f660b276f30d67668645"
+          "svg": "./examples/i_1/6731.svg",
+          "checksum": "9efec66b85fda07ed829a957e4833f92e91d0d6e49972465024ae0ec41be166d"
         }
       ]
     },
     {
       "token": "j:1",
       "label": "Right-benched stroke",
-      "count": 114,
+      "count": 160,
       "folios": [
         "f1r",
         "f1v",
         "f2r",
+        "f2v",
+        "f3r",
         "f47v"
       ],
       "folioCounts": {
         "f1r": 32,
         "f1v": 35,
-        "f2r": 26,
+        "f2r": 25,
+        "f2v": 12,
+        "f3r": 35,
         "f47v": 21
       },
       "dominantPosition": "solitary (100%)",
@@ -2135,51 +2204,51 @@
         "initial": 0,
         "medial": 0,
         "final": 0,
-        "solitary": 114
+        "solitary": 160
       },
       "exampleCount": 24,
       "examples": [
+        {
+          "id": "3210",
+          "folio": "f1r",
+          "molecule": "j:1",
+          "svg": "./examples/j_1/3210.svg",
+          "checksum": "8d1c06c2824bcef2c49eb78ef5850e55f5c6eabead17b2686083f7dc21bd49d1"
+        },
         {
           "id": "3212",
           "folio": "f1r",
           "molecule": "j:1",
           "svg": "./examples/j_1/3212.svg",
-          "checksum": "6d509734a6472984002e4bc1f6ba24c238b0eb1d64d319c60e1e764b53743ea7"
+          "checksum": "362c9119007eefcf16037378e5e85df2a1e1ddba9cd1a6efac5d940150447b29"
         },
         {
           "id": "3213",
           "folio": "f1r",
           "molecule": "j:1",
           "svg": "./examples/j_1/3213.svg",
-          "checksum": "537bf3dc06f140e5efed50422878e6b726124308326f57452306c791a1ea886f"
+          "checksum": "3f2ce57235694e873ee21182c8491f2c27ddd4619d9977e75a700813922f1c9c"
         },
         {
           "id": "3283",
           "folio": "f1r",
           "molecule": "j:1",
           "svg": "./examples/j_1/3283.svg",
-          "checksum": "4ffecf1033a3bce42ffdfe26522dc0ad28e600d5b482b52d16964cf25466295b"
+          "checksum": "7f9112ba2fd05063e0dbf05f216fadec146445d08026ddbb9eed7e022bbba23c"
         },
         {
           "id": "3389",
           "folio": "f1r",
           "molecule": "j:1",
           "svg": "./examples/j_1/3389.svg",
-          "checksum": "a0c708e975fb57359c016642d76e1a7bdc593800ba7c207d87f54240e687eb1c"
+          "checksum": "483650a241ba4911ff8efda2a86de0605ecd948f5b0d0238a5c4ae9d3998d961"
         },
         {
           "id": "3470",
           "folio": "f1r",
           "molecule": "j:1",
           "svg": "./examples/j_1/3470.svg",
-          "checksum": "cab1349947ee2ae945613d2696c59ea455c105a11c4d73873011ffb634a12e83"
-        },
-        {
-          "id": "3469",
-          "folio": "f1r",
-          "molecule": "j:1",
-          "svg": "./examples/j_1/3469.svg",
-          "checksum": "58955d3aeb04d606ec433a29dab7618a28bf9f632cc4e8a7046b141e116ed656"
+          "checksum": "b23635660991f9b6b4deb15dc7598f88374984846a1e704ce5913fe0e4a80056"
         },
         {
           "id": "5417",
@@ -2221,7 +2290,7 @@
           "folio": "f1v",
           "molecule": "j:1",
           "svg": "./examples/j_1/5420.svg",
-          "checksum": "d76321bd60ff0b37b6995d4cbcd24803b1711dc20f8bd0ec84ca5756991cb41e"
+          "checksum": "203675227362917a5e143768393799562f63248184b51531dd27cc70deb02799"
         },
         {
           "id": "6458",
@@ -2266,63 +2335,67 @@
           "checksum": "6c3829dcb364473e041900e1ab30c6b6cacabf14315c21576995c8b00e7dde57"
         },
         {
-          "id": "2818",
-          "folio": "f47v",
+          "id": "7058",
+          "folio": "f2v",
           "molecule": "j:1",
-          "svg": "./examples/j_1/2818.svg",
-          "checksum": "afc694a4388d47721390af8b1ab3320c22d35426f10e0b76ab1fcef356043d75"
+          "svg": "./examples/j_1/7058.svg",
+          "checksum": "b3e4c98d8784cf58b872df8e0edd930126c1447de3d8e223ada9d0236c366639"
         },
         {
-          "id": "2846",
-          "folio": "f47v",
+          "id": "7059",
+          "folio": "f2v",
           "molecule": "j:1",
-          "svg": "./examples/j_1/2846.svg",
-          "checksum": "9fd21567cceef21e937c56f12902a289732f4d7ced40d9e2f655115343e9a007"
+          "svg": "./examples/j_1/7059.svg",
+          "checksum": "4cb9c6649c9b9b30577731844d09a4ada48bc0cbf56b6f0a8a15ce5fa4da02de"
         },
         {
-          "id": "2670",
-          "folio": "f47v",
+          "id": "7060",
+          "folio": "f2v",
           "molecule": "j:1",
-          "svg": "./examples/j_1/2670.svg",
-          "checksum": "7ab1357b9bae36708f0c5541a7e6316ce8b6aed8495122aa6588a8cb703bed24"
+          "svg": "./examples/j_1/7060.svg",
+          "checksum": "0ed311537126ddc90cf1e89c5bc57ff3f18af4d781b1fcaeccda5e19cc598076"
         },
         {
-          "id": "2839",
-          "folio": "f47v",
+          "id": "7061",
+          "folio": "f2v",
           "molecule": "j:1",
-          "svg": "./examples/j_1/2839.svg",
-          "checksum": "7cb97f110f464a117bebcbe975915d5738d61c80bc737523f355ba27fabb960f"
+          "svg": "./examples/j_1/7061.svg",
+          "checksum": "f4cf178e97ec3f609cbfadf00818481e234a2289f44c7e3385c98428ed95015e"
         },
         {
-          "id": "2900",
-          "folio": "f47v",
+          "id": "7062",
+          "folio": "f2v",
           "molecule": "j:1",
-          "svg": "./examples/j_1/2900.svg",
-          "checksum": "095ebab9f2ae892ed88e722f771c63b2f6a113cc74f7c160802079c887f463d1"
+          "svg": "./examples/j_1/7062.svg",
+          "checksum": "cc45d4bb7f80d4f06d4ad215e8079ee2ef73a26ec5da28bd70eeffa5b7de8982"
         },
         {
-          "id": "2869",
-          "folio": "f47v",
+          "id": "7063",
+          "folio": "f2v",
           "molecule": "j:1",
-          "svg": "./examples/j_1/2869.svg",
-          "checksum": "2b6ee034f7237a1b1dabbf91f5688f6bda252ee27dd290594c5646d485a84f65"
+          "svg": "./examples/j_1/7063.svg",
+          "checksum": "a5def579bb7b0fb634559f0ec38e15c6b3974b92b5489612123806a63fbada84"
         }
       ]
     },
     {
       "token": "k:1",
       "label": "Left open curve",
-      "count": 65,
+      "count": 84,
       "folios": [
         "f1r",
         "f1v",
         "f2r",
+        "f2v",
+        "f3r",
         "f47v"
       ],
       "folioCounts": {
         "f1r": 33,
         "f1v": 3,
         "f2r": 18,
+        "f2v": 10,
+        "f3r": 9,
         "f47v": 11
       },
       "dominantPosition": "solitary (100%)",
@@ -2330,23 +2403,23 @@
         "initial": 0,
         "medial": 0,
         "final": 0,
-        "solitary": 65
+        "solitary": 84
       },
-      "exampleCount": 21,
+      "exampleCount": 24,
       "examples": [
         {
           "id": "3190",
           "folio": "f1r",
           "molecule": "k:1",
           "svg": "./examples/k_1/3190.svg",
-          "checksum": "6957498f068dbb6390c3a392b806c27439d37e82372349e25df697663f66a26d"
+          "checksum": "9a0ee701ae456fc32252eabf54fde10318a94ebf53c95e25c882d74fa5f7a9e4"
         },
         {
           "id": "3306",
           "folio": "f1r",
           "molecule": "k:1",
           "svg": "./examples/k_1/3306.svg",
-          "checksum": "4ba9cbc450753ad89a31e4e4bce09d77a48b8d85d909748e29cf9f4b54da7377"
+          "checksum": "03e10b6ec3533d9bed7773e20137ddfdb7c06084c6cdd117d64cba716b9e2652"
         },
         {
           "id": "1174",
@@ -2360,21 +2433,21 @@
           "folio": "f1r",
           "molecule": "k:1",
           "svg": "./examples/k_1/3640.svg",
-          "checksum": "15f72df7beb6782ef73e474384002eec81c32cfa552ffd44d33de92896e1d098"
+          "checksum": "a4794905c0912960158fe629cd349530f80fd7dc51bc8a8b627c015ab90954ef"
         },
         {
           "id": "3641",
           "folio": "f1r",
           "molecule": "k:1",
           "svg": "./examples/k_1/3641.svg",
-          "checksum": "dbd16e7424407edc34d7891e2d26f50f9f6babcc4f1ac115fdfbaa640f681115"
+          "checksum": "b17be397189405ea861e0291ec04b4f68c9e38fa40d5d9aac5c5cf009a5c930f"
         },
         {
           "id": "3642",
           "folio": "f1r",
           "molecule": "k:1",
           "svg": "./examples/k_1/3642.svg",
-          "checksum": "3e5f8be1691a50bdf506e6732100de7fa80c004f63e9ad275d111fd5402b65b6"
+          "checksum": "c19354cd85e92ca1d11aa89feb63af4e62830d28b9684503a1e7368590c725e0"
         },
         {
           "id": "5410",
@@ -2440,63 +2513,88 @@
           "checksum": "bd846206c3bfd6281c0d2af68cc8f570361f40b384b591fb02834f1ced4d531a"
         },
         {
-          "id": "2759",
-          "folio": "f47v",
+          "id": "6655",
+          "folio": "f2v",
           "molecule": "k:1",
-          "svg": "./examples/k_1/2759.svg",
-          "checksum": "191fcfd0209e26a834f326a546800f5c1322685f90bb9692c21c894a808d7db9"
+          "svg": "./examples/k_1/6655.svg",
+          "checksum": "9130f1bd01ca24ab4da4d99dd9cff4bb2adf0857368d376f447e3e378e27da0e"
         },
         {
-          "id": "2808",
-          "folio": "f47v",
+          "id": "6659",
+          "folio": "f2v",
           "molecule": "k:1",
-          "svg": "./examples/k_1/2808.svg",
-          "checksum": "184bc5534d95a575374ee5e4187d308e03bd0ac99d0765f573c90a1b51034b44"
+          "svg": "./examples/k_1/6659.svg",
+          "checksum": "a601bdeb61522da23af36bc19fef1401ad03946c464da44cc534b387b105f23b"
         },
         {
-          "id": "3029",
-          "folio": "f47v",
+          "id": "6660",
+          "folio": "f2v",
           "molecule": "k:1",
-          "svg": "./examples/k_1/3029.svg",
-          "checksum": "b743fcfae7b44ca8cbdf713c7897ccdaaa9a72587fcb3213f2c005dd6ce2ae5b"
+          "svg": "./examples/k_1/6660.svg",
+          "checksum": "dc8d82c410dbff69519b1792a2b844d275530a62f6cf222ac7350ff60998c349"
         },
         {
-          "id": "4254",
-          "folio": "f47v",
+          "id": "6662",
+          "folio": "f2v",
           "molecule": "k:1",
-          "svg": "./examples/k_1/4254.svg",
-          "checksum": "dd79e9c06c7f0e91c8eca8adc59eaad1dd0a80d1053f8e523869b10fafa87dcf"
+          "svg": "./examples/k_1/6662.svg",
+          "checksum": "b6ceda4b050a5f8e5c41795945684ee729e793c92eb83829ac59e6c8d6f2a5cb"
         },
         {
-          "id": "4320",
-          "folio": "f47v",
+          "id": "6663",
+          "folio": "f2v",
           "molecule": "k:1",
-          "svg": "./examples/k_1/4320.svg",
-          "checksum": "95b58032954b09526e882c9235274208345dd1935b926a5961b8cd2d202556a4"
+          "svg": "./examples/k_1/6663.svg",
+          "checksum": "1ddf0ab34ed8738b1fa756548997daea2956ff9ad1ac3acd910485f33e9ca5d1"
         },
         {
-          "id": "4377",
-          "folio": "f47v",
+          "id": "6664",
+          "folio": "f2v",
           "molecule": "k:1",
-          "svg": "./examples/k_1/4377.svg",
-          "checksum": "3e6db27fb8ddc2cbcaca5b63be82773f6d652b3a3b536fe2144eb21e5b63223c"
+          "svg": "./examples/k_1/6664.svg",
+          "checksum": "b8d638ee72410484ad582f1408bffaaafcea2cca671fc5536d70e1b31e1bf760"
+        },
+        {
+          "id": "8228",
+          "folio": "f3r",
+          "molecule": "k:1",
+          "svg": "./examples/k_1/8228.svg",
+          "checksum": "e81883c2b83f2f2b6a7d02f773dc893541ec416cb1f2d8334b56ac6d395cae5d"
+        },
+        {
+          "id": "8227",
+          "folio": "f3r",
+          "molecule": "k:1",
+          "svg": "./examples/k_1/8227.svg",
+          "checksum": "a6e35c2d5c57bf8edb5d7392e00af34bf2052d87d3fccda7f1f4a5f947528f5c"
+        },
+        {
+          "id": "7527",
+          "folio": "f3r",
+          "molecule": "k:1",
+          "svg": "./examples/k_1/7527.svg",
+          "checksum": "454dfea8599d5e1d5fdc1e36a2de7f7cc3cba3fd943cf4a90e5666c45be830ab"
         }
       ]
     },
     {
       "token": "l:1",
       "label": "Right open curve",
-      "count": 31,
+      "count": 38,
       "folios": [
         "f1r",
         "f1v",
         "f2r",
+        "f2v",
+        "f3r",
         "f47v"
       ],
       "folioCounts": {
         "f1r": 21,
         "f1v": 2,
         "f2r": 7,
+        "f2v": 4,
+        "f3r": 3,
         "f47v": 1
       },
       "dominantPosition": "solitary (100%)",
@@ -2504,51 +2602,51 @@
         "initial": 0,
         "medial": 0,
         "final": 0,
-        "solitary": 31
+        "solitary": 38
       },
-      "exampleCount": 15,
+      "exampleCount": 22,
       "examples": [
         {
           "id": "3380",
           "folio": "f1r",
           "molecule": "l:1",
           "svg": "./examples/l_1/3380.svg",
-          "checksum": "6bc2d197bce78e65d27bd071cf36b002e3eebf6c6ef92983d5bd5b0ae4d68d7f"
+          "checksum": "6ce87526d912dd6074b28981551084581d1e453f991e60a97359018978a6b37d"
         },
         {
           "id": "3391",
           "folio": "f1r",
           "molecule": "l:1",
           "svg": "./examples/l_1/3391.svg",
-          "checksum": "8bd954563c1e40585cfa7af31036fb43827878f5bb38a4746b7487c1650090a3"
+          "checksum": "16e5e292be51bd6bb12fd785fe27c62316c13ad57975c11f5f84728ab5267aae"
         },
         {
           "id": "3479",
           "folio": "f1r",
           "molecule": "l:1",
           "svg": "./examples/l_1/3479.svg",
-          "checksum": "fbd8b3efaaf8c33d8ddab6b790544cb3d0e18541540355e11037ff6919c9cd87"
+          "checksum": "410cdc4e62f47a29b7782596ff33eef9f925506bf28f3b5812b3cc9a4ef1e28d"
         },
         {
           "id": "3484",
           "folio": "f1r",
           "molecule": "l:1",
           "svg": "./examples/l_1/3484.svg",
-          "checksum": "7d6231f49a1deb22d7d9ca7c695b71abea82919ac508ff3acff68f95f2210a9e"
+          "checksum": "2407091a3a1cef6b5526706692eb9c1f588064b1b83e64e0f9a3eea54caa4006"
         },
         {
           "id": "3647",
           "folio": "f1r",
           "molecule": "l:1",
           "svg": "./examples/l_1/3647.svg",
-          "checksum": "997b2d29ba31f276e45d6db79bf29c7320808cb2bb063e7528a0d83bcb281225"
+          "checksum": "fa9700bf6f270d9d2a27cbca65b95e2a7ee904074400459173479cdd64c340a1"
         },
         {
           "id": "3869",
           "folio": "f1r",
           "molecule": "l:1",
           "svg": "./examples/l_1/3869.svg",
-          "checksum": "d0b41f8b7bb2edd16a36ffa479dac623efa72da1ccb52de9755612b0a6956b30"
+          "checksum": "8792f91ac6e4daf5af2c3aaae3a41a101a31de7742e392ca95c87b0c2692b6e6"
         },
         {
           "id": "5411",
@@ -2607,6 +2705,55 @@
           "checksum": "8a5abcb70e2e5903d5eb1b033950e47af4759c334a444dfa704c20d814086faf"
         },
         {
+          "id": "6661",
+          "folio": "f2v",
+          "molecule": "l:1",
+          "svg": "./examples/l_1/6661.svg",
+          "checksum": "6c04cf9b1facf0fb0e1c1a5dd9545117907b2cd5a82bdbfd95a817f50172464d"
+        },
+        {
+          "id": "6765",
+          "folio": "f2v",
+          "molecule": "l:1",
+          "svg": "./examples/l_1/6765.svg",
+          "checksum": "ae6a68f0b91f0425d79643cd532ea9d73037dffdeb2c40368e1ea0c8f45b2202"
+        },
+        {
+          "id": "6657",
+          "folio": "f2v",
+          "molecule": "l:1",
+          "svg": "./examples/l_1/6657.svg",
+          "checksum": "b5edd2ecf4bd682b34162890f0004bc60ca0c8ec0e24501f7ebff8c3e89c3f8c"
+        },
+        {
+          "id": "6658",
+          "folio": "f2v",
+          "molecule": "l:1",
+          "svg": "./examples/l_1/6658.svg",
+          "checksum": "91a36eb4f211bd464aa5d4de2aade30ec8cb2216b26232321663c4b7406eeb23"
+        },
+        {
+          "id": "7526",
+          "folio": "f3r",
+          "molecule": "l:1",
+          "svg": "./examples/l_1/7526.svg",
+          "checksum": "a703ee6c41d0b61ef4333c6a4d244debffc04665ecd89f948adaec25f0057c23"
+        },
+        {
+          "id": "7756",
+          "folio": "f3r",
+          "molecule": "l:1",
+          "svg": "./examples/l_1/7756.svg",
+          "checksum": "cb50b5bceaf9b6793c5ca916780754f16783e92863d020a54b8c9fe7fbfbe716"
+        },
+        {
+          "id": "8230",
+          "folio": "f3r",
+          "molecule": "l:1",
+          "svg": "./examples/l_1/8230.svg",
+          "checksum": "e4d34ba91648386e2ae358c9e869dd622fb7d9f50dea2d9fccbca3e2bec476ea"
+        },
+        {
           "id": "4257",
           "folio": "f47v",
           "molecule": "l:1",
@@ -2618,17 +2765,21 @@
     {
       "token": "m:1",
       "label": "Left descending tail",
-      "count": 51,
+      "count": 92,
       "folios": [
         "f1r",
         "f1v",
         "f2r",
+        "f2v",
+        "f3r",
         "f47v"
       ],
       "folioCounts": {
         "f1r": 15,
         "f1v": 12,
         "f2r": 10,
+        "f2v": 7,
+        "f3r": 34,
         "f47v": 14
       },
       "dominantPosition": "solitary (100%)",
@@ -2636,7 +2787,7 @@
         "initial": 0,
         "medial": 0,
         "final": 0,
-        "solitary": 51
+        "solitary": 92
       },
       "exampleCount": 24,
       "examples": [
@@ -2652,35 +2803,35 @@
           "folio": "f1r",
           "molecule": "m:1",
           "svg": "./examples/m_1/3475.svg",
-          "checksum": "525c137c8176300e5fe082086d9eccc5294cc127a9f66fbe6dfb6375b9fae788"
+          "checksum": "e9dc292a5eece914469d56347871f3315c51b0d2aa88398649ed915d0dd5608c"
         },
         {
           "id": "3899",
           "folio": "f1r",
           "molecule": "m:1",
           "svg": "./examples/m_1/3899.svg",
-          "checksum": "381c40e6e163aa0e66391cef8a30152494d9e461e45cd69ded768e9527d02fba"
+          "checksum": "48453e962c9820dbf057b99bad197510f8cdbf9b3d90c6225f4a17394839b608"
         },
         {
           "id": "3900",
           "folio": "f1r",
           "molecule": "m:1",
           "svg": "./examples/m_1/3900.svg",
-          "checksum": "a47b141d361877295b564274344d17daa2afd18c8213f5673aacff79996f8a25"
+          "checksum": "0299008c2f98970e0faab96a2f42b1a252e2b8092f02eda7fdb703852080f5a7"
         },
         {
           "id": "3031",
           "folio": "f1r",
           "molecule": "m:1",
           "svg": "./examples/m_1/3031.svg",
-          "checksum": "5048c90703eb4f69ac63a2a8003af7e9556c5b0e0bbd3bd793fe7ca4f2d6d77c"
+          "checksum": "4d1f6aa0237de814c51048247c1cea088516b0798f4b50fe98d925227c09ed70"
         },
         {
           "id": "4210",
           "folio": "f1r",
           "molecule": "m:1",
           "svg": "./examples/m_1/4210.svg",
-          "checksum": "b6e7eafe62362120b45d101b3d19b54670a3e7118c42d9bfebefb4f3b768d3a8"
+          "checksum": "25a2f98b809f761bab1ec081f0436e6f2860b2b14fbbde00aeffcf9293dda15e"
         },
         {
           "id": "5447",
@@ -2767,63 +2918,67 @@
           "checksum": "74a9e2e734785869ce625a1b39fe576a7b33ba890e91563da69851f354268fe1"
         },
         {
-          "id": "3050",
-          "folio": "f47v",
+          "id": "7037",
+          "folio": "f2v",
           "molecule": "m:1",
-          "svg": "./examples/m_1/3050.svg",
-          "checksum": "27962abc5e569402d0b81ccac1e4ece24fca9a84dd917cf3144a15eda151594b"
+          "svg": "./examples/m_1/7037.svg",
+          "checksum": "f664a7097130aab8c8ca2c58988b1ba27dba20fbb0dc387d165644068119f16d"
         },
         {
-          "id": "3057",
-          "folio": "f47v",
+          "id": "7036",
+          "folio": "f2v",
           "molecule": "m:1",
-          "svg": "./examples/m_1/3057.svg",
-          "checksum": "6cee0fc2b2a5cd58852241b4250eb2474b89522597e50eb7f737aa12cdb2697f"
+          "svg": "./examples/m_1/7036.svg",
+          "checksum": "50225be3d9567bad83eb91864f1141d8c46a4101f6e03925897c1984750d227d"
         },
         {
-          "id": "3058",
-          "folio": "f47v",
+          "id": "7038",
+          "folio": "f2v",
           "molecule": "m:1",
-          "svg": "./examples/m_1/3058.svg",
-          "checksum": "b0f5d367856f516e1b467f0164da3679ccde15cffb4b5602ad7dac1b061afa9b"
+          "svg": "./examples/m_1/7038.svg",
+          "checksum": "310d5c3f42a8caed14c1b1fc6af65cbc6e9b7afa216fe2e3d53ef95bdf1c5532"
         },
         {
-          "id": "3059",
-          "folio": "f47v",
+          "id": "7035",
+          "folio": "f2v",
           "molecule": "m:1",
-          "svg": "./examples/m_1/3059.svg",
-          "checksum": "42097641607f6489d6477a844368f53471a4d42f71a75f7c22b1040449253721"
+          "svg": "./examples/m_1/7035.svg",
+          "checksum": "8e63cde926e56b3844923d41fbdac9a717f039abeedf1acce8c9c9f43d719431"
         },
         {
-          "id": "3063",
-          "folio": "f47v",
+          "id": "7039",
+          "folio": "f2v",
           "molecule": "m:1",
-          "svg": "./examples/m_1/3063.svg",
-          "checksum": "7c99a57d0b13724b34fb7b67cd6d276780db1428ae5e0865ff974b0ec812096c"
+          "svg": "./examples/m_1/7039.svg",
+          "checksum": "a87f50be0fb122fadf6a8360ac5c53d3c0fdec1425cbf9de84f534555696545c"
         },
         {
-          "id": "4264",
-          "folio": "f47v",
+          "id": "7041",
+          "folio": "f2v",
           "molecule": "m:1",
-          "svg": "./examples/m_1/4264.svg",
-          "checksum": "dede9cc06e04dfdb7671226277714075a7cc5ce4bd5869af1e834e4b661962df"
+          "svg": "./examples/m_1/7041.svg",
+          "checksum": "a4f7de6fabc588514cb8da60b3303bf6822edecffdc08efd9a1ba57790f3869e"
         }
       ]
     },
     {
       "token": "n:1",
       "label": "Right descending tail",
-      "count": 82,
+      "count": 104,
       "folios": [
         "f1r",
         "f1v",
         "f2r",
+        "f2v",
+        "f3r",
         "f47v"
       ],
       "folioCounts": {
         "f1r": 45,
         "f1v": 10,
         "f2r": 16,
+        "f2v": 8,
+        "f3r": 14,
         "f47v": 11
       },
       "dominantPosition": "solitary (100%)",
@@ -2831,7 +2986,7 @@
         "initial": 0,
         "medial": 0,
         "final": 0,
-        "solitary": 82
+        "solitary": 104
       },
       "exampleCount": 24,
       "examples": [
@@ -2840,42 +2995,42 @@
           "folio": "f1r",
           "molecule": "n:1",
           "svg": "./examples/n_1/3683.svg",
-          "checksum": "45492dc47241e459e8d5f966e2817e1503031d29b5d06b5c5e2f38ecdae083d0"
+          "checksum": "7ff684edc7a7d7e5939a647fba2f858a739b31bd8ca1c2a148ac277ce2e695ae"
         },
         {
           "id": "3684",
           "folio": "f1r",
           "molecule": "n:1",
           "svg": "./examples/n_1/3684.svg",
-          "checksum": "95e702aca1afc8526d5173ba9e1d329d866210a1944a2176d098a932e1cbdc59"
+          "checksum": "fa26074021a33e73602cc3af2a48d24716eafd0b91ef067b36550f298ad54fb8"
         },
         {
           "id": "3686",
           "folio": "f1r",
           "molecule": "n:1",
           "svg": "./examples/n_1/3686.svg",
-          "checksum": "000b0bfcb0e5a4abba6dd3331b69646825cec175f3e31f7d6adc02a47fb39224"
+          "checksum": "41fa132bd9ca80f8366a87c8d55a502e5ad891f42eb7b7bffd5f06998ae6f353"
         },
         {
           "id": "3687",
           "folio": "f1r",
           "molecule": "n:1",
           "svg": "./examples/n_1/3687.svg",
-          "checksum": "c13782d4d484ed005c9d812b19d94d345964c7abb39c2854d0ea5fc76e4e7903"
+          "checksum": "074b829ad7afdde2b65b952650b0083a660f8c7b11e6a6fa86943ebadcae7fb8"
         },
         {
           "id": "3685",
           "folio": "f1r",
           "molecule": "n:1",
           "svg": "./examples/n_1/3685.svg",
-          "checksum": "4d568aa6984155ae35862da857429a71346004e4567e08c70339625503b7203f"
+          "checksum": "f4ba27128648b4c881add1b2992c46bb1c46fcdb8c631830846a792777ad988a"
         },
         {
           "id": "3689",
           "folio": "f1r",
           "molecule": "n:1",
           "svg": "./examples/n_1/3689.svg",
-          "checksum": "8d95dcb7f1db36c61b09d9957a8a578fec71fa4188a79599a31ba3671d0471ae"
+          "checksum": "796ce7a38544a45593f5a9950a67073cdb74fcce6fd95214e449d838c0d9b2d8"
         },
         {
           "id": "5449",
@@ -2896,7 +3051,7 @@
           "folio": "f1v",
           "molecule": "n:1",
           "svg": "./examples/n_1/5451.svg",
-          "checksum": "fcced4566737ccee26cb60f2d4d7bcd25e2cea76d5a80ce2a3a2f3d5cb4cbd82"
+          "checksum": "5dbffc5c9e44bb4097a1f8bfada6efbd036dbb8ada13b1a9eb8c252082d08fcb"
         },
         {
           "id": "5454",
@@ -2917,7 +3072,7 @@
           "folio": "f1v",
           "molecule": "n:1",
           "svg": "./examples/n_1/5459.svg",
-          "checksum": "87cc43823710070911f01a65660d998ed484ace69526ea96059075f0a2c57707"
+          "checksum": "cbae821820c6fe28d1e499fb9dad4701a8a21a3261ac3c4444a4abd84a603d70"
         },
         {
           "id": "6501",
@@ -2959,49 +3114,49 @@
           "folio": "f2r",
           "molecule": "n:1",
           "svg": "./examples/n_1/6493.svg",
-          "checksum": "ad565481f8f2097a76e547b95f02bad4d6381dcc7b72b5632df7687e93153cb2"
+          "checksum": "1dc10ab9c7e520d85ae47fbd702f12a722f8b010f40e078244a8cf873aa2b7e3"
         },
         {
-          "id": "3697",
-          "folio": "f47v",
+          "id": "7030",
+          "folio": "f2v",
           "molecule": "n:1",
-          "svg": "./examples/n_1/3697.svg",
-          "checksum": "23580e08e030c9058d9362264e3a1c8274e6df965e3fd245046da8e1a5cf2cbd"
+          "svg": "./examples/n_1/7030.svg",
+          "checksum": "96fbabc1312b3e05107ef95f8ba6c546e8e3eb6334bf50439ebb3b57a83adad5"
         },
         {
-          "id": "3699",
-          "folio": "f47v",
+          "id": "7031",
+          "folio": "f2v",
           "molecule": "n:1",
-          "svg": "./examples/n_1/3699.svg",
-          "checksum": "dc46e39cb7cb9b059298aa046de82a6969dfd114698bd0d37530cb0bbcd479ff"
+          "svg": "./examples/n_1/7031.svg",
+          "checksum": "200cbb7ff9336c4891626348bd3669f7e430fa69c60e407099f69939ffc930ae"
         },
         {
-          "id": "3701",
-          "folio": "f47v",
+          "id": "7032",
+          "folio": "f2v",
           "molecule": "n:1",
-          "svg": "./examples/n_1/3701.svg",
-          "checksum": "be9b3ab73ddd38ec9cae362274207bc32c0809755e657741b75d870e80c8caaf"
+          "svg": "./examples/n_1/7032.svg",
+          "checksum": "3aaaf67f653a41fee078aaa0ec6d9c9a776fc1f77323d46a445c89a71111d92f"
         },
         {
-          "id": "3702",
-          "folio": "f47v",
+          "id": "7033",
+          "folio": "f2v",
           "molecule": "n:1",
-          "svg": "./examples/n_1/3702.svg",
-          "checksum": "869373b041814b6c9397ef40b5455af0a3c65fa0c5192f67de5538f4b8a341bd"
+          "svg": "./examples/n_1/7033.svg",
+          "checksum": "1b4713732311a661e7f1c1d3b34930a28314fbbb48f7049515e120a87ea61fb8"
         },
         {
-          "id": "3703",
-          "folio": "f47v",
+          "id": "7034",
+          "folio": "f2v",
           "molecule": "n:1",
-          "svg": "./examples/n_1/3703.svg",
-          "checksum": "a9a624a04c70a4d50c3efd19a2965953c2a89dcd54e6ae324a6605dc1c76da22"
+          "svg": "./examples/n_1/7034.svg",
+          "checksum": "3baace1632316e6691bb1a752e4885398f779455476362216a148723dce98b69"
         },
         {
-          "id": "3704",
-          "folio": "f47v",
+          "id": "7027",
+          "folio": "f2v",
           "molecule": "n:1",
-          "svg": "./examples/n_1/3704.svg",
-          "checksum": "bf862a3802e8023126e5f301247552f91b715f2c45f1fd4a2a504c42600ac0f4"
+          "svg": "./examples/n_1/7027.svg",
+          "checksum": "5a62c9e90da5157cb09eaeb9ce9cc3c50e5044bba5c8215987a806475a9f89e8"
         }
       ]
     }

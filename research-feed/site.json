@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
-  "currentExperimentId": "prospective-atoms-eva-test-v1",
-  "featuredMilestoneId": "prospective-atoms-eva-test-v1",
+  "currentExperimentId": "corpus-v2-audited-robustness-replay",
+  "featuredMilestoneId": "corpus-v2-audited",
   "noDeciphermentClaim": true,
   "updatedAt": "2026-07-14"
 }

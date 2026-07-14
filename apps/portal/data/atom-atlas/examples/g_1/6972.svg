@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="77" height="38" viewBox="0 0 77 38">
+  <title>atom 6972 g:1</title>
+  <metadata>{&quot;entityType&quot;:&quot;atom&quot;,&quot;entityId&quot;:&quot;6972&quot;,&quot;token&quot;:&quot;g:1&quot;,&quot;signature&quot;:&quot;g:1&quot;,&quot;imageName&quot;:&quot;page-006.jpg&quot;,&quot;imageId&quot;:6,&quot;bounds&quot;:{&quot;x&quot;:1196,&quot;y&quot;:854,&quot;w&quot;:77,&quot;h&quot;:38},&quot;atoms&quot;:[{&quot;id&quot;:6972,&quot;token&quot;:&quot;g:1&quot;,&quot;particle_id&quot;:&quot;img6-m16-p3&quot;,&quot;molecule_id&quot;:&quot;img6-m16&quot;,&quot;atom_order&quot;:2}]}</metadata>
+  <rect x="0" y="0" width="77" height="38" fill="#f8f0d8"/>
+
+  <rect x="0.5" y="0.5" width="76" height="37" fill="none" stroke="#111827" stroke-width="1" opacity="0.35"/>
+  <polyline points="16,16 17,16 17,17 18,17 19,17 20,17 22,17 23,17 24,17 25,17 27,17 29,18 31,18 33,18 34,18 36,18 37,18 39,19 42,19 44,20 46,20 48,20 50,21 51,21 52,21 53,21 54,21 55,21 56,22 58,22 59,22 60,22 61,22 60,22" fill="none" stroke="#7c3cff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.95">
+    <title>6972 g:1</title>
+  </polyline>
+</svg>

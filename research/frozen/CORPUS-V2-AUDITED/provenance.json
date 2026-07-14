@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "1.0",
+  "generatedAt": "2026-07-14",
+  "milestone": "CORPUS-V2-AUDITED",
+  "sourceDatabase": {
+    "label": "DatasetCreator local SQLite database",
+    "sha256": "727373f339c67351cf43fbd7eccad08a780168543989b814f77ae10f34a3e076",
+    "absolutePathOmitted": true
+  },
+  "sourceOutputs": {
+    "corpusV2Current": "EVAComparisonLab/cases/corpus-v2-audited-current",
+    "qcLedger": "research/audits/qc-reviewed-ledger.json",
+    "knownGeometryExceptions": "cases/known-particle-geometry-anomalies.tsv",
+    "knownLabelingExceptions": "cases/known-labeling-anomalies.tsv"
+  },
+  "scripts": [
+    "EVAComparisonLab/scripts/run-corpus-v2-analysis.js --include-morphology",
+    "EVAComparisonLab/scripts/learning-memory-audit.js",
+    "EVAComparisonLab/scripts/particle-geometry-order-audit.js",
+    "EVAComparisonLab/scripts/labeling-anomaly-audit.js",
+    "EVAComparisonLab/scripts/cleanup-stale-learning-memory.js --apply",
+    "packages/lab-exporter/src/freeze-corpus-v2-audited.js"
+  ],
+  "excludedFromFreeze": [
+    "local SQLite database files",
+    "DataSetCreator/backups/*.db",
+    "full raw visual snapshot scratch directories"
+  ],
+  "scientificBoundary": "This milestone is a corpus audit and robustness replay. It is not a decipherment claim."
+}

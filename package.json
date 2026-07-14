@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "validate": "npm run research:validate",
     "research:validate": "node packages/lab-exporter/src/cli.js validate",
     "research:build": "node packages/lab-exporter/src/cli.js build",
     "research:publish": "node packages/lab-exporter/src/cli.js publish",

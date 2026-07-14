@@ -1,0 +1,7 @@
+folio	image_name	eva_units	atoms_units	eva_weighted_role_entropy	atoms_weighted_role_entropy	line_count	line_status
+f1r	page-003.jpg	210	198	0.7669	0.5096	24/24	matched
+f1v	page-004.jpg	90	90	0.7182	0.5487	10/10	matched
+f2r	page-005.jpg	99	104	0.7050	0.5934	13/13	matched
+f2v	page-006.jpg	61	57	0.5163	0.5136	8/8	matched
+f3r	page-007.jpg	115	107	0.6690	0.4820	20/20	matched
+f47v	page-094.jpg	85	83	0.6974	0.5225	14/14	matched

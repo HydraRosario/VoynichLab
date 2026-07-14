@@ -257,6 +257,40 @@ Report:
 out/representation-comparison-v3-ablations/REPRESENTATION-COMPARISON-V3-ABLATIONS.md
 ```
 
+## 12. CORPUS-V2-AUDITED
+
+CORPUS-V2-AUDITED closed the six-folio corpus audit campaign:
+
+```text
+folios: f1r, f1v, f2r, f2v, f3r, f47v
+pending labeling anomaly candidates: 0
+pending particle geometry-order candidates: 0
+pending stale learned-memory rows: 0
+line alignment mismatches: 0
+```
+
+The final replay preserved the main ATOMS/EVA structural direction:
+
+```text
+ATOMS weighted positional entropy: 0.5409
+EVA weighted positional entropy:   0.7688
+delta ATOMS - EVA:                -0.2279
+
+ATOMS atom tokens: 6,222
+ATOMS physical units: 639
+EVA units: 660
+
+morphology 5NN accuracy: 97.85%
+```
+
+This is a corpus-quality and robustness milestone. It does not modify ATOMS-V1, GRAMMAR-V1, the source EVA transcription, previous frozen artifacts, or the preregistered `f3r` result.
+
+Freeze:
+
+```text
+research/frozen/CORPUS-V2-AUDITED/
+```
+
 ## Current Reading
 
 The strongest current claim is:

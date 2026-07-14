@@ -1,0 +1,407 @@
+macro_signature	count	share	examples
+e:1 MEDIAL_OP e:1 c:1 f:1 j:1	28	0.0438	p003-u092, p003-u106, p003-u107, p003-u111, p003-u151
+e:1 c:1 h:2 e:1 f:1 MEDIAL_OP f:1 MEDIAL_OP d:1	19	0.0297	p003-u034, p003-u060, p003-u083, p003-u100, p003-u171
+e:1 MEDIAL_OP e:1 c:1 f:1 MEDIAL_OP d:1	14	0.0219	p003-u058, p003-u142, p005-u017, p005-u092, p006-u004
+e:1 c:1 h:2 e:1 f:1 f:1 MEDIAL_OP d:1	11	0.0172	p003-u019, p003-u097, p003-u156, p003-u161, p003-u164
+e:1 c:1 h:2 e:1 f:1 l:1 f:1 MEDIAL_OP d:1	10	0.0156	p003-u057, p003-u064, p003-u090, p003-u133, p003-u144
+e:1 MEDIAL_OP e:1 e:1 h:1	10	0.0156	p004-u049, p005-u018, p005-u083, p005-u091, p006-u041
+n:1 e:1 MEDIAL_OP e:1	9	0.0141	p004-u073, p005-u011, p005-u029, p005-u043, p005-u049
+c:1 f:1 MEDIAL_OP d:1	8	0.0125	p003-u023, p003-u036, p003-u065, p004-u010, p004-u074
+c:1 f:1 j:1	7	0.0110	p004-u003, p004-u052, p004-u063, p005-u055, p005-u073
+e:1 a:1 e:1 MEDIAL_OP c:1 a:1 MEDIAL_OP e:1 e:1 h:1	7	0.0110	p003-u098, p003-u125, p004-u050, p005-u013, p007-u015
+e:1 MEDIAL_OP e:1 c:1	7	0.0110	p003-u109, p003-u167, p003-u193, p004-u029, p007-u021
+e:1 MEDIAL_OP e:1 c:1 e:1 c:1 h:2 e:1 h:1	7	0.0110	p004-u015, p004-u022, p004-u070, p004-u087, p006-u019
+n:1 e:1 MEDIAL_OP e:1 c:1	7	0.0110	p003-u088, p003-u110, p003-u117, p005-u100, p006-u023
+n:1 e:1 MEDIAL_OP e:1 c:1 f:1 j:1	7	0.0110	p003-u005, p003-u128, p004-u032, p004-u043, p004-u079
+e:1 MEDIAL_OP e:1 e:1 f:1 f:1 MEDIAL_OP d:1	6	0.0094	p003-u103, p004-u005, p004-u009, p005-u096, p006-u045
+a:1 MEDIAL_OP c:1 a:1 c:1 f:1 j:1	4	0.0063	p003-u105, p004-u064, p005-u060, p094-u023
+e:1 c:1 h:2 c:1 f:1 j:1	4	0.0063	p004-u024, p004-u045, p004-u055, p004-u058
+e:1 c:1 h:2 c:1 f:1 MEDIAL_OP d:1	4	0.0063	p003-u115, p006-u033, p006-u036, p094-u017
+e:1 c:1 h:2 e:1 f:1 f:1 j:1	4	0.0063	p003-u191, p004-u023, p004-u086, p005-u082
+e:1 MEDIAL_OP d:1 e:1 f:1 MEDIAL_OP f:1 MEDIAL_OP d:1	4	0.0063	p005-u035, p005-u069, p005-u097, p094-u037
+e:1 MEDIAL_OP e:1 e:1 e:1 h:1	4	0.0063	p003-u143, p004-u036, p004-u046, p005-u102
+n:1 e:1 MEDIAL_OP e:1 c:1 e:1 c:1 h:2 e:1 h:1	4	0.0063	p003-u052, p003-u063, p003-u185, p004-u083
+n:1 e:1 MEDIAL_OP e:1 e:1 e:1 h:1	4	0.0063	p003-u104, p003-u153, p003-u165, p007-u052
+n:1 e:1 MEDIAL_OP e:1 e:1 h:1	4	0.0063	p004-u018, p006-u028, p094-u009, p094-u032
+a:1 MEDIAL_OP c:1 a:1 c:1 e:1 c:1 h:2 e:1 h:1	3	0.0047	p004-u013, p004-u030, p004-u037
+c:1 a:1 MEDIAL_OP c:1 a:1 c:1 f:1 j:1	3	0.0047	p003-u170, p004-u075, p005-u090
+c:1 a:1 MEDIAL_OP c:1 a:1 e:1 MEDIAL_OP e:1 e:1 e:1 h:1	3	0.0047	p003-u180, p003-u188, p094-u010
+c:1 e:1 c:1 h:2 e:1 f:1 MEDIAL_OP f:1 MEDIAL_OP d:1	3	0.0047	p003-u093, p005-u030, p007-u104
+e:1 a:1 MEDIAL_OP c:1 a:1 MEDIAL_OP e:1 e:1 e:1 h:1	3	0.0047	p003-u085, p003-u145, p004-u056
+e:1 a:1 MEDIAL_OP c:1 a:1 MEDIAL_OP e:1 e:1 f:1 f:1 MEDIAL_OP d:1	3	0.0047	p003-u011, p003-u017, p003-u166
+e:1 a:1 MEDIAL_OP c:1 a:1 MEDIAL_OP e:1 e:1 h:1	3	0.0047	p003-u187, p004-u020, p005-u045
+e:1 f:1 f:1 MEDIAL_OP d:1	3	0.0047	p003-u003, p005-u086, p005-u095
+e:1 f:1 MEDIAL_OP f:1 MEDIAL_OP d:1	3	0.0047	p003-u021, p005-u050, p007-u106
+e:1 MEDIAL_OP e:1 c:1 e:1 c:1 h:2 e:1 f:1 MEDIAL_OP f:1 MEDIAL_OP d:1	3	0.0047	p003-u116, p004-u002, p006-u026
+e:1 MEDIAL_OP e:1 e:1 c:1 f:1 j:1	3	0.0047	p004-u054, p006-u055, p007-u076
+e:1 MEDIAL_OP e:1 e:1 c:1 f:1 MEDIAL_OP d:1	3	0.0047	p006-u025, p094-u002, p094-u036
+e:1 MEDIAL_OP e:1 e:1 f:1 MEDIAL_OP f:1 MEDIAL_OP d:1	3	0.0047	p005-u007, p005-u020, p094-u080
+n:1 e:1 MEDIAL_OP e:1 e:1 e:1 e:1 h:1	3	0.0047	p005-u056, p005-u061, p094-u022
+a:1 MEDIAL_OP c:1 a:1 e:1 c:1 f:1 j:1	2	0.0031	p005-u078, p006-u040
+a:1 MEDIAL_OP c:1 a:1 e:1 e:1 e:1 h:1	2	0.0031	p003-u189, p003-u190
+a:1 MEDIAL_OP c:1 a:1 e:1 h:1	2	0.0031	p004-u067, p006-u006
+a:1 MEDIAL_OP c:1 a:1 e:1 MEDIAL_OP c:1 a:1 e:1 h:1	2	0.0031	p006-u012, p094-u026
+a:1 MEDIAL_OP c:1 a:1 e:1 MEDIAL_OP e:1 c:1	2	0.0031	p003-u114, p006-u007
+a:1 MEDIAL_OP c:1 a:1 MEDIAL_OP c:1 a:1 c:1 f:1 j:1	2	0.0031	p007-u022, p007-u079
+c:1 a:1 e:1 MEDIAL_OP c:1 a:1 e:1 c:1 f:1 j:1	2	0.0031	p003-u078, p007-u074
+c:1 a:1 e:1 MEDIAL_OP c:1 a:1 e:1 e:1 e:1 h:1	2	0.0031	p003-u031, p094-u062
+c:1 a:1 MEDIAL_OP c:1 a:1 e:1 f:1 MEDIAL_OP f:1 MEDIAL_OP d:1	2	0.0031	p003-u035, p003-u168
+c:1 a:1 MEDIAL_OP c:1 a:1 e:1 h:1	2	0.0031	p003-u178, p007-u038
+e:1 a:1 e:1 MEDIAL_OP c:1 a:1 MEDIAL_OP e:1 c:1 f:1 j:1	2	0.0031	p003-u173, p007-u025
+e:1 a:1 MEDIAL_OP c:1 a:1 MEDIAL_OP d:1 MEDIAL_OP e:1 e:1 f:1 f:1 MEDIAL_OP d:1	2	0.0031	p003-u041, p004-u006
+e:1 a:1 MEDIAL_OP c:1 a:1 MEDIAL_OP e:1 c:1 f:1 j:1	2	0.0031	p004-u042, p004-u069
+e:1 a:1 MEDIAL_OP c:1 a:1 MEDIAL_OP e:1 c:1 f:1 MEDIAL_OP d:1	2	0.0031	p003-u102, p005-u080
+e:1 c:1 h:2 e:1 MEDIAL_OP e:1 c:1 f:1 j:1	2	0.0031	p004-u012, p005-u040
+e:1 c:1 h:2 e:1 MEDIAL_OP e:1 e:1 h:1	2	0.0031	p005-u041, p094-u059
+e:1 c:2 h:2 e:1 f:1 MEDIAL_OP f:1 MEDIAL_OP d:1	2	0.0031	p007-u014, p094-u069
+e:1 h:1 a:1 MEDIAL_OP c:1 a:1 c:1 f:1 j:1	2	0.0031	p004-u057, p004-u060
+e:1 h:1 e:1 c:1 h:2 e:1 f:1 l:1 f:1 MEDIAL_OP d:1	2	0.0031	p003-u067, p003-u157
+e:1 h:1 e:1 MEDIAL_OP e:1 e:1 c:1 f:1 MEDIAL_OP d:1	2	0.0031	p007-u006, p007-u102
+e:1 MEDIAL_OP d:1 e:1 f:1 f:1 j:1	2	0.0031	p094-u006, p094-u047
+e:1 MEDIAL_OP d:1 e:1 f:1 f:1 MEDIAL_OP d:1 e:1 h:1	2	0.0031	p094-u007, p094-u034
+e:1 MEDIAL_OP d:1 e:1 h:1	2	0.0031	p003-u020, p003-u029
+e:1 MEDIAL_OP d:1 n:1 e:1 MEDIAL_OP e:1	2	0.0031	p005-u052, p006-u031
+e:1 MEDIAL_OP e:1 c:1 a:1 MEDIAL_OP c:1 a:1 e:1 h:1	2	0.0031	p003-u196, p004-u040
+e:1 MEDIAL_OP e:1 c:1 a:1 MEDIAL_OP c:1 a:1 e:1 MEDIAL_OP e:1 e:1 e:1 h:1	2	0.0031	p004-u085, p006-u047
+e:1 MEDIAL_OP e:1 c:1 e:1 c:1 h:2 e:1 f:1 f:1 MEDIAL_OP d:1	2	0.0031	p003-u112, p004-u090
+e:1 MEDIAL_OP e:1 c:1 e:1 c:1 h:2 e:1 f:1 l:1 f:1 MEDIAL_OP d:1	2	0.0031	p003-u094, p006-u020
+e:1 MEDIAL_OP e:1 c:1 e:1 MEDIAL_OP d:1	2	0.0031	p006-u013, p006-u016
+e:1 MEDIAL_OP e:1 c:1 f:1 j:1 e:1 MEDIAL_OP d:1	2	0.0031	p007-u075, p007-u105
+e:1 MEDIAL_OP e:1 c:1 f:1 MEDIAL_OP c:1 h:1	2	0.0031	p007-u032, p007-u071
+e:1 MEDIAL_OP e:1 e:1 a:1 e:1 MEDIAL_OP c:1 a:1 e:1 h:1	2	0.0031	p005-u098, p094-u049
+e:1 MEDIAL_OP e:1 e:1 a:1 e:1 MEDIAL_OP c:1 a:1 MEDIAL_OP e:1 e:1 h:1	2	0.0031	p005-u104, p006-u021
+e:1 MEDIAL_OP e:1 e:1 c:1 h:2 e:1 h:1	2	0.0031	p003-u095, p094-u064
+e:1 MEDIAL_OP e:1 e:1 f:1 f:1 MEDIAL_OP c:1 h:1	2	0.0031	p007-u019, p007-u020
+n:1 e:1 MEDIAL_OP e:1 c:1 n:1 e:1 MEDIAL_OP e:1 e:1 h:1	2	0.0031	p003-u072, p004-u039
+a:1 e:1 MEDIAL_OP c:1 a:1 e:1 c:1 e:1 c:1 h:2 e:1 h:1	1	0.0016	p003-u066
+a:1 e:1 MEDIAL_OP c:1 a:1 e:1 MEDIAL_OP e:1 e:1 e:1 h:1	1	0.0016	p003-u120
+a:1 e:1 MEDIAL_OP c:1 a:1 MEDIAL_OP d:1 c:1 a:1 MEDIAL_OP c:1 a:1 c:1 e:1 h:1	1	0.0016	p004-u031
+a:1 e:1 MEDIAL_OP c:1 a:1 MEDIAL_OP d:1 e:1 f:1 f:1 MEDIAL_OP d:1	1	0.0016	p003-u172
+a:1 e:1 MEDIAL_OP c:1 a:1 MEDIAL_OP d:1 e:1 h:1	1	0.0016	p005-u006
+a:1 e:1 MEDIAL_OP c:1 a:1 n:1 e:1 MEDIAL_OP e:1 c:1 e:1 c:1 h:2 e:1 e:1 e:1 MEDIAL_OP d:1 e:1 h:1	1	0.0016	p003-u152
+a:1 MEDIAL_OP c:1	1	0.0016	p004-u051
+a:1 MEDIAL_OP c:1 a:1 c:1 a:1 MEDIAL_OP c:1 a:1	1	0.0016	p004-u021
+a:1 MEDIAL_OP c:1 a:1 c:1 a:1 MEDIAL_OP c:1 a:1 e:1 f:1 MEDIAL_OP f:1 MEDIAL_OP d:1	1	0.0016	p003-u181
+a:1 MEDIAL_OP c:1 a:1 c:1 c:1 f:1 MEDIAL_OP d:1	1	0.0016	p004-u084
+a:1 MEDIAL_OP c:1 a:1 c:1 c:1 MEDIAL_OP f:1 MEDIAL_OP d:1	1	0.0016	p006-u001
+a:1 MEDIAL_OP c:1 a:1 c:1 e:1 c:1 h:2	1	0.0016	p003-u099
+a:1 MEDIAL_OP c:1 a:1 c:1 e:1 c:1 h:2 e:1 f:1 MEDIAL_OP f:1 MEDIAL_OP d:1	1	0.0016	p003-u086
+a:1 MEDIAL_OP c:1 a:1 c:1 e:1 c:1 h:2 e:1 MEDIAL_OP e:1 e:1 h:1 e:1 c:1 h:2	1	0.0016	p003-u183
+a:1 MEDIAL_OP c:1 a:1 c:1 e:1 c:1 h:2 n:1 e:1 MEDIAL_OP e:1 e:1 e:1 h:1	1	0.0016	p003-u130
+a:1 MEDIAL_OP c:1 a:1 c:1 e:1 MEDIAL_OP d:1	1	0.0016	p003-u059
+a:1 MEDIAL_OP c:1 a:1 c:1 f:1 MEDIAL_OP d:1	1	0.0016	p003-u108
+a:1 MEDIAL_OP c:1 a:1 c:2 MEDIAL_OP e:1 c:1 a:1 MEDIAL_OP c:1 a:1 c:2 MEDIAL_OP e:1 e:1 h:1	1	0.0016	p004-u017
+a:1 MEDIAL_OP c:1 a:1 c:2 MEDIAL_OP e:1 n:1 e:1 MEDIAL_OP e:1 e:1 h:1	1	0.0016	p003-u186
+a:1 MEDIAL_OP c:1 a:1 e:1 e:1 e:1 MEDIAL_OP d:1 e:1 h:1	1	0.0016	p094-u072
+a:1 MEDIAL_OP c:1 a:1 e:1 e:1 e:1 MEDIAL_OP e:1 e:1 h:1	1	0.0016	p094-u025
+a:1 MEDIAL_OP c:1 a:1 e:1 e:1 h:1	1	0.0016	p094-u066
+a:1 MEDIAL_OP c:1 a:1 e:1 e:1 MEDIAL_OP e:1 e:1 h:1	1	0.0016	p004-u065
+a:1 MEDIAL_OP c:1 a:1 e:1 f:1 MEDIAL_OP f:1 MEDIAL_OP d:1	1	0.0016	p003-u163
+a:1 MEDIAL_OP c:1 a:1 e:1 h:1 e:1	1	0.0016	p005-u075
+a:1 MEDIAL_OP c:1 a:1 e:1 h:1 e:1 c:1 h:2 e:1 f:1 l:1 f:1 MEDIAL_OP d:1	1	0.0016	p005-u048
+a:1 MEDIAL_OP c:1 a:1 e:1 h:1 e:1 c:1 h:2 e:1 f:1 l:1 f:1 MEDIAL_OP d:1 e:1 h:1	1	0.0016	p005-u001
+a:1 MEDIAL_OP c:1 a:1 e:1 MEDIAL_OP a:1 c:2 e:1 h:1	1	0.0016	p007-u092
+a:1 MEDIAL_OP c:1 a:1 e:1 MEDIAL_OP c:1 a:1 c:1 f:1 j:1	1	0.0016	p094-u021
+a:1 MEDIAL_OP c:1 a:1 e:1 MEDIAL_OP c:1 a:1 e:1 e:1 e:1 e:1 h:1	1	0.0016	p006-u048
+a:1 MEDIAL_OP c:1 a:1 e:1 MEDIAL_OP c:1 a:1 e:1 f:1 MEDIAL_OP f:1 MEDIAL_OP d:1	1	0.0016	p005-u015
+a:1 MEDIAL_OP c:1 a:1 e:1 MEDIAL_OP c:1 a:1 e:1 MEDIAL_OP e:1 c:1 f:1 j:1 c:1 e:1 e:1 e:1 e:1 MEDIAL_OP d:1	1	0.0016	p006-u011
+a:1 MEDIAL_OP c:1 a:1 e:1 MEDIAL_OP c:1 a:1 e:1 MEDIAL_OP e:1 e:1 f:1 f:1 MEDIAL_OP c:1 h:1	1	0.0016	p007-u009
+a:1 MEDIAL_OP c:1 a:1 e:1 MEDIAL_OP c:1 a:1 MEDIAL_OP d:1 e:1 f:1 f:1 j:1	1	0.0016	p007-u002
+a:1 MEDIAL_OP c:1 a:1 e:1 MEDIAL_OP c:1 a:1 n:1 e:1 MEDIAL_OP e:1 e:1 e:1 h:1	1	0.0016	p007-u058
+a:1 MEDIAL_OP c:1 a:1 e:1 MEDIAL_OP e:1 c:1 f:1 MEDIAL_OP c:1 h:1	1	0.0016	p003-u118
+a:1 MEDIAL_OP c:1 a:1 e:1 MEDIAL_OP e:1 c:1 f:1 MEDIAL_OP d:1	1	0.0016	p006-u027
+a:1 MEDIAL_OP c:1 a:1 e:1 MEDIAL_OP e:1 e:1 h:1	1	0.0016	p006-u008
+a:1 MEDIAL_OP c:1 a:1 e:1 MEDIAL_OP e:1 e:1 MEDIAL_OP d:1 e:1 h:1	1	0.0016	p004-u001
+a:1 MEDIAL_OP c:1 a:1 e:1 MEDIAL_OP f:1 MEDIAL_OP d:1	1	0.0016	p003-u013
+a:1 MEDIAL_OP c:1 a:1 MEDIAL_OP a:1 c:2 e:1 e:1 e:1 h:1	1	0.0016	p007-u065
+a:1 MEDIAL_OP c:1 a:1 MEDIAL_OP a:1 c:2 e:1 MEDIAL_OP e:1 c:1 f:1 MEDIAL_OP d:1	1	0.0016	p007-u054
+a:1 MEDIAL_OP c:1 a:1 MEDIAL_OP c:1 a:1 c:1 e:1 c:1 h:2 e:1 h:1	1	0.0016	p007-u059
+a:1 MEDIAL_OP c:1 a:1 MEDIAL_OP c:1 a:1 c:2 MEDIAL_OP e:1 e:1 e:1 e:1 h:1	1	0.0016	p094-u048
+a:1 MEDIAL_OP c:1 a:1 MEDIAL_OP c:1 a:1 e:1 c:1 f:1 j:1	1	0.0016	p007-u098
+a:1 MEDIAL_OP c:1 a:1 MEDIAL_OP c:1 a:1 e:1 c:1 f:1 MEDIAL_OP c:2 h:1	1	0.0016	p007-u078
+a:1 MEDIAL_OP c:1 a:1 MEDIAL_OP c:1 a:1 e:1 e:1 c:1 e:1 c:1 h:2 e:1 f:1 f:1 j:1	1	0.0016	p007-u085
+a:1 MEDIAL_OP c:1 a:1 MEDIAL_OP c:1 a:1 e:1 e:1 e:1 h:1	1	0.0016	p007-u057
+a:1 MEDIAL_OP c:1 a:1 MEDIAL_OP c:1 a:1 e:1 e:1 h:1	1	0.0016	p005-u063
+a:1 MEDIAL_OP c:1 a:1 MEDIAL_OP c:1 a:1 MEDIAL_OP d:1 c:1 f:1 j:1	1	0.0016	p007-u090
+a:1 MEDIAL_OP c:1 a:1 MEDIAL_OP c:1 a:1 MEDIAL_OP d:1 e:1 MEDIAL_OP e:1 c:1 f:1 MEDIAL_OP d:1	1	0.0016	p007-u089
+a:1 MEDIAL_OP c:1 a:1 MEDIAL_OP c:1 a:1 n:1 c:2 MEDIAL_OP e:1 e:1 e:1 h:1	1	0.0016	p007-u060
+a:1 MEDIAL_OP c:1 a:1 MEDIAL_OP d:1 e:1 f:1 e:1 MEDIAL_OP e:1 e:1 h:1 f:1 MEDIAL_OP d:1	1	0.0016	p003-u001
+a:1 MEDIAL_OP c:1 a:1 MEDIAL_OP d:1 e:1 MEDIAL_OP e:1 e:1 c:1 f:1 j:1	1	0.0016	p007-u048
+a:1 MEDIAL_OP c:1 a:1 MEDIAL_OP d:1 e:1 MEDIAL_OP e:1 e:1 c:1 f:1 j:1 e:1 c:2 h:2 c:1 f:1 MEDIAL_OP c:1 h:1	1	0.0016	p007-u087
+a:1 MEDIAL_OP c:1 a:1 n:1 c:2 MEDIAL_OP e:1 e:1 c:1 e:1 MEDIAL_OP d:1	1	0.0016	p007-u001
+a:1 MEDIAL_OP c:1 a:1 n:1 e:1 MEDIAL_OP e:1 c:1 e:1 h:1	1	0.0016	p003-u075
+a:1 MEDIAL_OP c:1 a:1 n:1 e:1 MEDIAL_OP e:1 e:1 c:1 e:1 f:1 f:1 MEDIAL_OP d:1 c:1 f:1 MEDIAL_OP c:1 h:1	1	0.0016	p007-u066
+a:1 MEDIAL_OP c:1 a:1 n:1 e:1 MEDIAL_OP e:1 e:1 h:1	1	0.0016	p003-u113
+a:1 MEDIAL_OP c:1 e:1 c:1 f:1 MEDIAL_OP d:1	1	0.0016	p007-u096
+a:1 MEDIAL_OP c:1 e:1 c:1 h:2 e:1 f:1 MEDIAL_OP f:1 MEDIAL_OP d:1	1	0.0016	p007-u031
+a:1 MEDIAL_OP c:1 e:1 c:2 h:2 e:1 f:1 l:1 f:1 MEDIAL_OP d:1	1	0.0016	p007-u063
+a:1 MEDIAL_OP c:1 e:1 h:1	1	0.0016	p005-u051
+a:1 MEDIAL_OP c:1 e:1 MEDIAL_OP d:1 c:2 MEDIAL_OP e:1 c:1 e:1 c:2 h:2 e:1 f:1 f:1 MEDIAL_OP c:2 h:1	1	0.0016	p007-u055
+a:1 MEDIAL_OP c:1 e:1 MEDIAL_OP d:1 e:1 f:1 MEDIAL_OP f:1 MEDIAL_OP d:1	1	0.0016	p007-u099
+a:1 MEDIAL_OP c:1 e:1 MEDIAL_OP e:1 e:1 c:1 f:1 MEDIAL_OP d:1	1	0.0016	p007-u012
+c:1 a:1 e:1 MEDIAL_OP a:1 c:2 e:1 MEDIAL_OP e:1 c:1 f:1 j:1	1	0.0016	p094-u018
+c:1 a:1 e:1 MEDIAL_OP c:1 a:1 c:1 f:1 j:1	1	0.0016	p003-u146
+c:1 a:1 e:1 MEDIAL_OP c:1 a:1 c:2 MEDIAL_OP e:1 c:1 f:1 MEDIAL_OP d:1	1	0.0016	p007-u094
+c:1 a:1 e:1 MEDIAL_OP c:1 a:1 e:1 c:1 f:1 MEDIAL_OP d:1 e:1 MEDIAL_OP d:1 c:1 f:1 j:1 c:1 a:1 MEDIAL_OP c:1 a:1 e:1 h:1	1	0.0016	p003-u032
+c:1 a:1 e:1 MEDIAL_OP c:1 a:1 e:1 f:1 f:1 j:1 e:1 c:1 h:2 e:1 f:1 f:1 MEDIAL_OP c:1 h:1	1	0.0016	p007-u029
+c:1 a:1 e:1 MEDIAL_OP c:1 a:1 e:1 f:1 f:1 MEDIAL_OP d:1	1	0.0016	p094-u045
+c:1 a:1 e:1 MEDIAL_OP c:1 a:1 e:1 f:1 MEDIAL_OP f:1 MEDIAL_OP d:1 c:1 e:1 c:1 h:2 e:1 f:1 l:1 f:1 MEDIAL_OP d:1	1	0.0016	p006-u003
+c:1 a:1 e:1 MEDIAL_OP c:1 a:1 e:1 MEDIAL_OP e:1 c:1	1	0.0016	p004-u081
+c:1 a:1 e:1 MEDIAL_OP c:1 a:1 e:1 MEDIAL_OP e:1 c:1 f:1 j:1	1	0.0016	p007-u030
+c:1 a:1 e:1 MEDIAL_OP c:1 a:1 e:1 MEDIAL_OP e:1 e:1 f:1 f:1 j:1	1	0.0016	p005-u005
+c:1 a:1 e:1 MEDIAL_OP c:1 a:1 MEDIAL_OP d:1 c:1 f:1 MEDIAL_OP d:1 e:1 f:1 f:1 MEDIAL_OP d:1	1	0.0016	p007-u073
+c:1 a:1 MEDIAL_OP c:1 a:1 c:1 e:1 c:1 h:2 e:1 f:1 f:1 MEDIAL_OP d:1	1	0.0016	p004-u014
+c:1 a:1 MEDIAL_OP c:1 a:1 c:1 e:1 c:2 h:2 e:1 f:1 MEDIAL_OP f:1 MEDIAL_OP d:1	1	0.0016	p007-u053
+c:1 a:1 MEDIAL_OP c:1 a:1 c:1 e:1 f:1 MEDIAL_OP f:1 MEDIAL_OP d:1	1	0.0016	p004-u038
+c:1 a:1 MEDIAL_OP c:1 a:1 c:1 e:1 MEDIAL_OP e:1 c:1 f:1 MEDIAL_OP d:1	1	0.0016	p005-u027
+c:1 a:1 MEDIAL_OP c:1 a:1 c:1 f:1 j:1 c:1 f:1 MEDIAL_OP c:1 h:1	1	0.0016	p007-u093
+c:1 a:1 MEDIAL_OP c:1 a:1 c:1 f:1 j:1 c:1 f:1 MEDIAL_OP d:1 e:1 f:1 f:1 MEDIAL_OP c:1 h:1	1	0.0016	p007-u107
+c:1 a:1 MEDIAL_OP c:1 a:1 c:1 f:1 j:1 n:1 e:1 MEDIAL_OP e:1	1	0.0016	p004-u062
+c:1 a:1 MEDIAL_OP c:1 a:1 c:2 MEDIAL_OP e:1 c:1 a:1 MEDIAL_OP c:1 a:1 e:1 MEDIAL_OP e:1 e:1 h:1	1	0.0016	p094-u057
+c:1 a:1 MEDIAL_OP c:1 a:1 e:1 c:1 f:1 MEDIAL_OP c:1 h:1	1	0.0016	p007-u083
+c:1 a:1 MEDIAL_OP c:1 a:1 e:1 e:1 e:1	1	0.0016	p003-u177
+c:1 a:1 MEDIAL_OP c:1 a:1 e:1 e:1 e:1 h:1	1	0.0016	p007-u064
+c:1 a:1 MEDIAL_OP c:1 a:1 e:1 f:1 f:1 j:1	1	0.0016	p004-u044
+c:1 a:1 MEDIAL_OP c:1 a:1 e:1 f:1 f:1 j:1 e:1 c:2 h:2	1	0.0016	p094-u076
+c:1 a:1 MEDIAL_OP c:1 a:1 e:1 f:1 f:1 MEDIAL_OP d:1	1	0.0016	p003-u037
+c:1 a:1 MEDIAL_OP c:1 a:1 e:1 f:1 l:1 f:1 MEDIAL_OP d:1	1	0.0016	p003-u096
+c:1 a:1 MEDIAL_OP c:1 a:1 e:1 f:1 l:1 f:1 MEDIAL_OP d:1 l:1 f:1 MEDIAL_OP d:1	1	0.0016	p003-u076
+c:1 a:1 MEDIAL_OP c:1 a:1 e:1 f:1 MEDIAL_OP f:1 MEDIAL_OP d:1 e:1 MEDIAL_OP e:1 e:1 e:1 h:1	1	0.0016	p003-u137
+c:1 a:1 MEDIAL_OP c:1 a:1 e:1 MEDIAL_OP e:1 c:1 e:1 c:1 h:2 c:1	1	0.0016	p007-u043
+c:1 a:1 MEDIAL_OP c:1 a:1 e:1 MEDIAL_OP e:1 c:1 e:1 h:1	1	0.0016	p003-u053
+c:1 a:1 MEDIAL_OP c:1 a:1 e:1 MEDIAL_OP e:1 c:1 f:1 j:1	1	0.0016	p003-u054
+c:1 a:1 MEDIAL_OP c:1 a:1 e:1 MEDIAL_OP e:1 c:1 f:1 MEDIAL_OP c:1 h:1	1	0.0016	p007-u072
+c:1 a:1 MEDIAL_OP c:1 a:1 e:1 MEDIAL_OP e:1 c:1 f:1 MEDIAL_OP d:1	1	0.0016	p006-u044
+c:1 a:1 MEDIAL_OP c:1 a:1 e:1 MEDIAL_OP e:1 e:1 h:1	1	0.0016	p006-u015
+c:1 a:1 MEDIAL_OP c:1 a:1 MEDIAL_OP d:1 e:1 MEDIAL_OP e:1 c:1 f:1 j:1	1	0.0016	p007-u091
+c:1 a:1 MEDIAL_OP c:1 a:1 n:1 e:1 MEDIAL_OP e:1 c:1	1	0.0016	p003-u074
+c:1 a:1 MEDIAL_OP c:2 a:1 e:1 c:1 f:1 j:1	1	0.0016	p094-u016
+c:1 e:1 a:1 e:1 MEDIAL_OP c:1 a:1 MEDIAL_OP e:1 e:1 h:1	1	0.0016	p007-u056
+c:1 e:1 c:1 h:2 e:1 f:1 f:1 MEDIAL_OP d:1	1	0.0016	p003-u044
+c:1 e:1 c:1 h:2 e:1 h:1	1	0.0016	p094-u031
+c:1 e:1 h:1 e:1 c:1 h:2 e:1 f:1 f:1 MEDIAL_OP d:1	1	0.0016	p003-u047
+c:1 e:1 MEDIAL_OP d:1 e:1 MEDIAL_OP e:1 e:1 h:1	1	0.0016	p003-u056
+c:1 e:1 MEDIAL_OP e:1 c:1 f:1 j:1	1	0.0016	p003-u182
+c:1 e:1 MEDIAL_OP e:1 c:1 f:1 MEDIAL_OP d:1	1	0.0016	p007-u011
+c:1 e:1 MEDIAL_OP e:1 e:1 h:1	1	0.0016	p004-u011
+c:1 f:1 j:1 a:1 e:1 MEDIAL_OP c:1 a:1 e:1 MEDIAL_OP e:1 e:1 e:1 h:1	1	0.0016	p004-u004
+c:1 f:1 j:1 a:1 MEDIAL_OP c:1 a:1 MEDIAL_OP d:1 c:1 e:1 c:1 h:2 e:1 f:1 f:1 MEDIAL_OP d:1	1	0.0016	p005-u053
+c:1 f:1 j:1 e:1 c:1 h:2 e:1 f:1 l:1 f:1 MEDIAL_OP d:1 e:1 c:1 h:2	1	0.0016	p003-u089
+c:1 f:1 j:1 e:1 MEDIAL_OP d:1	1	0.0016	p003-u069
+c:1 f:1 j:1 e:1 MEDIAL_OP d:1 e:1 f:1 MEDIAL_OP f:1 MEDIAL_OP d:1	1	0.0016	p005-u088
+c:1 f:1 j:1 e:1 MEDIAL_OP e:1 e:1 c:1 f:1 MEDIAL_OP d:1	1	0.0016	p007-u095
+c:1 f:1 j:1 e:1 MEDIAL_OP e:1 e:1 MEDIAL_OP d:1 e:1 h:1	1	0.0016	p007-u070
+c:1 f:1 MEDIAL_OP d:1 e:1 h:1	1	0.0016	p003-u012
+c:1 MEDIAL_OP f:1 MEDIAL_OP d:1	1	0.0016	p003-u091
+c:2 a:1 MEDIAL_OP c:1 a:1 MEDIAL_OP e:1 c:1 f:1 MEDIAL_OP c:1 h:1	1	0.0016	p007-u028
+c:2 a:1 MEDIAL_OP c:1 a:1 MEDIAL_OP e:1 e:1 h:1	1	0.0016	p005-u042
+c:2 e:1 c:1 f:1 j:1	1	0.0016	p007-u003
+c:2 MEDIAL_OP e:1 a:1 MEDIAL_OP c:1 a:1 e:1 MEDIAL_OP e:1 e:1 h:1	1	0.0016	p094-u019
+c:2 MEDIAL_OP e:1 c:1 f:1 j:1	1	0.0016	p007-u013
+c:2 MEDIAL_OP e:1 c:1 f:1 MEDIAL_OP d:1	1	0.0016	p007-u027
+e:1 a:1 c:2 MEDIAL_OP c:1 a:1 MEDIAL_OP e:1 c:1 f:1 j:1	1	0.0016	p007-u004
+e:1 a:1 e:1 MEDIAL_OP c:1 a:1 e:1 MEDIAL_OP e:1 e:1 h:1	1	0.0016	p003-u081
+e:1 a:1 e:1 MEDIAL_OP c:1 a:1 MEDIAL_OP c:1	1	0.0016	p005-u014
+e:1 a:1 e:1 MEDIAL_OP c:1 a:1 MEDIAL_OP d:1 c:1 f:1 j:1	1	0.0016	p004-u089
+e:1 a:1 e:1 MEDIAL_OP c:1 a:1 MEDIAL_OP d:1 e:1 h:1 e:1 c:1 h:2 e:1 e:1 e:1 h:1	1	0.0016	p003-u154
+e:1 a:1 e:1 MEDIAL_OP c:1 a:1 MEDIAL_OP d:1 e:1 MEDIAL_OP e:1 c:1 e:1 c:1 h:2 e:1 f:1 MEDIAL_OP f:1 MEDIAL_OP d:1	1	0.0016	p094-u040
+e:1 a:1 e:1 MEDIAL_OP c:1 a:1 MEDIAL_OP d:1 MEDIAL_OP e:1 c:1	1	0.0016	p003-u148
+e:1 a:1 e:1 MEDIAL_OP c:1 a:1 MEDIAL_OP d:1 MEDIAL_OP e:1 c:1 e:1 c:1 h:2 e:1 f:1 f:1 j:1 e:1 e:1 MEDIAL_OP d:1	1	0.0016	p003-u073
+e:1 a:1 e:1 MEDIAL_OP c:1 a:1 MEDIAL_OP d:1 MEDIAL_OP e:1 c:1 e:1 c:1 h:2 e:1 f:1 MEDIAL_OP f:1 j:1 e:1 MEDIAL_OP d:1	1	0.0016	p003-u087
+e:1 a:1 e:1 MEDIAL_OP c:1 a:1 MEDIAL_OP d:1 MEDIAL_OP e:1 c:1 e:1 f:1 f:1 j:1	1	0.0016	p004-u034
+e:1 a:1 e:1 MEDIAL_OP c:1 a:1 MEDIAL_OP d:1 MEDIAL_OP e:1 c:1 e:1 f:1 MEDIAL_OP f:1 MEDIAL_OP d:1	1	0.0016	p003-u049
+e:1 a:1 e:1 MEDIAL_OP c:1 a:1 MEDIAL_OP d:1 MEDIAL_OP e:1 e:1 e:1 h:1	1	0.0016	p003-u070
+e:1 a:1 e:1 MEDIAL_OP c:1 a:1 MEDIAL_OP d:1 MEDIAL_OP e:1 e:1 h:1	1	0.0016	p003-u077
+e:1 a:1 e:1 MEDIAL_OP c:1 a:1 MEDIAL_OP d:1 n:1 e:1 MEDIAL_OP e:1 c:1 f:1 j:1	1	0.0016	p003-u123
+e:1 a:1 e:1 MEDIAL_OP c:1 a:1 MEDIAL_OP d:1 n:1 e:1 MEDIAL_OP e:1 e:1 c:1 a:1 MEDIAL_OP c:1 a:1	1	0.0016	p094-u001
+e:1 a:1 e:1 MEDIAL_OP c:1 a:1 MEDIAL_OP e:1 c:1 e:1 f:1 f:1 MEDIAL_OP d:1 e:1 h:1	1	0.0016	p003-u026
+e:1 a:1 e:1 MEDIAL_OP c:1 a:1 MEDIAL_OP e:1 c:1 e:1 MEDIAL_OP d:1	1	0.0016	p003-u027
+e:1 a:1 e:1 MEDIAL_OP c:1 a:1 MEDIAL_OP e:1 c:1 f:1 j:1 e:1 c:1 h:2 e:1 f:1 f:1 MEDIAL_OP d:1	1	0.0016	p003-u175
+e:1 a:1 e:1 MEDIAL_OP c:1 a:1 MEDIAL_OP e:1 c:1 f:1 MEDIAL_OP c:2 h:1	1	0.0016	p007-u047
+e:1 a:1 e:1 MEDIAL_OP c:1 a:1 MEDIAL_OP e:1 c:1 f:1 MEDIAL_OP d:1	1	0.0016	p005-u093
+e:1 a:1 e:1 MEDIAL_OP c:1 a:1 MEDIAL_OP e:1 e:1 e:1 h:1	1	0.0016	p005-u077
+e:1 a:1 e:1 MEDIAL_OP c:1 a:1 MEDIAL_OP e:1 e:1 e:1 h:1 e:1 h:1	1	0.0016	p005-u016
+e:1 a:1 e:1 MEDIAL_OP c:1 a:1 MEDIAL_OP e:1 e:1 f:1 f:1 MEDIAL_OP d:1	1	0.0016	p003-u018
+e:1 a:1 e:1 MEDIAL_OP c:1 a:1 MEDIAL_OP e:1 e:1 f:1 j:1 e:1 MEDIAL_OP d:1	1	0.0016	p003-u139
+e:1 a:1 e:1 MEDIAL_OP c:1 a:1 MEDIAL_OP e:1 e:1 MEDIAL_OP d:1 e:1 e:1 MEDIAL_OP d:1	1	0.0016	p003-u007
+e:1 a:1 e:1 MEDIAL_OP c:1 a:1 MEDIAL_OP e:1 f:1 c:1 f:1 MEDIAL_OP d:1	1	0.0016	p003-u033
+e:1 a:1 MEDIAL_OP c:1 a:1 c:2 MEDIAL_OP e:1 e:1 e:1 h:1	1	0.0016	p094-u083
+e:1 a:1 MEDIAL_OP c:1 a:1 d:1 MEDIAL_OP e:1 e:1 h:1	1	0.0016	p094-u003
+e:1 a:1 MEDIAL_OP c:1 a:1 MEDIAL_OP d:1 MEDIAL_OP e:1 c:1 e:1 h:1	1	0.0016	p003-u046
+e:1 a:1 MEDIAL_OP c:1 a:1 MEDIAL_OP d:1 MEDIAL_OP e:1 c:1 f:1 j:1	1	0.0016	p003-u062
+e:1 a:1 MEDIAL_OP c:1 a:1 MEDIAL_OP d:1 MEDIAL_OP e:1 e:1 e:1 f:1 f:1 j:1 e:1 h:1	1	0.0016	p003-u131
+e:1 a:1 MEDIAL_OP c:1 a:1 MEDIAL_OP d:1 MEDIAL_OP e:1 e:1 e:1 MEDIAL_OP d:1 e:1 f:1 MEDIAL_OP f:1 MEDIAL_OP d:1	1	0.0016	p003-u068
+e:1 a:1 MEDIAL_OP c:1 a:1 MEDIAL_OP d:1 MEDIAL_OP e:1 e:1 f:1 MEDIAL_OP f:1 MEDIAL_OP d:1	1	0.0016	p003-u042
+e:1 a:1 MEDIAL_OP c:1 a:1 MEDIAL_OP d:1 MEDIAL_OP e:1 e:1 h:1	1	0.0016	p005-u024
+e:1 a:1 MEDIAL_OP c:1 a:1 MEDIAL_OP e:1 c:1 f:1 j:1 e:1 MEDIAL_OP d:1 e:1 h:1	1	0.0016	p005-u008
+e:1 a:1 MEDIAL_OP c:1 a:1 MEDIAL_OP e:1 e:1 f:1 f:1 j:1	1	0.0016	p003-u160
+e:1 a:1 MEDIAL_OP c:1 a:1 MEDIAL_OP e:1 e:1 f:1 MEDIAL_OP f:1 MEDIAL_OP d:1	1	0.0016	p003-u040
+e:1 a:1 MEDIAL_OP c:1 a:1 MEDIAL_OP e:1 e:1 h:1 e:1 c:1 h:2 e:1 MEDIAL_OP	1	0.0016	p003-u134
+e:1 a:1 MEDIAL_OP c:1 a:1 n:1 e:1 MEDIAL_OP e:1 e:1 h:1	1	0.0016	p007-u077
+e:1 c:1 h:2 a:1 MEDIAL_OP c:1 a:1 c:1 f:1 j:1	1	0.0016	p005-u037
+e:1 c:1 h:2 a:1 MEDIAL_OP c:1 a:1 n:1 c:2 MEDIAL_OP e:1 e:1 e:1 e:1 h:1	1	0.0016	p004-u019
+e:1 c:1 h:2 c:1 e:1 a:1 MEDIAL_OP c:1 a:1 MEDIAL_OP e:1 e:1 h:1	1	0.0016	p004-u016
+e:1 c:1 h:2 c:1 f:1 j:1 a:1 MEDIAL_OP c:1 a:1 e:1 h:1	1	0.0016	p004-u077
+e:1 c:1 h:2 c:1 f:1 j:1 c:1	1	0.0016	p004-u059
+e:1 c:1 h:2 c:1 f:1 j:1 c:1 e:1 c:1 h:2 e:1 h:1	1	0.0016	p006-u057
+e:1 c:1 h:2 c:1 f:1 j:1 e:1 MEDIAL_OP e:1 c:1 e:1 c:1 h:2 e:1 h:1	1	0.0016	p004-u061
+e:1 c:1 h:2 c:1 f:1 MEDIAL_OP d:1 e:1 MEDIAL_OP e:1 c:1 f:1 MEDIAL_OP d:1 e:1 h:1	1	0.0016	p005-u009
+e:1 c:1 h:2 c:1 MEDIAL_OP f:1 MEDIAL_OP d:1	1	0.0016	p003-u030
+e:1 c:1 h:2 c:2 MEDIAL_OP e:1 e:1 f:1 MEDIAL_OP f:1 MEDIAL_OP d:1	1	0.0016	p003-u198
+e:1 c:1 h:2 e:1 a:1 MEDIAL_OP c:1 a:1 MEDIAL_OP e:1 e:1 h:1	1	0.0016	p094-u042
+e:1 c:1 h:2 e:1 f:1 c:1 e:1 a:1 MEDIAL_OP c:1 a:1 MEDIAL_OP e:1 c:1	1	0.0016	p003-u140
+e:1 c:1 h:2 e:1 f:1 e:1 MEDIAL_OP c:1 h:1 c:1	1	0.0016	p007-u039
+e:1 c:1 h:2 e:1 f:1 f:1 j:1 c:1 f:1 MEDIAL_OP d:1	1	0.0016	p005-u084
+e:1 c:1 h:2 e:1 f:1 f:1 j:1 d:1	1	0.0016	p094-u055
+e:1 c:1 h:2 e:1 f:1 f:1 j:1 e:1 MEDIAL_OP d:1	1	0.0016	p005-u025
+e:1 c:1 h:2 e:1 f:1 f:1 MEDIAL_OP c:1 h:1	1	0.0016	p004-u027
+e:1 c:1 h:2 e:1 f:1 f:1 MEDIAL_OP d:1 e:1 f:1 l:1 f:1 MEDIAL_OP d:1	1	0.0016	p003-u132
+e:1 c:1 h:2 e:1 f:1 f:1 MEDIAL_OP d:1 e:1 f:1 MEDIAL_OP f:1 MEDIAL_OP d:1	1	0.0016	p003-u028
+e:1 c:1 h:2 e:1 f:1 f:1 MEDIAL_OP d:1 l:1 f:1 MEDIAL_OP d:1	1	0.0016	p005-u070
+e:1 c:1 h:2 e:1 f:1 f:1 MEDIAL_OP f:1 MEDIAL_OP d:1	1	0.0016	p003-u147
+e:1 c:1 h:2 e:1 f:1 l:1 f:1 j:1 d:1	1	0.0016	p094-u041
+e:1 c:1 h:2 e:1 f:1 l:1 f:1 MEDIAL_OP c:1 h:1 e:1 MEDIAL_OP c:1 h:1	1	0.0016	p007-u005
+e:1 c:1 h:2 e:1 f:1 l:1 f:1 MEDIAL_OP d:1 e:1 c:1 h:2	1	0.0016	p005-u036
+e:1 c:1 h:2 e:1 f:1 l:1 f:1 MEDIAL_OP d:1 n:1 e:1 MEDIAL_OP e:1	1	0.0016	p006-u005
+e:1 c:1 h:2 e:1 f:1 MEDIAL_OP e:1 c:1 h:2 e:1 h:1	1	0.0016	p094-u011
+e:1 c:1 h:2 e:1 f:1 MEDIAL_OP f:1 j:1 d:1	1	0.0016	p094-u060
+e:1 c:1 h:2 e:1 f:1 MEDIAL_OP f:1 j:1 e:1 c:1 h:2 e:1 h:1	1	0.0016	p005-u057
+e:1 c:1 h:2 e:1 f:1 MEDIAL_OP f:1 MEDIAL_OP	1	0.0016	p003-u174
+e:1 c:1 h:2 e:1 f:1 MEDIAL_OP f:1 MEDIAL_OP d:1 c:1 f:1 j:1	1	0.0016	p005-u058
+e:1 c:1 h:2 e:1 f:1 MEDIAL_OP f:1 MEDIAL_OP d:1 e:1 h:1	1	0.0016	p005-u046
+e:1 c:1 h:2 e:1 h:1	1	0.0016	p094-u058
+e:1 c:1 h:2 e:1 h:1 e:1 c:1 h:2 e:1 h:1 e:1 c:1 h:2	1	0.0016	p003-u124
+e:1 c:1 h:2 e:1 l:1 f:1 e:1 a:1 e:1 MEDIAL_OP c:1 a:1 c:2 MEDIAL_OP e:1 h:1	1	0.0016	p003-u126
+e:1 c:1 h:2 e:1 l:1 f:1 MEDIAL_OP f:1 MEDIAL_OP d:1	1	0.0016	p006-u029
+e:1 c:1 h:2 e:1 MEDIAL_OP e:1 c:1 f:1 MEDIAL_OP d:1	1	0.0016	p004-u080
+e:1 c:1 h:2 e:1 MEDIAL_OP e:1 e:1 c:1	1	0.0016	p003-u184
+e:1 c:1 h:2 e:1 MEDIAL_OP e:1 e:1 e:1 e:1 h:1	1	0.0016	p094-u081
+e:1 c:1 h:2 e:1 MEDIAL_OP e:1 e:1 f:1 f:1 MEDIAL_OP d:1	1	0.0016	p003-u135
+e:1 c:1 h:2 f:1 j:1 e:1 MEDIAL_OP d:1 n:1 e:1 MEDIAL_OP e:1 c:1	1	0.0016	p005-u059
+e:1 c:1 h:2 n:1 c:2 MEDIAL_OP e:1 e:1 e:1 e:1 h:1	1	0.0016	p094-u008
+e:1 c:1 h:2 n:1 e:1 MEDIAL_OP e:1 c:1 f:1 j:1 e:1 h:1	1	0.0016	p094-u028
+e:1 c:1 h:2 n:1 e:1 MEDIAL_OP e:1 e:1 h:1	1	0.0016	p094-u077
+e:1 c:2 h:2 c:1 e:1 MEDIAL_OP e:1 c:1 e:1 c:1 h:2	1	0.0016	p094-u038
+e:1 c:2 h:2 e:1 f:1 f:1 MEDIAL_OP c:1 h:1 c:1	1	0.0016	p007-u034
+e:1 c:2 h:2 e:1 f:1 f:1 MEDIAL_OP c:2 h:1	1	0.0016	p007-u008
+e:1 c:2 h:2 e:1 f:1 MEDIAL_OP e:1 h:1	1	0.0016	p094-u013
+e:1 c:2 h:2 e:1 MEDIAL_OP f:1 MEDIAL_OP d:1	1	0.0016	p094-u052
+e:1 e:1 e:1 h:1	1	0.0016	p005-u089
+e:1 e:1 h:1	1	0.0016	p006-u032
+e:1 f:1 a:1 MEDIAL_OP c:1 a:1 e:1 l:1 f:1 MEDIAL_OP d:1	1	0.0016	p003-u079
+e:1 f:1 c:1 f:1 MEDIAL_OP d:1	1	0.0016	p007-u041
+e:1 f:1 f:1 j:1	1	0.0016	p005-u028
+e:1 f:1 f:1 MEDIAL_OP c:1 h:1	1	0.0016	p004-u007
+e:1 f:1 l:1 f:1 e:1 c:1 h:2 e:1 h:1	1	0.0016	p005-u022
+e:1 f:1 l:1 f:1 MEDIAL_OP d:1	1	0.0016	p003-u016
+e:1 h:1 a:1 e:1 MEDIAL_OP c:1 a:1 c:1	1	0.0016	p003-u127
+e:1 h:1 a:1 e:1 MEDIAL_OP c:1 a:1 e:1 c:1 e:1 c:2 h:2 e:1 h:1	1	0.0016	p007-u084
+e:1 h:1 a:1 e:1 MEDIAL_OP c:1 a:1 e:1 f:1 MEDIAL_OP f:1 MEDIAL_OP d:1	1	0.0016	p003-u004
+e:1 h:1 a:1 e:1 MEDIAL_OP c:1 a:1 e:1 MEDIAL_OP e:1 e:1 f:1 MEDIAL_OP f:1 MEDIAL_OP d:1	1	0.0016	p005-u033
+e:1 h:1 a:1 MEDIAL_OP c:1 a:1 c:1 e:1 c:1 h:2 e:1 h:1	1	0.0016	p005-u064
+e:1 h:1 a:1 MEDIAL_OP c:1 a:1 c:1 f:1 j:1 e:1 c:1 h:2 e:1 h:1	1	0.0016	p005-u039
+e:1 h:1 a:1 MEDIAL_OP c:1 a:1 c:1 f:1 MEDIAL_OP d:1	1	0.0016	p003-u008
+e:1 h:1 a:1 MEDIAL_OP c:1 a:1 e:1 e:1 c:1	1	0.0016	p004-u008
+e:1 h:1 a:1 MEDIAL_OP c:1 a:1 e:1 e:1 e:1 h:1	1	0.0016	p005-u101
+e:1 h:1 a:1 MEDIAL_OP c:1 a:1 e:1 f:1 f:1 j:1	1	0.0016	p003-u002
+e:1 h:1 a:1 MEDIAL_OP c:1 a:1 e:1 f:1 l:1 f:1 MEDIAL_OP d:1	1	0.0016	p003-u071
+e:1 h:1 a:1 MEDIAL_OP c:1 a:1 e:1 f:1 MEDIAL_OP f:1 MEDIAL_OP d:1	1	0.0016	p003-u024
+e:1 h:1 a:1 MEDIAL_OP c:1 a:1 e:1 h:1	1	0.0016	p005-u067
+e:1 h:1 a:1 MEDIAL_OP c:1 a:1 MEDIAL_OP d:1	1	0.0016	p005-u002
+e:1 h:1 a:1 MEDIAL_OP c:1 a:1 n:1 e:1 MEDIAL_OP e:1	1	0.0016	p005-u054
+e:1 h:1 c:1 f:1 MEDIAL_OP d:1	1	0.0016	p005-u094
+e:1 h:1 e:1 c:1 h:2 e:1 f:1 f:1 MEDIAL_OP d:1	1	0.0016	p007-u045
+e:1 h:1 e:1 c:1 h:2 e:1 f:1 f:1 MEDIAL_OP d:1 e:1 l:1 f:1 e:1 MEDIAL_OP e:1 n:1 e:1 h:1	1	0.0016	p003-u043
+e:1 h:1 e:1 c:1 h:2 e:1 h:1	1	0.0016	p005-u019
+e:1 h:1 e:1 MEDIAL_OP e:1 a:1 c:2 MEDIAL_OP c:2 a:1 e:1 f:1 MEDIAL_OP f:1 MEDIAL_OP d:1	1	0.0016	p007-u026
+e:1 h:1 e:1 MEDIAL_OP e:1 c:1	1	0.0016	p003-u119
+e:1 h:1 e:1 MEDIAL_OP e:1 e:1 e:1 e:1 h:1	1	0.0016	p003-u176
+e:1 h:1 e:1 MEDIAL_OP e:1 e:1 f:1 l:1 f:1 MEDIAL_OP d:1	1	0.0016	p005-u081
+e:1 h:1 n:1 e:1 MEDIAL_OP e:1 e:1 c:1 f:1 MEDIAL_OP d:1	1	0.0016	p007-u035
+e:1 MEDIAL_OP c:2 e:1 h:1	1	0.0016	p094-u033
+e:1 MEDIAL_OP d:1 c:1	1	0.0016	p005-u065
+e:1 MEDIAL_OP d:1 c:1 e:1 c:1 f:1 MEDIAL_OP c:1 h:1	1	0.0016	p007-u082
+e:1 MEDIAL_OP d:1 c:1 e:1 MEDIAL_OP e:1 e:1 e:1 h:1	1	0.0016	p004-u028
+e:1 MEDIAL_OP d:1 c:1 f:1 j:1 e:1 e:1 e:1 MEDIAL_OP c:1 h:1	1	0.0016	p007-u081
+e:1 MEDIAL_OP d:1 c:1 f:1 j:1 e:1 MEDIAL_OP d:1	1	0.0016	p007-u050
+e:1 MEDIAL_OP d:1 c:1 f:1 MEDIAL_OP d:1	1	0.0016	p005-u038
+e:1 MEDIAL_OP d:1 c:1 f:1 MEDIAL_OP d:1 e:1 h:1	1	0.0016	p003-u010
+e:1 MEDIAL_OP d:1 c:2 MEDIAL_OP e:1 e:1 c:2 h:1	1	0.0016	p007-u016
+e:1 MEDIAL_OP d:1 e:1 a:1 e:1 MEDIAL_OP c:1 a:1 MEDIAL_OP e:1 e:1 h:1	1	0.0016	p003-u082
+e:1 MEDIAL_OP d:1 e:1 f:1 f:1 MEDIAL_OP c:2 h:1	1	0.0016	p007-u086
+e:1 MEDIAL_OP d:1 e:1 f:1 l:1 f:1 MEDIAL_OP d:1 e:1 h:1	1	0.0016	p003-u038
+e:1 MEDIAL_OP d:1 e:1 MEDIAL_OP e:1 c:1 e:1 c:1 h:2 e:1 h:1	1	0.0016	p004-u088
+e:1 MEDIAL_OP d:1 e:1 MEDIAL_OP e:1 e:1 f:1 f:1 MEDIAL_OP c:2 h:1	1	0.0016	p007-u024
+e:1 MEDIAL_OP e:1 a:1 e:1 MEDIAL_OP c:1 a:1 e:1 h:1	1	0.0016	p006-u042
+e:1 MEDIAL_OP e:1 a:1 MEDIAL_OP c:1 a:1 c:1 e:1 c:1 h:2 e:1 c:1 h:2 e:1 h:1	1	0.0016	p005-u023
+e:1 MEDIAL_OP e:1 a:1 MEDIAL_OP c:1 a:1 e:1 f:1 f:1 MEDIAL_OP d:1 e:1 MEDIAL_OP d:1	1	0.0016	p005-u010
+e:1 MEDIAL_OP e:1 a:1 MEDIAL_OP c:1 a:1 e:1 f:1 MEDIAL_OP f:1 MEDIAL_OP d:1	1	0.0016	p003-u014
+e:1 MEDIAL_OP e:1 c:1 a:1 c:1	1	0.0016	p003-u195
+e:1 MEDIAL_OP e:1 c:1 a:1 c:2 MEDIAL_OP c:1 a:1 e:1 MEDIAL_OP e:1 c:1 f:1 j:1 a:1 MEDIAL_OP c:1 a:1 c:2 MEDIAL_OP e:1 e:1 e:1 h:1	1	0.0016	p094-u056
+e:1 MEDIAL_OP e:1 c:1 a:1 e:1 MEDIAL_OP c:1 a:1 e:1 e:1 h:1	1	0.0016	p003-u197
+e:1 MEDIAL_OP e:1 c:1 a:1 e:1 MEDIAL_OP c:1 a:1 MEDIAL_OP d:1 e:1 MEDIAL_OP e:1 e:1 h:1	1	0.0016	p094-u005
+e:1 MEDIAL_OP e:1 c:1 a:1 MEDIAL_OP c:1 a:1 c:1 f:1 n:1 c:2 MEDIAL_OP e:1 e:1	1	0.0016	p006-u053
+e:1 MEDIAL_OP e:1 c:1 a:1 MEDIAL_OP c:1 a:1 e:1 c:1	1	0.0016	p004-u025
+e:1 MEDIAL_OP e:1 c:1 a:1 MEDIAL_OP c:1 a:1 e:1 c:1 e:1 MEDIAL_OP d:1	1	0.0016	p006-u049
+e:1 MEDIAL_OP e:1 c:1 a:1 MEDIAL_OP c:1 a:1 e:1 f:1 MEDIAL_OP f:1 MEDIAL_OP d:1 e:1 c:1 h:2	1	0.0016	p005-u026
+e:1 MEDIAL_OP e:1 c:1 e:1 a:1 e:1 MEDIAL_OP c:1 a:1 MEDIAL_OP e:1 e:1 h:1	1	0.0016	p003-u055
+e:1 MEDIAL_OP e:1 c:1 e:1 c:1 h:2 c:1	1	0.0016	p004-u047
+e:1 MEDIAL_OP e:1 c:1 e:1 c:1 h:2 e:1 f:1 f:1 j:1 e:1 h:1	1	0.0016	p094-u046
+e:1 MEDIAL_OP e:1 c:1 e:1 e:1 e:1 MEDIAL_OP d:1	1	0.0016	p004-u053
+e:1 MEDIAL_OP e:1 c:1 e:1 MEDIAL_OP e:1 e:1 h:1	1	0.0016	p094-u068
+e:1 MEDIAL_OP e:1 c:1 f:1 j:1 c:1	1	0.0016	p006-u024
+e:1 MEDIAL_OP e:1 c:1 f:1 j:1 c:1 f:1 j:1 e:1 h:1	1	0.0016	p007-u023
+e:1 MEDIAL_OP e:1 c:1 f:1 j:1 e:1 c:1 h:2 e:1 f:1 f:1 MEDIAL_OP d:1	1	0.0016	p005-u047
+e:1 MEDIAL_OP e:1 c:1 f:1 j:1 e:1 f:1 MEDIAL_OP f:1 MEDIAL_OP d:1	1	0.0016	p005-u072
+e:1 MEDIAL_OP e:1 c:1 f:1 j:1 n:1 e:1 MEDIAL_OP e:1 c:1	1	0.0016	p094-u004
+e:1 MEDIAL_OP e:1 c:1 f:1 MEDIAL_OP d:1 e:1 h:1	1	0.0016	p094-u012
+e:1 MEDIAL_OP e:1 e:1	1	0.0016	p094-u044
+e:1 MEDIAL_OP e:1 e:1 a:1 MEDIAL_OP a:1 c:2 e:1 h:1	1	0.0016	p094-u075
+e:1 MEDIAL_OP e:1 e:1 a:1 MEDIAL_OP c:1 a:1 e:1 f:1 l:1 f:1 MEDIAL_OP d:1	1	0.0016	p003-u121
+e:1 MEDIAL_OP e:1 e:1 a:1 MEDIAL_OP c:1 a:1 MEDIAL_OP c:1 e:1 h:1	1	0.0016	p006-u030
+e:1 MEDIAL_OP e:1 e:1 c:1 a:1 e:1 MEDIAL_OP c:1 a:1 MEDIAL_OP d:1 e:1 MEDIAL_OP e:1 c:1 f:1 MEDIAL_OP d:1	1	0.0016	p006-u002
+e:1 MEDIAL_OP e:1 e:1 c:1 e:1 c:1 h:2 e:1 h:1	1	0.0016	p007-u061
+e:1 MEDIAL_OP e:1 e:1 c:1 h:2 f:1 j:1 e:1 a:1 e:1 MEDIAL_OP c:1 a:1 e:1 h:1	1	0.0016	p094-u079
+e:1 MEDIAL_OP e:1 e:1 e:1 e:1 MEDIAL_OP d:1	1	0.0016	p006-u050
+e:1 MEDIAL_OP e:1 e:1 e:1 f:1 f:1 MEDIAL_OP d:1	1	0.0016	p003-u039
+e:1 MEDIAL_OP e:1 e:1 e:1 f:1 MEDIAL_OP f:1 MEDIAL_OP d:1	1	0.0016	p006-u052
+e:1 MEDIAL_OP e:1 e:1 f:1 f:1 j:1	1	0.0016	p007-u018
+e:1 MEDIAL_OP e:1 e:1 f:1 f:1 MEDIAL_OP c:2 h:1	1	0.0016	p007-u010
+e:1 MEDIAL_OP e:1 e:1 h:1 a:1 MEDIAL_OP c:1 a:1 e:1 h:1	1	0.0016	p094-u067
+e:1 MEDIAL_OP e:1 e:1 h:1 a:1 MEDIAL_OP c:1 a:1 e:1 h:1 e:1 MEDIAL_OP d:1 e:1 f:1 f:1 j:1	1	0.0016	p005-u099
+e:1 MEDIAL_OP e:1 e:1 h:1 f:1 MEDIAL_OP d:1 c:1	1	0.0016	p003-u155
+e:1 MEDIAL_OP e:1 e:1 MEDIAL_OP d:1	1	0.0016	p006-u051
+e:1 n:1 e:1 MEDIAL_OP e:1 e:1 e:1 h:1	1	0.0016	p003-u051
+f:1 j:1 c:1 f:1 j:1	1	0.0016	p004-u048
+f:1 j:1 n:1 e:1 MEDIAL_OP e:1 e:1 h:1	1	0.0016	p006-u017
+MEDIAL_OP a:1 n:1 c:1 MEDIAL_OP a:1 MEDIAL_OP c:1 a:1 e:1 h:1	1	0.0016	p005-u071
+n:1 c:1 MEDIAL_OP e:1 h:1 n:1 e:1 MEDIAL_OP e:1 c:1 f:1 j:1	1	0.0016	p003-u045
+n:1 c:2 MEDIAL_OP e:1 c:1 a:1 MEDIAL_OP c:1 a:1 e:1 MEDIAL_OP e:1 e:1 e:1 e:1 h:1	1	0.0016	p003-u150
+n:1 c:2 MEDIAL_OP e:1 e:1 h:1 a:1 e:1 MEDIAL_OP c:1 a:1 MEDIAL_OP d:1 e:1 MEDIAL_OP c:1 a:1 e:1 MEDIAL_OP c:1 a:1 c:1 f:1 j:1	1	0.0016	p003-u138
+n:1 e:1 MEDIAL_OP c:1	1	0.0016	p005-u021
+n:1 e:1 MEDIAL_OP e:1 a:1 e:1 MEDIAL_OP c:1 a:1 c:1 f:1 MEDIAL_OP d:1	1	0.0016	p003-u192
+n:1 e:1 MEDIAL_OP e:1 c:1 a:1 MEDIAL_OP c:1 a:1	1	0.0016	p003-u141
+n:1 e:1 MEDIAL_OP e:1 c:1 e:1 c:1 h:2	1	0.0016	p003-u025
+n:1 e:1 MEDIAL_OP e:1 c:1 e:1 c:1 h:2 e:1 f:1 f:1 MEDIAL_OP d:1 e:1 h:1	1	0.0016	p003-u050
+n:1 e:1 MEDIAL_OP e:1 c:1 e:1 c:1 h:2 e:1 f:1 l:1 f:1 MEDIAL_OP d:1	1	0.0016	p003-u080
+n:1 e:1 MEDIAL_OP e:1 c:1 e:1 c:1 h:2 e:1 f:1 MEDIAL_OP f:1 MEDIAL_OP d:1	1	0.0016	p007-u088
+n:1 e:1 MEDIAL_OP e:1 c:1 e:1 f:1 MEDIAL_OP f:1 MEDIAL_OP d:1	1	0.0016	p003-u169
+n:1 e:1 MEDIAL_OP e:1 c:1 e:1 h:1	1	0.0016	p003-u084
+n:1 e:1 MEDIAL_OP e:1 c:1 e:1 MEDIAL_OP d:1	1	0.0016	p003-u061
+n:1 e:1 MEDIAL_OP e:1 c:1 f:1 j:1 e:1 c:1 h:2 e:1 h:1	1	0.0016	p003-u009
+n:1 e:1 MEDIAL_OP e:1 c:1 f:1 MEDIAL_OP c:1 h:1	1	0.0016	p007-u033
+n:1 e:1 MEDIAL_OP e:1 c:1 f:1 MEDIAL_OP d:1	1	0.0016	p007-u067
+n:1 e:1 MEDIAL_OP e:1 c:1 f:1 MEDIAL_OP d:1 e:1 h:1	1	0.0016	p003-u006
+n:1 e:1 MEDIAL_OP e:1 c:1 n:1 e:1 MEDIAL_OP e:1	1	0.0016	p006-u009
+n:1 e:1 MEDIAL_OP e:1 e:1	1	0.0016	p003-u129
+n:1 e:1 MEDIAL_OP e:1 e:1 a:1 e:1 MEDIAL_OP c:1 a:1 MEDIAL_OP e:1 e:1 f:1 MEDIAL_OP f:1 MEDIAL_OP d:1	1	0.0016	p003-u136
+n:1 e:1 MEDIAL_OP e:1 e:1 a:1 MEDIAL_OP c:1 a:1 e:1 h:1	1	0.0016	p003-u022
+n:1 e:1 MEDIAL_OP e:1 e:1 a:1 MEDIAL_OP c:1 a:1 MEDIAL_OP e:1 e:1 e:1 h:1	1	0.0016	p003-u101
+n:1 e:1 MEDIAL_OP e:1 e:1 c:1	1	0.0016	p003-u122
+n:1 e:1 MEDIAL_OP e:1 e:1 c:1 f:1 j:1	1	0.0016	p007-u051
+n:1 e:1 MEDIAL_OP e:1 e:1 c:1 f:1 j:1 e:1 c:1 h:2 e:1 f:1 f:1 MEDIAL_OP c:1 h:1	1	0.0016	p007-u042
+n:1 e:1 MEDIAL_OP e:1 e:1 e:1 e:1 MEDIAL_OP d:1	1	0.0016	p094-u029
+n:1 e:1 MEDIAL_OP e:1 e:1 e:1 f:1 f:1 MEDIAL_OP d:1	1	0.0016	p003-u162
+n:1 e:1 MEDIAL_OP e:1 e:1 f:1 f:1 MEDIAL_OP d:1	1	0.0016	p003-u015
+n:1 e:1 MEDIAL_OP e:1 e:1 f:1 MEDIAL_OP f:1 MEDIAL_OP d:1	1	0.0016	p003-u149
+n:1 e:1 MEDIAL_OP e:1 e:1 MEDIAL_OP d:1	1	0.0016	p003-u048

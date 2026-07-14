@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="90" height="55" viewBox="0 0 90 55">
   <title>atom 3642 k:1</title>
-  <metadata>{&quot;entityType&quot;:&quot;atom&quot;,&quot;entityId&quot;:&quot;3642&quot;,&quot;token&quot;:&quot;k:1&quot;,&quot;signature&quot;:&quot;k:1&quot;,&quot;imageName&quot;:&quot;page-003.jpg&quot;,&quot;imageId&quot;:3,&quot;bounds&quot;:{&quot;x&quot;:2227,&quot;y&quot;:2298,&quot;w&quot;:90,&quot;h&quot;:55},&quot;atoms&quot;:[{&quot;id&quot;:3642,&quot;token&quot;:&quot;k:1&quot;,&quot;particle_id&quot;:&quot;img3-m145-p4&quot;,&quot;molecule_id&quot;:&quot;img3-m145&quot;,&quot;atom_order&quot;:1}]}</metadata>
+  <metadata>{&quot;entityType&quot;:&quot;atom&quot;,&quot;entityId&quot;:&quot;3642&quot;,&quot;token&quot;:&quot;k:1&quot;,&quot;signature&quot;:&quot;k:1&quot;,&quot;imageName&quot;:&quot;page-003.jpg&quot;,&quot;imageId&quot;:3,&quot;bounds&quot;:{&quot;x&quot;:2227,&quot;y&quot;:2298,&quot;w&quot;:90,&quot;h&quot;:55},&quot;atoms&quot;:[{&quot;id&quot;:3642,&quot;token&quot;:&quot;k:1&quot;,&quot;particle_id&quot;:&quot;img3-m146-p4&quot;,&quot;molecule_id&quot;:&quot;img3-m146&quot;,&quot;atom_order&quot;:1}]}</metadata>
   <rect x="0" y="0" width="90" height="55" fill="#f8f0d8"/>
-  
+
   <rect x="0.5" y="0.5" width="89" height="54" fill="none" stroke="#111827" stroke-width="1" opacity="0.35"/>
   <polyline points="16,16 16,17 17,18 18,19 18,20 19,21 19,22 20,24 20,25 21,25 21,26 22,27 22,28 22,29 23,29 23,30 24,30 24,31 24,32 25,32 25,33 26,33 26,34 27,34 27,35 28,36 29,36 29,37 30,37 31,35 31,34 32,34 32,33 33,33 34,32 34,31 35,31 35,30 36,29 36,28 37,28 37,27 38,27 38,26 39,25 39,24 40,24 40,23 41,23 41,22 42,22 42,23 43,24 43,25 44,25 44,26 45,26 45,27 46,27 46,28 46,29 47,29 47,30 47,31 48,31 48,32 48,33 49,33 49,34 50,34 50,35 51,35 51,36 51,37 52,37 52,38 52,39 53,39 53,38 54,38 54,37 55,36 55,35 56,35 56,34 57,34 57,33 58,33 59,32 60,31 62,30 63,29 64,28 65,27 66,27 67,26 68,25 69,25 70,24 71,23 72,22 73,22 73,21 74,21 74,20" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.95">
     <title>3642 k:1</title>

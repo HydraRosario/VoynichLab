@@ -238,11 +238,22 @@ function rasterize(points, gridSize) {
 
 function featureStatsFor(samples) {
   const length = samples[0]?.features.length ?? 0;
-  const means = Array.from({ length }, (_, index) => mean(samples.map((sample) => sample.features[index])));
-  const stdevs = Array.from({ length }, (_, index) => {
-    const variance = mean(samples.map((sample) => (sample.features[index] - means[index]) ** 2));
-    return Math.sqrt(variance) || 1;
-  });
+  const means = Array.from({ length }, () => 0);
+  for (const sample of samples) {
+    for (let index = 0; index < length; index += 1) {
+      means[index] += sample.features[index];
+    }
+  }
+  for (let index = 0; index < length; index += 1) {
+    means[index] /= Math.max(samples.length, 1);
+  }
+  const variances = Array.from({ length }, () => 0);
+  for (const sample of samples) {
+    for (let index = 0; index < length; index += 1) {
+      variances[index] += (sample.features[index] - means[index]) ** 2;
+    }
+  }
+  const stdevs = variances.map((variance) => Math.sqrt(variance / Math.max(samples.length, 1)) || 1);
   return { means, stdevs };
 }
 
@@ -299,17 +310,11 @@ function pairwiseCentroidRows(tokens, centroids) {
 }
 
 function leaveOneOutRows(samples, tokens, k) {
+  const tokenStats = tokenFeatureStats(samples);
+  const tokenOrder = [...tokens].sort(tokenSort);
   return samples.map((sample, index) => {
-    const training = samples.filter((_, candidateIndex) => candidateIndex !== index);
-    const centroids = centroidByToken(training);
-    const predictedCentroid = nearestCentroid(sample.normalizedFeatures, centroids);
-    const neighbors = training
-      .map((candidate) => ({
-        token: candidate.atom.token,
-        distance: euclidean(sample.normalizedFeatures, candidate.normalizedFeatures),
-      }))
-      .sort((a, b) => a.distance - b.distance)
-      .slice(0, k);
+    const predictedCentroid = nearestLeaveOneOutCentroid(sample, tokenStats, tokenOrder);
+    const neighbors = nearestKNeighbors(samples, index, k);
     const predictedKnn = vote(neighbors);
     return {
       atom_id: sample.atom.atom_id,
@@ -323,6 +328,82 @@ function leaveOneOutRows(samples, tokens, k) {
       snapshot_path: snapshotPaths.get(String(sample.atom.atom_id)) ?? "",
     };
   });
+}
+
+function tokenFeatureStats(samples) {
+  const stats = new Map();
+  for (const sample of samples) {
+    const token = sample.atom.token;
+    if (!stats.has(token)) {
+      stats.set(token, {
+        count: 0,
+        sums: Array.from({ length: sample.normalizedFeatures.length }, () => 0),
+      });
+    }
+    const item = stats.get(token);
+    item.count += 1;
+    for (let index = 0; index < sample.normalizedFeatures.length; index += 1) {
+      item.sums[index] += sample.normalizedFeatures[index];
+    }
+  }
+  return stats;
+}
+
+function nearestLeaveOneOutCentroid(sample, tokenStats, tokenOrder) {
+  let best = { token: "", distanceSq: Number.POSITIVE_INFINITY };
+  for (const token of tokenOrder) {
+    const stats = tokenStats.get(token);
+    if (!stats) continue;
+    const isOwnToken = token === sample.atom.token;
+    const count = stats.count - (isOwnToken ? 1 : 0);
+    if (count <= 0) continue;
+    const distanceSq = squaredDistanceToCentroid(sample.normalizedFeatures, stats.sums, count, isOwnToken ? sample.normalizedFeatures : null, best.distanceSq);
+    if (distanceSq < best.distanceSq || (distanceSq === best.distanceSq && tokenSort(token, best.token) < 0)) {
+      best = { token, distanceSq };
+    }
+  }
+  return {
+    token: best.token,
+    distance: Math.sqrt(best.distanceSq),
+  };
+}
+
+function squaredDistanceToCentroid(features, sums, count, excludedFeatures, limit = Number.POSITIVE_INFINITY) {
+  let sum = 0;
+  for (let index = 0; index < features.length; index += 1) {
+    const centroidValue = (sums[index] - (excludedFeatures ? excludedFeatures[index] : 0)) / count;
+    const delta = features[index] - centroidValue;
+    sum += delta * delta;
+    if (sum > limit) return sum;
+  }
+  return sum;
+}
+
+function nearestKNeighbors(samples, sampleIndex, k) {
+  const sample = samples[sampleIndex];
+  const neighbors = [];
+  let worstDistanceSq = Number.POSITIVE_INFINITY;
+  for (let index = 0; index < samples.length; index += 1) {
+    if (index === sampleIndex) continue;
+    const candidate = samples[index];
+    const distanceSq = squaredDistance(sample.normalizedFeatures, candidate.normalizedFeatures, worstDistanceSq);
+    if (neighbors.length < k) {
+      neighbors.push({ token: candidate.atom.token, distance: Math.sqrt(distanceSq), distanceSq });
+      neighbors.sort(neighborSort);
+      worstDistanceSq = neighbors.at(-1)?.distanceSq ?? Number.POSITIVE_INFINITY;
+      continue;
+    }
+    if (distanceSq < worstDistanceSq || (distanceSq === worstDistanceSq && tokenSort(candidate.atom.token, neighbors.at(-1)?.token ?? "") < 0)) {
+      neighbors[neighbors.length - 1] = { token: candidate.atom.token, distance: Math.sqrt(distanceSq), distanceSq };
+      neighbors.sort(neighborSort);
+      worstDistanceSq = neighbors.at(-1)?.distanceSq ?? Number.POSITIVE_INFINITY;
+    }
+  }
+  return neighbors;
+}
+
+function neighborSort(a, b) {
+  return a.distanceSq - b.distanceSq || tokenSort(a.token, b.token);
 }
 
 function nearestCentroid(features, centroids) {
@@ -493,11 +574,17 @@ function centroid(vectors) {
 }
 
 function euclidean(a, b) {
+  return Math.sqrt(squaredDistance(a, b));
+}
+
+function squaredDistance(a, b, limit = Number.POSITIVE_INFINITY) {
   let sum = 0;
   for (let index = 0; index < a.length; index += 1) {
-    sum += (a[index] - b[index]) ** 2;
+    const delta = a[index] - b[index];
+    sum += delta * delta;
+    if (sum > limit) return sum;
   }
-  return Math.sqrt(sum);
+  return sum;
 }
 
 function euclideanPoint(a, b) {

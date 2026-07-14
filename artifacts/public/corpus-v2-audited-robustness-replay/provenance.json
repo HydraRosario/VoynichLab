@@ -1,0 +1,33 @@
+{
+  "trainFolios": [],
+  "testFolios": [
+    "f1r",
+    "f1v",
+    "f2r",
+    "f2v",
+    "f3r",
+    "f47v"
+  ],
+  "inputs": [
+    "research/frozen/CORPUS-V2-AUDITED/reports/CEO-FINAL-CORPUS-V2-REPORT.md",
+    "research/frozen/CORPUS-V2-AUDITED/corpus/atoms.tsv",
+    "research/frozen/CORPUS-V2-AUDITED/corpus/molecules.tsv",
+    "research/frozen/CORPUS-V2-AUDITED/corpus/rows.tsv",
+    "research/frozen/CORPUS-V2-AUDITED/corpus/folios.tsv",
+    "research/frozen/CORPUS-V2-AUDITED/v1-v2-metrics.tsv",
+    "research/frozen/CORPUS-V2-AUDITED/checksums.txt"
+  ],
+  "script": "EVAComparisonLab/scripts/run-corpus-v2-analysis.js",
+  "sourceScript": "EVAComparisonLab/scripts/run-corpus-v2-analysis.js",
+  "commands": [
+    "npm.cmd run validate",
+    "npm.cmd run research:validate",
+    "npm.cmd run research:build",
+    "node EVAComparisonLab/scripts/run-corpus-v2-analysis.js --include-morphology"
+  ],
+  "commit": "to-be-filled-by-corpus-v2-audited-tag",
+  "tag": "corpus-v2-audited",
+  "generatedAt": "2026-07-14",
+  "generatedBy": "VoynichLab/research:publish",
+  "frozenArtifacts": []
+}

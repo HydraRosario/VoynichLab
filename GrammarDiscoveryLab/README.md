@@ -4,6 +4,16 @@ Reproducible grammar-validation lab for VoynichLab ATOMS.
 
 This package does not translate the Voynich Manuscript. It validates whether frozen ATOMS molecule families from `GRAMMAR-V1` reappear in held-out folios with only previously observed slot values.
 
+## Current Corpus Audit
+
+The latest repository-level corpus milestone is `CORPUS-V2-AUDITED`, frozen outside this package at:
+
+```text
+research/frozen/CORPUS-V2-AUDITED/
+```
+
+That milestone closes the six-folio audit campaign and replays the structural ATOMS/EVA mathematics. It does not rewrite `GRAMMAR-V1`, the V1 validation release, or the preregistered `f3r` result.
+
 ## Reproducible Release V1
 
 From a clean clone:

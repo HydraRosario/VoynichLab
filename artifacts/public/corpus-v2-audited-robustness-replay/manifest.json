@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "2.0",
+  "id": "corpus-v2-audited-robustness-replay",
+  "title": "CORPUS-V2-AUDITED Robustness Replay",
+  "status": "published",
+  "outcome": "supportive",
+  "question": "After a complete six-folio human-label audit and stale learned-memory cleanup, do the main ATOMS/EVA structural results remain stable?",
+  "result": "The audited six-folio corpus has 0 pending audit candidates and ATOMS remains lower entropy than EVA: 0.5409 vs 0.7688 weighted positional entropy.",
+  "interpretation": "Supportive robustness evidence that documented human-label corrections and learned-memory cleanup did not weaken the main ATOMS structural signal.",
+  "limitations": [
+    "Single ATOMS annotator",
+    "Six folios only",
+    "Corpus audit does not prove decipherment or semantic interpretation",
+    "Known valid rare structures are documented rather than removed"
+  ],
+  "trainFolios": [],
+  "testFolios": [
+    "f1r",
+    "f1v",
+    "f2r",
+    "f2v",
+    "f3r",
+    "f47v"
+  ],
+  "commit": "to-be-filled-by-corpus-v2-audited-tag",
+  "tag": "corpus-v2-audited",
+  "publishedAt": "2026-07-14",
+  "commands": [
+    "npm.cmd run validate",
+    "npm.cmd run research:validate",
+    "npm.cmd run research:build",
+    "node EVAComparisonLab/scripts/run-corpus-v2-analysis.js --include-morphology"
+  ],
+  "reportPath": "research/frozen/CORPUS-V2-AUDITED/reports/CEO-FINAL-CORPUS-V2-REPORT.md",
+  "sourceScript": "EVAComparisonLab/scripts/run-corpus-v2-analysis.js",
+  "generatedAt": "2026-07-14",
+  "files": [
+    "summary.md",
+    "report.md",
+    "tables/atoms.tsv",
+    "tables/molecules.tsv",
+    "tables/rows.tsv",
+    "tables/folios.tsv",
+    "tables/v1-v2-metrics.tsv",
+    "tables/checksums.txt"
+  ],
+  "checksums": {
+    "summary.md": "c5106073784acc4df3362ec7b12ce6d365cd85380cc15e75f6b8b1c5c05f63b8",
+    "report.md": "25d2d94c394e90ad4c9fa691fb9b3ed95ae71dd0f0f8b22961f504d45056315c",
+    "tables/atoms.tsv": "50c58e05040e6a56b1a68dc2ac8d7e7cb9a50933b1d6af0c3687d74101b30d4f",
+    "tables/molecules.tsv": "5305df1c27a2e94e835ecdf76c55f0ea24bbe116086e112036f73f22ca07e10e",
+    "tables/rows.tsv": "2f24e17fd5e6fd690ccb1db0f1f37c0533338da36df7dac507ba8795f730c2eb",
+    "tables/folios.tsv": "13eda33204ba99c5ef324def1db802c852511b852d18735e3d388418b9ae58fd",
+    "tables/v1-v2-metrics.tsv": "4ff93b05189d1c6314e1f30aba68b093351c8daa8334052dbf6e162f5d626a7f",
+    "tables/checksums.txt": "669f9917e1b48c870d621b9669c1df1f8d50901c0bb45c699248fb7f4b62853f"
+  }
+}

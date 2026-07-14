@@ -57,13 +57,13 @@ export function tsvCell(value) {
   return String(value ?? "").replaceAll("\t", " ").replaceAll(/\r?\n/g, " ");
 }
 
-export function openDatasetDb(dbPath) {
+export function openDatasetDb(dbPath, options = {}) {
   const resolved = path.resolve(dbPath ?? defaultDatasetCreatorDbPath());
   if (!fs.existsSync(resolved)) {
     throw new Error(`Database not found: ${resolved}`);
   }
   const { DatabaseSync } = require("node:sqlite");
-  return new DatabaseSync(resolved, { readOnly: true });
+  return new DatabaseSync(resolved, { readOnly: options.readOnly ?? true });
 }
 
 export function atomRowsFromDb(db, imageNames) {

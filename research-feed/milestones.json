@@ -126,5 +126,25 @@
         "path": "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/PROSPECTIVE-ATOMS-EVA-TEST-V1.md"
       }
     ]
+  },
+  {
+    "id": "corpus-v2-audited",
+    "title": "Corpus V2 audited robustness replay",
+    "date": "2026-07-14",
+    "summary": "Closed the six-folio corpus audit, removed stale learned memory, froze V2 provenance, and replayed the main ATOMS/EVA structural mathematics.",
+    "type": "audit",
+    "tag": "corpus-v2-audited",
+    "commit": "to-be-filled-by-corpus-v2-audited-tag",
+    "sequenceIndex": 8,
+    "links": [
+      {
+        "label": "Frozen manifest",
+        "path": "research/frozen/CORPUS-V2-AUDITED/MANIFEST.md"
+      },
+      {
+        "label": "CEO report",
+        "path": "research/frozen/CORPUS-V2-AUDITED/reports/CEO-FINAL-CORPUS-V2-REPORT.md"
+      }
+    ]
   }
 ]

@@ -16,6 +16,7 @@
       <nav class="nav">
         <a href="#howto">How to read</a>
         <a href="#atoms">ATOMS</a>
+        <a href="#corpus-v2">Corpus V2</a>
         <a href="#evidence">Evidence</a>
         <a href="#experiments">Experiments</a>
         <a href="#research">Timeline</a>
@@ -33,9 +34,9 @@
       <!-- DASHBOARD -->
       <section class="dashboard">
         <div class="dashboard-copy">
-          <p class="eyebrow">Preregistered prospective replication</p>
-          <h1>ATOMS beat EVA again on f3r under frozen rules.</h1>
-          <p class="lead">VoynichLab publishes stroke-level annotations, ATOMS-V1 experiments, EVA comparisons, negative controls, and reproducible scripts — without claiming decipherment.</p>
+          <p class="eyebrow">Corpus V2 audited</p>
+          <h1>The six-folio corpus is cleaned, frozen, and replayed.</h1>
+          <p class="lead">VoynichLab publishes stroke-level annotations, ATOMS-V1 experiments, EVA comparisons, negative controls, audit ledgers, and reproducible scripts - without claiming decipherment.</p>
           <div class="action-row">
             <a class="button primary" href="#evidence">Browse evidence</a>
             <a class="button" href="#howto">How to read this</a>
@@ -52,6 +53,41 @@
           <p class="caption" id="current-result-caption"></p>
           <p class="metric-definition" id="current-definition"></p>
           <div class="callout-row" id="current-callouts"></div>
+        </div>
+      </section>
+
+      <!-- CORPUS V2 -->
+      <section id="corpus-v2" class="section corpus-v2-section">
+        <div class="section-heading">
+          <p class="eyebrow">Corpus V2 Audited</p>
+          <h2>Human-label cleanup did not erase the ATOMS signal.</h2>
+        </div>
+        <div class="corpus-v2-grid">
+          <article class="corpus-card main">
+            <span class="version-badge">Six folios</span>
+            <h3>0 pending audit candidates</h3>
+            <p>The current audit gates report no unresolved labeling candidates, no unresolved particle geometry-order candidates, no stale learned-memory rows, and no line-count mismatches.</p>
+          </article>
+          <article class="corpus-card">
+            <span>ATOMS entropy</span>
+            <strong>0.5409</strong>
+            <p>Weighted positional entropy over 639 physical units.</p>
+          </article>
+          <article class="corpus-card">
+            <span>EVA entropy</span>
+            <strong>0.7688</strong>
+            <p>Same positional entropy protocol over 660 EVA units.</p>
+          </article>
+          <article class="corpus-card">
+            <span>Morphology 5NN</span>
+            <strong>97.85%</strong>
+            <p>Snapshot-derived family separability after the audit replay.</p>
+          </article>
+        </div>
+        <div class="corpus-links">
+          <a href="https://github.com/HydraRosario/VoynichLab/tree/main/research/frozen/CORPUS-V2-AUDITED">Frozen corpus</a>
+          <a href="https://github.com/HydraRosario/VoynichLab/blob/main/research/frozen/CORPUS-V2-AUDITED/reports/CEO-FINAL-CORPUS-V2-REPORT.md">Final report</a>
+          <a href="https://github.com/HydraRosario/VoynichLab/blob/main/research/frozen/CORPUS-V2-AUDITED/checksums.txt">Checksums</a>
         </div>
       </section>
 

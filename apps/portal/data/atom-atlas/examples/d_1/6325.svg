@@ -3,7 +3,7 @@
   <title>atom 6325 d:1</title>
   <metadata>{&quot;entityType&quot;:&quot;atom&quot;,&quot;entityId&quot;:&quot;6325&quot;,&quot;token&quot;:&quot;d:1&quot;,&quot;signature&quot;:&quot;d:1&quot;,&quot;imageName&quot;:&quot;page-005.jpg&quot;,&quot;imageId&quot;:5,&quot;bounds&quot;:{&quot;x&quot;:479,&quot;y&quot;:577,&quot;w&quot;:48,&quot;h&quot;:44},&quot;atoms&quot;:[{&quot;id&quot;:6325,&quot;token&quot;:&quot;d:1&quot;,&quot;particle_id&quot;:&quot;img5-m12-p3&quot;,&quot;molecule_id&quot;:&quot;img5-m12&quot;,&quot;atom_order&quot;:3}]}</metadata>
   <rect x="0" y="0" width="48" height="44" fill="#f8f0d8"/>
-  
+
   <rect x="0.5" y="0.5" width="47" height="43" fill="none" stroke="#111827" stroke-width="1" opacity="0.35"/>
   <polyline points="16,27 16,26 16,25 16,24 16,23 17,23 17,22 17,21 17,20 18,20 18,19 19,18 20,17 21,17 22,16 23,16 24,16 25,16 26,17 27,17 28,17 28,18 29,18 29,19 29,20 29,21 30,21 30,22 30,23 31,23 31,24 31,25 32,25 32,26 32,27 32,28" fill="none" stroke="#ff2d55" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.95">
     <title>6325 d:1</title>

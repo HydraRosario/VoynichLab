@@ -125,6 +125,68 @@ h1, h2, h3, p { overflow-wrap: anywhere; }
 .callout-row span { font-weight: 700; }
 .callout-row a { color: var(--accent); font-weight: 700; text-decoration: none; }
 
+/* CORPUS V2 */
+.corpus-v2-section {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.corpus-v2-grid {
+  display: grid;
+  grid-template-columns: 1.3fr repeat(3, 1fr);
+  gap: 14px;
+}
+.corpus-card {
+  min-height: 186px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  background: rgba(255,253,248,0.9);
+}
+.corpus-card.main {
+  background: #f0eadf;
+}
+.corpus-card span {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.corpus-card strong {
+  display: block;
+  margin: 12px 0 10px;
+  color: var(--accent);
+  font-size: 36px;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.corpus-card p {
+  margin: 0;
+  color: #3e454d;
+  line-height: 1.5;
+}
+.version-badge {
+  width: max-content;
+  padding: 6px 9px;
+  border: 1px solid var(--accent);
+  color: var(--accent) !important;
+}
+.corpus-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+.corpus-links a {
+  min-height: 42px;
+  padding: 11px 14px;
+  border: 1px solid var(--ink);
+  background: var(--surface);
+  color: var(--ink);
+  font-weight: 800;
+  text-decoration: none;
+}
+
 /* METRIC BAR */
 .metric-bar {
   display: inline-block; width: 80px; height: 10px;
@@ -401,14 +463,14 @@ pre { overflow-x: auto; margin: 0; padding: 20px; border: 1px solid var(--line);
   .dashboard, .section-heading, .experiment-layout, .evidence-layout { grid-template-columns: 1fr; }
   .dashboard { min-height: auto; }
   .steps-grid, .trace-chain, .negative-grid { grid-template-columns: repeat(2,1fr); }
-  .lab-strip, .tool-grid, .release-grid, .repo-map-grid { grid-template-columns: repeat(2,1fr); }
+  .lab-strip, .tool-grid, .release-grid, .repo-map-grid, .corpus-v2-grid { grid-template-columns: repeat(2,1fr); }
   .atom-grid { grid-template-columns: repeat(2,1fr); }
   .experiment-meta, .score-columns, .detail-grid { grid-template-columns: repeat(2,1fr); }
 }
 @media (max-width: 620px) {
   main, .footer { width: min(100% - 20px, 1180px); }
   .nav { width: 100%; }
-  .steps-grid, .trace-chain, .negative-grid, .lab-strip, .tool-grid, .repo-map-grid, .experiment-meta, .score-columns, .detail-grid, .release-grid, .atom-grid { grid-template-columns: 1fr; }
+  .steps-grid, .trace-chain, .negative-grid, .lab-strip, .tool-grid, .repo-map-grid, .corpus-v2-grid, .experiment-meta, .score-columns, .detail-grid, .release-grid, .atom-grid { grid-template-columns: 1fr; }
   .timeline li { grid-template-columns: 1fr; gap: 8px; }
   .panel-header { align-items: flex-start; flex-direction: column; }
   .evidence-list { max-height: 300px; }

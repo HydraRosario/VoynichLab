@@ -14,6 +14,16 @@ const metricLabels = {
   atomsUnseenContextRate: { label: "ATOMS unseen context", unit: "ratio", desc: "Lower is better. Fraction of contexts unseen in training." },
   evaUnseenContextRate: { label: "EVA unseen context", unit: "ratio", desc: "Lower is better. Same metric for EVA." },
   atomsOutOfVocabularySymbols: { label: "ATOMS OOV", unit: "count", desc: "Zero means no unknown symbols appeared." },
+  folios: { label: "Folios", unit: "count", desc: "Audited folios included in this result." },
+  atomsUnits: { label: "ATOMS units", unit: "units", desc: "Physical ATOMS units in the audited corpus." },
+  evaUnits: { label: "EVA units", unit: "tokens", desc: "EVA units in the matched corpus scope." },
+  atomsTokens: { label: "ATOMS atom tokens", unit: "tokens", desc: "Individual ATOMS labels in the audited corpus." },
+  atomsWeightedRoleEntropy: { label: "ATOMS role entropy", unit: "bits", desc: "Lower is more positionally concentrated." },
+  evaWeightedRoleEntropy: { label: "EVA role entropy", unit: "bits", desc: "Same positional entropy protocol for EVA." },
+  atomsMinusEvaWeightedRoleEntropy: { label: "ATOMS minus EVA entropy", unit: "bits", desc: "Negative means ATOMS is lower entropy than EVA." },
+  morphologyFiveNearestNeighborAccuracy: { label: "Morphology 5NN accuracy", unit: "ratio", desc: "Snapshot-derived atom-family separability." },
+  pendingAuditCandidates: { label: "Pending audit candidates", unit: "count", desc: "Unresolved current-rule QC candidates." },
+  lineAlignmentMismatches: { label: "Line mismatches", unit: "count", desc: "EVA/ATOMS line-count mismatch count." },
 };
 
 const outcomeExplanations = {
@@ -246,7 +256,9 @@ function renderCurrentResult() {
   }
 
   const m = current.metrics || {};
-  const primaryKeys = ["atomsNormalizedLogLoss", "evaNormalizedLogLoss", "atomsTop1Accuracy", "evaTop1Accuracy", "atomsUnseenContextRate", "evaUnseenContextRate"];
+  const entropyKeys = ["atomsWeightedRoleEntropy", "evaWeightedRoleEntropy", "atomsMinusEvaWeightedRoleEntropy", "morphologyFiveNearestNeighborAccuracy", "pendingAuditCandidates", "lineAlignmentMismatches"];
+  const predictionKeys = ["atomsNormalizedLogLoss", "evaNormalizedLogLoss", "atomsTop1Accuracy", "evaTop1Accuracy", "atomsUnseenContextRate", "evaUnseenContextRate"];
+  const primaryKeys = entropyKeys.some((k) => k in m) ? entropyKeys : predictionKeys;
   const maxVal = Math.max(...primaryKeys.map((k) => typeof m[k] === "number" ? m[k] : 0), 1);
 
   els.currentMetrics.innerHTML = primaryKeys.filter((k) => k in m).map((key) => {

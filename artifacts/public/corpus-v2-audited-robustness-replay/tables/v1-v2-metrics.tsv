@@ -1,0 +1,7 @@
+scope	metric	v1_or_working	v2_audited	reading
+page-003	atoms_weighted_positional_entropy	0.5246	0.5096	decreased_after_audit
+six-folio	atoms_weighted_positional_entropy		0.5409	current_authoritative_v2
+six-folio	eva_weighted_positional_entropy		0.7688	current_authoritative_v2
+six-folio	atoms_minus_eva_entropy		-0.2279	atoms_lower_than_eva
+six-folio	morphology_5nn_accuracy		0.9785	high_visual_family_separability
+six-folio	pending_audit_candidates		0	closed_under_current_rules

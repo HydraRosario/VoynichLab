@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "1.0",
+  "status": "closed",
+  "generatedAt": "2026-07-14",
+  "foliosAudited": [
+    "f1r",
+    "f1v",
+    "f2r",
+    "f2v",
+    "f3r",
+    "f47v"
+  ],
+  "qualityGates": {
+    "labelingAnomalyCandidatesPending": 0,
+    "particleGeometryOrderCandidatesPending": 0,
+    "learnedMemoryProblemsPending": 0,
+    "lineAlignmentMismatches": 0
+  },
+  "reviewedQcDecisions": {
+    "totalDecisions": 82,
+    "uniqueReviewed": 82,
+    "decisionCounts": {
+      "confirm": 79,
+      "relabel": 1,
+      "artifact": 2
+    }
+  },
+  "knownValidExceptions": {
+    "geometryOrder": 91,
+    "labelingPatterns": 5
+  },
+  "staleLearningMemoryRowsRemoved": 1,
+  "metrics": {
+    "folios": 6,
+    "evaUnits": 660,
+    "atomsUnits": 639,
+    "atomsTokens": 6222,
+    "atomsVocabulary": 16,
+    "evaTokens": 2551,
+    "evaVocabulary": 26,
+    "evaWeightedRoleEntropy": 0.7688,
+    "atomsWeightedRoleEntropy": 0.5409,
+    "atomsMinusEvaWeightedRoleEntropy": -0.2279,
+    "morphologyNearestCentroidAccuracy": 0.9298,
+    "morphologyFiveNearestNeighborAccuracy": 0.9785,
+    "morphologyMeanSeparationRatio": 1.8552,
+    "morphologyMedianSeparationRatio": 1.0933,
+    "fullVariantEntropy": 0.5409,
+    "familyMergedEntropy": 0.5788,
+    "macroVocabulary": 12,
+    "macroUniqueLexemeSignatures": 406,
+    "originalUniqueMoleculeSignatures": 414,
+    "medialOperatorTokens": 1160,
+    "medialOperatorMedialShare": 0.9974,
+    "medialOperatorRoleEntropy": 0.0283
+  }
+}

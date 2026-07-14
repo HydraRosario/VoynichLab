@@ -8,20 +8,19 @@ VoynichLab does **not** currently claim translation, decipherment, phonetic valu
 
 ## Current Result
 
-**Prospective ATOMS-EVA Test V1** — Outcome: **SUPPORTIVE**
+**CORPUS-V2-AUDITED Robustness Replay** - Outcome: **SUPPORTIVE**
 
-Under preregistered frozen rules on the held-out folio `f3r`:
-- ATOMS normalized log-loss: **0.348262** (lower is better)
-- EVA normalized log-loss: **0.564957**
-- Delta: **−0.216696**
-- ATOMS top-1 accuracy: **69.06%**
-- EVA top-1 accuracy: **55.35%**
-- ATOMS unseen context: **2.46%**
-- EVA unseen context: **13.79%**
-- OOV ATOMS symbols: **0**
+After a six-folio corpus audit and replay:
+- Pending labeling anomaly candidates: **0**
+- Pending particle geometry-order candidates: **0**
+- Pending stale learned-memory rows: **0**
+- Line alignment mismatches: **0**
+- ATOMS weighted positional entropy: **0.5409**
+- EVA weighted positional entropy: **0.7688**
+- Delta ATOMS - EVA: **-0.2279**
+- Morphology 5NN accuracy: **97.85%**
 
-This result is supportive prospective evidence, not proof of decipherment or global representation superiority. See the [public portal](apps/portal/) for the full experiment browser.
-
+This result is a corpus-quality and robustness milestone. It does not replace the preregistered `f3r` result, and it is not proof of decipherment or global representation superiority. See the [public portal](apps/portal/) for the full experiment browser.
 ## Repository Structure
 
 ```
@@ -46,6 +45,9 @@ For source/evidence/scratch boundaries and safe monorepo handling, see
 
 ```bash
 # Validate research registry
+npm.cmd run validate
+
+# Same validator, explicit research namespace
 npm.cmd run research:validate
 
 # Build all public artifacts and portal data
@@ -92,6 +94,7 @@ npm.cmd run prospective-atoms-eva:test -- --confirm-complete
 | `public-portal-v1` | First static public portal |
 | `prospective-atoms-eva-test-v1-preregistered` | Preregistered f3r protocol |
 | `prospective-atoms-eva-test-v1` | SUPPORTIVE f3r prospective test |
+| `corpus-v2-audited` | Six-folio audited corpus + robustness replay |
 
 ## How to Publish an Experiment
 

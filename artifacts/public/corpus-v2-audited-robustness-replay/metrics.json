@@ -1,0 +1,77 @@
+{
+  "primary": [],
+  "secondary": [
+    {
+      "label": "folios",
+      "value": 6,
+      "unit": null,
+      "direction": null
+    },
+    {
+      "label": "atomsUnits",
+      "value": 639,
+      "unit": null,
+      "direction": null
+    },
+    {
+      "label": "evaUnits",
+      "value": 660,
+      "unit": null,
+      "direction": null
+    },
+    {
+      "label": "atomsTokens",
+      "value": 6222,
+      "unit": null,
+      "direction": null
+    },
+    {
+      "label": "atomsVocabulary",
+      "value": 16,
+      "unit": null,
+      "direction": null
+    },
+    {
+      "label": "evaVocabulary",
+      "value": 26,
+      "unit": null,
+      "direction": null
+    },
+    {
+      "label": "atomsWeightedRoleEntropy",
+      "value": 0.5409,
+      "unit": null,
+      "direction": null
+    },
+    {
+      "label": "evaWeightedRoleEntropy",
+      "value": 0.7688,
+      "unit": null,
+      "direction": null
+    },
+    {
+      "label": "atomsMinusEvaWeightedRoleEntropy",
+      "value": -0.2279,
+      "unit": null,
+      "direction": null
+    },
+    {
+      "label": "morphologyFiveNearestNeighborAccuracy",
+      "value": 0.9785,
+      "unit": null,
+      "direction": null
+    },
+    {
+      "label": "pendingAuditCandidates",
+      "value": 0,
+      "unit": null,
+      "direction": null
+    },
+    {
+      "label": "lineAlignmentMismatches",
+      "value": 0,
+      "unit": null,
+      "direction": null
+    }
+  ]
+}

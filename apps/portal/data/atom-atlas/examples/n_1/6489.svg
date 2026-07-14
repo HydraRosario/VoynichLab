@@ -3,7 +3,7 @@
   <title>atom 6489 n:1</title>
   <metadata>{&quot;entityType&quot;:&quot;atom&quot;,&quot;entityId&quot;:&quot;6489&quot;,&quot;token&quot;:&quot;n:1&quot;,&quot;signature&quot;:&quot;n:1&quot;,&quot;imageName&quot;:&quot;page-005.jpg&quot;,&quot;imageId&quot;:5,&quot;bounds&quot;:{&quot;x&quot;:445,&quot;y&quot;:948,&quot;w&quot;:48,&quot;h&quot;:53},&quot;atoms&quot;:[{&quot;id&quot;:6489,&quot;token&quot;:&quot;n:1&quot;,&quot;particle_id&quot;:&quot;img5-m45-p1&quot;,&quot;molecule_id&quot;:&quot;img5-m45&quot;,&quot;atom_order&quot;:1}]}</metadata>
   <rect x="0" y="0" width="48" height="53" fill="#f8f0d8"/>
-  
+
   <rect x="0.5" y="0.5" width="47" height="52" fill="none" stroke="#111827" stroke-width="1" opacity="0.35"/>
   <polyline points="16,29 17,28 17,27 18,25 19,23 19,21 20,20 21,20 22,19 23,18 24,18 24,17 25,17 26,17 27,17 28,16 29,16 30,16 31,16 31,17 32,17 32,18 32,19 32,20 32,21 32,22 32,23 32,24 32,25 31,26 31,27 31,28 31,29 30,29 30,30 29,32 28,33 27,34 26,35 25,35 24,36 23,36 22,37 21,37" fill="none" stroke="#f92f59" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.95">
     <title>6489 n:1</title>

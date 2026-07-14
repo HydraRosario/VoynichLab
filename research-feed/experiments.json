@@ -456,5 +456,65 @@
       "atomsCorruptionRealBetterThanMedian": 1,
       "evaCorruptionRealBetterThanMedian": 0.9474
     }
+  },
+  {
+    "id": "corpus-v2-audited-robustness-replay",
+    "title": "CORPUS-V2-AUDITED Robustness Replay",
+    "status": "published",
+    "outcome": "supportive",
+    "question": "After a complete six-folio human-label audit and stale learned-memory cleanup, do the main ATOMS/EVA structural results remain stable?",
+    "result": "The audited six-folio corpus has 0 pending audit candidates and ATOMS remains lower entropy than EVA: 0.5409 vs 0.7688 weighted positional entropy.",
+    "interpretation": "Supportive robustness evidence that documented human-label corrections and learned-memory cleanup did not weaken the main ATOMS structural signal.",
+    "limitations": [
+      "Single ATOMS annotator",
+      "Six folios only",
+      "Corpus audit does not prove decipherment or semantic interpretation",
+      "Known valid rare structures are documented rather than removed"
+    ],
+    "trainFolios": [],
+    "testFolios": [
+      "f1r",
+      "f1v",
+      "f2r",
+      "f2v",
+      "f3r",
+      "f47v"
+    ],
+    "commands": [
+      "npm.cmd run validate",
+      "npm.cmd run research:validate",
+      "npm.cmd run research:build",
+      "node EVAComparisonLab/scripts/run-corpus-v2-analysis.js --include-morphology"
+    ],
+    "reportPath": "research/frozen/CORPUS-V2-AUDITED/reports/CEO-FINAL-CORPUS-V2-REPORT.md",
+    "dataTablePaths": [
+      "research/frozen/CORPUS-V2-AUDITED/corpus/atoms.tsv",
+      "research/frozen/CORPUS-V2-AUDITED/corpus/molecules.tsv",
+      "research/frozen/CORPUS-V2-AUDITED/corpus/rows.tsv",
+      "research/frozen/CORPUS-V2-AUDITED/corpus/folios.tsv",
+      "research/frozen/CORPUS-V2-AUDITED/v1-v2-metrics.tsv",
+      "research/frozen/CORPUS-V2-AUDITED/checksums.txt"
+    ],
+    "sourceScript": "EVAComparisonLab/scripts/run-corpus-v2-analysis.js",
+    "commit": "to-be-filled-by-corpus-v2-audited-tag",
+    "tag": "corpus-v2-audited",
+    "publishedAt": "2026-07-14",
+    "sequenceIndex": 11,
+    "supersedes": [],
+    "supersededBy": [],
+    "metrics": {
+      "folios": 6,
+      "atomsUnits": 639,
+      "evaUnits": 660,
+      "atomsTokens": 6222,
+      "atomsVocabulary": 16,
+      "evaVocabulary": 26,
+      "atomsWeightedRoleEntropy": 0.5409,
+      "evaWeightedRoleEntropy": 0.7688,
+      "atomsMinusEvaWeightedRoleEntropy": -0.2279,
+      "morphologyFiveNearestNeighborAccuracy": 0.9785,
+      "pendingAuditCandidates": 0,
+      "lineAlignmentMismatches": 0
+    }
   }
 ]
