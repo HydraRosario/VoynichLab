@@ -1,0 +1,12 @@
+atom_id	folio	old_label	action	new_label	reason	review_status	confirmed_by	review_date
+1287	f1r	c:2	relabel	c:1	Visual review: morphology consistent with c:1 (start->mid->end arc, gap=1px)	confirmed	Marcos	2026-07-14
+5103	f1v	c:2	exclude_artifact		Accidental three-point click; zero stroke area	confirmed	Marcos	2026-07-14
+1136	f1r	c:2	relabel	c:1	Audit: c:2->c:1, same pattern as 1287	confirmed	Marcos	2026-07-14
+1440	f1r	c:2	relabel	c:1	Audit: c:2->c:1, same pattern as 1287	confirmed	Marcos	2026-07-14
+2100	f1r	c:2	relabel	c:1	Audit: c:2->c:1, same pattern as 1287	confirmed	Marcos	2026-07-14
+2553	f1r	c:2	relabel	c:1	Audit: c:2->c:1, same pattern as 1287	confirmed	Marcos	2026-07-14
+2696	f47v	c:1	relabel	c:2	Visual review: morphology consistent with c:2 (668 pts, compactness 100.7, closed variant)	confirmed	Marcos	2026-07-14
+1509	f1r	h:1	confirm	h:1	Large variant but correctly labeled	confirmed	Marcos	2026-07-14
+1727	f1r	h:1	confirm	h:1	Large variant but correctly labeled	confirmed	Marcos	2026-07-14
+3777	f1r	g:1	stale_snapshot		Atom does not exist in live DB; snapshot artifact	confirmed	Marcos	2026-07-14
+3778	f1r	g:1	stale_snapshot		Atom does not exist in live DB; snapshot artifact	confirmed	Marcos	2026-07-14

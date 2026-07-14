@@ -10,7 +10,7 @@
   <body>
     <header class="topbar">
       <a class="brand" href="#top">
-        <span class="brand-mark">VL</span>
+        <img class="brand-mark" src="./images/la-diosa-tau.png" alt="Lab mark">
         <span><strong>VoynichLab</strong><small>Open computational observatory</small></span>
       </a>
       <nav class="nav">
@@ -19,6 +19,7 @@
         <a href="#evidence">Evidence</a>
         <a href="#experiments">Experiments</a>
         <a href="#research">Timeline</a>
+        <a href="#repository">Repository</a>
         <a href="#releases">Releases</a>
         <a href="#reproduce">Reproduce</a>
       </nav>
@@ -191,10 +192,49 @@
             <p>Frozen GRAMMAR-V1 validation, null controls, alignment, representation comparisons, and ablation scripts.</p>
             <a href="https://github.com/HydraRosario/VoynichLab/blob/main/GrammarDiscoveryLab/README.md">Reproduce experiments</a>
           </article>
+          <article class="tool-card">
+            <h3>QC Review</h3>
+            <p>Local visual audit surface for reviewing geometric anomaly candidates before promoting corrections into CORPUS-V2.</p>
+            <a href="https://github.com/HydraRosario/VoynichLab/tree/main/apps/qc-review">Inspect app</a>
+          </article>
           <article class="tool-card caution">
             <h3>Translation Lab</h3>
             <p>Hypothesis space only. VoynichLab does not currently claim translation, phonetic values, or semantic decipherment.</p>
             <a href="https://github.com/HydraRosario/VoynichLab/blob/main/TranslationLab/README.md">Inspect hypotheses</a>
+          </article>
+        </div>
+      </section>
+
+      <!-- REPOSITORY MAP -->
+      <section id="repository" class="section repository-section">
+        <div class="section-heading">
+          <p class="eyebrow">Repository map</p>
+          <h2>What is source, what is evidence, and what is only local scratch.</h2>
+        </div>
+        <div class="repo-map-grid">
+          <article class="repo-map-card">
+            <span>01</span>
+            <h3>Source code</h3>
+            <p>Tools and scripts that create, validate, publish, or display research outputs.</p>
+            <a href="https://github.com/HydraRosario/VoynichLab/tree/main/packages/lab-exporter">Publisher</a>
+          </article>
+          <article class="repo-map-card">
+            <span>02</span>
+            <h3>Public evidence</h3>
+            <p>Versioned reports, metrics, tables, manifests, checksums, commits, and tags.</p>
+            <a href="https://github.com/HydraRosario/VoynichLab/tree/main/artifacts/public">Artifacts</a>
+          </article>
+          <article class="repo-map-card">
+            <span>03</span>
+            <h3>Annotation tool</h3>
+            <p>The local DatasetCreator workflow is protected because it owns valuable labeled data.</p>
+            <a href="https://github.com/HydraRosario/VoynichLab/tree/main/DataSetCreator">DatasetCreator</a>
+          </article>
+          <article class="repo-map-card">
+            <span>04</span>
+            <h3>Governance</h3>
+            <p>Rules for keeping experiments, portal data, generated snapshots, and corpus audits separate.</p>
+            <a href="https://github.com/HydraRosario/VoynichLab/blob/main/REPOSITORY-GOVERNANCE.md">Read rules</a>
           </article>
         </div>
       </section>

@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QC Review v1 — VoynichLab</title>
+<style>
+:root {
+  --ink: #17181b;
+  --muted: #626a73;
+  --paper: #f7f3ea;
+  --surface: #fffdf8;
+  --line: #d8d2c5;
+  --accent: #1f6f68;
+  --accent-2: #8f3f2b;
+  --accent-3: #2d4f7f;
+  --soft: #ece5d8;
+  --green: #1f6f68;
+  --red: #8f3f2b;
+  --amber: #b8860b;
+  --radius: 4px;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font-size: 14px; line-height: 1.5;
+}
+a { color: var(--accent); }
+
+/* TOPBAR */
+.topbar {
+  position: sticky; top: 0; z-index: 20;
+  display: flex; align-items: center; gap: 12px;
+  min-height: 56px; padding: 8px 24px;
+  border-bottom: 1px solid var(--line);
+  background: rgba(247,243,234,0.92); backdrop-filter: blur(14px);
+}
+.topbar h1 { margin: 0; font-size: 18px; }
+.topbar .badge {
+  padding: 2px 8px; border: 1px solid var(--accent-2);
+  font-size: 11px; font-weight: 800; text-transform: uppercase;
+  color: var(--accent-2);
+}
+.topbar .progress { margin-left: auto; font-size: 13px; color: var(--muted); }
+
+/* DISCLAIMER */
+.disclaimer {
+  padding: 12px 24px; border-bottom: 1px solid var(--line);
+  background: rgba(143,63,43,0.04); font-size: 13px; color: #4a3d38;
+}
+.disclaimer strong { color: var(--accent-2); }
+.disclaimer code { font-family: ui-monospace, monospace; font-size: 12px; }
+
+/* MAIN LAYOUT */
+.container { max-width: 960px; margin: 0 auto; padding: 24px; }
+
+/* CANDIDATE */
+.candidate { margin-bottom: 48px; }
+.candidate-header {
+  display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px;
+  padding-bottom: 8px; border-bottom: 1px solid var(--line);
+}
+.candidate-header h2 { margin: 0; font-size: 24px; }
+.candidate-header .score {
+  font-size: 13px; color: var(--muted); font-weight: 700;
+}
+.candidate-header .tag {
+  padding: 2px 8px; border: 1px solid var(--muted);
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+}
+
+/* VISUAL ROW */
+.visual-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;
+}
+.visual-panel { border: 1px solid var(--line); background: var(--surface); padding: 12px; }
+.visual-panel h3 { margin: 0 0 8px; font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.visual-panel .svg-box {
+  width: 100%; min-height: 120px;
+  background: #efe6cd; border: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.visual-panel .svg-box img { max-width: 100%; max-height: 200px; display: block; }
+.visual-panel .context-box {
+  width: 100%; min-height: 120px;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; border: 1px solid var(--line);
+}
+.visual-panel .context-box img { max-width: 100%; max-height: 280px; display: block; }
+
+/* META */
+.meta-grid {
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin-bottom: 16px;
+}
+.meta-grid div { padding: 8px 10px; border: 1px solid var(--line); background: var(--surface); }
+.meta-grid span { display: block; color: var(--muted); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+.meta-grid strong { display: block; margin-top: 2px; font-size: 13px; }
+
+/* FEATURES */
+.feature-table { width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 13px; }
+.feature-table th, .feature-table td { padding: 6px 10px; text-align: left; border-bottom: 1px solid var(--line); }
+.feature-table th { color: var(--muted); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+.feature-table .outlier { color: var(--red); font-weight: 700; }
+.feature-table .normal { color: var(--green); }
+
+/* CANONICAL EXAMPLES */
+.example-row {
+  display: grid; grid-template-columns: repeat(5,1fr); gap: 8px; margin-bottom: 16px;
+}
+.example-row .example-panel { border: 1px solid var(--line); background: var(--surface); padding: 8px; }
+.example-row .example-panel h4 { margin: 0 0 6px; font-size: 11px; color: var(--muted); font-weight: 700; }
+.example-row .example-panel .ex-img {
+  width: 100%; aspect-ratio: 3/4;
+  background: #efe6cd; border: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.example-row .example-panel .ex-img img { max-width: 100%; max-height: 100%; display: block; }
+
+/* DECISIONS */
+.decision-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
+.decision-btn {
+  padding: 10px 18px; border: 2px solid var(--line); background: var(--surface);
+  font: inherit; font-weight: 700; font-size: 13px; cursor: pointer;
+  transition: all 0.12s;
+}
+.decision-btn:hover { border-color: var(--ink); background: #f0ece0; }
+.decision-btn.active { border-color: var(--ink); background: var(--ink); color: var(--surface); }
+.decision-btn.danger { border-color: var(--red); color: var(--red); }
+.decision-btn.danger.active { background: var(--red); color: white; }
+.decision-btn.confirm.active { border-color: var(--green); background: var(--green); color: white; }
+.decision-btn.relabel.active { border-color: var(--accent-3); background: var(--accent-3); color: white; }
+.decision-btn.ambiguous.active { border-color: var(--amber); background: var(--amber); color: white; }
+
+.notes-row { display: flex; gap: 12px; margin: 12px 0; align-items: flex-start; }
+.notes-row input { flex: 1; min-height: 36px; padding: 0 10px; border: 1px solid var(--line); background: var(--surface); font: inherit; font-size: 13px; }
+.notes-row button {
+  min-height: 36px; padding: 0 16px; border: 1px solid var(--ink); background: var(--ink); color: var(--surface);
+  font: inherit; font-size: 12px; font-weight: 800; cursor: pointer; text-transform: uppercase; letter-spacing: 0.06em;
+}
+.notes-row button:disabled { opacity: 0.4; cursor: default; }
+
+/* STATUS */
+.status-bar { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 32px; }
+.status-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 4px; }
+.status-dot.yet { background: var(--line); }
+.status-dot.done { background: var(--green); }
+.status-dot.skipped { background: var(--muted); }
+.status-item { font-size: 12px; color: var(--muted); }
+
+/* EXPORT */
+.export-bar {
+  padding: 16px 0; border-top: 1px solid var(--line);
+  display: flex; gap: 12px; align-items: center;
+}
+.export-bar button {
+  padding: 8px 14px; border: 1px solid var(--ink); background: var(--surface);
+  font: inherit; font-size: 12px; font-weight: 700; cursor: pointer;
+}
+.export-bar button.primary { background: var(--ink); color: var(--surface); }
+.export-bar span { font-size: 12px; color: var(--muted); }
+
+/* RESPONSIVE */
+@media (max-width: 700px) {
+  .visual-row { grid-template-columns: 1fr; }
+  .meta-grid { grid-template-columns: repeat(2,1fr); }
+  .example-row { grid-template-columns: repeat(3,1fr); }
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <h1>QC Review <span class="badge" id="round-badge">v2</span></h1>
+  <span class="progress" id="progress-label">0 / 11 reviewed</span>
+</header>
+
+<div class="disclaimer" id="disclaimer">
+  <strong>QC AUDIT ROUND 1</strong> &mdash;
+  Corpus: <strong>f1r, f1v, f2r, f2v, f47v</strong> &middot;
+  4,585 atoms &middot; Excluded: <code>f3r</code> (visual snapshots not yet exported) &middot;
+  <strong>candidate &ne; error</strong> &mdash;
+  567 intra-class candidates / 883 cross-class candidates; only 11 selected for this round.
+</div>
+
+<div class="container">
+
+<div class="status-bar" id="status-bar"></div>
+
+<div id="review-area">
+  <p style="color:var(--muted);padding:40px 0;text-align:center">Loading candidate data…</p>
+</div>
+
+<div class="export-bar">
+  <button class="primary" onclick="exportLedger()">Export ledger</button>
+  <button onclick="resetDecisions()">Reset all decisions</button>
+  <span id="export-status"></span>
+</div>
+
+</div>
+
+<script>
+// ---- CONFIG ----
+const ROUND_CONFIGS = {
+  v1: {
+    label: "v1",
+    description: "Historical Round 1. Already recorded in the CORPUS-V2 audit ledger.",
+    focusIds: [5103, 1287, 2696, 1440, 1136, 2553, 2100, 1509, 1727, 3777, 3778],
+    ledgerPath: "../../research/corpus-revisions/CORPUS-V2-AUDITED-WORKING/corrections.tsv",
+  },
+  v2: {
+    label: "v2",
+    description: "Exploratory Round 2. New candidate queue for testing whether QC review is useful.",
+    focusIds: [1788, 982, 5517, 4334, 5518, 1947, 2670, 3766, 2616, 5104, 2461, 2293, 4029, 5284, 990, 4484],
+    ledgerPath: null,
+  },
+};
+
+const requestedRound = new URLSearchParams(window.location.search).get("round") || "v2";
+const ACTIVE_ROUND = ROUND_CONFIGS[requestedRound] || ROUND_CONFIGS.v2;
+const QC_ROUND = ACTIVE_ROUND.label;
+const FOCUS_IDS = ACTIVE_ROUND.focusIds;
+
+const DECISION_LABELS = {
+  confirm: "CONFIRM CURRENT",
+  relabel: "RELABEL",
+  artifact: "ARTIFACT",
+  ambiguous: "AMBIGUOUS",
+  needsContext: "NEEDS CONTEXT",
+};
+
+const CANDIDATES_PATH = "../../research/audits/anomaly-candidates.json";
+const LEDGER_PATH = ACTIVE_ROUND.ledgerPath;
+const ATLAS_PATH = "../portal/data/atom-atlas/atoms.json";
+const QC_CONTEXT_PREFIX = "../portal/data/qc-context";
+const ATLAS_EXAMPLES_PREFIX = "../portal/data/atom-atlas/examples";
+
+// ---- STATE ----
+let candidates = [];
+let atlas = null;
+let currentIdx = 0;
+let decisions = {};
+let ledgerDecisions = {};
+
+function loadDecisions() {
+  try {
+    const raw = localStorage.getItem(`qc-decisions-${QC_ROUND}`);
+    if (raw) decisions = JSON.parse(raw);
+  } catch(e) { decisions = {}; }
+}
+
+function saveDecisions() {
+  localStorage.setItem(`qc-decisions-${QC_ROUND}`, JSON.stringify(decisions, null, 2));
+}
+
+function parseTsv(text) {
+  const lines = text.trim().split(/\r?\n/).filter(Boolean);
+  const header = lines.shift()?.split("\t") || [];
+  return lines.map((line) => {
+    const cols = line.split("\t");
+    return Object.fromEntries(header.map((key, i) => [key, cols[i] || ""]));
+  });
+}
+
+function decisionFromLedger(row) {
+  const actionMap = {
+    confirm: "confirm",
+    exclude_artifact: "artifact",
+    relabel: "relabel",
+    stale_snapshot: "staleSnapshot",
+  };
+  return {
+    decision: actionMap[row.action] || row.action || "confirmed",
+    relabel: row.action === "relabel" ? row.new_label : "",
+    notes: row.reason || "",
+    reviewedAt: row.review_date || "",
+    source: "corrections.tsv",
+  };
+}
+
+// ---- LOADING ----
+let classStats = {};
+
+async function loadAll() {
+  const [candResp, atlasResp, ledgerText] = await Promise.all([
+    fetch(CANDIDATES_PATH).then(r => r.ok ? r.json() : null),
+    fetch(ATLAS_PATH).then(r => r.ok ? r.json() : null),
+    LEDGER_PATH ? fetch(LEDGER_PATH).then(r => r.ok ? r.text() : "") : Promise.resolve(""),
+  ]);
+  if (!candResp) throw new Error("Failed to load anomaly-candidates.json");
+  atlas = atlasResp;
+  classStats = candResp.classStats || {};
+
+  ledgerDecisions = {};
+  if (ledgerText) {
+    for (const row of parseTsv(ledgerText)) {
+      if (row.atom_id) ledgerDecisions[String(row.atom_id)] = decisionFromLedger(row);
+    }
+    decisions = { ...decisions, ...ledgerDecisions };
+  }
+
+  document.getElementById("round-badge").textContent = QC_ROUND;
+  document.getElementById("disclaimer").innerHTML = `<strong>QC AUDIT ROUND ${QC_ROUND.toUpperCase()}</strong> &mdash; ${htmlEncode(ACTIVE_ROUND.description)} &middot; <strong>candidate &ne; error</strong> &mdash; use this view to inspect, not to force labels.`;
+
+  const allCands = candResp.intraClassCandidates || [];
+  candidates = FOCUS_IDS.map(id => allCands.find(c => c.id === id)).filter(Boolean);
+  if (candidates.length === 0) throw new Error("No focus candidates found");
+
+  const orderMap = {};
+  FOCUS_IDS.forEach((id, i) => orderMap[id] = i);
+  candidates.sort((a, b) => (orderMap[a.id] || 999) - (orderMap[b.id] || 999));
+
+  currentIdx = findFirstUndecided();
+  render();
+}
+
+function findFirstUndecided() {
+  for (let i = 0; i < candidates.length; i++) {
+    if (!decisions[String(candidates[i].id)] && !ledgerDecisions[String(candidates[i].id)]) return i;
+  }
+  return 0;
+}
+
+// ---- RENDER ----
+function render() {
+  renderStatusBar();
+  if (candidates.length === 0) {
+    document.getElementById("review-area").innerHTML = '<p style="color:var(--muted);text-align:center">No candidates loaded.</p>';
+    return;
+  }
+  const pending = candidates.filter(c => !decisions[String(c.id)] && !ledgerDecisions[String(c.id)]);
+  if (pending.length === 0 && Object.keys(ledgerDecisions).length > 0) {
+    renderClosedRound();
+    updateProgress();
+    return;
+  }
+  renderCandidate(currentIdx);
+  updateProgress();
+}
+
+function renderClosedRound() {
+  document.getElementById("review-area").innerHTML = `
+    <div class="candidate">
+      <div class="candidate-header">
+        <h2>Round ${QC_ROUND} already audited</h2>
+        <span class="score">source: corrections.tsv</span>
+      </div>
+      <div class="visual-panel">
+        <h3>Status</h3>
+        <p>All ${FOCUS_IDS.length} focus candidates are already recorded in the linked audit ledger. This page is showing a historical QC round, not a fresh review queue.</p>
+        <p>For a new audit, open <code>?round=v2</code> or generate a new QC round ID from current snapshots.</p>
+      </div>
+    </div>`;
+}
+
+function renderStatusBar() {
+  const html = FOCUS_IDS.map(id => {
+    const d = decisions[String(id)];
+    const fromLedger = !!ledgerDecisions[String(id)];
+    let cls = "yet";
+    let label = "pending";
+    if (d) {
+      cls = d.decision === "skip" ? "skipped" : "done";
+      label = d.decision === "skip" ? "skip" : d.decision;
+      if (fromLedger) label = `ledger:${label}`;
+    }
+    const c = candidates.find(x => x.id === id);
+    const name = c ? `${c.label} #${id}` : `#${id}`;
+    return `<span class="status-item"><span class="status-dot ${cls}"></span>${name} ${label !== "pending" ? `(${label})` : ""}</span>`;
+  }).join("");
+  document.getElementById("status-bar").innerHTML = html;
+}
+
+function updateProgress() {
+  const done = FOCUS_IDS.filter(id => decisions[String(id)] || ledgerDecisions[String(id)]).length;
+  document.getElementById("progress-label").textContent = `${done} / ${FOCUS_IDS.length} reviewed`;
+}
+
+function getSuggestedLabel(c) {
+  if (c.id === 5103) return "artifact";
+  if (c.label === "c:2" && [1287, 1440, 1136, 2553, 2100].includes(c.id)) return "c:1";
+  if (c.id === 2696) return "c:2";
+  if (c.label === "c:2" && c.feats?.n && c.feats.n < 150) return "c:1";
+  if (c.label === "c:1" && c.feats?.compactness && c.feats.compactness > 50) return "c:2";
+  return null;
+}
+
+function renderCandidate(idx) {
+  const c = candidates[idx];
+  if (!c) {
+    document.getElementById("review-area").innerHTML = '<p style="color:var(--muted);text-align:center">Candidate not found.</p>';
+    return;
+  }
+
+  const d = decisions[String(c.id)];
+  const suggested = getSuggestedLabel(c);
+  const isReviewed = !!d;
+  const currentDecision = d ? d.decision : null;
+
+  const svgPath = `${QC_CONTEXT_PREFIX}/${c.id}.svg`;
+  const contextPath = `${QC_CONTEXT_PREFIX}/${c.id}.jpg`;
+  const bounds = c.bounds || {};
+  const mol = c.moleculeInfo || {};
+  const feats = c.feats || {};
+  const reasons = c.reasons || [];
+
+  // Get canonical examples from both classes
+  const currentClassEx = getCanonicalExamples(c.label, 5);
+  const suggestedClassEx = suggested && suggested !== "artifact" ? getCanonicalExamples(suggested, 5) : [];
+
+  const featRows = Object.entries(feats).filter(([k]) => !["cx", "cy", "dirStart", "dirEnd"].includes(k));
+  const classS = classStats[c.label] || {};
+
+  let html = `<div class="candidate">`;
+  html += `<div class="candidate-header">`;
+  html += `<h2>#${c.id} <span class="tag">${c.label}</span></h2>`;
+  html += `<span class="score">score: ${c.score}</span>`;
+  if (suggested && suggested !== "artifact") {
+    html += `<span style="font-size:13px;color:var(--muted)">→ suggested: <strong>${suggested}</strong></span>`;
+  } else if (suggested === "artifact") {
+    html += `<span style="font-size:13px;color:var(--red)">→ suggested: <strong>ARTIFACT</strong></span>`;
+  }
+  if (isReviewed) {
+    html += `<span style="font-size:13px;color:var(--green)">✓ ${d.decision}${d.relabel ? " → " + d.relabel : ""}</span>`;
+  }
+  html += `</div>`;
+
+  // Visual row
+  html += `<div class="visual-row">`;
+  html += `<div class="visual-panel"><h3>Isolated stroke</h3><div class="svg-box"><img src="${svgPath}" alt="atom ${c.id}" onerror="this.parentElement.innerHTML='<span style=color:var(--muted);font-size:12px>SVG not found</span>'"></div></div>`;
+  html += `<div class="visual-panel"><h3>Manuscript context (200×200)</h3><div class="context-box"><img src="${contextPath}" alt="context ${c.id}" onerror="this.parentElement.innerHTML='<span style=color:var(--muted);font-size:12px>Context not available</span>'"></div></div>`;
+  html += `</div>`;
+
+  // Metadata
+  html += `<div class="meta-grid">`;
+  html += `<div><span>Folio</span><strong>${getFolio(c.image || "")}</strong></div>`;
+  html += `<div><span>Page</span><strong>${c.image || "—"}</strong></div>`;
+  html += `<div><span>Bounds</span><strong>${bounds.x || "?"},${bounds.y || "?"} (${bounds.w || "?"}×${bounds.h || "?"})</strong></div>`;
+  html += `<div><span>Molecule</span><strong>${mol.molecule || "—"}</strong></div>`;
+  html += `<div><span>Particle</span><strong>${mol.particle || "—"}</strong></div>`;
+  html += `<div><span>Atom order</span><strong>${mol.order || "—"}</strong></div>`;
+  html += `<div><span>N points</span><strong>${feats.n || "—"}</strong></div>`;
+  html += `<div><span>Area</span><strong>${feats.area || "—"}</strong></div>`;
+  html += `</div>`;
+
+  // Feature table with class comparison
+  html += `<table class="feature-table"><thead><tr><th>Feature</th><th>Value</th><th>Class median</th><th>Class range</th><th></th></tr></thead><tbody>`;
+  for (const [key, val] of featRows) {
+    const s = classS[key];
+    if (!s) { html += `<tr><td>${key}</td><td>${val}</td><td>—</td><td>—</td><td></td></tr>`; continue; }
+    const isOut = val < s.lower || val > s.upper;
+    html += `<tr class="${isOut ? 'outlier' : 'normal'}"><td>${key}</td><td>${val}</td><td>${s.med}</td><td>[${s.lower.toFixed(1)}, ${s.upper.toFixed(1)}]</td><td>${isOut ? '⬆ outlier' : ''}</td></tr>`;
+  }
+  html += `</tbody></table>`;
+
+  // Reasons
+  if (reasons.length > 0) {
+    html += `<p style="font-size:12px;color:var(--muted);margin-bottom:12px"><strong>Detector flags:</strong> ${reasons.join("; ")}</p>`;
+  }
+
+  // Canonical examples: current class
+  html += `<p style="font-size:12px;color:var(--muted);font-weight:700;margin-bottom:4px">Canonical examples of <strong>${c.label}</strong>:</p>`;
+  html += `<div class="example-row">`;
+  for (const ex of currentClassEx) {
+    html += `<div class="example-panel"><h4>#${ex.id}</h4><div class="ex-img"><img src="${ex.src}" alt="" onerror="this.parentElement.innerHTML='<span style=font-size:10px;color:var(--muted)>no img</span>'"></div></div>`;
+  }
+  html += `</div>`;
+
+  if (suggestedClassEx.length > 0) {
+    html += `<p style="font-size:12px;color:var(--muted);font-weight:700;margin-bottom:4px">Canonical examples of suggested <strong>${suggested}</strong>:</p>`;
+    html += `<div class="example-row">`;
+    for (const ex of suggestedClassEx) {
+      html += `<div class="example-panel"><h4>#${ex.id}</h4><div class="ex-img"><img src="${ex.src}" alt="" onerror="this.parentElement.innerHTML='<span style=font-size:10px;color:var(--muted)>no img</span>'"></div></div>`;
+    }
+    html += `</div>`;
+  }
+
+  // Decision buttons
+  const act = (v) => v === currentDecision ? 'active' : '';
+  html += `<div class="decision-row">`;
+  html += `<button class="decision-btn confirm ${act('confirm')}" onclick="decide(${c.id},'confirm')">${DECISION_LABELS.confirm}</button>`;
+  if (suggested && suggested !== "artifact") {
+    html += `<button class="decision-btn relabel ${act('relabel')}" onclick="decide(${c.id},'relabel','${suggested}')">${DECISION_LABELS.relabel} → ${suggested}</button>`;
+  }
+  html += `<button class="decision-btn danger ${act('artifact')}" onclick="decide(${c.id},'artifact')">${DECISION_LABELS.artifact}</button>`;
+  html += `<button class="decision-btn ambiguous ${act('ambiguous')}" onclick="decide(${c.id},'ambiguous')">${DECISION_LABELS.ambiguous}</button>`;
+  html += `<button class="decision-btn ${act('needsContext')}" onclick="decide(${c.id},'needsContext')">${DECISION_LABELS.needsContext}</button>`;
+  html += `</div>`;
+
+  // Notes
+  const noteVal = d && d.notes ? d.notes : "";
+  html += `<div class="notes-row">`;
+  html += `<input type="text" id="note-input" placeholder="Notes about this candidate…" value="${htmlEncode(noteVal)}">`;
+  html += `<button onclick="saveNote(${c.id})">Save note</button>`;
+  html += `</div>`;
+
+  // Navigation
+  html += `<div style="display:flex;gap:8px;margin-top:16px">`;
+  if (idx > 0) html += `<button class="decision-btn" onclick="goTo(${idx-1})">← Previous</button>`;
+  html += `<span style="flex:1"></span>`;
+  if (idx < candidates.length - 1) html += `<button class="decision-btn" onclick="goTo(${idx+1})">Next →</button>`;
+  html += `</div>`;
+
+  html += `</div>`;
+  document.getElementById("review-area").innerHTML = html;
+}
+
+function getFolio(imageName) {
+  const map = { "page-003.jpg": "f1r", "page-004.jpg": "f1v", "page-005.jpg": "f2r", "page-006.jpg": "f2v", "page-094.jpg": "f47v" };
+  return map[imageName] || imageName || "—";
+}
+
+function getCanonicalExamples(label, n) {
+  if (!atlas) return [];
+  const a = atlas.atoms.find(x => x.token === label);
+  if (!a || !a.examples) return [];
+  return a.examples.slice(0, n).map(ex => ({
+    id: ex.id,
+    src: `${ATLAS_EXAMPLES_PREFIX}/${label.replace(":", "_")}/${ex.svg?.split("/").pop() || ""}`,
+  }));
+}
+
+function htmlEncode(s) { return String(s || "").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;"); }
+
+// ---- ACTIONS ----
+function decide(id, action, relabelTo) {
+  if (!decisions[String(id)]) decisions[String(id)] = {};
+  decisions[String(id)].decision = action;
+  decisions[String(id)].reviewedAt = new Date().toISOString();
+  if (relabelTo) decisions[String(id)].relabel = relabelTo;
+  saveDecisions();
+  // Move to next if not at end
+  if (currentIdx < candidates.length - 1) {
+    goTo(currentIdx + 1);
+  } else {
+    render();
+  }
+}
+
+function saveNote(id) {
+  const input = document.getElementById("note-input");
+  if (!input) return;
+  if (!decisions[String(id)]) decisions[String(id)] = {};
+  decisions[String(id)].notes = input.value;
+  decisions[String(id)].reviewedAt = new Date().toISOString();
+  saveDecisions();
+}
+
+function goTo(idx) {
+  if (idx < 0 || idx >= candidates.length) return;
+  currentIdx = idx;
+  render();
+}
+
+function resetDecisions() {
+  if (!confirm("Reset all decisions for this round?")) return;
+  decisions = {};
+  saveDecisions();
+  currentIdx = 0;
+  render();
+}
+
+function exportLedger() {
+  const ledger = {
+    qcRound: QC_ROUND,
+    generatedAt: new Date().toISOString(),
+    corpus: {
+      pages: ["f1r", "f1v", "f2r", "f2v", "f47v"],
+      totalAtoms: 4585,
+      excluded: ["f3r — visual snapshots not yet exported"],
+    },
+    focusCandidates: FOCUS_IDS,
+    totalCandidates: candidates.length,
+    decisions: Object.entries(decisions).map(([id, d]) => {
+      const c = candidates.find(x => x.id === Number(id));
+      return {
+        id: Number(id),
+        currentLabel: c ? c.label : null,
+        page: c ? c.image : null,
+        score: c ? c.score : null,
+        decision: d.decision,
+        relabel: d.relabel || null,
+        notes: d.notes || "",
+        reviewedAt: d.reviewedAt,
+      };
+    }).sort((a, b) => a.id - b.id),
+  };
+
+  const blob = new Blob([JSON.stringify(ledger, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `qc-decisions-${QC_ROUND}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+
+  document.getElementById("export-status").textContent = "Ledger exported ✓";
+  setTimeout(() => { document.getElementById("export-status").textContent = ""; }, 3000);
+}
+
+// ---- BOOT ----
+(async function boot() {
+  loadDecisions();
+  try {
+    await loadAll();
+  } catch (err) {
+    document.getElementById("review-area").innerHTML = `<p style="color:var(--red);padding:40px">Error: ${err.message}</p>`;
+  }
+})();
+</script>
+</body>
+</html>

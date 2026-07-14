@@ -3,6 +3,7 @@ const repoTree = "https://github.com/HydraRosario/VoynichLab/tree/main";
 const repoCommit = "https://github.com/HydraRosario/VoynichLab/commit";
 const repoTag = "https://github.com/HydraRosario/VoynichLab/releases/tag";
 const gh = (path) => `${repoBlob}/${path}`;
+const ATLAS_PREFIX = "./data/atom-atlas";
 
 const metricLabels = {
   atomsNormalizedLogLoss: { label: "ATOMS normalized log-loss", unit: "bits", desc: "Lower is better. How surprised the model was by the held-out data." },
@@ -152,7 +153,7 @@ function renderAtoms() {
     return;
   }
   els.atomGrid.innerHTML = registry.atoms.atoms.map((a) => {
-    const thumbSrc = a.examples?.[0]?.svg || "";
+    const thumbSrc = a.examples?.[0]?.svg ? ATLAS_PREFIX + "/" + a.examples[0].svg.replace(/^\.\//, "") : "";
     const maxFolio = Object.entries(a.folioCounts || {}).sort((x, y) => y[1] - x[1])[0];
     return `<div class="atom-card" data-token="${html(a.token)}" onclick="openAtomModal('${html(a.token)}')">
       <div class="atom-visual">${thumbSrc ? `<img src="${html(thumbSrc)}" alt="${html(a.token)}" loading="lazy">` : `<span class="atom-placeholder">${html(a.token)}</span>`}</div>
@@ -172,7 +173,7 @@ window.openAtomModal = function(token) {
   const overlay = document.getElementById("atom-modal");
   const content = document.getElementById("atom-modal-content");
   const thumbnails = (atom.examples || []).slice(0, 12).map((ex) =>
-    `<img src="${html(ex.svg)}" alt="${html(atom.token)}" loading="lazy" class="modal-thumb">`
+    `<img src="${html(ATLAS_PREFIX + "/" + ex.svg.replace(/^\.\//, ""))}" alt="${html(atom.token)}" loading="lazy" class="modal-thumb">`
   ).join("");
   content.innerHTML = `<button class="modal-close" onclick="closeAtomModal()">✕</button>
     <h2>${html(atom.token)} <small>${html(atom.label)}</small></h2>

@@ -25,6 +25,12 @@ const releaseRequired = ["tag", "title", "date", "tagObject", "targetCommit", "s
 
 const HIGH_RISK_DIRS = ["DataSetCreator", "EVAComparisonLab/backups"];
 const DB_PATTERNS = ["*.db", "*.sqlite", "*.sqlite3"];
+const GENERATED_DIRS = [
+  "EVAComparisonLab/artifacts/visual-snapshots/current",
+  "EVAComparisonLab/artifacts/visual-snapshots/pre-audit-",
+  "apps/portal/data",
+  "artifacts/public",
+];
 
 function rel(...parts) {
   return path.join(root, ...parts);
@@ -67,6 +73,26 @@ function walkFiles(dir) {
   return files;
 }
 
+function isTextLikeFile(filePath) {
+  const ext = path.extname(filePath).toLowerCase();
+  return new Set([
+    ".css",
+    ".csv",
+    ".html",
+    ".js",
+    ".json",
+    ".md",
+    ".mjs",
+    ".svg",
+    ".ts",
+    ".tsx",
+    ".txt",
+    ".xml",
+    ".yml",
+    ".yaml",
+  ]).has(ext);
+}
+
 function validateObject(required, object, label, errors) {
   for (const key of required) {
     if (!(key in object)) errors.push(`${label}: missing ${key}`);
@@ -92,6 +118,31 @@ function gitChangedFiles() {
     });
   } catch {
     return [];
+  }
+}
+
+function summarizeChangedFiles(files) {
+  const groups = new Map();
+  for (const f of files) {
+    const group = GENERATED_DIRS.find((dir) => f.file.startsWith(dir)) || f.file.split("/").slice(0, 2).join("/");
+    const current = groups.get(group) || { count: 0, examples: [] };
+    current.count += 1;
+    if (current.examples.length < 3) current.examples.push(`${f.status} ${f.file}`);
+    groups.set(group, current);
+  }
+  return [...groups.entries()].sort((a, b) => b[1].count - a[1].count);
+}
+
+function printChangeSummary(files, label = "Changed files") {
+  if (files.length === 0) {
+    console.log(`${label}: none.`);
+    return;
+  }
+  console.log(`${label}: ${files.length}`);
+  for (const [group, info] of summarizeChangedFiles(files)) {
+    console.log(`  ${group}: ${info.count}`);
+    for (const example of info.examples) console.log(`    ${example}`);
+    if (info.count > info.examples.length) console.log(`    ... ${info.count - info.examples.length} more`);
   }
 }
 
@@ -181,6 +232,7 @@ function validateRegistry({ strictArtifacts = true, strictPending = true } = {})
   for (const dir of [registryDir, publicDir, path.join(root, "apps", "portal")]) {
     if (!fs.existsSync(dir)) continue;
     for (const file of walkFiles(dir)) {
+      if (!isTextLikeFile(file)) continue;
       const text = fs.readFileSync(file, "utf8");
       if (/[A-Za-z]:\\/.test(text)) windowsPathHits.push(posixPath(path.relative(root, file)));
       if (/(sk_live_|pk_live_|SECRET_KEY|PRIVATE_KEY)/i.test(text)) {
@@ -448,6 +500,8 @@ function doctor() {
   const dirtyDbFiles = changedFiles.filter((f) => isDbFile(f.file));
   const dsCreatorDirty = isDirty("DataSetCreator");
 
+  printChangeSummary(changedFiles, "Working tree changes");
+
   if (dirtyHighRisk.length > 0) {
     console.warn(`WARN High-risk directories have uncommitted changes:`);
     for (const f of dirtyHighRisk) console.warn(`     ${f.status} ${f.file}`);
@@ -555,8 +609,7 @@ function stagePlan(id) {
 
   const dirty = changedFiles.filter((f) => !proposedFiles.some((pf) => f.file.startsWith(pf)));
   if (dirty.length > 0) {
-    console.log("Unrelated modified files (not included in this publish):");
-    for (const f of dirty) console.log(`  ${f.status} ${f.file}`);
+    printChangeSummary(dirty, "Unrelated modified files (not included in this publish)");
   } else {
     console.log("No unrelated modified files detected.");
   }

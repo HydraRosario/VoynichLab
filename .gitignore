@@ -20,6 +20,8 @@ DataSetCreator/evidence/
 DataSetCreator/backups/
 DataSetCreator/*.db
 EVAComparisonLab/backups/
+EVAComparisonLab/artifacts/visual-snapshots/pre-audit-*/
+apps/portal/data/qc-context/
 TranslationLab/outputs/
 TranslationLab/translator/cache/
 TranslationLab/inputs/run-*.txt

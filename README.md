@@ -26,6 +26,7 @@ This result is supportive prospective evidence, not proof of decipherment or glo
 
 ```
 apps/portal/              Public static entry point (Vercel-deployed)
+apps/qc-review/           Local visual QC review app for anomaly candidates
 artifacts/public/         Versioned public experiment artifacts
 DataSetCreator/           Local visual annotator (Tauri/Rust/JS)
 EVAComparisonLab/         Entropy, morphology, snapshot, and ATOMS/EVA comparison
@@ -33,9 +34,13 @@ GrammarDiscoveryLab/      Frozen grammar validation, null controls, alignment, r
 packages/lab-exporter/    Research registry publisher and health checker
 paper/                    Preprint workspace (claims, outline, figures)
 research-feed/            Canonical experiment registry (JSON + schemas)
+research/corpus-revisions Corpus correction ledgers and audit methodology
 research/preregistrations Preregistered protocols
 TranslationLab/           Experimental hypothesis space (separate from validated claims)
 ```
+
+For source/evidence/scratch boundaries and safe monorepo handling, see
+[REPOSITORY-GOVERNANCE.md](REPOSITORY-GOVERNANCE.md).
 
 ## Quick Start
 
