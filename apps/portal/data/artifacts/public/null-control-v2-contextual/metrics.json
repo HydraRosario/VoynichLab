@@ -1,3 +1,11 @@
 {
-  "contextualEmpiricalProbability": 0.09909
+  "primary": [],
+  "secondary": [
+    {
+      "label": "contextualEmpiricalProbability",
+      "value": 0.09909,
+      "unit": null,
+      "direction": null
+    }
+  ]
 }

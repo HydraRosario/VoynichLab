@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.0",
+  "schemaVersion": "2.0",
   "id": "null-control-v2-contextual",
   "title": "NULL-CONTROL-V2 Contextual Slot Simulation",
   "status": "published",
@@ -12,6 +12,15 @@
     "Depends on observed local contexts",
     "Does not test visual annotation quality"
   ],
+  "trainFolios": [
+    "f1r",
+    "f1v",
+    "f47v"
+  ],
+  "testFolios": [
+    "f2r",
+    "f2v"
+  ],
   "commit": "c1bd90e8e8cb64f2b5bc9c72f50e62719cb533a9",
   "tag": "atoms-eva-regional-v1",
   "publishedAt": "2026-07-13",
@@ -19,5 +28,16 @@
     "npm.cmd run null-control:v2"
   ],
   "reportPath": "GrammarDiscoveryLab/out/null-control-v2-contextual/NULL-CONTROL-V2-CONTEXTUAL.md",
-  "sourceScript": "GrammarDiscoveryLab/scripts/null-control-v2-contextual.js"
+  "sourceScript": "GrammarDiscoveryLab/scripts/null-control-v2-contextual.js",
+  "generatedAt": "2026-07-14",
+  "files": [
+    "summary.md",
+    "report.md",
+    "tables/null-control-v2-contextual-family-probabilities.tsv"
+  ],
+  "checksums": {
+    "summary.md": "cad2e2dbab42fe4839da4e7fd1f7715821e12a6871b1bdde76091162e454e1b8",
+    "report.md": "b6442e7c4116887fae859a498c125d55beb8620355d85aabca88df56f4b3585b",
+    "tables/null-control-v2-contextual-family-probabilities.tsv": "6bd48a535e29a75a99b18e91e70c467b74874e4f825272415a8fca28b292b1ab"
+  }
 }

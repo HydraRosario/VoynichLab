@@ -1,5 +1,23 @@
 {
-  "alignedRegions": 209,
-  "unresolvedRegions": 15,
-  "crossingAlignments": 0
+  "primary": [],
+  "secondary": [
+    {
+      "label": "alignedRegions",
+      "value": 209,
+      "unit": null,
+      "direction": null
+    },
+    {
+      "label": "unresolvedRegions",
+      "value": 15,
+      "unit": null,
+      "direction": null
+    },
+    {
+      "label": "crossingAlignments",
+      "value": 0,
+      "unit": null,
+      "direction": null
+    }
+  ]
 }

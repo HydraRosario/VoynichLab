@@ -1,8 +1,41 @@
 {
-  "atomsNormalizedLogLoss": 0.807922,
-  "evaNormalizedLogLoss": 0.892706,
-  "atomsTop1Accuracy": 0.4296,
-  "evaTop1Accuracy": 0.263,
-  "atomsUnseenContextRate": 0.4618,
-  "evaUnseenContextRate": 0.6047
+  "primary": [
+    {
+      "label": "atomsNormalizedLogLoss",
+      "value": 0.807922,
+      "unit": "bits",
+      "direction": "lower-is-better"
+    },
+    {
+      "label": "evaNormalizedLogLoss",
+      "value": 0.892706,
+      "unit": "bits",
+      "direction": "lower-is-better"
+    },
+    {
+      "label": "atomsTop1Accuracy",
+      "value": 0.4296,
+      "unit": "ratio",
+      "direction": "higher-is-better"
+    },
+    {
+      "label": "evaTop1Accuracy",
+      "value": 0.263,
+      "unit": "ratio",
+      "direction": "higher-is-better"
+    },
+    {
+      "label": "atomsUnseenContextRate",
+      "value": 0.4618,
+      "unit": "ratio",
+      "direction": "lower-is-better"
+    },
+    {
+      "label": "evaUnseenContextRate",
+      "value": 0.6047,
+      "unit": "ratio",
+      "direction": "lower-is-better"
+    }
+  ],
+  "secondary": []
 }

@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.0",
+  "schemaVersion": "2.0",
   "id": "grammar-v1-f2v-prospective-validation",
   "title": "GRAMMAR-V1 f2v Prospective Validation",
   "status": "published",
@@ -12,6 +12,14 @@
     "Five-folio corpus",
     "Compatibility does not imply semantic interpretation"
   ],
+  "trainFolios": [
+    "f1r",
+    "f1v",
+    "f47v"
+  ],
+  "testFolios": [
+    "f2v"
+  ],
   "commit": "a57b727968cf27b0fdcb232cb31ed764bd7e3e49",
   "tag": "reproducible-release-v1",
   "publishedAt": "2026-07-13",
@@ -19,5 +27,18 @@
     "npm.cmd run validate"
   ],
   "reportPath": "GrammarDiscoveryLab/out/reproducible-release-v1/f2v/GRAMMAR-V1-vs-f2v.md",
-  "sourceScript": "GrammarDiscoveryLab/scripts/validate-release-v1.js"
+  "sourceScript": "GrammarDiscoveryLab/scripts/validate-release-v1.js",
+  "generatedAt": "2026-07-14",
+  "files": [
+    "summary.md",
+    "report.md",
+    "tables/grammar-v1-vs-f2v-substitution.tsv",
+    "tables/grammar-v1-vs-f2v-optional.tsv"
+  ],
+  "checksums": {
+    "summary.md": "cd377562ec6f9acabdfba648691c86f67ff3e56a9bdd9913dc148f13c6ade526",
+    "report.md": "b9b3b541d5a9272c382598327bd074fb8b51e8b5b4cd8ff750526e401b2cddfa",
+    "tables/grammar-v1-vs-f2v-substitution.tsv": "3205ba40919b76401f9aa4950caa45e6ca660fff5ac8ad3be92caa46c5cc5e44",
+    "tables/grammar-v1-vs-f2v-optional.tsv": "9dd95e54b9e3219352e790bc691c30d5753d6b35dbdf5e4b1b2daced9f79e801"
+  }
 }

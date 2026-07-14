@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.0",
+  "schemaVersion": "2.0",
   "id": "prospective-atoms-eva-test-v1",
   "title": "Prospective ATOMS-EVA Test V1",
   "status": "published",
@@ -13,7 +13,15 @@
     "One prospective folio",
     "Not proof of decipherment or global optimality"
   ],
-  "commit": "pending",
+  "trainFolios": [
+    "f1r",
+    "f1v",
+    "f47v"
+  ],
+  "testFolios": [
+    "f3r"
+  ],
+  "commit": "8137d72d5b979d296f6def65b87f1cca1f48288a",
   "tag": "prospective-atoms-eva-test-v1",
   "publishedAt": "2026-07-14",
   "commands": [
@@ -21,5 +29,32 @@
     "npm.cmd run prospective-atoms-eva:test -- --confirm-complete"
   ],
   "reportPath": "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/PROSPECTIVE-ATOMS-EVA-TEST-V1.md",
-  "sourceScript": "GrammarDiscoveryLab/scripts/prospective-atoms-eva-test-v1.js"
+  "sourceScript": "GrammarDiscoveryLab/scripts/prospective-atoms-eva-test-v1.js",
+  "generatedAt": "2026-07-14",
+  "files": [
+    "summary.md",
+    "report.md",
+    "tables/model-results.tsv",
+    "tables/subset-results.tsv",
+    "tables/line-alignment-audit.tsv",
+    "tables/aligned-regions.tsv",
+    "tables/unresolved-regions.tsv",
+    "tables/region-scores.tsv",
+    "tables/corruption-results.tsv",
+    "tables/folio-freeze-manifest.json",
+    "tables/checksums.txt"
+  ],
+  "checksums": {
+    "summary.md": "1e30bcb71f95296b0568a0430694b49c1bd7a6a653c495db28e25924c6c01fed",
+    "report.md": "903c2c66f52dda83d2cb4c044f83afa9eddac46dc62455b4d267747d8dc0471f",
+    "tables/model-results.tsv": "4c3fdce2a1eded59de1555d06550f90457b5ddccef5113452b494975cbf2ec6e",
+    "tables/subset-results.tsv": "6c1e6bf4737713fc93cbdaad7a6648798cdfc2c845653e6dbb4201cd14fe016f",
+    "tables/line-alignment-audit.tsv": "01e7e6f1ed0fa5ba52f391f4490f7fc954004ab983bbd3ecc5e915969de523fc",
+    "tables/aligned-regions.tsv": "68a31a92bf73311ec4d25864fc3809c10e1a64c78fed87055a92142b7b5497c0",
+    "tables/unresolved-regions.tsv": "651e7e73f130e33385e1e9bc48b204e9f0dcc05f3f13ac2ccf699ced7b23b05b",
+    "tables/region-scores.tsv": "f70002ca42729c6402502eaa1b2b41f6bae84e7929329e0ef4c5462c93af7724",
+    "tables/corruption-results.tsv": "dd5918bb20069a93e230ee185ec06813ff47e408766e3fd691ac9b7f5d581c51",
+    "tables/folio-freeze-manifest.json": "128d0a0b7c62c10669898c7df839f4c239a6c726ac438b597ff5812520008c0c",
+    "tables/checksums.txt": "a4108aa69c033ee5c471d5b36b23823edd010bf45e3c4b36192d2ac0068bd0ec"
+  }
 }

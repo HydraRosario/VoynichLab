@@ -1,72 +1,33 @@
-# NULL-CONTROL-V1
+# NULL-CONTROL-V1 Broad Slot Simulation
 
-Purpose: estimate how often the clean GRAMMAR-V1 substitution result could occur under simple empirical null models that preserve the observed test opportunities and atom-frequency distribution.
+**Status:** published | **Outcome:** inconclusive
 
-This is a first control, not a final statistical proof. It tests whether `8/8` on `f2r` and `7/7` on `f2v`, with zero new substitution slot values, looks common or rare when slot values are sampled without structural restrictions.
+## Question
 
-## Inputs
+How often does a broad null model reproduce the clean f2r and f2v grammar result?
 
-- Frozen grammar: `frozen/GRAMMAR-V1-2026-07-13`.
-- Test folios: `f2r`, `f2v`.
-- Validation command rerun by this script: `node scripts/validate-release-v1.js`.
-- Simulation iterations: `100000`.
-- RNG seed: `20260713`.
+## Result
 
-## Null Models
-
-### Exact-Known Empirical Null
-
-For each observed family, preserve:
-
-- the actual frozen known slot values for that family;
-- the number of observed test opportunities;
-- the empirical atom-frequency distribution of the tested folio.
-
-Then draw random slot values from the folio's atom distribution. A family is clean only if every draw falls inside its actual frozen known-value set.
-
-This is conservative because it gives the null model the real known values learned by GRAMMAR-V1.
-
-### Size-Only Empirical Null
-
-For each observed family, preserve:
-
-- the number of known values, but not their identities;
-- the number of observed test opportunities;
-- the empirical atom-frequency distribution of the tested folio.
-
-Then draw a random same-size known-value set and random slot values from the folio's atom distribution. This asks whether simply having small vocabularies of allowed values makes the result easy.
-
-## Observed Result
-
-| Folio | Observed substitution families | Observed opportunities | New slot values |
-| --- | ---: | ---: | ---: |
-| `f2r` | 8 | 17 | 0 |
-| `f2v` | 7 | 17 | 0 |
-
-## Control Results
-
-| Control | Clean joint simulations | Iterations | Estimated probability |
-| --- | ---: | ---: | ---: |
-| Exact-known empirical null | 0 | 100000 | 0 (no hits; rough 95% upper bound < 3.0000e-5) |
-| Size-only empirical null | 0 | 100000 | 0 (no hits; rough 95% upper bound < 3.0000e-5) |
-
-Naive analytical estimate for the exact-known empirical null under independence assumptions: `7.4117e-36`.
-
-## Per-Folio Exact-Known Probability
-
-| Folio | Exact-known analytic probability |
-| --- | ---: |
-| `f2r` | 7.9639e-19 |
-| `f2v` | 9.3066e-18 |
+No simulation out of 100000 reproduced the joint clean result, but the null was too broad.
 
 ## Interpretation
 
-Under this first control, the clean joint result is **extremely rare**.
+Exploratory only: the model allowed structurally implausible slot values and therefore overstated surprise.
 
-Important limitation: this null samples slot values from the full empirical atom distribution of each folio. That is useful as a first sanity check, but it is probably too broad because real slot candidates may already be constrained by position, particle context, or morphology. A stronger next null should preserve positional class or local frame context before drawing replacement slot values.
+## Limitations
+- Over-broad slot inventory
+- Naive independence estimate not accepted as main p-value
 
-This does not yet solve reviewer attack #2: all labels were produced by the project author. The next independent control remains a second annotator or a public ink-linked annotation audit.
+## Reproduce
+```bash
+npm.cmd run null-control:v1
+```
 
-## Source Tables
-
-- `null-control-family-probabilities.tsv`
+## Artifacts
+- Report: `GrammarDiscoveryLab/out/null-control-v1/NULL-CONTROL-V1.md`
+- Script: `GrammarDiscoveryLab/scripts/null-control-v1.js`
+- Table: `GrammarDiscoveryLab/out/null-control-v1/null-control-family-probabilities.tsv`
+- Commit: `c1bd90e8e8cb64f2b5bc9c72f50e62719cb533a9`
+- Tag: `atoms-eva-regional-v1`
+- Train folios: f1r, f1v, f47v
+- Test folios: f2r, f2v

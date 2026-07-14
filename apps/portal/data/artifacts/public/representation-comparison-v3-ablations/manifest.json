@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.0",
+  "schemaVersion": "2.0",
   "id": "representation-comparison-v3-ablations",
   "title": "REPRESENTATION-COMPARISON-V3 ATOMS-EVA Ablations",
   "status": "published",
@@ -13,6 +13,15 @@
     "Approximate EVA regional alignment",
     "Frequency distribution contributes to the advantage"
   ],
+  "trainFolios": [
+    "f1r",
+    "f1v",
+    "f47v"
+  ],
+  "testFolios": [
+    "f2r",
+    "f2v"
+  ],
   "commit": "2ee61884bae295aa2ab99cb881148ea50a383672",
   "tag": "atoms-eva-ablations-v1",
   "publishedAt": "2026-07-14",
@@ -20,5 +29,18 @@
     "npm.cmd run representation-comparison:v3-ablations"
   ],
   "reportPath": "GrammarDiscoveryLab/out/representation-comparison-v3-ablations/REPRESENTATION-COMPARISON-V3-ABLATIONS.md",
-  "sourceScript": "GrammarDiscoveryLab/scripts/representation-comparison-v3-ablations.js"
+  "sourceScript": "GrammarDiscoveryLab/scripts/representation-comparison-v3-ablations.js",
+  "generatedAt": "2026-07-14",
+  "files": [
+    "summary.md",
+    "report.md",
+    "tables/representation-comparison-v3-summary.tsv",
+    "tables/representation-comparison-v3-folio-results.tsv"
+  ],
+  "checksums": {
+    "summary.md": "ca0fe42a6bcf09f31a2b50d97941826483ce4c280d5fbac49a31fbba2adcda4a",
+    "report.md": "fbf6898ae7e48a1faf809501998ad830489b80947b8539dd7c0ec08ee85f9662",
+    "tables/representation-comparison-v3-summary.tsv": "d58b724749de36bd5c5f1073d38f9d832c4737d84c2f7900d836d34d093ea752",
+    "tables/representation-comparison-v3-folio-results.tsv": "6884920470d75410925759af1161f719ae9830720445dbeb02f69879d85fed7c"
+  }
 }

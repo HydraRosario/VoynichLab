@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="49" height="80" viewBox="0 0 49 80">
+  <title>atom 997 h:1</title>
+  <metadata>{&quot;entityType&quot;:&quot;atom&quot;,&quot;entityId&quot;:&quot;997&quot;,&quot;token&quot;:&quot;h:1&quot;,&quot;signature&quot;:&quot;h:1&quot;,&quot;imageName&quot;:&quot;page-003.jpg&quot;,&quot;imageId&quot;:3,&quot;bounds&quot;:{&quot;x&quot;:709,&quot;y&quot;:529,&quot;w&quot;:49,&quot;h&quot;:80},&quot;atoms&quot;:[{&quot;id&quot;:997,&quot;token&quot;:&quot;h:1&quot;,&quot;particle_id&quot;:&quot;img3-m1-p3&quot;,&quot;molecule_id&quot;:&quot;img3-m1&quot;,&quot;atom_order&quot;:2}]}</metadata>
+  <rect x="0" y="0" width="49" height="80" fill="#f8f0d8"/>
+  
+  <rect x="0.5" y="0.5" width="48" height="79" fill="none" stroke="#111827" stroke-width="1" opacity="0.35"/>
+  <polyline points="26,16 26,17 27,17 27,18 28,18 28,19 29,19 29,20 29,21 30,21 30,22 31,23 31,24 32,24 32,25 32,26 33,26 33,27 33,28 33,29 33,30 33,31 33,32 33,33 33,34 33,35 33,36 33,37 33,38 33,39 33,40 32,40 32,41 32,42 31,42 31,43 31,44 30,45 30,46 29,46 29,47 29,48 28,48 28,49 28,50 27,50 27,51 26,51 26,52 26,53 25,53 25,54 24,54 24,55 23,55 23,56 22,56 22,57 21,57 21,58 20,58 20,59 19,59 19,60 19,61 18,61 18,62 17,62 17,63 17,64 16,64" fill="none" stroke="#ff8c00" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.95">
+    <title>997 h:1</title>
+  </polyline>
+</svg>

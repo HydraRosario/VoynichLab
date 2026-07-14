@@ -1,4 +1,17 @@
 {
-  "pairedCoverage": 14,
-  "testMolecules": 161
+  "primary": [],
+  "secondary": [
+    {
+      "label": "pairedCoverage",
+      "value": 14,
+      "unit": null,
+      "direction": null
+    },
+    {
+      "label": "testMolecules",
+      "value": 161,
+      "unit": null,
+      "direction": null
+    }
+  ]
 }

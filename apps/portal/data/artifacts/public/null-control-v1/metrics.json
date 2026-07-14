@@ -1,4 +1,17 @@
 {
-  "simulations": 100000,
-  "jointHits": 0
+  "primary": [],
+  "secondary": [
+    {
+      "label": "simulations",
+      "value": 100000,
+      "unit": null,
+      "direction": null
+    },
+    {
+      "label": "jointHits",
+      "value": 0,
+      "unit": null,
+      "direction": null
+    }
+  ]
 }

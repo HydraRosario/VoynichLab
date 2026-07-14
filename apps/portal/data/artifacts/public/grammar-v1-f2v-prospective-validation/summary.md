@@ -1,98 +1,35 @@
-# GRAMMAR-V1 vs f2v Prospective Test
+# GRAMMAR-V1 f2v Prospective Validation
 
-Purpose: evaluate the frozen `GRAMMAR-V1` families against a newly labeled folio without inducing new rules from it.
+**Status:** published | **Outcome:** supportive
 
-## Inputs
+## Question
 
-- Frozen grammar: `frozen\GRAMMAR-V1-2026-07-13`.
-- Test folio: `f2v`.
-- Test molecules: `57`; unique signatures: `46`.
-- Frozen substitution families: `19`.
-- Frozen optional families: `55`.
+Does the frozen grammar remain compatible with a later folio labeled after GRAMMAR-V1 was frozen?
 
-## Summary
+## Result
 
-- Substitution families observed in `f2v`: `7` / `19`.
-- Observed substitution families with only known slot values: `7` / `7`.
-- Observed substitution families with new slot values: `0`.
-- Optional families with base or expansion observed in `f2v`: `32` / `55`.
-- Optional families with observed expansions and no new optional values: `30` / `32`.
-- Optional families with new optional values: `2`.
+f2v produced 7/7 clean observed substitution families with zero new slot values.
 
-## Priority Family A
+## Interpretation
 
-```text
-e:1 c:1 h:2 e:1 f:1 X f:1 i:1 d:1
-X in {empty, k:1, l:1}
+Supportive prospective compatibility result, bounded by the same annotation and sample-size limits.
+
+## Limitations
+- Single ATOMS annotator
+- Five-folio corpus
+- Compatibility does not imply semantic interpretation
+
+## Reproduce
+```bash
+npm.cmd run validate
 ```
 
-- Base form X=empty in f2v: `0`.
-- Known expansions in f2v: `4`; values: `k:1:4`.
-- New expansions in f2v: `0`.
-- Expanded-frame substitution hits: `4`; known=`4`; new=`0`; values: `k:1:4`.
-- Examples: `e:1 c:1 h:2 e:1 f:1 k:1 f:1 i:1 d:1 (4)`.
-
-## Observed Substitution Families
-
-| Test Total | Known | New | Slot | Skeleton | Train Values | Test Values |
-| ---: | ---: | ---: | ---: | --- | --- | --- |
-| 4 | 4 | 0 | 6 | `e:1 c:1 h:2 e:1 f:1 _ f:1 i:1 d:1` | `k:1:10 l:1:8` | `k:1:4` |
-| 4 | 4 | 0 | 2 | `e:1 _ h:2 e:1 f:1 k:1 f:1 i:1 d:1` | `c:1:10 c:2:1` | `c:1:4` |
-| 4 | 4 | 0 | 8 | `e:1 c:1 h:2 e:1 f:1 k:1 f:1 _ d:1` | `i:1:10 j:1:1` | `i:1:4` |
-| 2 | 2 | 0 | 5 | `e:1 g:1 e:1 e:1 _ f:1 i:1 d:1` | `f:1:4 c:1:2` | `c:1:1 f:1:1` |
-| 1 | 1 | 0 | 5 | `n:1 e:1 g:1 e:1 _` | `c:1:4 e:1:1` | `c:1:1` |
-| 1 | 1 | 0 | 1 | `_ e:1 g:1 e:1 e:1 h:1` | `n:1:3 c:1:2` | `n:1:1` |
-| 1 | 1 | 0 | 6 | `n:1 e:1 g:1 e:1 e:1 _` | `h:1:3 c:1:1` | `h:1:1` |
-
-## New Slot Values
-
-No rows.
-
-## Observed Optional Families
-
-| Test Base | Known Expansions | New Expansions | Optional Index | Skeleton | Train Values | Test Values |
-| ---: | ---: | ---: | ---: | --- | --- | --- |
-| 0 | 1 | 0 | 5 | `n:1 e:1 g:1 e:1` | `c:1:4 e:1:1` | `c:1:1` |
-| 0 | 4 | 0 | 6 | `e:1 c:1 h:2 e:1 f:1 f:1 i:1 d:1` | `k:1:10 l:1:8` | `k:1:4` |
-| 4 | 0 | 0 | 1 | `e:1 c:1 h:2 e:1 f:1 k:1 f:1 i:1 d:1` | `c:1:1` | `` |
-| 1 | 0 | 0 | 3 | `e:1 g:1 e:1 e:1 h:1` | `e:1:3` | `` |
-| 1 | 0 | 0 | 4 | `e:1 g:1 e:1 e:1 h:1` | `e:1:3` | `` |
-| 1 | 0 | 0 | 5 | `e:1 g:1 e:1 e:1 h:1` | `e:1:3` | `` |
-| 5 | 0 | 0 | 1 | `e:1 g:1 e:1 c:1 f:1 j:1` | `c:1:1` | `` |
-| 5 | 1 | 0 | 3 | `e:1 g:1 e:1 c:1 f:1 j:1` | `e:1:1` | `e:1:1` |
-| 5 | 1 | 0 | 4 | `e:1 g:1 e:1 c:1 f:1 j:1` | `e:1:1` | `e:1:1` |
-| 0 | 4 | 0 | 9 | `e:1 c:1 h:2 e:1 f:1 k:1 f:1 i:1` | `d:1:10` | `d:1:4` |
-| 4 | 0 | 1 | 5 | `e:1 c:1 h:2 e:1 f:1 k:1 f:1 i:1 d:1` | `f:1:1` | `l:1:1` |
-| 4 | 0 | 0 | 6 | `e:1 c:1 h:2 e:1 f:1 k:1 f:1 i:1 d:1` | `f:1:1` | `` |
-| 1 | 1 | 0 | 1 | `e:1 g:1 e:1 e:1 h:1` | `n:1:3 c:1:2` | `n:1:1` |
-| 0 | 1 | 0 | 5 | `e:1 g:1 e:1 e:1` | `h:1:6` | `h:1:1` |
-| 1 | 0 | 0 | 6 | `e:1 g:1 e:1 e:1 f:1 f:1 i:1 d:1` | `k:1:1` | `` |
-| 0 | 1 | 0 | 3 | `e:1 f:1 f:1 i:1 d:1` | `k:1:1 l:1:1` | `k:1:1` |
-| 3 | 1 | 0 | 3 | `e:1 g:1 e:1 c:1 f:1 i:1 d:1` | `e:1:2` | `e:1:1` |
-| 3 | 1 | 0 | 4 | `e:1 g:1 e:1 c:1 f:1 i:1 d:1` | `e:1:2` | `e:1:1` |
-| 0 | 1 | 0 | 1 | `e:1 g:1 e:1 c:1` | `n:1:4` | `n:1:1` |
-| 1 | 0 | 0 | 3 | `e:1 g:1 e:1 e:1 f:1 f:1 i:1 d:1` | `e:1:1` | `` |
-| 1 | 0 | 0 | 4 | `e:1 g:1 e:1 e:1 f:1 f:1 i:1 d:1` | `e:1:1` | `` |
-| 1 | 0 | 0 | 5 | `e:1 g:1 e:1 e:1 f:1 f:1 i:1 d:1` | `e:1:1` | `` |
-| 1 | 0 | 0 | 1 | `e:1 g:1 e:1 e:1 f:1 f:1 i:1 d:1` | `n:1:1` | `` |
-| 1 | 0 | 0 | 4 | `n:1 e:1 g:1 e:1 c:1` | `e:1:1` | `` |
-| 1 | 0 | 0 | 5 | `n:1 e:1 g:1 e:1 c:1` | `e:1:1` | `` |
-| 1 | 0 | 0 | 1 | `e:1 g:1 e:1 c:1 e:1 c:1 h:2 e:1 h:1` | `n:1:4` | `` |
-| 1 | 0 | 0 | 5 | `n:1 e:1 g:1 e:1 e:1 h:1` | `e:1:2 c:1:1` | `` |
-| 0 | 1 | 0 | 6 | `n:1 e:1 g:1 e:1 e:1` | `h:1:3 c:1:1` | `h:1:1` |
-| 1 | 0 | 0 | 4 | `n:1 e:1 g:1 e:1 e:1 h:1` | `e:1:2` | `` |
-| 1 | 0 | 0 | 6 | `n:1 e:1 g:1 e:1 e:1 h:1` | `e:1:2` | `` |
-| 0 | 1 | 1 | 10 | `e:1 g:1 e:1 c:1 e:1 c:1 h:2 e:1 f:1 f:1 i:1 d:1` | `k:1:2` | `k:1:1 l:1:1` |
-| 2 | 0 | 0 | 5 | `e:1 c:1 h:2 c:1 f:1 i:1 d:1` | `k:1:1` | `` |
-
-## New Optional Values
-
-| Test Base | Known Expansions | New Expansions | Optional Index | Skeleton | Train Values | Test Values |
-| ---: | ---: | ---: | ---: | --- | --- | --- |
-| 4 | 0 | 1 | 5 | `e:1 c:1 h:2 e:1 f:1 k:1 f:1 i:1 d:1` | `f:1:1` | `l:1:1` |
-| 0 | 1 | 1 | 10 | `e:1 g:1 e:1 c:1 e:1 c:1 h:2 e:1 f:1 f:1 i:1 d:1` | `k:1:2` | `k:1:1 l:1:1` |
-
-## Source Files
-
-- `grammar-v1-vs-f2v-substitution.tsv`
-- `grammar-v1-vs-f2v-optional.tsv`
+## Artifacts
+- Report: `GrammarDiscoveryLab/out/reproducible-release-v1/f2v/GRAMMAR-V1-vs-f2v.md`
+- Script: `GrammarDiscoveryLab/scripts/validate-release-v1.js`
+- Table: `GrammarDiscoveryLab/out/reproducible-release-v1/f2v/grammar-v1-vs-f2v-substitution.tsv`
+- Table: `GrammarDiscoveryLab/out/reproducible-release-v1/f2v/grammar-v1-vs-f2v-optional.tsv`
+- Commit: `a57b727968cf27b0fdcb232cb31ed764bd7e3e49`
+- Tag: `reproducible-release-v1`
+- Train folios: f1r, f1v, f47v
+- Test folios: f2v

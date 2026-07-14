@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.0",
+  "schemaVersion": "2.0",
   "id": "grammar-v1-f2r-validation",
   "title": "GRAMMAR-V1 f2r Held-Out Validation",
   "status": "published",
@@ -12,6 +12,14 @@
     "Small number of observed families",
     "Not a decipherment test"
   ],
+  "trainFolios": [
+    "f1r",
+    "f1v",
+    "f47v"
+  ],
+  "testFolios": [
+    "f2r"
+  ],
   "commit": "a57b727968cf27b0fdcb232cb31ed764bd7e3e49",
   "tag": "reproducible-release-v1",
   "publishedAt": "2026-07-13",
@@ -19,5 +27,18 @@
     "npm.cmd run validate"
   ],
   "reportPath": "GrammarDiscoveryLab/out/reproducible-release-v1/f2r/GRAMMAR-V1-vs-f2r.md",
-  "sourceScript": "GrammarDiscoveryLab/scripts/validate-release-v1.js"
+  "sourceScript": "GrammarDiscoveryLab/scripts/validate-release-v1.js",
+  "generatedAt": "2026-07-14",
+  "files": [
+    "summary.md",
+    "report.md",
+    "tables/grammar-v1-vs-f2r-substitution.tsv",
+    "tables/grammar-v1-vs-f2r-optional.tsv"
+  ],
+  "checksums": {
+    "summary.md": "05e90fc154a7edb0af111a4731129d84672b57d03c92616f2f3779f76c79dc7a",
+    "report.md": "75a1b0b7aea8fd7680e5714a5dca12992943cef4af9631778315c63382be2e3a",
+    "tables/grammar-v1-vs-f2r-substitution.tsv": "1e62c68dff9b3ce86f96952c5ce090e0f898fd9e43e1fe9d3deb71678694fe8b",
+    "tables/grammar-v1-vs-f2r-optional.tsv": "92dc4cc5bd3a57b959bd67aa43fffe695a24837e2a1cc37083c7532f17675cd1"
+  }
 }

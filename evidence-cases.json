@@ -1,0 +1,127 @@
+{
+  "schemaVersion": "1.0",
+  "generatedAt": "2026-07-14",
+  "cases": [
+    {
+      "id": "family-a-example",
+      "title": "Family A: Recurrent Molecular Frame",
+      "summary": "A structural frame with restricted slot variation, observed repeatedly across folios.",
+      "category": "grammar",
+      "relevance": "Central V1 grammar result",
+      "atomsSequence": "e:1 c:1 h:2 e:1 f:1 X f:1 i:1 d:1",
+      "slotExplanation": "X \u2208 {empty, k:1, l:1}",
+      "atomsSeenIn": ["f1r", "f1v", "f47v", "f2r", "f2v", "f3r"],
+      "highlights": ["The same skeleton with restricted slot choices appears in all five annotated folios.","No new slot values appeared in held-out or prospective folios.","This pattern is structural, not claimed as a word or morpheme."],
+      "reportLinks": [{"label":"Family A documentation","path":"GrammarDiscoveryLab/frozen/GRAMMAR-V1-2026-07-13/FAMILY-A.md"}]
+    },
+    {
+      "id": "f3r-supportive-region",
+      "title": "f3r Supportive Region: ATOMS vs EVA",
+      "summary": "A region where ATOMS predicted better than EVA under frozen local-context metrics.",
+      "category": "comparison",
+      "relevance": "Preregistered f3r prospective test",
+      "atomsSequence": "e:1 g:1 e:1 c:1 f:1 j:1 n:1",
+      "evaToken": "daiin",
+      "folio": "f3r",
+      "regionIndex": 12,
+      "atomsLogLoss": 0.21,
+      "evaLogLoss": 0.64,
+      "highlights": ["ATOMS normalized log-loss: 0.21 vs EVA: 0.64 in this region.","The model had seen similar ATOMS local contexts in training.","EVA saw an unfamiliar token shape in this position."],
+      "reportLinks": [{"label":"Model results table","path":"GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/model-results.tsv"}]
+    },
+    {
+      "id": "img7-m50-boundary",
+      "title": "img7-m50: Boundary Continuity Candidate",
+      "summary": "A molecule where observed structure suggests particle flow may continue across molecule boundaries.",
+      "category": "hypothesis",
+      "relevance": "Motivates BOUNDARY-CONTINUITY-V1",
+      "atomsSequence": "n:1 e:1 g:1 e:1 c:1 f:1 j:1",
+      "observedNote": "m50 sequence: [n:1] [e:1 g:1 e:1] [c:1] [f:1 j:1]",
+      "dominantNote": "Dominant molecule-local would be: [c:1] [f:1 j:1] [n:1] [e:1 g:1 e:1]",
+      "folio": "f3r",
+      "highlights": ["If we look only at molecule-local order, m50 looks like a rareza (scrambled).","But the previous molecule ends with c:1 | f:1 j:1, so the particle flow may continue.","This is a testable hypothesis, not a result. See research/notes/BOUNDARY-CONTINUITY-SEEDS.md"],
+      "reportLinks": [{"label":"Known labeling anomalies","path":"EVAComparisonLab/cases/known-labeling-anomalies.tsv"}]
+    },
+    {
+      "id": "atoms-strong-win",
+      "title": "ATOMS Strong Win Region",
+      "summary": "A region where ATOMS dramatically outperformed EVA.",
+      "category": "comparison",
+      "relevance": "Shows representation advantage",
+      "folio": "f2r",
+      "atomsSequence": "a:1 b:1 c:1 a:1 b:1 d:1 f:1 i:1 d:1 e:1 h:1 e:1 f:1 e:1 g:1 e:1",
+      "evaToken": "fachys",
+      "atomsLogLoss": 0.09,
+      "evaLogLoss": 0.81,
+      "highlights": ["ATOMS preserves the local particle structure that EVA linearizes.","The ATOMS advantage is largest in regions with complex particle composition.","EVA compresses the sequence into a single token, losing internal structure."],
+      "reportLinks": [{"label":"Regional comparison","path":"GrammarDiscoveryLab/out/representation-comparison-v2-regions/REPRESENTATION-COMPARISON-V2-REGIONS.md"}]
+    },
+    {
+      "id": "eva-competitive-region",
+      "title": "EVA Competitive Region",
+      "summary": "A region where EVA performed nearly as well as ATOMS.",
+      "category": "comparison",
+      "relevance": "EVA is not useless; some structure is shared",
+      "folio": "f2v",
+      "atomsSequence": "e:1 f:1 e:1 i:1 d:1",
+      "evaToken": "chedy",
+      "atomsLogLoss": 0.31,
+      "evaLogLoss": 0.38,
+      "highlights": ["In short, common sequences, EVA captures similar structure.","This is expected: frequent EVA tokens also have regular ATOMS composition.","The ATOMS advantage is largest on longer, more varied sequences."],
+      "reportLinks": [{"label":"Ablation results","path":"GrammarDiscoveryLab/out/representation-comparison-v3-ablations/REPRESENTATION-COMPARISON-V3-ABLATIONS.md"}]
+    },
+    {
+      "id": "known-valid-anomaly",
+      "title": "Anomaly Confirmed as Valid Annotation",
+      "summary": "A visually confirmed labeling that initially appeared unusual.",
+      "category": "audit",
+      "relevance": "Demonstrates manual audit process",
+      "folio": "f2r",
+      "atomId": 5493,
+      "highlights": ["Atom 5493 was flagged by automated audit as a potential labeling anomaly.","Manual visual inspection confirmed the label is correct.","The case was added to known-labeling-anomalies.tsv as known-valid.","This prevents the audit from re-flagging it, without hiding the record."],
+      "reportLinks": [{"label":"Known anomalies TSV","path":"EVAComparisonLab/cases/known-labeling-anomalies.tsv"},{"label":"Audit script","path":"EVAComparisonLab/scripts/labeling-anomaly-audit.js"}]
+    },
+    {
+      "id": "atom-g1-repeated",
+      "title": "Atom g:1: High-Frequency Right-Curve Gallows",
+      "summary": "g:1 is the most structurally interesting frequent atom due to its positional rigidity.",
+      "category": "atoms",
+      "relevance": "Shows how individual atoms carry positional information",
+      "token": "g:1",
+      "atomsSequence": "g:1",
+      "highlights": ["g:1 appears almost exclusively in a specific position within molecules.","Its positional entropy is among the lowest of all ATOMS symbols.","This suggests g:1 may serve a specific structural role, not random placement.","This is a structural observation, not a semantic claim."],
+      "reportLinks": [{"label":"Role entropy report","path":"EVAComparisonLab/cases/f1r-full/role-entropy.md"}]
+    },
+    {
+      "id": "molecule-ege",
+      "title": "Molecule e:1 g:1 e:1: A Recurring Triplet",
+      "summary": "One of the most common ATOMS molecule patterns, spanning all folios.",
+      "category": "grammar",
+      "relevance": "Common structural unit",
+      "atomsSequence": "e:1 g:1 e:1",
+      "highlights": ["This triplet appears dozens of times across all annotated folios.","Its internal structure (e:1 g:1 e:1) is stable: e:1 bookends a g:1.","It can appear as a standalone molecule or embedded in longer sequences.","e:1 is the most frequent atom overall (1,496 occurrences)."],
+      "reportLinks": [{"label":"Signature frequencies","path":"GrammarDiscoveryLab/out/current/signature-frequencies.tsv"}]
+    },
+    {
+      "id": "clean-alignment-region",
+      "title": "Clean 1:1 Alignment Region",
+      "summary": "A region where ATOMS particles and EVA tokens align one-to-one.",
+      "category": "alignment",
+      "relevance": "Methodological bridge between representations",
+      "folio": "f1r",
+      "atomsSequence": "e:1 h:1 | a:1 b:1 c:1 a:1 | e:1 f:1 | f:1 j:1",
+      "evaToken": "ykal",
+      "highlights": ["Each ATOMS particle maps cleanly to an EVA token in this region.","This is the ideal case for the regional alignment method.","About 93% of regions aligned without issues.","15 of 224 total regions remain unresolved."],
+      "reportLinks": [{"label":"Alignment report","path":"GrammarDiscoveryLab/out/representation-alignment-v1/REPRESENTATION-ALIGNMENT-V1.md"}]
+    },
+    {
+      "id": "null-control-v2-negative",
+      "title": "Null Control V2: Local Context Explains Much",
+      "summary": "A null model using local context reproduced much of the apparent grammar specificity.",
+      "category": "null-control",
+      "relevance": "Negative result that weakened a stronger grammar claim",
+      "highlights": ["Contextual empirical probability was approximately 0.099.","This means local syntax explains much of the apparent slot compatibility.","The exact frame identity claim was weakened, not refuted completely.","This result is published alongside supportive results."],
+      "reportLinks": [{"label":"Null control V2 report","path":"GrammarDiscoveryLab/out/null-control-v2-contextual/NULL-CONTROL-V2-CONTEXTUAL.md"}]
+    }
+  ]
+}

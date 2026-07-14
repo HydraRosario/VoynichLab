@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.0",
+  "schemaVersion": "2.0",
   "id": "representation-comparison-v1",
   "title": "REPRESENTATION-COMPARISON-V1 Molecule-Paired Pilot",
   "status": "published",
@@ -12,6 +12,15 @@
     "Not a regional alignment",
     "Insufficient for global comparison"
   ],
+  "trainFolios": [
+    "f1r",
+    "f1v",
+    "f47v"
+  ],
+  "testFolios": [
+    "f2r",
+    "f2v"
+  ],
   "commit": "c1bd90e8e8cb64f2b5bc9c72f50e62719cb533a9",
   "tag": "atoms-eva-regional-v1",
   "publishedAt": "2026-07-13",
@@ -19,5 +28,16 @@
     "npm.cmd run representation-comparison:v1"
   ],
   "reportPath": "GrammarDiscoveryLab/out/representation-comparison-v1/REPRESENTATION-COMPARISON-V1.md",
-  "sourceScript": "GrammarDiscoveryLab/scripts/representation-comparison-v1.js"
+  "sourceScript": "GrammarDiscoveryLab/scripts/representation-comparison-v1.js",
+  "generatedAt": "2026-07-14",
+  "files": [
+    "summary.md",
+    "report.md",
+    "tables/representation-comparison-summary.tsv"
+  ],
+  "checksums": {
+    "summary.md": "b585613f9603ded7b56ccd745f5c083b89d0154a5947861292310b4029d54cbe",
+    "report.md": "3b5ea917b817ebc224f0e02c4eaeaaeea7bc2ecbe0accd7addde9a142274de06",
+    "tables/representation-comparison-summary.tsv": "51ba4399a8faa40e7050f70bafc83dacbb6ee6776887d4e12affca75e9c78d2f"
+  }
 }

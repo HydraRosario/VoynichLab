@@ -13,6 +13,13 @@
     "GrammarDiscoveryLab/out/null-control-v1/null-control-family-probabilities.tsv"
   ],
   "script": "GrammarDiscoveryLab/scripts/null-control-v1.js",
-  "frozenArtifacts": [],
-  "generatedBy": "VoynichLab"
+  "sourceScript": "GrammarDiscoveryLab/scripts/null-control-v1.js",
+  "commands": [
+    "npm.cmd run null-control:v1"
+  ],
+  "commit": "c1bd90e8e8cb64f2b5bc9c72f50e62719cb533a9",
+  "tag": "atoms-eva-regional-v1",
+  "generatedAt": "2026-07-14",
+  "generatedBy": "VoynichLab/research:publish",
+  "frozenArtifacts": []
 }

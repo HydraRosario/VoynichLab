@@ -6,99 +6,62 @@ VoynichLab is an open research platform for testing stroke-level, subglyph repre
 
 VoynichLab does **not** currently claim translation, decipherment, phonetic values, semantic values, or a complete grammar of the manuscript.
 
-## Public Entry Points
-
-- Launch VoynichLab: Vercel deployment pending.
-- [Explore the research timeline](https://github.com/HydraRosario/VoynichLab/blob/main/GrammarDiscoveryLab/RESEARCH-TIMELINE.md)
-- [View ATOMS vs EVA experiments](https://github.com/HydraRosario/VoynichLab/blob/main/GrammarDiscoveryLab/out/representation-comparison-v3-ablations/REPRESENTATION-COMPARISON-V3-ABLATIONS.md)
-- [Read the paper workspace](https://github.com/HydraRosario/VoynichLab/tree/main/paper)
-- [Reproduce the results](https://github.com/HydraRosario/VoynichLab/tree/main/GrammarDiscoveryLab)
-
 ## Current Result
 
-Under matched held-out regional comparisons, ATOMS-V1 preserved more local predictive structure than EVA across several model ablations.
+**Prospective ATOMS-EVA Test V1** — Outcome: **SUPPORTIVE**
 
-Combined all-region ablation results:
+Under preregistered frozen rules on the held-out folio `f3r`:
+- ATOMS normalized log-loss: **0.348262** (lower is better)
+- EVA normalized log-loss: **0.564957**
+- Delta: **−0.216696**
+- ATOMS top-1 accuracy: **69.06%**
+- EVA top-1 accuracy: **55.35%**
+- ATOMS unseen context: **2.46%**
+- EVA unseen context: **13.79%**
+- OOV ATOMS symbols: **0**
 
-| Model | ATOMS normalized log-loss | EVA normalized log-loss | Reading |
-|---|---:|---:|---|
-| Unigram baseline | 0.8274 | 0.8727 | ATOMS frequency distribution is more concentrated. |
-| Neighbors only | 0.2427 | 0.4320 | ATOMS keeps stronger local predictive structure without exact length. |
-| Neighbors + coarse position | 0.3101 | 0.5533 | ATOMS remains favorable without exact regional length. |
-| Published V2 exact-length model | 0.8079 | 0.8927 | Reproduces the tagged regional comparison. |
-| Neighbors + coarse position + length bins | 0.4260 | 0.6836 | ATOMS remains favorable with train-defined length bins. |
+This result is supportive prospective evidence, not proof of decipherment or global representation superiority. See the [public portal](apps/portal/) for the full experiment browser.
 
-The result is exploratory evidence, not proof of global representation superiority.
+## Repository Structure
 
-## Repository Map
-
-```text
-apps/portal/          Public static entry point.
-DataSetCreator/       Local visual annotator for traces, atoms, particles, molecules, rows, cuts, and joins.
-EVAComparisonLab/     Entropy, morphology, snapshot, and ATOMS/EVA comparison reports.
-GrammarDiscoveryLab/  Frozen grammar validation, null controls, alignment, and representation comparisons.
-TranslationLab/       Experimental hypothesis space, kept separate from validated claims.
-paper/                Claims, outline, figures, literature map, and novelty matrix.
+```
+apps/portal/              Public static entry point (Vercel-deployed)
+artifacts/public/         Versioned public experiment artifacts
+DataSetCreator/           Local visual annotator (Tauri/Rust/JS)
+EVAComparisonLab/         Entropy, morphology, snapshot, and ATOMS/EVA comparison
+GrammarDiscoveryLab/      Frozen grammar validation, null controls, alignment, representation comparisons
+packages/lab-exporter/    Research registry publisher and health checker
+paper/                    Preprint workspace (claims, outline, figures)
+research-feed/            Canonical experiment registry (JSON + schemas)
+research/preregistrations Preregistered protocols
+TranslationLab/           Experimental hypothesis space (separate from validated claims)
 ```
 
-## Public Portal Deployment
-
-The public portal is configured for Vercel.
-
-Recommended Vercel project settings:
-
-```text
-Framework Preset: Other
-Root Directory: apps/portal
-Build Command: empty
-Output Directory: .
-Install Command: empty
-```
-
-The portal is static and must not deploy the full repository as an application bundle. `DataSetCreator`, local databases, visual snapshots, and working research outputs remain source artifacts in Git, not public runtime assets.
-
-## Research Registry
-
-VoynichLab now uses a machine-readable research registry as the content source for the public portal:
-
-```text
-research-feed/experiments.json
-research-feed/milestones.json
-research-feed/releases.json
-artifacts/public/<experiment-id>/
-apps/portal/data/
-```
-
-Each published experiment has a standard public artifact:
-
-```text
-manifest.json
-summary.md
-metrics.json
-provenance.json
-checksums.txt
-tables/
-```
-
-The portal is rendered from versioned experiment manifests, frozen report paths, checksums, commits, and tags. Positive, negative, inconclusive, methodological, and superseded results are all preserved as part of the scientific record.
-
-Registry commands:
+## Quick Start
 
 ```bash
+# Validate research registry
 npm.cmd run research:validate
+
+# Build all public artifacts and portal data
 npm.cmd run research:build
-npm.cmd run research:publish -- --experiment representation-comparison-v3-ablations
+
+# Publish a single experiment artifact
+npm.cmd run research:publish -- --experiment prospective-atoms-eva-test-v1
+
+# Full health check
+npm.cmd run research:doctor
+
+# Preview staging plan
+npm.cmd run research:stage-plan -- --experiment prospective-atoms-eva-test-v1
 ```
 
-`research:publish` prepares public artifacts only. It does not commit, tag, push, or modify frozen source files.
+On non-Windows shells, use `npm run ...` instead of `npm.cmd run ...`.
 
-## Reproduce
-
-Clone the repository and run the public experiment suite:
+## Reproduce Experiments
 
 ```bash
-git clone https://github.com/HydraRosario/VoynichLab.git
-cd VoynichLab/GrammarDiscoveryLab
+cd GrammarDiscoveryLab
 npm install
 npm.cmd run validate
 npm.cmd run null-control:v1
@@ -108,35 +71,59 @@ npm.cmd run null-control:v3:diagnostics
 npm.cmd run representation-alignment:v1
 npm.cmd run representation-comparison:v2-regions
 npm.cmd run representation-comparison:v3-ablations
-```
-
-On non-Windows shells, use `npm run ...` instead of `npm.cmd run ...`.
-
-Key reports:
-
-```text
-GrammarDiscoveryLab/out/reproducible-release-v1/VALIDATION-SUMMARY.md
-GrammarDiscoveryLab/out/null-control-v2-contextual/NULL-CONTROL-V2-CONTEXTUAL.md
-GrammarDiscoveryLab/out/null-control-v3/NULL-CONTROL-V3-MODEL-COMPARISON.md
-GrammarDiscoveryLab/out/representation-alignment-v1/REPRESENTATION-ALIGNMENT-V1.md
-GrammarDiscoveryLab/out/representation-comparison-v2-regions/REPRESENTATION-COMPARISON-V2-REGIONS.md
-GrammarDiscoveryLab/out/representation-comparison-v3-ablations/REPRESENTATION-COMPARISON-V3-ABLATIONS.md
+npm.cmd run prospective-atoms-eva:test -- --preflight
+npm.cmd run prospective-atoms-eva:test -- --confirm-complete
 ```
 
 ## Public Milestones
 
-```text
-v1-pre-validation
-v1-validation-f2r
-grammar-v1
-reproducible-release-v1
-atoms-eva-regional-v1
-atoms-eva-ablations-v1
-public-portal-v1
-```
+| Tag | Description |
+|-----|-------------|
+| `v1-pre-validation` | ATOMS-V1 inventory freeze |
+| `grammar-v1` | GRAMMAR-V1 molecular families frozen |
+| `reproducible-release-v1` | Reproducible validation pipeline |
+| `atoms-eva-regional-v1` | Regional alignment + null controls |
+| `atoms-eva-ablations-v1` | Ablation robustness experiments |
+| `public-portal-v1` | First static public portal |
+| `prospective-atoms-eva-test-v1-preregistered` | Preregistered f3r protocol |
+| `prospective-atoms-eva-test-v1` | SUPPORTIVE f3r prospective test |
 
-## Scientific Boundary
+## How to Publish an Experiment
 
-ATOMS-V1 components are not currently interpreted as letters, phonemes, morphemes, or semantic units. Molecular units are not claimed to be words. Translation hypotheses belong in `TranslationLab` and are separated from the validated experimental claims.
+1. Ensure the experiment is registered in `research-feed/experiments.json` with valid paths
+2. Run `npm.cmd run research:validate` to check registry integrity
+3. Run `npm.cmd run research:publish -- --experiment <id>` to generate public artifacts
+4. Review changes with `npm.cmd run research:stage-plan -- --experiment <id>`
+5. Commit and tag explicitly (the publisher never commits automatically)
+6. Push main + tags to deploy the portal via Vercel
 
-VoynichLab is offered as open research infrastructure: evidence in Git, investigation in the browser.
+## DataSetCreator Guidelines
+
+The `DataSetCreator/` directory contains the local annotation tool and its database. **Do not** modify database files, move labeled data, or rewrite annotation logic without understanding the full impact. Changes to `DataSetCreator` must be surgical and tested. The local database is git-ignored and must never be committed.
+
+## Portal
+
+The public portal is in `apps/portal/` and is deployed via Vercel. It reads from `apps/portal/data/`, which is generated by `research:build`. Avoid hardcoding experiment IDs in portal code; use `research-feed/site.json` for configuration.
+
+## Scientific Boundaries
+
+- ATOMS-V1 components are not interpreted as letters, phonemes, morphemes, or semantic units
+- Molecular units are not claimed to be words
+- Translation hypotheses belong in `TranslationLab`
+- Negative and inconclusive results are preserved as part of the scientific record
+- The corpus is single-annotator and small; independent replication is needed
+- VoynichLab is offered as open research infrastructure
+
+## Contributing
+
+Contributions should follow the repo's engineering rules:
+- Do not mix scientific changes with unrelated UI changes
+- Do not move valuable data folders without a plan
+- Do not delete referenced outputs without inventory
+- Do not hide negative results
+- Do not push without explicit request
+- Keep commits small and thematic
+
+## License
+
+See repository metadata.

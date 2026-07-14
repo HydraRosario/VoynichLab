@@ -1,15 +1,84 @@
 {
-  "targetAlignedRegions": 39,
-  "targetUnresolvedRegions": 0,
-  "targetLinePairs": 20,
-  "atomsNormalizedLogLoss": 0.348262,
-  "evaNormalizedLogLoss": 0.564957,
-  "atomsMinusEvaNormalizedLogLoss": -0.216696,
-  "atomsTop1Accuracy": 0.6906,
-  "evaTop1Accuracy": 0.5535,
-  "atomsUnseenContextRate": 0.0246,
-  "evaUnseenContextRate": 0.1379,
-  "atomsOutOfVocabularySymbols": 0,
-  "atomsCorruptionRealBetterThanMedian": 1,
-  "evaCorruptionRealBetterThanMedian": 0.9474
+  "primary": [
+    {
+      "label": "atomsNormalizedLogLoss",
+      "value": 0.348262,
+      "unit": "bits",
+      "direction": "lower-is-better"
+    },
+    {
+      "label": "evaNormalizedLogLoss",
+      "value": 0.564957,
+      "unit": "bits",
+      "direction": "lower-is-better"
+    },
+    {
+      "label": "atomsMinusEvaNormalizedLogLoss",
+      "value": -0.216696,
+      "unit": "bits",
+      "direction": "lower-is-better"
+    },
+    {
+      "label": "atomsTop1Accuracy",
+      "value": 0.6906,
+      "unit": "ratio",
+      "direction": "higher-is-better"
+    },
+    {
+      "label": "evaTop1Accuracy",
+      "value": 0.5535,
+      "unit": "ratio",
+      "direction": "higher-is-better"
+    },
+    {
+      "label": "atomsUnseenContextRate",
+      "value": 0.0246,
+      "unit": "ratio",
+      "direction": "lower-is-better"
+    },
+    {
+      "label": "evaUnseenContextRate",
+      "value": 0.1379,
+      "unit": "ratio",
+      "direction": "lower-is-better"
+    },
+    {
+      "label": "atomsOutOfVocabularySymbols",
+      "value": 0,
+      "unit": null,
+      "direction": "higher-is-better"
+    }
+  ],
+  "secondary": [
+    {
+      "label": "targetAlignedRegions",
+      "value": 39,
+      "unit": null,
+      "direction": null
+    },
+    {
+      "label": "targetUnresolvedRegions",
+      "value": 0,
+      "unit": null,
+      "direction": null
+    },
+    {
+      "label": "targetLinePairs",
+      "value": 20,
+      "unit": null,
+      "direction": null
+    },
+    {
+      "label": "atomsCorruptionRealBetterThanMedian",
+      "value": 1,
+      "unit": null,
+      "direction": null
+    },
+    {
+      "label": "evaCorruptionRealBetterThanMedian",
+      "value": 0.9474,
+      "unit": null,
+      "direction": null
+    }
+  ]
 }

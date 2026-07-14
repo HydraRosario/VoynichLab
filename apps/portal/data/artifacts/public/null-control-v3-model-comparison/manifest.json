@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.0",
+  "schemaVersion": "2.0",
   "id": "null-control-v3-model-comparison",
   "title": "NULL-CONTROL-V3 Full Frame vs Local Context",
   "status": "published",
@@ -12,6 +12,15 @@
     "Same ATOMS annotation source",
     "Does not evaluate alternate grammar definitions"
   ],
+  "trainFolios": [
+    "f1r",
+    "f1v",
+    "f47v"
+  ],
+  "testFolios": [
+    "f2r",
+    "f2v"
+  ],
   "commit": "c1bd90e8e8cb64f2b5bc9c72f50e62719cb533a9",
   "tag": "atoms-eva-regional-v1",
   "publishedAt": "2026-07-13",
@@ -20,5 +29,16 @@
     "npm.cmd run null-control:v3:diagnostics"
   ],
   "reportPath": "GrammarDiscoveryLab/out/null-control-v3/NULL-CONTROL-V3-MODEL-COMPARISON.md",
-  "sourceScript": "GrammarDiscoveryLab/scripts/null-control-v3-model-comparison.js"
+  "sourceScript": "GrammarDiscoveryLab/scripts/null-control-v3-model-comparison.js",
+  "generatedAt": "2026-07-14",
+  "files": [
+    "summary.md",
+    "report.md",
+    "tables/null-control-v3-opportunities.tsv"
+  ],
+  "checksums": {
+    "summary.md": "386fa6a4f08f04419630197ec7c29b598c94f7497a1e30101a0882a52aa4278c",
+    "report.md": "871aeca51b8a1a23a5e6eb042ec2e8073e7c6591726669ddf25e143c09fcead7",
+    "tables/null-control-v3-opportunities.tsv": "db342e92dee8973e75efb809c92d9202d80aa4e7d351d55e235cc06d82b234f8"
+  }
 }

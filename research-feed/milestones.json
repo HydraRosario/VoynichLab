@@ -102,7 +102,7 @@
     "summary": "Protocol, models, metrics, and interpretation rules were frozen publicly before completion of the next annotated folio.",
     "type": "registry",
     "tag": "prospective-atoms-eva-test-v1-preregistered",
-    "commit": "pending",
+    "commit": "aa016af6bcae96c7d02f8196a93558f626659f9d",
     "sequenceIndex": 7,
     "links": [
       {
@@ -118,7 +118,7 @@
     "summary": "The preregistered f3r test replicated the ATOMS advantage over EVA under frozen local-context metrics.",
     "type": "comparison",
     "tag": "prospective-atoms-eva-test-v1",
-    "commit": "pending",
+    "commit": "8137d72d5b979d296f6def65b87f1cca1f48288a",
     "sequenceIndex": 8,
     "links": [
       {

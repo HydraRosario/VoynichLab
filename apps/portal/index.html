@@ -3,93 +3,126 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>VoynichLab</title>
-    <meta name="description" content="VoynichLab public portal: ATOMS-V1, EVA comparison, structural experiments, and reproducible research artifacts.">
+    <title>VoynichLab — Open Voynich Observatory</title>
+    <meta name="description" content="VoynichLab: stroke-level annotations, ATOMS-V1 experiments, EVA comparisons, reproducible research. No decipherment claimed.">
     <link rel="stylesheet" href="./styles.css">
   </head>
   <body>
     <header class="topbar">
-      <a class="brand" href="#top" aria-label="VoynichLab home">
-        <span class="brand-mark" aria-hidden="true">VL</span>
-        <span>
-          <strong>VoynichLab</strong>
-          <small>Open computational observatory</small>
-        </span>
+      <a class="brand" href="#top">
+        <span class="brand-mark">VL</span>
+        <span><strong>VoynichLab</strong><small>Open computational observatory</small></span>
       </a>
-      <nav class="nav" aria-label="Primary">
-        <a href="#research">Research</a>
+      <nav class="nav">
+        <a href="#howto">How to read</a>
+        <a href="#atoms">ATOMS</a>
+        <a href="#evidence">Evidence</a>
         <a href="#experiments">Experiments</a>
-        <a href="#atoms">ATOMS-V1</a>
-        <a href="#tools">Tools</a>
+        <a href="#research">Timeline</a>
         <a href="#releases">Releases</a>
         <a href="#reproduce">Reproduce</a>
       </nav>
+      <div class="mode-toggle">
+        <button id="reader-toggle" class="mode-btn active">Reader</button>
+        <button id="research-toggle" class="mode-btn">Research</button>
+      </div>
     </header>
 
-    <main id="top">
-      <section class="dashboard" aria-labelledby="dashboard-title">
+    <main>
+      <!-- DASHBOARD -->
+      <section class="dashboard">
         <div class="dashboard-copy">
-          <p class="eyebrow">First preregistered prospective replication</p>
-          <h1 id="dashboard-title">ATOMS beat EVA again on f3r under frozen rules.</h1>
-          <p class="lead">VoynichLab publishes stroke-level annotations, ATOMS-V1 experiments, EVA comparisons, negative controls, and reproducible scripts without claiming decipherment.</p>
-          <div class="action-row" aria-label="Primary actions">
-            <a class="button primary" href="#experiments">View results</a>
-            <a class="button" href="#research">Read timeline</a>
-            <a class="button" href="https://github.com/HydraRosario/VoynichLab">Open the source repository</a>
-          </div>
-          <div class="deploy-status" aria-label="Deployment status">
-            <span>Deployment status</span>
-            <a href="https://vercel.com/new">Vercel project pending</a>
+          <p class="eyebrow">Preregistered prospective replication</p>
+          <h1>ATOMS beat EVA again on f3r under frozen rules.</h1>
+          <p class="lead">VoynichLab publishes stroke-level annotations, ATOMS-V1 experiments, EVA comparisons, negative controls, and reproducible scripts — without claiming decipherment.</p>
+          <div class="action-row">
+            <a class="button primary" href="#evidence">Browse evidence</a>
+            <a class="button" href="#howto">How to read this</a>
+            <a class="button" href="https://github.com/HydraRosario/VoynichLab">Source repository</a>
           </div>
         </div>
-        <div class="live-panel" aria-label="Current result">
+        <div class="live-panel">
           <div class="panel-header">
             <span>Current result</span>
-            <strong id="current-result-title">Loading registry</strong>
+            <strong id="current-result-title">Loading</strong>
+            <span id="current-outcome"></span>
           </div>
           <dl class="metric-grid" id="current-metrics"></dl>
-          <p class="caption" id="current-result-caption">Reading versioned experiment registry.</p>
+          <p class="caption" id="current-result-caption"></p>
+          <p class="metric-definition" id="current-definition"></p>
+          <div class="callout-row" id="current-callouts"></div>
         </div>
       </section>
 
-      <section class="lab-strip" aria-label="Labs">
-        <a href="#tools" class="lab-tile">
-          <span>Dataset Creator</span>
-          <strong>Explore annotations</strong>
-        </a>
-        <a href="#experiments" class="lab-tile">
-          <span>EVA Comparison Lab</span>
-          <strong>Compare ATOMS / EVA</strong>
-        </a>
-        <a href="#experiments" class="lab-tile">
-          <span>Grammar Lab</span>
-          <strong>Inspect structural controls</strong>
-        </a>
-        <a href="#tools" class="lab-tile muted">
-          <span>Translation Lab</span>
-          <strong>Experimental hypotheses</strong>
-        </a>
+      <!-- NO DECIPHERMENT -->
+      <section class="no-decipherment">
+        <div class="decipherment-banner">
+          <h2>No decipherment claimed</h2>
+          <ul id="no-decipherment-list"></ul>
+        </div>
       </section>
 
-      <section id="research" class="section">
+      <!-- HOW TO READ -->
+      <section id="howto" class="section">
         <div class="section-heading">
-          <p class="eyebrow">Research timeline</p>
-          <h2>A public lab notebook, including results that weakened earlier claims.</h2>
+          <p class="eyebrow">How to read this</p>
+          <h2>Four steps: from ink to reproducible evidence.</h2>
         </div>
-        <ol class="timeline" id="timeline-list"></ol>
+        <div class="steps-grid" id="how-steps"></div>
+        <div class="not-claim">
+          <p><strong>What this is not:</strong> Not a translation. Not phonetics. Not proof of language. Not a replacement for paleography.</p>
+        </div>
       </section>
 
+      <!-- TRACEABILITY -->
+      <section class="section traceability-section">
+        <div class="section-heading">
+          <p class="eyebrow">Traceability chain</p>
+          <h2>Every result links back to the original ink stroke.</h2>
+        </div>
+        <div class="trace-chain" id="traceability-list"></div>
+      </section>
+
+      <!-- ATOMS VISUAL ATLAS -->
+      <section id="atoms" class="section atoms-section">
+        <div class="section-heading">
+          <p class="eyebrow">ATOMS-V1 Atlas</p>
+          <h2>Sixteen stroke labels with real examples.</h2>
+        </div>
+        <p class="atlas-note">Each card shows one of the 16 ATOMS symbols. Click to see up to 12 real examples from the manuscript. These are structural labels, not letters.</p>
+        <div class="atom-grid" id="atom-grid"></div>
+      </section>
+
+      <!-- ATOM MODAL -->
+      <div id="atom-modal" class="modal-overlay" onclick="if(event.target===this)closeAtomModal()">
+        <div class="modal-content" id="atom-modal-content"></div>
+      </div>
+
+      <!-- EVIDENCE BROWSER -->
+      <section id="evidence" class="section evidence-section">
+        <div class="section-heading">
+          <p class="eyebrow">Evidence browser</p>
+          <h2>Ten curated cases that explain the research.</h2>
+        </div>
+        <p class="atlas-note">Each case shows a specific observation: a grammar pattern, a model comparison, a negative control, or a hypothesis seed.</p>
+        <div class="evidence-layout">
+          <aside class="evidence-list" id="evidence-list"></aside>
+          <article class="evidence-detail" id="evidence-detail"><p>Select a case</p></article>
+        </div>
+      </section>
+
+      <!-- EXPERIMENTS -->
       <section id="experiments" class="section">
         <div class="section-heading">
           <p class="eyebrow">Experiments</p>
           <h2>Held-out comparisons, null controls, and ablations.</h2>
         </div>
         <div class="experiment-layout">
-          <aside class="selector-panel" aria-label="Experiment selector">
+          <aside class="selector-panel">
             <label for="experiment-select">Experiment</label>
             <select id="experiment-select"></select>
           </aside>
-          <article class="experiment-panel" aria-live="polite">
+          <article class="experiment-panel">
             <div class="panel-header">
               <span id="experiment-kind">Experiment</span>
               <strong id="experiment-title"></strong>
@@ -103,14 +136,40 @@
         </div>
       </section>
 
-      <section id="atoms" class="section atoms-section">
+      <!-- NEGATIVE RESULTS -->
+      <section class="section negative-section">
         <div class="section-heading">
-          <p class="eyebrow">ATOMS-V1</p>
-          <h2>Sixteen fixed stroke labels used by the current public experiments.</h2>
+          <p class="eyebrow">What weakened earlier claims</p>
+          <h2>Negative and inconclusive results are not hidden.</h2>
         </div>
-        <div class="atom-grid" id="atom-grid" aria-label="ATOMS-V1 inventory"></div>
+        <div class="negative-grid" id="negative-cards"></div>
       </section>
 
+      <!-- RESEARCH TIMELINE -->
+      <section id="research" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Research timeline</p>
+          <h2>A public lab notebook, including results that weakened earlier claims.</h2>
+        </div>
+        <ol class="timeline" id="timeline-list"></ol>
+      </section>
+
+      <!-- PAPER -->
+      <section id="paper" class="section paper-section">
+        <div class="section-heading">
+          <p class="eyebrow">Paper workspace</p>
+          <h2>Claims, outline, figures, literature map, and novelty matrix.</h2>
+        </div>
+        <div class="paper-links">
+          <a href="https://github.com/HydraRosario/VoynichLab/blob/main/paper/CLAIMS.md">Claims</a>
+          <a href="https://github.com/HydraRosario/VoynichLab/blob/main/paper/OUTLINE.md">Outline</a>
+          <a href="https://github.com/HydraRosario/VoynichLab/blob/main/paper/FIGURES.md">Figures</a>
+          <a href="https://github.com/HydraRosario/VoynichLab/blob/main/paper/LITERATURE.md">Literature</a>
+          <a href="https://github.com/HydraRosario/VoynichLab/blob/main/paper/NOVELTY-MATRIX.md">Novelty matrix</a>
+        </div>
+      </section>
+
+      <!-- TOOLS -->
       <section id="tools" class="section">
         <div class="section-heading">
           <p class="eyebrow">Tools</p>
@@ -124,7 +183,7 @@
           </article>
           <article class="tool-card">
             <h3>EVA Comparison Lab</h3>
-            <p>Entropy, pattern, morphology, visual snapshot, and ATOMS/EVA comparison reports from the current labeled corpus.</p>
+            <p>Entropy, morphology, visual snapshots, and ATOMS/EVA comparison reports from the labeled corpus.</p>
             <a href="https://github.com/HydraRosario/VoynichLab/blob/main/EVAComparisonLab/cases/FINAL-COMPLETE-REPORT.md">View report</a>
           </article>
           <article class="tool-card">
@@ -140,28 +199,16 @@
         </div>
       </section>
 
-      <section id="paper" class="section paper-section">
-        <div class="section-heading">
-          <p class="eyebrow">Paper workspace</p>
-          <h2>Claims, outline, figures, literature map, and novelty matrix.</h2>
-        </div>
-        <div class="paper-links">
-          <a href="https://github.com/HydraRosario/VoynichLab/blob/main/paper/CLAIMS.md">Claims</a>
-          <a href="https://github.com/HydraRosario/VoynichLab/blob/main/paper/OUTLINE.md">Outline</a>
-          <a href="https://github.com/HydraRosario/VoynichLab/blob/main/paper/FIGURES.md">Figures</a>
-          <a href="https://github.com/HydraRosario/VoynichLab/blob/main/paper/LITERATURE.md">Literature</a>
-          <a href="https://github.com/HydraRosario/VoynichLab/blob/main/paper/NOVELTY-MATRIX.md">Novelty matrix</a>
-        </div>
-      </section>
-
+      <!-- RELEASES -->
       <section id="releases" class="section releases-section">
         <div class="section-heading">
           <p class="eyebrow">Releases</p>
-          <h2>Public anchors: commits, tags, and reproducible checkpoints.</h2>
+          <h2>Public anchors: commits, tags, and checkpoints.</h2>
         </div>
         <div class="release-grid" id="release-grid"></div>
       </section>
 
+      <!-- REPRODUCE -->
       <section id="reproduce" class="section reproduce-section">
         <div class="section-heading">
           <p class="eyebrow">Reproducibility</p>
