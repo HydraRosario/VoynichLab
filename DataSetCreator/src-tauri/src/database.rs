@@ -164,6 +164,28 @@ fn create_tables(conn: &Connection) -> Result<(), Box<dyn std::error::Error>> {
             updated_at          TEXT DEFAULT (datetime('now'))
         );
 
+        CREATE TABLE IF NOT EXISTS particle_atom_order_overrides (
+            id                    INTEGER PRIMARY KEY AUTOINCREMENT,
+            image_id              INTEGER NOT NULL REFERENCES images(id) ON DELETE CASCADE,
+            particle_atom_key     TEXT NOT NULL,
+            ordered_atom_ids_json TEXT NOT NULL,
+            sample_particle_id    TEXT,
+            created_at            TEXT DEFAULT (datetime('now')),
+            updated_at            TEXT DEFAULT (datetime('now')),
+            UNIQUE(image_id, particle_atom_key)
+        );
+
+        CREATE TABLE IF NOT EXISTS molecule_particle_order_overrides (
+            id                         INTEGER PRIMARY KEY AUTOINCREMENT,
+            image_id                   INTEGER NOT NULL REFERENCES images(id) ON DELETE CASCADE,
+            molecule_atom_key          TEXT NOT NULL,
+            ordered_particle_keys_json TEXT NOT NULL,
+            sample_molecule_id         TEXT,
+            created_at                 TEXT DEFAULT (datetime('now')),
+            updated_at                 TEXT DEFAULT (datetime('now')),
+            UNIQUE(image_id, molecule_atom_key)
+        );
+
         CREATE TABLE IF NOT EXISTS particle_merge_patterns (
             id                 INTEGER PRIMARY KEY AUTOINCREMENT,
             signature_key      TEXT NOT NULL UNIQUE,
@@ -218,6 +240,8 @@ fn create_tables(conn: &Connection) -> Result<(), Box<dyn std::error::Error>> {
             ON molecule_gap_overrides(image_id, left_particle_index, right_particle_index);
         CREATE INDEX IF NOT EXISTS idx_particle_order_patterns_signature ON particle_order_patterns(signature_key);
         CREATE INDEX IF NOT EXISTS idx_molecule_order_patterns_signature ON molecule_order_patterns(signature_key);
+        CREATE INDEX IF NOT EXISTS idx_particle_atom_order_overrides_image ON particle_atom_order_overrides(image_id);
+        CREATE INDEX IF NOT EXISTS idx_molecule_particle_order_overrides_image ON molecule_particle_order_overrides(image_id);
         CREATE INDEX IF NOT EXISTS idx_particle_merge_patterns_signature ON particle_merge_patterns(signature_key);
         CREATE INDEX IF NOT EXISTS idx_particle_row_guides_image ON particle_row_guides(image_id);
         CREATE INDEX IF NOT EXISTS idx_particle_row_overrides_image ON particle_row_overrides(image_id);
@@ -1701,8 +1725,50 @@ pub fn set_particle_atom_order(
     particle_id: &str,
     atom_ids: &[i64],
 ) -> Result<AtomPagePacket, String> {
+    learn_particle_atom_order_override(conn, image_id, particle_id, atom_ids)?;
     learn_particle_atom_order_pattern(conn, image_id, particle_id, atom_ids)?;
     recalculate_molecules(conn, image_id)
+}
+
+fn learn_particle_atom_order_override(
+    conn: &Connection,
+    image_id: i64,
+    particle_id: &str,
+    atom_ids: &[i64],
+) -> Result<(), String> {
+    if atom_ids.is_empty() {
+        return Err("La particula no puede quedar sin atomos.".to_string());
+    }
+
+    let current_atoms = list_atoms_for_image(conn, image_id)?
+        .into_iter()
+        .filter(|atom| atom.particle_id.as_deref() == Some(particle_id))
+        .collect::<Vec<_>>();
+    if current_atoms.len() != atom_ids.len() {
+        return Err("El orden enviado no coincide con los atomos de la particula.".to_string());
+    }
+
+    let current_ids = current_atoms.iter().map(|atom| atom.id).collect::<std::collections::HashSet<_>>();
+    let requested_ids = atom_ids.iter().copied().collect::<std::collections::HashSet<_>>();
+    if current_ids != requested_ids {
+        return Err("Solo se puede ordenar atomos que pertenecen a esa particula.".to_string());
+    }
+
+    let particle_atom_key = atom_id_key(atom_ids);
+    let ordered_atom_ids_json = serde_json::to_string(atom_ids).map_err(|e| e.to_string())?;
+    conn.execute(
+        "INSERT INTO particle_atom_order_overrides (
+            image_id, particle_atom_key, ordered_atom_ids_json, sample_particle_id, updated_at
+         ) VALUES (?1, ?2, ?3, ?4, datetime('now'))
+         ON CONFLICT(image_id, particle_atom_key) DO UPDATE SET
+            ordered_atom_ids_json = excluded.ordered_atom_ids_json,
+            sample_particle_id = excluded.sample_particle_id,
+            updated_at = datetime('now')",
+        params![image_id, particle_atom_key, ordered_atom_ids_json, particle_id],
+    )
+    .map_err(|e| e.to_string())?;
+
+    Ok(())
 }
 
 fn learn_particle_atom_order_pattern(
@@ -1744,6 +1810,24 @@ fn learn_particle_atom_order_pattern(
         .collect::<Vec<_>>();
     let ordered_tokens_json = serde_json::to_string(&ordered_tokens).map_err(|e| e.to_string())?;
 
+    let existing = conn
+        .query_row(
+            "SELECT ordered_tokens_json FROM particle_order_patterns WHERE signature_key = ?1",
+            params![signature_key],
+            |row| row.get::<_, String>(0),
+        )
+        .ok();
+    if let Some(existing_json) = existing {
+        if existing_json != ordered_tokens_json {
+            conn.execute(
+                "DELETE FROM particle_order_patterns WHERE signature_key = ?1",
+                params![signature_key],
+            )
+            .map_err(|e| e.to_string())?;
+            return Ok(());
+        }
+    }
+
     conn.execute(
         "INSERT INTO particle_order_patterns (
             signature_key, ordered_tokens_json, sample_image_id, sample_particle_id, updated_at
@@ -1766,8 +1850,67 @@ pub fn set_molecule_particle_order(
     molecule_id: &str,
     particle_ids: &[String],
 ) -> Result<AtomPagePacket, String> {
+    learn_molecule_particle_order_override(conn, image_id, molecule_id, particle_ids)?;
     learn_molecule_particle_order_pattern(conn, image_id, molecule_id, particle_ids)?;
     recalculate_molecules(conn, image_id)
+}
+
+fn learn_molecule_particle_order_override(
+    conn: &Connection,
+    image_id: i64,
+    molecule_id: &str,
+    particle_ids: &[String],
+) -> Result<(), String> {
+    if particle_ids.is_empty() {
+        return Err("La molecula no puede quedar sin particulas.".to_string());
+    }
+
+    let current_particles = list_particles_for_image(conn, image_id)?
+        .into_iter()
+        .filter(|particle| particle.molecule_id == molecule_id)
+        .collect::<Vec<_>>();
+    if current_particles.len() != particle_ids.len() {
+        return Err("El orden enviado no coincide con las particulas de la molecula.".to_string());
+    }
+
+    let current_ids = current_particles
+        .iter()
+        .map(|particle| particle.particle_id.clone())
+        .collect::<std::collections::HashSet<_>>();
+    let requested_ids = particle_ids.iter().cloned().collect::<std::collections::HashSet<_>>();
+    if current_ids != requested_ids {
+        return Err("Solo se puede ordenar particulas que pertenecen a esa molecula.".to_string());
+    }
+
+    let atoms = list_atoms_for_image(conn, image_id)?;
+    let particles_by_id = current_particles
+        .into_iter()
+        .map(|particle| (particle.particle_id.clone(), particle))
+        .collect::<HashMap<_, _>>();
+    let molecule_atom_key = molecule_atom_key_for_particles(&atoms, particles_by_id.values());
+    let ordered_particle_keys = particle_ids
+        .iter()
+        .filter_map(|particle_id| particles_by_id.get(particle_id))
+        .map(|particle| particle_atom_key_for_particle(&atoms, particle))
+        .collect::<Vec<_>>();
+    if ordered_particle_keys.len() != particle_ids.len() {
+        return Err("No pude resolver las particulas de la molecula.".to_string());
+    }
+    let ordered_particle_keys_json = serde_json::to_string(&ordered_particle_keys).map_err(|e| e.to_string())?;
+
+    conn.execute(
+        "INSERT INTO molecule_particle_order_overrides (
+            image_id, molecule_atom_key, ordered_particle_keys_json, sample_molecule_id, updated_at
+         ) VALUES (?1, ?2, ?3, ?4, datetime('now'))
+         ON CONFLICT(image_id, molecule_atom_key) DO UPDATE SET
+            ordered_particle_keys_json = excluded.ordered_particle_keys_json,
+            sample_molecule_id = excluded.sample_molecule_id,
+            updated_at = datetime('now')",
+        params![image_id, molecule_atom_key, ordered_particle_keys_json, molecule_id],
+    )
+    .map_err(|e| e.to_string())?;
+
+    Ok(())
 }
 
 fn learn_molecule_particle_order_pattern(
@@ -1815,6 +1958,24 @@ fn learn_molecule_particle_order_pattern(
     );
     let ordered_tokens_json = serde_json::to_string(&ordered_tokens).map_err(|e| e.to_string())?;
 
+    let existing = conn
+        .query_row(
+            "SELECT ordered_tokens_json FROM molecule_order_patterns WHERE signature_key = ?1",
+            params![signature_key],
+            |row| row.get::<_, String>(0),
+        )
+        .ok();
+    if let Some(existing_json) = existing {
+        if existing_json != ordered_tokens_json {
+            conn.execute(
+                "DELETE FROM molecule_order_patterns WHERE signature_key = ?1",
+                params![signature_key],
+            )
+            .map_err(|e| e.to_string())?;
+            return Ok(());
+        }
+    }
+
     conn.execute(
         "INSERT INTO molecule_order_patterns (
             signature_key, ordered_tokens_json, sample_image_id, sample_molecule_id, updated_at
@@ -1843,9 +2004,11 @@ pub fn set_order_drafts_batch(
 
     let tx = conn.transaction().map_err(|e| e.to_string())?;
     for draft in particle_atom_orders {
+        learn_particle_atom_order_override(&tx, image_id, &draft.particle_id, &draft.atom_ids)?;
         learn_particle_atom_order_pattern(&tx, image_id, &draft.particle_id, &draft.atom_ids)?;
     }
     for draft in molecule_particle_orders {
+        learn_molecule_particle_order_override(&tx, image_id, &draft.molecule_id, &draft.particle_ids)?;
         learn_molecule_particle_order_pattern(&tx, image_id, &draft.molecule_id, &draft.particle_ids)?;
     }
     tx.commit().map_err(|e| e.to_string())?;
@@ -1985,6 +2148,58 @@ fn molecule_order_patterns(conn: &Connection) -> Result<HashMap<String, Vec<Stri
         }
     }
     Ok(patterns)
+}
+
+fn particle_atom_order_overrides(conn: &Connection, image_id: i64) -> Result<HashMap<String, Vec<i64>>, String> {
+    let mut stmt = conn
+        .prepare(
+            "SELECT particle_atom_key, ordered_atom_ids_json
+             FROM particle_atom_order_overrides
+             WHERE image_id = ?1",
+        )
+        .map_err(|e| e.to_string())?;
+    let rows = stmt
+        .query_map(params![image_id], |row| {
+            let particle_atom_key: String = row.get(0)?;
+            let ordered_atom_ids_json: String = row.get(1)?;
+            Ok((particle_atom_key, ordered_atom_ids_json))
+        })
+        .map_err(|e| e.to_string())?;
+
+    let mut overrides = HashMap::new();
+    for row in rows {
+        let (particle_atom_key, ordered_atom_ids_json) = row.map_err(|e| e.to_string())?;
+        if let Ok(atom_ids) = serde_json::from_str::<Vec<i64>>(&ordered_atom_ids_json) {
+            overrides.insert(particle_atom_key, atom_ids);
+        }
+    }
+    Ok(overrides)
+}
+
+fn molecule_particle_order_overrides(conn: &Connection, image_id: i64) -> Result<HashMap<String, Vec<String>>, String> {
+    let mut stmt = conn
+        .prepare(
+            "SELECT molecule_atom_key, ordered_particle_keys_json
+             FROM molecule_particle_order_overrides
+             WHERE image_id = ?1",
+        )
+        .map_err(|e| e.to_string())?;
+    let rows = stmt
+        .query_map(params![image_id], |row| {
+            let molecule_atom_key: String = row.get(0)?;
+            let ordered_particle_keys_json: String = row.get(1)?;
+            Ok((molecule_atom_key, ordered_particle_keys_json))
+        })
+        .map_err(|e| e.to_string())?;
+
+    let mut overrides = HashMap::new();
+    for row in rows {
+        let (molecule_atom_key, ordered_particle_keys_json) = row.map_err(|e| e.to_string())?;
+        if let Ok(particle_keys) = serde_json::from_str::<Vec<String>>(&ordered_particle_keys_json) {
+            overrides.insert(molecule_atom_key, particle_keys);
+        }
+    }
+    Ok(overrides)
 }
 
 #[derive(Debug, Clone)]
@@ -2200,6 +2415,35 @@ fn apply_particle_order_pattern(atoms: &mut Vec<Atom>, patterns: &HashMap<String
     *atoms = ranked_atoms.into_iter().map(|(_, atom)| atom).collect();
 }
 
+fn apply_particle_atom_order_override(atoms: &mut Vec<Atom>, overrides: &HashMap<String, Vec<i64>>) -> bool {
+    let key = atom_id_key_from_atoms(atoms.iter());
+    let Some(ordered_atom_ids) = overrides.get(&key) else {
+        return false;
+    };
+    if ordered_atom_ids.len() != atoms.len() {
+        return false;
+    }
+
+    let atom_ids = atoms.iter().map(|atom| atom.id).collect::<std::collections::HashSet<_>>();
+    let override_ids = ordered_atom_ids.iter().copied().collect::<std::collections::HashSet<_>>();
+    if atom_ids != override_ids {
+        return false;
+    }
+
+    let mut ranks = HashMap::new();
+    for (index, atom_id) in ordered_atom_ids.iter().enumerate() {
+        ranks.insert(*atom_id, index);
+    }
+    atoms.sort_by(|a, b| {
+        ranks
+            .get(&a.id)
+            .unwrap_or(&usize::MAX)
+            .cmp(ranks.get(&b.id).unwrap_or(&usize::MAX))
+            .then_with(|| a.anchor_x.partial_cmp(&b.anchor_x).unwrap_or(std::cmp::Ordering::Equal))
+    });
+    true
+}
+
 fn apply_molecule_order_pattern(
     particle_indexes: &mut Vec<usize>,
     atoms: &[Atom],
@@ -2254,6 +2498,50 @@ fn apply_molecule_order_pattern(
         .into_iter()
         .map(|(_, particle_index)| particle_index)
         .collect();
+}
+
+fn apply_molecule_particle_order_override(
+    particle_indexes: &mut Vec<usize>,
+    atoms: &[Atom],
+    particle_groups: &[Vec<usize>],
+    overrides: &HashMap<String, Vec<String>>,
+) -> bool {
+    let molecule_atom_key = molecule_atom_key_for_groups(atoms, particle_indexes, particle_groups);
+    let Some(ordered_particle_keys) = overrides.get(&molecule_atom_key) else {
+        return false;
+    };
+    if ordered_particle_keys.len() != particle_indexes.len() {
+        return false;
+    }
+
+    let mut ranks: HashMap<String, VecDeque<usize>> = HashMap::new();
+    for (index, key) in ordered_particle_keys.iter().enumerate() {
+        ranks.entry(key.clone()).or_default().push_back(index);
+    }
+
+    let mut ranked_particles = particle_indexes
+        .iter()
+        .copied()
+        .map(|particle_index| {
+            let key = particle_atom_key_for_group(atoms, &particle_groups[particle_index]);
+            let rank = ranks
+                .get_mut(&key)
+                .and_then(|positions| positions.pop_front())
+                .unwrap_or(usize::MAX);
+            (rank, particle_index)
+        })
+        .collect::<Vec<_>>();
+
+    if ranked_particles.iter().any(|(rank, _)| *rank == usize::MAX) {
+        return false;
+    }
+
+    ranked_particles.sort_by(|a, b| a.0.cmp(&b.0).then_with(|| a.1.cmp(&b.1)));
+    *particle_indexes = ranked_particles
+        .into_iter()
+        .map(|(_, particle_index)| particle_index)
+        .collect();
+    true
 }
 
 fn particle_signature_key(atoms: &[Atom]) -> String {
@@ -2326,6 +2614,56 @@ fn particle_signature_key_for_particle(atoms: &[Atom], particle: &Particle) -> S
             .then_with(|| a.anchor_x.partial_cmp(&b.anchor_x).unwrap_or(std::cmp::Ordering::Equal))
     });
     particle_signature_key(&particle_atoms)
+}
+
+fn atom_id_key(atom_ids: &[i64]) -> String {
+    let mut ids = atom_ids.to_vec();
+    ids.sort();
+    ids.iter().map(|id| id.to_string()).collect::<Vec<_>>().join("+")
+}
+
+fn atom_id_key_from_atoms<'a>(atoms: impl Iterator<Item = &'a Atom>) -> String {
+    let mut ids = atoms.map(|atom| atom.id).collect::<Vec<_>>();
+    ids.sort();
+    ids.iter().map(|id| id.to_string()).collect::<Vec<_>>().join("+")
+}
+
+fn particle_atom_key_for_group(atoms: &[Atom], particle_group: &[usize]) -> String {
+    let ids = particle_group
+        .iter()
+        .map(|atom_index| atoms[*atom_index].id)
+        .collect::<Vec<_>>();
+    atom_id_key(&ids)
+}
+
+fn particle_atom_key_for_particle(atoms: &[Atom], particle: &Particle) -> String {
+    let ids = atoms
+        .iter()
+        .filter(|atom| atom.particle_id.as_deref() == Some(particle.particle_id.as_str()))
+        .map(|atom| atom.id)
+        .collect::<Vec<_>>();
+    atom_id_key(&ids)
+}
+
+fn molecule_atom_key_for_groups(atoms: &[Atom], particle_indexes: &[usize], particle_groups: &[Vec<usize>]) -> String {
+    let ids = particle_indexes
+        .iter()
+        .flat_map(|particle_index| particle_groups[*particle_index].iter())
+        .map(|atom_index| atoms[*atom_index].id)
+        .collect::<Vec<_>>();
+    atom_id_key(&ids)
+}
+
+fn molecule_atom_key_for_particles<'a>(atoms: &[Atom], particles: impl Iterator<Item = &'a Particle>) -> String {
+    let particle_ids = particles
+        .map(|particle| particle.particle_id.as_str())
+        .collect::<std::collections::HashSet<_>>();
+    let ids = atoms
+        .iter()
+        .filter(|atom| atom.particle_id.as_deref().is_some_and(|particle_id| particle_ids.contains(particle_id)))
+        .map(|atom| atom.id)
+        .collect::<Vec<_>>();
+    atom_id_key(&ids)
 }
 
 fn molecule_signature_key_from_particle_tokens(tokens: &[String]) -> String {
@@ -2540,6 +2878,8 @@ fn recalculate_molecules_tx(conn: &Connection, image_id: i64) -> Result<(), Stri
     let overrides = molecule_gap_overrides_for_image(conn, image_id)?;
     let particle_order_patterns = particle_order_patterns(conn)?;
     let molecule_order_patterns = molecule_order_patterns(conn)?;
+    let particle_atom_order_overrides = particle_atom_order_overrides(conn, image_id)?;
+    let molecule_particle_order_overrides = molecule_particle_order_overrides(conn, image_id)?;
     let molecule_groups = row_segmented_particle_groups(&atoms, &particle_groups, molecule_gap_threshold, &overrides, &row_guides, &row_overrides);
     for (group_index, particle_group_indexes) in molecule_groups.iter().enumerate() {
         let mut molecule_atoms = particle_group_indexes
@@ -2582,12 +2922,19 @@ fn recalculate_molecules_tx(conn: &Connection, image_id: i64) -> Result<(), Stri
                 .unwrap_or(std::cmp::Ordering::Equal)
                 .then_with(|| bounds_a.x.partial_cmp(&bounds_b.x).unwrap_or(std::cmp::Ordering::Equal))
         });
-        apply_molecule_order_pattern(
+        if !apply_molecule_particle_order_override(
             &mut ordered_particles,
             &atoms,
             &particle_groups,
-            &molecule_order_patterns,
-        );
+            &molecule_particle_order_overrides,
+        ) {
+            apply_molecule_order_pattern(
+                &mut ordered_particles,
+                &atoms,
+                &particle_groups,
+                &molecule_order_patterns,
+            );
+        }
 
         for (particle_index, particle_group_index) in ordered_particles.iter().enumerate() {
             let mut particle_atoms = particle_groups[*particle_group_index]
@@ -2595,7 +2942,9 @@ fn recalculate_molecules_tx(conn: &Connection, image_id: i64) -> Result<(), Stri
                 .map(|index| atoms[*index].clone())
                 .collect::<Vec<_>>();
             sort_atoms_for_molecule(&mut particle_atoms);
-            apply_particle_order_pattern(&mut particle_atoms, &particle_order_patterns);
+            if !apply_particle_atom_order_override(&mut particle_atoms, &particle_atom_order_overrides) {
+                apply_particle_order_pattern(&mut particle_atoms, &particle_order_patterns);
+            }
 
             let particle_id = format!("{molecule_id}-p{}", particle_index + 1);
             let particle_bounds = atom_bounds(&particle_atoms);
