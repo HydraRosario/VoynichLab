@@ -15,7 +15,7 @@ This manual exists to keep future labeling reproducible. Statistical rules disco
 - Frozen public corpus: `../research/frozen/CORPUS-V2-AUDITED`.
 - Regenerated local cases: `cases/*-current`.
 - Regenerated local snapshot root: `artifacts/visual-snapshots/current`.
-- Known anomalies: `cases/known-labeling-anomalies.tsv`.
+- Known anomalies: `../research/audits/known-labeling-anomalies.tsv`.
 
 ## Active Symbols
 
@@ -66,7 +66,7 @@ Some rare orderings are kept as known anomalies after visual inspection. They sh
 Maintain them in:
 
 ```text
-cases/known-labeling-anomalies.tsv
+../research/audits/known-labeling-anomalies.tsv
 ```
 
 Use stable `atom_ids`, not molecule IDs, because molecule numbering can change after recalculation.

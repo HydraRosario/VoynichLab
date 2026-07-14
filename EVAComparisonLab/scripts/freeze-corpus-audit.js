@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 import {
   atomSort,
@@ -14,6 +15,8 @@ import {
 } from "./atom-sequence-utils.js";
 
 const args = parseArgs(process.argv.slice(2));
+const scriptDir = path.dirname(fileURLToPath(import.meta.url));
+const repoRoot = path.resolve(scriptDir, "..", "..");
 
 if (args.help) {
   printHelp();
@@ -25,7 +28,7 @@ const images = String(args.images ?? "page-003.jpg,page-004.jpg,page-094.jpg")
   .map((value) => value.trim())
   .filter(Boolean);
 const outDir = path.resolve(args.out_dir ?? "cases/freeze-audit-current");
-const knownAnomaliesPath = path.resolve(args.known_anomalies ?? "cases/known-labeling-anomalies.tsv");
+const knownAnomaliesPath = path.resolve(args.known_anomalies ?? path.join(repoRoot, "research", "audits", "known-labeling-anomalies.tsv"));
 const known = readKnownAnomalies(knownAnomaliesPath);
 
 const db = openDatasetDb(args.db ?? defaultDatasetCreatorDbPath());

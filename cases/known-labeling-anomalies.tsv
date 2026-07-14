@@ -1,6 +1,0 @@
-atom_ids	status	note
-2429 2430 2421 2422	valid	img3-m86-p1 inspected manually; current atom order is valid despite rare local window.
-2430 2421 2422	valid	img3-m86-p1 inspected manually; current atom order is valid despite rare local window.
-7433 7187 7115	valid	img7-m29-p3 full particle is a:1 c:2 b:1 c:2 a:1; local window is misleading inside repeated/symmetric particle.
-3660 1066 1068 1067 1071 1074 1070	valid	img3-m4 inspected manually; molecule particle order is valid despite rare inventory order.
-6019 6161 6467 6493 5848 6433 5849	valid	img5-m51 inspected manually; molecule particle order is valid despite rare inventory order.

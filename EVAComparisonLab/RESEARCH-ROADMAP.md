@@ -21,7 +21,7 @@ Translation and romanization remain deferred until the token inventory survives 
 - Frozen public corpus: `../research/frozen/CORPUS-V2-AUDITED`.
 - Published reports: `../artifacts/public`.
 - Regenerated local cases: `cases/*-current`.
-- Known anomalies: `cases/known-labeling-anomalies.tsv`.
+- Known anomalies: `../research/audits/known-labeling-anomalies.tsv`.
 - Regenerated local visual exports: `artifacts/visual-snapshots/current`.
 
 ## Research Layers

@@ -10,7 +10,7 @@ The repository is in much better shape after the recent cleanup campaign. The tr
 
 Current tracked file count: 525.
 
-Main remaining issue: the repo still has a few places where scientific source-of-truth boundaries are blurry. The most important one is the known-anomaly ledger split between root `cases/` and `EVAComparisonLab/cases/`.
+Main remaining issue: the repo still has a few places where scientific source-of-truth boundaries are blurry. The first concrete example was the known-anomaly ledger split between root `cases/` and `EVAComparisonLab/cases/`; that split has now been consolidated into `research/audits/known-labeling-anomalies.tsv`.
 
 ## What Was Checked
 
@@ -33,17 +33,17 @@ Tracked files by top-level area:
 | Area | Files | Status |
 |---|---:|---|
 | `apps` | 110 | Active portal and generated portal data |
-| `EVAComparisonLab` | 97 | Active research lab plus historical freeze |
+| `EVAComparisonLab` | 96 | Active research lab plus historical freeze |
 | `artifacts` | 96 | Public research artifacts |
 | `TranslationLab` | 66 | Speculative isolated lab |
 | `DataSetCreator` | 46 | Critical annotation app; treat as protected |
 | `GrammarDiscoveryLab` | 39 | Active/frozen grammar lab |
-| `research` | 37 | Research notes, audits, frozen V2 corpus |
-| `docs` | 8 | Governance and architecture docs |
+| `research` | 38 | Research notes, audits, frozen V2 corpus |
+| `docs` | 9 | Governance and architecture docs |
 | `research-feed` | 8 | Public milestone feed |
 | `packages` | 6 | Shared tooling |
 | `paper` | 5 | Paper planning |
-| `cases` | 2 | Shared anomaly ledgers |
+| `cases` | 1 | Shared geometry-order anomaly ledger |
 
 ## Largest Tracked Files
 
@@ -97,14 +97,14 @@ Previously, `repo:audit` and `research:validate` only scanned a narrower set of 
 
 ## Important Findings
 
-### P1: Known-Anomaly Ledgers Are Split
+### P1: Known-Anomaly Ledgers Were Split
 
-There are currently two tracked known-labeling anomaly ledgers:
+The audit found two tracked known-labeling anomaly ledgers:
 
 - `cases/known-labeling-anomalies.tsv`
 - `EVAComparisonLab/cases/known-labeling-anomalies.tsv`
 
-They are not identical, and they are both referenced by active or public code paths.
+They were not identical, and they were both referenced by active or public code paths.
 
 Root `cases/known-labeling-anomalies.tsv` is used by the Corpus V2 freeze/provenance path:
 
@@ -120,9 +120,9 @@ Root `cases/known-labeling-anomalies.tsv` is used by the Corpus V2 freeze/proven
 - `evidence-cases.json`
 - `apps/portal/data/evidence-cases.json`
 
-This is the most important repo-architecture issue found in this pass. The fix should not be a blind merge because some entries refer to the same atom windows with different statuses or historical notes.
+This was the most important repo-architecture issue found in this pass. The fix could not be a blind merge because some entries referred to the same atom windows with different statuses or historical notes.
 
-Recommended next step: create one canonical ledger under `research/audits/known-labeling-anomalies.tsv`, migrate both current ledgers into it with explicit `scope`, `status`, `source`, and `reviewed_at` columns, then update all scripts and docs to read the canonical file.
+Resolution: the active current-corpus ledger now lives at `research/audits/known-labeling-anomalies.tsv`, with explicit scope, image, molecule, particle, source, and review-date columns. Historical frozen ledgers remain only inside frozen releases.
 
 ### P1: Lab Scripts Need Classification
 
@@ -194,13 +194,15 @@ In particular, the following were intentionally left untouched:
 - Frozen V1 DB.
 - TranslationLab reference images.
 - Portal artifact mirror.
-- Split anomaly ledgers.
+- Script lifecycle classification.
 
 ## Recommended Cleanup Campaigns
 
 ### Campaign 1: Canonical Audit Ledgers
 
 Goal: one source of truth for reviewed anomalies.
+
+Status: started. The current labeling ledger is now canonicalized at `research/audits/known-labeling-anomalies.tsv`; geometry-order anomalies already live in shared `cases/known-particle-geometry-anomalies.tsv`.
 
 Steps:
 

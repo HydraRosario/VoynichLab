@@ -62,7 +62,7 @@ Leer/exportar la DB no deberia pedir permiso especial. Recalcular DatasetCreator
 El audit de errores humanos no debe repetir anomalias conocidas que ya decidimos conservar para no forzar los datos. Esos casos viven en:
 
 ```text
-cases/known-labeling-anomalies.tsv
+../research/audits/known-labeling-anomalies.tsv
 ```
 
 Cuando el audit encuentra una rareza cuyo `atom_ids` esta en ese TSV:
@@ -101,7 +101,7 @@ Senales en contra:
 - `../research/frozen/CORPUS-V2-AUDITED/`
 - `../artifacts/public/corpus-v2-audited-robustness-replay/`
 - `../artifacts/public/representation-comparison-v2-aligned/`
-- `cases/known-labeling-anomalies.tsv`
+- `../research/audits/known-labeling-anomalies.tsv`
 - `scripts/run-corpus-v2-analysis.js`
 - `scripts/export-visual-snapshots.js`
 

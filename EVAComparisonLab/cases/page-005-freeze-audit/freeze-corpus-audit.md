@@ -11,7 +11,7 @@ This report is intentionally broader than the academic metrics. It includes weak
 - Assigned labeled atoms: `937`
 - Particle sequences: `359`
 - Molecule sequences: `104`
-- Known anomalies list: `EVAComparisonLab\cases\known-labeling-anomalies.tsv`
+- Known anomalies list: `research\audits\known-labeling-anomalies.tsv`
 
 ## Summary
 

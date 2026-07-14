@@ -107,7 +107,7 @@ function isTextLikeFile(filePath) {
 function trackedTextFiles() {
   let tracked = [];
   try {
-    tracked = execSync("git ls-files", { encoding: "utf8", cwd: root })
+    tracked = execSync("git -c core.quotePath=false ls-files", { encoding: "utf8", cwd: root })
       .split(/\r?\n/)
       .filter(Boolean);
   } catch {
@@ -280,6 +280,9 @@ function validateRegistry({ strictArtifacts = true, strictPending = true } = {})
     }
   }
   for (const hit of windowsPathHits) errors.push(`absolute Windows path in ${hit}`);
+  for (const hit of nonCanonicalKnownLabelingLedgers()) {
+    errors.push(`non-canonical known-labeling anomaly ledger: ${hit}`);
+  }
 
   if (errors.length) {
     for (const error of errors) console.error(`ERROR ${error}`);
@@ -767,12 +770,42 @@ function repoAudit() {
     console.log("Possible secrets in public/source text: none detected.");
   }
 
+  const badLedgers = nonCanonicalKnownLabelingLedgers();
+  if (badLedgers.length) {
+    console.warn("WARN Non-canonical known-labeling anomaly ledgers:");
+    for (const hit of badLedgers) console.warn(`  ${hit}`);
+    process.exitCode = 1;
+  } else {
+    console.log("Known-labeling anomaly ledger location: canonical.");
+  }
+
   console.log("");
   console.log("Next safe actions:");
   console.log("  1. Keep DataSetCreator changes isolated.");
   console.log("  2. Separate generated/current outputs from source changes before committing.");
   console.log("  3. Confirm Vercel linkage before deploying the canonical portal.");
   console.log("  4. Move or delete files only after a written staging/quarantine plan.");
+}
+
+function trackedFiles() {
+  try {
+    return execSync("git -c core.quotePath=false ls-files", { encoding: "utf8", cwd: root })
+      .split(/\r?\n/)
+      .filter(Boolean)
+      .map(posixPath);
+  } catch {
+    return [];
+  }
+}
+
+function nonCanonicalKnownLabelingLedgers() {
+  const canonical = "research/audits/known-labeling-anomalies.tsv";
+  return trackedFiles().filter((file) =>
+    file.endsWith("known-labeling-anomalies.tsv")
+    && fs.existsSync(rel(file))
+    && file !== canonical
+    && !file.includes("/frozen/")
+  );
 }
 
 function printHelp() {

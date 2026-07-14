@@ -11,7 +11,7 @@ This is not an automatic correction list. It only flags cases where the current 
 - Max rare count: 1
 - Max rare ratio: 0.2
 - Learned-pattern memory included: no
-- Known anomalies list: `EVAComparisonLab\cases\known-labeling-anomalies.tsv`
+- Known anomalies list: `research\audits\known-labeling-anomalies.tsv`
 
 ## Summary
 

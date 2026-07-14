@@ -133,7 +133,7 @@ const commands = [
     "--images", currentImages,
     "--out-dir", `${combinedDir}/labeling-anomaly-audit`,
     "--include-learned-patterns",
-    "--known-anomalies", "../cases/known-labeling-anomalies.tsv",
+    "--known-anomalies", "../research/audits/known-labeling-anomalies.tsv",
   ]],
 ];
 

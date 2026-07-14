@@ -40,7 +40,7 @@
       "dominantNote": "Dominant molecule-local would be: [c:1] [f:1 j:1] [n:1] [e:1 g:1 e:1]",
       "folio": "f3r",
       "highlights": ["If we look only at molecule-local order, m50 looks like a rareza (scrambled).","But the previous molecule ends with c:1 | f:1 j:1, so the particle flow may continue.","This is a testable hypothesis, not a result. See research/notes/BOUNDARY-CONTINUITY-SEEDS.md"],
-      "reportLinks": [{"label":"Known labeling anomalies","path":"EVAComparisonLab/cases/known-labeling-anomalies.tsv"}]
+      "reportLinks": [{"label":"Known labeling anomalies","path":"research/audits/known-labeling-anomalies.tsv"}]
     },
     {
       "id": "atoms-strong-win",
@@ -79,7 +79,7 @@
       "folio": "f2r",
       "atomId": 5493,
       "highlights": ["Atom 5493 was flagged by automated audit as a potential labeling anomaly.","Manual visual inspection confirmed the label is correct.","The case was added to known-labeling-anomalies.tsv as known-valid.","This prevents the audit from re-flagging it, without hiding the record."],
-      "reportLinks": [{"label":"Known anomalies TSV","path":"EVAComparisonLab/cases/known-labeling-anomalies.tsv"},{"label":"Audit script","path":"EVAComparisonLab/scripts/labeling-anomaly-audit.js"}]
+      "reportLinks": [{"label":"Known anomalies TSV","path":"research/audits/known-labeling-anomalies.tsv"},{"label":"Audit script","path":"EVAComparisonLab/scripts/labeling-anomaly-audit.js"}]
     },
     {
       "id": "atom-g1-repeated",

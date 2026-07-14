@@ -51,6 +51,6 @@ A future `BOUNDARY-CONTINUITY-V1` experiment could compare:
 
 ## References
 
-- Known anomalies: `EVAComparisonLab/cases/known-labeling-anomalies.tsv`
+- Known anomalies: `research/audits/known-labeling-anomalies.tsv`
 - Molecule data: `research/frozen/CORPUS-V2-AUDITED/corpus/molecules.tsv`
 - Row structure: particle sequences grouped by `row_index`

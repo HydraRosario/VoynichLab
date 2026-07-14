@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 import {
   cleanToken,
@@ -12,6 +13,8 @@ import {
 } from "./atom-sequence-utils.js";
 
 const args = parseArgs(process.argv.slice(2));
+const scriptDir = path.dirname(fileURLToPath(import.meta.url));
+const repoRoot = path.resolve(scriptDir, "..", "..");
 
 if (args.help) {
   printHelp();
@@ -27,7 +30,7 @@ const minSupport = Number(args.min_support ?? 4);
 const maxRareCount = Number(args.max_rare_count ?? 2);
 const maxRareRatio = Number(args.max_rare_ratio ?? 0.18);
 const includeLearnedPatterns = Boolean(args.include_learned_patterns ?? args["include-learned-patterns"]);
-const knownAnomaliesPath = path.resolve(args.known_anomalies ?? "cases/known-labeling-anomalies.tsv");
+const knownAnomaliesPath = path.resolve(args.known_anomalies ?? path.join(repoRoot, "research", "audits", "known-labeling-anomalies.tsv"));
 const knownAnomalies = readKnownAnomalies(knownAnomaliesPath);
 
 const db = openDatasetDb(args.db ?? defaultDatasetCreatorDbPath());
