@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>VoynichLab - Open Voynich Observatory</title>
+    <title>VoynichLab — Open Voynich Observatory</title>
     <meta name="description" content="VoynichLab: stroke-level annotations, ATOMS-V1 experiments, EVA comparisons, reproducible research. No decipherment claimed.">
     <link rel="stylesheet" href="./styles.css">
   </head>
@@ -29,67 +29,30 @@
       </div>
     </header>
 
-    <main id="top">
+    <main>
       <!-- DASHBOARD -->
       <section class="dashboard">
         <div class="dashboard-copy">
-          <p class="eyebrow">Corpus V2 audited / public research portal</p>
-          <h1>A visual lab for testing ATOMS against EVA.</h1>
-          <p class="lead">VoynichLab turns hand-labeled manuscript strokes into auditable experiments: entropy, grammar, held-out folios, null controls, EVA comparisons, and corpus-cleanup replays.</p>
-          <div class="hero-status" aria-label="Research status">
-            <div><span>Claim</span><strong>Representation test</strong></div>
-            <div><span>Mode</span><strong>No decipherment</strong></div>
-            <div><span>State</span><strong>Corpus V2 frozen</strong></div>
-          </div>
+          <p class="eyebrow">Corpus V2 audited</p>
+          <h1>The six-folio corpus is cleaned, frozen, and replayed.</h1>
+          <p class="lead">VoynichLab publishes stroke-level annotations, ATOMS-V1 experiments, EVA comparisons, negative controls, audit ledgers, and reproducible scripts - without claiming decipherment.</p>
           <div class="action-row">
             <a class="button primary" href="#evidence">Browse evidence</a>
             <a class="button" href="#howto">How to read this</a>
             <a class="button" href="https://github.com/HydraRosario/VoynichLab">Source repository</a>
           </div>
         </div>
-        <div class="observatory-stack">
-          <figure class="hero-figure">
-            <img src="./images/la-diosa-tau.png" alt="VoynichLab illustrated mark">
-            <figcaption>
-              <span>Open artifact trail</span>
-              <strong>Ink -> ATOMS -> metrics -> reports</strong>
-            </figcaption>
-          </figure>
-          <div class="live-panel">
-            <div class="panel-header">
-              <span>Current result</span>
-              <strong id="current-result-title">Loading</strong>
-              <span id="current-outcome"></span>
-            </div>
-            <dl class="metric-grid" id="current-metrics"></dl>
-            <p class="caption" id="current-result-caption"></p>
-            <p class="metric-definition" id="current-definition"></p>
-            <div class="callout-row" id="current-callouts"></div>
+        <div class="live-panel">
+          <div class="panel-header">
+            <span>Current result</span>
+            <strong id="current-result-title">Loading</strong>
+            <span id="current-outcome"></span>
           </div>
+          <dl class="metric-grid" id="current-metrics"></dl>
+          <p class="caption" id="current-result-caption"></p>
+          <p class="metric-definition" id="current-definition"></p>
+          <div class="callout-row" id="current-callouts"></div>
         </div>
-      </section>
-
-      <section class="signal-strip" aria-label="Research spine">
-        <article>
-          <span>01</span>
-          <strong>Physical annotation</strong>
-          <p>DatasetCreator preserves the hand-labeled stroke structure used by the experiments.</p>
-        </article>
-        <article>
-          <span>02</span>
-          <strong>Matched comparison</strong>
-          <p>ATOMS and EVA are scored against the same folio regions where possible.</p>
-        </article>
-        <article>
-          <span>03</span>
-          <strong>Negative controls</strong>
-          <p>Null tests and ablations stay visible when they weaken an earlier claim.</p>
-        </article>
-        <article>
-          <span>04</span>
-          <strong>Public replay</strong>
-          <p>Reports, tables, manifests, checksums, commits, and tags anchor the result.</p>
-        </article>
       </section>
 
       <!-- CORPUS V2 -->
