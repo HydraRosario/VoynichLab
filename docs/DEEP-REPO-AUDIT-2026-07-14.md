@@ -227,6 +227,8 @@ Steps:
 
 Goal: understand the annotation engine before touching it again.
 
+Status: started. The read-only map now lives at `docs/DATASETCREATOR-ARCHITECTURE.md`.
+
 Steps:
 
 1. Document SQLite tables and migration paths.

@@ -111,6 +111,8 @@ Before any significant edit, produce or update:
 - learned-memory map;
 - manual override persistence map.
 
+Current read-only map: `docs/DATASETCREATOR-ARCHITECTURE.md`.
+
 ### `EVAComparisonLab/`
 
 This is the ATOMS/EVA comparison and corpus-audit lab.

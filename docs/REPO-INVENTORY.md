@@ -7,6 +7,8 @@ research laboratories, frozen evidence, public artifacts, and a static portal.
 For the operating model that explains how these areas may depend on each other,
 see `docs/MONOREPO-ARCHITECTURE.md`.
 
+For the protected annotation tool map, see `docs/DATASETCREATOR-ARCHITECTURE.md`.
+
 ## Top-Level Areas
 
 | Path | Role | Git policy | Cleanup risk |
