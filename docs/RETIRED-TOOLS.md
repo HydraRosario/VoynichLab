@@ -40,3 +40,22 @@ Retirement reason:
 - the old scripts referenced partial four-folio `current` paths;
 - their generated report files were intentionally removed from Git;
 - keeping them active made scratch outputs look like canonical evidence.
+
+## EVAComparisonLab Legacy DB Cleanup Scripts
+
+Status: retired during the monorepo cleanup campaign.
+
+Removed scripts:
+
+- `EVAComparisonLab/scripts/experiment-remove-j2-merges.py`
+- `EVAComparisonLab/scripts/cleanup-learning-memory.py`
+
+Retirement reason:
+
+- `experiment-remove-j2-merges.py` belonged to the historical `j:2` to `n:1`
+  transition and no longer matches the active alphabet or corpus state;
+- `cleanup-learning-memory.py` modified the live DatasetCreator database through
+  an older Python path, while the active cleanup workflow now uses
+  `learning-memory-audit.js` followed by `cleanup-stale-learning-memory.js`;
+- database-modifying tools should have one audited path with explicit dry-run,
+  backup, and apply semantics.

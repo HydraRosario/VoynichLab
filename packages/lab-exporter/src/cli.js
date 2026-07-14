@@ -283,6 +283,9 @@ function validateRegistry({ strictArtifacts = true, strictPending = true } = {})
   for (const hit of nonCanonicalKnownLabelingLedgers()) {
     errors.push(`non-canonical known-labeling anomaly ledger: ${hit}`);
   }
+  for (const script of unregisteredEvaComparisonScripts()) {
+    errors.push(`EVAComparisonLab script missing from registry: ${script}`);
+  }
 
   if (errors.length) {
     for (const error of errors) console.error(`ERROR ${error}`);
@@ -779,6 +782,15 @@ function repoAudit() {
     console.log("Known-labeling anomaly ledger location: canonical.");
   }
 
+  const unregisteredScripts = unregisteredEvaComparisonScripts();
+  if (unregisteredScripts.length) {
+    console.warn("WARN EVAComparisonLab scripts missing from registry:");
+    for (const script of unregisteredScripts) console.warn(`  ${script}`);
+    process.exitCode = 1;
+  } else {
+    console.log("EVAComparisonLab script registry: complete.");
+  }
+
   console.log("");
   console.log("Next safe actions:");
   console.log("  1. Keep DataSetCreator changes isolated.");
@@ -806,6 +818,20 @@ function nonCanonicalKnownLabelingLedgers() {
     && file !== canonical
     && !file.includes("/frozen/")
   );
+}
+
+function unregisteredEvaComparisonScripts() {
+  const scriptsDir = rel("EVAComparisonLab", "scripts");
+  const registryPath = path.join(scriptsDir, "README.md");
+  if (!fs.existsSync(scriptsDir) || !fs.existsSync(registryPath)) return [];
+  const registry = fs.readFileSync(registryPath, "utf8");
+  return fs.readdirSync(scriptsDir, { withFileTypes: true })
+    .filter((entry) => entry.isFile())
+    .map((entry) => entry.name)
+    .filter((name) => name !== "README.md")
+    .filter((name) => /\.(js|py|cjs|mjs)$/.test(name))
+    .filter((name) => !registry.includes(`\`${name}\``))
+    .map((name) => `EVAComparisonLab/scripts/${name}`);
 }
 
 function printHelp() {

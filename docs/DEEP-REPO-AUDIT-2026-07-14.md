@@ -124,9 +124,9 @@ This was the most important repo-architecture issue found in this pass. The fix 
 
 Resolution: the active current-corpus ledger now lives at `research/audits/known-labeling-anomalies.tsv`, with explicit scope, image, molecule, particle, source, and review-date columns. Historical frozen ledgers remain only inside frozen releases.
 
-### P1: Lab Scripts Need Classification
+### P1: Lab Scripts Needed Classification
 
-`EVAComparisonLab/scripts/` contains active pipeline scripts plus one-off diagnostics and historical experiments. They should be classified before deletion:
+`EVAComparisonLab/scripts/` contained active pipeline scripts plus one-off diagnostics and historical experiments. They needed classification before deletion:
 
 - `active`: used by current reproducible reports.
 - `utility`: useful manual inspection tools.
@@ -134,11 +134,7 @@ Resolution: the active current-corpus ledger now lives at `research/audits/known
 - `historical`: kept only for provenance.
 - `retired`: safe to remove after no references remain.
 
-Likely retirement candidate:
-
-- `EVAComparisonLab/scripts/experiment-remove-j2-merges.py`
-
-But it should be removed only after confirming it is not referenced in any preserved method note or reproducibility claim.
+Resolution started: `EVAComparisonLab/scripts/README.md` now classifies scripts as active, utility, audit, repair, or historical. `repo:audit` now fails if a new script appears without being listed in that registry. Two superseded DB cleanup scripts were retired: `experiment-remove-j2-merges.py` and `cleanup-learning-memory.py`.
 
 ### P1: DatasetCreator Is Protected But Needs A Read-Only Architecture Audit
 
@@ -216,6 +212,8 @@ Steps:
 ### Campaign 2: Script Registry
 
 Goal: every lab script has a declared status and owner.
+
+Status: started. `EVAComparisonLab/scripts/README.md` now provides the registry, and `repo:audit` enforces script registration.
 
 Steps:
 
