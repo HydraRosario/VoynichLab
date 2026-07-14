@@ -12,7 +12,7 @@ classes of files are currently mixed:
 - regenerated visual snapshots;
 - current lab outputs;
 - public artifact rebuilds;
-- atom-atlas examples;
+- temporary Atom Atlas examples, since retired;
 - QC/audit scratch data;
 - local Vercel state;
 - high-risk DataSetCreator changes.
@@ -26,7 +26,7 @@ This should be cleaned by campaign, not by bulk deletion.
 | Governance/source changes from this pass | `.gitignore`, `package.json`, `packages/lab-exporter/src/cli.js`, `docs/`, `REPOSITORY-GOVERNANCE.md`, `apps/portal/.gitignore` | Candidate for a small cleanup/guardrails commit |
 | High-risk DataSetCreator source | `DataSetCreator/src-tauri/src/database.rs` | Do not include in cleanup commit; audit separately |
 | Regenerated visual snapshots | `EVAComparisonLab/artifacts/visual-snapshots/current/**` | Decide whether to freeze a curated snapshot bundle or keep as local/generated |
-| Atom atlas visual examples | `atom-atlas/**` | Ignore for now; do not publish until it has a clear visual-evidence protocol |
+| Atom Atlas visual examples | `atom-atlas/**` | Retired after Corpus V2 QC; do not restore unless rebuilt as a curated visual-evidence release |
 | Public artifact rebuilds | `artifacts/public/**` | Commit only as part of a named scientific release/replay |
 | Current lab case outputs | `EVAComparisonLab/cases/*-current/**` | Promote only selected reports/tables; otherwise treat as scratch |
 | QC/audit scratch | `research/audits/**`, `research/corpus-revisions/*-WORKING/**` | Keep correction ledgers; quarantine temporary candidates |
@@ -50,14 +50,15 @@ Include only:
 - `docs/WORKTREE-TRIAGE-2026-07-14.md`
 - `apps/portal/.gitignore`
 
-Do not include DataSetCreator, snapshots, public artifacts, atom-atlas, QC
+Do not include DataSetCreator, snapshots, public artifacts, retired Atom Atlas output, QC
 outputs, or current lab cases.
 
 ### Commit 2: Portal Visual Publication
 
-Only after deciding what the public visual story should show. `atom-atlas` is
-not a standalone lab yet; if it returns, publish only a curated visual-evidence
-bundle with manifest, checksums, and a clear reason for each example.
+Only after deciding what the public visual story should show. Atom Atlas was
+retired as a temporary QC tool; if visual examples return, publish only a
+curated visual-evidence bundle with manifest, checksums, and a clear reason for
+each example.
 
 ### Commit 3: Scientific Artifact Replay
 
@@ -88,9 +89,9 @@ Only after a dedicated read-only audit of:
 - `PROJECT-SUMMARY.md` and `packages/lab-exporter/src/generate-project-summary.js`
   were removed from the working tree because they described the older five-folio
   state and were not connected to the active root scripts.
-- `atom-atlas/` is ignored for now. It was useful as a QC/review tool, but it
-  should not become public evidence unless it is curated into a formal visual
-  atlas with provenance and checksums.
+- Atom Atlas was useful as a QC/review tool and is now retired. It should not
+  become public evidence unless rebuilt as a formal visual atlas with provenance
+  and checksums.
 
 ## Safe Next Command
 

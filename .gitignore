@@ -35,7 +35,6 @@ research/audits/qc-next-candidates.json
 research/audits/qc-rounds.json
 research/audits/particle-geometry-order-*/
 research/corpus-revisions/*-WORKING/
-atom-atlas/
 apps/portal/data/qc-context/
 TranslationLab/outputs/
 TranslationLab/translator/cache/

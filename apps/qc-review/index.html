@@ -241,13 +241,10 @@ const DECISION_LABELS = {
 
 let CANDIDATES_PATH = "../../research/audits/anomaly-candidates.json";
 let LEDGER_PATH = null;
-let ATLAS_PATH = "../portal/data/atom-atlas/atoms.json";
 let QC_CONTEXT_PREFIX = "../portal/data/qc-context";
-let ATLAS_EXAMPLES_PREFIX = "../portal/data/atom-atlas/examples";
 
 // ---- STATE ----
 let candidates = [];
-let atlas = null;
 let currentIdx = 0;
 let decisions = {};
 let ledgerDecisions = {};
@@ -268,9 +265,7 @@ async function loadRoundConfig() {
 
   const assets = config.assets || {};
   CANDIDATES_PATH = assets.candidatesPath || CANDIDATES_PATH;
-  ATLAS_PATH = assets.atlasPath || ATLAS_PATH;
   QC_CONTEXT_PREFIX = assets.contextPrefix || QC_CONTEXT_PREFIX;
-  ATLAS_EXAMPLES_PREFIX = assets.atlasExamplesPrefix || ATLAS_EXAMPLES_PREFIX;
 
   document.getElementById("round-badge").textContent = QC_ROUND;
 }
@@ -315,13 +310,11 @@ function decisionFromLedger(row) {
 let classStats = {};
 
 async function loadAll() {
-  const [candResp, atlasResp, ledgerText] = await Promise.all([
+  const [candResp, ledgerText] = await Promise.all([
     fetch(CANDIDATES_PATH).then(r => r.ok ? r.json() : null),
-    fetch(ATLAS_PATH).then(r => r.ok ? r.json() : null),
     LEDGER_PATH ? fetch(LEDGER_PATH).then(r => r.ok ? r.text() : "") : Promise.resolve(""),
   ]);
   if (!candResp) throw new Error("Failed to load anomaly-candidates.json");
-  atlas = atlasResp;
   classStats = candResp.classStats || {};
 
   ledgerDecisions = {};
@@ -446,10 +439,6 @@ function renderCandidate(idx) {
   const feats = c.feats || {};
   const reasons = c.reasons || [];
 
-  // Get canonical examples from both classes
-  const currentClassEx = getCanonicalExamples(c.label, 5);
-  const suggestedClassEx = suggested && suggested !== "artifact" ? getCanonicalExamples(suggested, 5) : [];
-
   const featRows = Object.entries(feats).filter(([k]) => !["cx", "cy", "dirStart", "dirEnd"].includes(k));
   const classS = classStats[c.label] || {};
   const topReasons = reasons.slice(0, 4).map(describeReason);
@@ -530,23 +519,6 @@ function renderCandidate(idx) {
     html += `<p style="font-size:12px;color:var(--muted);margin-bottom:12px"><strong>Detector flags:</strong> ${reasons.join("; ")}</p>`;
   }
 
-  // Canonical examples: current class
-  html += `<p style="font-size:12px;color:var(--muted);font-weight:700;margin-bottom:4px">Canonical examples of <strong>${c.label}</strong>:</p>`;
-  html += `<div class="example-row">`;
-  for (const ex of currentClassEx) {
-    html += `<div class="example-panel"><h4>#${ex.id}</h4><div class="ex-img"><img src="${ex.src}" alt="" onerror="this.parentElement.innerHTML='<span style=font-size:10px;color:var(--muted)>no img</span>'"></div></div>`;
-  }
-  html += `</div>`;
-
-  if (suggestedClassEx.length > 0) {
-    html += `<p style="font-size:12px;color:var(--muted);font-weight:700;margin-bottom:4px">Canonical examples of suggested <strong>${suggested}</strong>:</p>`;
-    html += `<div class="example-row">`;
-    for (const ex of suggestedClassEx) {
-      html += `<div class="example-panel"><h4>#${ex.id}</h4><div class="ex-img"><img src="${ex.src}" alt="" onerror="this.parentElement.innerHTML='<span style=font-size:10px;color:var(--muted)>no img</span>'"></div></div>`;
-    }
-    html += `</div>`;
-  }
-
   // Decision buttons
   const act = (v) => v === currentDecision ? 'active' : '';
   html += `<div class="decision-row">`;
@@ -589,16 +561,6 @@ function renderCandidate(idx) {
 function getFolio(imageName) {
   const map = { "page-003.jpg": "f1r", "page-004.jpg": "f1v", "page-005.jpg": "f2r", "page-006.jpg": "f2v", "page-094.jpg": "f47v" };
   return map[imageName] || imageName || "—";
-}
-
-function getCanonicalExamples(label, n) {
-  if (!atlas) return [];
-  const a = atlas.atoms.find(x => x.token === label);
-  if (!a || !a.examples) return [];
-  return a.examples.slice(0, n).map(ex => ({
-    id: ex.id,
-    src: `${ATLAS_EXAMPLES_PREFIX}/${label.replace(":", "_")}/${ex.svg?.split("/").pop() || ""}`,
-  }));
 }
 
 function describeReason(reason) {

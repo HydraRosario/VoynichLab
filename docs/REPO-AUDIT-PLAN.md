@@ -72,7 +72,8 @@ explicit approval.
 
 Deliverables:
 
-- visual atom atlas page with examples per symbol;
+- curated visual-evidence page only if examples are promoted as a formal
+  release with manifest, provenance, checksums, and selection criteria;
 - experiment timeline fed by `research-feed`;
 - result pages that link to reports, tables, checksums, and source scripts;
 - clear "not a decipherment claim" language;

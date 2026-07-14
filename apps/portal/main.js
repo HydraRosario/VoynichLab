@@ -3,7 +3,6 @@ const repoTree = "https://github.com/HydraRosario/VoynichLab/tree/main";
 const repoCommit = "https://github.com/HydraRosario/VoynichLab/commit";
 const repoTag = "https://github.com/HydraRosario/VoynichLab/releases/tag";
 const gh = (path) => `${repoBlob}/${path}`;
-const ATLAS_PREFIX = "./data/atom-atlas";
 
 const metricLabels = {
   atomsNormalizedLogLoss: { label: "ATOMS normalized log-loss", unit: "bits", desc: "Lower is better. How surprised the model was by the held-out data." },
@@ -71,7 +70,7 @@ const evidenceCategoryIcons = {
   "null-control": "∅",
 };
 
-const registry = { experiments: [], milestones: [], releases: [], site: null, atoms: null, evidence: null, loaded: false };
+const registry = { experiments: [], milestones: [], releases: [], site: null, evidence: null, loaded: false };
 
 function html(v) { return String(v ?? "").replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;"); }
 
@@ -95,7 +94,6 @@ const $$ = (s) => document.querySelectorAll(s);
 
 const els = {
   timelineList: $("#timeline-list"),
-  atomGrid: $("#atom-grid"),
   noDeciphermentList: $("#no-decipherment-list"),
   experimentSelect: $("#experiment-select"),
   experimentKind: $("#experiment-kind"),
@@ -122,19 +120,17 @@ const els = {
 };
 
 async function loadAll() {
-  const [experiments, milestones, releases, site, atoms, evidence] = await Promise.all([
+  const [experiments, milestones, releases, site, evidence] = await Promise.all([
     loadJson("./data/research-feed/experiments.json"),
     loadJson("./data/research-feed/milestones.json"),
     loadJson("./data/research-feed/releases.json"),
     loadJson("./data/research-feed/site.json").catch(() => ({ currentExperimentId: null, featuredMilestoneId: null })),
-    loadJson("./data/atom-atlas/atoms.json").catch(() => null),
     loadJson("./data/evidence-cases.json").catch(() => null),
   ]);
   registry.experiments = experiments.sort((a, b) => a.sequenceIndex - b.sequenceIndex);
   registry.milestones = milestones.sort((a, b) => a.sequenceIndex - b.sequenceIndex);
   registry.releases = releases;
   registry.site = site;
-  registry.atoms = atoms;
   registry.evidence = evidence;
   registry.loaded = true;
 }
@@ -156,51 +152,6 @@ function renderTimeline() {
     </li>`;
   }).join("");
 }
-
-function renderAtoms() {
-  if (!registry.atoms) {
-    els.atomGrid.innerHTML = "<p>Atom atlas not available. Run export-atom-atlas.js first.</p>";
-    return;
-  }
-  els.atomGrid.innerHTML = registry.atoms.atoms.map((a) => {
-    const thumbSrc = a.examples?.[0]?.svg ? ATLAS_PREFIX + "/" + a.examples[0].svg.replace(/^\.\//, "") : "";
-    const maxFolio = Object.entries(a.folioCounts || {}).sort((x, y) => y[1] - x[1])[0];
-    return `<div class="atom-card" data-token="${html(a.token)}" onclick="openAtomModal('${html(a.token)}')">
-      <div class="atom-visual">${thumbSrc ? `<img src="${html(thumbSrc)}" alt="${html(a.token)}" loading="lazy">` : `<span class="atom-placeholder">${html(a.token)}</span>`}</div>
-      <div class="atom-info">
-        <strong>${html(a.token)}</strong>
-        <span class="atom-label">${html(a.label)}</span>
-        <span class="atom-stat">n = ${a.count} · ${a.folios.length} folios</span>
-        <span class="atom-stat">${html(a.dominantPosition)}</span>
-      </div>
-    </div>`;
-  }).join("");
-}
-
-window.openAtomModal = function(token) {
-  const atom = registry.atoms?.atoms?.find((a) => a.token === token);
-  if (!atom) return;
-  const overlay = document.getElementById("atom-modal");
-  const content = document.getElementById("atom-modal-content");
-  const thumbnails = (atom.examples || []).slice(0, 12).map((ex) =>
-    `<img src="${html(ATLAS_PREFIX + "/" + ex.svg.replace(/^\.\//, ""))}" alt="${html(atom.token)}" loading="lazy" class="modal-thumb">`
-  ).join("");
-  content.innerHTML = `<button class="modal-close" onclick="closeAtomModal()">✕</button>
-    <h2>${html(atom.token)} <small>${html(atom.label)}</small></h2>
-    <div class="modal-gallery">${thumbnails}</div>
-    <div class="modal-stats">
-      <div><span>Count</span><strong>${atom.count}</strong></div>
-      <div><span>Folios</span><strong>${atom.folios.join(", ")}</strong></div>
-      <div><span>Position</span><strong>${html(atom.dominantPosition)}</strong></div>
-      <div><span>Per folio</span><strong>${Object.entries(atom.folioCounts || {}).map(([k, v]) => `${k}=${v}`).join(" · ")}</strong></div>
-    </div>
-    <p class="modal-caution">Structural label, not a letter or phoneme.</p>`;
-  overlay.style.display = "flex";
-};
-
-window.closeAtomModal = function() {
-  document.getElementById("atom-modal").style.display = "none";
-};
 
 function renderNoDecipherment() {
   if (els.noDeciphermentList) {
@@ -423,7 +374,6 @@ loadAll().then(() => {
   renderReleases();
   renderEvidence();
   renderNegativeResults();
-  renderAtoms();
 }).catch((err) => {
   els.currentTitle.textContent = "Registry unavailable";
   els.currentCaption.textContent = err.message;

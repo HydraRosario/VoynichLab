@@ -3,7 +3,6 @@ import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { execSync } from "node:child_process";
-import os from "node:os";
 
 const root = process.cwd();
 const registryDir = path.join(root, "research-feed");
@@ -34,7 +33,6 @@ const GENERATED_DIRS = [
   "EVAComparisonLab/cases/",
   "research/audits/",
   "research/corpus-revisions/",
-  "atom-atlas/",
 ];
 
 const LOCAL_STATE_DIRS = [
@@ -471,20 +469,6 @@ function refreshPublicChecksums() {
 }
 
 function buildPortalData() {
-  const includeAtomAtlas = process.env.VOYNICHLAB_INCLUDE_ATOM_ATLAS === "1";
-  const preservedDirs = [];
-  if (!includeAtomAtlas) {
-    for (const dir of ["atom-atlas"]) {
-      const source = path.join(portalDataDir, dir);
-      if (fs.existsSync(source)) {
-        const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "voynichlab-portal-preserve-"));
-        const target = path.join(tempDir, dir);
-        fs.cpSync(source, target, { recursive: true });
-        preservedDirs.push({ dir, source: target });
-      }
-    }
-  }
-
   fs.rmSync(portalDataDir, { recursive: true, force: true });
   ensureDir(path.join(portalDataDir, "research-feed"));
   ensureDir(path.join(portalDataDir, "artifacts", "public"));
@@ -515,25 +499,6 @@ function buildPortalData() {
     }
   }
 
-  const extraDirs = includeAtomAtlas ? ["atom-atlas"] : [];
-  for (const dir of extraDirs) {
-    const dirPath = rel(dir);
-    if (fs.existsSync(dirPath)) {
-      const target = path.join(portalDataDir, dir);
-      for (const file of walkFiles(dirPath)) {
-        const relative = path.relative(dirPath, file);
-        ensureDir(path.dirname(path.join(target, relative)));
-        fs.copyFileSync(file, path.join(target, relative));
-      }
-    }
-  }
-
-  for (const preserved of preservedDirs) {
-    const target = path.join(portalDataDir, preserved.dir);
-    ensureDir(path.dirname(target));
-    fs.cpSync(preserved.source, target, { recursive: true });
-    fs.rmSync(path.dirname(preserved.source), { recursive: true, force: true });
-  }
 }
 
 function buildAll() {

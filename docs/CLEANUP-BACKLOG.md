@@ -18,7 +18,7 @@ Actions:
 - Ignore local Vercel state.
 - Ignore live `*-current` and `*-WORKING` lab outputs.
 - Ignore new visual snapshot exports under `visual-snapshots/current`.
-- Ignore `atom-atlas/` until it becomes a curated visual-evidence bundle.
+- Retire Atom Atlas after its Corpus V2 QC role.
 - Remove stale generated project summary tooling.
 
 Acceptance criteria:
@@ -55,8 +55,8 @@ Targets:
 Known issues:
 
 - Some copy is static even though the same facts live in `research-feed`.
-- Atom atlas loading should degrade gracefully because `atom-atlas/` is now local
-  by default.
+- Atom Atlas has been removed from the public portal; future visual evidence
+  should return only as a curated release.
 - The portal should show a clean public timeline and scientific cards without
   requiring a user to inspect raw repo folders.
 
@@ -77,7 +77,8 @@ Targets:
 
 Known issues:
 
-- QC is useful but still too tied to generated atlas/snapshot paths.
+- QC is useful but should remain tied to candidate context and ledgers, not to a
+  generated atlas bundle.
 - The UI needs clearer candidate explanations and decision provenance.
 - Review ledgers should be canonical; downloaded `qc-decisions-v*.json` files
   should remain scratch unless explicitly consolidated.
@@ -157,4 +158,3 @@ Rules:
 - Public artifacts need manifest, provenance, checksums, and source command.
 - Local/generated visual exports stay ignored unless promoted.
 - Snapshot DBs are not casually committed.
-
