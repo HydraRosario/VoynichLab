@@ -109,6 +109,8 @@ const els = {
   currentCaption: $("#current-result-caption"),
   currentDefinition: $("#current-definition"),
   currentCallouts: $("#current-callouts"),
+  corpusV2Grid: $("#corpus-v2-grid"),
+  corpusV2Links: $("#corpus-v2-links"),
   releaseGrid: $("#release-grid"),
   stepsContainer: $("#how-steps"),
   evidenceList: $("#evidence-list"),
@@ -221,6 +223,50 @@ function renderCurrentResult() {
       <dd>${bar}<span class="metric-val"><strong>${html(fmtVal(val))}</strong> <small>${html(info.unit || "")}</small></span></dd>
     </div>`;
   }).join("");
+}
+
+function renderCorpusV2() {
+  if (!els.corpusV2Grid || !els.corpusV2Links) return;
+  const targetId = "corpus-v2-audited-robustness-replay";
+  const current = registry.experiments.find((e) => e.id === targetId)
+    || registry.experiments.find((e) => e.id === "corpus-v2-audited-robustness-replay");
+  if (!current) return;
+
+  const m = current.metrics || {};
+  const pending = Number(m.pendingAuditCandidates ?? 0);
+  const lineMismatches = Number(m.lineAlignmentMismatches ?? 0);
+  const folios = Number(m.folios ?? current.testFolios?.length ?? 0);
+
+  els.corpusV2Grid.innerHTML = `
+    <article class="corpus-card main">
+      <span class="version-badge">${html(folios ? `${folios} folios` : "Audited corpus")}</span>
+      <h3>${html(pending)} pending audit candidates</h3>
+      <p>The current audit gates report ${html(pending)} unresolved labeling candidates and ${html(lineMismatches)} line-count mismatches. Known valid rare structures remain documented rather than forced away.</p>
+    </article>
+    ${corpusMetricCard("ATOMS entropy", m.atomsWeightedRoleEntropy, `Weighted positional entropy over ${fmtVal(m.atomsUnits)} physical units.`)}
+    ${corpusMetricCard("EVA entropy", m.evaWeightedRoleEntropy, `Same positional entropy protocol over ${fmtVal(m.evaUnits)} EVA units.`)}
+    ${corpusMetricCard("Morphology 5NN", percent(m.morphologyFiveNearestNeighborAccuracy), "Snapshot-derived family separability after the audit replay.")}
+  `;
+
+  const reportPath = current.reportPath || "research/frozen/CORPUS-V2-AUDITED/reports/CEO-FINAL-CORPUS-V2-REPORT.md";
+  const checksumPath = (current.dataTablePaths || []).find((p) => p.endsWith("checksums.txt")) || "research/frozen/CORPUS-V2-AUDITED/checksums.txt";
+  els.corpusV2Links.innerHTML = [
+    ["Frozen corpus", `${repoTree}/research/frozen/CORPUS-V2-AUDITED`],
+    ["Final report", gh(reportPath)],
+    ["Checksums", gh(checksumPath)],
+  ].map(([label, href]) => `<a href="${href}">${html(label)}</a>`).join("");
+}
+
+function corpusMetricCard(label, value, description) {
+  return `<article class="corpus-card">
+    <span>${html(label)}</span>
+    <strong>${html(fmtVal(value))}</strong>
+    <p>${html(description)}</p>
+  </article>`;
+}
+
+function percent(value) {
+  return typeof value === "number" ? `${(value * 100).toFixed(2)}%` : value;
 }
 
 function renderExperimentOptions() {
@@ -370,6 +416,7 @@ renderNoDecipherment();
 loadAll().then(() => {
   renderTimeline();
   renderCurrentResult();
+  renderCorpusV2();
   renderExperimentOptions();
   renderReleases();
   renderEvidence();
