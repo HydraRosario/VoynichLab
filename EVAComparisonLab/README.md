@@ -52,7 +52,7 @@ Ese comando regenera:
 Los scripts de EVAComparisonLab leen por defecto:
 
 ```text
-C:\Users\<usuario>\AppData\Roaming\com.voynichlab.datasetcreator\datasetcreator.db
+%APPDATA%\com.voynichlab.datasetcreator\datasetcreator.db
 ```
 
 Leer/exportar la DB no deberia pedir permiso especial. Recalcular DatasetCreator con `recalculate_db` si escribe en esa DB real y por eso puede requerir aprobacion del entorno.

@@ -1,6 +1,6 @@
 # VoynichLab Etymology Metasearch
 
-- dataset: C:\Users\HHHES\Documents\apps\VoynichLab\DataSetCreator\evidence\paragraph-2-page-3\page-003_paragraph-2_dataset.json
+- dataset: DataSetCreator/evidence/paragraph-2-page-3/page-003_paragraph-2_dataset.json
 - providers: wiktionary, wikipedia, datamuse
 - cache: translator/cache/etymology
 

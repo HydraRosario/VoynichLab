@@ -1,7 +1,7 @@
 # VoynichLab Translation Assembly
 
-- dataset: C:\Users\HHHES\Documents\apps\VoynichLab\DataSetCreator\evidence\paragraph-2-page-3\page-003_paragraph-2_dataset.json
-- etymology candidates: C:\Users\HHHES\Documents\apps\VoynichLab\DataSetCreator\evidence\paragraph-2-page-3\page-003_paragraph-2_etymology-candidates.tsv
+- dataset: DataSetCreator/evidence/paragraph-2-page-3/page-003_paragraph-2_dataset.json
+- etymology candidates: DataSetCreator/evidence/paragraph-2-page-3/page-003_paragraph-2_etymology-candidates.tsv
 - page: page-003.jpg
 - manuscript page: 1
 - paragraph: 2

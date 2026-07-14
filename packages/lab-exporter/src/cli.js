@@ -104,6 +104,20 @@ function isTextLikeFile(filePath) {
   ]).has(ext);
 }
 
+function trackedTextFiles() {
+  let tracked = [];
+  try {
+    tracked = execSync("git ls-files", { encoding: "utf8", cwd: root })
+      .split(/\r?\n/)
+      .filter(Boolean);
+  } catch {
+    return [];
+  }
+  return tracked
+    .map((file) => rel(file))
+    .filter((file) => fs.existsSync(file) && isTextLikeFile(file));
+}
+
 function validateObject(required, object, label, errors) {
   for (const key of required) {
     if (!(key in object)) errors.push(`${label}: missing ${key}`);
@@ -258,15 +272,11 @@ function validateRegistry({ strictArtifacts = true, strictPending = true } = {})
   if (strictArtifacts) validateChecksums(errors);
 
   const windowsPathHits = [];
-  for (const dir of [registryDir, publicDir, path.join(root, "apps", "portal")]) {
-    if (!fs.existsSync(dir)) continue;
-    for (const file of walkFiles(dir)) {
-      if (!isTextLikeFile(file)) continue;
-      const text = fs.readFileSync(file, "utf8");
-      if (/[A-Za-z]:\\/.test(text)) windowsPathHits.push(posixPath(path.relative(root, file)));
-      if (/(sk_live_[A-Za-z0-9_]+|pk_live_[A-Za-z0-9_]+|-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----)/i.test(text)) {
-        errors.push(`possible secret in ${posixPath(path.relative(root, file))}`);
-      }
+  for (const file of trackedTextFiles()) {
+    const text = fs.readFileSync(file, "utf8");
+    if (/[A-Za-z]:\\/.test(text)) windowsPathHits.push(posixPath(path.relative(root, file)));
+    if (/(sk_live_[A-Za-z0-9_]+|pk_live_[A-Za-z0-9_]+|-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----)/i.test(text)) {
+      errors.push(`possible secret in ${posixPath(path.relative(root, file))}`);
     }
   }
   for (const hit of windowsPathHits) errors.push(`absolute Windows path in ${hit}`);
@@ -730,26 +740,9 @@ function repoAudit() {
     console.log(`  ${fs.existsSync(rel(doc)) ? "OK" : "MISSING"} ${doc}`);
   }
 
-  const textScanRoots = [
-    "README.md",
-    "REPOSITORY-GOVERNANCE.md",
-    "docs",
-    "apps/portal",
-    "packages",
-    "research-feed",
-  ];
-  const textFiles = [];
-  for (const scanRoot of textScanRoots) {
-    const full = rel(scanRoot);
-    if (!fs.existsSync(full)) continue;
-    const stat = fs.statSync(full);
-    if (stat.isFile()) textFiles.push(full);
-    else textFiles.push(...walkFiles(full).filter(isTextLikeFile));
-  }
-
   const windowsPathHits = [];
   const secretHits = [];
-  for (const file of textFiles) {
+  for (const file of trackedTextFiles()) {
     const text = fs.readFileSync(file, "utf8");
     const relative = posixPath(path.relative(root, file));
     if (/[A-Za-z]:\\/.test(text)) windowsPathHits.push(relative);

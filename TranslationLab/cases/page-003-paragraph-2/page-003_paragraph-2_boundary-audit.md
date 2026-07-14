@@ -1,6 +1,6 @@
 # VoynichLab Boundary Audit
 
-- dataset: C:\Users\HHHES\Documents\apps\VoynichLab\DataSetCreator\evidence\paragraph-2-page-3\page-003_paragraph-2_dataset.json
+- dataset: DataSetCreator/evidence/paragraph-2-page-3/page-003_paragraph-2_dataset.json
 - units: 23
 - units where unit reading equals visual-part concatenation: 14/23
 

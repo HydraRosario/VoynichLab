@@ -1,6 +1,6 @@
 # VoynichLab Etymology Search
 
-- dataset: C:\Users\HHHES\Documents\apps\VoynichLab\DataSetCreator\evidence\paragraph-2-page-3\page-003_paragraph-2_dataset.json
+- dataset: DataSetCreator/evidence/paragraph-2-page-3/page-003_paragraph-2_dataset.json
 - source: English Wiktionary API, cached locally
 
 This is a candidate generator, not a proof. It searches possible roots across Wiktionary language sections and ranks them by availability, etymology presence, definitions, and frequency in the paragraph.

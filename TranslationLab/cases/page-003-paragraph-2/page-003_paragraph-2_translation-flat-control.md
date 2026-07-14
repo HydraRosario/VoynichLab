@@ -1,7 +1,7 @@
 # VoynichLab Romanization Translation Pass
 
-- dataset: C:\Users\HHHES\Documents\apps\VoynichLab\DataSetCreator\evidence\paragraph-2-page-3\page-003_paragraph-2_dataset.json
-- roots: C:\Users\HHHES\Documents\apps\VoynichLab\DataSetCreator\translator\roots.tsv
+- dataset: DataSetCreator/evidence/paragraph-2-page-3/page-003_paragraph-2_dataset.json
+- roots: TranslationLab/translator/roots.tsv
 - mode: flat
 
 This is not the final translation. It is the etymological candidate pass.
