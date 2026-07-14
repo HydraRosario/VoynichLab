@@ -14,13 +14,6 @@
     "GrammarDiscoveryLab/out/representation-comparison-v3-ablations/representation-comparison-v3-folio-results.tsv"
   ],
   "script": "GrammarDiscoveryLab/scripts/representation-comparison-v3-ablations.js",
-  "sourceScript": "GrammarDiscoveryLab/scripts/representation-comparison-v3-ablations.js",
-  "commands": [
-    "npm.cmd run representation-comparison:v3-ablations"
-  ],
-  "commit": "2ee61884bae295aa2ab99cb881148ea50a383672",
-  "tag": "atoms-eva-ablations-v1",
-  "generatedAt": "2026-07-14",
-  "generatedBy": "VoynichLab/research:publish",
-  "frozenArtifacts": []
+  "frozenArtifacts": [],
+  "generatedBy": "VoynichLab"
 }

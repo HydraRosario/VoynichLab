@@ -43,6 +43,6 @@ node EVAComparisonLab/scripts/run-corpus-v2-analysis.js --include-morphology
 - Table: `research/frozen/CORPUS-V2-AUDITED/corpus/folios.tsv`
 - Table: `research/frozen/CORPUS-V2-AUDITED/v1-v2-metrics.tsv`
 - Table: `research/frozen/CORPUS-V2-AUDITED/checksums.txt`
-- Commit: `to-be-filled-by-corpus-v2-audited-tag`
+- Commit: `7f168645d31130099951a1f9877c788c09274677`
 - Tag: `corpus-v2-audited`
 - Test folios: f1r, f1v, f2r, f2v, f3r, f47v

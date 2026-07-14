@@ -13,13 +13,6 @@
     "GrammarDiscoveryLab/out/reproducible-release-v1/f2v/grammar-v1-vs-f2v-optional.tsv"
   ],
   "script": "GrammarDiscoveryLab/scripts/validate-release-v1.js",
-  "sourceScript": "GrammarDiscoveryLab/scripts/validate-release-v1.js",
-  "commands": [
-    "npm.cmd run validate"
-  ],
-  "commit": "a57b727968cf27b0fdcb232cb31ed764bd7e3e49",
-  "tag": "reproducible-release-v1",
-  "generatedAt": "2026-07-14",
-  "generatedBy": "VoynichLab/research:publish",
-  "frozenArtifacts": []
+  "frozenArtifacts": [],
+  "generatedBy": "VoynichLab"
 }

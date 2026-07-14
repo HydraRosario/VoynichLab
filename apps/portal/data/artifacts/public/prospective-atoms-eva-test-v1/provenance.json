@@ -20,14 +20,6 @@
     "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/checksums.txt"
   ],
   "script": "GrammarDiscoveryLab/scripts/prospective-atoms-eva-test-v1.js",
-  "sourceScript": "GrammarDiscoveryLab/scripts/prospective-atoms-eva-test-v1.js",
-  "commands": [
-    "npm.cmd run prospective-atoms-eva:test -- --preflight",
-    "npm.cmd run prospective-atoms-eva:test -- --confirm-complete"
-  ],
-  "commit": "8137d72d5b979d296f6def65b87f1cca1f48288a",
-  "tag": "prospective-atoms-eva-test-v1",
-  "generatedAt": "2026-07-14",
-  "generatedBy": "VoynichLab/research:publish",
-  "frozenArtifacts": []
+  "frozenArtifacts": [],
+  "generatedBy": "VoynichLab"
 }

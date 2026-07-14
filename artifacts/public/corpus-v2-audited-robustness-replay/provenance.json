@@ -25,7 +25,7 @@
     "npm.cmd run research:build",
     "node EVAComparisonLab/scripts/run-corpus-v2-analysis.js --include-morphology"
   ],
-  "commit": "to-be-filled-by-corpus-v2-audited-tag",
+  "commit": "7f168645d31130099951a1f9877c788c09274677",
   "tag": "corpus-v2-audited",
   "generatedAt": "2026-07-14",
   "generatedBy": "VoynichLab/research:publish",

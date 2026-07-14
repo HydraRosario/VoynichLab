@@ -1,41 +1,8 @@
 {
-  "primary": [],
-  "secondary": [
-    {
-      "label": "model1AtomsNormalizedLogLoss",
-      "value": 0.242737,
-      "unit": null,
-      "direction": null
-    },
-    {
-      "label": "model1EvaNormalizedLogLoss",
-      "value": 0.43197,
-      "unit": null,
-      "direction": null
-    },
-    {
-      "label": "model1AtomsTop1Accuracy",
-      "value": 0.7919,
-      "unit": null,
-      "direction": null
-    },
-    {
-      "label": "model1EvaTop1Accuracy",
-      "value": 0.665,
-      "unit": null,
-      "direction": null
-    },
-    {
-      "label": "model1AtomsUnseenContextRate",
-      "value": 0.0097,
-      "unit": null,
-      "direction": null
-    },
-    {
-      "label": "model1EvaUnseenContextRate",
-      "value": 0.0268,
-      "unit": null,
-      "direction": null
-    }
-  ]
+  "model1AtomsNormalizedLogLoss": 0.242737,
+  "model1EvaNormalizedLogLoss": 0.43197,
+  "model1AtomsTop1Accuracy": 0.7919,
+  "model1EvaTop1Accuracy": 0.665,
+  "model1AtomsUnseenContextRate": 0.0097,
+  "model1EvaUnseenContextRate": 0.0268
 }

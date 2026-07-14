@@ -496,7 +496,7 @@
       "research/frozen/CORPUS-V2-AUDITED/checksums.txt"
     ],
     "sourceScript": "EVAComparisonLab/scripts/run-corpus-v2-analysis.js",
-    "commit": "to-be-filled-by-corpus-v2-audited-tag",
+    "commit": "7f168645d31130099951a1f9877c788c09274677",
     "tag": "corpus-v2-audited",
     "publishedAt": "2026-07-14",
     "sequenceIndex": 11,

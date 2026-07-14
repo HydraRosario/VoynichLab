@@ -1,23 +1,5 @@
 {
-  "primary": [],
-  "secondary": [
-    {
-      "label": "observedSubstitutionFamilies",
-      "value": 8,
-      "unit": null,
-      "direction": null
-    },
-    {
-      "label": "cleanSubstitutionFamilies",
-      "value": 8,
-      "unit": null,
-      "direction": null
-    },
-    {
-      "label": "newSlotValues",
-      "value": 0,
-      "unit": null,
-      "direction": null
-    }
-  ]
+  "observedSubstitutionFamilies": 8,
+  "cleanSubstitutionFamilies": 8,
+  "newSlotValues": 0
 }

@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "2.0",
+  "schemaVersion": "1.0",
   "id": "representation-comparison-v2-regions",
   "title": "REPRESENTATION-COMPARISON-V2 Regional ATOMS-EVA Comparison",
   "status": "published",
@@ -13,15 +13,6 @@
     "Single ATOMS annotator",
     "Not proof of global optimality"
   ],
-  "trainFolios": [
-    "f1r",
-    "f1v",
-    "f47v"
-  ],
-  "testFolios": [
-    "f2r",
-    "f2v"
-  ],
   "commit": "c1bd90e8e8cb64f2b5bc9c72f50e62719cb533a9",
   "tag": "atoms-eva-regional-v1",
   "publishedAt": "2026-07-13",
@@ -29,20 +20,5 @@
     "npm.cmd run representation-comparison:v2-regions"
   ],
   "reportPath": "GrammarDiscoveryLab/out/representation-comparison-v2-regions/REPRESENTATION-COMPARISON-V2-REGIONS.md",
-  "sourceScript": "GrammarDiscoveryLab/scripts/representation-comparison-v2-regions.js",
-  "generatedAt": "2026-07-14",
-  "files": [
-    "summary.md",
-    "report.md",
-    "tables/representation-comparison-v2-summary.tsv",
-    "tables/representation-comparison-v2-region-scores.tsv",
-    "tables/representation-comparison-v2-corruption.tsv"
-  ],
-  "checksums": {
-    "summary.md": "67b146d5543120669c3fc2fa4e425094d17aef08cf5c48982473035ccd412c4c",
-    "report.md": "969ceb6055dbdb06613438fb012c41836fbdbfe6a18d7f5f682569957e90e9b8",
-    "tables/representation-comparison-v2-summary.tsv": "1940945e75c24a3dc5d1ac877c63396651fc79c9c96a48af88b3de4bdfed785c",
-    "tables/representation-comparison-v2-region-scores.tsv": "9bffe88ebfb7a42e65c8a423485d907edd3200bc5ecc7947cc8f24348648f5a5",
-    "tables/representation-comparison-v2-corruption.tsv": "0aa8a992a00cf5a083ca99c6dfaa9ed6ff6dce8da3193be0b07f30f7c8ef98f0"
-  }
+  "sourceScript": "GrammarDiscoveryLab/scripts/representation-comparison-v2-regions.js"
 }

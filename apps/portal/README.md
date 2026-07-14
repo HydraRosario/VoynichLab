@@ -5,7 +5,7 @@ Static Vercel entry point for VoynichLab.
 Production URL:
 
 ```text
-Vercel deployment pending
+https://voynich-lab.vercel.app/
 ```
 
 ## Scope

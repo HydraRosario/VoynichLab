@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "2.0",
+  "schemaVersion": "1.0",
   "id": "representation-alignment-v1",
   "title": "REPRESENTATION-ALIGNMENT-V1 Regional Alignment",
   "status": "published",
@@ -12,15 +12,6 @@
     "Regional not token-exact",
     "Depends on current folio mapping"
   ],
-  "trainFolios": [
-    "f1r",
-    "f1v",
-    "f47v"
-  ],
-  "testFolios": [
-    "f2r",
-    "f2v"
-  ],
   "commit": "c1bd90e8e8cb64f2b5bc9c72f50e62719cb533a9",
   "tag": "atoms-eva-regional-v1",
   "publishedAt": "2026-07-13",
@@ -28,18 +19,5 @@
     "npm.cmd run representation-alignment:v1"
   ],
   "reportPath": "GrammarDiscoveryLab/out/representation-alignment-v1/REPRESENTATION-ALIGNMENT-V1.md",
-  "sourceScript": "GrammarDiscoveryLab/scripts/representation-alignment-v1.js",
-  "generatedAt": "2026-07-14",
-  "files": [
-    "summary.md",
-    "report.md",
-    "tables/aligned-regions.tsv",
-    "tables/unresolved-regions.tsv"
-  ],
-  "checksums": {
-    "summary.md": "0f0269b79fdda8afbf30d991d1cec67438d4a4d466001854100d41f223a8367b",
-    "report.md": "89298bec6267ed32bd25de6727925a1d767d89d9f9f579227d47ed5da3ed6c91",
-    "tables/aligned-regions.tsv": "db9cbfec991d7ef784a5d1d94cc6120dc33ce324da859c2fc9844fc44c7e8e71",
-    "tables/unresolved-regions.tsv": "db7cfe51d785f95e32076d8a97d7c7ffd61e0475e22677159a8fc175585a9335"
-  }
+  "sourceScript": "GrammarDiscoveryLab/scripts/representation-alignment-v1.js"
 }

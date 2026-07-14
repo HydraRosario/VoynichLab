@@ -15,13 +15,6 @@
     "GrammarDiscoveryLab/out/representation-comparison-v2-regions/representation-comparison-v2-corruption.tsv"
   ],
   "script": "GrammarDiscoveryLab/scripts/representation-comparison-v2-regions.js",
-  "sourceScript": "GrammarDiscoveryLab/scripts/representation-comparison-v2-regions.js",
-  "commands": [
-    "npm.cmd run representation-comparison:v2-regions"
-  ],
-  "commit": "c1bd90e8e8cb64f2b5bc9c72f50e62719cb533a9",
-  "tag": "atoms-eva-regional-v1",
-  "generatedAt": "2026-07-14",
-  "generatedBy": "VoynichLab/research:publish",
-  "frozenArtifacts": []
+  "frozenArtifacts": [],
+  "generatedBy": "VoynichLab"
 }

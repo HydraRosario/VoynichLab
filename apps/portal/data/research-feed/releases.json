@@ -66,8 +66,8 @@
     "tag": "corpus-v2-audited",
     "title": "Corpus V2 Audited",
     "date": "2026-07-14",
-    "tagObject": "to-be-filled-after-tag",
-    "targetCommit": "to-be-filled-by-corpus-v2-audited-tag",
+    "tagObject": "f4fd68f2179a8d958f9050ef9138b975415905d1",
+    "targetCommit": "7f168645d31130099951a1f9877c788c09274677",
     "summary": "Six-folio audited corpus freeze with robustness replay and public portal integration.",
     "url": "https://github.com/HydraRosario/VoynichLab/releases/tag/corpus-v2-audited"
   }

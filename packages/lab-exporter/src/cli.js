@@ -3,6 +3,7 @@ import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { execSync } from "node:child_process";
+import os from "node:os";
 
 const root = process.cwd();
 const registryDir = path.join(root, "research-feed");
@@ -111,6 +112,10 @@ function validateObject(required, object, label, errors) {
   }
 }
 
+function isPlaceholderValue(value) {
+  return typeof value === "string" && /to-be-filled|replace-me|placeholder/i.test(value);
+}
+
 function isGitClean() {
   try {
     const status = execSync("git status --porcelain --untracked-files=all", { encoding: "utf8", cwd: root }).trim();
@@ -207,6 +212,8 @@ function validateRegistry({ strictArtifacts = true, strictPending = true } = {})
     if (experiment.status === "published" && strictPending) {
       if (!experiment.commit || experiment.commit === "pending") errors.push(`${experiment.id}: published but commit is pending`);
       if (!experiment.tag || experiment.tag === "pending") errors.push(`${experiment.id}: published but tag is pending`);
+      if (isPlaceholderValue(experiment.commit)) errors.push(`${experiment.id}: published but commit is a placeholder`);
+      if (isPlaceholderValue(experiment.tag)) errors.push(`${experiment.id}: published but tag is a placeholder`);
     }
 
     if (experiment.metrics && experiment.outcome !== "pending") {
@@ -228,6 +235,8 @@ function validateRegistry({ strictArtifacts = true, strictPending = true } = {})
     validateObject(milestoneRequired, milestone, `milestone ${milestone.id || "unknown"}`, errors);
     if (milestoneIds.has(milestone.id)) errors.push(`duplicate milestone id: ${milestone.id}`);
     milestoneIds.add(milestone.id);
+    if (milestone.tag && isPlaceholderValue(milestone.tag)) errors.push(`${milestone.id}: tag is a placeholder`);
+    if (milestone.commit && isPlaceholderValue(milestone.commit)) errors.push(`${milestone.id}: commit is a placeholder`);
   }
 
   const releaseTags = new Set();
@@ -235,6 +244,9 @@ function validateRegistry({ strictArtifacts = true, strictPending = true } = {})
     validateObject(releaseRequired, release, `release ${release.tag || "unknown"}`, errors);
     if (releaseTags.has(release.tag)) errors.push(`duplicate release tag: ${release.tag}`);
     releaseTags.add(release.tag);
+    for (const key of releaseRequired) {
+      if (isPlaceholderValue(release[key])) errors.push(`${release.tag}: ${key} is a placeholder`);
+    }
   }
 
   if (strictArtifacts) validateChecksums(errors);
@@ -361,6 +373,10 @@ function normalizeMetrics(experiment) {
 
 function exportExperiment(experiment) {
   const dir = path.join(publicDir, experiment.id);
+  if (fs.existsSync(dir) && process.env.VOYNICHLAB_OVERWRITE_PUBLIC_ARTIFACTS !== "1") {
+    return;
+  }
+
   const tablesDir = path.join(dir, "tables");
   fs.rmSync(dir, { recursive: true, force: true });
   ensureDir(tablesDir);
@@ -430,6 +446,10 @@ function exportExperiment(experiment) {
   }
   writeJson(path.join(dir, "manifest.json"), manifest);
 
+  writeArtifactChecksums(dir);
+}
+
+function writeArtifactChecksums(dir) {
   const checksumTargets = walkFiles(dir)
     .filter((file) => path.basename(file) !== "checksums.txt")
     .sort();
@@ -439,7 +459,32 @@ function exportExperiment(experiment) {
   fs.writeFileSync(path.join(dir, "checksums.txt"), `${checksums}\n`);
 }
 
+function refreshPublicChecksums() {
+  if (!fs.existsSync(publicDir)) return;
+  for (const entry of fs.readdirSync(publicDir)) {
+    const dir = path.join(publicDir, entry);
+    if (fs.statSync(dir).isDirectory()) {
+      writeArtifactChecksums(dir);
+    }
+  }
+  buildPortalData();
+}
+
 function buildPortalData() {
+  const includeAtomAtlas = process.env.VOYNICHLAB_INCLUDE_ATOM_ATLAS === "1";
+  const preservedDirs = [];
+  if (!includeAtomAtlas) {
+    for (const dir of ["atom-atlas"]) {
+      const source = path.join(portalDataDir, dir);
+      if (fs.existsSync(source)) {
+        const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "voynichlab-portal-preserve-"));
+        const target = path.join(tempDir, dir);
+        fs.cpSync(source, target, { recursive: true });
+        preservedDirs.push({ dir, source: target });
+      }
+    }
+  }
+
   fs.rmSync(portalDataDir, { recursive: true, force: true });
   ensureDir(path.join(portalDataDir, "research-feed"));
   ensureDir(path.join(portalDataDir, "artifacts", "public"));
@@ -470,7 +515,7 @@ function buildPortalData() {
     }
   }
 
-  const extraDirs = ["atom-atlas"];
+  const extraDirs = includeAtomAtlas ? ["atom-atlas"] : [];
   for (const dir of extraDirs) {
     const dirPath = rel(dir);
     if (fs.existsSync(dirPath)) {
@@ -481,6 +526,13 @@ function buildPortalData() {
         fs.copyFileSync(file, path.join(target, relative));
       }
     }
+  }
+
+  for (const preserved of preservedDirs) {
+    const target = path.join(portalDataDir, preserved.dir);
+    ensureDir(path.dirname(target));
+    fs.cpSync(preserved.source, target, { recursive: true });
+    fs.rmSync(path.dirname(preserved.source), { recursive: true, force: true });
   }
 }
 
@@ -759,6 +811,7 @@ Usage:
   research:publish --experiment <id>  Publish a single experiment
   research:doctor                Full health check
   research:stage-plan --experiment <id>  Show staging plan for experiment
+  research:refresh-checksums     Refresh artifact checksum ledgers only
   repo:audit                     Non-destructive repo hygiene audit
 
 Examples:
@@ -767,6 +820,7 @@ Examples:
   npm.cmd run research:publish -- --experiment prospective-atoms-eva-test-v1
   npm.cmd run research:doctor
   npm.cmd run research:stage-plan -- --experiment prospective-atoms-eva-test-v1
+  npm.cmd run research:refresh-checksums
   npm.cmd run repo:audit`);
 }
 
@@ -801,6 +855,9 @@ if (command === "validate") {
     process.exit(1);
   }
   stagePlan(id);
+} else if (command === "refresh-checksums") {
+  refreshPublicChecksums();
+  validateRegistry({ strictArtifacts: true });
 } else if (command === "repo-audit") {
   repoAudit();
 } else {

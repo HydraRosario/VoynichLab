@@ -13,14 +13,6 @@
     "GrammarDiscoveryLab/out/null-control-v3/null-control-v3-opportunities.tsv"
   ],
   "script": "GrammarDiscoveryLab/scripts/null-control-v3-model-comparison.js",
-  "sourceScript": "GrammarDiscoveryLab/scripts/null-control-v3-model-comparison.js",
-  "commands": [
-    "npm.cmd run null-control:v3",
-    "npm.cmd run null-control:v3:diagnostics"
-  ],
-  "commit": "c1bd90e8e8cb64f2b5bc9c72f50e62719cb533a9",
-  "tag": "atoms-eva-regional-v1",
-  "generatedAt": "2026-07-14",
-  "generatedBy": "VoynichLab/research:publish",
-  "frozenArtifacts": []
+  "frozenArtifacts": [],
+  "generatedBy": "VoynichLab"
 }

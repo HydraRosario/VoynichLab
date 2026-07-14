@@ -13,13 +13,6 @@
     "GrammarDiscoveryLab/out/null-control-v2-contextual/null-control-v2-contextual-family-probabilities.tsv"
   ],
   "script": "GrammarDiscoveryLab/scripts/null-control-v2-contextual.js",
-  "sourceScript": "GrammarDiscoveryLab/scripts/null-control-v2-contextual.js",
-  "commands": [
-    "npm.cmd run null-control:v2"
-  ],
-  "commit": "c1bd90e8e8cb64f2b5bc9c72f50e62719cb533a9",
-  "tag": "atoms-eva-regional-v1",
-  "generatedAt": "2026-07-14",
-  "generatedBy": "VoynichLab/research:publish",
-  "frozenArtifacts": []
+  "frozenArtifacts": [],
+  "generatedBy": "VoynichLab"
 }

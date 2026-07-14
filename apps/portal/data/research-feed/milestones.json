@@ -134,7 +134,7 @@
     "summary": "Closed the six-folio corpus audit, removed stale learned memory, froze V2 provenance, and replayed the main ATOMS/EVA structural mathematics.",
     "type": "audit",
     "tag": "corpus-v2-audited",
-    "commit": "to-be-filled-by-corpus-v2-audited-tag",
+    "commit": "7f168645d31130099951a1f9877c788c09274677",
     "sequenceIndex": 8,
     "links": [
       {

@@ -1,17 +1,4 @@
 {
-  "primary": [],
-  "secondary": [
-    {
-      "label": "localContextLogLoss",
-      "value": 1.149743,
-      "unit": null,
-      "direction": null
-    },
-    {
-      "label": "fullFrameLogLoss",
-      "value": 1.214627,
-      "unit": null,
-      "direction": null
-    }
-  ]
+  "localContextLogLoss": 1.149743,
+  "fullFrameLogLoss": 1.214627
 }
