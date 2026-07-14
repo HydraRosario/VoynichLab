@@ -52,5 +52,14 @@
     "targetCommit": "3f4bd8cc81885f2750cedd5f00dac6bd5082c1ee",
     "summary": "First public VoynichLab research portal.",
     "url": "https://github.com/HydraRosario/VoynichLab/releases/tag/public-portal-v1"
+  },
+  {
+    "tag": "prospective-atoms-eva-test-v1",
+    "title": "Prospective ATOMS-EVA test V1",
+    "date": "2026-07-14",
+    "tagObject": "ec257cfc2ba21ce06c19d425b793d492af98ed70",
+    "targetCommit": "8137d72d5b979d296f6def65b87f1cca1f48288a",
+    "summary": "First preregistered prospective replication: f3r test-only, SUPPORTIVE outcome.",
+    "url": "https://github.com/HydraRosario/VoynichLab/releases/tag/prospective-atoms-eva-test-v1"
   }
 ]

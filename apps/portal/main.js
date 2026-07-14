@@ -106,7 +106,8 @@ function renderAtoms() {
 }
 
 function renderCurrentResult() {
-  const current = registry.experiments.find((entry) => entry.id === "representation-comparison-v3-ablations")
+  const current = registry.experiments.find((entry) => entry.id === "prospective-atoms-eva-test-v1")
+    || registry.experiments.find((entry) => entry.id === "representation-comparison-v3-ablations")
     || registry.experiments.at(-1);
   currentResultTitle.textContent = current.title;
   currentResultCaption.textContent = current.result;
@@ -122,7 +123,7 @@ function renderExperimentOptions() {
   experimentSelect.innerHTML = registry.experiments.map((experiment) => `
     <option value="${html(experiment.id)}">${html(experiment.title)}</option>
   `).join("");
-  experimentSelect.value = "representation-comparison-v3-ablations";
+  experimentSelect.value = "prospective-atoms-eva-test-v1";
   if (!experimentSelect.value) experimentSelect.selectedIndex = registry.experiments.length - 1;
   renderExperiment();
 }
