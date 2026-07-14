@@ -1,4 +1,0 @@
-id	status	signature_key	relation	first_token	second_token	current_pair_count	sample_image_id	sample_particle_a	sample_particle_b	updated_at	note
-18	observable-pair	inline|e:1+h:1|c:1+e:1+h:2	inline	e:1+h:1	c:1+e:1+h:2	77	3	img3-m47-p2	img3-m47-p3	2026-07-10 23:08:24	The token pair still occurs in current molecules.
-26	observable-pair	inline|a:1+a:1+b:1+b:1+c:1+d:1+e:1+e:1+g:1|e:1+f:1	inline	a:1+a:1+b:1+b:1+c:1+d:1+e:1+e:1+g:1	e:1+f:1	2	4	img4-m3-p3	img4-m3-p1	2026-07-13 03:38:29	The token pair still occurs in current molecules.
-27	observable-pair	inline|e:1+e:1+g:1|e:1+f:1	inline	e:1+e:1+g:1	e:1+f:1	52	6	img6-m21-p4	img6-m21-p5	2026-07-13 14:30:21	The token pair still occurs in current molecules.

@@ -15,11 +15,11 @@ Translation and romanization remain deferred until the token inventory survives 
 - `page-003.jpg`: complete `f1r`.
 - `page-004.jpg`: complete `f1v`.
 - `page-094.jpg`: complete `f47v`.
-- Combined case: `cases/combined-f1r-f1v-f47v-full-current`.
-- Main report: `cases/CURRENT-COMPRESSED-REPORT.md`.
-- Complete report: `cases/FINAL-COMPLETE-REPORT.md`.
+- Frozen public corpus: `../research/frozen/CORPUS-V2-AUDITED`.
+- Published reports: `../artifacts/public`.
+- Regenerated local cases: `cases/*-current`.
 - Known anomalies: `cases/known-labeling-anomalies.tsv`.
-- Visual evidence: `artifacts/visual-snapshots/current`.
+- Regenerated local visual exports: `artifacts/visual-snapshots/current`.
 
 ## Research Layers
 

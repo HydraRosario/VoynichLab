@@ -1,0 +1,114 @@
+{
+  "schemaVersion": "1.0",
+  "defaultRound": "v8",
+  "assets": {
+    "candidatesPath": "../../research/audits/anomaly-candidates.json",
+    "contextPrefix": "../portal/data/qc-context"
+  },
+  "rounds": {
+    "v1": {
+      "label": "v1",
+      "description": "Historical Round 1. Already recorded in the CORPUS-V2 audit ledger.",
+      "corpus": {
+        "pages": ["f1r", "f1v", "f2r", "f2v", "f47v"],
+        "excluded": ["f3r - visual snapshots were not exported when this round was created"]
+      },
+      "focusIds": [5103, 1287, 2696, 1440, 1136, 2553, 2100, 1509, 1727, 3777, 3778],
+      "ledgerPath": "../../research/corpus-revisions/CORPUS-V2-AUDITED-WORKING/corrections.tsv",
+      "suggestedLabels": {
+        "5103": "artifact",
+        "1287": "c:1",
+        "1440": "c:1",
+        "1136": "c:1",
+        "2553": "c:1",
+        "2100": "c:1",
+        "2696": "c:2"
+      },
+      "enableHeuristicSuggestions": false
+    },
+    "v2": {
+      "label": "v2",
+      "description": "Exploratory Round 2. Pre-refresh candidate queue; several entries were corrected or removed from the live DB.",
+      "corpus": {
+        "pages": ["f1r", "f1v", "f2r", "f2v", "f47v"],
+        "excluded": []
+      },
+      "focusIds": [1788, 982, 5517, 4334, 5518, 1947, 2670, 3766, 2616, 5104, 2461, 2293, 4029, 5284, 990, 4484],
+      "ledgerPath": null,
+      "suggestedLabels": {},
+      "enableHeuristicSuggestions": true
+    },
+    "v3": {
+      "label": "v3",
+      "description": "Current post-correction QC queue generated after refreshing snapshots from the live DatasetCreator DB.",
+      "corpus": {
+        "pages": ["f1r", "f1v", "f2r", "f2v", "f3r", "f47v"],
+        "excluded": []
+      },
+      "focusIds": [6488, 4162, 4099, 7148, 4801, 1509, 7173, 1727, 5149, 4781, 7152, 1788, 982, 5517, 4334, 5518],
+      "ledgerPath": null,
+      "suggestedLabels": {},
+      "enableHeuristicSuggestions": true
+    },
+    "v4": {
+      "label": "v4",
+      "description": "Follow-up QC queue after importing v3 decisions; confirmed rare-but-valid cases and corrected relabel/artifact cases are excluded.",
+      "corpus": {
+        "pages": ["f1r", "f1v", "f2r", "f2v", "f3r", "f47v"],
+        "excluded": []
+      },
+      "focusIds": [1947, 2670, 3766, 2616, 1689, 8201, 2746, 7094, 2839, 1864, 5515, 1189, 2469, 3790, 2045, 4029],
+      "ledgerPath": null,
+      "suggestedLabels": {},
+      "enableHeuristicSuggestions": true
+    },
+    "v5": {
+      "label": "v5",
+      "description": "Follow-up QC queue after importing v3 and v4 decisions; previously confirmed, relabeled, and artifact cases are excluded.",
+      "corpus": {
+        "pages": ["f1r", "f1v", "f2r", "f2v", "f3r", "f47v"],
+        "excluded": []
+      },
+      "focusIds": [6379, 8142, 2818, 5284, 8173, 5291, 1949, 1058, 1113, 4246, 8196, 5592, 1501, 5270, 5262, 3434],
+      "ledgerPath": null,
+      "suggestedLabels": {},
+      "enableHeuristicSuggestions": true
+    },
+    "v6": {
+      "label": "v6",
+      "description": "Follow-up QC queue after importing v3, v4, and v5 decisions; previously reviewed cases are excluded.",
+      "corpus": {
+        "pages": ["f1r", "f1v", "f2r", "f2v", "f3r", "f47v"],
+        "excluded": []
+      },
+      "focusIds": [1517, 2664, 7843, 1966, 2660, 1249, 4487, 4484, 4829, 1565, 5624, 7153, 2250, 2735, 5267, 1278],
+      "ledgerPath": null,
+      "suggestedLabels": {},
+      "enableHeuristicSuggestions": true
+    },
+    "v7": {
+      "label": "v7",
+      "description": "Follow-up QC queue after importing v3 through v6 decisions and refreshing the live DB correction for atom 6379.",
+      "corpus": {
+        "pages": ["f1r", "f1v", "f2r", "f2v", "f3r", "f47v"],
+        "excluded": []
+      },
+      "focusIds": [1011, 8187, 3426, 7549, 4335, 1579, 2273, 4357, 4515, 3799, 5289, 5611, 8191, 2208, 5279, 7540],
+      "ledgerPath": null,
+      "suggestedLabels": {},
+      "enableHeuristicSuggestions": true
+    },
+    "v8": {
+      "label": "v8",
+      "description": "Follow-up QC queue generated after consolidating v3 through v7 into qc-reviewed-ledger.json.",
+      "corpus": {
+        "pages": ["f1r", "f1v", "f2r", "f2v", "f3r", "f47v"],
+        "excluded": []
+      },
+      "focusIds": [4489, 1821, 2220, 5276, 4819, 6021, 7043, 7546, 5618, 2742, 7537, 1559, 7747, 6469, 4343, 5593],
+      "ledgerPath": null,
+      "suggestedLabels": {},
+      "enableHeuristicSuggestions": true
+    }
+  }
+}

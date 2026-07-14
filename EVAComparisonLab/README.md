@@ -12,12 +12,10 @@ Corpus activo:
 - `page-004.jpg`: folio `f1v` completo.
 - `page-094.jpg`: folio `f47v` completo.
 - EVA source: `sources/IT2a-n.txt`.
-- Caso combinado vivo: `cases/combined-f1r-f1v-f47v-full-current`.
-- Reporte comprimido: `cases/CURRENT-COMPRESSED-REPORT.md`.
-- Reporte completo unico: `cases/FINAL-COMPLETE-REPORT.md`.
-- Snapshots visuales: `artifacts/visual-snapshots/current`.
+- Exports vivos: regenerables bajo `cases/*-current` y `artifacts/visual-snapshots/current`.
+- Evidencia congelada: `../research/frozen` y `../artifacts/public`.
 
-El directorio no conserva exports parciales ni carpetas legacy. Los outputs se regeneran desde la DB actual.
+El directorio no conserva exports parciales ni carpetas legacy. Los outputs `current` son scratch local ignorado por Git y se regeneran desde la DB actual.
 
 ## Comando Principal
 
@@ -97,16 +95,15 @@ Senales en contra:
 
 ## Archivos Principales
 
-- `cases/CURRENT-COMPRESSED-REPORT.md`
-- `cases/FINAL-COMPLETE-REPORT.md`
-- `cases/combined-f1r-f1v-f47v-full-current/role-entropy.md`
-- `cases/combined-f1r-f1v-f47v-full-current/line-alignment-audit.md`
-- `cases/combined-f1r-f1v-f47v-full-current/contextual-rule-discovery.md`
-- `cases/combined-f1r-f1v-f47v-full-current/contextual-rule-discovery-molecule-scope.md`
-- `cases/combined-f1r-f1v-f47v-full-current/conditional-entropy.md`
-- `cases/combined-f1r-f1v-f47v-full-current/variant-ablation.md`
-- `cases/combined-f1r-f1v-f47v-full-current/macro-lexeme-analysis.md`
-- `cases/combined-f1r-f1v-f47v-full-current/morphology-family-analysis.md`
-- `cases/combined-f1r-f1v-f47v-full-current/labeling-anomaly-audit.md`
+- `../research/frozen/CORPUS-V2-AUDITED/`
+- `../artifacts/public/corpus-v2-audited-robustness-replay/`
+- `../artifacts/public/representation-comparison-v2-aligned/`
+- `cases/known-labeling-anomalies.tsv`
+- `scripts/run-current-analysis.js`
+- `scripts/export-visual-snapshots.js`
+
+Generated local outputs, when present:
+
+- `cases/*-current/`
 - `artifacts/visual-snapshots/current/visual-snapshots.tsv`
 - `artifacts/visual-snapshots/current/visual-snapshots.db`

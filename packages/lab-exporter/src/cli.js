@@ -171,6 +171,10 @@ function isDbFile(filePath) {
   });
 }
 
+function isGeneratedFile(filePath) {
+  return GENERATED_DIRS.some((dir) => filePath.startsWith(dir));
+}
+
 function isDirty(dir) {
   return gitChangedFiles().some((f) => f.file.startsWith(dir));
 }
@@ -662,8 +666,8 @@ function stagePlan(id) {
 function repoAudit() {
   const changedFiles = gitChangedFiles();
   const highRisk = changedFiles.filter((f) => isHighRiskChange(f.file));
-  const dbFiles = changedFiles.filter((f) => isDbFile(f.file));
-  const generated = changedFiles.filter((f) => GENERATED_DIRS.some((dir) => f.file.startsWith(dir)));
+  const dbFiles = changedFiles.filter((f) => isDbFile(f.file) && !isGeneratedFile(f.file));
+  const generated = changedFiles.filter((f) => isGeneratedFile(f.file));
   const localState = LOCAL_STATE_DIRS.filter((dir) => fs.existsSync(rel(dir)));
 
   console.log("VoynichLab repo audit");

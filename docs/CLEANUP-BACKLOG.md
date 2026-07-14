@@ -11,7 +11,7 @@ Each class needs a different cleanup rule.
 
 ## Phase 1: Stop New Noise
 
-Status: in progress.
+Status: mostly complete.
 
 Actions:
 
@@ -20,12 +20,16 @@ Actions:
 - Ignore new visual snapshot exports under `visual-snapshots/current`.
 - Retire Atom Atlas after its Corpus V2 QC role.
 - Remove stale generated project summary tooling.
+- Remove tracked live `current`/`WORKING` outputs after their results were
+  preserved in frozen/public artifacts.
 
 Acceptance criteria:
 
 - `npm.cmd run repo:audit` reports generated/scratch groups clearly.
 - New temporary exports do not flood `git status`.
 - No ignored rule hides already tracked evidence silently.
+- `research/audits/qc-rounds.json` remains tracked because it is canonical QC
+  app configuration, while downloaded `qc-decisions-v*.json` files are scratch.
 
 ## Phase 2: Revert Or Freeze Generated Diffs
 
