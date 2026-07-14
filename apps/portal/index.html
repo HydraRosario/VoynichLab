@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>VoynichLab</title>
+    <meta name="description" content="VoynichLab public portal: ATOMS-V1, EVA comparison, structural experiments, and reproducible research artifacts.">
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="VoynichLab home">
+        <span class="brand-mark" aria-hidden="true">VL</span>
+        <span>
+          <strong>VoynichLab</strong>
+          <small>Open computational observatory</small>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#research">Research</a>
+        <a href="#experiments">Experiments</a>
+        <a href="#atoms">ATOMS-V1</a>
+        <a href="#tools">Tools</a>
+        <a href="#reproduce">Reproduce</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="dashboard" aria-labelledby="dashboard-title">
+        <div class="dashboard-copy">
+          <p class="eyebrow">Voynich Manuscript research platform</p>
+          <h1 id="dashboard-title">A computational microscope for the Voynich Manuscript.</h1>
+          <p class="lead">VoynichLab publishes stroke-level annotations, ATOMS-V1 experiments, EVA comparisons, negative controls, and reproducible scripts without claiming decipherment.</p>
+          <div class="action-row" aria-label="Primary actions">
+            <a class="button primary" href="#experiments">View results</a>
+            <a class="button" href="#research">Read timeline</a>
+            <a class="button" href="https://github.com/HydraRosario/VoynichLab">Open the source repository</a>
+          </div>
+          <div class="deploy-status" aria-label="Deployment status">
+            <span>Deployment status</span>
+            <a href="https://github.com/HydraRosario/VoynichLab/actions/workflows/deploy-portal-pages.yml">GitHub Pages workflow</a>
+          </div>
+        </div>
+        <div class="live-panel" aria-label="Current result">
+          <div class="panel-header">
+            <span>Current result</span>
+            <strong>ATOMS vs EVA</strong>
+          </div>
+          <dl class="metric-grid">
+            <div>
+              <dt>Normalized log-loss</dt>
+              <dd><span>ATOMS</span><strong>0.2427</strong></dd>
+              <dd><span>EVA</span><strong>0.4320</strong></dd>
+            </div>
+            <div>
+              <dt>Top-1 accuracy</dt>
+              <dd><span>ATOMS</span><strong>79.19%</strong></dd>
+              <dd><span>EVA</span><strong>66.50%</strong></dd>
+            </div>
+            <div>
+              <dt>Unseen contexts</dt>
+              <dd><span>ATOMS</span><strong>0.97%</strong></dd>
+              <dd><span>EVA</span><strong>2.68%</strong></dd>
+            </div>
+          </dl>
+          <p class="caption">Regional held-out comparison, V3 MODEL_1 neighbors-only, all aligned regions.</p>
+        </div>
+      </section>
+
+      <section class="lab-strip" aria-label="Labs">
+        <a href="#tools" class="lab-tile">
+          <span>Dataset Creator</span>
+          <strong>Explore annotations</strong>
+        </a>
+        <a href="#experiments" class="lab-tile">
+          <span>EVA Comparison Lab</span>
+          <strong>Compare ATOMS / EVA</strong>
+        </a>
+        <a href="#experiments" class="lab-tile">
+          <span>Grammar Lab</span>
+          <strong>Inspect structural controls</strong>
+        </a>
+        <a href="#tools" class="lab-tile muted">
+          <span>Translation Lab</span>
+          <strong>Experimental hypotheses</strong>
+        </a>
+      </section>
+
+      <section id="research" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Research timeline</p>
+          <h2>A public lab notebook, including results that weakened earlier claims.</h2>
+        </div>
+        <ol class="timeline" id="timeline-list"></ol>
+      </section>
+
+      <section id="experiments" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Experiments</p>
+          <h2>Held-out comparisons, null controls, and ablations.</h2>
+        </div>
+        <div class="experiment-layout">
+          <aside class="selector-panel" aria-label="Experiment selector">
+            <label for="experiment-select">Experiment</label>
+            <select id="experiment-select"></select>
+            <label for="subset-select">Subset</label>
+            <select id="subset-select"></select>
+          </aside>
+          <article class="experiment-panel" aria-live="polite">
+            <div class="panel-header">
+              <span id="experiment-kind">Experiment</span>
+              <strong id="experiment-title"></strong>
+            </div>
+            <div class="score-columns" id="score-columns"></div>
+            <p class="interpretation" id="experiment-interpretation"></p>
+            <div class="source-links" id="source-links"></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="atoms" class="section atoms-section">
+        <div class="section-heading">
+          <p class="eyebrow">ATOMS-V1</p>
+          <h2>Sixteen fixed stroke labels used by the current public experiments.</h2>
+        </div>
+        <div class="atom-grid" id="atom-grid" aria-label="ATOMS-V1 inventory"></div>
+      </section>
+
+      <section id="tools" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Tools</p>
+          <h2>Four labs, one research instrument.</h2>
+        </div>
+        <div class="tool-grid">
+          <article class="tool-card">
+            <h3>Dataset Creator</h3>
+            <p>Local Tauri annotator for ink traces, atoms, particles, molecules, row guides, cuts, joins, and exportable ATOMS data.</p>
+            <a href="https://github.com/HydraRosario/VoynichLab/blob/main/DataSetCreator/README.md">Open tool notes</a>
+          </article>
+          <article class="tool-card">
+            <h3>EVA Comparison Lab</h3>
+            <p>Entropy, pattern, morphology, visual snapshot, and ATOMS/EVA comparison reports from the current labeled corpus.</p>
+            <a href="https://github.com/HydraRosario/VoynichLab/blob/main/EVAComparisonLab/cases/FINAL-COMPLETE-REPORT.md">View report</a>
+          </article>
+          <article class="tool-card">
+            <h3>Grammar Discovery Lab</h3>
+            <p>Frozen GRAMMAR-V1 validation, null controls, alignment, representation comparisons, and ablation scripts.</p>
+            <a href="https://github.com/HydraRosario/VoynichLab/blob/main/GrammarDiscoveryLab/README.md">Reproduce experiments</a>
+          </article>
+          <article class="tool-card caution">
+            <h3>Translation Lab</h3>
+            <p>Hypothesis space only. VoynichLab does not currently claim translation, phonetic values, or semantic decipherment.</p>
+            <a href="https://github.com/HydraRosario/VoynichLab/blob/main/TranslationLab/README.md">Inspect hypotheses</a>
+          </article>
+        </div>
+      </section>
+
+      <section id="paper" class="section paper-section">
+        <div class="section-heading">
+          <p class="eyebrow">Paper workspace</p>
+          <h2>Claims, outline, figures, literature map, and novelty matrix.</h2>
+        </div>
+        <div class="paper-links">
+          <a href="https://github.com/HydraRosario/VoynichLab/blob/main/paper/CLAIMS.md">Claims</a>
+          <a href="https://github.com/HydraRosario/VoynichLab/blob/main/paper/OUTLINE.md">Outline</a>
+          <a href="https://github.com/HydraRosario/VoynichLab/blob/main/paper/FIGURES.md">Figures</a>
+          <a href="https://github.com/HydraRosario/VoynichLab/blob/main/paper/LITERATURE.md">Literature</a>
+          <a href="https://github.com/HydraRosario/VoynichLab/blob/main/paper/NOVELTY-MATRIX.md">Novelty matrix</a>
+        </div>
+      </section>
+
+      <section id="reproduce" class="section reproduce-section">
+        <div class="section-heading">
+          <p class="eyebrow">Reproducibility</p>
+          <h2>Run the public experiment suite from the repository.</h2>
+        </div>
+        <pre><code>cd GrammarDiscoveryLab
+npm.cmd run validate
+npm.cmd run null-control:v1
+npm.cmd run null-control:v2
+npm.cmd run null-control:v3
+npm.cmd run null-control:v3:diagnostics
+npm.cmd run representation-alignment:v1
+npm.cmd run representation-comparison:v2-regions
+npm.cmd run representation-comparison:v3-ablations</code></pre>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>VoynichLab is open research infrastructure. Evidence in Git, investigation in the browser.</p>
+      <p>No translation or decipherment is currently claimed.</p>
+    </footer>
+
+    <script src="./main.js"></script>
+  </body>
+</html>
