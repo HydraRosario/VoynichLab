@@ -9,6 +9,8 @@ see `docs/MONOREPO-ARCHITECTURE.md`.
 
 For the protected annotation tool map, see `docs/DATASETCREATOR-ARCHITECTURE.md`.
 
+For ignored local state and disk-usage policy, see `docs/LOCAL-STATE-INVENTORY.md`.
+
 ## Top-Level Areas
 
 | Path | Role | Git policy | Cleanup risk |

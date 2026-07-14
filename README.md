@@ -40,7 +40,9 @@ TranslationLab/           Experimental hypothesis space (separate from validated
 
 For source/evidence/scratch boundaries and safe monorepo handling, see
 [REPOSITORY-GOVERNANCE.md](REPOSITORY-GOVERNANCE.md) and
-[docs/MONOREPO-ARCHITECTURE.md](docs/MONOREPO-ARCHITECTURE.md).
+[docs/MONOREPO-ARCHITECTURE.md](docs/MONOREPO-ARCHITECTURE.md). For ignored
+local state and disk-usage policy, see
+[docs/LOCAL-STATE-INVENTORY.md](docs/LOCAL-STATE-INVENTORY.md).
 
 ## Quick Start
 
