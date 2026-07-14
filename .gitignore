@@ -10,6 +10,8 @@ DataSetCreator/src-tauri/target/
 # Logs and local env
 *.log
 *.local
+.vercel/
+apps/portal/.vercel/
 npm-debug.log*
 yarn-debug.log*
 pnpm-debug.log*
@@ -20,11 +22,17 @@ DataSetCreator/evidence/
 DataSetCreator/backups/
 DataSetCreator/*.db
 EVAComparisonLab/backups/
+EVAComparisonLab/artifacts/visual-snapshots/current/
 EVAComparisonLab/artifacts/visual-snapshots/pre-audit-*/
+EVAComparisonLab/cases/*-current/
+research/audits/*-current/
+research/corpus-revisions/*-WORKING/
+atom-atlas/
 apps/portal/data/qc-context/
 TranslationLab/outputs/
 TranslationLab/translator/cache/
 TranslationLab/inputs/run-*.txt
+PROJECT-SUMMARY.md
 
 # Local Git scratch directories created outside `git init`
 .git/

@@ -9,6 +9,7 @@
     "research:build": "node packages/lab-exporter/src/cli.js build",
     "research:publish": "node packages/lab-exporter/src/cli.js publish",
     "research:doctor": "node packages/lab-exporter/src/cli.js doctor",
-    "research:stage-plan": "node packages/lab-exporter/src/cli.js stage-plan"
+    "research:stage-plan": "node packages/lab-exporter/src/cli.js stage-plan",
+    "repo:audit": "node packages/lab-exporter/src/cli.js repo-audit"
   }
 }

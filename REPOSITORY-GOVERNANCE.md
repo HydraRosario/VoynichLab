@@ -8,6 +8,13 @@ VoynichLab is both a research repository and a living laboratory. The repo must 
 
 The rule is simple: Git preserves evidence, the portal explains evidence, and local tools create evidence. These roles should not be mixed casually.
 
+Companion operating docs:
+
+- `docs/REPO-INVENTORY.md` maps the major repo areas and their cleanup risk.
+- `docs/REPO-AUDIT-PLAN.md` defines the staged cleanup campaign.
+- `docs/DEPLOYMENT.md` records the canonical portal URL and Vercel safety rules.
+- `docs/DATASETCREATOR-SAFETY.md` defines the DataSetCreator no-damage policy.
+
 ## Source, Evidence, And Scratch
 
 | Category | Examples | Git policy |
@@ -58,6 +65,9 @@ The public portal is the front door, not the laboratory. It should:
 - keep technical details available without forcing them on casual readers.
 
 Prefer data-driven sections from `research-feed/` and `artifacts/public/`. Avoid hardcoding experiment claims in HTML/JS when the same fact already lives in the registry.
+
+The canonical portal URL is `https://voynich-lab.vercel.app/`. Local Vercel state
+under `apps/portal/.vercel/` is machine state and must not be committed.
 
 ## Audit And Corpus Revision Rule
 

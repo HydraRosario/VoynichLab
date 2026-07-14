@@ -30,6 +30,18 @@ const GENERATED_DIRS = [
   "EVAComparisonLab/artifacts/visual-snapshots/pre-audit-",
   "apps/portal/data",
   "artifacts/public",
+  "EVAComparisonLab/cases/",
+  "research/audits/",
+  "research/corpus-revisions/",
+  "atom-atlas/",
+];
+
+const LOCAL_STATE_DIRS = [
+  ".vercel",
+  "apps/portal/.vercel",
+  "node_modules",
+  "DataSetCreator/src-tauri/target",
+  "target",
 ];
 
 function rel(...parts) {
@@ -101,7 +113,7 @@ function validateObject(required, object, label, errors) {
 
 function isGitClean() {
   try {
-    const status = execSync("git status --porcelain", { encoding: "utf8", cwd: root }).trim();
+    const status = execSync("git status --porcelain --untracked-files=all", { encoding: "utf8", cwd: root }).trim();
     return status.length === 0;
   } catch {
     return null;
@@ -110,11 +122,10 @@ function isGitClean() {
 
 function gitChangedFiles() {
   try {
-    const status = execSync("git status --porcelain", { encoding: "utf8", cwd: root }).trim();
+    const status = execSync("git status --porcelain --untracked-files=all", { encoding: "utf8", cwd: root }).trim();
     if (!status) return [];
     return status.split("\n").map((line) => {
-      const parts = line.trim().split(/\s+/, 2);
-      return { status: parts[0], file: parts[1] };
+      return { status: line.slice(0, 2).trim(), file: line.slice(2).trimStart() };
     });
   } catch {
     return [];
@@ -235,7 +246,7 @@ function validateRegistry({ strictArtifacts = true, strictPending = true } = {})
       if (!isTextLikeFile(file)) continue;
       const text = fs.readFileSync(file, "utf8");
       if (/[A-Za-z]:\\/.test(text)) windowsPathHits.push(posixPath(path.relative(root, file)));
-      if (/(sk_live_|pk_live_|SECRET_KEY|PRIVATE_KEY)/i.test(text)) {
+      if (/(sk_live_[A-Za-z0-9_]+|pk_live_[A-Za-z0-9_]+|-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----)/i.test(text)) {
         errors.push(`possible secret in ${posixPath(path.relative(root, file))}`);
       }
     }
@@ -554,9 +565,9 @@ function doctor() {
   if (!fs.existsSync(portalExperiments)) {
     console.warn(`WARN Portal data missing (run research:build)`);
   } else {
-    const portalExps = readJson("research-feed/experiments.json");
+    const portalExps = JSON.parse(fs.readFileSync(portalExperiments, "utf8"));
     if (portalExps.length !== experiments.length) {
-      console.warn(`WARN Portal data out of sync: ${portalExps.length} vs ${experiments.length} experiments`);
+      console.warn(`WARN Portal data out of sync: ${portalExps.length} portal vs ${experiments.length} registry experiments`);
     }
   }
 
@@ -631,6 +642,114 @@ function stagePlan(id) {
   }
 }
 
+function repoAudit() {
+  const changedFiles = gitChangedFiles();
+  const highRisk = changedFiles.filter((f) => isHighRiskChange(f.file));
+  const dbFiles = changedFiles.filter((f) => isDbFile(f.file));
+  const generated = changedFiles.filter((f) => GENERATED_DIRS.some((dir) => f.file.startsWith(dir)));
+  const localState = LOCAL_STATE_DIRS.filter((dir) => fs.existsSync(rel(dir)));
+
+  console.log("VoynichLab repo audit");
+  console.log("=====================");
+  console.log("");
+  console.log(`Working tree clean: ${changedFiles.length === 0 ? "yes" : "no"}`);
+  printChangeSummary(changedFiles, "Working tree changes");
+  console.log("");
+
+  if (highRisk.length) {
+    console.warn("WARN High-risk changes:");
+    for (const f of highRisk.slice(0, 25)) console.warn(`     ${f.status} ${f.file}`);
+    if (highRisk.length > 25) console.warn(`     ... ${highRisk.length - 25} more`);
+  } else {
+    console.log("High-risk changes: none detected.");
+  }
+
+  if (dbFiles.length) {
+    console.warn("WARN Database files in working tree:");
+    for (const f of dbFiles) console.warn(`     ${f.status} ${f.file}`);
+  } else {
+    console.log("Database files in working tree: none detected.");
+  }
+
+  console.log("");
+  console.log(`Generated/scratch-looking changes: ${generated.length}`);
+  for (const [group, info] of summarizeChangedFiles(generated)) {
+    console.log(`  ${group}: ${info.count}`);
+  }
+
+  console.log("");
+  console.log("Local state directories present:");
+  if (localState.length) {
+    for (const dir of localState) console.log(`  ${dir}`);
+  } else {
+    console.log("  none detected");
+  }
+
+  const requiredDocs = [
+    "REPOSITORY-GOVERNANCE.md",
+    "docs/REPO-INVENTORY.md",
+    "docs/REPO-AUDIT-PLAN.md",
+    "docs/DEPLOYMENT.md",
+    "docs/DATASETCREATOR-SAFETY.md",
+  ];
+  console.log("");
+  console.log("Governance docs:");
+  for (const doc of requiredDocs) {
+    console.log(`  ${fs.existsSync(rel(doc)) ? "OK" : "MISSING"} ${doc}`);
+  }
+
+  const textScanRoots = [
+    "README.md",
+    "REPOSITORY-GOVERNANCE.md",
+    "docs",
+    "apps/portal",
+    "packages",
+    "research-feed",
+  ];
+  const textFiles = [];
+  for (const scanRoot of textScanRoots) {
+    const full = rel(scanRoot);
+    if (!fs.existsSync(full)) continue;
+    const stat = fs.statSync(full);
+    if (stat.isFile()) textFiles.push(full);
+    else textFiles.push(...walkFiles(full).filter(isTextLikeFile));
+  }
+
+  const windowsPathHits = [];
+  const secretHits = [];
+  for (const file of textFiles) {
+    const text = fs.readFileSync(file, "utf8");
+    const relative = posixPath(path.relative(root, file));
+    if (/[A-Za-z]:\\/.test(text)) windowsPathHits.push(relative);
+    if (/(sk_live_[A-Za-z0-9_]+|pk_live_[A-Za-z0-9_]+|-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----)/i.test(text)) {
+      secretHits.push(relative);
+    }
+  }
+
+  console.log("");
+  if (windowsPathHits.length) {
+    console.warn("WARN Absolute Windows paths in public/source text:");
+    for (const hit of windowsPathHits) console.warn(`  ${hit}`);
+  } else {
+    console.log("Absolute Windows paths in public/source text: none detected.");
+  }
+
+  if (secretHits.length) {
+    console.warn("WARN Possible secrets in public/source text:");
+    for (const hit of secretHits) console.warn(`  ${hit}`);
+    process.exitCode = 1;
+  } else {
+    console.log("Possible secrets in public/source text: none detected.");
+  }
+
+  console.log("");
+  console.log("Next safe actions:");
+  console.log("  1. Keep DataSetCreator changes isolated.");
+  console.log("  2. Separate generated/current outputs from source changes before committing.");
+  console.log("  3. Confirm Vercel linkage before deploying the canonical portal.");
+  console.log("  4. Move or delete files only after a written staging/quarantine plan.");
+}
+
 function printHelp() {
   console.log(`VoynichLab Research Publisher
 
@@ -640,13 +759,15 @@ Usage:
   research:publish --experiment <id>  Publish a single experiment
   research:doctor                Full health check
   research:stage-plan --experiment <id>  Show staging plan for experiment
+  repo:audit                     Non-destructive repo hygiene audit
 
 Examples:
   npm.cmd run research:validate
   npm.cmd run research:build
   npm.cmd run research:publish -- --experiment prospective-atoms-eva-test-v1
   npm.cmd run research:doctor
-  npm.cmd run research:stage-plan -- --experiment prospective-atoms-eva-test-v1`);
+  npm.cmd run research:stage-plan -- --experiment prospective-atoms-eva-test-v1
+  npm.cmd run repo:audit`);
 }
 
 const [command, ...args] = process.argv.slice(2);
@@ -680,6 +801,8 @@ if (command === "validate") {
     process.exit(1);
   }
   stagePlan(id);
+} else if (command === "repo-audit") {
+  repoAudit();
 } else {
   printHelp();
   process.exit(command ? 1 : 0);
