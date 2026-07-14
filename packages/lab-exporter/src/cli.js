@@ -286,6 +286,9 @@ function validateRegistry({ strictArtifacts = true, strictPending = true } = {})
   for (const script of unregisteredEvaComparisonScripts()) {
     errors.push(`EVAComparisonLab script missing from registry: ${script}`);
   }
+  for (const script of unregisteredDatasetCreatorScripts()) {
+    errors.push(`DataSetCreator script missing from registry: ${script}`);
+  }
 
   if (errors.length) {
     for (const error of errors) console.error(`ERROR ${error}`);
@@ -791,6 +794,15 @@ function repoAudit() {
     console.log("EVAComparisonLab script registry: complete.");
   }
 
+  const unregisteredDatasetScripts = unregisteredDatasetCreatorScripts();
+  if (unregisteredDatasetScripts.length) {
+    console.warn("WARN DataSetCreator scripts missing from registry:");
+    for (const script of unregisteredDatasetScripts) console.warn(`  ${script}`);
+    process.exitCode = 1;
+  } else {
+    console.log("DataSetCreator script registry: complete.");
+  }
+
   console.log("");
   console.log("Next safe actions:");
   console.log("  1. Keep DataSetCreator changes isolated.");
@@ -821,7 +833,15 @@ function nonCanonicalKnownLabelingLedgers() {
 }
 
 function unregisteredEvaComparisonScripts() {
-  const scriptsDir = rel("EVAComparisonLab", "scripts");
+  return unregisteredScriptsIn("EVAComparisonLab/scripts");
+}
+
+function unregisteredDatasetCreatorScripts() {
+  return unregisteredScriptsIn("DataSetCreator/scripts");
+}
+
+function unregisteredScriptsIn(relativeDir) {
+  const scriptsDir = rel(relativeDir);
   const registryPath = path.join(scriptsDir, "README.md");
   if (!fs.existsSync(scriptsDir) || !fs.existsSync(registryPath)) return [];
   const registry = fs.readFileSync(registryPath, "utf8");
@@ -831,7 +851,7 @@ function unregisteredEvaComparisonScripts() {
     .filter((name) => name !== "README.md")
     .filter((name) => /\.(js|py|cjs|mjs)$/.test(name))
     .filter((name) => !registry.includes(`\`${name}\``))
-    .map((name) => `EVAComparisonLab/scripts/${name}`);
+    .map((name) => `${posixPath(relativeDir)}/${name}`);
 }
 
 function printHelp() {

@@ -148,7 +148,9 @@ The current direction is correct: user edits should be staged locally and commit
 | `cleanup-stale-merge-patterns.cjs` | repair | Deletes stale rows from `particle_merge_patterns` |
 | `repair-page094-row-overrides.cjs` | repair | Historical targeted row override repair |
 
-Recommendation: add a `DataSetCreator/scripts/README.md` before any further cleanup. Each script should declare read/write behavior, affected tables, backup behavior, and whether it is still current.
+Registry: `DataSetCreator/scripts/README.md`.
+
+Each script declares read/write behavior, affected tables, backup behavior, and whether it is still current. `repo:audit` fails if a new script appears in this directory without a registry entry.
 
 ## Current Architectural Risks
 
@@ -174,9 +176,7 @@ Molecule IDs and particle source indexes can change after boundary edits. Stable
 
 ## Recommended Next Refactor Plan
 
-1. Add `DataSetCreator/scripts/README.md`.
-2. Classify every DataSetCreator script as read-only, repair, historical, or retired.
-3. Split `database.rs` into modules:
+1. Split `database.rs` into modules:
    - schema/migrations;
    - region/label/atom persistence;
    - recalculation;
@@ -184,9 +184,9 @@ Molecule IDs and particle source indexes can change after boundary edits. Stable
    - order learning;
    - merge learning;
    - audit packet construction.
-4. Split `app.js` into state, sidebar rendering, edit-mode controller, and command orchestration.
-5. Split `image-viewer.js` into canvas rendering, hit testing, overlay rendering, and local edit drafts.
-6. Add a small regression checklist for:
+2. Split `app.js` into state, sidebar rendering, edit-mode controller, and command orchestration.
+3. Split `image-viewer.js` into canvas rendering, hit testing, overlay rendering, and local edit drafts.
+4. Add a small regression checklist for:
    - opening the app;
    - loading page 003;
    - painting one atom;
@@ -201,4 +201,3 @@ Molecule IDs and particle source indexes can change after boundary edits. Stable
 ## Current Verdict
 
 DataSetCreator is powerful but concentrated. The best next move is not deleting code from it. The best next move is to document and then modularize it carefully, while protecting the live database and learned-memory tables.
-

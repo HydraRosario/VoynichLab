@@ -229,6 +229,8 @@ Goal: understand the annotation engine before touching it again.
 
 Status: started. The read-only map now lives at `docs/DATASETCREATOR-ARCHITECTURE.md`.
 
+The local repair/inspection scripts are now registered in `DataSetCreator/scripts/README.md`, and `repo:audit` enforces that new scripts in that directory are declared.
+
 Steps:
 
 1. Document SQLite tables and migration paths.
