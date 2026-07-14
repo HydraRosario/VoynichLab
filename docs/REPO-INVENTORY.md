@@ -4,6 +4,9 @@ This inventory is the first map a maintainer should read before moving files.
 VoynichLab is not a normal single app repo: it contains live annotation tools,
 research laboratories, frozen evidence, public artifacts, and a static portal.
 
+For the operating model that explains how these areas may depend on each other,
+see `docs/MONOREPO-ARCHITECTURE.md`.
+
 ## Top-Level Areas
 
 | Path | Role | Git policy | Cleanup risk |
