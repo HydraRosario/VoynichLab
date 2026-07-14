@@ -20,6 +20,6 @@
     "npm.cmd run prospective-atoms-eva:test -- --preflight",
     "npm.cmd run prospective-atoms-eva:test -- --confirm-complete"
   ],
-  "reportPath": "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/PROSPECTIVE-ATOMS-EVA-TEST-V1.md",
+  "reportPath": "artifacts/public/prospective-atoms-eva-test-v1/report.md",
   "sourceScript": "GrammarDiscoveryLab/scripts/prospective-atoms-eva-test-v1.js"
 }

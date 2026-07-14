@@ -5,12 +5,12 @@ const root = process.cwd();
 const repoRoot = path.resolve(root, "..");
 const outDir = path.resolve(root, "out/representation-alignment-v1");
 const evaCasesRoot = path.resolve(repoRoot, "EVAComparisonLab/cases");
-const lineAuditPath = path.join(evaCasesRoot, "combined-f1r-f1v-f2r-f2v-f47v-full-current/line-alignment-audit.tsv");
+const lineAuditPath = path.join(repoRoot, "artifacts/public/prospective-atoms-eva-test-v1/tables/line-alignment-audit.tsv");
 const folios = ["f1r", "f1v", "f2r", "f2v", "f47v"];
 
 const lineAudit = readTsv(lineAuditPath).filter((row) => row.status === "paired-by-ordinal");
 const evaTokensByFolio = new Map(folios.map((folio) => [folio, readCaseTsv(folio, "eva-tokens.tsv")]));
-const atomsByFolio = new Map(folios.map((folio) => [folio, readCaseTsv(folio, "atoms-current.tsv")]));
+const atomsByFolio = new Map(folios.map((folio) => [folio, readCaseTsv(folio, "atoms.tsv")]));
 
 const alignedRegions = [];
 const unresolvedRegions = [];
@@ -178,8 +178,8 @@ function renderReport() {
   lines.push("## Inputs");
   lines.push("");
   lines.push("- EVA token tables: `EVAComparisonLab/cases/<folio>-full/eva-tokens.tsv`.");
-  lines.push("- ATOMS unit tables: `EVAComparisonLab/cases/<folio>-full/atoms-current.tsv`.");
-  lines.push("- Row alignment table: `EVAComparisonLab/cases/combined-f1r-f1v-f2r-f2v-f47v-full-current/line-alignment-audit.tsv`.");
+  lines.push("- ATOMS unit tables: `EVAComparisonLab/cases/<folio>-full/atoms.tsv`.");
+  lines.push("- Row alignment table: `artifacts/public/prospective-atoms-eva-test-v1/tables/line-alignment-audit.tsv`.");
   lines.push("");
   lines.push("## Method");
   lines.push("");

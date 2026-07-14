@@ -10,6 +10,9 @@ Corpus activo:
 
 - `page-003.jpg`: folio `f1r` completo.
 - `page-004.jpg`: folio `f1v` completo.
+- `page-005.jpg`: folio `f2r` completo.
+- `page-006.jpg`: folio `f2v` completo.
+- `page-007.jpg`: folio `f3r` completo.
 - `page-094.jpg`: folio `f47v` completo.
 - EVA source: `sources/IT2a-n.txt`.
 - Exports vivos: regenerables bajo `cases/*-current` y `artifacts/visual-snapshots/current`.
@@ -22,12 +25,12 @@ El directorio no conserva exports parciales ni carpetas legacy. Los outputs `cur
 Desde `EVAComparisonLab`:
 
 ```powershell
-npm.cmd run current
+npm.cmd run corpus:v2
 ```
 
 Ese comando regenera:
 
-- EVA completo de `f1r`, `f1v` y `f47v`;
+- EVA completo de `f1r`, `f1v`, `f2r`, `f2v`, `f3r` y `f47v`;
 - export fisico actual desde DatasetCreator;
 - comparacion de entropia EVA vs atoms;
 - auditoria de renglones EVA/fisicos;
@@ -42,7 +45,7 @@ Ese comando regenera:
 - validacion cruzada por folio;
 - excepciones inspeccionables;
 - audit de posibles errores humanos.
-- reporte completo unico con todos los modulos embebidos.
+- manifiesto local de corrida V2.
 
 ## DB Y Permisos
 
@@ -99,7 +102,7 @@ Senales en contra:
 - `../artifacts/public/corpus-v2-audited-robustness-replay/`
 - `../artifacts/public/representation-comparison-v2-aligned/`
 - `cases/known-labeling-anomalies.tsv`
-- `scripts/run-current-analysis.js`
+- `scripts/run-corpus-v2-analysis.js`
 - `scripts/export-visual-snapshots.js`
 
 Generated local outputs, when present:

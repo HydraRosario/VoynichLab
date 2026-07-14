@@ -9,10 +9,11 @@
     "f2v"
   ],
   "inputs": [
-    "GrammarDiscoveryLab/out/null-control-v2-contextual/NULL-CONTROL-V2-CONTEXTUAL.md",
-    "GrammarDiscoveryLab/out/null-control-v2-contextual/null-control-v2-contextual-family-probabilities.tsv"
+    "artifacts/public/null-control-v2-contextual/report.md",
+    "artifacts/public/null-control-v2-contextual/tables/null-control-v2-contextual-family-probabilities.tsv"
   ],
   "script": "GrammarDiscoveryLab/scripts/null-control-v2-contextual.js",
   "frozenArtifacts": [],
-  "generatedBy": "VoynichLab"
+  "generatedBy": "VoynichLab",
+  "sourceScript": "GrammarDiscoveryLab/scripts/null-control-v2-contextual.js"
 }

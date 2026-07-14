@@ -8,18 +8,19 @@
     "f3r"
   ],
   "inputs": [
-    "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/PROSPECTIVE-ATOMS-EVA-TEST-V1.md",
-    "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/model-results.tsv",
-    "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/subset-results.tsv",
-    "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/line-alignment-audit.tsv",
-    "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/aligned-regions.tsv",
-    "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/unresolved-regions.tsv",
-    "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/region-scores.tsv",
-    "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/corruption-results.tsv",
-    "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/folio-freeze-manifest.json",
-    "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/checksums.txt"
+    "artifacts/public/prospective-atoms-eva-test-v1/report.md",
+    "artifacts/public/prospective-atoms-eva-test-v1/tables/model-results.tsv",
+    "artifacts/public/prospective-atoms-eva-test-v1/tables/subset-results.tsv",
+    "artifacts/public/prospective-atoms-eva-test-v1/tables/line-alignment-audit.tsv",
+    "artifacts/public/prospective-atoms-eva-test-v1/tables/aligned-regions.tsv",
+    "artifacts/public/prospective-atoms-eva-test-v1/tables/unresolved-regions.tsv",
+    "artifacts/public/prospective-atoms-eva-test-v1/tables/region-scores.tsv",
+    "artifacts/public/prospective-atoms-eva-test-v1/tables/corruption-results.tsv",
+    "artifacts/public/prospective-atoms-eva-test-v1/tables/folio-freeze-manifest.json",
+    "artifacts/public/prospective-atoms-eva-test-v1/tables/checksums.txt"
   ],
   "script": "GrammarDiscoveryLab/scripts/prospective-atoms-eva-test-v1.js",
   "frozenArtifacts": [],
-  "generatedBy": "VoynichLab"
+  "generatedBy": "VoynichLab",
+  "sourceScript": "GrammarDiscoveryLab/scripts/prospective-atoms-eva-test-v1.js"
 }

@@ -19,6 +19,6 @@
     "npm.cmd run null-control:v3",
     "npm.cmd run null-control:v3:diagnostics"
   ],
-  "reportPath": "GrammarDiscoveryLab/out/null-control-v3/NULL-CONTROL-V3-MODEL-COMPARISON.md",
+  "reportPath": "artifacts/public/null-control-v3-model-comparison/report.md",
   "sourceScript": "GrammarDiscoveryLab/scripts/null-control-v3-model-comparison.js"
 }

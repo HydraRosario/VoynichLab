@@ -155,12 +155,11 @@ The runner must:
 ## Expected Outputs After Completion
 
 ```text
-GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/
-  PROSPECTIVE-ATOMS-EVA-TEST-V1.md
-  folio-freeze-manifest.json
-  alignment-summary.tsv
-  model-results.tsv
-  subset-results.tsv
-  corruption-results.tsv
+artifacts/public/prospective-atoms-eva-test-v1/
+  report.md
+  tables/folio-freeze-manifest.json
+  tables/model-results.tsv
+  tables/subset-results.tsv
+  tables/corruption-results.tsv
   checksums.txt
 ```

@@ -9,11 +9,12 @@
     "f2v"
   ],
   "inputs": [
-    "GrammarDiscoveryLab/out/representation-alignment-v1/REPRESENTATION-ALIGNMENT-V1.md",
-    "GrammarDiscoveryLab/out/representation-alignment-v1/aligned-regions.tsv",
-    "GrammarDiscoveryLab/out/representation-alignment-v1/unresolved-regions.tsv"
+    "artifacts/public/representation-alignment-v1/report.md",
+    "artifacts/public/representation-alignment-v1/tables/aligned-regions.tsv",
+    "artifacts/public/representation-alignment-v1/tables/unresolved-regions.tsv"
   ],
   "script": "GrammarDiscoveryLab/scripts/representation-alignment-v1.js",
   "frozenArtifacts": [],
-  "generatedBy": "VoynichLab"
+  "generatedBy": "VoynichLab",
+  "sourceScript": "GrammarDiscoveryLab/scripts/representation-alignment-v1.js"
 }

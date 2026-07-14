@@ -8,7 +8,7 @@ This is an exploratory regional comparison. It is not a decipherment claim and n
 
 - Alignment: `out/representation-alignment-v1/aligned-regions.tsv`.
 - EVA source tokens: `EVAComparisonLab/cases/<folio>-full/eva-tokens.tsv`.
-- ATOMS source units: `EVAComparisonLab/cases/<folio>-full/atoms-current.tsv`.
+- ATOMS source units: `EVAComparisonLab/cases/<folio>-full/atoms.tsv`.
 
 ## Split And Vocabularies
 

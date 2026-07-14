@@ -18,6 +18,6 @@
   "commands": [
     "npm.cmd run null-control:v2"
   ],
-  "reportPath": "GrammarDiscoveryLab/out/null-control-v2-contextual/NULL-CONTROL-V2-CONTEXTUAL.md",
+  "reportPath": "artifacts/public/null-control-v2-contextual/report.md",
   "sourceScript": "GrammarDiscoveryLab/scripts/null-control-v2-contextual.js"
 }

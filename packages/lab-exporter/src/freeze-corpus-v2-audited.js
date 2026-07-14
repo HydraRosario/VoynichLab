@@ -121,10 +121,10 @@ function cleanOutDir() {
 }
 
 function writeCorpusTables() {
-  copyFile("atoms-current.tsv", "corpus/atoms.tsv");
+  copyFile("atoms.tsv", "corpus/atoms.tsv");
   copyFile("line-alignment-audit.tsv", "corpus/rows.tsv");
 
-  const atomsRows = readTsv(path.join(sourceDir, "atoms-current.tsv"));
+  const atomsRows = readTsv(path.join(sourceDir, "atoms.tsv"));
   const moleculeRows = atomsRows.map((row) => [
     row.unit_id,
     row.image_name,

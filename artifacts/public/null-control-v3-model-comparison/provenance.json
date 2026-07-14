@@ -9,10 +9,11 @@
     "f2v"
   ],
   "inputs": [
-    "GrammarDiscoveryLab/out/null-control-v3/NULL-CONTROL-V3-MODEL-COMPARISON.md",
-    "GrammarDiscoveryLab/out/null-control-v3/null-control-v3-opportunities.tsv"
+    "artifacts/public/null-control-v3-model-comparison/report.md",
+    "artifacts/public/null-control-v3-model-comparison/tables/null-control-v3-opportunities.tsv"
   ],
   "script": "GrammarDiscoveryLab/scripts/null-control-v3-model-comparison.js",
   "frozenArtifacts": [],
-  "generatedBy": "VoynichLab"
+  "generatedBy": "VoynichLab",
+  "sourceScript": "GrammarDiscoveryLab/scripts/null-control-v3-model-comparison.js"
 }

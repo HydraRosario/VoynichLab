@@ -22,7 +22,7 @@ const images = String(args.images ?? "page-003.jpg,page-094.jpg")
   .split(",")
   .map((value) => value.trim())
   .filter(Boolean);
-const outDir = path.resolve(args.out_dir ?? "cases/combined-f1r-f47v-full-current");
+const outDir = path.resolve(args.out_dir ?? "cases/combined/labeling-anomaly-audit");
 const minSupport = Number(args.min_support ?? 4);
 const maxRareCount = Number(args.max_rare_count ?? 2);
 const maxRareRatio = Number(args.max_rare_ratio ?? 0.18);
@@ -494,7 +494,7 @@ function renderFinding(row, index) {
 
 function printHelp() {
   console.log(`Usage:
-  node scripts/labeling-anomaly-audit.js --images page-003.jpg,page-094.jpg --out-dir cases/combined-f1r-f47v-full-current
+  node scripts/labeling-anomaly-audit.js --images page-003.jpg,page-094.jpg --out-dir cases/combined/labeling-anomaly-audit
 
 Options:
   --db <path>              Path to datasetcreator.db.

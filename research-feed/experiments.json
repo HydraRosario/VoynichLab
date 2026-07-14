@@ -23,10 +23,10 @@
     "commands": [
       "npm.cmd run validate"
     ],
-    "reportPath": "GrammarDiscoveryLab/out/reproducible-release-v1/f2r/GRAMMAR-V1-vs-f2r.md",
+    "reportPath": "artifacts/public/grammar-v1-f2r-validation/report.md",
     "dataTablePaths": [
-      "GrammarDiscoveryLab/out/reproducible-release-v1/f2r/grammar-v1-vs-f2r-substitution.tsv",
-      "GrammarDiscoveryLab/out/reproducible-release-v1/f2r/grammar-v1-vs-f2r-optional.tsv"
+      "artifacts/public/grammar-v1-f2r-validation/tables/grammar-v1-vs-f2r-substitution.tsv",
+      "artifacts/public/grammar-v1-f2r-validation/tables/grammar-v1-vs-f2r-optional.tsv"
     ],
     "sourceScript": "GrammarDiscoveryLab/scripts/validate-release-v1.js",
     "commit": "a57b727968cf27b0fdcb232cb31ed764bd7e3e49",
@@ -65,10 +65,10 @@
     "commands": [
       "npm.cmd run validate"
     ],
-    "reportPath": "GrammarDiscoveryLab/out/reproducible-release-v1/f2v/GRAMMAR-V1-vs-f2v.md",
+    "reportPath": "artifacts/public/grammar-v1-f2v-prospective-validation/report.md",
     "dataTablePaths": [
-      "GrammarDiscoveryLab/out/reproducible-release-v1/f2v/grammar-v1-vs-f2v-substitution.tsv",
-      "GrammarDiscoveryLab/out/reproducible-release-v1/f2v/grammar-v1-vs-f2v-optional.tsv"
+      "artifacts/public/grammar-v1-f2v-prospective-validation/tables/grammar-v1-vs-f2v-substitution.tsv",
+      "artifacts/public/grammar-v1-f2v-prospective-validation/tables/grammar-v1-vs-f2v-optional.tsv"
     ],
     "sourceScript": "GrammarDiscoveryLab/scripts/validate-release-v1.js",
     "commit": "a57b727968cf27b0fdcb232cb31ed764bd7e3e49",
@@ -107,9 +107,9 @@
     "commands": [
       "npm.cmd run null-control:v1"
     ],
-    "reportPath": "GrammarDiscoveryLab/out/null-control-v1/NULL-CONTROL-V1.md",
+    "reportPath": "artifacts/public/null-control-v1/report.md",
     "dataTablePaths": [
-      "GrammarDiscoveryLab/out/null-control-v1/null-control-family-probabilities.tsv"
+      "artifacts/public/null-control-v1/tables/null-control-family-probabilities.tsv"
     ],
     "sourceScript": "GrammarDiscoveryLab/scripts/null-control-v1.js",
     "commit": "c1bd90e8e8cb64f2b5bc9c72f50e62719cb533a9",
@@ -150,9 +150,9 @@
     "commands": [
       "npm.cmd run null-control:v2"
     ],
-    "reportPath": "GrammarDiscoveryLab/out/null-control-v2-contextual/NULL-CONTROL-V2-CONTEXTUAL.md",
+    "reportPath": "artifacts/public/null-control-v2-contextual/report.md",
     "dataTablePaths": [
-      "GrammarDiscoveryLab/out/null-control-v2-contextual/null-control-v2-contextual-family-probabilities.tsv"
+      "artifacts/public/null-control-v2-contextual/tables/null-control-v2-contextual-family-probabilities.tsv"
     ],
     "sourceScript": "GrammarDiscoveryLab/scripts/null-control-v2-contextual.js",
     "commit": "c1bd90e8e8cb64f2b5bc9c72f50e62719cb533a9",
@@ -193,9 +193,9 @@
       "npm.cmd run null-control:v3",
       "npm.cmd run null-control:v3:diagnostics"
     ],
-    "reportPath": "GrammarDiscoveryLab/out/null-control-v3/NULL-CONTROL-V3-MODEL-COMPARISON.md",
+    "reportPath": "artifacts/public/null-control-v3-model-comparison/report.md",
     "dataTablePaths": [
-      "GrammarDiscoveryLab/out/null-control-v3/null-control-v3-opportunities.tsv"
+      "artifacts/public/null-control-v3-model-comparison/tables/null-control-v3-opportunities.tsv"
     ],
     "sourceScript": "GrammarDiscoveryLab/scripts/null-control-v3-model-comparison.js",
     "commit": "c1bd90e8e8cb64f2b5bc9c72f50e62719cb533a9",
@@ -234,9 +234,9 @@
     "commands": [
       "npm.cmd run representation-comparison:v1"
     ],
-    "reportPath": "GrammarDiscoveryLab/out/representation-comparison-v1/REPRESENTATION-COMPARISON-V1.md",
+    "reportPath": "artifacts/public/representation-comparison-v1/report.md",
     "dataTablePaths": [
-      "GrammarDiscoveryLab/out/representation-comparison-v1/representation-comparison-summary.tsv"
+      "artifacts/public/representation-comparison-v1/tables/representation-comparison-summary.tsv"
     ],
     "sourceScript": "GrammarDiscoveryLab/scripts/representation-comparison-v1.js",
     "commit": "c1bd90e8e8cb64f2b5bc9c72f50e62719cb533a9",
@@ -277,10 +277,10 @@
     "commands": [
       "npm.cmd run representation-alignment:v1"
     ],
-    "reportPath": "GrammarDiscoveryLab/out/representation-alignment-v1/REPRESENTATION-ALIGNMENT-V1.md",
+    "reportPath": "artifacts/public/representation-alignment-v1/report.md",
     "dataTablePaths": [
-      "GrammarDiscoveryLab/out/representation-alignment-v1/aligned-regions.tsv",
-      "GrammarDiscoveryLab/out/representation-alignment-v1/unresolved-regions.tsv"
+      "artifacts/public/representation-alignment-v1/tables/aligned-regions.tsv",
+      "artifacts/public/representation-alignment-v1/tables/unresolved-regions.tsv"
     ],
     "sourceScript": "GrammarDiscoveryLab/scripts/representation-alignment-v1.js",
     "commit": "c1bd90e8e8cb64f2b5bc9c72f50e62719cb533a9",
@@ -321,11 +321,11 @@
     "commands": [
       "npm.cmd run representation-comparison:v2-regions"
     ],
-    "reportPath": "GrammarDiscoveryLab/out/representation-comparison-v2-regions/REPRESENTATION-COMPARISON-V2-REGIONS.md",
+    "reportPath": "artifacts/public/representation-comparison-v2-regions/report.md",
     "dataTablePaths": [
-      "GrammarDiscoveryLab/out/representation-comparison-v2-regions/representation-comparison-v2-summary.tsv",
-      "GrammarDiscoveryLab/out/representation-comparison-v2-regions/representation-comparison-v2-region-scores.tsv",
-      "GrammarDiscoveryLab/out/representation-comparison-v2-regions/representation-comparison-v2-corruption.tsv"
+      "artifacts/public/representation-comparison-v2-regions/tables/representation-comparison-v2-summary.tsv",
+      "artifacts/public/representation-comparison-v2-regions/tables/representation-comparison-v2-region-scores.tsv",
+      "artifacts/public/representation-comparison-v2-regions/tables/representation-comparison-v2-corruption.tsv"
     ],
     "sourceScript": "GrammarDiscoveryLab/scripts/representation-comparison-v2-regions.js",
     "commit": "c1bd90e8e8cb64f2b5bc9c72f50e62719cb533a9",
@@ -373,10 +373,10 @@
     "commands": [
       "npm.cmd run representation-comparison:v3-ablations"
     ],
-    "reportPath": "GrammarDiscoveryLab/out/representation-comparison-v3-ablations/REPRESENTATION-COMPARISON-V3-ABLATIONS.md",
+    "reportPath": "artifacts/public/representation-comparison-v3-ablations/report.md",
     "dataTablePaths": [
-      "GrammarDiscoveryLab/out/representation-comparison-v3-ablations/representation-comparison-v3-summary.tsv",
-      "GrammarDiscoveryLab/out/representation-comparison-v3-ablations/representation-comparison-v3-folio-results.tsv"
+      "artifacts/public/representation-comparison-v3-ablations/tables/representation-comparison-v3-summary.tsv",
+      "artifacts/public/representation-comparison-v3-ablations/tables/representation-comparison-v3-folio-results.tsv"
     ],
     "sourceScript": "GrammarDiscoveryLab/scripts/representation-comparison-v3-ablations.js",
     "commit": "2ee61884bae295aa2ab99cb881148ea50a383672",
@@ -422,17 +422,17 @@
       "npm.cmd run prospective-atoms-eva:test -- --preflight",
       "npm.cmd run prospective-atoms-eva:test -- --confirm-complete"
     ],
-    "reportPath": "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/PROSPECTIVE-ATOMS-EVA-TEST-V1.md",
+    "reportPath": "artifacts/public/prospective-atoms-eva-test-v1/report.md",
     "dataTablePaths": [
-      "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/model-results.tsv",
-      "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/subset-results.tsv",
-      "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/line-alignment-audit.tsv",
-      "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/aligned-regions.tsv",
-      "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/unresolved-regions.tsv",
-      "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/region-scores.tsv",
-      "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/corruption-results.tsv",
-      "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/folio-freeze-manifest.json",
-      "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/checksums.txt"
+      "artifacts/public/prospective-atoms-eva-test-v1/tables/model-results.tsv",
+      "artifacts/public/prospective-atoms-eva-test-v1/tables/subset-results.tsv",
+      "artifacts/public/prospective-atoms-eva-test-v1/tables/line-alignment-audit.tsv",
+      "artifacts/public/prospective-atoms-eva-test-v1/tables/aligned-regions.tsv",
+      "artifacts/public/prospective-atoms-eva-test-v1/tables/unresolved-regions.tsv",
+      "artifacts/public/prospective-atoms-eva-test-v1/tables/region-scores.tsv",
+      "artifacts/public/prospective-atoms-eva-test-v1/tables/corruption-results.tsv",
+      "artifacts/public/prospective-atoms-eva-test-v1/tables/folio-freeze-manifest.json",
+      "artifacts/public/prospective-atoms-eva-test-v1/tables/checksums.txt"
     ],
     "sourceScript": "GrammarDiscoveryLab/scripts/prospective-atoms-eva-test-v1.js",
     "commit": "8137d72d5b979d296f6def65b87f1cca1f48288a",

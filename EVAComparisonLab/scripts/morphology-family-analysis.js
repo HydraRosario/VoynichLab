@@ -19,7 +19,7 @@ const images = String(args.images ?? "page-003.jpg,page-094.jpg")
   .split(",")
   .map((value) => value.trim())
   .filter(Boolean);
-const outPath = path.resolve(process.cwd(), args.out ?? "cases/combined-f1r-f47v-full-current/morphology-family-analysis.md");
+const outPath = path.resolve(process.cwd(), args.out ?? "cases/combined/morphology-family-analysis.md");
 const outDir = path.dirname(outPath);
 const tsvPrefix = args.tsv_prefix
   ? path.resolve(process.cwd(), args.tsv_prefix)
@@ -642,7 +642,7 @@ function readSnapshotPaths(filePath) {
 
 function printHelp() {
   console.log(`Usage:
-  node scripts/morphology-family-analysis.js --images page-003.jpg,page-094.jpg --out cases/combined-f1r-f47v-full-current/morphology-family-analysis.md
+  node scripts/morphology-family-analysis.js --images page-003.jpg,page-094.jpg --out cases/combined/morphology-family-analysis.md
 
 Options:
   --db <path>             DatasetCreator DB path.

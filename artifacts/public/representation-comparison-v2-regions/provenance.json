@@ -9,12 +9,13 @@
     "f2v"
   ],
   "inputs": [
-    "GrammarDiscoveryLab/out/representation-comparison-v2-regions/REPRESENTATION-COMPARISON-V2-REGIONS.md",
-    "GrammarDiscoveryLab/out/representation-comparison-v2-regions/representation-comparison-v2-summary.tsv",
-    "GrammarDiscoveryLab/out/representation-comparison-v2-regions/representation-comparison-v2-region-scores.tsv",
-    "GrammarDiscoveryLab/out/representation-comparison-v2-regions/representation-comparison-v2-corruption.tsv"
+    "artifacts/public/representation-comparison-v2-regions/report.md",
+    "artifacts/public/representation-comparison-v2-regions/tables/representation-comparison-v2-summary.tsv",
+    "artifacts/public/representation-comparison-v2-regions/tables/representation-comparison-v2-region-scores.tsv",
+    "artifacts/public/representation-comparison-v2-regions/tables/representation-comparison-v2-corruption.tsv"
   ],
   "script": "GrammarDiscoveryLab/scripts/representation-comparison-v2-regions.js",
   "frozenArtifacts": [],
-  "generatedBy": "VoynichLab"
+  "generatedBy": "VoynichLab",
+  "sourceScript": "GrammarDiscoveryLab/scripts/representation-comparison-v2-regions.js"
 }

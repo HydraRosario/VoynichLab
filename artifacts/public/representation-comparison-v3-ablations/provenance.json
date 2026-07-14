@@ -9,11 +9,12 @@
     "f2v"
   ],
   "inputs": [
-    "GrammarDiscoveryLab/out/representation-comparison-v3-ablations/REPRESENTATION-COMPARISON-V3-ABLATIONS.md",
-    "GrammarDiscoveryLab/out/representation-comparison-v3-ablations/representation-comparison-v3-summary.tsv",
-    "GrammarDiscoveryLab/out/representation-comparison-v3-ablations/representation-comparison-v3-folio-results.tsv"
+    "artifacts/public/representation-comparison-v3-ablations/report.md",
+    "artifacts/public/representation-comparison-v3-ablations/tables/representation-comparison-v3-summary.tsv",
+    "artifacts/public/representation-comparison-v3-ablations/tables/representation-comparison-v3-folio-results.tsv"
   ],
   "script": "GrammarDiscoveryLab/scripts/representation-comparison-v3-ablations.js",
   "frozenArtifacts": [],
-  "generatedBy": "VoynichLab"
+  "generatedBy": "VoynichLab",
+  "sourceScript": "GrammarDiscoveryLab/scripts/representation-comparison-v3-ablations.js"
 }

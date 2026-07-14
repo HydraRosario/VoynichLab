@@ -221,7 +221,7 @@ function parseArgs(argv) {
 
 function printHelp() {
   console.log(`Usage:
-  node scripts/molecule-neighbor-discovery.js --atoms cases/combined-f1r-f47v-current/atoms-current.tsv
+  node scripts/molecule-neighbor-discovery.js --atoms cases/combined/atoms.tsv
 
 Options:
   --min-count <n>   Minimum condition count. Default: 3.

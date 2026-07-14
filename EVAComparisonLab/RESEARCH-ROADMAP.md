@@ -14,6 +14,9 @@ Translation and romanization remain deferred until the token inventory survives 
 
 - `page-003.jpg`: complete `f1r`.
 - `page-004.jpg`: complete `f1v`.
+- `page-005.jpg`: complete `f2r`.
+- `page-006.jpg`: complete `f2v`.
+- `page-007.jpg`: complete `f3r`.
 - `page-094.jpg`: complete `f47v`.
 - Frozen public corpus: `../research/frozen/CORPUS-V2-AUDITED`.
 - Published reports: `../artifacts/public`.
@@ -95,7 +98,7 @@ Never silently normalize mismatches. A mismatch is evidence to inspect.
 
 ## Work Queue
 
-1. Keep `npm.cmd run current` as the single reproducible entry point.
+1. Keep `npm.cmd run corpus:v2` as the single reproducible entry point.
 2. Curate representative snapshots for every active atom.
 3. Add boundary examples for cut/join decisions.
 4. Add a blind-labeling checklist for a second annotator.

@@ -2,8 +2,8 @@ import fs from "node:fs";
 import path from "node:path";
 
 const args = parseArgs(process.argv.slice(2));
-const atomsPath = path.resolve(process.cwd(), args.atoms ?? "cases/combined-f1r-f47v-full-current/atoms-current.tsv");
-const outPath = path.resolve(process.cwd(), args.out ?? "cases/combined-f1r-f47v-full-current/macro-lexeme-analysis.md");
+const atomsPath = path.resolve(process.cwd(), args.atoms ?? "cases/combined/atoms.tsv");
+const outPath = path.resolve(process.cwd(), args.out ?? "cases/combined/macro-lexeme-analysis.md");
 const tsvPath = args.tsv
   ? path.resolve(process.cwd(), args.tsv)
   : path.resolve(path.dirname(outPath), "macro-lexeme-analysis.tsv");

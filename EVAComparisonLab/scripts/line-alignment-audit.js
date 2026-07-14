@@ -15,7 +15,7 @@ const tsvPath = path.resolve(process.cwd(), args.tsv ?? path.join(caseDir, "line
 const pageImageMap = parsePageImageMap(args.page_image_map ?? "f1r=page-003.jpg,f47v=page-094.jpg");
 
 const evaLines = readTsv(path.join(caseDir, "eva-lines.tsv"));
-const atoms = readTsv(path.join(caseDir, "atoms-current.tsv"));
+const atoms = readTsv(path.join(caseDir, "atoms.tsv"));
 
 const evaByImage = groupBy(evaLines, (row) => pageToImageName(row.page));
 const atomsByImage = groupBy(atoms, (row) => row.image_name);
@@ -187,7 +187,7 @@ function groupBy(rows, keyFn) {
 
 function printHelp() {
   console.log(`Usage:
-  node scripts/line-alignment-audit.js --case-dir cases/combined-f1r-f47v-full-current --out cases/combined-f1r-f47v-full-current/line-alignment-audit.md
+  node scripts/line-alignment-audit.js --case-dir cases/combined --out cases/combined/line-alignment-audit.md
 
 Options:
   --page-image-map <csv>  Explicit page-to-image mapping. Default: f1r=page-003.jpg,f47v=page-094.jpg`);

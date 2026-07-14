@@ -56,7 +56,7 @@ function parseArgs(argv) {
 
 function printHelp() {
   console.log(`Usage:
-  npm run role-entropy -- --eva cases/combined-f1r-f47v-full-current/eva-tokens.tsv --atoms cases/combined-f1r-f47v-full-current/atoms-current.tsv
+  npm run role-entropy -- --eva cases/combined/eva-tokens.tsv --atoms cases/combined/atoms.tsv
 
 Options:
   --eva <path>              TSV with an eva column.

@@ -14,9 +14,7 @@
     "cross-folio": "node scripts/cross-folio-validation.js",
     "snapshots": "node scripts/export-visual-snapshots.js",
     "morphology": "node scripts/morphology-family-analysis.js",
-    "current": "node scripts/run-current-analysis.js",
-    "current:report": "node scripts/build-current-report.js",
-    "complete:report": "node scripts/build-complete-report.js",
+    "corpus:v2": "node scripts/run-corpus-v2-analysis.js",
     "audit:labeling": "node scripts/labeling-anomaly-audit.js"
   }
 }

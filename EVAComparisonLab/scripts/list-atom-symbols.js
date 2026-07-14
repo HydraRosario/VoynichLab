@@ -67,7 +67,7 @@ function parseArgs(argv) {
 }
 
 function printHelp() {
-  console.log("Usage: node scripts/list-atom-symbols.js --atoms cases/combined/atoms-current.tsv --out cases/combined/atom-symbols.md");
+  console.log("Usage: node scripts/list-atom-symbols.js --atoms cases/combined/atoms.tsv --out cases/combined/atom-symbols.md");
 }
 
 function readTsv(filePath) {

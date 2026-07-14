@@ -30,17 +30,17 @@ const commands = [
     [`Export ${item.image} ATOMS`, [
       "scripts/export-datasetcreator-atoms.js",
       "--image", item.image,
-      "--out", `${item.dir}/atoms-current.tsv`,
+      "--out", `${item.dir}/atoms.tsv`,
     ]],
     [`${item.folio} role entropy`, [
       "scripts/role-entropy.js",
       "--eva", `${item.dir}/eva-tokens.tsv`,
-      "--atoms", `${item.dir}/atoms-current.tsv`,
+      "--atoms", `${item.dir}/atoms.tsv`,
       "--out", `${item.dir}/role-entropy.md`,
     ]],
     [`${item.folio} atom symbols`, [
       "scripts/list-atom-symbols.js",
-      "--atoms", `${item.dir}/atoms-current.tsv`,
+      "--atoms", `${item.dir}/atoms.tsv`,
       "--out", `${item.dir}/atom-symbols.md`,
     ]],
   ]),
@@ -57,12 +57,12 @@ const commands = [
   ["Combined role entropy", [
     "scripts/role-entropy.js",
     "--eva", `${combinedDir}/eva-tokens.tsv`,
-    "--atoms", `${combinedDir}/atoms-current.tsv`,
+    "--atoms", `${combinedDir}/atoms.tsv`,
     "--out", `${combinedDir}/role-entropy.md`,
   ]],
   ["Combined atom symbols", [
     "scripts/list-atom-symbols.js",
-    "--atoms", `${combinedDir}/atoms-current.tsv`,
+    "--atoms", `${combinedDir}/atoms.tsv`,
     "--out", `${combinedDir}/atom-symbols.md`,
   ]],
   ["Particle rule discovery", [
@@ -83,7 +83,7 @@ const commands = [
   ]],
   ["Molecule neighbor discovery", [
     "scripts/molecule-neighbor-discovery.js",
-    "--atoms", `${combinedDir}/atoms-current.tsv`,
+    "--atoms", `${combinedDir}/atoms.tsv`,
     "--out", `${combinedDir}/molecule-neighbor-discovery.md`,
     "--tsv", `${combinedDir}/molecule-neighbor-discovery.tsv`,
   ]],
@@ -96,19 +96,19 @@ const commands = [
   ]],
   ["Conditional entropy", [
     "scripts/conditional-entropy.js",
-    "--atoms", `${combinedDir}/atoms-current.tsv`,
+    "--atoms", `${combinedDir}/atoms.tsv`,
     "--out", `${combinedDir}/conditional-entropy.md`,
     "--tsv", `${combinedDir}/conditional-entropy.tsv`,
   ]],
   ["Variant ablation", [
     "scripts/variant-ablation.js",
-    "--atoms", `${combinedDir}/atoms-current.tsv`,
+    "--atoms", `${combinedDir}/atoms.tsv`,
     "--out", `${combinedDir}/variant-ablation.md`,
     "--tsv", `${combinedDir}/variant-ablation.tsv`,
   ]],
   ["Macro lexeme analysis", [
     "scripts/macro-lexeme-analysis.js",
-    "--atoms", `${combinedDir}/atoms-current.tsv`,
+    "--atoms", `${combinedDir}/atoms.tsv`,
     "--out", `${combinedDir}/macro-lexeme-analysis.md`,
     "--tsv", `${combinedDir}/macro-lexeme-analysis.tsv`,
   ]],

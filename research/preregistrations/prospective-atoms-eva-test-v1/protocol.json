@@ -15,8 +15,15 @@
     "sequenceExportedBeforeCompletion": false,
     "metricsCalculatedBeforeCompletion": false
   },
-  "frozenTrainingFolios": ["f1r", "f1v", "f47v"],
-  "previouslyEvaluatedFolios": ["f2r", "f2v"],
+  "frozenTrainingFolios": [
+    "f1r",
+    "f1v",
+    "f47v"
+  ],
+  "previouslyEvaluatedFolios": [
+    "f2r",
+    "f2v"
+  ],
   "testPolicy": {
     "newFolioRole": "test-only",
     "allowTrainingUpdate": false,
@@ -28,33 +35,69 @@
     {
       "id": "MODEL_0",
       "label": "Unigram",
-      "features": ["symbol frequency only"]
+      "features": [
+        "symbol frequency only"
+      ]
     },
     {
       "id": "MODEL_1",
       "label": "Neighbors only",
-      "features": ["immediate left neighbor", "immediate right neighbor"]
+      "features": [
+        "immediate left neighbor",
+        "immediate right neighbor"
+      ]
     },
     {
       "id": "MODEL_2",
       "label": "Neighbors plus coarse position",
-      "features": ["immediate left neighbor", "immediate right neighbor", "coarse position: first_third, middle_third, final_third"]
+      "features": [
+        "immediate left neighbor",
+        "immediate right neighbor",
+        "coarse position: first_third, middle_third, final_third"
+      ]
     },
     {
       "id": "MODEL_3",
       "label": "Published V2 exact-length regression",
-      "features": ["exact regional sequence length", "positional role", "immediate left neighbor", "immediate right neighbor"]
+      "features": [
+        "exact regional sequence length",
+        "positional role",
+        "immediate left neighbor",
+        "immediate right neighbor"
+      ]
     },
     {
       "id": "MODEL_4",
       "label": "Neighbors plus coarse position and training-only length tertile",
-      "features": ["immediate left neighbor", "immediate right neighbor", "coarse position", "length tertile computed from training regions only"]
+      "features": [
+        "immediate left neighbor",
+        "immediate right neighbor",
+        "coarse position",
+        "length tertile computed from training regions only"
+      ]
     }
   ],
   "fixedParameters": {
     "smoothing": "Lidstone",
     "alpha": 0.5,
-    "atomsVocabulary": ["a:1", "b:1", "c:1", "c:2", "d:1", "e:1", "f:1", "g:1", "h:1", "h:2", "i:1", "j:1", "k:1", "l:1", "m:1", "n:1"],
+    "atomsVocabulary": [
+      "a:1",
+      "b:1",
+      "c:1",
+      "c:2",
+      "d:1",
+      "e:1",
+      "f:1",
+      "g:1",
+      "h:1",
+      "h:2",
+      "i:1",
+      "j:1",
+      "k:1",
+      "l:1",
+      "m:1",
+      "n:1"
+    ],
     "evaVocabularyHandling": "Same handling as REPRESENTATION-COMPARISON-V3-ABLATIONS: derive EVA vocabulary from configured train and evaluation regional symbol streams without changing model definitions.",
     "alignmentAlgorithm": "REPRESENTATION-ALIGNMENT-V1 monotonic regional alignment",
     "corruptionsPerTestRegion": 100
@@ -109,12 +152,11 @@
   ],
   "lockedRunner": "GrammarDiscoveryLab/scripts/prospective-atoms-eva-test-v1.js",
   "expectedOutputsAfterCompletion": [
-    "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/PROSPECTIVE-ATOMS-EVA-TEST-V1.md",
-    "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/folio-freeze-manifest.json",
-    "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/alignment-summary.tsv",
-    "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/model-results.tsv",
-    "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/subset-results.tsv",
-    "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/corruption-results.tsv",
-    "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/checksums.txt"
+    "artifacts/public/prospective-atoms-eva-test-v1/report.md",
+    "artifacts/public/prospective-atoms-eva-test-v1/tables/folio-freeze-manifest.json",
+    "artifacts/public/prospective-atoms-eva-test-v1/tables/model-results.tsv",
+    "artifacts/public/prospective-atoms-eva-test-v1/tables/subset-results.tsv",
+    "artifacts/public/prospective-atoms-eva-test-v1/tables/corruption-results.tsv",
+    "artifacts/public/prospective-atoms-eva-test-v1/checksums.txt"
   ]
 }

@@ -8,11 +8,12 @@
     "f2r"
   ],
   "inputs": [
-    "GrammarDiscoveryLab/out/reproducible-release-v1/f2r/GRAMMAR-V1-vs-f2r.md",
-    "GrammarDiscoveryLab/out/reproducible-release-v1/f2r/grammar-v1-vs-f2r-substitution.tsv",
-    "GrammarDiscoveryLab/out/reproducible-release-v1/f2r/grammar-v1-vs-f2r-optional.tsv"
+    "artifacts/public/grammar-v1-f2r-validation/report.md",
+    "artifacts/public/grammar-v1-f2r-validation/tables/grammar-v1-vs-f2r-substitution.tsv",
+    "artifacts/public/grammar-v1-f2r-validation/tables/grammar-v1-vs-f2r-optional.tsv"
   ],
   "script": "GrammarDiscoveryLab/scripts/validate-release-v1.js",
   "frozenArtifacts": [],
-  "generatedBy": "VoynichLab"
+  "generatedBy": "VoynichLab",
+  "sourceScript": "GrammarDiscoveryLab/scripts/validate-release-v1.js"
 }

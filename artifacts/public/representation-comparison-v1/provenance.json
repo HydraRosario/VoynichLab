@@ -9,10 +9,11 @@
     "f2v"
   ],
   "inputs": [
-    "GrammarDiscoveryLab/out/representation-comparison-v1/REPRESENTATION-COMPARISON-V1.md",
-    "GrammarDiscoveryLab/out/representation-comparison-v1/representation-comparison-summary.tsv"
+    "artifacts/public/representation-comparison-v1/report.md",
+    "artifacts/public/representation-comparison-v1/tables/representation-comparison-summary.tsv"
   ],
   "script": "GrammarDiscoveryLab/scripts/representation-comparison-v1.js",
   "frozenArtifacts": [],
-  "generatedBy": "VoynichLab"
+  "generatedBy": "VoynichLab",
+  "sourceScript": "GrammarDiscoveryLab/scripts/representation-comparison-v1.js"
 }

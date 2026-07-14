@@ -18,7 +18,7 @@ const atomsVocab = [
 const alignedRegions = readTsv(path.join(alignmentDir, "aligned-regions.tsv"));
 const atomRowsByUnitId = new Map();
 for (const folio of folios) {
-  for (const row of readCaseTsv(folio, "atoms-current.tsv")) {
+  for (const row of readCaseTsv(folio, "atoms.tsv")) {
     atomRowsByUnitId.set(row.unit_id, row);
   }
 }

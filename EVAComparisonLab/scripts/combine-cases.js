@@ -19,7 +19,7 @@ fs.mkdirSync(outDir, { recursive: true });
 
 combineTsv(caseDirs, "eva-lines.tsv", path.join(outDir, "eva-lines.tsv"));
 combineTsv(caseDirs, "eva-tokens.tsv", path.join(outDir, "eva-tokens.tsv"));
-combineTsv(caseDirs, "atoms-current.tsv", path.join(outDir, "atoms-current.tsv"));
+combineTsv(caseDirs, "atoms.tsv", path.join(outDir, "atoms.tsv"));
 combineText(caseDirs, "eva.txt", path.join(outDir, "eva.txt"));
 
 const notes = [
@@ -33,7 +33,7 @@ const notes = [
   "",
   "- `eva-lines.tsv`",
   "- `eva-tokens.tsv`",
-  "- `atoms-current.tsv`",
+  "- `atoms.tsv`",
   "- `eva.txt`",
   "",
 ].join("\n");

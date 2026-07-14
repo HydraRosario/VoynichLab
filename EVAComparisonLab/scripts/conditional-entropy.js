@@ -183,7 +183,7 @@ function appendFindingTable(lines, title, rows) {
 
 function printHelp() {
   console.log(`Usage:
-  node scripts/conditional-entropy.js --atoms cases/combined/atoms-current.tsv --out cases/combined/conditional-entropy.md
+  node scripts/conditional-entropy.js --atoms cases/combined/atoms.tsv --out cases/combined/conditional-entropy.md
 
 Options:
   --mode <full|family>  Token mode. Default: full.
@@ -191,4 +191,3 @@ Options:
   --out <path>         Write markdown report.
   --tsv <path>         Write conditional table.`);
 }
-

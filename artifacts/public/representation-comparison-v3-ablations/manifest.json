@@ -19,6 +19,6 @@
   "commands": [
     "npm.cmd run representation-comparison:v3-ablations"
   ],
-  "reportPath": "GrammarDiscoveryLab/out/representation-comparison-v3-ablations/REPRESENTATION-COMPARISON-V3-ABLATIONS.md",
+  "reportPath": "artifacts/public/representation-comparison-v3-ablations/report.md",
   "sourceScript": "GrammarDiscoveryLab/scripts/representation-comparison-v3-ablations.js"
 }

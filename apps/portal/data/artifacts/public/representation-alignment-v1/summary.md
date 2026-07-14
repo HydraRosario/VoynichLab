@@ -5,8 +5,8 @@ Purpose: create an auditable mapping between complete EVA tokens and ATOMS physi
 ## Inputs
 
 - EVA token tables: `EVAComparisonLab/cases/<folio>-full/eva-tokens.tsv`.
-- ATOMS unit tables: `EVAComparisonLab/cases/<folio>-full/atoms-current.tsv`.
-- Row alignment table: `EVAComparisonLab/cases/combined-f1r-f1v-f2r-f2v-f47v-full-current/line-alignment-audit.tsv`.
+- ATOMS unit tables: `EVAComparisonLab/cases/<folio>-full/atoms.tsv`.
+- Row alignment table: `artifacts/public/prospective-atoms-eva-test-v1/tables/line-alignment-audit.tsv`.
 
 ## Method
 

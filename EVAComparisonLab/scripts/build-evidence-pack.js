@@ -10,7 +10,7 @@ if (args.help || !args.case_dir) {
 
 const caseDir = path.resolve(process.cwd(), args.case_dir);
 const evaLines = readTsv(path.join(caseDir, "eva-lines.tsv"));
-const atomsRows = readTsv(path.join(caseDir, "atoms-current.tsv"));
+const atomsRows = readTsv(path.join(caseDir, "atoms.tsv"));
 const entropy = fs.readFileSync(path.join(caseDir, "role-entropy.md"), "utf8");
 
 const entropySummary = extractEntropySummary(entropy);
@@ -124,7 +124,7 @@ function parseArgs(argv) {
 }
 
 function printHelp() {
-  console.log("Usage: node scripts/build-evidence-pack.js --case-dir cases/combined-f1r-f47v-full-current");
+  console.log("Usage: node scripts/build-evidence-pack.js --case-dir cases/combined");
 }
 
 function readTsv(filePath) {

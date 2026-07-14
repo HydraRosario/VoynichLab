@@ -193,14 +193,14 @@ function exportCompletedTargetCase() {
     "--image",
     target.datasetCreatorImageName,
     "--out",
-    `cases/${targetFolio}-full/atoms-current.tsv`,
+    `cases/${targetFolio}-full/atoms.tsv`,
   ], { cwd: evaLabRoot, stdio: "inherit" });
 }
 
 function buildProspectiveAlignment() {
   const evaLinesByFolio = new Map(allFolios.map((folio) => [folio, readCaseTsv(folio, "eva-lines.tsv")]));
   const evaTokensByFolio = new Map(allFolios.map((folio) => [folio, readCaseTsv(folio, "eva-tokens.tsv")]));
-  const atomsByFolio = new Map(allFolios.map((folio) => [folio, readCaseTsv(folio, "atoms-current.tsv")]));
+  const atomsByFolio = new Map(allFolios.map((folio) => [folio, readCaseTsv(folio, "atoms.tsv")]));
   const lineAuditRows = [];
   const aligned = [];
   const unresolved = [];
@@ -358,7 +358,7 @@ function alignLine(line, evaTokensByFolio, atomsByFolio, alignedRegions, unresol
 function runProspectiveModels(alignedRegions, unresolvedEvaLineKeys) {
   const atomRowsByUnitId = new Map();
   for (const folio of allFolios) {
-    for (const row of readCaseTsv(folio, "atoms-current.tsv")) {
+    for (const row of readCaseTsv(folio, "atoms.tsv")) {
       atomRowsByUnitId.set(row.unit_id, row);
     }
   }
@@ -615,7 +615,7 @@ function codeLength(symbols, model, groups, vocabulary, vocabularySet, lengthBin
 
 function collectTargetOutOfVocabulary() {
   const vocab = new Set(atomsVocab);
-  const rows = readCaseTsv(targetFolio, "atoms-current.tsv");
+  const rows = readCaseTsv(targetFolio, "atoms.tsv");
   const counts = new Map();
   const locations = [];
   for (const row of rows) {

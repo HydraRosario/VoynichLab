@@ -7,7 +7,7 @@ This is a predefined ablation suite. It does not add model variants after seeing
 ## Inputs
 
 - Alignment: `out/representation-alignment-v1/aligned-regions.tsv`.
-- ATOMS units: `EVAComparisonLab/cases/<folio>-full/atoms-current.tsv`.
+- ATOMS units: `EVAComparisonLab/cases/<folio>-full/atoms.tsv`.
 - Train folios: `f1r`, `f1v`, `f47v`.
 - Test folios: `f2r`, `f2v`.
 - Smoothing: Lidstone `alpha=0.5`.

@@ -23,7 +23,7 @@ const alignedRegions = readTsv(path.join(alignmentDir, "aligned-regions.tsv"));
 const unresolvedRegions = readTsv(path.join(alignmentDir, "unresolved-regions.tsv"));
 const atomRowsByUnitId = new Map();
 for (const folio of folios) {
-  for (const row of readCaseTsv(folio, "atoms-current.tsv")) {
+  for (const row of readCaseTsv(folio, "atoms.tsv")) {
     atomRowsByUnitId.set(row.unit_id, row);
   }
 }
@@ -383,7 +383,7 @@ function renderReport() {
   lines.push("");
   lines.push("- Alignment: `out/representation-alignment-v1/aligned-regions.tsv`.");
   lines.push("- EVA source tokens: `EVAComparisonLab/cases/<folio>-full/eva-tokens.tsv`.");
-  lines.push("- ATOMS source units: `EVAComparisonLab/cases/<folio>-full/atoms-current.tsv`.");
+  lines.push("- ATOMS source units: `EVAComparisonLab/cases/<folio>-full/atoms.tsv`.");
   lines.push("");
   lines.push("## Split And Vocabularies");
   lines.push("");

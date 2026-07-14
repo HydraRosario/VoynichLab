@@ -23,7 +23,7 @@ const unresolvedEvaLineKeys = new Set(
 );
 const atomRowsByUnitId = new Map();
 for (const folio of folios) {
-  for (const row of readCaseTsv(folio, "atoms-current.tsv")) {
+  for (const row of readCaseTsv(folio, "atoms.tsv")) {
     atomRowsByUnitId.set(row.unit_id, row);
   }
 }
@@ -334,7 +334,7 @@ function renderReport() {
   lines.push("## Inputs");
   lines.push("");
   lines.push("- Alignment: `out/representation-alignment-v1/aligned-regions.tsv`.");
-  lines.push("- ATOMS units: `EVAComparisonLab/cases/<folio>-full/atoms-current.tsv`.");
+  lines.push("- ATOMS units: `EVAComparisonLab/cases/<folio>-full/atoms.tsv`.");
   lines.push("- Train folios: `f1r`, `f1v`, `f47v`.");
   lines.push("- Test folios: `f2r`, `f2v`.");
   lines.push("- Smoothing: Lidstone `alpha=0.5`.");

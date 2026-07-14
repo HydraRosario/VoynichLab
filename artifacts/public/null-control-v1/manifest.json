@@ -17,6 +17,6 @@
   "commands": [
     "npm.cmd run null-control:v1"
   ],
-  "reportPath": "GrammarDiscoveryLab/out/null-control-v1/NULL-CONTROL-V1.md",
+  "reportPath": "artifacts/public/null-control-v1/report.md",
   "sourceScript": "GrammarDiscoveryLab/scripts/null-control-v1.js"
 }

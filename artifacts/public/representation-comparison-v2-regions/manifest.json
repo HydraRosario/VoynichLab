@@ -19,6 +19,6 @@
   "commands": [
     "npm.cmd run representation-comparison:v2-regions"
   ],
-  "reportPath": "GrammarDiscoveryLab/out/representation-comparison-v2-regions/REPRESENTATION-COMPARISON-V2-REGIONS.md",
+  "reportPath": "artifacts/public/representation-comparison-v2-regions/report.md",
   "sourceScript": "GrammarDiscoveryLab/scripts/representation-comparison-v2-regions.js"
 }

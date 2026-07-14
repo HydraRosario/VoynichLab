@@ -6,20 +6,19 @@ import { DatabaseSync } from "node:sqlite";
 const args = parseArgs(process.argv.slice(2));
 const labRoot = process.cwd();
 const repoRoot = path.resolve(labRoot, "..");
-const combinedDir = path.resolve(
-  repoRoot,
-  args.case_dir ?? "EVAComparisonLab/cases/combined-f1r-f1v-f2r-f2v-f47v-full-current"
+const atomsPath = resolveInputPath(
+  args.atoms ?? (args.case_dir ? path.join(args.case_dir, "atoms.tsv") : "research/frozen/CORPUS-V2-AUDITED/corpus/atoms.tsv")
 );
 const dbPath = path.resolve(
   args.db ?? path.join(os.homedir(), "AppData", "Roaming", "com.voynichlab.datasetcreator", "datasetcreator.db")
 );
 const outDir = path.resolve(labRoot, args.out_dir ?? "out/current");
 
-const atomsRows = readTsv(path.join(combinedDir, "atoms-current.tsv"));
-const evaTokens = readTsv(path.join(combinedDir, "eva-tokens.tsv"));
+const atomsRows = readTsv(atomsPath);
+const evaTokens = readEvaTokens();
 const db = fs.existsSync(dbPath) ? new DatabaseSync(dbPath, { readOnly: true }) : null;
-const imageIds = db ? readImageIds(db) : new Map();
-const particlesByImageMolecule = db ? readParticles(db, imageIds) : new Map();
+const wantedImageNames = new Set(atomsRows.map((row) => row.image_name).filter(Boolean));
+const particlesByImageMolecule = db ? readParticles(db, wantedImageNames) : new Map();
 const evaByImageRowUnit = indexEvaTokens(evaTokens);
 
 const moleculeRows = atomsRows.map((row) => {
@@ -83,6 +82,7 @@ console.log(`Wrote ${moleculeRows.length} molecules to ${path.join(outDir, "mole
 if (!db) {
   console.warn(`Database not found at ${dbPath}; particle internals were left blank.`);
 }
+console.log(`ATOMS input: ${atomsPath}`);
 
 function parseArgs(argv) {
   const result = {};
@@ -101,11 +101,21 @@ function parseArgs(argv) {
   return result;
 }
 
-function readImageIds(db) {
-  return new Map(db.prepare("SELECT id, name FROM images").all().map((row) => [row.name, row.id]));
+function resolveInputPath(inputPath) {
+  const absoluteFromLab = path.resolve(labRoot, inputPath);
+  if (fs.existsSync(absoluteFromLab)) return absoluteFromLab;
+  return path.resolve(repoRoot, inputPath);
 }
 
-function readParticles(db, imageIds) {
+function readEvaTokens() {
+  if (args.eva) return readTsv(resolveInputPath(args.eva));
+  if (args.case_dir) return readTsv(resolveInputPath(path.join(args.case_dir, "eva-tokens.tsv")));
+
+  const folios = ["f1r", "f1v", "f2r", "f2v", "f3r", "f47v"];
+  return folios.flatMap((folio) => readTsv(path.join(repoRoot, "EVAComparisonLab", "cases", `${folio}-full`, "eva-tokens.tsv")));
+}
+
+function readParticles(db, wantedImageNames) {
   const result = new Map();
   const stmt = db.prepare(
     `SELECT
@@ -126,9 +136,8 @@ function readParticles(db, imageIds) {
      ORDER BY i.name ASC, a.molecule_id ASC, p.particle_order ASC, a.particle_id ASC, a.atom_order ASC, a.bounds_x ASC, a.id ASC`
   );
   const byParticle = new Map();
-  const wantedImages = new Set(imageIds.keys());
   for (const atom of stmt.all()) {
-    if (!wantedImages.has(atom.image_name)) continue;
+    if (!wantedImageNames.has(atom.image_name)) continue;
     const particleKey = key(atom.image_name, atom.molecule_id, atom.particle_id || `unassigned:${atom.atom_id}`);
     if (!byParticle.has(particleKey)) {
       byParticle.set(particleKey, {

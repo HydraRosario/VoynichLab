@@ -155,10 +155,9 @@ function buildMarkdown({ atomsPath, fullReport, familyReport, familyComparisons 
 
 function printHelp() {
   console.log(`Usage:
-  node scripts/variant-ablation.js --atoms cases/combined/atoms-current.tsv --out cases/combined/variant-ablation.md
+  node scripts/variant-ablation.js --atoms cases/combined/atoms.tsv --out cases/combined/variant-ablation.md
 
 Options:
   --out <path>  Write markdown report.
   --tsv <path>  Write family comparison table.`);
 }
-

@@ -21,3 +21,22 @@ Retirement reason:
 - future visual evidence should be rebuilt as a curated, versioned release with
   manifest, checksums, provenance, and explicit selection criteria.
 
+## EVAComparisonLab Current Report Scripts
+
+Status: retired after the CORPUS-V2 audit campaign.
+
+The old `run-current-analysis.js`, `build-current-report.js`, and
+`build-complete-report.js` scripts generated ad hoc reports under
+`cases/*current` while the corpus was still changing rapidly. They were replaced
+by:
+
+- `EVAComparisonLab/scripts/run-corpus-v2-analysis.js` for local regenerated
+  analysis from the current DatasetCreator DB;
+- `research/frozen/CORPUS-V2-AUDITED/` for frozen corpus evidence;
+- `artifacts/public/` for portal-visible public reports.
+
+Retirement reason:
+
+- the old scripts referenced partial four-folio `current` paths;
+- their generated report files were intentionally removed from Git;
+- keeping them active made scratch outputs look like canonical evidence.

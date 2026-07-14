@@ -43,7 +43,7 @@
     "links": [
       {
         "label": "Validation summary",
-        "path": "GrammarDiscoveryLab/out/reproducible-release-v1/VALIDATION-SUMMARY.md"
+        "path": "artifacts/public/grammar-v1-f2r-validation/report.md"
       }
     ]
   },
@@ -59,7 +59,7 @@
     "links": [
       {
         "label": "Regional comparison",
-        "path": "GrammarDiscoveryLab/out/representation-comparison-v2-regions/REPRESENTATION-COMPARISON-V2-REGIONS.md"
+        "path": "artifacts/public/representation-comparison-v2-regions/report.md"
       }
     ]
   },
@@ -75,7 +75,7 @@
     "links": [
       {
         "label": "Ablation report",
-        "path": "GrammarDiscoveryLab/out/representation-comparison-v3-ablations/REPRESENTATION-COMPARISON-V3-ABLATIONS.md"
+        "path": "artifacts/public/representation-comparison-v3-ablations/report.md"
       }
     ]
   },
@@ -123,7 +123,7 @@
     "links": [
       {
         "label": "Prospective test report",
-        "path": "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/PROSPECTIVE-ATOMS-EVA-TEST-V1.md"
+        "path": "artifacts/public/prospective-atoms-eva-test-v1/report.md"
       }
     ]
   },
@@ -135,7 +135,7 @@
     "type": "audit",
     "tag": "corpus-v2-audited",
     "commit": "7f168645d31130099951a1f9877c788c09274677",
-    "sequenceIndex": 8,
+    "sequenceIndex": 9,
     "links": [
       {
         "label": "Frozen manifest",
