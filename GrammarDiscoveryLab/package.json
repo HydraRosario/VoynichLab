@@ -13,6 +13,7 @@
     "representation-alignment:v1": "node scripts/representation-alignment-v1.js",
     "representation-comparison:v2-regions": "node scripts/representation-comparison-v2-regions.js",
     "representation-comparison:v2-question": "node scripts/eva-question-mark-sensitivity.js",
+    "representation-comparison:v3-ablations": "node scripts/representation-comparison-v3-ablations.js",
     "validate:grammar-v1": "node scripts/validate-frozen-grammar.js",
     "current": "node scripts/run-current.js",
     "export:molecules": "node scripts/export-molecule-table.js",

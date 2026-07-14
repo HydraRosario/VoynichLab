@@ -187,11 +187,81 @@ out/representation-comparison-v2-regions/REPRESENTATION-COMPARISON-V2-REGIONS.md
 out/representation-comparison-v2-regions/EVA-QUESTION-MARK-SENSITIVITY.md
 ```
 
+## 11. REPRESENTATION-COMPARISON-V3-ABLATIONS
+
+V3 tested whether the V2 regional advantage depended on exact regional sequence length. Five train-only models were compared under the same held-out folios and aligned-region protocol:
+
+```text
+MODEL_0: unigram only
+MODEL_1: left + right + role
+MODEL_2: left + right
+MODEL_3: left + right + role + exact length
+MODEL_4: left + right + coarse length bucket
+```
+
+Combined normalized log-loss:
+
+```text
+MODEL_0: ATOMS 0.827423 | EVA 0.872674 | delta -0.045251
+MODEL_1: ATOMS 0.242737 | EVA 0.431970 | delta -0.189234
+MODEL_2: ATOMS 0.310095 | EVA 0.553298 | delta -0.243202
+MODEL_3: ATOMS 0.807922 | EVA 0.892706 | delta -0.084784
+MODEL_4: ATOMS 0.426049 | EVA 0.683648 | delta -0.257599
+```
+
+MODEL_3 reproduces the V2 primary model:
+
+```text
+ATOMS normalized log-loss: 0.807922
+EVA normalized log-loss:   0.892706
+
+ATOMS top-1 accuracy: 42.96%
+EVA top-1 accuracy:   26.30%
+
+ATOMS unseen-context rate: 46.18%
+EVA unseen-context rate:   60.47%
+```
+
+The advantage remained favorable when exact length was removed from the local-context model:
+
+```text
+MODEL_1 ATOMS normalized log-loss: 0.242737
+MODEL_1 EVA normalized log-loss:   0.431970
+
+MODEL_2 ATOMS normalized log-loss: 0.310095
+MODEL_2 EVA normalized log-loss:   0.553298
+```
+
+The unigram baseline also favored ATOMS overall:
+
+```text
+MODEL_0 ATOMS normalized log-loss: 0.827423
+MODEL_0 EVA normalized log-loss:   0.872674
+```
+
+This means the current advantage cannot be attributed only to exact regional length. It also means frequency concentration contributes to the result, so the representation claim should not be reduced to local syntax alone.
+
+One bounded exception appeared in the unigram baseline:
+
+```text
+one_to_one / f2v / MODEL_0 unigram:
+ATOMS normalized log-loss: 0.785857
+EVA normalized log-loss:   0.777664
+```
+
+ATOMS still had higher top-1 accuracy in that stratum, but the exception is kept as a limit on overinterpretation.
+
+Report:
+
+```text
+out/representation-comparison-v3-ablations/REPRESENTATION-COMPARISON-V3-ABLATIONS.md
+```
+
 ## Current Reading
 
 The strongest current claim is:
 
-> Under matched regional out-of-sample conditions, ATOMS-V1 produced lower normalized uncertainty, higher top-1 accuracy, and lower unseen-context rate than EVA across aligned manuscript regions.
+> Under matched regional out-of-sample conditions, ATOMS-V1 produced lower normalized uncertainty, higher top-1 accuracy, and lower unseen-context rate than EVA across aligned manuscript regions; ablation tests show that this advantage does not depend only on exact regional sequence length.
 
 The strongest remaining limitations are:
 
@@ -200,4 +270,5 @@ The strongest remaining limitations are:
 - five folios only;
 - small high-confidence strata;
 - one family of predictive models;
+- frequency concentration contributes to the ATOMS advantage;
 - no independent visual annotation audit in the public release yet.
