@@ -465,6 +465,10 @@ h3 {
   color: var(--accent);
 }
 
+.outcome.pending {
+  color: #5d6470;
+}
+
 .outcome.negative {
   color: #8f3f2b;
 }

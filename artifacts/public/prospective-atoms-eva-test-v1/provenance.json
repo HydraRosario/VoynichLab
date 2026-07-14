@@ -1,0 +1,16 @@
+{
+  "trainFolios": [
+    "f1r",
+    "f1v",
+    "f47v"
+  ],
+  "testFolios": [
+    "f3r"
+  ],
+  "inputs": [
+    "research/preregistrations/prospective-atoms-eva-test-v1/PREREGISTRATION.md"
+  ],
+  "script": "GrammarDiscoveryLab/scripts/prospective-atoms-eva-test-v1.js",
+  "frozenArtifacts": [],
+  "generatedBy": "VoynichLab"
+}

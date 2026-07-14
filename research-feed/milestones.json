@@ -94,5 +94,21 @@
         "path": "apps/portal/README.md"
       }
     ]
+  },
+  {
+    "id": "prospective-atoms-eva-test-v1-preregistration",
+    "title": "Prospective ATOMS-EVA test preregistered",
+    "date": "2026-07-14",
+    "summary": "Protocol, models, metrics, and interpretation rules were frozen publicly before completion of the next annotated folio.",
+    "type": "registry",
+    "tag": "prospective-atoms-eva-test-v1-preregistered",
+    "commit": "pending",
+    "sequenceIndex": 7,
+    "links": [
+      {
+        "label": "Preregistration",
+        "path": "research/preregistrations/prospective-atoms-eva-test-v1/PREREGISTRATION.md"
+      }
+    ]
   }
 ]

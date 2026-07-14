@@ -10,6 +10,7 @@ const portalDataDir = path.join(root, "apps", "portal", "data");
 const repoBlob = "https://github.com/HydraRosario/VoynichLab/blob/main";
 
 const outcomeValues = new Set([
+  "pending",
   "supportive",
   "negative",
   "inconclusive",

@@ -18,6 +18,7 @@ schema/*.schema.json      Public JSON schemas.
 Allowed experiment outcomes:
 
 ```text
+pending
 supportive
 negative
 inconclusive

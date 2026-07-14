@@ -55,6 +55,7 @@ async function loadRegistry() {
 
 function outcomeLabel(outcome) {
   const labels = {
+    pending: "Pending",
     supportive: "Supportive",
     negative: "Negative",
     inconclusive: "Inconclusive",

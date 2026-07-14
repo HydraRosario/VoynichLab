@@ -395,5 +395,42 @@
       "model1AtomsUnseenContextRate": 0.0097,
       "model1EvaUnseenContextRate": 0.0268
     }
+  },
+  {
+    "id": "prospective-atoms-eva-test-v1",
+    "title": "Prospective ATOMS-EVA Test V1",
+    "status": "preregistered",
+    "outcome": "pending",
+    "question": "Does the previously published ATOMS advantage over EVA replicate on a folio annotated after the protocol, models, metrics, and interpretation rules were frozen publicly?",
+    "result": "Pending. Protocol frozen before annotation completion.",
+    "interpretation": "The target folio is test-only; outcome will be classified only by preregistered rules.",
+    "limitations": [
+      "Target annotation is still in progress",
+      "No metrics calculated at preregistration time",
+      "Single ATOMS annotator",
+      "Same regional alignment limitations as REPRESENTATION-ALIGNMENT-V1"
+    ],
+    "trainFolios": [
+      "f1r",
+      "f1v",
+      "f47v"
+    ],
+    "testFolios": [
+      "f3r"
+    ],
+    "commands": [
+      "npm.cmd run prospective-atoms-eva:test -- --preflight",
+      "npm.cmd run prospective-atoms-eva:test -- --confirm-complete"
+    ],
+    "reportPath": "research/preregistrations/prospective-atoms-eva-test-v1/PREREGISTRATION.md",
+    "dataTablePaths": [],
+    "sourceScript": "GrammarDiscoveryLab/scripts/prospective-atoms-eva-test-v1.js",
+    "commit": "pending",
+    "tag": "prospective-atoms-eva-test-v1-preregistered",
+    "publishedAt": "2026-07-14",
+    "sequenceIndex": 10,
+    "supersedes": [],
+    "supersededBy": [],
+    "metrics": {}
   }
 ]
