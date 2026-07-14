@@ -1,0 +1,8 @@
+{
+  "model1AtomsNormalizedLogLoss": 0.242737,
+  "model1EvaNormalizedLogLoss": 0.43197,
+  "model1AtomsTop1Accuracy": 0.7919,
+  "model1EvaTop1Accuracy": 0.665,
+  "model1AtomsUnseenContextRate": 0.0097,
+  "model1EvaUnseenContextRate": 0.0268
+}

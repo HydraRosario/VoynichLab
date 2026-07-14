@@ -1,0 +1,9 @@
+{
+  "name": "@voynichlab/lab-exporter",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "lab-exporter": "./src/cli.js"
+  }
+}

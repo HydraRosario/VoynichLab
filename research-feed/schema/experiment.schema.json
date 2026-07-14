@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hydrariosario.github.io/VoynichLab/schema/experiment.schema.json",
+  "title": "VoynichLab Experiment",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "status",
+    "outcome",
+    "question",
+    "result",
+    "interpretation",
+    "limitations",
+    "trainFolios",
+    "testFolios",
+    "commands",
+    "reportPath",
+    "dataTablePaths",
+    "sourceScript",
+    "sequenceIndex"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "title": { "type": "string", "minLength": 1 },
+    "status": { "type": "string", "enum": ["draft", "published", "superseded"] },
+    "outcome": {
+      "type": "string",
+      "enum": ["supportive", "negative", "inconclusive", "methodological", "superseded"]
+    },
+    "question": { "type": "string", "minLength": 1 },
+    "result": { "type": "string", "minLength": 1 },
+    "interpretation": { "type": "string", "minLength": 1 },
+    "limitations": { "type": "array", "items": { "type": "string" } },
+    "trainFolios": { "type": "array", "items": { "type": "string" } },
+    "testFolios": { "type": "array", "items": { "type": "string" } },
+    "commands": { "type": "array", "items": { "type": "string" } },
+    "reportPath": { "type": "string", "minLength": 1 },
+    "dataTablePaths": { "type": "array", "items": { "type": "string" } },
+    "sourceScript": { "type": "string", "minLength": 1 },
+    "commit": { "type": "string" },
+    "tag": { "type": "string" },
+    "publishedAt": { "type": "string" },
+    "sequenceIndex": { "type": "integer", "minimum": 1 },
+    "supersedes": { "type": "array", "items": { "type": "string" } },
+    "supersededBy": { "type": "array", "items": { "type": "string" } },
+    "metrics": { "type": "object" }
+  },
+  "additionalProperties": false
+}

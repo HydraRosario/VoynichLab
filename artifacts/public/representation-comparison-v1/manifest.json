@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "1.0",
+  "id": "representation-comparison-v1",
+  "title": "REPRESENTATION-COMPARISON-V1 Molecule-Paired Pilot",
+  "status": "published",
+  "outcome": "inconclusive",
+  "question": "Can directly paired molecule-level EVA and ATOMS rows decide representation quality?",
+  "result": "Coverage was too low: only 14 of 161 test molecules were paired.",
+  "interpretation": "The pilot exposed the alignment problem and should not be used as the global EVA-vs-ATOMS result.",
+  "limitations": [
+    "Very low paired coverage",
+    "Not a regional alignment",
+    "Insufficient for global comparison"
+  ],
+  "commit": "c1bd90e8e8cb64f2b5bc9c72f50e62719cb533a9",
+  "tag": "atoms-eva-regional-v1",
+  "publishedAt": "2026-07-13",
+  "commands": [
+    "npm.cmd run representation-comparison:v1"
+  ],
+  "reportPath": "GrammarDiscoveryLab/out/representation-comparison-v1/REPRESENTATION-COMPARISON-V1.md",
+  "sourceScript": "GrammarDiscoveryLab/scripts/representation-comparison-v1.js"
+}

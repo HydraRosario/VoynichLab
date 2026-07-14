@@ -1,0 +1,56 @@
+[
+  {
+    "tag": "v1-pre-validation",
+    "title": "ATOMS-V1 pre-validation",
+    "date": "2026-07-13",
+    "tagObject": "97ba52ad5e32f17c0d74a9bec688f4890790bc61",
+    "targetCommit": "91160c080a2e98345e43e96862bceac8e4c92892",
+    "summary": "Early ATOMS-V1 validation anchor.",
+    "url": "https://github.com/HydraRosario/VoynichLab/releases/tag/v1-pre-validation"
+  },
+  {
+    "tag": "grammar-v1",
+    "title": "GRAMMAR-V1",
+    "date": "2026-07-13",
+    "tagObject": "af5f9a20e2e327befad95a63d44488d8984eb797",
+    "targetCommit": "af5f9a20e2e327befad95a63d44488d8984eb797",
+    "summary": "Frozen molecular grammar candidate.",
+    "url": "https://github.com/HydraRosario/VoynichLab/releases/tag/grammar-v1"
+  },
+  {
+    "tag": "reproducible-release-v1",
+    "title": "Reproducible Release V1",
+    "date": "2026-07-13",
+    "tagObject": "1997fb7c9c2bdab494ded4686e2ca0b3d52dda74",
+    "targetCommit": "a57b727968cf27b0fdcb232cb31ed764bd7e3e49",
+    "summary": "Reproducible frozen GRAMMAR-V1 validation.",
+    "url": "https://github.com/HydraRosario/VoynichLab/releases/tag/reproducible-release-v1"
+  },
+  {
+    "tag": "atoms-eva-regional-v1",
+    "title": "ATOMS-EVA regional comparison V1",
+    "date": "2026-07-13",
+    "tagObject": "83364e0d1c2b54d9b4f8cae877bcf7bfb75ae26b",
+    "targetCommit": "c1bd90e8e8cb64f2b5bc9c72f50e62719cb533a9",
+    "summary": "Regional comparison and null-control timeline.",
+    "url": "https://github.com/HydraRosario/VoynichLab/releases/tag/atoms-eva-regional-v1"
+  },
+  {
+    "tag": "atoms-eva-ablations-v1",
+    "title": "ATOMS-EVA ablations V1",
+    "date": "2026-07-14",
+    "tagObject": "52379d1cc1ef17e6c7ffb1e5a3fd848c0d889dbe",
+    "targetCommit": "2ee61884bae295aa2ab99cb881148ea50a383672",
+    "summary": "Representation comparison ablations showing robustness beyond exact regional length.",
+    "url": "https://github.com/HydraRosario/VoynichLab/releases/tag/atoms-eva-ablations-v1"
+  },
+  {
+    "tag": "public-portal-v1",
+    "title": "Public portal V1",
+    "date": "2026-07-14",
+    "tagObject": "c03097640c07093e383ea315dc2587d26adfd331",
+    "targetCommit": "3f4bd8cc81885f2750cedd5f00dac6bd5082c1ee",
+    "summary": "First public VoynichLab research portal.",
+    "url": "https://github.com/HydraRosario/VoynichLab/releases/tag/public-portal-v1"
+  }
+]

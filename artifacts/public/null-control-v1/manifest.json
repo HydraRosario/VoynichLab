@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0",
+  "id": "null-control-v1",
+  "title": "NULL-CONTROL-V1 Broad Slot Simulation",
+  "status": "published",
+  "outcome": "inconclusive",
+  "question": "How often does a broad null model reproduce the clean f2r and f2v grammar result?",
+  "result": "No simulation out of 100000 reproduced the joint clean result, but the null was too broad.",
+  "interpretation": "Exploratory only: the model allowed structurally implausible slot values and therefore overstated surprise.",
+  "limitations": [
+    "Over-broad slot inventory",
+    "Naive independence estimate not accepted as main p-value"
+  ],
+  "commit": "c1bd90e8e8cb64f2b5bc9c72f50e62719cb533a9",
+  "tag": "atoms-eva-regional-v1",
+  "publishedAt": "2026-07-13",
+  "commands": [
+    "npm.cmd run null-control:v1"
+  ],
+  "reportPath": "GrammarDiscoveryLab/out/null-control-v1/NULL-CONTROL-V1.md",
+  "sourceScript": "GrammarDiscoveryLab/scripts/null-control-v1.js"
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "1.0",
+  "id": "representation-alignment-v1",
+  "title": "REPRESENTATION-ALIGNMENT-V1 Regional Alignment",
+  "status": "published",
+  "outcome": "methodological",
+  "question": "Can EVA and ATOMS be compared over shared manuscript regions without assuming one-to-one token identity?",
+  "result": "The alignment produced 209 aligned regions, 15 unresolved regions, 100% ATOMS coverage, and zero crossing alignments.",
+  "interpretation": "Methodological bridge enabling regional EVA-vs-ATOMS comparison; not proof of exact token boundaries.",
+  "limitations": [
+    "Approximate EVA spans",
+    "Regional not token-exact",
+    "Depends on current folio mapping"
+  ],
+  "commit": "c1bd90e8e8cb64f2b5bc9c72f50e62719cb533a9",
+  "tag": "atoms-eva-regional-v1",
+  "publishedAt": "2026-07-13",
+  "commands": [
+    "npm.cmd run representation-alignment:v1"
+  ],
+  "reportPath": "GrammarDiscoveryLab/out/representation-alignment-v1/REPRESENTATION-ALIGNMENT-V1.md",
+  "sourceScript": "GrammarDiscoveryLab/scripts/representation-alignment-v1.js"
+}

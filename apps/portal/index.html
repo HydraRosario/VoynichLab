@@ -21,6 +21,7 @@
         <a href="#experiments">Experiments</a>
         <a href="#atoms">ATOMS-V1</a>
         <a href="#tools">Tools</a>
+        <a href="#releases">Releases</a>
         <a href="#reproduce">Reproduce</a>
       </nav>
     </header>
@@ -38,32 +39,16 @@
           </div>
           <div class="deploy-status" aria-label="Deployment status">
             <span>Deployment status</span>
-            <a href="https://github.com/HydraRosario/VoynichLab/actions/workflows/deploy-portal-pages.yml">GitHub Pages workflow</a>
+            <a href="https://vercel.com/new">Vercel project pending</a>
           </div>
         </div>
         <div class="live-panel" aria-label="Current result">
           <div class="panel-header">
             <span>Current result</span>
-            <strong>ATOMS vs EVA</strong>
+            <strong id="current-result-title">Loading registry</strong>
           </div>
-          <dl class="metric-grid">
-            <div>
-              <dt>Normalized log-loss</dt>
-              <dd><span>ATOMS</span><strong>0.2427</strong></dd>
-              <dd><span>EVA</span><strong>0.4320</strong></dd>
-            </div>
-            <div>
-              <dt>Top-1 accuracy</dt>
-              <dd><span>ATOMS</span><strong>79.19%</strong></dd>
-              <dd><span>EVA</span><strong>66.50%</strong></dd>
-            </div>
-            <div>
-              <dt>Unseen contexts</dt>
-              <dd><span>ATOMS</span><strong>0.97%</strong></dd>
-              <dd><span>EVA</span><strong>2.68%</strong></dd>
-            </div>
-          </dl>
-          <p class="caption">Regional held-out comparison, V3 MODEL_1 neighbors-only, all aligned regions.</p>
+          <dl class="metric-grid" id="current-metrics"></dl>
+          <p class="caption" id="current-result-caption">Reading versioned experiment registry.</p>
         </div>
       </section>
 
@@ -103,16 +88,16 @@
           <aside class="selector-panel" aria-label="Experiment selector">
             <label for="experiment-select">Experiment</label>
             <select id="experiment-select"></select>
-            <label for="subset-select">Subset</label>
-            <select id="subset-select"></select>
           </aside>
           <article class="experiment-panel" aria-live="polite">
             <div class="panel-header">
               <span id="experiment-kind">Experiment</span>
               <strong id="experiment-title"></strong>
             </div>
+            <div class="experiment-meta" id="experiment-meta"></div>
             <div class="score-columns" id="score-columns"></div>
             <p class="interpretation" id="experiment-interpretation"></p>
+            <div class="detail-grid" id="experiment-detail"></div>
             <div class="source-links" id="source-links"></div>
           </article>
         </div>
@@ -167,6 +152,14 @@
           <a href="https://github.com/HydraRosario/VoynichLab/blob/main/paper/LITERATURE.md">Literature</a>
           <a href="https://github.com/HydraRosario/VoynichLab/blob/main/paper/NOVELTY-MATRIX.md">Novelty matrix</a>
         </div>
+      </section>
+
+      <section id="releases" class="section releases-section">
+        <div class="section-heading">
+          <p class="eyebrow">Releases</p>
+          <h2>Public anchors: commits, tags, and reproducible checkpoints.</h2>
+        </div>
+        <div class="release-grid" id="release-grid"></div>
       </section>
 
       <section id="reproduce" class="section reproduce-section">

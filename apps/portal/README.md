@@ -1,11 +1,11 @@
 # VoynichLab Public Portal
 
-Static GitHub Pages entry point for VoynichLab.
+Static Vercel entry point for VoynichLab.
 
 Production URL:
 
 ```text
-https://hydrariosario.github.io/VoynichLab/
+Vercel deployment pending
 ```
 
 ## Scope
@@ -39,7 +39,15 @@ Serve this directory from a static HTTP server. The portal uses relative asset p
 ./main.js
 ```
 
-It is intended to work under the GitHub Pages project path `/VoynichLab/`.
+Recommended Vercel project settings:
+
+```text
+Framework Preset: Other
+Root Directory: apps/portal
+Build Command: empty
+Output Directory: .
+Install Command: empty
+```
 
 ## Scientific Boundary
 

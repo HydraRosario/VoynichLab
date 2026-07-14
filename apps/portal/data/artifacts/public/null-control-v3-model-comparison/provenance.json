@@ -1,0 +1,18 @@
+{
+  "trainFolios": [
+    "f1r",
+    "f1v",
+    "f47v"
+  ],
+  "testFolios": [
+    "f2r",
+    "f2v"
+  ],
+  "inputs": [
+    "GrammarDiscoveryLab/out/null-control-v3/NULL-CONTROL-V3-MODEL-COMPARISON.md",
+    "GrammarDiscoveryLab/out/null-control-v3/null-control-v3-opportunities.tsv"
+  ],
+  "script": "GrammarDiscoveryLab/scripts/null-control-v3-model-comparison.js",
+  "frozenArtifacts": [],
+  "generatedBy": "VoynichLab"
+}

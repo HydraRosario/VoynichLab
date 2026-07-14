@@ -1,0 +1,19 @@
+{
+  "trainFolios": [
+    "f1r",
+    "f1v",
+    "f47v"
+  ],
+  "testFolios": [
+    "f2r",
+    "f2v"
+  ],
+  "inputs": [
+    "GrammarDiscoveryLab/out/representation-comparison-v3-ablations/REPRESENTATION-COMPARISON-V3-ABLATIONS.md",
+    "GrammarDiscoveryLab/out/representation-comparison-v3-ablations/representation-comparison-v3-summary.tsv",
+    "GrammarDiscoveryLab/out/representation-comparison-v3-ablations/representation-comparison-v3-folio-results.tsv"
+  ],
+  "script": "GrammarDiscoveryLab/scripts/representation-comparison-v3-ablations.js",
+  "frozenArtifacts": [],
+  "generatedBy": "VoynichLab"
+}

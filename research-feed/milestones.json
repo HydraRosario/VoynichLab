@@ -1,0 +1,98 @@
+[
+  {
+    "id": "v1-pre-validation",
+    "title": "ATOMS-V1 pre-validation freeze",
+    "date": "2026-07-13",
+    "summary": "The ATOMS-V1 inventory and early validation state were preserved before later representation tests.",
+    "type": "freeze",
+    "tag": "v1-pre-validation",
+    "commit": "91160c080a2e98345e43e96862bceac8e4c92892",
+    "sequenceIndex": 1,
+    "links": [
+      {
+        "label": "ATOMS-V1 specification",
+        "path": "GrammarDiscoveryLab/docs/ATOMS-V1-SPECIFICATION.md"
+      }
+    ]
+  },
+  {
+    "id": "grammar-v1",
+    "title": "GRAMMAR-V1 frozen",
+    "date": "2026-07-13",
+    "summary": "The molecular substitution and optional families were frozen for held-out validation.",
+    "type": "freeze",
+    "tag": "grammar-v1",
+    "commit": "af5f9a20e2e327befad95a63d44488d8984eb797",
+    "sequenceIndex": 2,
+    "links": [
+      {
+        "label": "Frozen manifest",
+        "path": "GrammarDiscoveryLab/frozen/GRAMMAR-V1-2026-07-13/MANIFEST.md"
+      }
+    ]
+  },
+  {
+    "id": "reproducible-release-v1",
+    "title": "Reproducible Release V1",
+    "date": "2026-07-13",
+    "summary": "The frozen GRAMMAR-V1 validation pipeline was published with expected outputs and checksums.",
+    "type": "release",
+    "tag": "reproducible-release-v1",
+    "commit": "a57b727968cf27b0fdcb232cb31ed764bd7e3e49",
+    "sequenceIndex": 3,
+    "links": [
+      {
+        "label": "Validation summary",
+        "path": "GrammarDiscoveryLab/out/reproducible-release-v1/VALIDATION-SUMMARY.md"
+      }
+    ]
+  },
+  {
+    "id": "atoms-eva-regional-v1",
+    "title": "ATOMS-EVA regional comparison",
+    "date": "2026-07-13",
+    "summary": "Regional alignment enabled a matched ATOMS/EVA comparison and preserved negative null-control results.",
+    "type": "comparison",
+    "tag": "atoms-eva-regional-v1",
+    "commit": "c1bd90e8e8cb64f2b5bc9c72f50e62719cb533a9",
+    "sequenceIndex": 4,
+    "links": [
+      {
+        "label": "Regional comparison",
+        "path": "GrammarDiscoveryLab/out/representation-comparison-v2-regions/REPRESENTATION-COMPARISON-V2-REGIONS.md"
+      }
+    ]
+  },
+  {
+    "id": "atoms-eva-ablations-v1",
+    "title": "ATOMS-EVA ablation robustness",
+    "date": "2026-07-14",
+    "summary": "Ablation tests showed that the ATOMS advantage did not depend only on exact regional sequence length.",
+    "type": "comparison",
+    "tag": "atoms-eva-ablations-v1",
+    "commit": "2ee61884bae295aa2ab99cb881148ea50a383672",
+    "sequenceIndex": 5,
+    "links": [
+      {
+        "label": "Ablation report",
+        "path": "GrammarDiscoveryLab/out/representation-comparison-v3-ablations/REPRESENTATION-COMPARISON-V3-ABLATIONS.md"
+      }
+    ]
+  },
+  {
+    "id": "public-portal-v1",
+    "title": "Public portal V1",
+    "date": "2026-07-14",
+    "summary": "The first static public portal was created as a clean entry point over the research artifacts.",
+    "type": "portal",
+    "tag": "public-portal-v1",
+    "commit": "3f4bd8cc81885f2750cedd5f00dac6bd5082c1ee",
+    "sequenceIndex": 6,
+    "links": [
+      {
+        "label": "Portal source",
+        "path": "apps/portal/README.md"
+      }
+    ]
+  }
+]

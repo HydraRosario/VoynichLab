@@ -8,7 +8,7 @@ VoynichLab does **not** currently claim translation, decipherment, phonetic valu
 
 ## Public Entry Points
 
-- [Launch VoynichLab](https://hydrariosario.github.io/VoynichLab/)
+- Launch VoynichLab: Vercel deployment pending.
 - [Explore the research timeline](https://github.com/HydraRosario/VoynichLab/blob/main/GrammarDiscoveryLab/RESEARCH-TIMELINE.md)
 - [View ATOMS vs EVA experiments](https://github.com/HydraRosario/VoynichLab/blob/main/GrammarDiscoveryLab/out/representation-comparison-v3-ablations/REPRESENTATION-COMPARISON-V3-ABLATIONS.md)
 - [Read the paper workspace](https://github.com/HydraRosario/VoynichLab/tree/main/paper)
@@ -40,6 +40,57 @@ GrammarDiscoveryLab/  Frozen grammar validation, null controls, alignment, and r
 TranslationLab/       Experimental hypothesis space, kept separate from validated claims.
 paper/                Claims, outline, figures, literature map, and novelty matrix.
 ```
+
+## Public Portal Deployment
+
+The public portal is configured for Vercel.
+
+Recommended Vercel project settings:
+
+```text
+Framework Preset: Other
+Root Directory: apps/portal
+Build Command: empty
+Output Directory: .
+Install Command: empty
+```
+
+The portal is static and must not deploy the full repository as an application bundle. `DataSetCreator`, local databases, visual snapshots, and working research outputs remain source artifacts in Git, not public runtime assets.
+
+## Research Registry
+
+VoynichLab now uses a machine-readable research registry as the content source for the public portal:
+
+```text
+research-feed/experiments.json
+research-feed/milestones.json
+research-feed/releases.json
+artifacts/public/<experiment-id>/
+apps/portal/data/
+```
+
+Each published experiment has a standard public artifact:
+
+```text
+manifest.json
+summary.md
+metrics.json
+provenance.json
+checksums.txt
+tables/
+```
+
+The portal is rendered from versioned experiment manifests, frozen report paths, checksums, commits, and tags. Positive, negative, inconclusive, methodological, and superseded results are all preserved as part of the scientific record.
+
+Registry commands:
+
+```bash
+npm.cmd run research:validate
+npm.cmd run research:build
+npm.cmd run research:publish -- --experiment representation-comparison-v3-ablations
+```
+
+`research:publish` prepares public artifacts only. It does not commit, tag, push, or modify frozen source files.
 
 ## Reproduce
 

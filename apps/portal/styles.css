@@ -412,6 +412,69 @@ h3 {
   padding: 18px;
 }
 
+.experiment-meta,
+.detail-grid,
+.release-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.experiment-meta {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 18px;
+}
+
+.experiment-meta div,
+.detail-grid div,
+.release-card {
+  padding: 14px;
+  border: 1px solid var(--line);
+  background: #fbf8f0;
+}
+
+.experiment-meta span,
+.release-card span {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.experiment-meta strong {
+  display: block;
+  margin-top: 6px;
+  font-size: 15px;
+  overflow-wrap: anywhere;
+}
+
+.outcome {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 10px;
+  border: 1px solid currentColor;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.outcome.supportive {
+  color: var(--accent);
+}
+
+.outcome.negative {
+  color: #8f3f2b;
+}
+
+.outcome.inconclusive,
+.outcome.methodological,
+.outcome.superseded {
+  color: var(--accent-3);
+}
+
 .score-columns {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -438,6 +501,26 @@ h3 {
   margin: 18px 0 0;
   color: #343b42;
   line-height: 1.55;
+}
+
+.detail-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 18px;
+}
+
+.detail-grid h3 {
+  font-size: 15px;
+}
+
+.detail-grid p,
+.detail-grid ul {
+  margin: 0;
+  color: #3e454d;
+  line-height: 1.5;
+}
+
+.detail-grid ul {
+  padding-left: 18px;
 }
 
 .source-links {
@@ -517,6 +600,45 @@ h3 {
   background: var(--surface);
 }
 
+.release-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.release-card h3 {
+  margin-top: 10px;
+}
+
+.release-card p {
+  min-height: 72px;
+  color: #3e454d;
+  line-height: 1.5;
+}
+
+.release-card dl {
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.release-card div {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.release-card dd {
+  margin: 0;
+  color: var(--ink);
+  font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+}
+
+.release-card a {
+  color: var(--accent);
+  font-weight: 800;
+  text-decoration: none;
+}
+
 pre {
   overflow-x: auto;
   margin: 0;
@@ -563,7 +685,10 @@ pre {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .experiment-meta,
   .score-columns,
+  .detail-grid,
+  .release-grid,
   .atom-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -581,7 +706,10 @@ pre {
 
   .lab-strip,
   .tool-grid,
+  .experiment-meta,
   .score-columns,
+  .detail-grid,
+  .release-grid,
   .atom-grid {
     grid-template-columns: 1fr;
   }

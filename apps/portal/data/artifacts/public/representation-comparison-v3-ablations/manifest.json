@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "1.0",
+  "id": "representation-comparison-v3-ablations",
+  "title": "REPRESENTATION-COMPARISON-V3 ATOMS-EVA Ablations",
+  "status": "published",
+  "outcome": "supportive",
+  "question": "Does the ATOMS advantage survive removal of exact regional sequence length?",
+  "result": "ATOMS remained favorable under neighbor-only and coarse-position models.",
+  "interpretation": "Exploratory evidence of stronger transferable local structure, with frequency concentration also contributing.",
+  "limitations": [
+    "Five folios",
+    "Single ATOMS annotator",
+    "Approximate EVA regional alignment",
+    "Frequency distribution contributes to the advantage"
+  ],
+  "commit": "2ee61884bae295aa2ab99cb881148ea50a383672",
+  "tag": "atoms-eva-ablations-v1",
+  "publishedAt": "2026-07-14",
+  "commands": [
+    "npm.cmd run representation-comparison:v3-ablations"
+  ],
+  "reportPath": "GrammarDiscoveryLab/out/representation-comparison-v3-ablations/REPRESENTATION-COMPARISON-V3-ABLATIONS.md",
+  "sourceScript": "GrammarDiscoveryLab/scripts/representation-comparison-v3-ablations.js"
+}

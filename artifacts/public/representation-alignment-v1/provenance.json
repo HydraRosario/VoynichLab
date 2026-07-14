@@ -1,0 +1,19 @@
+{
+  "trainFolios": [
+    "f1r",
+    "f1v",
+    "f47v"
+  ],
+  "testFolios": [
+    "f2r",
+    "f2v"
+  ],
+  "inputs": [
+    "GrammarDiscoveryLab/out/representation-alignment-v1/REPRESENTATION-ALIGNMENT-V1.md",
+    "GrammarDiscoveryLab/out/representation-alignment-v1/aligned-regions.tsv",
+    "GrammarDiscoveryLab/out/representation-alignment-v1/unresolved-regions.tsv"
+  ],
+  "script": "GrammarDiscoveryLab/scripts/representation-alignment-v1.js",
+  "frozenArtifacts": [],
+  "generatedBy": "VoynichLab"
+}

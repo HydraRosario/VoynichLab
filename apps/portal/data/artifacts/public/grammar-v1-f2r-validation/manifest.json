@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "1.0",
+  "id": "grammar-v1-f2r-validation",
+  "title": "GRAMMAR-V1 f2r Held-Out Validation",
+  "status": "published",
+  "outcome": "supportive",
+  "question": "Do frozen GRAMMAR-V1 substitution families reappear in the first held-out folio using only known slot values?",
+  "result": "f2r produced 8/8 clean observed substitution families with zero new slot values.",
+  "interpretation": "Supportive evidence that some ATOMS molecular frames recur outside the training folios.",
+  "limitations": [
+    "Single ATOMS annotator",
+    "Small number of observed families",
+    "Not a decipherment test"
+  ],
+  "commit": "a57b727968cf27b0fdcb232cb31ed764bd7e3e49",
+  "tag": "reproducible-release-v1",
+  "publishedAt": "2026-07-13",
+  "commands": [
+    "npm.cmd run validate"
+  ],
+  "reportPath": "GrammarDiscoveryLab/out/reproducible-release-v1/f2r/GRAMMAR-V1-vs-f2r.md",
+  "sourceScript": "GrammarDiscoveryLab/scripts/validate-release-v1.js"
+}

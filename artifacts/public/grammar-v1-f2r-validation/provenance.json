@@ -1,0 +1,18 @@
+{
+  "trainFolios": [
+    "f1r",
+    "f1v",
+    "f47v"
+  ],
+  "testFolios": [
+    "f2r"
+  ],
+  "inputs": [
+    "GrammarDiscoveryLab/out/reproducible-release-v1/f2r/GRAMMAR-V1-vs-f2r.md",
+    "GrammarDiscoveryLab/out/reproducible-release-v1/f2r/grammar-v1-vs-f2r-substitution.tsv",
+    "GrammarDiscoveryLab/out/reproducible-release-v1/f2r/grammar-v1-vs-f2r-optional.tsv"
+  ],
+  "script": "GrammarDiscoveryLab/scripts/validate-release-v1.js",
+  "frozenArtifacts": [],
+  "generatedBy": "VoynichLab"
+}

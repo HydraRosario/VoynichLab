@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "1.0",
+  "id": "null-control-v2-contextual",
+  "title": "NULL-CONTROL-V2 Contextual Slot Simulation",
+  "status": "published",
+  "outcome": "negative",
+  "question": "Does the clean grammar result remain rare after preserving local context?",
+  "result": "The contextual empirical probability was approximately 0.099090.",
+  "interpretation": "Negative result for the strongest grammar claim: local syntax explains much of the apparent slot compatibility.",
+  "limitations": [
+    "Still one family of null models",
+    "Depends on observed local contexts",
+    "Does not test visual annotation quality"
+  ],
+  "commit": "c1bd90e8e8cb64f2b5bc9c72f50e62719cb533a9",
+  "tag": "atoms-eva-regional-v1",
+  "publishedAt": "2026-07-13",
+  "commands": [
+    "npm.cmd run null-control:v2"
+  ],
+  "reportPath": "GrammarDiscoveryLab/out/null-control-v2-contextual/NULL-CONTROL-V2-CONTEXTUAL.md",
+  "sourceScript": "GrammarDiscoveryLab/scripts/null-control-v2-contextual.js"
+}

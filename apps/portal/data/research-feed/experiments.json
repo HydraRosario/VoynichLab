@@ -1,0 +1,399 @@
+[
+  {
+    "id": "grammar-v1-f2r-validation",
+    "title": "GRAMMAR-V1 f2r Held-Out Validation",
+    "status": "published",
+    "outcome": "supportive",
+    "question": "Do frozen GRAMMAR-V1 substitution families reappear in the first held-out folio using only known slot values?",
+    "result": "f2r produced 8/8 clean observed substitution families with zero new slot values.",
+    "interpretation": "Supportive evidence that some ATOMS molecular frames recur outside the training folios.",
+    "limitations": [
+      "Single ATOMS annotator",
+      "Small number of observed families",
+      "Not a decipherment test"
+    ],
+    "trainFolios": [
+      "f1r",
+      "f1v",
+      "f47v"
+    ],
+    "testFolios": [
+      "f2r"
+    ],
+    "commands": [
+      "npm.cmd run validate"
+    ],
+    "reportPath": "GrammarDiscoveryLab/out/reproducible-release-v1/f2r/GRAMMAR-V1-vs-f2r.md",
+    "dataTablePaths": [
+      "GrammarDiscoveryLab/out/reproducible-release-v1/f2r/grammar-v1-vs-f2r-substitution.tsv",
+      "GrammarDiscoveryLab/out/reproducible-release-v1/f2r/grammar-v1-vs-f2r-optional.tsv"
+    ],
+    "sourceScript": "GrammarDiscoveryLab/scripts/validate-release-v1.js",
+    "commit": "a57b727968cf27b0fdcb232cb31ed764bd7e3e49",
+    "tag": "reproducible-release-v1",
+    "publishedAt": "2026-07-13",
+    "sequenceIndex": 1,
+    "supersedes": [],
+    "supersededBy": [],
+    "metrics": {
+      "observedSubstitutionFamilies": 8,
+      "cleanSubstitutionFamilies": 8,
+      "newSlotValues": 0
+    }
+  },
+  {
+    "id": "grammar-v1-f2v-prospective-validation",
+    "title": "GRAMMAR-V1 f2v Prospective Validation",
+    "status": "published",
+    "outcome": "supportive",
+    "question": "Does the frozen grammar remain compatible with a later folio labeled after GRAMMAR-V1 was frozen?",
+    "result": "f2v produced 7/7 clean observed substitution families with zero new slot values.",
+    "interpretation": "Supportive prospective compatibility result, bounded by the same annotation and sample-size limits.",
+    "limitations": [
+      "Single ATOMS annotator",
+      "Five-folio corpus",
+      "Compatibility does not imply semantic interpretation"
+    ],
+    "trainFolios": [
+      "f1r",
+      "f1v",
+      "f47v"
+    ],
+    "testFolios": [
+      "f2v"
+    ],
+    "commands": [
+      "npm.cmd run validate"
+    ],
+    "reportPath": "GrammarDiscoveryLab/out/reproducible-release-v1/f2v/GRAMMAR-V1-vs-f2v.md",
+    "dataTablePaths": [
+      "GrammarDiscoveryLab/out/reproducible-release-v1/f2v/grammar-v1-vs-f2v-substitution.tsv",
+      "GrammarDiscoveryLab/out/reproducible-release-v1/f2v/grammar-v1-vs-f2v-optional.tsv"
+    ],
+    "sourceScript": "GrammarDiscoveryLab/scripts/validate-release-v1.js",
+    "commit": "a57b727968cf27b0fdcb232cb31ed764bd7e3e49",
+    "tag": "reproducible-release-v1",
+    "publishedAt": "2026-07-13",
+    "sequenceIndex": 2,
+    "supersedes": [],
+    "supersededBy": [],
+    "metrics": {
+      "observedSubstitutionFamilies": 7,
+      "cleanSubstitutionFamilies": 7,
+      "newSlotValues": 0
+    }
+  },
+  {
+    "id": "null-control-v1",
+    "title": "NULL-CONTROL-V1 Broad Slot Simulation",
+    "status": "published",
+    "outcome": "inconclusive",
+    "question": "How often does a broad null model reproduce the clean f2r and f2v grammar result?",
+    "result": "No simulation out of 100000 reproduced the joint clean result, but the null was too broad.",
+    "interpretation": "Exploratory only: the model allowed structurally implausible slot values and therefore overstated surprise.",
+    "limitations": [
+      "Over-broad slot inventory",
+      "Naive independence estimate not accepted as main p-value"
+    ],
+    "trainFolios": [
+      "f1r",
+      "f1v",
+      "f47v"
+    ],
+    "testFolios": [
+      "f2r",
+      "f2v"
+    ],
+    "commands": [
+      "npm.cmd run null-control:v1"
+    ],
+    "reportPath": "GrammarDiscoveryLab/out/null-control-v1/NULL-CONTROL-V1.md",
+    "dataTablePaths": [
+      "GrammarDiscoveryLab/out/null-control-v1/null-control-family-probabilities.tsv"
+    ],
+    "sourceScript": "GrammarDiscoveryLab/scripts/null-control-v1.js",
+    "commit": "c1bd90e8e8cb64f2b5bc9c72f50e62719cb533a9",
+    "tag": "atoms-eva-regional-v1",
+    "publishedAt": "2026-07-13",
+    "sequenceIndex": 3,
+    "supersedes": [],
+    "supersededBy": [
+      "null-control-v2-contextual"
+    ],
+    "metrics": {
+      "simulations": 100000,
+      "jointHits": 0
+    }
+  },
+  {
+    "id": "null-control-v2-contextual",
+    "title": "NULL-CONTROL-V2 Contextual Slot Simulation",
+    "status": "published",
+    "outcome": "negative",
+    "question": "Does the clean grammar result remain rare after preserving local context?",
+    "result": "The contextual empirical probability was approximately 0.099090.",
+    "interpretation": "Negative result for the strongest grammar claim: local syntax explains much of the apparent slot compatibility.",
+    "limitations": [
+      "Still one family of null models",
+      "Depends on observed local contexts",
+      "Does not test visual annotation quality"
+    ],
+    "trainFolios": [
+      "f1r",
+      "f1v",
+      "f47v"
+    ],
+    "testFolios": [
+      "f2r",
+      "f2v"
+    ],
+    "commands": [
+      "npm.cmd run null-control:v2"
+    ],
+    "reportPath": "GrammarDiscoveryLab/out/null-control-v2-contextual/NULL-CONTROL-V2-CONTEXTUAL.md",
+    "dataTablePaths": [
+      "GrammarDiscoveryLab/out/null-control-v2-contextual/null-control-v2-contextual-family-probabilities.tsv"
+    ],
+    "sourceScript": "GrammarDiscoveryLab/scripts/null-control-v2-contextual.js",
+    "commit": "c1bd90e8e8cb64f2b5bc9c72f50e62719cb533a9",
+    "tag": "atoms-eva-regional-v1",
+    "publishedAt": "2026-07-13",
+    "sequenceIndex": 4,
+    "supersedes": [
+      "null-control-v1"
+    ],
+    "supersededBy": [],
+    "metrics": {
+      "contextualEmpiricalProbability": 0.09909
+    }
+  },
+  {
+    "id": "null-control-v3-model-comparison",
+    "title": "NULL-CONTROL-V3 Full Frame vs Local Context",
+    "status": "published",
+    "outcome": "negative",
+    "question": "Does exact frozen frame identity improve held-out prediction beyond local context?",
+    "result": "The exact frame model was slightly worse than local context on combined held-out log-loss.",
+    "interpretation": "GRAMMAR-V1 remains descriptive, but its exact frame identity did not add predictive value beyond local syntax.",
+    "limitations": [
+      "Same held-out folios",
+      "Same ATOMS annotation source",
+      "Does not evaluate alternate grammar definitions"
+    ],
+    "trainFolios": [
+      "f1r",
+      "f1v",
+      "f47v"
+    ],
+    "testFolios": [
+      "f2r",
+      "f2v"
+    ],
+    "commands": [
+      "npm.cmd run null-control:v3",
+      "npm.cmd run null-control:v3:diagnostics"
+    ],
+    "reportPath": "GrammarDiscoveryLab/out/null-control-v3/NULL-CONTROL-V3-MODEL-COMPARISON.md",
+    "dataTablePaths": [
+      "GrammarDiscoveryLab/out/null-control-v3/null-control-v3-opportunities.tsv"
+    ],
+    "sourceScript": "GrammarDiscoveryLab/scripts/null-control-v3-model-comparison.js",
+    "commit": "c1bd90e8e8cb64f2b5bc9c72f50e62719cb533a9",
+    "tag": "atoms-eva-regional-v1",
+    "publishedAt": "2026-07-13",
+    "sequenceIndex": 5,
+    "supersedes": [],
+    "supersededBy": [],
+    "metrics": {
+      "localContextLogLoss": 1.149743,
+      "fullFrameLogLoss": 1.214627
+    }
+  },
+  {
+    "id": "representation-comparison-v1",
+    "title": "REPRESENTATION-COMPARISON-V1 Molecule-Paired Pilot",
+    "status": "published",
+    "outcome": "inconclusive",
+    "question": "Can directly paired molecule-level EVA and ATOMS rows decide representation quality?",
+    "result": "Coverage was too low: only 14 of 161 test molecules were paired.",
+    "interpretation": "The pilot exposed the alignment problem and should not be used as the global EVA-vs-ATOMS result.",
+    "limitations": [
+      "Very low paired coverage",
+      "Not a regional alignment",
+      "Insufficient for global comparison"
+    ],
+    "trainFolios": [
+      "f1r",
+      "f1v",
+      "f47v"
+    ],
+    "testFolios": [
+      "f2r",
+      "f2v"
+    ],
+    "commands": [
+      "npm.cmd run representation-comparison:v1"
+    ],
+    "reportPath": "GrammarDiscoveryLab/out/representation-comparison-v1/REPRESENTATION-COMPARISON-V1.md",
+    "dataTablePaths": [
+      "GrammarDiscoveryLab/out/representation-comparison-v1/representation-comparison-summary.tsv"
+    ],
+    "sourceScript": "GrammarDiscoveryLab/scripts/representation-comparison-v1.js",
+    "commit": "c1bd90e8e8cb64f2b5bc9c72f50e62719cb533a9",
+    "tag": "atoms-eva-regional-v1",
+    "publishedAt": "2026-07-13",
+    "sequenceIndex": 6,
+    "supersedes": [],
+    "supersededBy": [
+      "representation-comparison-v2-regions"
+    ],
+    "metrics": {
+      "pairedCoverage": 14,
+      "testMolecules": 161
+    }
+  },
+  {
+    "id": "representation-alignment-v1",
+    "title": "REPRESENTATION-ALIGNMENT-V1 Regional Alignment",
+    "status": "published",
+    "outcome": "methodological",
+    "question": "Can EVA and ATOMS be compared over shared manuscript regions without assuming one-to-one token identity?",
+    "result": "The alignment produced 209 aligned regions, 15 unresolved regions, 100% ATOMS coverage, and zero crossing alignments.",
+    "interpretation": "Methodological bridge enabling regional EVA-vs-ATOMS comparison; not proof of exact token boundaries.",
+    "limitations": [
+      "Approximate EVA spans",
+      "Regional not token-exact",
+      "Depends on current folio mapping"
+    ],
+    "trainFolios": [
+      "f1r",
+      "f1v",
+      "f47v"
+    ],
+    "testFolios": [
+      "f2r",
+      "f2v"
+    ],
+    "commands": [
+      "npm.cmd run representation-alignment:v1"
+    ],
+    "reportPath": "GrammarDiscoveryLab/out/representation-alignment-v1/REPRESENTATION-ALIGNMENT-V1.md",
+    "dataTablePaths": [
+      "GrammarDiscoveryLab/out/representation-alignment-v1/aligned-regions.tsv",
+      "GrammarDiscoveryLab/out/representation-alignment-v1/unresolved-regions.tsv"
+    ],
+    "sourceScript": "GrammarDiscoveryLab/scripts/representation-alignment-v1.js",
+    "commit": "c1bd90e8e8cb64f2b5bc9c72f50e62719cb533a9",
+    "tag": "atoms-eva-regional-v1",
+    "publishedAt": "2026-07-13",
+    "sequenceIndex": 7,
+    "supersedes": [],
+    "supersededBy": [],
+    "metrics": {
+      "alignedRegions": 209,
+      "unresolvedRegions": 15,
+      "crossingAlignments": 0
+    }
+  },
+  {
+    "id": "representation-comparison-v2-regions",
+    "title": "REPRESENTATION-COMPARISON-V2 Regional ATOMS-EVA Comparison",
+    "status": "published",
+    "outcome": "supportive",
+    "question": "Does ATOMS preserve more held-out regional predictive structure than EVA under a matched local-context protocol?",
+    "result": "ATOMS had lower normalized log-loss, higher top-1 accuracy, and lower unseen-context rate than EVA over aligned regions.",
+    "interpretation": "Exploratory evidence that ATOMS-V1 captures transferable regional structure better than EVA under this protocol.",
+    "limitations": [
+      "Approximate EVA regional alignment",
+      "Five folios",
+      "Single ATOMS annotator",
+      "Not proof of global optimality"
+    ],
+    "trainFolios": [
+      "f1r",
+      "f1v",
+      "f47v"
+    ],
+    "testFolios": [
+      "f2r",
+      "f2v"
+    ],
+    "commands": [
+      "npm.cmd run representation-comparison:v2-regions"
+    ],
+    "reportPath": "GrammarDiscoveryLab/out/representation-comparison-v2-regions/REPRESENTATION-COMPARISON-V2-REGIONS.md",
+    "dataTablePaths": [
+      "GrammarDiscoveryLab/out/representation-comparison-v2-regions/representation-comparison-v2-summary.tsv",
+      "GrammarDiscoveryLab/out/representation-comparison-v2-regions/representation-comparison-v2-region-scores.tsv",
+      "GrammarDiscoveryLab/out/representation-comparison-v2-regions/representation-comparison-v2-corruption.tsv"
+    ],
+    "sourceScript": "GrammarDiscoveryLab/scripts/representation-comparison-v2-regions.js",
+    "commit": "c1bd90e8e8cb64f2b5bc9c72f50e62719cb533a9",
+    "tag": "atoms-eva-regional-v1",
+    "publishedAt": "2026-07-13",
+    "sequenceIndex": 8,
+    "supersedes": [
+      "representation-comparison-v1"
+    ],
+    "supersededBy": [
+      "representation-comparison-v3-ablations"
+    ],
+    "metrics": {
+      "atomsNormalizedLogLoss": 0.807922,
+      "evaNormalizedLogLoss": 0.892706,
+      "atomsTop1Accuracy": 0.4296,
+      "evaTop1Accuracy": 0.263,
+      "atomsUnseenContextRate": 0.4618,
+      "evaUnseenContextRate": 0.6047
+    }
+  },
+  {
+    "id": "representation-comparison-v3-ablations",
+    "title": "REPRESENTATION-COMPARISON-V3 ATOMS-EVA Ablations",
+    "status": "published",
+    "outcome": "supportive",
+    "question": "Does the ATOMS advantage survive removal of exact regional sequence length?",
+    "result": "ATOMS remained favorable under neighbor-only and coarse-position models.",
+    "interpretation": "Exploratory evidence of stronger transferable local structure, with frequency concentration also contributing.",
+    "limitations": [
+      "Five folios",
+      "Single ATOMS annotator",
+      "Approximate EVA regional alignment",
+      "Frequency distribution contributes to the advantage"
+    ],
+    "trainFolios": [
+      "f1r",
+      "f1v",
+      "f47v"
+    ],
+    "testFolios": [
+      "f2r",
+      "f2v"
+    ],
+    "commands": [
+      "npm.cmd run representation-comparison:v3-ablations"
+    ],
+    "reportPath": "GrammarDiscoveryLab/out/representation-comparison-v3-ablations/REPRESENTATION-COMPARISON-V3-ABLATIONS.md",
+    "dataTablePaths": [
+      "GrammarDiscoveryLab/out/representation-comparison-v3-ablations/representation-comparison-v3-summary.tsv",
+      "GrammarDiscoveryLab/out/representation-comparison-v3-ablations/representation-comparison-v3-folio-results.tsv"
+    ],
+    "sourceScript": "GrammarDiscoveryLab/scripts/representation-comparison-v3-ablations.js",
+    "commit": "2ee61884bae295aa2ab99cb881148ea50a383672",
+    "tag": "atoms-eva-ablations-v1",
+    "publishedAt": "2026-07-14",
+    "sequenceIndex": 9,
+    "supersedes": [
+      "representation-comparison-v2-regions"
+    ],
+    "supersededBy": [],
+    "metrics": {
+      "model1AtomsNormalizedLogLoss": 0.242737,
+      "model1EvaNormalizedLogLoss": 0.43197,
+      "model1AtomsTop1Accuracy": 0.7919,
+      "model1EvaTop1Accuracy": 0.665,
+      "model1AtomsUnseenContextRate": 0.0097,
+      "model1EvaUnseenContextRate": 0.0268
+    }
+  }
+]

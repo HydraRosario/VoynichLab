@@ -1,0 +1,20 @@
+{
+  "trainFolios": [
+    "f1r",
+    "f1v",
+    "f47v"
+  ],
+  "testFolios": [
+    "f2r",
+    "f2v"
+  ],
+  "inputs": [
+    "GrammarDiscoveryLab/out/representation-comparison-v2-regions/REPRESENTATION-COMPARISON-V2-REGIONS.md",
+    "GrammarDiscoveryLab/out/representation-comparison-v2-regions/representation-comparison-v2-summary.tsv",
+    "GrammarDiscoveryLab/out/representation-comparison-v2-regions/representation-comparison-v2-region-scores.tsv",
+    "GrammarDiscoveryLab/out/representation-comparison-v2-regions/representation-comparison-v2-corruption.tsv"
+  ],
+  "script": "GrammarDiscoveryLab/scripts/representation-comparison-v2-regions.js",
+  "frozenArtifacts": [],
+  "generatedBy": "VoynichLab"
+}

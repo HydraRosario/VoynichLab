@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hydrariosario.github.io/VoynichLab/schema/milestone.schema.json",
+  "title": "VoynichLab Milestone",
+  "type": "object",
+  "required": ["id", "title", "date", "summary", "type", "tag", "sequenceIndex"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "title": { "type": "string", "minLength": 1 },
+    "date": { "type": "string", "minLength": 1 },
+    "summary": { "type": "string", "minLength": 1 },
+    "type": { "type": "string", "enum": ["freeze", "validation", "release", "comparison", "portal", "registry"] },
+    "tag": { "type": "string", "minLength": 1 },
+    "commit": { "type": "string" },
+    "sequenceIndex": { "type": "integer", "minimum": 1 },
+    "links": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["label", "path"],
+        "properties": {
+          "label": { "type": "string" },
+          "path": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hydrariosario.github.io/VoynichLab/schema/release.schema.json",
+  "title": "VoynichLab Release",
+  "type": "object",
+  "required": ["tag", "title", "date", "tagObject", "targetCommit", "summary"],
+  "properties": {
+    "tag": { "type": "string", "minLength": 1 },
+    "title": { "type": "string", "minLength": 1 },
+    "date": { "type": "string", "minLength": 1 },
+    "tagObject": { "type": "string", "minLength": 7 },
+    "targetCommit": { "type": "string", "minLength": 7 },
+    "summary": { "type": "string", "minLength": 1 },
+    "url": { "type": "string" }
+  },
+  "additionalProperties": false
+}

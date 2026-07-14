@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "1.0",
+  "id": "representation-comparison-v2-regions",
+  "title": "REPRESENTATION-COMPARISON-V2 Regional ATOMS-EVA Comparison",
+  "status": "published",
+  "outcome": "supportive",
+  "question": "Does ATOMS preserve more held-out regional predictive structure than EVA under a matched local-context protocol?",
+  "result": "ATOMS had lower normalized log-loss, higher top-1 accuracy, and lower unseen-context rate than EVA over aligned regions.",
+  "interpretation": "Exploratory evidence that ATOMS-V1 captures transferable regional structure better than EVA under this protocol.",
+  "limitations": [
+    "Approximate EVA regional alignment",
+    "Five folios",
+    "Single ATOMS annotator",
+    "Not proof of global optimality"
+  ],
+  "commit": "c1bd90e8e8cb64f2b5bc9c72f50e62719cb533a9",
+  "tag": "atoms-eva-regional-v1",
+  "publishedAt": "2026-07-13",
+  "commands": [
+    "npm.cmd run representation-comparison:v2-regions"
+  ],
+  "reportPath": "GrammarDiscoveryLab/out/representation-comparison-v2-regions/REPRESENTATION-COMPARISON-V2-REGIONS.md",
+  "sourceScript": "GrammarDiscoveryLab/scripts/representation-comparison-v2-regions.js"
+}

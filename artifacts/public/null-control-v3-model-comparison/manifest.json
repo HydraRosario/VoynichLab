@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "1.0",
+  "id": "null-control-v3-model-comparison",
+  "title": "NULL-CONTROL-V3 Full Frame vs Local Context",
+  "status": "published",
+  "outcome": "negative",
+  "question": "Does exact frozen frame identity improve held-out prediction beyond local context?",
+  "result": "The exact frame model was slightly worse than local context on combined held-out log-loss.",
+  "interpretation": "GRAMMAR-V1 remains descriptive, but its exact frame identity did not add predictive value beyond local syntax.",
+  "limitations": [
+    "Same held-out folios",
+    "Same ATOMS annotation source",
+    "Does not evaluate alternate grammar definitions"
+  ],
+  "commit": "c1bd90e8e8cb64f2b5bc9c72f50e62719cb533a9",
+  "tag": "atoms-eva-regional-v1",
+  "publishedAt": "2026-07-13",
+  "commands": [
+    "npm.cmd run null-control:v3",
+    "npm.cmd run null-control:v3:diagnostics"
+  ],
+  "reportPath": "GrammarDiscoveryLab/out/null-control-v3/NULL-CONTROL-V3-MODEL-COMPARISON.md",
+  "sourceScript": "GrammarDiscoveryLab/scripts/null-control-v3-model-comparison.js"
+}

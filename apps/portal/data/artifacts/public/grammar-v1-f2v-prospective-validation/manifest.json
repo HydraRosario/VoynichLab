@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "1.0",
+  "id": "grammar-v1-f2v-prospective-validation",
+  "title": "GRAMMAR-V1 f2v Prospective Validation",
+  "status": "published",
+  "outcome": "supportive",
+  "question": "Does the frozen grammar remain compatible with a later folio labeled after GRAMMAR-V1 was frozen?",
+  "result": "f2v produced 7/7 clean observed substitution families with zero new slot values.",
+  "interpretation": "Supportive prospective compatibility result, bounded by the same annotation and sample-size limits.",
+  "limitations": [
+    "Single ATOMS annotator",
+    "Five-folio corpus",
+    "Compatibility does not imply semantic interpretation"
+  ],
+  "commit": "a57b727968cf27b0fdcb232cb31ed764bd7e3e49",
+  "tag": "reproducible-release-v1",
+  "publishedAt": "2026-07-13",
+  "commands": [
+    "npm.cmd run validate"
+  ],
+  "reportPath": "GrammarDiscoveryLab/out/reproducible-release-v1/f2v/GRAMMAR-V1-vs-f2v.md",
+  "sourceScript": "GrammarDiscoveryLab/scripts/validate-release-v1.js"
+}

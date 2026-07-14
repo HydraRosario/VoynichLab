@@ -1,0 +1,11 @@
+{
+  "name": "voynichlab",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "research:validate": "node packages/lab-exporter/src/cli.js validate",
+    "research:build": "node packages/lab-exporter/src/cli.js build",
+    "research:publish": "node packages/lab-exporter/src/cli.js publish"
+  }
+}
