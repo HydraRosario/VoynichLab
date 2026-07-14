@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Crop manuscript context images around candidate anomaly atoms."""
-import argparse, json, os, sys
+import argparse, json, os
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 JSON_PATH = os.path.join(ROOT, "research", "audits", "anomaly-candidates.json")
+ROUNDS_PATH = os.path.join(ROOT, "research", "audits", "qc-rounds.json")
 PAGE_DIR = os.path.join(ROOT, "DataSetCreator", "manuscript-pages-yale")
 SNAPSHOT_ATOMS = os.path.join(ROOT, "EVAComparisonLab", "artifacts", "visual-snapshots", "current", "atoms")
 OUT_DIR = os.path.join(ROOT, "apps", "portal", "data", "qc-context")
@@ -16,15 +17,18 @@ os.makedirs(OUT_DIR, exist_ok=True)
 with open(JSON_PATH, "r") as f:
     data = json.load(f)
 
-ROUND_IDS = {
-    "v1": [5103, 1287, 2696, 1440, 1136, 2553, 2100, 1509, 1727, 3777, 3778],
-    "v2": [1788, 982, 5517, 4334, 5518, 1947, 2670, 3766, 2616, 5104, 2461, 2293, 4029, 5284, 990, 4484],
-}
+with open(ROUNDS_PATH, "r") as f:
+    rounds_config = json.load(f)
+
+rounds = rounds_config.get("rounds", {})
+default_round = rounds_config.get("defaultRound") or next(iter(rounds), None)
+if not default_round:
+    raise SystemExit("No QC rounds are defined in research/audits/qc-rounds.json")
 
 parser = argparse.ArgumentParser(description="Crop QC context images for a review round.")
-parser.add_argument("--round", default="v2", choices=sorted(ROUND_IDS), help="QC round to export.")
+parser.add_argument("--round", default=default_round, choices=sorted(rounds), help="QC round to export.")
 args = parser.parse_args()
-focus_ids = set(ROUND_IDS[args.round])
+focus_ids = set(rounds[args.round].get("focusIds", []))
 
 candidates = data.get("intraClassCandidates", [])
 candidates = [c for c in candidates if c["id"] in focus_ids]

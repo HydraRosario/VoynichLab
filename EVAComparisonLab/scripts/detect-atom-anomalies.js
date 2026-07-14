@@ -4,10 +4,21 @@ import path from "node:path";
 
 const root = process.cwd();
 const atomsDir = path.join(root, "EVAComparisonLab", "artifacts", "visual-snapshots", "current", "atoms");
+const snapshotManifestPath = path.join(root, "EVAComparisonLab", "artifacts", "visual-snapshots", "current", "visual-snapshots.tsv");
 const outputDir = path.join(root, "research", "audits");
 const EVA_LABELS = ["a:1","b:1","c:1","c:2","d:1","e:1","f:1","g:1","h:1","h:2","i:1","j:1","k:1","l:1","m:1","n:1"];
 
 const TOKEN_DIR = Object.fromEntries(EVA_LABELS.map(t => [t, t.replace(":", "_")]));
+
+function readTsv(filePath) {
+  const text = fs.readFileSync(filePath, "utf8").replace(/^\uFEFF/, "");
+  const lines = text.split(/\r?\n/).filter(Boolean);
+  const header = lines[0].split("\t");
+  return lines.slice(1).map((line) => {
+    const cells = line.split("\t");
+    return Object.fromEntries(header.map((field, index) => [field, cells[index] ?? ""]));
+  });
+}
 
 function parsePoints(svgText) {
   const m = svgText.match(/points="([^"]+)"/);
@@ -107,28 +118,37 @@ function extractMetadata(svgText) {
 const allAtoms = [];
 const byToken = {};
 
-for (const label of EVA_LABELS) {
-  const dirName = TOKEN_DIR[label];
-  const tokenDir = path.join(atomsDir, dirName);
-  if (!fs.existsSync(tokenDir)) { console.error(`SKIP ${label}: no dir ${tokenDir}`); continue; }
-  const entries = fs.readdirSync(tokenDir, { withFileTypes: true });
-  const pageDirs = entries.filter(e => e.isDirectory()).map(e => e.name);
-  for (const page of pageDirs) {
-    const pageDir = path.join(tokenDir, page);
-    const files = fs.readdirSync(pageDir).filter(f => f.endsWith(".svg"));
-    for (const file of files) {
-      const filePath = path.join(pageDir, file);
-      const svg = fs.readFileSync(filePath, "utf8");
-      const id = file.replace(".svg", "");
-      const pts = parsePoints(svg);
-      const feats = computeFeatures(pts);
-      const meta = extractMetadata(svg);
-      const atom = { id: +id, label, page, feats, meta, file: filePath.replace(root, "").replace(/\\/g, "/") };
-      allAtoms.push(atom);
-      if (!byToken[label]) byToken[label] = [];
-      byToken[label].push(atom);
-    }
+if (!fs.existsSync(snapshotManifestPath)) {
+  console.error(`Missing snapshot manifest: ${snapshotManifestPath}`);
+  process.exit(1);
+}
+
+const manifestRows = readTsv(snapshotManifestPath).filter((row) => row.entity_type === "atom");
+for (const row of manifestRows) {
+  const label = row.token;
+  if (!TOKEN_DIR[label]) continue;
+
+  const filePath = path.join(root, "EVAComparisonLab", "artifacts", "visual-snapshots", "current", row.svg_path.replace(/\\/g, path.sep));
+  if (!fs.existsSync(filePath)) {
+    console.error(`SKIP missing manifest SVG: ${filePath}`);
+    continue;
   }
+
+  const svg = fs.readFileSync(filePath, "utf8");
+  const pts = parsePoints(svg);
+  const feats = computeFeatures(pts);
+  const meta = extractMetadata(svg);
+  const atom = {
+    id: Number(row.entity_id),
+    label,
+    page: row.image_name,
+    feats,
+    meta,
+    file: filePath.replace(root, "").replace(/\\/g, "/"),
+  };
+  allAtoms.push(atom);
+  if (!byToken[label]) byToken[label] = [];
+  byToken[label].push(atom);
 }
 
 console.log(`Loaded ${allAtoms.length} atoms across ${Object.keys(byToken).length} classes`);

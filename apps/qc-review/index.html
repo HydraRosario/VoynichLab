@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>QC Review v1 — VoynichLab</title>
+<title>QC Review - VoynichLab</title>
 <style>
 :root {
   --ink: #17181b;
@@ -105,6 +105,32 @@ a { color: var(--accent); }
 .feature-table .outlier { color: var(--red); font-weight: 700; }
 .feature-table .normal { color: var(--green); }
 
+/* AUDIT GUIDE */
+.audit-guide {
+  display: grid; grid-template-columns: 1.2fr 1fr; gap: 12px;
+  margin-bottom: 16px;
+}
+.guide-panel {
+  border: 1px solid var(--line); background: var(--surface); padding: 12px;
+}
+.guide-panel h3 {
+  margin: 0 0 8px; font-size: 12px; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 0.06em;
+}
+.guide-panel p { margin: 6px 0; }
+.guide-panel code { font-family: ui-monospace, monospace; font-size: 12px; }
+.guide-list { margin: 0; padding-left: 18px; color: #3b3f44; }
+.guide-list li { margin: 4px 0; }
+.decision-help {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px;
+  margin: 10px 0 16px;
+}
+.decision-help div {
+  border: 1px solid var(--line); background: rgba(255,253,248,0.74);
+  padding: 8px 10px; font-size: 12px;
+}
+.decision-help strong { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; }
+
 /* CANONICAL EXAMPLES */
 .example-row {
   display: grid; grid-template-columns: repeat(5,1fr); gap: 8px; margin-bottom: 16px;
@@ -173,16 +199,12 @@ a { color: var(--accent); }
 <body>
 
 <header class="topbar">
-  <h1>QC Review <span class="badge" id="round-badge">v2</span></h1>
-  <span class="progress" id="progress-label">0 / 11 reviewed</span>
+  <h1>QC Review <span class="badge" id="round-badge">loading</span></h1>
+  <span class="progress" id="progress-label">Loading</span>
 </header>
 
 <div class="disclaimer" id="disclaimer">
-  <strong>QC AUDIT ROUND 1</strong> &mdash;
-  Corpus: <strong>f1r, f1v, f2r, f2v, f47v</strong> &middot;
-  4,585 atoms &middot; Excluded: <code>f3r</code> (visual snapshots not yet exported) &middot;
-  <strong>candidate &ne; error</strong> &mdash;
-  567 intra-class candidates / 883 cross-class candidates; only 11 selected for this round.
+  Loading QC round configuration...
 </div>
 
 <div class="container">
@@ -190,7 +212,7 @@ a { color: var(--accent); }
 <div class="status-bar" id="status-bar"></div>
 
 <div id="review-area">
-  <p style="color:var(--muted);padding:40px 0;text-align:center">Loading candidate data…</p>
+  <p style="color:var(--muted);padding:40px 0;text-align:center">Loading candidate data...</p>
 </div>
 
 <div class="export-bar">
@@ -203,39 +225,25 @@ a { color: var(--accent); }
 
 <script>
 // ---- CONFIG ----
-const ROUND_CONFIGS = {
-  v1: {
-    label: "v1",
-    description: "Historical Round 1. Already recorded in the CORPUS-V2 audit ledger.",
-    focusIds: [5103, 1287, 2696, 1440, 1136, 2553, 2100, 1509, 1727, 3777, 3778],
-    ledgerPath: "../../research/corpus-revisions/CORPUS-V2-AUDITED-WORKING/corrections.tsv",
-  },
-  v2: {
-    label: "v2",
-    description: "Exploratory Round 2. New candidate queue for testing whether QC review is useful.",
-    focusIds: [1788, 982, 5517, 4334, 5518, 1947, 2670, 3766, 2616, 5104, 2461, 2293, 4029, 5284, 990, 4484],
-    ledgerPath: null,
-  },
-};
-
-const requestedRound = new URLSearchParams(window.location.search).get("round") || "v2";
-const ACTIVE_ROUND = ROUND_CONFIGS[requestedRound] || ROUND_CONFIGS.v2;
-const QC_ROUND = ACTIVE_ROUND.label;
-const FOCUS_IDS = ACTIVE_ROUND.focusIds;
+const ROUND_CONFIG_PATH = "../../research/audits/qc-rounds.json";
+let ROUND_CONFIGS = {};
+let ACTIVE_ROUND = null;
+let QC_ROUND = "";
+let FOCUS_IDS = [];
 
 const DECISION_LABELS = {
-  confirm: "CONFIRM CURRENT",
-  relabel: "RELABEL",
-  artifact: "ARTIFACT",
-  ambiguous: "AMBIGUOUS",
-  needsContext: "NEEDS CONTEXT",
+  confirm: "Esta bien",
+  relabel: "Cambiar etiqueta",
+  artifact: "Artefacto",
+  ambiguous: "Raro valido",
+  needsContext: "Revisar en app",
 };
 
-const CANDIDATES_PATH = "../../research/audits/anomaly-candidates.json";
-const LEDGER_PATH = ACTIVE_ROUND.ledgerPath;
-const ATLAS_PATH = "../portal/data/atom-atlas/atoms.json";
-const QC_CONTEXT_PREFIX = "../portal/data/qc-context";
-const ATLAS_EXAMPLES_PREFIX = "../portal/data/atom-atlas/examples";
+let CANDIDATES_PATH = "../../research/audits/anomaly-candidates.json";
+let LEDGER_PATH = null;
+let ATLAS_PATH = "../portal/data/atom-atlas/atoms.json";
+let QC_CONTEXT_PREFIX = "../portal/data/qc-context";
+let ATLAS_EXAMPLES_PREFIX = "../portal/data/atom-atlas/examples";
 
 // ---- STATE ----
 let candidates = [];
@@ -243,6 +251,29 @@ let atlas = null;
 let currentIdx = 0;
 let decisions = {};
 let ledgerDecisions = {};
+
+async function loadRoundConfig() {
+  const resp = await fetch(ROUND_CONFIG_PATH);
+  if (!resp.ok) throw new Error("Failed to load research/audits/qc-rounds.json");
+
+  const config = await resp.json();
+  ROUND_CONFIGS = config.rounds || {};
+  const requestedRound = new URLSearchParams(window.location.search).get("round") || config.defaultRound || Object.keys(ROUND_CONFIGS)[0];
+  ACTIVE_ROUND = ROUND_CONFIGS[requestedRound] || ROUND_CONFIGS[config.defaultRound] || Object.values(ROUND_CONFIGS)[0];
+  if (!ACTIVE_ROUND) throw new Error("No QC round is configured");
+
+  QC_ROUND = ACTIVE_ROUND.label;
+  FOCUS_IDS = ACTIVE_ROUND.focusIds || [];
+  LEDGER_PATH = ACTIVE_ROUND.ledgerPath || null;
+
+  const assets = config.assets || {};
+  CANDIDATES_PATH = assets.candidatesPath || CANDIDATES_PATH;
+  ATLAS_PATH = assets.atlasPath || ATLAS_PATH;
+  QC_CONTEXT_PREFIX = assets.contextPrefix || QC_CONTEXT_PREFIX;
+  ATLAS_EXAMPLES_PREFIX = assets.atlasExamplesPrefix || ATLAS_EXAMPLES_PREFIX;
+
+  document.getElementById("round-badge").textContent = QC_ROUND;
+}
 
 function loadDecisions() {
   try {
@@ -301,8 +332,15 @@ async function loadAll() {
     decisions = { ...decisions, ...ledgerDecisions };
   }
 
-  document.getElementById("round-badge").textContent = QC_ROUND;
-  document.getElementById("disclaimer").innerHTML = `<strong>QC AUDIT ROUND ${QC_ROUND.toUpperCase()}</strong> &mdash; ${htmlEncode(ACTIVE_ROUND.description)} &middot; <strong>candidate &ne; error</strong> &mdash; use this view to inspect, not to force labels.`;
+  const corpus = ACTIVE_ROUND.corpus || {};
+  const pageText = (corpus.pages || []).join(", ") || "not declared";
+  const excluded = (corpus.excluded || []).length
+    ? ` &middot; Excluded: <code>${htmlEncode(corpus.excluded.join("; "))}</code>`
+    : "";
+  const roundLinks = Object.keys(ROUND_CONFIGS)
+    .map(key => key === QC_ROUND ? `<strong>${htmlEncode(key)}</strong>` : `<a href="?round=${encodeURIComponent(key)}">${htmlEncode(key)}</a>`)
+    .join(" / ");
+  document.getElementById("disclaimer").innerHTML = `<strong>QC AUDIT ROUND ${htmlEncode(QC_ROUND.toUpperCase())}</strong> &mdash; ${htmlEncode(ACTIVE_ROUND.description)} &middot; Corpus: <strong>${htmlEncode(pageText)}</strong>${excluded} &middot; Focus candidates: <strong>${FOCUS_IDS.length}</strong> &middot; Rounds: ${roundLinks} &middot; <strong>candidate &ne; error</strong> &mdash; inspect the image before changing labels.`;
 
   const allCands = candResp.intraClassCandidates || [];
   candidates = FOCUS_IDS.map(id => allCands.find(c => c.id === id)).filter(Boolean);
@@ -356,7 +394,8 @@ function renderClosedRound() {
 }
 
 function renderStatusBar() {
-  const html = FOCUS_IDS.map(id => {
+  const reviewIds = candidates.length ? candidates.map(c => c.id) : FOCUS_IDS;
+  const html = reviewIds.map(id => {
     const d = decisions[String(id)];
     const fromLedger = !!ledgerDecisions[String(id)];
     let cls = "yet";
@@ -374,14 +413,15 @@ function renderStatusBar() {
 }
 
 function updateProgress() {
-  const done = FOCUS_IDS.filter(id => decisions[String(id)] || ledgerDecisions[String(id)]).length;
-  document.getElementById("progress-label").textContent = `${done} / ${FOCUS_IDS.length} reviewed`;
+  const reviewIds = candidates.length ? candidates.map(c => c.id) : FOCUS_IDS;
+  const done = reviewIds.filter(id => decisions[String(id)] || ledgerDecisions[String(id)]).length;
+  document.getElementById("progress-label").textContent = `${done} / ${reviewIds.length} reviewed`;
 }
 
 function getSuggestedLabel(c) {
-  if (c.id === 5103) return "artifact";
-  if (c.label === "c:2" && [1287, 1440, 1136, 2553, 2100].includes(c.id)) return "c:1";
-  if (c.id === 2696) return "c:2";
+  const configured = ACTIVE_ROUND?.suggestedLabels?.[String(c.id)];
+  if (configured) return configured;
+  if (!ACTIVE_ROUND?.enableHeuristicSuggestions) return null;
   if (c.label === "c:2" && c.feats?.n && c.feats.n < 150) return "c:1";
   if (c.label === "c:1" && c.feats?.compactness && c.feats.compactness > 50) return "c:2";
   return null;
@@ -412,6 +452,7 @@ function renderCandidate(idx) {
 
   const featRows = Object.entries(feats).filter(([k]) => !["cx", "cy", "dirStart", "dirEnd"].includes(k));
   const classS = classStats[c.label] || {};
+  const topReasons = reasons.slice(0, 4).map(describeReason);
 
   let html = `<div class="candidate">`;
   html += `<div class="candidate-header">`;
@@ -425,6 +466,35 @@ function renderCandidate(idx) {
   if (isReviewed) {
     html += `<span style="font-size:13px;color:var(--green)">✓ ${d.decision}${d.relabel ? " → " + d.relabel : ""}</span>`;
   }
+  html += `</div>`;
+
+  html += `<div class="audit-guide">`;
+  html += `<div class="guide-panel"><h3>Que estoy auditando</h3>`;
+  html += `<p>Este caso esta etiquetado como <strong>${htmlEncode(c.label)}</strong>, pero sus medidas visuales se alejan de la forma tipica de esa familia.</p>`;
+  if (suggested && suggested !== "artifact") {
+    html += `<p>La app estima que podria ser <strong>${htmlEncode(suggested)}</strong>. Tomalo como pista, no como verdad.</p>`;
+  } else if (suggested === "artifact") {
+    html += `<p>La app estima que podria ser suciedad, un trazo accidental o un recorte invalido.</p>`;
+  } else {
+    html += `<p>No hay etiqueta alternativa fuerte: la pregunta es si esta rareza es valida o si hay un error humano de etiquetado.</p>`;
+  }
+  html += `<p><strong>Imagen izquierda:</strong> atom aislado pintado por nosotros. <strong>Imagen derecha:</strong> recorte del manuscrito alrededor del mismo atom.</p>`;
+  html += `</div>`;
+  html += `<div class="guide-panel"><h3>Donde buscarlo</h3>`;
+  html += `<p><code>${htmlEncode(getFolio(c.image || ""))}</code> / <code>${htmlEncode(c.image || "-")}</code></p>`;
+  html += `<p>Molecula <code>${htmlEncode(mol.molecule || "-")}</code>, particula <code>${htmlEncode(mol.particle || "-")}</code>, orden <code>${htmlEncode(mol.order || "-")}</code></p>`;
+  html += `<p>Atom ID <code>${c.id}</code>, caja <code>${bounds.x || "?"},${bounds.y || "?"} ${bounds.w || "?"}x${bounds.h || "?"}</code></p>`;
+  html += `</div>`;
+  html += `<div class="guide-panel"><h3>Por que salto</h3>`;
+  if (topReasons.length) {
+    html += `<ul class="guide-list">${topReasons.map(r => `<li>${r}</li>`).join("")}</ul>`;
+  } else {
+    html += `<p>El detector no guardo una razon textual, solo el score global.</p>`;
+  }
+  html += `</div>`;
+  html += `<div class="guide-panel"><h3>Como decidir</h3>`;
+  html += `<p>Compara la forma aislada con ejemplos canonicos de la misma familia. Si visualmente pertenece a la familia actual, marcala como valida. Si el recorte no alcanza, abrila en DatasetCreator con el ID y la molecula.</p>`;
+  html += `</div>`;
   html += `</div>`;
 
   // Visual row
@@ -488,12 +558,21 @@ function renderCandidate(idx) {
   html += `<button class="decision-btn ambiguous ${act('ambiguous')}" onclick="decide(${c.id},'ambiguous')">${DECISION_LABELS.ambiguous}</button>`;
   html += `<button class="decision-btn ${act('needsContext')}" onclick="decide(${c.id},'needsContext')">${DECISION_LABELS.needsContext}</button>`;
   html += `</div>`;
+  html += `<div class="decision-help">`;
+  html += `<div><strong>Esta bien</strong>La etiqueta actual es correcta aunque el caso sea raro.</div>`;
+  if (suggested && suggested !== "artifact") {
+    html += `<div><strong>Cambiar etiqueta</strong>Usar solo si al mirar el trazo corresponde claramente a ${htmlEncode(suggested)}.</div>`;
+  }
+  html += `<div><strong>Artefacto</strong>No es un atom confiable: suciedad, click accidental, recorte roto o trazo basura.</div>`;
+  html += `<div><strong>Raro valido</strong>Es una irregularidad real que queremos conservar como dato, no forzar.</div>`;
+  html += `<div><strong>Revisar en app</strong>El recorte no alcanza; hay que ubicarlo en DatasetCreator antes de decidir.</div>`;
+  html += `</div>`;
 
   // Notes
   const noteVal = d && d.notes ? d.notes : "";
   html += `<div class="notes-row">`;
   html += `<input type="text" id="note-input" placeholder="Notes about this candidate…" value="${htmlEncode(noteVal)}">`;
-  html += `<button onclick="saveNote(${c.id})">Save note</button>`;
+  html += `<button onclick="saveNote(${c.id})">Guardar nota</button>`;
   html += `</div>`;
 
   // Navigation
@@ -520,6 +599,29 @@ function getCanonicalExamples(label, n) {
     id: ex.id,
     src: `${ATLAS_EXAMPLES_PREFIX}/${label.replace(":", "_")}/${ex.svg?.split("/").pop() || ""}`,
   }));
+}
+
+function describeReason(reason) {
+  const match = String(reason).match(/^([^=]+)=([^ ]+) \(med=([^,]+), bounds=\[([^\]]+)\], sev=([^)]+)\)/);
+  if (!match) return htmlEncode(reason);
+  const [, rawFeature, value, median, bounds, severity] = match;
+  const feature = featureLabel(rawFeature);
+  return `<strong>${feature}</strong>: valor ${htmlEncode(value)}, mediana ${htmlEncode(median)}, rango esperado [${htmlEncode(bounds)}], severidad ${htmlEncode(severity)}.`;
+}
+
+function featureLabel(key) {
+  const labels = {
+    n: "cantidad de puntos",
+    w: "ancho",
+    h: "alto",
+    area: "area de caja",
+    gap: "distancia entre extremos",
+    trajLen: "longitud del trazo",
+    aspect: "proporcion ancho/alto",
+    compactness: "compactacion",
+    midOffset: "desplazamiento medio",
+  };
+  return labels[key] || key;
 }
 
 function htmlEncode(s) { return String(s || "").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;"); }
@@ -567,11 +669,10 @@ function exportLedger() {
     qcRound: QC_ROUND,
     generatedAt: new Date().toISOString(),
     corpus: {
-      pages: ["f1r", "f1v", "f2r", "f2v", "f47v"],
-      totalAtoms: 4585,
-      excluded: ["f3r — visual snapshots not yet exported"],
+      pages: ACTIVE_ROUND.corpus?.pages || [],
+      excluded: ACTIVE_ROUND.corpus?.excluded || [],
     },
-    focusCandidates: FOCUS_IDS,
+    focusCandidates: candidates.map(c => c.id),
     totalCandidates: candidates.length,
     decisions: Object.entries(decisions).map(([id, d]) => {
       const c = candidates.find(x => x.id === Number(id));
@@ -602,8 +703,9 @@ function exportLedger() {
 
 // ---- BOOT ----
 (async function boot() {
-  loadDecisions();
   try {
+    await loadRoundConfig();
+    loadDecisions();
     await loadAll();
   } catch (err) {
     document.getElementById("review-area").innerHTML = `<p style="color:var(--red);padding:40px">Error: ${err.message}</p>`;
