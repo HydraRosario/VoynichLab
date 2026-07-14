@@ -41,8 +41,8 @@ Targets:
 
 Decision rule:
 
-- If the files are outputs from a named release, freeze them with manifests and
-  checksums.
+- If the files are outputs from a named release, freeze them with manifests,
+  reports, provenance, checksums, and table paths.
 - If the files are local rebuilds of already published artifacts, revert them.
 - If the files are scratch/QC working files, ignore or quarantine them.
 
@@ -159,6 +159,7 @@ local/generated/
 
 Rules:
 
-- Public artifacts need manifest, provenance, checksums, and source command.
+- Public artifacts need manifest, report, provenance, checksums, and source
+  command.
 - Local/generated visual exports stay ignored unless promoted.
 - Snapshot DBs are not casually committed.

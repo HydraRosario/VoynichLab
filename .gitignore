@@ -27,7 +27,6 @@ EVAComparisonLab/backups/
 EVAComparisonLab/artifacts/visual-snapshots/current/
 EVAComparisonLab/artifacts/visual-snapshots/pre-audit-*/
 EVAComparisonLab/cases/*-current/
-artifacts/public/*/report.md
 research/audits/*-current/
 research/audits/page*-check-*
 research/audits/qc-decisions-v*.json

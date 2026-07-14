@@ -27,7 +27,7 @@
       "atomsLogLoss": 0.21,
       "evaLogLoss": 0.64,
       "highlights": ["ATOMS normalized log-loss: 0.21 vs EVA: 0.64 in this region.","The model had seen similar ATOMS local contexts in training.","EVA saw an unfamiliar token shape in this position."],
-      "reportLinks": [{"label":"Model results table","path":"GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/model-results.tsv"}]
+      "reportLinks": [{"label":"Model results table","path":"artifacts/public/prospective-atoms-eva-test-v1/tables/model-results.tsv"}]
     },
     {
       "id": "img7-m50-boundary",
@@ -54,7 +54,7 @@
       "atomsLogLoss": 0.09,
       "evaLogLoss": 0.81,
       "highlights": ["ATOMS preserves the local particle structure that EVA linearizes.","The ATOMS advantage is largest in regions with complex particle composition.","EVA compresses the sequence into a single token, losing internal structure."],
-      "reportLinks": [{"label":"Regional comparison","path":"GrammarDiscoveryLab/out/representation-comparison-v2-regions/REPRESENTATION-COMPARISON-V2-REGIONS.md"}]
+      "reportLinks": [{"label":"Regional comparison","path":"artifacts/public/representation-comparison-v2-regions/report.md"}]
     },
     {
       "id": "eva-competitive-region",
@@ -68,7 +68,7 @@
       "atomsLogLoss": 0.31,
       "evaLogLoss": 0.38,
       "highlights": ["In short, common sequences, EVA captures similar structure.","This is expected: frequent EVA tokens also have regular ATOMS composition.","The ATOMS advantage is largest on longer, more varied sequences."],
-      "reportLinks": [{"label":"Ablation results","path":"GrammarDiscoveryLab/out/representation-comparison-v3-ablations/REPRESENTATION-COMPARISON-V3-ABLATIONS.md"}]
+      "reportLinks": [{"label":"Ablation results","path":"artifacts/public/representation-comparison-v3-ablations/report.md"}]
     },
     {
       "id": "known-valid-anomaly",
@@ -90,7 +90,7 @@
       "token": "g:1",
       "atomsSequence": "g:1",
       "highlights": ["g:1 appears almost exclusively in a specific position within molecules.","Its positional entropy is among the lowest of all ATOMS symbols.","This suggests g:1 may serve a specific structural role, not random placement.","This is a structural observation, not a semantic claim."],
-      "reportLinks": [{"label":"Role entropy report","path":"EVAComparisonLab/cases/f1r-full/role-entropy.md"}]
+      "reportLinks": [{"label":"Corpus V2 math report","path":"research/frozen/CORPUS-V2-AUDITED/reports/CORPUS-V2-MATH-REPORT.md"}]
     },
     {
       "id": "molecule-ege",
@@ -100,7 +100,7 @@
       "relevance": "Common structural unit",
       "atomsSequence": "e:1 g:1 e:1",
       "highlights": ["This triplet appears dozens of times across all annotated folios.","Its internal structure (e:1 g:1 e:1) is stable: e:1 bookends a g:1.","It can appear as a standalone molecule or embedded in longer sequences.","e:1 is the most frequent atom overall (1,496 occurrences)."],
-      "reportLinks": [{"label":"Signature frequencies","path":"GrammarDiscoveryLab/out/current/signature-frequencies.tsv"}]
+      "reportLinks": [{"label":"Corpus V2 molecules table","path":"research/frozen/CORPUS-V2-AUDITED/corpus/molecules.tsv"}]
     },
     {
       "id": "clean-alignment-region",
@@ -112,7 +112,7 @@
       "atomsSequence": "e:1 h:1 | a:1 b:1 c:1 a:1 | e:1 f:1 | f:1 j:1",
       "evaToken": "ykal",
       "highlights": ["Each ATOMS particle maps cleanly to an EVA token in this region.","This is the ideal case for the regional alignment method.","About 93% of regions aligned without issues.","15 of 224 total regions remain unresolved."],
-      "reportLinks": [{"label":"Alignment report","path":"GrammarDiscoveryLab/out/representation-alignment-v1/REPRESENTATION-ALIGNMENT-V1.md"}]
+      "reportLinks": [{"label":"Alignment report","path":"artifacts/public/representation-alignment-v1/report.md"}]
     },
     {
       "id": "null-control-v2-negative",
@@ -121,7 +121,7 @@
       "category": "null-control",
       "relevance": "Negative result that weakened a stronger grammar claim",
       "highlights": ["Contextual empirical probability was approximately 0.099.","This means local syntax explains much of the apparent slot compatibility.","The exact frame identity claim was weakened, not refuted completely.","This result is published alongside supportive results."],
-      "reportLinks": [{"label":"Null control V2 report","path":"GrammarDiscoveryLab/out/null-control-v2-contextual/NULL-CONTROL-V2-CONTEXTUAL.md"}]
+      "reportLinks": [{"label":"Null control V2 report","path":"artifacts/public/null-control-v2-contextual/report.md"}]
     }
   ]
 }

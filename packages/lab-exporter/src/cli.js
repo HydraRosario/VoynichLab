@@ -29,11 +29,11 @@ const GENERATED_DIRS = [
   "EVAComparisonLab/artifacts/visual-snapshots/current",
   "EVAComparisonLab/artifacts/visual-snapshots/pre-audit-",
   "apps/portal/data",
-  "artifacts/public",
   "EVAComparisonLab/cases/",
   "research/audits/",
   "research/corpus-revisions/",
 ];
+const PUBLIC_ARTIFACT_DIRS = ["artifacts/public"];
 
 const LOCAL_STATE_DIRS = [
   ".vercel",
@@ -173,6 +173,10 @@ function isDbFile(filePath) {
 
 function isGeneratedFile(filePath) {
   return GENERATED_DIRS.some((dir) => filePath.startsWith(dir));
+}
+
+function isPublicArtifactFile(filePath) {
+  return PUBLIC_ARTIFACT_DIRS.some((dir) => filePath.startsWith(dir));
 }
 
 function isDirty(dir) {
@@ -668,6 +672,7 @@ function repoAudit() {
   const highRisk = changedFiles.filter((f) => isHighRiskChange(f.file));
   const dbFiles = changedFiles.filter((f) => isDbFile(f.file) && !isGeneratedFile(f.file));
   const generated = changedFiles.filter((f) => isGeneratedFile(f.file));
+  const publicArtifacts = changedFiles.filter((f) => isPublicArtifactFile(f.file));
   const localState = LOCAL_STATE_DIRS.filter((dir) => fs.existsSync(rel(dir)));
 
   console.log("VoynichLab repo audit");
@@ -695,6 +700,12 @@ function repoAudit() {
   console.log("");
   console.log(`Generated/scratch-looking changes: ${generated.length}`);
   for (const [group, info] of summarizeChangedFiles(generated)) {
+    console.log(`  ${group}: ${info.count}`);
+  }
+
+  console.log("");
+  console.log(`Public artifact changes: ${publicArtifacts.length}`);
+  for (const [group, info] of summarizeChangedFiles(publicArtifacts)) {
     console.log(`  ${group}: ${info.count}`);
   }
 
