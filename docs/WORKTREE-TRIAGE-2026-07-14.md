@@ -31,7 +31,7 @@ This should be cleaned by campaign, not by bulk deletion.
 | Current lab case outputs | `EVAComparisonLab/cases/*-current/**` | Promote only selected reports/tables; otherwise treat as scratch |
 | QC/audit scratch | `research/audits/**`, `research/corpus-revisions/*-WORKING/**` | Keep correction ledgers; quarantine temporary candidates |
 | Portal local state | `apps/portal/.vercel/` | Ignore permanently; never commit |
-| Generated project summary | `PROJECT-SUMMARY.md` | Do not publish until regenerated from current six-folio registry data |
+| Generated project summary | `PROJECT-SUMMARY.md` | Removed from the working tree because it described the older five-folio state |
 
 ## Proposed Commit Sequence
 
@@ -86,8 +86,8 @@ Only after a dedicated read-only audit of:
 - The canonical portal is `https://voynich-lab.vercel.app/`; local Vercel
   linkage must be checked before deployment.
 - `PROJECT-SUMMARY.md` and `packages/lab-exporter/src/generate-project-summary.js`
-  appear stale: they describe the older five-folio state and should not be
-  committed before being rewritten or removed from the workflow.
+  were removed from the working tree because they described the older five-folio
+  state and were not connected to the active root scripts.
 - `atom-atlas/` is ignored for now. It was useful as a QC/review tool, but it
   should not become public evidence unless it is curated into a formal visual
   atlas with provenance and checksums.

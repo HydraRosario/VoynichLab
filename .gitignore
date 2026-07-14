@@ -1,5 +1,7 @@
 # Dependencies
 node_modules/
+__pycache__/
+*.pyc
 
 # Build outputs
 dist/
@@ -25,7 +27,13 @@ EVAComparisonLab/backups/
 EVAComparisonLab/artifacts/visual-snapshots/current/
 EVAComparisonLab/artifacts/visual-snapshots/pre-audit-*/
 EVAComparisonLab/cases/*-current/
+artifacts/public/*/report.md
 research/audits/*-current/
+research/audits/page*-check-*
+research/audits/qc-decisions-v*.json
+research/audits/qc-next-candidates.json
+research/audits/qc-rounds.json
+research/audits/particle-geometry-order-*/
 research/corpus-revisions/*-WORKING/
 atom-atlas/
 apps/portal/data/qc-context/
