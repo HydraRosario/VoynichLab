@@ -8,7 +8,16 @@
     "f3r"
   ],
   "inputs": [
-    "research/preregistrations/prospective-atoms-eva-test-v1/PREREGISTRATION.md"
+    "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/PROSPECTIVE-ATOMS-EVA-TEST-V1.md",
+    "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/model-results.tsv",
+    "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/subset-results.tsv",
+    "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/line-alignment-audit.tsv",
+    "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/aligned-regions.tsv",
+    "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/unresolved-regions.tsv",
+    "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/region-scores.tsv",
+    "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/corruption-results.tsv",
+    "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/folio-freeze-manifest.json",
+    "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/checksums.txt"
   ],
   "script": "GrammarDiscoveryLab/scripts/prospective-atoms-eva-test-v1.js",
   "frozenArtifacts": [],

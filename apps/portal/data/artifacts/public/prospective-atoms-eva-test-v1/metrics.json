@@ -1,1 +1,15 @@
-{}
+{
+  "targetAlignedRegions": 39,
+  "targetUnresolvedRegions": 0,
+  "targetLinePairs": 20,
+  "atomsNormalizedLogLoss": 0.348262,
+  "evaNormalizedLogLoss": 0.564957,
+  "atomsMinusEvaNormalizedLogLoss": -0.216696,
+  "atomsTop1Accuracy": 0.6906,
+  "evaTop1Accuracy": 0.5535,
+  "atomsUnseenContextRate": 0.0246,
+  "evaUnseenContextRate": 0.1379,
+  "atomsOutOfVocabularySymbols": 0,
+  "atomsCorruptionRealBetterThanMedian": 1,
+  "evaCorruptionRealBetterThanMedian": 0.9474
+}

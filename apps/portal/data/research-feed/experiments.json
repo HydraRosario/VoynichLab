@@ -399,16 +399,16 @@
   {
     "id": "prospective-atoms-eva-test-v1",
     "title": "Prospective ATOMS-EVA Test V1",
-    "status": "preregistered",
-    "outcome": "pending",
+    "status": "published",
+    "outcome": "supportive",
     "question": "Does the previously published ATOMS advantage over EVA replicate on a folio annotated after the protocol, models, metrics, and interpretation rules were frozen publicly?",
-    "result": "Pending. Protocol frozen before annotation completion.",
-    "interpretation": "The target folio is test-only; outcome will be classified only by preregistered rules.",
+    "result": "On f3r, ATOMS had lower preregistered MODEL_1 normalized log-loss than EVA: 0.348262 vs 0.564957.",
+    "interpretation": "Supportive prospective evidence that the previously published ATOMS-vs-EVA predictive advantage replicated on a newly annotated folio under frozen rules.",
     "limitations": [
-      "Target annotation is still in progress",
-      "No metrics calculated at preregistration time",
       "Single ATOMS annotator",
-      "Same regional alignment limitations as REPRESENTATION-ALIGNMENT-V1"
+      "Same regional alignment limitations as REPRESENTATION-ALIGNMENT-V1",
+      "One prospective folio",
+      "Not proof of decipherment or global optimality"
     ],
     "trainFolios": [
       "f1r",
@@ -422,15 +422,39 @@
       "npm.cmd run prospective-atoms-eva:test -- --preflight",
       "npm.cmd run prospective-atoms-eva:test -- --confirm-complete"
     ],
-    "reportPath": "research/preregistrations/prospective-atoms-eva-test-v1/PREREGISTRATION.md",
-    "dataTablePaths": [],
+    "reportPath": "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/PROSPECTIVE-ATOMS-EVA-TEST-V1.md",
+    "dataTablePaths": [
+      "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/model-results.tsv",
+      "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/subset-results.tsv",
+      "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/line-alignment-audit.tsv",
+      "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/aligned-regions.tsv",
+      "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/unresolved-regions.tsv",
+      "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/region-scores.tsv",
+      "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/corruption-results.tsv",
+      "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/folio-freeze-manifest.json",
+      "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/checksums.txt"
+    ],
     "sourceScript": "GrammarDiscoveryLab/scripts/prospective-atoms-eva-test-v1.js",
     "commit": "pending",
-    "tag": "prospective-atoms-eva-test-v1-preregistered",
+    "tag": "prospective-atoms-eva-test-v1",
     "publishedAt": "2026-07-14",
     "sequenceIndex": 10,
     "supersedes": [],
     "supersededBy": [],
-    "metrics": {}
+    "metrics": {
+      "targetAlignedRegions": 39,
+      "targetUnresolvedRegions": 0,
+      "targetLinePairs": 20,
+      "atomsNormalizedLogLoss": 0.348262,
+      "evaNormalizedLogLoss": 0.564957,
+      "atomsMinusEvaNormalizedLogLoss": -0.216696,
+      "atomsTop1Accuracy": 0.6906,
+      "evaTop1Accuracy": 0.5535,
+      "atomsUnseenContextRate": 0.0246,
+      "evaUnseenContextRate": 0.1379,
+      "atomsOutOfVocabularySymbols": 0,
+      "atomsCorruptionRealBetterThanMedian": 1,
+      "evaCorruptionRealBetterThanMedian": 0.9474
+    }
   }
 ]

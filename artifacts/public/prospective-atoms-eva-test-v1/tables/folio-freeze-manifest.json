@@ -1,0 +1,32 @@
+{
+  "id": "prospective-atoms-eva-test-v1",
+  "status": "completed",
+  "target": {
+    "folio": "f3r",
+    "imageId": 7,
+    "imageName": "page-007.jpg"
+  },
+  "frozenTrainingFolios": [
+    "f1r",
+    "f1v",
+    "f47v"
+  ],
+  "previouslyEvaluatedFolios": [
+    "f2r",
+    "f2v"
+  ],
+  "dbSha256": "4f00bca551fb447e3971a76bad79431b574b6f45a4b28ecf8da307362577461f",
+  "targetAtoms": 1135,
+  "targetMolecules": 107,
+  "targetOutOfVocabulary": {
+    "count": 0,
+    "symbols": [],
+    "locations": []
+  },
+  "alignedTargetRegions": 39,
+  "unresolvedTargetRegions": 0,
+  "classification": {
+    "classification": "SUPPORTIVE",
+    "reason": "ATOMS has lower MODEL_1 normalized log-loss in all regions and at least one higher-confidence subset."
+  }
+}

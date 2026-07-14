@@ -110,5 +110,21 @@
         "path": "research/preregistrations/prospective-atoms-eva-test-v1/PREREGISTRATION.md"
       }
     ]
+  },
+  {
+    "id": "prospective-atoms-eva-test-v1",
+    "title": "Prospective ATOMS-EVA test completed",
+    "date": "2026-07-14",
+    "summary": "The preregistered f3r test replicated the ATOMS advantage over EVA under frozen local-context metrics.",
+    "type": "comparison",
+    "tag": "prospective-atoms-eva-test-v1",
+    "commit": "pending",
+    "sequenceIndex": 8,
+    "links": [
+      {
+        "label": "Prospective test report",
+        "path": "GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/PROSPECTIVE-ATOMS-EVA-TEST-V1.md"
+      }
+    ]
   }
 ]

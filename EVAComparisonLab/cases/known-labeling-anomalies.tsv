@@ -3,3 +3,5 @@ atom_ids	status	note
 2429 2430 2421 2422	known-anomaly	page-003 img3-m85-p1; current rare window c:1 a:1 e:1 g:1 vs dominant c:1 a:1 g:1 e:1.
 2423 2429 2430 2421	known-anomaly	page-003 img3-m85-p1; current rare window b:1 c:1 a:1 e:1 vs dominant a:1 e:1 b:1 c:1.
 6417	known-valid	page-005 img5-m35-p1; visually confirmed rare g:1 placement in c:2 a:1 m:1 c:1 a:1 g:1 e:1.
+7433 7187 7115	known-valid	page-007 img7-m29-p3; visually confirmed rare b:1 c:2 a:1 order.
+7720 7640 7694 7641 7590 7704 7717	known-valid	page-007 img7-m50; visually confirmed molecule order n:1 | e:1 g:1 e:1 | c:1 | f:1 j:1.

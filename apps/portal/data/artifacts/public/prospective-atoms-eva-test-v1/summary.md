@@ -1,166 +1,103 @@
 # PROSPECTIVE-ATOMS-EVA-TEST-V1
 
-Status: `preregistered`.
+Status: `completed`.
+Outcome classification: `SUPPORTIVE`.
 
-This protocol is frozen before completion of the next annotated folio.
+## Preregistered Target
 
-## Scientific Objective
+- Folio: `f3r`
+- DatasetCreator image: `page-007.jpg`
+- Image ID: `7`
+- ATOMS units/molecules in completed DB export: `107`
 
-Test whether the previously published ATOMS advantage over EVA replicates on a folio annotated after the protocol, models, metrics, and interpretation rules were frozen publicly.
+## Guardrail Verification
 
-This is not a decipherment claim.
+- Preregistration checksum verification: `passed`
+- Published V3 regression verification: `passed`
+- Training folios unchanged: `f1r, f1v, f47v`
+- Previously evaluated folios not used for training update: `f2r, f2v`
+- Target role: `test-only`
 
-## Target Identity
+## Alignment Coverage
 
-DatasetCreator metadata inspection identified the in-progress target as:
-
-| Field | Value |
-| --- | --- |
-| DatasetCreator image ID | `7` |
-| Image name | `page-007.jpg` |
-| Expected folio | `f3r` |
-| Status | `annotation-in-progress` |
-| Prior experiment membership | absent from published tests |
-
-No ATOMS sequences, EVA alignment metrics, model scores, or representation statistics from this target were exported before preregistration.
-
-## Frozen Training And Test Policy
-
-Training folios remain frozen:
-
-```text
-f1r
-f1v
-f47v
-```
-
-Previously evaluated folios:
-
-```text
-f2r
-f2v
-```
-
-The newly completed folio must remain test-only. It must not update training distributions, model definitions, alignment heuristics, vocabulary policy, smoothing, or interpretation rules.
-
-## Frozen Models
-
-The five models are exactly those published in `REPRESENTATION-COMPARISON-V3-ABLATIONS`:
-
-| Model | Frozen features |
-| --- | --- |
-| `MODEL_0` | unigram |
-| `MODEL_1` | immediate left neighbor, immediate right neighbor |
-| `MODEL_2` | immediate neighbors, coarse position |
-| `MODEL_3` | exact regional sequence length, positional role, immediate neighbors |
-| `MODEL_4` | immediate neighbors, coarse position, training-only length tertile |
-
-Fixed parameters:
-
-- Lidstone smoothing with `alpha=0.5`.
-- Frozen 16-symbol ATOMS-V1 vocabulary.
-- Same EVA vocabulary handling as V3.
-- Same `REPRESENTATION-ALIGNMENT-V1` regional alignment method.
-- `100` internal-order corruptions per test region.
-
-No models may be added or removed after annotation completion.
+- Target aligned regions: `39`
+- Target unresolved regions: `0`
+- Target line pairs: `20`
 
 ## Primary Outcome
 
-Primary outcome:
+Primary preregistered metric: combined normalized held-out log-loss under `MODEL_1`, all aligned regions.
 
-```text
-combined normalized held-out log-loss under MODEL_1, all aligned regions
-```
+| Representation | Norm log-loss | Top-1 | Unseen context | Opportunities |
+| --- | ---: | ---: | ---: | ---: |
+| ATOMS | 0.348262 | 69.06% | 2.46% | 1057 |
+| EVA | 0.564957 | 55.35% | 13.79% | 486 |
+| ATOMS - EVA | -0.216696 | 13.71% | -11.33% |  |
 
-Reason: `MODEL_1` showed a strong ATOMS advantage without exact regional length and tests transferable local structure with minimal representation-dependent features.
+Interpretation: ATOMS has lower MODEL_1 normalized log-loss in all regions and at least one higher-confidence subset.
 
-## Secondary Outcomes
+## Frozen Vocabulary Integrity
 
-- `MODEL_0` through `MODEL_4` normalized log-loss.
-- Top-1 accuracy.
-- Unseen-context rate.
-- Mean probability assigned to observed symbols.
-- Real-versus-corrupted discrimination.
+- Out-of-vocabulary ATOMS in target folio: `0`
+- None.
 
-Frozen subsets:
+Negative normalized-log-loss delta favors ATOMS. Positive top-1 delta favors ATOMS. Negative unseen-context delta favors ATOMS.
 
-- `all`
-- `medium`
-- `medium_low_medium`
-- `one_to_one`
-- `exclude_unresolved_eva_lines`
+## Model And Subset Results
 
-The standalone folio result must be reported before any pooled result.
+| Subset | Model | ATOMS norm | EVA norm | Delta norm | ATOMS top-1 | EVA top-1 | Delta top-1 |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| `all` | `MODEL_0` | 0.865765 | 0.949841 | -0.084076 | 23.37% | 13.37% | 9.99% |
+| `all` | `MODEL_1` | 0.348262 | 0.564957 | -0.216696 | 69.06% | 55.35% | 13.71% |
+| `all` | `MODEL_2` | 0.417798 | 0.668282 | -0.250484 | 69.44% | 49.18% | 20.26% |
+| `all` | `MODEL_3` | 0.883163 | 0.930038 | -0.046875 | 30.56% | 16.67% | 13.89% |
+| `all` | `MODEL_4` | 0.495986 | 0.741408 | -0.245421 | 66.04% | 43.42% | 22.62% |
+| `medium` | `MODEL_0` | 0.850809 | 0.848725 | 0.002085 | 17.86% | 12.90% | 4.95% |
+| `medium` | `MODEL_1` | 0.585677 | 0.773298 | -0.187621 | 58.33% | 38.71% | 19.62% |
+| `medium` | `MODEL_2` | 0.715960 | 0.879813 | -0.163853 | 46.43% | 22.58% | 23.85% |
+| `medium` | `MODEL_3` | 0.919711 | 0.922603 | -0.002893 | 29.76% | 19.35% | 10.41% |
+| `medium` | `MODEL_4` | 0.845160 | 0.931959 | -0.086799 | 38.10% | 19.35% | 18.74% |
+| `medium_low_medium` | `MODEL_0` | 0.820952 | 0.799601 | 0.021351 | 20.42% | 13.46% | 6.96% |
+| `medium_low_medium` | `MODEL_1` | 0.478101 | 0.729446 | -0.251345 | 66.20% | 44.23% | 21.97% |
+| `medium_low_medium` | `MODEL_2` | 0.602228 | 0.853943 | -0.251715 | 59.86% | 23.08% | 36.78% |
+| `medium_low_medium` | `MODEL_3` | 0.856711 | 0.902295 | -0.045584 | 38.73% | 19.23% | 19.50% |
+| `medium_low_medium` | `MODEL_4` | 0.743609 | 0.923079 | -0.179470 | 52.11% | 17.31% | 34.80% |
+| `one_to_one` | `MODEL_0` | 0.820952 | 0.799601 | 0.021351 | 20.42% | 13.46% | 6.96% |
+| `one_to_one` | `MODEL_1` | 0.478101 | 0.729446 | -0.251345 | 66.20% | 44.23% | 21.97% |
+| `one_to_one` | `MODEL_2` | 0.602228 | 0.853943 | -0.251715 | 59.86% | 23.08% | 36.78% |
+| `one_to_one` | `MODEL_3` | 0.856711 | 0.902295 | -0.045584 | 38.73% | 19.23% | 19.50% |
+| `one_to_one` | `MODEL_4` | 0.743609 | 0.923079 | -0.179470 | 52.11% | 17.31% | 34.80% |
+| `exclude_unresolved_eva_lines` | `MODEL_0` | 0.865774 | 0.947329 | -0.081555 | 23.37% | 13.37% | 9.99% |
+| `exclude_unresolved_eva_lines` | `MODEL_1` | 0.364918 | 0.579370 | -0.214452 | 69.16% | 54.94% | 14.22% |
+| `exclude_unresolved_eva_lines` | `MODEL_2` | 0.438780 | 0.682894 | -0.244114 | 67.93% | 47.53% | 20.40% |
+| `exclude_unresolved_eva_lines` | `MODEL_3` | 0.911239 | 0.944117 | -0.032878 | 26.40% | 13.79% | 12.61% |
+| `exclude_unresolved_eva_lines` | `MODEL_4` | 0.521853 | 0.756210 | -0.234357 | 65.28% | 43.42% | 21.86% |
 
-## Interpretation Rules
+## Corruption Test Summary
 
-### SUPPORTIVE
+Corruption tests are reported for `MODEL_1`, preserving sequence length, first/last symbol, and internal symbol multiset.
 
-- ATOMS has lower normalized log-loss than EVA in `MODEL_1`.
-- The direction is also favorable in at least one higher-confidence subset.
-- There are sufficient aligned opportunities to evaluate.
+| Subset | Representation | Regions | Real better than median | Mean real-minus-median bits |
+| --- | --- | ---: | ---: | ---: |
+| `all` | ATOMS | 39 | 100.00% | -92.551891 |
+| `all` | EVA | 38 | 94.74% | -28.214310 |
+| `medium` | ATOMS | 8 | 100.00% | -18.466961 |
+| `medium` | EVA | 8 | 87.50% | -3.743694 |
+| `medium_low_medium` | ATOMS | 15 | 100.00% | -20.645001 |
+| `medium_low_medium` | EVA | 14 | 85.71% | -4.459275 |
+| `one_to_one` | ATOMS | 15 | 100.00% | -21.146210 |
+| `one_to_one` | EVA | 14 | 85.71% | -4.495175 |
+| `exclude_unresolved_eva_lines` | ATOMS | 39 | 100.00% | -89.244081 |
+| `exclude_unresolved_eva_lines` | EVA | 38 | 94.74% | -26.879024 |
 
-### MIXED
+## Output Tables
 
-- `MODEL_1` favors ATOMS in the complete subset but not in higher-confidence subsets.
-- Metrics disagree materially.
-- The direction changes across major subsets.
-
-### NEGATIVE
-
-- EVA has lower normalized log-loss than ATOMS in `MODEL_1`.
-- Coverage is adequate.
-
-### INCONCLUSIVE
-
-- Insufficient EVA coverage.
-- Insufficient aligned regions.
-- Excessive unresolved alignment.
-- Model cannot evaluate enough opportunities.
-- Data integrity fails.
-
-These rules must not be redefined after seeing the result.
-
-## Not Claimed
-
-This protocol does not claim:
-
-- decipherment;
-- global superiority;
-- optimality of ATOMS;
-- linguistic interpretation.
-
-## Locked Runner
-
-The locked runner is:
-
-```text
-GrammarDiscoveryLab/scripts/prospective-atoms-eva-test-v1.js
-```
-
-The runner must:
-
-- refuse to run if the target folio is incomplete;
-- refuse previously evaluated folios;
-- verify this preregistration checksum;
-- verify published V3 regression values before evaluating the new folio;
-- freeze the completed folio export before calculating metrics;
-- generate alignment;
-- run the five frozen models;
-- run corruption tests;
-- classify the outcome using only these preregistered rules;
-- never update training distributions with the test folio.
-
-## Expected Outputs After Completion
-
-```text
-GrammarDiscoveryLab/out/prospective-atoms-eva-test-v1/
-  PROSPECTIVE-ATOMS-EVA-TEST-V1.md
-  folio-freeze-manifest.json
-  alignment-summary.tsv
-  model-results.tsv
-  subset-results.tsv
-  corruption-results.tsv
-  checksums.txt
-```
+- `folio-freeze-manifest.json`
+- `line-alignment-audit.tsv`
+- `aligned-regions.tsv`
+- `unresolved-regions.tsv`
+- `model-results.tsv`
+- `subset-results.tsv`
+- `region-scores.tsv`
+- `corruption-results.tsv`
+- `checksums.txt`
