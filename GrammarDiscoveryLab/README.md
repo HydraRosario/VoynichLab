@@ -14,14 +14,16 @@ research/frozen/CORPUS-V2-AUDITED/
 
 That milestone closes the six-folio audit campaign and replays the structural ATOMS/EVA mathematics. It does not rewrite `GRAMMAR-V1`, the V1 validation release, or the preregistered `f3r` result.
 
-## Reproducible Release V1
+## Public Release V1
 
-From a clean clone:
+Public artifacts for `REPRODUCIBLE-RELEASE-V1` are inspectable in this
+directory and in the published artifact bundles. The validation command below is
+the maintainer replay surface used by the project; it is not yet advertised as a
+certified clean-clone protocol for external reviewers.
 
 ```bash
 cd GrammarDiscoveryLab
-npm install
-npm run validate
+npm.cmd run validate
 ```
 
 Expected summary:
@@ -49,7 +51,7 @@ Validated locally with Node.js `v24.13.0`. The release scripts use only Node bui
 - `frozen/GRAMMAR-V1-2026-07-13/molecules-current.tsv`: frozen molecule table containing the original `f2r` held-out folio.
 - `frozen/REPRODUCIBLE-RELEASE-V1/f2v-molecules.tsv`: frozen molecule table for the later `f2v` prospective folio.
 
-`npm run validate` does not induce new grammar families. It only evaluates held-out molecule signatures against the frozen families above.
+`npm.cmd run validate` does not induce new grammar families. It only evaluates held-out molecule signatures against the frozen families above.
 
 ## Formal Definitions
 
@@ -123,7 +125,7 @@ No `f2v` molecule is used to induce or modify `GRAMMAR-V1`.
 
 ## Output Files
 
-After `npm run validate`:
+After `npm.cmd run validate`:
 
 - `out/reproducible-release-v1/VALIDATION-SUMMARY.md`
 - `out/reproducible-release-v1/f2r/GRAMMAR-V1-vs-f2r.md`
@@ -133,9 +135,9 @@ After `npm run validate`:
 - `out/reproducible-release-v1/f2v/grammar-v1-vs-f2v-substitution.tsv`
 - `out/reproducible-release-v1/f2v/grammar-v1-vs-f2v-optional.tsv`
 
-## Current Experiment Commands
+## Current Maintainer Replay Commands
 
-The current research milestone can be reproduced with:
+The current research milestone was replayed locally with:
 
 ```bash
 npm.cmd run validate
@@ -149,6 +151,11 @@ npm.cmd run representation-comparison:v2-regions
 npm.cmd run representation-comparison:v2-question
 npm.cmd run representation-comparison:v3-ablations
 ```
+
+These commands are useful for maintainers and technical reviewers already
+working inside the repository environment. Clean-clone certification for the
+complete experiment suite is still pending; see
+`../docs/PUBLIC-VERIFIABILITY.md`.
 
 The key reports are:
 

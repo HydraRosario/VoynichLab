@@ -77,14 +77,16 @@ expanded: e:1 c:1 h:2 e:1 f:1 k:1 f:1 i:1 d:1
 
 Optional families are reported separately from substitution families. New optional values are not counted as substitution-slot contradictions.
 
-## Reproducibility Command
+## Maintainer Replay Command
 
-From a clean clone:
+The V1 validation can be replayed in the maintainer environment with:
 
 ```bash
 cd GrammarDiscoveryLab
-npm install
-npm run validate
+npm.cmd run validate
 ```
 
 The scripts use Node.js built-in modules only and do not require external runtime dependencies.
+This is not yet a certified clean-clone protocol for the full repository; see
+`../../docs/PUBLIC-VERIFIABILITY.md` for the current public-verifiability
+boundary.

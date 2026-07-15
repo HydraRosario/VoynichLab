@@ -38,7 +38,7 @@ const stepTitles = [
   ["1. Start from ink", "We begin with the physical ink strokes on the manuscript page, not with pre-segmented letters."],
   ["2. Label repeated components", "We manually label recurring stroke shapes as ATOMS — structural labels, not letters or phonemes."],
   ["3. Compare sequences statistically", "We compare ATOMS sequences against EVA transcriptions over the same manuscript regions using frozen metrics."],
-  ["4. Publish everything", "Every script, table, checksum, commit, and limitation is published. Nothing is hidden."],
+  ["4. Publish the evidence trail", "Reports, tables, metrics, checksums, commits, tags, and limitations are published for inspection."],
 ];
 
 const noDeciphermentNotes = [

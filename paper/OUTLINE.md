@@ -216,13 +216,15 @@ X in {empty, k:1, l:1}
 
 - A held-out slot value is new when it matches a frozen skeleton but uses a value absent from the frozen family value set.
 
-### 7.8 Reproducible Validation Command
+### 7.8 Public Verifiability and Maintainer Replay
 
 ```bash
 cd GrammarDiscoveryLab
-npm install
-npm run validate
+npm.cmd run validate
 ```
+
+- Present this as the maintainer replay command, not yet as a certified clean-clone protocol.
+- Link to `docs/PUBLIC-VERIFIABILITY.md`.
 
 ### 7.9 Versioning and Prevention of Retrospective Rule Modification
 

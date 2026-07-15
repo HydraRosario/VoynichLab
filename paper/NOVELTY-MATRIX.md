@@ -26,7 +26,7 @@ Legend:
 | Freezes representation before evaluation | Unknown. | Unknown. | Unknown. | Unknown - article is versioned, but no verified freeze-before-test protocol. Source: Newby 2026. | Unknown - direct book examination pending. | Unknown - corpus/code exist, but freeze-before-heldout design not verified. | Unknown. | Yes - ATOMS/GRAMMAR V1 frozen before later validation. Source: tags `grammar-v1`, `reproducible-release-v1`. |
 | Uses held-out folios | Unknown. | Unknown. | Unknown. | Unknown - no verified held-out folio split equivalent. Source: Newby 2026. | Unknown - direct book examination pending. | Unknown - comparisons use corpora; held-out folio design not yet verified. | Unknown. | Yes - `f2r` and `f2v` held out from GRAMMAR-V1 induction. Source: `GrammarDiscoveryLab/README.md`. |
 | Includes a post-freeze prospective test | Unknown. | Unknown. | Unknown. | Unknown - no verified post-freeze prospective folio evaluation. Source: Newby 2026. | Unknown - direct book examination pending. | Unknown. | Unknown. | Yes - `f2v` evaluated after GRAMMAR-V1 freeze. Source: `GrammarDiscoveryLab/frozen/REPRODUCIBLE-RELEASE-V1/MANIFEST.md`. |
-| Publishes an executable validation pipeline | Unknown. | Unknown. | Unknown. | Unknown - no executable reproduction pipeline verified from article. Source: Newby 2026. | Unknown - direct book examination pending. | Partial - arXiv notes corpus/code availability, but not the same validation pipeline. Source: Lindemann/Bowern arXiv. | Unknown. | Yes - `npm run validate` reproduces V1 results. Source: `GrammarDiscoveryLab/README.md`. |
+| Publishes public artifacts and maintainer replay commands | Unknown. | Unknown. | Unknown. | Unknown - no comparable public artifact/replay trail verified from article. Source: Newby 2026. | Unknown - direct book examination pending. | Partial - arXiv notes corpus/code availability, but not the same artifact/replay structure. Source: Lindemann/Bowern arXiv. | Unknown. | Yes - reports, registry entries, checksums, tags, and maintainer replay commands are published; clean-clone certification remains pending. Source: `GrammarDiscoveryLab/README.md` and `docs/PUBLIC-VERIFIABILITY.md`. |
 
 ## Feature-by-Feature Notes
 
@@ -84,22 +84,23 @@ The key distinction is not merely "uses multiple folios"; it is train/test separ
 
 This is the strongest methodological part of the novelty hypothesis: `f2v` was annotated and evaluated after GRAMMAR-V1 was frozen and publicly archived.
 
-### Publishes an Executable Validation Pipeline
+### Publishes an Inspectable Artifact Trail and Maintainer Replay Command
 
-The current V1 release provides a runnable command:
+The current V1 release provides public artifacts and a maintainer replay command:
 
 ```bash
 cd GrammarDiscoveryLab
-npm install
-npm run validate
+npm.cmd run validate
 ```
 
-This reproduces:
+The public artifacts preserve:
 
 ```text
 f2r: 8/8 observed substitution families clean; new slot values=0
 f2v: 7/7 observed substitution families clean; new slot values=0
 ```
+
+Clean-clone certification for external reviewers is still pending.
 
 ## Tentative Novelty Formulation
 

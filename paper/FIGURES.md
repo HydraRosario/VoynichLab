@@ -233,22 +233,22 @@ This figure may show the label inventory and representative visual examples.
 
 It must not imply that the snapshots alone prove linguistic function.
 
-## Figure 6. Reproducibility Path
+## Figure 6. Public Verifiability Path
 
 ### Purpose
 
-Show how a reader can reproduce the main V1 validation.
+Show what a reader can inspect directly and which commands currently belong to
+maintainer replay rather than certified external reproduction.
 
 ### Required Visual Elements
 
 - Repository path or link placeholder.
 - Tag: `reproducible-release-v1`.
-- Command:
+- Maintainer replay command:
 
 ```bash
 cd GrammarDiscoveryLab
-npm install
-npm run validate
+npm.cmd run validate
 ```
 
 - Expected output:
@@ -260,9 +260,11 @@ f2v: 7/7 observed substitution families clean; new slot values=0
 
 ### Claim Boundary
 
-This figure may claim that the validation pipeline is reproducible from the release artifacts.
+This figure may claim that the release artifacts, expected outputs, commits, and
+tags are publicly inspectable.
 
-It must not claim independent replication until another annotator or external researcher runs and verifies the process.
+It must not claim clean-clone reproducibility or independent replication until an
+external reviewer runs and verifies the process.
 
 ## Priority Order for the First Draft
 

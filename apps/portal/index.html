@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>VoynichLab — Open Voynich Observatory</title>
-    <meta name="description" content="VoynichLab: stroke-level annotations, ATOMS-V1 experiments, EVA comparisons, reproducible research. No decipherment claimed.">
+    <title>VoynichLab - Open Voynich Observatory</title>
+    <meta name="description" content="VoynichLab: ATOMS-V1 experiments, EVA comparisons, public artifacts, audit ledgers, and verifiability boundaries. No decipherment claimed.">
     <link rel="stylesheet" href="./styles.css">
   </head>
   <body>
@@ -16,6 +16,7 @@
       <nav class="nav">
         <a href="#howto">How to read</a>
         <a href="#corpus-v2">Corpus V2</a>
+        <a href="#verify">Verify</a>
         <a href="#evidence">Evidence</a>
         <a href="#experiments">Experiments</a>
         <a href="#research">Timeline</a>
@@ -34,8 +35,8 @@
       <section class="dashboard">
         <div class="dashboard-copy">
           <p class="eyebrow">Corpus V2 audited</p>
-          <h1>The six-folio corpus is cleaned, frozen, and replayed.</h1>
-          <p class="lead">VoynichLab publishes stroke-level annotations, ATOMS-V1 experiments, EVA comparisons, negative controls, audit ledgers, and reproducible scripts - without claiming decipherment.</p>
+          <h1>The six-folio corpus is cleaned, frozen, and publicly inspectable.</h1>
+          <p class="lead">VoynichLab publishes ATOMS-V1 experiments, EVA comparisons, negative controls, audit ledgers, reports, metrics, manifests, commits, and tags - without claiming decipherment.</p>
           <div class="action-row">
             <a class="button primary" href="#evidence">Browse evidence</a>
             <a class="button" href="#howto">How to read this</a>
@@ -73,11 +74,36 @@
         </div>
       </section>
 
+      <!-- VERIFIABILITY -->
+      <section id="verify" class="section verify-section">
+        <div class="section-heading">
+          <p class="eyebrow">Public verifiability</p>
+          <h2>What can be inspected today, and what is not promised yet.</h2>
+        </div>
+        <div class="verify-grid">
+          <article class="verify-card">
+            <span>Level 1</span>
+            <h3>Publicly inspectable</h3>
+            <p>Reports, tables, metrics, manifests, checksums, registry JSON, commits, and tags are exposed through the repository and this portal.</p>
+          </article>
+          <article class="verify-card">
+            <span>Level 2</span>
+            <h3>Maintainer replay</h3>
+            <p>Repository commands are used by maintainers to rebuild or validate current artifacts in the known project environment.</p>
+          </article>
+          <article class="verify-card caution">
+            <span>Level 3</span>
+            <h3>Clean-clone certification pending</h3>
+            <p>The full repository is not yet advertised as a guaranteed clone-and-run package for external reviewers.</p>
+          </article>
+        </div>
+      </section>
+
       <!-- HOW TO READ -->
       <section id="howto" class="section">
         <div class="section-heading">
           <p class="eyebrow">How to read this</p>
-          <h2>Four steps: from ink to reproducible evidence.</h2>
+          <h2>Four steps: from ink to a public evidence trail.</h2>
         </div>
         <div class="steps-grid" id="how-steps"></div>
         <div class="not-claim">
@@ -185,7 +211,7 @@
           <article class="tool-card">
             <h3>Grammar Discovery Lab</h3>
             <p>Frozen GRAMMAR-V1 validation, null controls, alignment, representation comparisons, and ablation scripts.</p>
-            <a href="https://github.com/HydraRosario/VoynichLab/blob/main/GrammarDiscoveryLab/README.md">Reproduce experiments</a>
+            <a href="https://github.com/HydraRosario/VoynichLab/blob/main/GrammarDiscoveryLab/README.md">Inspect lab notes</a>
           </article>
           <article class="tool-card">
             <h3>QC Review</h3>
@@ -247,7 +273,10 @@
       <section id="reproduce" class="section reproduce-section">
         <div class="section-heading">
           <p class="eyebrow">Reproducibility</p>
-          <h2>Run the public experiment suite from the repository.</h2>
+          <h2>Maintainer replay commands, not clean-clone certification.</h2>
+        </div>
+        <div class="not-claim">
+          <p><strong>Current boundary:</strong> public artifacts are inspectable today. The commands below document the maintainer replay surface, but the full repository has not yet been certified as a clean-clone reproduction package.</p>
         </div>
         <pre><code>cd GrammarDiscoveryLab
 npm.cmd run validate

@@ -287,9 +287,11 @@ test. Do not rely on repo-level checks alone.
 A non-technical observer should be able to open the portal and understand the
 current state of evidence.
 
-A technical reviewer should be able to clone the repo, read the registry,
-verify checksums, and reproduce the public artifacts without depending on local
-scratch directories.
+A technical reviewer should eventually be able to clone the repo, read the
+registry, verify checksums, and reproduce certified public artifacts without
+depending on local scratch directories. Until that clean-clone path is tested,
+the public guarantee is inspection of artifacts plus maintainer replay
+documentation.
 
 A developer should be able to modify one tool without accidentally rewriting
 the corpus or republishing stale evidence.

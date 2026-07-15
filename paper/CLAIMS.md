@@ -25,13 +25,15 @@ After the ATOMS/EVA regional-comparison protocol, metrics, model definitions, an
 - In the same `f3r` run, ATOMS had higher top-1 accuracy than EVA: `69.06%` versus `55.35%`.
 - In the same `f3r` run, ATOMS had a lower unseen-context rate than EVA: `2.46%` versus `13.79%`.
 - No out-of-vocabulary ATOMS symbols appeared in the final `f3r` export.
-- The reproducible validation command for V1 is:
+- The maintainer replay command for the V1 validation is:
 
 ```bash
 cd GrammarDiscoveryLab
-npm install
-npm run validate
+npm.cmd run validate
 ```
+
+This command is not yet claimed as a certified clean-clone protocol for external
+reviewers.
 
 ## 2. Supported, but Not Yet Established
 

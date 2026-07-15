@@ -1,14 +1,13 @@
 # REPRODUCIBLE-RELEASE-V1 Expected Results
 
-Running:
+Maintainer replay command:
 
 ```bash
 cd GrammarDiscoveryLab
-npm install
-npm run validate
+npm.cmd run validate
 ```
 
-must produce:
+Expected output:
 
 | Test folio | Observed substitution families | Clean substitution families | New substitution slot values | Observed optional families | Clean optional families | New optional values |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |

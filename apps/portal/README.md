@@ -19,13 +19,13 @@ This portal is a navigable front door over the current repository artifacts:
 - null controls;
 - tool map;
 - paper workspace;
-- reproducibility commands.
+- public verifiability status.
 
 It does not replace the existing labs. It links to public repository files and reports.
 
 ## Roadmap
 
-- V1: public research portal, current results, documentation, and reproducibility entry points.
+- V1: public research portal, current results, documentation, and honest verifiability boundaries.
 - V2: data-driven dashboards generated from frozen experiment outputs.
 - V3: interactive lab builds for selected public workflows.
 - V4: manuscript explorer with linked visual annotations, coordinates, masks, and ATOMS labels.
@@ -52,3 +52,9 @@ Install Command: empty
 ## Scientific Boundary
 
 VoynichLab does not currently claim translation, decipherment, phonetic values, semantic values, or global representation optimality.
+
+## Reproducibility Boundary
+
+The portal should distinguish public inspection from maintainer replay. It must
+not promise that an external reader can clone the full repository and reproduce
+every result until a clean-clone certification has been performed and documented.

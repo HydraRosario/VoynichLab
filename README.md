@@ -42,9 +42,11 @@ For source/evidence/scratch boundaries and safe monorepo handling, see
 [REPOSITORY-GOVERNANCE.md](REPOSITORY-GOVERNANCE.md) and
 [docs/MONOREPO-ARCHITECTURE.md](docs/MONOREPO-ARCHITECTURE.md). For ignored
 local state and disk-usage policy, see
-[docs/LOCAL-STATE-INVENTORY.md](docs/LOCAL-STATE-INVENTORY.md).
+[docs/LOCAL-STATE-INVENTORY.md](docs/LOCAL-STATE-INVENTORY.md). For the
+current public-verifiability boundary, see
+[docs/PUBLIC-VERIFIABILITY.md](docs/PUBLIC-VERIFIABILITY.md).
 
-## Quick Start
+## Maintainer Commands
 
 ```bash
 # Validate research registry
@@ -68,11 +70,21 @@ npm.cmd run research:stage-plan -- --experiment prospective-atoms-eva-test-v1
 
 On non-Windows shells, use `npm run ...` instead of `npm.cmd run ...`.
 
-## Reproduce Experiments
+## Public Verification Status
+
+VoynichLab currently separates three levels of trust:
+
+- Publicly inspectable: reports, metrics, manifests, checksums, commits, tags,
+  and registry JSON can be read directly from the repository and portal.
+- Maintainer replay: the commands below are the working replay surface used by
+  project maintainers.
+- Clean-clone reproducible: not yet certified for the full repository.
+
+Do not treat the commands below as a guaranteed clean-clone protocol until a
+dedicated external reproduction test has been performed and documented.
 
 ```bash
 cd GrammarDiscoveryLab
-npm install
 npm.cmd run validate
 npm.cmd run null-control:v1
 npm.cmd run null-control:v2

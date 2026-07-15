@@ -1,14 +1,18 @@
 # REPRODUCIBLE-RELEASE-V1 Manifest
 
-Purpose: make the `GRAMMAR-V1` validation reproducible from a clean repository clone.
+Purpose: preserve the `GRAMMAR-V1` validation inputs, expected outputs, and
+maintainer replay command.
 
-## Command
+## Maintainer Replay Command
 
 ```bash
 cd GrammarDiscoveryLab
-npm install
-npm run validate
+npm.cmd run validate
 ```
+
+This manifest preserves the public evidence trail for the release. It should not
+be read as a certified clean-clone protocol until an external clean-clone replay
+has been performed and documented.
 
 ## Expected Results
 
