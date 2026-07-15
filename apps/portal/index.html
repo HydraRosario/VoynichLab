@@ -15,6 +15,7 @@
       </a>
       <nav class="nav">
         <a href="#howto">How to read</a>
+        <a href="#tested">What tested</a>
         <a href="#corpus-v2">Corpus V2</a>
         <a href="#verify">Verify</a>
         <a href="#evidence">Evidence</a>
@@ -22,7 +23,7 @@
         <a href="#research">Timeline</a>
         <a href="#repository">Repository</a>
         <a href="#releases">Releases</a>
-        <a href="#reproduce">Reproduce</a>
+        <a href="#reproduce">Replay</a>
       </nav>
       <div class="mode-toggle">
         <button id="reader-toggle" class="mode-btn active">Reader</button>
@@ -53,6 +54,31 @@
           <p class="caption" id="current-result-caption"></p>
           <p class="metric-definition" id="current-definition"></p>
           <div class="callout-row" id="current-callouts"></div>
+        </div>
+      </section>
+
+      <!-- WHAT IS TESTED -->
+      <section id="tested" class="section tested-section">
+        <div class="section-heading">
+          <p class="eyebrow">What is being tested</p>
+          <h2>A representation claim, not a translation claim.</h2>
+        </div>
+        <div class="tested-grid">
+          <article>
+            <span>ATOMS-V1</span>
+            <h3>Physical stroke labels</h3>
+            <p>A fixed inventory used to encode hand-labeled visible components exported from DatasetCreator.</p>
+          </article>
+          <article>
+            <span>EVA</span>
+            <h3>Conventional transcription baseline</h3>
+            <p>The comparison target: a standard Voynichese transcription representation over matched regions where possible.</p>
+          </article>
+          <article>
+            <span>Question</span>
+            <h3>Which representation preserves more transferable structure?</h3>
+            <p>The portal reports entropy, local-context prediction, alignment, null controls, ablations, and audit status.</p>
+          </article>
         </div>
       </section>
 

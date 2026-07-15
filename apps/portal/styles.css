@@ -125,6 +125,36 @@ h1, h2, h3, p { overflow-wrap: anywhere; }
 .callout-row span { font-weight: 700; }
 .callout-row a { color: var(--accent); font-weight: 700; text-decoration: none; }
 
+/* WHAT IS TESTED */
+.tested-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.tested-grid article {
+  min-height: 184px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+.tested-grid span {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.tested-grid h3 {
+  margin-top: 22px;
+  color: var(--accent);
+}
+.tested-grid p {
+  margin: 0;
+  color: #3e454d;
+  line-height: 1.5;
+}
+
 /* CORPUS V2 */
 .corpus-v2-section {
   border-top: 1px solid var(--line);
@@ -303,6 +333,35 @@ h1, h2, h3, p { overflow-wrap: anywhere; }
   border: 1px solid var(--line); font-size: 10px; font-weight: 700;
   text-transform: uppercase; letter-spacing: 0.06em;
 }
+.claim-tag {
+  display: inline-block;
+  padding: 2px 8px;
+  margin-top: 4px;
+  margin-left: 4px;
+  border: 1px solid var(--line);
+  background: #fbf8f0;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.claim-tag.demonstrated,
+.claim-tag.supported {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.claim-tag.hypothesis,
+.claim-tag.counterexample,
+.claim-tag.methodological {
+  border-color: var(--accent-3);
+  color: var(--accent-3);
+}
+.claim-tag.negative,
+.claim-tag.audit {
+  border-color: var(--accent-2);
+  color: var(--accent-2);
+}
 .evidence-tag.grammar { border-color: var(--accent); color: var(--accent); }
 .evidence-tag.comparison { border-color: var(--accent-3); color: var(--accent-3); }
 .evidence-tag.hypothesis { border-color: #b8860b; color: #b8860b; }
@@ -318,6 +377,32 @@ h1, h2, h3, p { overflow-wrap: anywhere; }
 .evidence-detail h3 { font-size: 20px; margin-bottom: 8px; }
 .evidence-summary { color: #3e454d; line-height: 1.5; }
 .evidence-meta { display: flex; gap: 16px; margin: 10px 0; font-size: 13px; color: var(--muted); }
+.claim-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 14px 0;
+}
+.claim-grid div {
+  padding: 12px;
+  border: 1px solid var(--line);
+  background: #fbf8f0;
+}
+.claim-grid span {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.claim-grid p {
+  margin: 0;
+  color: #3e454d;
+  font-size: 13px;
+  line-height: 1.45;
+}
 .evidence-sequence { margin: 10px 0; padding: 10px; background: #fbf8f0; border: 1px solid var(--line); font-size: 14px; }
 .evidence-sequence code { font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace; }
 .evidence-note { color: var(--accent-3); font-size: 13px; font-style: italic; margin: 8px 0; }
@@ -453,7 +538,7 @@ pre { overflow-x: auto; margin: 0; padding: 20px; border: 1px solid var(--line);
   .topbar { align-items: flex-start; flex-direction: column; gap: 12px; }
   .dashboard, .section-heading, .experiment-layout, .evidence-layout { grid-template-columns: 1fr; }
   .dashboard { min-height: auto; }
-  .steps-grid, .trace-chain, .negative-grid, .verify-grid { grid-template-columns: repeat(2,1fr); }
+  .steps-grid, .trace-chain, .negative-grid, .verify-grid, .claim-grid, .tested-grid { grid-template-columns: repeat(2,1fr); }
   .lab-strip, .tool-grid, .release-grid, .repo-map-grid, .corpus-v2-grid { grid-template-columns: repeat(2,1fr); }
   .atom-grid { grid-template-columns: repeat(2,1fr); }
   .experiment-meta, .score-columns, .detail-grid { grid-template-columns: repeat(2,1fr); }
@@ -461,7 +546,7 @@ pre { overflow-x: auto; margin: 0; padding: 20px; border: 1px solid var(--line);
 @media (max-width: 620px) {
   main, .footer { width: min(100% - 20px, 1180px); }
   .nav { width: 100%; }
-  .steps-grid, .trace-chain, .negative-grid, .lab-strip, .tool-grid, .repo-map-grid, .corpus-v2-grid, .experiment-meta, .score-columns, .detail-grid, .release-grid, .atom-grid, .verify-grid { grid-template-columns: 1fr; }
+  .steps-grid, .trace-chain, .negative-grid, .lab-strip, .tool-grid, .repo-map-grid, .corpus-v2-grid, .experiment-meta, .score-columns, .detail-grid, .release-grid, .atom-grid, .verify-grid, .claim-grid, .tested-grid { grid-template-columns: 1fr; }
   .timeline li { grid-template-columns: 1fr; gap: 8px; }
   .panel-header { align-items: flex-start; flex-direction: column; }
   .evidence-list { max-height: 300px; }

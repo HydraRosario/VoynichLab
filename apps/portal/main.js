@@ -70,6 +70,16 @@ const evidenceCategoryIcons = {
   "null-control": "∅",
 };
 
+const claimLevelLabels = {
+  demonstrated: "Demonstrated",
+  supported: "Supported",
+  hypothesis: "Hypothesis",
+  counterexample: "Counterexample",
+  audit: "Audit",
+  methodological: "Method",
+  negative: "Negative",
+};
+
 const registry = { experiments: [], milestones: [], releases: [], site: null, evidence: null, loaded: false };
 
 function html(v) { return String(v ?? "").replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;"); }
@@ -340,12 +350,14 @@ function renderEvidence() {
   const cases = registry.evidence.cases || [];
   els.evidenceList.innerHTML = cases.map((c) => {
     const icon = evidenceCategoryIcons[c.category] || "•";
+    const level = c.claimLevel || c.category;
     return `<div class="evidence-card" onclick="showEvidence('${html(c.id)}')">
       <span class="evidence-icon">${icon}</span>
       <div>
         <strong>${html(c.title)}</strong>
         <p>${html(c.summary)}</p>
         <span class="evidence-tag ${html(c.category)}">${html(c.category)}</span>
+        <span class="claim-tag ${html(level)}">${html(claimLevelLabels[level] || level)}</span>
       </div>
     </div>`;
   }).join("");
@@ -361,7 +373,13 @@ window.showEvidence = function(id) {
     <p class="evidence-summary">${html(c.summary)}</p>
     <div class="evidence-meta">
       <span>Category: ${html(c.category)}</span>
+      <span>Claim: ${html(claimLevelLabels[c.claimLevel] || c.claimLevel || "Unclassified")}</span>
       <span>${c.folio ? `Folio: ${html(c.folio)}` : ""}</span>
+    </div>
+    <div class="claim-grid">
+      ${c.shows ? `<div><span>Shows</span><p>${html(c.shows)}</p></div>` : ""}
+      ${c.doesNotShow ? `<div><span>Does not show</span><p>${html(c.doesNotShow)}</p></div>` : ""}
+      ${c.verification ? `<div><span>Verify</span><p>${html(c.verification)}</p></div>` : ""}
     </div>
     ${c.atomsSequence ? `<div class="evidence-sequence"><strong>ATOMS:</strong> <code>${html(c.atomsSequence)}</code></div>` : ""}
     ${c.evaToken ? `<div class="evidence-sequence"><strong>EVA:</strong> <code>${html(c.evaToken)}</code></div>` : ""}
