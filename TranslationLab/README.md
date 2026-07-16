@@ -1,6 +1,19 @@
 # VoynichLab TranslationLab
 
-This is the translation and audit engine.
+> **Status: isolated exploratory workspace.** Nothing in this directory is a
+> validated translation, a decipherment result, or evidence supporting the
+> current public ATOMS claims. TranslationLab is not part of the current portal
+> narrative or published research pipeline.
+
+This is an early hypothesis and falsification workspace. It is preserved so
+speculative attempts, failed segmentations, and key changes remain inspectable
+instead of being confused with validated results or silently discarded.
+
+Promotion into the public evidence record would require a named protocol,
+frozen inputs, explicit falsification criteria, a registered experiment, and a
+separate review. None has occurred yet.
+
+## Experimental purpose
 
 `DataSetCreator` answers:
 
@@ -14,7 +27,7 @@ image -> labels -> romanizations
 romanizations -> candidate segmentations -> etymological roots -> translation hypotheses -> key pressure
 ```
 
-In plain terms: this is the final-boss cherry-picking machine. It receives a
+In plain terms: this is a deliberately adversarial cherry-picking audit. It receives a
 list of romanizations and tries many ways to split each word into etymological
 roots across available sources. It is allowed to be opportunistic, but it must
 log what it tried and why a candidate was chosen.
@@ -22,6 +35,8 @@ log what it tried and why a candidate was chosen.
 ## Current Rule
 
 Cherry picking is allowed only when it is logged.
+
+Logging a hypothesis makes it auditable; it does not make it evidence.
 
 That means the engine may try suspicious splits, alternate syllables, elisions,
 mutations, and near roots, but every choice must produce an audit trail:

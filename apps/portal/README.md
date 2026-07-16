@@ -23,6 +23,15 @@ This portal is a navigable front door over the current repository artifacts:
 
 It does not replace the existing labs. It links to public repository files and reports.
 
+## Data contract
+
+- `source-data/atoms-v1.json` is the curated source for the visual ATOMS inventory.
+- `research-feed/` is the canonical source for experiments, milestones, releases, and evidence cases.
+- `artifacts/public/` is the canonical source for public experiment bundles.
+- `data/` is the generated static mirror consumed by the browser and rebuilt by `npm.cmd run research:build`.
+
+Do not edit files under `data/` directly.
+
 ## Roadmap
 
 - V1: public research portal, current results, documentation, and honest verifiability boundaries.

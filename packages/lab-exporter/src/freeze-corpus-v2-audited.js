@@ -213,7 +213,7 @@ function writeAuditTables() {
         }
       : null,
     knownValidExceptions: {
-      geometryOrder: countTsvRows("cases/known-particle-geometry-anomalies.tsv"),
+      geometryOrder: countTsvRows("research/audits/known-particle-geometry-anomalies.tsv"),
       labelingPatterns: countTsvRows("research/audits/known-labeling-anomalies.tsv"),
     },
     staleLearningMemoryRowsRemoved: 1,
@@ -237,7 +237,7 @@ function writeDocs() {
     sourceOutputs: {
       corpusV2Current: "EVAComparisonLab/cases/corpus-v2-audited-current",
       qcLedger: "research/audits/qc-reviewed-ledger.json",
-      knownGeometryExceptions: "cases/known-particle-geometry-anomalies.tsv",
+      knownGeometryExceptions: "research/audits/known-particle-geometry-anomalies.tsv",
       knownLabelingExceptions: "research/audits/known-labeling-anomalies.tsv",
     },
     scripts: [

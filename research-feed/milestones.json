@@ -146,5 +146,21 @@
         "path": "research/frozen/CORPUS-V2-AUDITED/reports/CEO-FINAL-CORPUS-V2-REPORT.md"
       }
     ]
+  },
+  {
+    "id": "corpus-v1-v2-matched-comparison",
+    "title": "Corpus V1 to V2 matched-folio comparison",
+    "date": "2026-07-16",
+    "summary": "Compared the three folios shared by the official V1 freeze and audited V2. Positional entropy decreased slightly, consistent with modest annotation-noise removal rather than a manufactured large effect.",
+    "type": "comparison",
+    "tag": null,
+    "commit": null,
+    "sequenceIndex": 10,
+    "links": [
+      {
+        "label": "Comparison report",
+        "path": "artifacts/public/corpus-v1-v2-matched-comparison/report.md"
+      }
+    ]
   }
 ]

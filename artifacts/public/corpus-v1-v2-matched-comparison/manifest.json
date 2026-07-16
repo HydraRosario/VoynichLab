@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "1.0",
+  "id": "corpus-v1-v2-matched-comparison",
+  "title": "Corpus V1 to V2 Matched-Folio Comparison",
+  "status": "complete",
+  "scope": "matched-three-folio",
+  "folios": [
+    "f1r",
+    "f1v",
+    "f47v"
+  ],
+  "result": "ATOMS weighted relative positional entropy changed from 0.3365 in V1 to 0.3342 in V2.",
+  "reportPath": "artifacts/public/corpus-v1-v2-matched-comparison/report.md",
+  "sourceScript": "EVAComparisonLab/scripts/run-corpus-v1-v2-matched-comparison.js"
+}

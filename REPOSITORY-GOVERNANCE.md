@@ -10,6 +10,8 @@ The rule is simple: Git preserves evidence, the portal explains evidence, and lo
 
 Companion operating docs:
 
+- `research/FROZEN-EVIDENCE.md` is the canonical human-readable catalog of corpus, model, and validation freezes.
+- `research/frozen-evidence.json` is its machine-readable enforcement surface.
 - `docs/REPO-INVENTORY.md` maps the major repo areas and their cleanup risk.
 - `docs/REPO-AUDIT-PLAN.md` defines the staged cleanup campaign.
 - `docs/DEPLOYMENT.md` records the canonical portal URL and Vercel safety rules.

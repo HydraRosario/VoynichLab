@@ -12,6 +12,10 @@ DataSetCreator/src-tauri/target/
 # Logs and local env
 *.log
 *.local
+*.db-wal
+*.db-shm
+*.sqlite-wal
+*.sqlite-shm
 .vercel/
 apps/portal/.vercel/
 npm-debug.log*

@@ -257,6 +257,7 @@ function validateRegistry({ strictArtifacts = true, strictPending = true } = {})
     milestoneIds.add(milestone.id);
     if (milestone.tag && isPlaceholderValue(milestone.tag)) errors.push(`${milestone.id}: tag is a placeholder`);
     if (milestone.commit && isPlaceholderValue(milestone.commit)) errors.push(`${milestone.id}: commit is a placeholder`);
+    if (!milestone.tag && !(milestone.links?.length)) errors.push(`${milestone.id}: an untagged milestone requires a public link`);
   }
 
   const releaseTags = new Set();
@@ -510,6 +511,7 @@ function buildPortalData() {
   if (fs.existsSync(publicDir)) {
     for (const experiment of fs.readdirSync(publicDir)) {
       const source = path.join(publicDir, experiment);
+      if (!fs.statSync(source).isDirectory()) continue;
       const target = path.join(portalDataDir, "artifacts", "public", experiment);
       for (const file of walkFiles(source)) {
         const relative = path.relative(source, file);
@@ -519,12 +521,12 @@ function buildPortalData() {
     }
   }
 
-  const extraFiles = ["evidence-cases.json"];
-  for (const file of extraFiles) {
-    if (fs.existsSync(rel(file))) {
-      copyFile(file, path.join(portalDataDir, file));
-    }
+  const evidenceCases = "research-feed/evidence-cases.json";
+  if (fs.existsSync(rel(evidenceCases))) {
+    copyFile(evidenceCases, path.join(portalDataDir, "evidence-cases.json"));
   }
+  const atomInventory = "apps/portal/source-data/atoms-v1.json";
+  if (fs.existsSync(rel(atomInventory))) copyFile(atomInventory, path.join(portalDataDir, "atoms-v1.json"));
 
 }
 
@@ -785,6 +787,29 @@ function repoAudit() {
     console.log("Known-labeling anomaly ledger location: canonical.");
   }
 
+  const badGeometryLedgers = nonCanonicalGeometryLedgers();
+  if (badGeometryLedgers.length) {
+    console.warn("WARN Non-canonical particle-geometry anomaly ledgers:");
+    for (const hit of badGeometryLedgers) console.warn(`  ${hit}`);
+    process.exitCode = 1;
+  } else {
+    console.log("Particle-geometry anomaly ledger location: canonical.");
+  }
+
+  const retiredRootEntries = ["evidence-cases.json", "cases/"].filter((entry) =>
+    trackedFiles().some((file) =>
+      fs.existsSync(rel(file))
+      && (file === entry.replace(/\/$/, "") || file.startsWith(entry))
+    )
+  );
+  if (retiredRootEntries.length) {
+    console.warn("WARN Retired root entries are tracked:");
+    for (const entry of retiredRootEntries) console.warn(`  ${entry}`);
+    process.exitCode = 1;
+  } else {
+    console.log("Retired root research entries: absent.");
+  }
+
   const unregisteredScripts = unregisteredEvaComparisonScripts();
   if (unregisteredScripts.length) {
     console.warn("WARN EVAComparisonLab scripts missing from registry:");
@@ -801,6 +826,42 @@ function repoAudit() {
     process.exitCode = 1;
   } else {
     console.log("DataSetCreator script registry: complete.");
+  }
+
+  const frozenCatalogErrors = validateFrozenEvidenceCatalog();
+  if (frozenCatalogErrors.length) {
+    console.warn("WARN Frozen evidence catalog errors:");
+    for (const error of frozenCatalogErrors) console.warn(`  ${error}`);
+    process.exitCode = 1;
+  } else {
+    console.log("Frozen evidence catalog: valid.");
+  }
+
+  const publicBundleErrors = validatePublicBundleInventory();
+  if (publicBundleErrors.length) {
+    console.warn("WARN Public artifact inventory errors:");
+    for (const error of publicBundleErrors) console.warn(`  ${error}`);
+    process.exitCode = 1;
+  } else {
+    console.log("Public artifact inventory: one bundle per experiment.");
+  }
+
+  const portalMirrorErrors = validatePortalDataMirrors();
+  if (portalMirrorErrors.length) {
+    console.warn("WARN Portal data mirror errors:");
+    for (const error of portalMirrorErrors) console.warn(`  ${error}`);
+    process.exitCode = 1;
+  } else {
+    console.log("Portal registry and evidence mirrors: current.");
+  }
+
+  const speculativeBoundaryErrors = validateSpeculativeBoundary();
+  if (speculativeBoundaryErrors.length) {
+    console.warn("WARN Speculative-work boundary errors:");
+    for (const error of speculativeBoundaryErrors) console.warn(`  ${error}`);
+    process.exitCode = 1;
+  } else {
+    console.log("TranslationLab boundary: isolated from public evidence.");
   }
 
   console.log("");
@@ -832,6 +893,16 @@ function nonCanonicalKnownLabelingLedgers() {
   );
 }
 
+function nonCanonicalGeometryLedgers() {
+  const canonical = "research/audits/known-particle-geometry-anomalies.tsv";
+  return trackedFiles().filter((file) =>
+    file.endsWith("known-particle-geometry-anomalies.tsv")
+    && fs.existsSync(rel(file))
+    && file !== canonical
+    && !file.includes("/frozen/")
+  );
+}
+
 function unregisteredEvaComparisonScripts() {
   return unregisteredScriptsIn("EVAComparisonLab/scripts");
 }
@@ -852,6 +923,77 @@ function unregisteredScriptsIn(relativeDir) {
     .filter((name) => /\.(js|py|cjs|mjs)$/.test(name))
     .filter((name) => !registry.includes(`\`${name}\``))
     .map((name) => `${posixPath(relativeDir)}/${name}`);
+}
+
+function validateFrozenEvidenceCatalog() {
+  const catalogPath = rel("research/frozen-evidence.json");
+  if (!fs.existsSync(catalogPath)) return ["missing research/frozen-evidence.json"];
+  const catalog = JSON.parse(fs.readFileSync(catalogPath, "utf8"));
+  const errors = [];
+  const ids = new Set();
+  let currentCorpusCount = 0;
+  let tags = new Set();
+  try {
+    tags = new Set(execSync("git tag --list", { encoding: "utf8", cwd: root }).split(/\r?\n/).filter(Boolean));
+  } catch {
+    errors.push("unable to read Git tags");
+  }
+  for (const entry of catalog.entries ?? []) {
+    if (!entry.id || ids.has(entry.id)) errors.push(`missing or duplicate id: ${entry.id ?? "unknown"}`);
+    ids.add(entry.id);
+    if (!entry.path || !fs.existsSync(rel(entry.path))) errors.push(`${entry.id}: missing path ${entry.path}`);
+    if (!entry.tag || !tags.has(entry.tag)) errors.push(`${entry.id}: missing tag ${entry.tag}`);
+    if (entry.type === "corpus-release" && entry.status === "current") currentCorpusCount += 1;
+  }
+  if (currentCorpusCount !== 1) errors.push(`expected exactly one current corpus release, found ${currentCorpusCount}`);
+  return errors;
+}
+
+function validatePublicBundleInventory() {
+  const errors = [];
+  const experiments = readJson("research-feed/experiments.json");
+  const expected = new Set(experiments.map((entry) => entry.id));
+  const actual = new Set(
+    fs.readdirSync(publicDir, { withFileTypes: true })
+      .filter((entry) => entry.isDirectory())
+      .map((entry) => entry.name)
+  );
+  for (const id of expected) if (!actual.has(id)) errors.push(`missing bundle: artifacts/public/${id}`);
+  for (const id of actual) if (!expected.has(id)) errors.push(`orphan bundle: artifacts/public/${id}`);
+  return errors;
+}
+
+function validatePortalDataMirrors() {
+  const errors = [];
+  const pairs = [
+    ["research-feed/experiments.json", "apps/portal/data/research-feed/experiments.json"],
+    ["research-feed/milestones.json", "apps/portal/data/research-feed/milestones.json"],
+    ["research-feed/releases.json", "apps/portal/data/research-feed/releases.json"],
+    ["research-feed/site.json", "apps/portal/data/research-feed/site.json"],
+    ["research-feed/evidence-cases.json", "apps/portal/data/evidence-cases.json"],
+    ["apps/portal/source-data/atoms-v1.json", "apps/portal/data/atoms-v1.json"],
+  ];
+  for (const [source, mirror] of pairs) {
+    if (!fs.existsSync(rel(source))) errors.push(`missing canonical source: ${source}`);
+    else if (!fs.existsSync(rel(mirror))) errors.push(`missing portal mirror: ${mirror}`);
+    else if (sha256(rel(source)) !== sha256(rel(mirror))) errors.push(`stale portal mirror: ${mirror}`);
+  }
+  return errors;
+}
+
+function validateSpeculativeBoundary() {
+  const errors = [];
+  const publicSources = [
+    "research-feed/experiments.json",
+    "research-feed/milestones.json",
+    "research-feed/releases.json",
+    "research-feed/evidence-cases.json",
+  ];
+  for (const source of publicSources) {
+    const text = fs.readFileSync(rel(source), "utf8");
+    if (/TranslationLab[\\/]/i.test(text)) errors.push(`${source} references unpromoted TranslationLab material`);
+  }
+  return errors;
 }
 
 function printHelp() {

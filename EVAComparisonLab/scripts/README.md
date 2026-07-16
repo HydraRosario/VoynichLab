@@ -15,6 +15,7 @@ This directory contains the active analysis surface plus manual utilities used d
 | Script | Status | Purpose |
 |---|---|---|
 | `run-corpus-v2-analysis.js` | active | Main local replay for the six-folio Corpus V2 analysis. |
+| `run-corpus-v1-v2-matched-comparison.js` | active | Replays a matched three-folio V1-to-V2 positional entropy comparison from frozen inputs. |
 | `export-datasetcreator-atoms.js` | active | Exports ATOMS rows from the live DatasetCreator DB. |
 | `extract-ivtff-page.js` | active | Extracts EVA/IVTFF page text into comparable case files. |
 | `combine-cases.js` | active | Combines per-folio case directories. |
@@ -74,4 +75,3 @@ These Python scripts are currently retained as read-only manual diagnostics. The
 - Do not add DB-writing behavior to a script classified as `utility` or `audit`.
 - DB-writing scripts must support dry-run or explicit `--apply`, create a backup, and document the exact tables they modify.
 - Generated `cases/*-current`, visual snapshots, and audit scratch outputs stay out of Git unless promoted through a frozen release.
-
