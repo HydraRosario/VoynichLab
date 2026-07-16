@@ -73,6 +73,11 @@ function sha256(filePath) {
   return createHash("sha256").update(fs.readFileSync(filePath)).digest("hex");
 }
 
+function normalizedTextSha256(filePath) {
+  const text = fs.readFileSync(filePath, "utf8").replace(/\r\n?/g, "\n");
+  return createHash("sha256").update(text).digest("hex");
+}
+
 function walkFiles(dir) {
   if (!fs.existsSync(dir)) return [];
   const files = [];
@@ -976,7 +981,9 @@ function validatePortalDataMirrors() {
   for (const [source, mirror] of pairs) {
     if (!fs.existsSync(rel(source))) errors.push(`missing canonical source: ${source}`);
     else if (!fs.existsSync(rel(mirror))) errors.push(`missing portal mirror: ${mirror}`);
-    else if (sha256(rel(source)) !== sha256(rel(mirror))) errors.push(`stale portal mirror: ${mirror}`);
+    else if (normalizedTextSha256(rel(source)) !== normalizedTextSha256(rel(mirror))) {
+      errors.push(`stale portal mirror: ${mirror}`);
+    }
   }
   return errors;
 }
