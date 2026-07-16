@@ -625,26 +625,32 @@
 
       <!-- REPRODUCE -->
       <section id="reproduce" class="section reproduce-section">
-        <div class="section-heading">
+        <div class="reproduce-heading">
           <p class="eyebrow">Reproducibility</p>
-          <h2>Maintainer replay commands, not clean-clone certification.</h2>
+          <h2>Two different promises. Two different checks.</h2>
+          <p>VoynichLab separates verification of a published result from replay of the current analysis. They answer different questions and should not be presented as the same operation.</p>
         </div>
-        <div class="not-claim">
-          <p><strong>Current boundary:</strong> public artifacts and the tagged prospective release can be verified today. The current Corpus V2 analysis can be replayed in the maintainer environment. The full repository has not yet been certified as a clean-clone reproduction package.</p>
+        <div class="reproduce-paths">
+          <article class="reproduce-path reproduce-path-release">
+            <header><span class="reproduce-number">01</span><div><p class="reproduce-status">Published release · frozen</p><h3>Verify what was published</h3></div></header>
+            <p class="reproduce-question">Do the frozen registration, public files, and reported numbers still agree?</p>
+            <p>The verifier reads the preregistration from its Git tag, checks every published artifact checksum, and recomputes the primary metrics from the frozen result table.</p>
+            <div class="reproduce-command"><span>Run from the repository root</span><code>cd GrammarDiscoveryLab<br>npm.cmd run prospective-atoms-eva:verify-release</code></div>
+            <div class="reproduce-result"><span>Expected result</span><strong>Release verification passed</strong><small>ATOMS 0.348262 · EVA 0.564957 · Δ −0.216696</small></div>
+            <ul class="reproduce-checklist"><li>Preregistration recovered from its frozen tag</li><li>Public bundle checked file by file</li><li>Published primary metrics recalculated</li></ul>
+            <div class="reproduce-links"><a href="https://github.com/HydraRosario/VoynichLab/blob/main/GrammarDiscoveryLab/scripts/verify-prospective-atoms-eva-release-v1.js">Verifier source</a><a href="https://github.com/HydraRosario/VoynichLab/tree/main/artifacts/public/prospective-atoms-eva-test-v1">Frozen evidence</a><a href="https://github.com/HydraRosario/VoynichLab/releases/tag/prospective-atoms-eva-test-v1">Release tag</a></div>
+          </article>
+          <article class="reproduce-path reproduce-path-current">
+            <header><span class="reproduce-number">02</span><div><p class="reproduce-status">Corpus V2 · current replay</p><h3>Rebuild the current analysis</h3></div></header>
+            <p class="reproduce-question">Can the current six-folio report be regenerated from the audited corpus?</p>
+            <p>This replay rebuilds the Corpus V2 tables, metrics, report, provenance, and checksums using the current maintained analysis environment.</p>
+            <div class="reproduce-command"><span>Run from the repository root</span><code>cd EVAComparisonLab<br>npm.cmd run corpus:v2</code></div>
+            <div class="reproduce-result"><span>Expected output</span><strong>A complete public evidence bundle</strong><small>Report · tables · metrics · provenance · checksums</small></div>
+            <ul class="reproduce-checklist"><li>Six audited folios analyzed together</li><li>ATOMS and EVA recomputed under one protocol</li><li>Generated bundle ready for checksum inspection</li></ul>
+            <div class="reproduce-links"><a href="https://github.com/HydraRosario/VoynichLab/blob/main/EVAComparisonLab/scripts/run-corpus-v2-analysis.js">Replay source</a><a href="https://github.com/HydraRosario/VoynichLab/tree/main/artifacts/public/corpus-v2-audited-robustness-replay">Published bundle</a><a href="https://github.com/HydraRosario/VoynichLab/releases/tag/corpus-v2-audited">Corpus tag</a></div>
+          </article>
         </div>
-        <pre><code>cd GrammarDiscoveryLab
-npm.cmd run validate
-npm.cmd run null-control:v1
-npm.cmd run null-control:v2
-npm.cmd run null-control:v3
-npm.cmd run null-control:v3:diagnostics
-npm.cmd run representation-alignment:v1
-npm.cmd run representation-comparison:v2-regions
-npm.cmd run representation-comparison:v3-ablations
-npm.cmd run prospective-atoms-eva:verify-release
-
-cd ../EVAComparisonLab
-npm.cmd run corpus:v2</code></pre>
+        <aside class="reproduce-boundary"><div><p class="eyebrow">Current boundary</p><h3>Verified release. Maintainer replay. Clean-clone certification still pending.</h3></div><p>The historical check is designed to verify the published record without silently substituting today's database. The Corpus V2 command is a maintained replay in the known project environment. We do not yet promise that an external reviewer can clone the repository on an arbitrary machine and reproduce every experiment with one command.</p></aside>
       </section>
     </main>
 
