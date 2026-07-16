@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="50" height="51" viewBox="0 0 50 51">
+  <title>e:1 distant-variant atom 8002</title>
+  <rect x="0" y="0" width="50" height="51" fill="#17181b"/>
+  <rect x="0.5" y="0.5" width="49" height="50" fill="none" stroke="#111827" stroke-width="1" opacity="0.35"/>
+<polyline points="34,16 33,16 32,16 31,16 30,16 29,16 28,16 27,16 26,16 26,17 25,17 25,18 24,18 23,18 23,19 23,20 22,20 21,20 21,21 21,22 20,22 19,23 19,24 19,25 19,26 18,26 18,27 17,28 17,29 17,30 17,31 16,32 16,33 16,34 16,35 17,35 18,35 19,35 20,35 21,35 23,35 24,35 25,35 25,34" fill="none" stroke="#f2e45c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.95">
+    <title>8002 e:1</title>
+  </polyline>
+</svg>

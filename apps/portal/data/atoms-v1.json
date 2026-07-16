@@ -1,0 +1,674 @@
+[
+  {
+    "token": "a:1",
+    "count": 570,
+    "examples": [
+      {
+        "atomId": 7809,
+        "imageName": "page-007.jpg",
+        "role": "closest-to-family-average",
+        "distanceToRepresentative": 0,
+        "file": "./images/atoms-v1/a_1/representative-1-7809.svg"
+      },
+      {
+        "atomId": 4709,
+        "imageName": "page-004.jpg",
+        "role": "near-average-variant",
+        "distanceToRepresentative": 0.004039,
+        "file": "./images/atoms-v1/a_1/representative-2-4709.svg"
+      },
+      {
+        "atomId": 7121,
+        "imageName": "page-007.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.422766,
+        "file": "./images/atoms-v1/a_1/representative-3-7121.svg"
+      },
+      {
+        "atomId": 5528,
+        "imageName": "page-005.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.420945,
+        "file": "./images/atoms-v1/a_1/representative-4-5528.svg"
+      },
+      {
+        "atomId": 3763,
+        "imageName": "page-003.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.420155,
+        "file": "./images/atoms-v1/a_1/representative-5-3763.svg"
+      }
+    ],
+    "representativeMethod": "shape medoid over current visual-snapshot SVG point clouds"
+  },
+  {
+    "token": "b:1",
+    "count": 246,
+    "examples": [
+      {
+        "atomId": 1954,
+        "imageName": "page-003.jpg",
+        "role": "closest-to-family-average",
+        "distanceToRepresentative": 0,
+        "file": "./images/atoms-v1/b_1/representative-1-1954.svg"
+      },
+      {
+        "atomId": 3617,
+        "imageName": "page-003.jpg",
+        "role": "near-average-variant",
+        "distanceToRepresentative": 0.017681,
+        "file": "./images/atoms-v1/b_1/representative-2-3617.svg"
+      },
+      {
+        "atomId": 4239,
+        "imageName": "page-094.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.458206,
+        "file": "./images/atoms-v1/b_1/representative-3-4239.svg"
+      },
+      {
+        "atomId": 6346,
+        "imageName": "page-005.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.452854,
+        "file": "./images/atoms-v1/b_1/representative-4-6346.svg"
+      },
+      {
+        "atomId": 4743,
+        "imageName": "page-004.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.44622,
+        "file": "./images/atoms-v1/b_1/representative-5-4743.svg"
+      }
+    ],
+    "representativeMethod": "shape medoid over current visual-snapshot SVG point clouds"
+  },
+  {
+    "token": "c:1",
+    "count": 924,
+    "examples": [
+      {
+        "atomId": 1030,
+        "imageName": "page-003.jpg",
+        "role": "closest-to-family-average",
+        "distanceToRepresentative": 0,
+        "file": "./images/atoms-v1/c_1/representative-1-1030.svg"
+      },
+      {
+        "atomId": 1042,
+        "imageName": "page-003.jpg",
+        "role": "near-average-variant",
+        "distanceToRepresentative": 0,
+        "file": "./images/atoms-v1/c_1/representative-2-1042.svg"
+      },
+      {
+        "atomId": 4764,
+        "imageName": "page-004.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.703846,
+        "file": "./images/atoms-v1/c_1/representative-3-4764.svg"
+      },
+      {
+        "atomId": 2915,
+        "imageName": "page-094.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.70125,
+        "file": "./images/atoms-v1/c_1/representative-4-2915.svg"
+      },
+      {
+        "atomId": 4776,
+        "imageName": "page-004.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.700329,
+        "file": "./images/atoms-v1/c_1/representative-5-4776.svg"
+      }
+    ],
+    "representativeMethod": "shape medoid over current visual-snapshot SVG point clouds"
+  },
+  {
+    "token": "c:2",
+    "count": 57,
+    "examples": [
+      {
+        "atomId": 3379,
+        "imageName": "page-003.jpg",
+        "role": "closest-to-family-average",
+        "distanceToRepresentative": 0,
+        "file": "./images/atoms-v1/c_2/representative-1-3379.svg"
+      },
+      {
+        "atomId": 3787,
+        "imageName": "page-003.jpg",
+        "role": "near-average-variant",
+        "distanceToRepresentative": 0,
+        "file": "./images/atoms-v1/c_2/representative-2-3787.svg"
+      },
+      {
+        "atomId": 4099,
+        "imageName": "page-003.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.367104,
+        "file": "./images/atoms-v1/c_2/representative-3-4099.svg"
+      },
+      {
+        "atomId": 4162,
+        "imageName": "page-003.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.363052,
+        "file": "./images/atoms-v1/c_2/representative-4-4162.svg"
+      },
+      {
+        "atomId": 7153,
+        "imageName": "page-007.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.355312,
+        "file": "./images/atoms-v1/c_2/representative-5-7153.svg"
+      }
+    ],
+    "representativeMethod": "shape medoid over current visual-snapshot SVG point clouds"
+  },
+  {
+    "token": "d:1",
+    "count": 335,
+    "examples": [
+      {
+        "atomId": 7417,
+        "imageName": "page-007.jpg",
+        "role": "closest-to-family-average",
+        "distanceToRepresentative": 0,
+        "file": "./images/atoms-v1/d_1/representative-1-7417.svg"
+      },
+      {
+        "atomId": 2187,
+        "imageName": "page-003.jpg",
+        "role": "near-average-variant",
+        "distanceToRepresentative": 0.014475,
+        "file": "./images/atoms-v1/d_1/representative-2-2187.svg"
+      },
+      {
+        "atomId": 5240,
+        "imageName": "page-004.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.500343,
+        "file": "./images/atoms-v1/d_1/representative-3-5240.svg"
+      },
+      {
+        "atomId": 5243,
+        "imageName": "page-004.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.471883,
+        "file": "./images/atoms-v1/d_1/representative-4-5243.svg"
+      },
+      {
+        "atomId": 5242,
+        "imageName": "page-004.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.470367,
+        "file": "./images/atoms-v1/d_1/representative-5-5242.svg"
+      }
+    ],
+    "representativeMethod": "shape medoid over current visual-snapshot SVG point clouds"
+  },
+  {
+    "token": "e:1",
+    "count": 1763,
+    "examples": [
+      {
+        "atomId": 1006,
+        "imageName": "page-003.jpg",
+        "role": "closest-to-family-average",
+        "distanceToRepresentative": 0,
+        "file": "./images/atoms-v1/e_1/representative-1-1006.svg"
+      },
+      {
+        "atomId": 1015,
+        "imageName": "page-003.jpg",
+        "role": "near-average-variant",
+        "distanceToRepresentative": 0,
+        "file": "./images/atoms-v1/e_1/representative-2-1015.svg"
+      },
+      {
+        "atomId": 5670,
+        "imageName": "page-005.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.536213,
+        "file": "./images/atoms-v1/e_1/representative-3-5670.svg"
+      },
+      {
+        "atomId": 8002,
+        "imageName": "page-007.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.535241,
+        "file": "./images/atoms-v1/e_1/representative-4-8002.svg"
+      },
+      {
+        "atomId": 7292,
+        "imageName": "page-007.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.524564,
+        "file": "./images/atoms-v1/e_1/representative-5-7292.svg"
+      }
+    ],
+    "representativeMethod": "shape medoid over current visual-snapshot SVG point clouds"
+  },
+  {
+    "token": "f:1",
+    "count": 636,
+    "examples": [
+      {
+        "atomId": 1017,
+        "imageName": "page-003.jpg",
+        "role": "closest-to-family-average",
+        "distanceToRepresentative": 0,
+        "file": "./images/atoms-v1/f_1/representative-1-1017.svg"
+      },
+      {
+        "atomId": 1020,
+        "imageName": "page-003.jpg",
+        "role": "near-average-variant",
+        "distanceToRepresentative": 0,
+        "file": "./images/atoms-v1/f_1/representative-2-1020.svg"
+      },
+      {
+        "atomId": 1175,
+        "imageName": "page-003.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.492916,
+        "file": "./images/atoms-v1/f_1/representative-3-1175.svg"
+      },
+      {
+        "atomId": 1645,
+        "imageName": "page-003.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.464635,
+        "file": "./images/atoms-v1/f_1/representative-4-1645.svg"
+      },
+      {
+        "atomId": 999,
+        "imageName": "page-003.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.20373,
+        "file": "./images/atoms-v1/f_1/representative-5-999.svg"
+      }
+    ],
+    "representativeMethod": "shape medoid over current visual-snapshot SVG point clouds"
+  },
+  {
+    "token": "g:1",
+    "count": 408,
+    "examples": [
+      {
+        "atomId": 3200,
+        "imageName": "page-003.jpg",
+        "role": "closest-to-family-average",
+        "distanceToRepresentative": 0,
+        "file": "./images/atoms-v1/g_1/representative-1-3200.svg"
+      },
+      {
+        "atomId": 4474,
+        "imageName": "page-094.jpg",
+        "role": "near-average-variant",
+        "distanceToRepresentative": 0.002988,
+        "file": "./images/atoms-v1/g_1/representative-2-4474.svg"
+      },
+      {
+        "atomId": 1413,
+        "imageName": "page-003.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.412256,
+        "file": "./images/atoms-v1/g_1/representative-3-1413.svg"
+      },
+      {
+        "atomId": 3756,
+        "imageName": "page-003.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.065792,
+        "file": "./images/atoms-v1/g_1/representative-4-3756.svg"
+      },
+      {
+        "atomId": 5158,
+        "imageName": "page-004.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.06179,
+        "file": "./images/atoms-v1/g_1/representative-5-5158.svg"
+      }
+    ],
+    "representativeMethod": "shape medoid over current visual-snapshot SVG point clouds"
+  },
+  {
+    "token": "h:1",
+    "count": 277,
+    "examples": [
+      {
+        "atomId": 1087,
+        "imageName": "page-003.jpg",
+        "role": "closest-to-family-average",
+        "distanceToRepresentative": 0,
+        "file": "./images/atoms-v1/h_1/representative-1-1087.svg"
+      },
+      {
+        "atomId": 1410,
+        "imageName": "page-003.jpg",
+        "role": "near-average-variant",
+        "distanceToRepresentative": 0,
+        "file": "./images/atoms-v1/h_1/representative-2-1410.svg"
+      },
+      {
+        "atomId": 1509,
+        "imageName": "page-003.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.522041,
+        "file": "./images/atoms-v1/h_1/representative-3-1509.svg"
+      },
+      {
+        "atomId": 2319,
+        "imageName": "page-003.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.462753,
+        "file": "./images/atoms-v1/h_1/representative-4-2319.svg"
+      },
+      {
+        "atomId": 8201,
+        "imageName": "page-007.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.349814,
+        "file": "./images/atoms-v1/h_1/representative-5-8201.svg"
+      }
+    ],
+    "representativeMethod": "shape medoid over current visual-snapshot SVG point clouds"
+  },
+  {
+    "token": "h:2",
+    "count": 197,
+    "examples": [
+      {
+        "atomId": 6077,
+        "imageName": "page-005.jpg",
+        "role": "closest-to-family-average",
+        "distanceToRepresentative": 0,
+        "file": "./images/atoms-v1/h_2/representative-1-6077.svg"
+      },
+      {
+        "atomId": 6084,
+        "imageName": "page-005.jpg",
+        "role": "near-average-variant",
+        "distanceToRepresentative": 0,
+        "file": "./images/atoms-v1/h_2/representative-2-6084.svg"
+      },
+      {
+        "atomId": 5317,
+        "imageName": "page-004.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.466058,
+        "file": "./images/atoms-v1/h_2/representative-3-5317.svg"
+      },
+      {
+        "atomId": 1764,
+        "imageName": "page-003.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.464281,
+        "file": "./images/atoms-v1/h_2/representative-4-1764.svg"
+      },
+      {
+        "atomId": 5323,
+        "imageName": "page-004.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.462605,
+        "file": "./images/atoms-v1/h_2/representative-5-5323.svg"
+      }
+    ],
+    "representativeMethod": "shape medoid over current visual-snapshot SVG point clouds"
+  },
+  {
+    "token": "i:1",
+    "count": 330,
+    "examples": [
+      {
+        "atomId": 6747,
+        "imageName": "page-006.jpg",
+        "role": "closest-to-family-average",
+        "distanceToRepresentative": 0,
+        "file": "./images/atoms-v1/i_1/representative-1-6747.svg"
+      },
+      {
+        "atomId": 1176,
+        "imageName": "page-003.jpg",
+        "role": "near-average-variant",
+        "distanceToRepresentative": 0.022065,
+        "file": "./images/atoms-v1/i_1/representative-2-1176.svg"
+      },
+      {
+        "atomId": 3291,
+        "imageName": "page-003.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.376874,
+        "file": "./images/atoms-v1/i_1/representative-3-3291.svg"
+      },
+      {
+        "atomId": 8152,
+        "imageName": "page-007.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.375312,
+        "file": "./images/atoms-v1/i_1/representative-4-8152.svg"
+      },
+      {
+        "atomId": 7727,
+        "imageName": "page-007.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.350207,
+        "file": "./images/atoms-v1/i_1/representative-5-7727.svg"
+      }
+    ],
+    "representativeMethod": "shape medoid over current visual-snapshot SVG point clouds"
+  },
+  {
+    "token": "j:1",
+    "count": 160,
+    "examples": [
+      {
+        "atomId": 2447,
+        "imageName": "page-003.jpg",
+        "role": "closest-to-family-average",
+        "distanceToRepresentative": 0,
+        "file": "./images/atoms-v1/j_1/representative-1-2447.svg"
+      },
+      {
+        "atomId": 2599,
+        "imageName": "page-003.jpg",
+        "role": "near-average-variant",
+        "distanceToRepresentative": 0,
+        "file": "./images/atoms-v1/j_1/representative-2-2599.svg"
+      },
+      {
+        "atomId": 4615,
+        "imageName": "page-094.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.519719,
+        "file": "./images/atoms-v1/j_1/representative-3-4615.svg"
+      },
+      {
+        "atomId": 4258,
+        "imageName": "page-094.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.492824,
+        "file": "./images/atoms-v1/j_1/representative-4-4258.svg"
+      },
+      {
+        "atomId": 4616,
+        "imageName": "page-094.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.491653,
+        "file": "./images/atoms-v1/j_1/representative-5-4616.svg"
+      }
+    ],
+    "representativeMethod": "shape medoid over current visual-snapshot SVG point clouds"
+  },
+  {
+    "token": "k:1",
+    "count": 84,
+    "examples": [
+      {
+        "atomId": 4644,
+        "imageName": "page-094.jpg",
+        "role": "closest-to-family-average",
+        "distanceToRepresentative": 0,
+        "file": "./images/atoms-v1/k_1/representative-1-4644.svg"
+      },
+      {
+        "atomId": 2008,
+        "imageName": "page-003.jpg",
+        "role": "near-average-variant",
+        "distanceToRepresentative": 0.022984,
+        "file": "./images/atoms-v1/k_1/representative-2-2008.svg"
+      },
+      {
+        "atomId": 5410,
+        "imageName": "page-004.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.108292,
+        "file": "./images/atoms-v1/k_1/representative-3-5410.svg"
+      },
+      {
+        "atomId": 3973,
+        "imageName": "page-003.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.102235,
+        "file": "./images/atoms-v1/k_1/representative-4-3973.svg"
+      },
+      {
+        "atomId": 3972,
+        "imageName": "page-003.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.094596,
+        "file": "./images/atoms-v1/k_1/representative-5-3972.svg"
+      }
+    ],
+    "representativeMethod": "shape medoid over current visual-snapshot SVG point clouds"
+  },
+  {
+    "token": "l:1",
+    "count": 39,
+    "examples": [
+      {
+        "atomId": 3391,
+        "imageName": "page-003.jpg",
+        "role": "closest-to-family-average",
+        "distanceToRepresentative": 0,
+        "file": "./images/atoms-v1/l_1/representative-1-3391.svg"
+      },
+      {
+        "atomId": 6303,
+        "imageName": "page-005.jpg",
+        "role": "near-average-variant",
+        "distanceToRepresentative": 0.024255,
+        "file": "./images/atoms-v1/l_1/representative-2-6303.svg"
+      },
+      {
+        "atomId": 6225,
+        "imageName": "page-005.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.130409,
+        "file": "./images/atoms-v1/l_1/representative-3-6225.svg"
+      },
+      {
+        "atomId": 8274,
+        "imageName": "page-003.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.105951,
+        "file": "./images/atoms-v1/l_1/representative-4-8274.svg"
+      },
+      {
+        "atomId": 6661,
+        "imageName": "page-006.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.101294,
+        "file": "./images/atoms-v1/l_1/representative-5-6661.svg"
+      }
+    ],
+    "representativeMethod": "shape medoid over current visual-snapshot SVG point clouds"
+  },
+  {
+    "token": "m:1",
+    "count": 92,
+    "examples": [
+      {
+        "atomId": 4340,
+        "imageName": "page-094.jpg",
+        "role": "closest-to-family-average",
+        "distanceToRepresentative": 0,
+        "file": "./images/atoms-v1/m_1/representative-1-4340.svg"
+      },
+      {
+        "atomId": 4577,
+        "imageName": "page-094.jpg",
+        "role": "near-average-variant",
+        "distanceToRepresentative": 0.025679,
+        "file": "./images/atoms-v1/m_1/representative-2-4577.svg"
+      },
+      {
+        "atomId": 3033,
+        "imageName": "page-003.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.179602,
+        "file": "./images/atoms-v1/m_1/representative-3-3033.svg"
+      },
+      {
+        "atomId": 7041,
+        "imageName": "page-006.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.16488,
+        "file": "./images/atoms-v1/m_1/representative-4-7041.svg"
+      },
+      {
+        "atomId": 8008,
+        "imageName": "page-007.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.160479,
+        "file": "./images/atoms-v1/m_1/representative-5-8008.svg"
+      }
+    ],
+    "representativeMethod": "shape medoid over current visual-snapshot SVG point clouds"
+  },
+  {
+    "token": "n:1",
+    "count": 104,
+    "examples": [
+      {
+        "atomId": 3781,
+        "imageName": "page-003.jpg",
+        "role": "closest-to-family-average",
+        "distanceToRepresentative": 0,
+        "file": "./images/atoms-v1/n_1/representative-1-3781.svg"
+      },
+      {
+        "atomId": 3700,
+        "imageName": "page-094.jpg",
+        "role": "near-average-variant",
+        "distanceToRepresentative": 0.045509,
+        "file": "./images/atoms-v1/n_1/representative-2-3700.svg"
+      },
+      {
+        "atomId": 3704,
+        "imageName": "page-094.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.325851,
+        "file": "./images/atoms-v1/n_1/representative-3-3704.svg"
+      },
+      {
+        "atomId": 3691,
+        "imageName": "page-003.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.295459,
+        "file": "./images/atoms-v1/n_1/representative-4-3691.svg"
+      },
+      {
+        "atomId": 3669,
+        "imageName": "page-003.jpg",
+        "role": "distant-variant",
+        "distanceToRepresentative": 0.285128,
+        "file": "./images/atoms-v1/n_1/representative-5-3669.svg"
+      }
+    ],
+    "representativeMethod": "shape medoid over current visual-snapshot SVG point clouds"
+  }
+]

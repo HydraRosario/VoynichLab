@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="43" height="68" viewBox="0 0 43 68">
+  <title>h:2 distant-variant atom 5323</title>
+  <rect x="0" y="0" width="43" height="68" fill="#17181b"/>
+  <rect x="0.5" y="0.5" width="42" height="67" fill="none" stroke="#111827" stroke-width="1" opacity="0.35"/>
+<polyline points="19,16 18,16 18,17 18,18 17,19 17,20 16,20 16,21 16,22 16,23 16,24 16,25 16,26 16,27 17,28 18,29 19,31 20,32 21,33 22,35 22,36 23,37 24,39 25,40 26,41 26,42 26,43 26,44 26,45 27,47 27,48 27,49 26,50 26,51 25,51 24,51 23,52 22,52" fill="none" stroke="#ff8c00" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.95">
+    <title>5323 h:2</title>
+  </polyline>
+</svg>

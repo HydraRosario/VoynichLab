@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="58" viewBox="0 0 48 58">
+  <title>n:1 near-average-variant atom 3700</title>
+  <rect x="0" y="0" width="48" height="58" fill="#17181b"/>
+  <rect x="0.5" y="0.5" width="47" height="57" fill="none" stroke="#111827" stroke-width="1" opacity="0.35"/>
+<polyline points="17,28 16,28 16,27 16,26 17,25 17,24 18,23 18,22 18,21 19,21 19,20 20,20 20,19 21,19 22,18 23,18 23,17 24,17 25,17 25,16 26,16 27,16 28,16 29,17 30,17 31,18 31,19 31,20 32,21 32,22 32,23 32,24 32,25 32,26 31,27 31,28 31,29 31,30 30,30 30,31 30,32 29,33 29,34 28,35 28,36 28,37 27,38 27,39 26,40 26,41 26,42 25,42" fill="none" stroke="#f92f59" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.95">
+    <title>3700 n:1</title>
+  </polyline>
+</svg>

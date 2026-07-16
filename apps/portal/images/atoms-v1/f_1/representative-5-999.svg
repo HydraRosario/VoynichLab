@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44">
+  <title>f:1 distant-variant atom 999</title>
+  <rect x="0" y="0" width="44" height="44" fill="#17181b"/>
+  <rect x="0.5" y="0.5" width="43" height="43" fill="none" stroke="#111827" stroke-width="1" opacity="0.35"/>
+<polyline points="16,16 17,16 17,17 18,17 18,18 19,18 19,19 20,19 21,20 22,21 23,21 23,22 24,22 24,23 25,23 25,24 26,24 26,25 27,25 27,26 28,26 28,27 28,28" fill="none" stroke="#00a2ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.95">
+    <title>999 f:1</title>
+  </polyline>
+</svg>
