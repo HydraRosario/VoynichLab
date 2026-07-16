@@ -80,7 +80,7 @@ const claimLevelLabels = {
   negative: "Negative",
 };
 
-const registry = { experiments: [], milestones: [], releases: [], site: null, evidence: null, loaded: false };
+const registry = { experiments: [], milestones: [], releases: [], site: null, evidence: null, atoms: [], loaded: false };
 
 function html(v) { return String(v ?? "").replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;"); }
 
@@ -101,6 +101,36 @@ function barHtml(value, maxValue, color = "var(--accent)") {
 
 const $ = (s) => document.querySelector(s);
 const $$ = (s) => document.querySelectorAll(s);
+
+function initAnchorNavigation() {
+  $$('a[href^="#"]').forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const hash = link.getAttribute("href");
+      if (!hash || hash === "#") return;
+
+      event.preventDefault();
+
+      if (hash === "#top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        history.pushState(null, "", hash);
+        return;
+      }
+
+      const target = document.querySelector(hash);
+      if (!target) return;
+
+      const topbar = document.querySelector(".topbar");
+      const sectionHeading = target.firstElementChild?.classList?.contains("section-heading")
+        ? target.firstElementChild
+        : null;
+      const scrollTarget = sectionHeading || target;
+      const offset = (topbar?.getBoundingClientRect().height || 0) + 7;
+      const targetTop = scrollTarget.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top: Math.max(0, targetTop), behavior: "smooth" });
+      history.pushState(null, "", hash);
+    });
+  });
+}
 
 const els = {
   timelineList: $("#timeline-list"),
@@ -126,24 +156,28 @@ const els = {
   evidenceList: $("#evidence-list"),
   evidenceDetail: $("#evidence-detail"),
   traceabilityList: $("#traceability-list"),
-  readerToggle: $("#reader-toggle"),
-  researchToggle: $("#research-toggle"),
-  readerSections: null,
+  atomInventory: $("#atom-inventory"),
+  atomModal: $("#atom-modal"),
+  atomModalTitle: $("#atom-modal-title"),
+  atomModalCount: $("#atom-modal-count"),
+  atomModalExamples: $("#atom-modal-examples"),
 };
 
 async function loadAll() {
-  const [experiments, milestones, releases, site, evidence] = await Promise.all([
+  const [experiments, milestones, releases, site, evidence, atoms] = await Promise.all([
     loadJson("./data/research-feed/experiments.json"),
     loadJson("./data/research-feed/milestones.json"),
     loadJson("./data/research-feed/releases.json"),
     loadJson("./data/research-feed/site.json").catch(() => ({ currentExperimentId: null, featuredMilestoneId: null })),
     loadJson("./data/evidence-cases.json").catch(() => null),
+    loadJson("./data/atoms-v1.json").catch(() => []),
   ]);
   registry.experiments = experiments.sort((a, b) => a.sequenceIndex - b.sequenceIndex);
   registry.milestones = milestones.sort((a, b) => a.sequenceIndex - b.sequenceIndex);
   registry.releases = releases;
   registry.site = site;
   registry.evidence = evidence;
+  registry.atoms = atoms;
   registry.loaded = true;
 }
 
@@ -169,6 +203,51 @@ function renderNoDecipherment() {
   if (els.noDeciphermentList) {
     els.noDeciphermentList.innerHTML = noDeciphermentNotes.map((n) => `<li>${html(n)}</li>`).join("");
   }
+}
+
+function renderAtomsV1() {
+  if (!els.atomInventory) return;
+  const atoms = registry.atoms || [];
+  els.atomInventory.innerHTML = atoms.map((atom) => {
+    const primary = atom.examples?.[0];
+    return `
+      <button class="atom-card" type="button" data-atom-token="${html(atom.token)}">
+        <strong>${html(atom.token)}</strong>
+        ${primary ? `<img src="${html(primary.file)}" alt="Real snapshot example of ${html(atom.token)}">` : ""}
+        <span>${Number(atom.count).toLocaleString("en-US")} observed instances</span>
+      </button>
+    `;
+  }).join("");
+
+  els.atomInventory.querySelectorAll("[data-atom-token]").forEach((button) => {
+    button.addEventListener("click", () => showAtomDetail(button.dataset.atomToken));
+  });
+}
+
+function showAtomDetail(token) {
+  const atom = (registry.atoms || []).find((item) => item.token === token);
+  if (!atom || !els.atomModal) return;
+  const roleLabels = {
+    "closest-to-family-average": "closest to average",
+    "near-average-variant": "near variant",
+    "distant-variant": "distant variant",
+  };
+  els.atomModalTitle.textContent = atom.token;
+  els.atomModalCount.textContent = `${Number(atom.count).toLocaleString("en-US")} observed instances in the current visual snapshot export.`;
+  els.atomModalExamples.innerHTML = (atom.examples || []).map((example) => `
+    <figure>
+      <img src="${html(example.file)}" alt="Atom ${html(example.atomId)} ${html(atom.token)} from ${html(example.imageName)}">
+      <figcaption>${html(roleLabels[example.role] || "variant")} - #${html(example.atomId)}</figcaption>
+    </figure>
+  `).join("");
+  els.atomModal.classList.add("open");
+  els.atomModal.setAttribute("aria-hidden", "false");
+}
+
+function closeAtomDetail() {
+  if (!els.atomModal) return;
+  els.atomModal.classList.remove("open");
+  els.atomModal.setAttribute("aria-hidden", "true");
 }
 
 function renderHowToRead() {
@@ -198,6 +277,7 @@ function renderTraceability() {
 }
 
 function renderCurrentResult() {
+  if (!els.currentTitle || !els.currentMetrics || !els.currentCaption) return;
   const targetId = registry.site?.currentExperimentId || "prospective-atoms-eva-test-v1";
   const current = registry.experiments.find((e) => e.id === targetId) || registry.experiments.at(-1);
   if (!current) return;
@@ -405,28 +485,14 @@ function renderNegativeResults() {
   `).join("");
 }
 
-/* ===== MODE TOGGLE ===== */
-function initModeToggle() {
-  const reader = els.readerToggle;
-  const research = els.researchToggle;
-  if (!reader || !research) return;
-
-  function setMode(mode) {
-    document.body.classList.remove("mode-reader", "mode-research");
-    document.body.classList.add(`mode-${mode}`);
-    reader.classList.toggle("active", mode === "reader");
-    research.classList.toggle("active", mode === "research");
-  }
-
-  reader.addEventListener("click", () => setMode("reader"));
-  research.addEventListener("click", () => setMode("research"));
-  setMode("reader");
-}
-
 /* ===== BOOT ===== */
+initAnchorNavigation();
 els.experimentSelect?.addEventListener("change", renderExperiment);
+document.querySelectorAll("[data-close-atom-modal]").forEach((element) => element.addEventListener("click", closeAtomDetail));
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") closeAtomDetail();
+});
 
-initModeToggle();
 renderHowToRead();
 renderTraceability();
 renderNoDecipherment();
@@ -435,6 +501,7 @@ loadAll().then(() => {
   renderTimeline();
   renderCurrentResult();
   renderCorpusV2();
+  renderAtomsV1();
   renderExperimentOptions();
   renderReleases();
   renderEvidence();

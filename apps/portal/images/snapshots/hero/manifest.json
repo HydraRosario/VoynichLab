@@ -1,0 +1,22 @@
+{
+  "source": "EVAComparisonLab/artifacts/visual-snapshots/current",
+  "generatedFrom": "DatasetCreator geometry via EVAComparisonLab/scripts/export-visual-snapshots.js",
+  "image": "page-003.jpg",
+  "molecule": {
+    "id": "img3-m31",
+    "token": "e:1 c:1 h:2 e:1 f:1 k:1 f:1 i:1 d:1",
+    "original": "img3-m31-original.png",
+    "overlay": "img3-m31-overlay.png"
+  },
+  "atoms": [
+    { "id": 1564, "token": "e:1", "image": "atom-1564-e_1.png" },
+    { "id": 1565, "token": "c:1", "image": "atom-1565-c_1.png" },
+    { "id": 1567, "token": "h:2", "image": "atom-1567-h_2.png" },
+    { "id": 1568, "token": "e:1", "image": "atom-1568-e_1.png" },
+    { "id": 1569, "token": "f:1", "image": "atom-1569-f_1.png" },
+    { "id": 1570, "token": "k:1", "image": "atom-1570-k_1.png" },
+    { "id": 1571, "token": "f:1", "image": "atom-1571-f_1.png" },
+    { "id": 1572, "token": "i:1", "image": "atom-1572-i_1.png" },
+    { "id": 1573, "token": "d:1", "image": "atom-1573-d_1.png" }
+  ]
+}

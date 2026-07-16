@@ -10,50 +10,224 @@
   <body>
     <header class="topbar">
       <a class="brand" href="#top">
-        <img class="brand-mark" src="./images/la-diosa-tau.png" alt="Lab mark">
+        <img class="brand-mark" src="./images/la-diosa-tau.png" alt="VoynichLab mark">
         <span><strong>VoynichLab</strong><small>Open computational observatory</small></span>
       </a>
       <nav class="nav">
-        <a href="#howto">How to read</a>
-        <a href="#tested">What tested</a>
+        <a href="#atoms-v1">ATOMS-V1</a>
+        <a href="#families">Families</a>
         <a href="#corpus-v2">Corpus V2</a>
-        <a href="#verify">Verify</a>
         <a href="#evidence">Evidence</a>
         <a href="#experiments">Experiments</a>
         <a href="#research">Timeline</a>
+        <a href="#verify">Verify</a>
         <a href="#repository">Repository</a>
         <a href="#releases">Releases</a>
-        <a href="#reproduce">Replay</a>
       </nav>
-      <div class="mode-toggle">
-        <button id="reader-toggle" class="mode-btn active">Reader</button>
-        <button id="research-toggle" class="mode-btn">Research</button>
-      </div>
     </header>
 
     <main>
       <!-- DASHBOARD -->
       <section class="dashboard">
         <div class="dashboard-copy">
-          <p class="eyebrow">Corpus V2 audited</p>
-          <h1>The six-folio corpus is cleaned, frozen, and publicly inspectable.</h1>
-          <p class="lead">VoynichLab publishes ATOMS-V1 experiments, EVA comparisons, negative controls, audit ledgers, reports, metrics, manifests, commits, and tags - without claiming decipherment.</p>
+          <p class="eyebrow">VoynichLab</p>
+          <h1>A new way to see the Voynich Manuscript.</h1>
+          <p class="lead">VoynichLab decomposes the manuscript into thousands of hand-labeled visual components, then uses them to uncover recurring structures, test representations, and build machine-readable evidence from the ink itself.</p>
           <div class="action-row">
-            <a class="button primary" href="#evidence">Browse evidence</a>
-            <a class="button" href="#howto">How to read this</a>
-            <a class="button" href="https://github.com/HydraRosario/VoynichLab">Source repository</a>
+            <a class="button primary" href="#atoms-v1">ATOMS-V1</a>
+            <a class="button" href="#families">Families</a>
+            <a class="button" href="#evidence">Evidence</a>
           </div>
         </div>
-        <div class="live-panel">
+        <div class="orientation-panel visual-pipeline">
           <div class="panel-header">
-            <span>Current result</span>
-            <strong id="current-result-title">Loading</strong>
-            <span id="current-outcome"></span>
+            <strong>See how the manuscript becomes data</strong>
           </div>
-          <dl class="metric-grid" id="current-metrics"></dl>
-          <p class="caption" id="current-result-caption"></p>
-          <p class="metric-definition" id="current-definition"></p>
-          <div class="callout-row" id="current-callouts"></div>
+          <div class="ink-demo">
+            <div class="ink-compare">
+              <figure>
+                <img src="./images/snapshots/hero/img3-m31-original.png" alt="Original Voynich ink crop for molecule img3-m31">
+              </figure>
+              <figure>
+                <img src="./images/snapshots/hero/img3-m31-overlay.png" alt="ATOMS overlay for molecule img3-m31">
+              </figure>
+            </div>
+          </div>
+          <div class="hero-particle-strip" aria-label="Three particles in molecule img3-m31">
+            <figure><img src="./images/snapshots/hero/img3-m31-p1.svg" alt="Particle 1: e:1 c:1 h:2"><figcaption><b>particle 1</b><span>e:1 · c:1 · h:2</span></figcaption></figure>
+            <figure><img src="./images/snapshots/hero/img3-m31-p2.svg" alt="Particle 2: e:1 f:1"><figcaption><b>particle 2</b><span>e:1 · f:1</span></figcaption></figure>
+            <figure><img src="./images/snapshots/hero/img3-m31-p3.svg" alt="Particle 3: k:1 f:1 i:1 d:1"><figcaption><b>particle 3</b><span>k:1 · f:1 · i:1 · d:1</span></figcaption></figure>
+          </div>
+          <div class="atom-strip" aria-label="Real ATOMS sequence for img3-m31">
+            <div class="atom-group three" aria-label="Atoms in particle 1">
+              <span><img src="./images/snapshots/hero/atom-1564-e_1.png" alt="Atom 1564 e:1"><b>e:1</b></span><span><img src="./images/snapshots/hero/atom-1565-c_1.png" alt="Atom 1565 c:1"><b>c:1</b></span><span><img src="./images/snapshots/hero/atom-1567-h_2.png" alt="Atom 1567 h:2"><b>h:2</b></span>
+            </div>
+            <i class="particle-separator" aria-hidden="true">−</i>
+            <div class="atom-group two" aria-label="Atoms in particle 2">
+              <span><img src="./images/snapshots/hero/atom-1568-e_1.png" alt="Atom 1568 e:1"><b>e:1</b></span><span><img src="./images/snapshots/hero/atom-1569-f_1.png" alt="Atom 1569 f:1"><b>f:1</b></span>
+            </div>
+            <i class="particle-separator" aria-hidden="true">−</i>
+            <div class="atom-group four" aria-label="Atoms in particle 3">
+              <span><img src="./images/snapshots/hero/atom-1570-k_1.png" alt="Atom 1570 k:1"><b>k:1</b></span><span><img src="./images/snapshots/hero/atom-1571-f_1.png" alt="Atom 1571 f:1"><b>f:1</b></span><span><img src="./images/snapshots/hero/atom-1572-i_1.png" alt="Atom 1572 i:1"><b>i:1</b></span><span><img src="./images/snapshots/hero/atom-1573-d_1.png" alt="Atom 1573 d:1"><b>d:1</b></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ATOMS V1 -->
+      <section id="atoms-v1" class="section atoms-section">
+        <div class="section-heading">
+          <p class="eyebrow">ATOMS-V1</p>
+          <h2>What if the glyphs are not the <span class="keep-together">smallest units?</span></h2>
+          <p>ATOMS-V1 looks beneath the familiar glyphs and maps the recurring visual components they are made of. Rather than assigning sounds or meanings, it records how complex forms can be decomposed into a consistent set of labeled parts.</p>
+        </div>
+        <div class="atom-inventory" id="atom-inventory"></div>
+      </section>
+
+      <div class="atom-modal" id="atom-modal" aria-hidden="true">
+        <div class="atom-modal-backdrop" data-close-atom-modal></div>
+        <article class="atom-modal-card" role="dialog" aria-modal="true" aria-labelledby="atom-modal-title">
+          <button class="modal-close" type="button" data-close-atom-modal aria-label="Close atom detail">×</button>
+          <p class="eyebrow">ATOMS-V1 detail</p>
+          <h2 id="atom-modal-title"></h2>
+          <p id="atom-modal-count" class="atom-modal-count"></p>
+          <div class="atom-modal-examples" id="atom-modal-examples"></div>
+        </article>
+      </div>
+
+      <!-- FAMILIES -->
+      <section id="families" class="section families-section">
+        <div class="section-heading">
+          <p class="eyebrow">Grammar families</p>
+          <h2>The same structures return — with only a few pieces allowed to change.</h2>
+          <p>Across different folios, recurring ATOMS sequences preserve the same surrounding structure while varying only at specific positions.</p>
+        </div>
+        <div class="family-showcase">
+          <article class="family-card">
+            <div class="family-card-head">
+              <span>Family 01</span>
+              <strong>21 cases</strong>
+            </div>
+            <div class="molecule-frame" aria-label="Optional family e g e c f j">
+              <span class="slot">optional c:1 / e:1</span><span>e:1</span><span>g:1</span><span>e:1</span><span>c:1</span><span>f:1</span><span>j:1</span>
+            </div>
+            <p>A compact frame that repeatedly returns with rare inserted material around the left side of the structure.</p>
+            <div class="family-examples two-up" aria-label="Real visual examples for family 01">
+              <figure>
+                <img src="./images/snapshots/families/top-families/img3-m153-trace.png" alt="Trace-only ATOMS rendering for family 01 base example img3-m153">
+                <figcaption><strong>base</strong><span>img3-m153</span></figcaption>
+              </figure>
+              <figure>
+                <img src="./images/snapshots/families/top-families/img3-m163-trace.png" alt="Trace-only ATOMS rendering for family 01 base example img3-m163">
+                <figcaption><strong>base</strong><span>img3-m163</span></figcaption>
+              </figure>
+              <figure>
+                <img src="./images/snapshots/families/top-families/img3-m185-trace.png" alt="Trace-only ATOMS rendering for family 01 expanded example img3-m185">
+                <figcaption><strong>+ c:1</strong><span>img3-m185</span></figcaption>
+              </figure>
+              <figure>
+                <img src="./images/snapshots/families/top-families/img4-m56-trace.png" alt="Trace-only ATOMS rendering for family 01 expanded example img4-m56">
+                <figcaption><strong>+ e:1</strong><span>img4-m56</span></figcaption>
+              </figure>
+            </div>
+          </article>
+          <article class="family-card">
+            <div class="family-card-head">
+              <span>Family 02</span>
+              <strong>15 cases</strong>
+            </div>
+            <div class="molecule-frame" aria-label="Optional family n e g e">
+              <span>n:1</span><span>e:1</span><span>g:1</span><span>e:1</span><span class="slot">optional c:1 / e:1</span>
+            </div>
+            <p>The same four-part frame appears alone and with a constrained extension at the end.</p>
+            <div class="family-examples two-up" aria-label="Real visual examples for family 02">
+              <figure>
+                <img src="./images/snapshots/families/top-families/img4-m73-trace.png" alt="Trace-only ATOMS rendering for family 02 base example img4-m73">
+                <figcaption><strong>base</strong><span>img4-m73</span></figcaption>
+              </figure>
+              <figure>
+                <img src="./images/snapshots/families/top-families/img5-m75-trace.png" alt="Trace-only ATOMS rendering for family 02 base example img5-m75">
+                <figcaption><strong>base</strong><span>img5-m75</span></figcaption>
+              </figure>
+              <figure>
+                <img src="./images/snapshots/families/top-families/img3-m87-trace.png" alt="Trace-only ATOMS rendering for family 02 expanded example img3-m87">
+                <figcaption><strong>+ c:1</strong><span>img3-m87</span></figcaption>
+              </figure>
+              <figure>
+                <img src="./images/snapshots/families/top-families/img3-m131-trace.png" alt="Trace-only ATOMS rendering for family 02 expanded example img3-m131">
+                <figcaption><strong>+ e:1</strong><span>img3-m131</span></figcaption>
+              </figure>
+            </div>
+          </article>
+          <article class="family-card">
+            <div class="family-card-head">
+              <span>Family 03</span>
+              <strong>14 cases</strong>
+            </div>
+            <div class="molecule-frame" aria-label="Optional family e g e e h">
+              <span class="slot">optional n:1 / c:1</span><span>e:1</span><span>g:1</span><span>e:1</span><span>e:1</span><span>h:1</span>
+            </div>
+            <p>A recurring terminal frame where the left edge admits only a small set of observed additions.</p>
+            <div class="family-examples two-up" aria-label="Real visual examples for family 03">
+              <figure>
+                <img src="./images/snapshots/families/top-families/img5-m85-trace.png" alt="Trace-only ATOMS rendering for family 03 base example img5-m85">
+                <figcaption><strong>base</strong><span>img5-m85</span></figcaption>
+              </figure>
+              <figure>
+                <img src="./images/snapshots/families/top-families/img5-m17-trace.png" alt="Trace-only ATOMS rendering for family 03 base example img5-m17">
+                <figcaption><strong>base</strong><span>img5-m17</span></figcaption>
+              </figure>
+              <figure>
+                <img src="./images/snapshots/families/top-families/img4-m17-trace.png" alt="Trace-only ATOMS rendering for family 03 expanded example img4-m17">
+                <figcaption><strong>+ n:1</strong><span>img4-m17</span></figcaption>
+              </figure>
+              <figure>
+                <img src="./images/snapshots/families/top-families/img3-m144-trace.png" alt="Trace-only ATOMS rendering for family 03 expanded example img3-m144">
+                <figcaption><strong>+ e:1</strong><span>img3-m144</span></figcaption>
+              </figure>
+            </div>
+          </article>
+          <article class="family-card">
+            <div class="family-card-head">
+              <span>Strong local constraints</span>
+              <strong>examples</strong>
+            </div>
+            <div class="constraint-grid" aria-label="Visual examples of local ATOMS constraints">
+              <article>
+                <div class="constraint-pair">
+                  <span><img src="./images/atoms-v1/g_1/example-1-995.png" alt="g:1 atom snapshot"><b>g:1</b></span>
+                  <i aria-hidden="true">→</i>
+                  <span><img src="./images/atoms-v1/e_1/example-1-991.png" alt="e:1 atom snapshot"><b>e:1</b></span>
+                </div>
+                <img class="constraint-trace" src="./images/snapshots/constraints/ge-img3-m105-p1-trace.png" alt="Joined trace example for g:1 followed by e:1">
+              </article>
+              <article>
+                <div class="constraint-pair">
+                  <span><img src="./images/atoms-v1/k_1/example-1-1062.png" alt="k:1 atom snapshot"><b>k:1</b></span>
+                  <i aria-hidden="true">→</i>
+                  <span><img src="./images/atoms-v1/f_1/example-1-992.png" alt="f:1 atom snapshot"><b>f:1</b></span>
+                </div>
+                <img class="constraint-trace" src="./images/snapshots/constraints/kf-img3-m103-p3-trace.png" alt="Joined trace example for k:1 followed by f:1">
+              </article>
+              <article>
+                <div class="constraint-pair">
+                  <span><img src="./images/atoms-v1/b_1/example-1-981.png" alt="b:1 atom snapshot"><b>b:1</b></span>
+                  <i aria-hidden="true">→</i>
+                  <span><img src="./images/atoms-v1/c_1/example-1-982.png" alt="c:1 atom snapshot"><b>c:1</b></span>
+                </div>
+                <img class="constraint-trace" src="./images/snapshots/constraints/bc-img3-m100-p1-trace.png" alt="Joined trace example for b:1 followed by c:1">
+              </article>
+              <article>
+                <div class="constraint-pair">
+                  <span><img src="./images/atoms-v1/m_1/example-1-3031.png" alt="m:1 atom snapshot"><b>m:1</b></span>
+                  <i aria-hidden="true">→</i>
+                  <span><img src="./images/atoms-v1/c_1/example-1-982.png" alt="c:1 atom snapshot"><b>c:1</b></span>
+                </div>
+                <img class="constraint-trace" src="./images/snapshots/constraints/mc-img3-m18-p2-trace.png" alt="Joined trace example for m:1 followed by c:1">
+              </article>
+            </div>
+            <p>Some neighboring components repeatedly appear in the same order across the corpus.</p>
+          </article>
         </div>
       </section>
 
@@ -61,35 +235,155 @@
       <section id="tested" class="section tested-section">
         <div class="section-heading">
           <p class="eyebrow">What is being tested</p>
-          <h2>A representation claim, not a translation claim.</h2>
+          <h2>One manuscript. Two ways of<br>seeing its structure.</h2>
         </div>
-        <div class="tested-grid">
-          <article>
-            <span>ATOMS-V1</span>
+        <div class="tested-lab">
+          <article class="representation-card">
+            <span class="tested-label">ATOMS-V1</span>
             <h3>Physical stroke labels</h3>
-            <p>A fixed inventory used to encode hand-labeled visible components exported from DatasetCreator.</p>
+            <p>The manuscript is decomposed into recurring, hand-labeled visual components, preserving structure beneath the conventional glyph level.</p>
+            <figure class="tested-word-image">
+              <img src="./images/snapshots/tested/img3-m1-atoms-trace-black-tight.svg" alt="ATOMS trace-only rendering for img3-m1, matched to EVA fachys">
+              <figcaption>ATOMS trace</figcaption>
+            </figure>
+            <div class="atoms-mini-row" aria-label="Five particles in the first manuscript molecule">
+              <span><img src="./images/snapshots/tested/particles-img3-m1/particle-1.svg" alt="Particle 1: a:1 b:1 c:1 a:1 b:1 d:1"><b>particle 1</b></span>
+              <span><img src="./images/snapshots/tested/particles-img3-m1/particle-4.svg" alt="Particle 4: e:1 f:1"><b>particle 4</b></span>
+              <span><img src="./images/snapshots/tested/particles-img3-m1/particle-5.svg" alt="Particle 5: e:1 g:1 e:1"><b>particle 5</b></span>
+              <span><img src="./images/snapshots/tested/particles-img3-m1/particle-3.svg" alt="Particle 3: e:1 h:1"><b>particle 3</b></span>
+              <span><img src="./images/snapshots/tested/particles-img3-m1/particle-2.svg" alt="Particle 2: f:1 i:1 d:1"><b>particle 2</b></span>
+            </div>
           </article>
-          <article>
-            <span>EVA</span>
-            <h3>Conventional transcription baseline</h3>
-            <p>The comparison target: a standard Voynichese transcription representation over matched regions where possible.</p>
-          </article>
-          <article>
-            <span>Question</span>
+
+          <article class="test-core">
+            <span class="tested-label">Matched protocol</span>
             <h3>Which representation preserves more transferable structure?</h3>
-            <p>The portal reports entropy, local-context prediction, alignment, null controls, ablations, and audit status.</p>
+            <div class="test-protocol">
+              <span>Learn from known folios</span>
+              <span>Freeze the rules</span>
+              <span>Test on unseen folios</span>
+            </div>
+            <figure class="tested-word-image tested-source-image">
+              <figcaption class="tested-region-label">Same manuscript region</figcaption>
+              <div class="tested-source-frame">
+                <img src="./images/snapshots/tested/img3-m1-original.png" alt="Original manuscript crop for img3-m1, matched to EVA fachys">
+              </div>
+              <figcaption>encoded as</figcaption>
+            </figure>
+          </article>
+
+          <article class="representation-card">
+            <span class="tested-label">EVA</span>
+            <h3>Standard transcription baseline</h3>
+            <p>The conventional Voynich transcription provides a standard reference for testing the same matched manuscript regions.</p>
+            <div class="eva-word" aria-label="Latin EVA transcription sample">fachys</div>
+            <p class="eva-word-caption">EVA transcription</p>
+            <div class="eva-char-row" aria-label="Voynich EVA glyphs for fachys">
+              <span title="EVA f / ASCII 102">f</span>
+              <span title="EVA a / ASCII 97">a</span>
+              <span title="EVA c / ASCII 99">c</span>
+              <span title="EVA h / ASCII 104">h</span>
+              <span title="EVA y / ASCII 121">y</span>
+              <span title="EVA s / ASCII 115">s</span>
+            </div>
           </article>
         </div>
+        <p class="tested-bottom-line">A useful representation should continue predicting structure beyond the pages it learned from.</p>
       </section>
 
       <!-- CORPUS V2 -->
       <section id="corpus-v2" class="section corpus-v2-section">
         <div class="section-heading">
-          <p class="eyebrow">Corpus V2 Audited</p>
-          <h2>Human-label cleanup did not erase the ATOMS signal.</h2>
+          <p class="eyebrow">Corpus V2 · current frozen release</p>
+          <h2>A cleaner corpus. The same structural signal.</h2>
+          <p>Corpus V2 revisited the first six labeled folios, corrected documented annotation problems, and replayed the full analysis from the revised data.</p>
         </div>
-        <div class="corpus-v2-grid" id="corpus-v2-grid"></div>
-        <div class="corpus-links" id="corpus-v2-links"></div>
+
+        <div class="corpus-story">
+          <article class="corpus-audit-panel">
+            <div class="corpus-panel-kicker"><span>01</span><strong>What changed from V1?</strong></div>
+            <h3>The data was reviewed where manual annotation is most vulnerable.</h3>
+            <div class="audit-lanes">
+              <div>
+                <span class="audit-icon">Aa</span>
+                <strong>Atom labels</strong>
+                <p>Questionable labels were visually reviewed against the original stroke.</p>
+              </div>
+              <div>
+                <span class="audit-icon">↔</span>
+                <strong>Particle order</strong>
+                <p>Unusual particle and molecule sequences were checked instead of silently normalized.</p>
+              </div>
+              <div>
+                <span class="audit-icon">↻</span>
+                <strong>Learned memory</strong>
+                <p>One stale pattern left by a temporary segmentation state was removed before replay.</p>
+              </div>
+            </div>
+            <div class="audit-ledger" aria-label="Corpus V2 audit ledger summary">
+              <span><strong>82</strong> QC decisions reviewed</span>
+              <span><strong>1</strong> atom relabeled</span>
+              <span><strong>2</strong> artifacts recorded</span>
+              <span><strong>0</strong> candidates pending under V2 gates</span>
+            </div>
+          </article>
+
+          <article class="corpus-result-story">
+            <div class="corpus-panel-kicker"><span>02</span><strong>What survived the audit?</strong></div>
+            <h3>ATOMS still places its units more consistently than EVA.</h3>
+            <p class="result-explainer"><strong>Positional entropy</strong> measures how uncertain a unit's role is across a structure. Lower is more regular and more predictable.</p>
+            <div class="entropy-comparison" aria-label="Weighted positional entropy comparison">
+              <div class="entropy-row atoms">
+                <div class="entropy-label"><span>ATOMS-V1</span><strong>0.5409</strong></div>
+                <div class="entropy-track"><i style="width:54.09%"></i></div>
+                <small>physical stroke units</small>
+              </div>
+              <div class="entropy-row eva">
+                <div class="entropy-label"><span>EVA</span><strong>0.7688</strong></div>
+                <div class="entropy-track"><i style="width:76.88%"></i></div>
+                <small>conventional transcription units</small>
+              </div>
+            </div>
+            <div class="entropy-takeaway">
+              <strong>−0.2279</strong>
+              <p>lower weighted positional entropy for ATOMS across the combined six-folio corpus.</p>
+            </div>
+          </article>
+
+          <div class="corpus-evidence-row">
+            <article>
+              <span>Coverage</span>
+              <strong>6 folios</strong>
+              <p>639 ATOMS units compared with 660 EVA units using the same corpus-level protocol.</p>
+            </article>
+            <article>
+              <span>Visual consistency</span>
+              <strong>97.85%</strong>
+              <p>5-nearest-neighbor accuracy: most atom families can be recovered from visual morphology alone.</p>
+            </article>
+            <article>
+              <span>Cross-page result</span>
+              <strong>6 of 6</strong>
+              <p>ATOMS has lower weighted positional entropy than EVA on every folio included in V2.</p>
+            </article>
+          </div>
+
+          <aside class="corpus-v3-note">
+            <div class="v3-mark">V3</div>
+            <div>
+              <span>What “frozen” means</span>
+              <h3>Reproducible does not mean perfect.</h3>
+              <p>Corpus V2 is the current traceable reference: its data, decisions, reports, and checksums are preserved exactly. Newly detected annotation issues are not rewritten into this historical release; they will feed a broader visual audit and the future <span class="keep-together">Corpus V3.</span></p>
+            </div>
+          </aside>
+
+          <nav class="corpus-links" aria-label="Corpus V2 scientific artifacts">
+            <a href="https://github.com/HydraRosario/VoynichLab/tree/main/research/frozen/CORPUS-V2-AUDITED"><span>Explore</span>Frozen corpus</a>
+            <a href="https://github.com/HydraRosario/VoynichLab/blob/main/research/frozen/CORPUS-V2-AUDITED/reports/CEO-FINAL-CORPUS-V2-REPORT.md"><span>Read</span>Scientific report</a>
+            <a href="https://github.com/HydraRosario/VoynichLab/blob/main/research/frozen/CORPUS-V2-AUDITED/AUDIT-METHODOLOGY.md"><span>Inspect</span>Audit methodology</a>
+            <a href="https://github.com/HydraRosario/VoynichLab/blob/main/research/frozen/CORPUS-V2-AUDITED/checksums.txt"><span>Verify</span>Checksums</a>
+          </nav>
+        </div>
       </section>
 
       <!-- NO DECIPHERMENT -->
@@ -197,7 +491,8 @@
       <section id="research" class="section">
         <div class="section-heading">
           <p class="eyebrow">Research timeline</p>
-          <h2>A public lab notebook, including results that weakened earlier claims.</h2>
+          <h2>The research, as it actually happened.</h2>
+          <p>Every freeze, experiment, correction, replication, and unexpected result - preserved in public.</p>
         </div>
         <ol class="timeline" id="timeline-list"></ol>
       </section>
