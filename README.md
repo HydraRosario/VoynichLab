@@ -6,6 +6,18 @@ VoynichLab is an open research platform for testing stroke-level, subglyph repre
 
 VoynichLab does **not** currently claim translation, decipherment, phonetic values, semantic values, or a complete grammar of the manuscript.
 
+## Start Here
+
+| If you want to... | Open |
+|---|---|
+| Understand the project visually | [Public portal](https://voynich-lab.vercel.app/) |
+| Inspect the current frozen corpus | [Corpus V2 manifest](research/frozen/CORPUS-V2-AUDITED/MANIFEST.md) |
+| Find every corpus, model, and validation freeze | [Frozen evidence catalog](research/FROZEN-EVIDENCE.md) |
+| Browse every registered experiment | [Research registry](research-feed/experiments.json) |
+| Inspect public evidence bundles | [Public artifacts](artifacts/public/) |
+| Understand the repository architecture | [Monorepo architecture](docs/MONOREPO-ARCHITECTURE.md) |
+| Review scientific scope and limitations | [Public verifiability policy](docs/PUBLIC-VERIFIABILITY.md) |
+
 ## Current Result
 
 **CORPUS-V2-AUDITED Robustness Replay** - Outcome: **SUPPORTIVE**
@@ -23,20 +35,29 @@ After a six-folio corpus audit and replay:
 This result is a corpus-quality and robustness milestone. It does not replace the preregistered `f3r` result, and it is not proof of decipherment or global representation superiority. See the [public portal](apps/portal/) for the full experiment browser.
 ## Repository Structure
 
-```
-apps/portal/              Public static entry point (Vercel-deployed)
-apps/qc-review/           Local visual QC review app for anomaly candidates
-artifacts/public/         Versioned public experiment artifacts
-DataSetCreator/           Local visual annotator (Tauri/Rust/JS)
-EVAComparisonLab/         Entropy, morphology, snapshot, and ATOMS/EVA comparison
-GrammarDiscoveryLab/      Frozen grammar validation, null controls, alignment, representation comparisons
-packages/lab-exporter/    Research registry publisher and health checker
-paper/                    Preprint workspace (claims, outline, figures)
-research-feed/            Canonical experiment registry (JSON + schemas)
-research/corpus-revisions Corpus correction ledgers and audit methodology
-research/preregistrations Preregistered protocols
-TranslationLab/           Experimental hypothesis space (separate from validated claims)
-```
+The root separates products, laboratories, the scientific record, published
+artifacts, and repository infrastructure. For the canonical map of all corpus
+and model freezes, start at
+[research/FROZEN-EVIDENCE.md](research/FROZEN-EVIDENCE.md).
+
+| Zone | Path | Role |
+|---|---|---|
+| Public interface | `apps/portal/` | Static public portal generated from selected evidence |
+| Internal interface | `apps/qc-review/` | Maintainer-only anomaly review surface |
+| Annotation product | `DataSetCreator/` | Local Tauri application for creating ATOMS annotations |
+| Active laboratory | `EVAComparisonLab/` | Corpus audit, morphology, entropy, and ATOMS/EVA comparison |
+| Active laboratory | `GrammarDiscoveryLab/` | Frozen-family validation, controls, alignment, and representation tests |
+| Scientific record | `research/` | Audits, preregistrations, correction work, and frozen releases |
+| Public evidence | `artifacts/public/` | One inspectable bundle per registered experiment |
+| Public registry | `research-feed/` | Experiments, milestones, releases, and curated evidence cases |
+| Shared infrastructure | `packages/` | Export, validation, build, and repository guardrails |
+| Working context | `paper/` | Claims, figures, literature, and possible future publications |
+| Governance | `docs/` | Architecture, safety, deployment, and repository policy |
+| Isolated hypothesis space | `TranslationLab/` | Early speculative work; not part of the validated public evidence pipeline |
+
+Historical V1 and GRAMMAR-V1 freezes remain inside the labs that published
+them. They are indexed centrally under `research/`; from Corpus V3 onward, all
+new corpus freezes belong in `research/frozen/`.
 
 For source/evidence/scratch boundaries and safe monorepo handling, see
 [REPOSITORY-GOVERNANCE.md](REPOSITORY-GOVERNANCE.md) and
@@ -93,8 +114,10 @@ npm.cmd run null-control:v3:diagnostics
 npm.cmd run representation-alignment:v1
 npm.cmd run representation-comparison:v2-regions
 npm.cmd run representation-comparison:v3-ablations
-npm.cmd run prospective-atoms-eva:test -- --preflight
-npm.cmd run prospective-atoms-eva:test -- --confirm-complete
+npm.cmd run prospective-atoms-eva:verify-release
+
+cd ../EVAComparisonLab
+npm.cmd run corpus:v2
 ```
 
 ## Public Milestones

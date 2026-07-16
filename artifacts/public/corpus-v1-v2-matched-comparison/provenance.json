@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "1.0",
+  "generatedAt": "2026-07-16T11:36:06.113Z",
+  "sourceScript": "EVAComparisonLab/scripts/run-corpus-v1-v2-matched-comparison.js",
+  "command": "node EVAComparisonLab/scripts/run-corpus-v1-v2-matched-comparison.js",
+  "inputs": [
+    {
+      "path": "EVAComparisonLab/frozen/VOYNICHLAB-V1-FROZEN-2026-07-13/datasetcreator-v1-frozen.db",
+      "sha256": "ba1dbcdafa92881bb1fe58106eceeed40f409d3f5d4e07a311b40d4b4618d4d8"
+    },
+    {
+      "path": "research/frozen/CORPUS-V2-AUDITED/corpus/atoms.tsv",
+      "sha256": "50c58e05040e6a56b1a68dc2ac8d7e7cb9a50933b1d6af0c3687d74101b30d4f"
+    },
+    {
+      "path": "EVAComparisonLab/scripts/export-datasetcreator-atoms.js",
+      "sha256": "073d1dde06c1d115895d525afeb9743d1565fdb7bdff63b9dff08a40a8cd73a1"
+    },
+    {
+      "path": "EVAComparisonLab/scripts/role-entropy.js",
+      "sha256": "78382e5285ca0c1bd3ab8676a881ffa948f75cf348f36f27ab91aef0437e9013"
+    }
+  ],
+  "scope": {
+    "folios": [
+      "f1r",
+      "f1v",
+      "f47v"
+    ],
+    "pages": [
+      "page-003.jpg",
+      "page-004.jpg",
+      "page-094.jpg"
+    ]
+  }
+}

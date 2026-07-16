@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 import {
   cleanToken,
@@ -11,6 +12,8 @@ import {
 } from "./atom-sequence-utils.js";
 
 const args = parseArgs(process.argv.slice(2));
+const scriptDir = path.dirname(fileURLToPath(import.meta.url));
+const repoRoot = path.resolve(scriptDir, "..", "..");
 
 if (args.help) {
   printHelp();
@@ -21,13 +24,17 @@ const images = String(args.images ?? "page-003.jpg,page-004.jpg,page-005.jpg,pag
   .split(",")
   .map((value) => value.trim())
   .filter(Boolean);
-const outDir = path.resolve(args.out_dir ?? "research/audits/particle-geometry-order-current");
+const outDir = args.out_dir
+  ? path.resolve(args.out_dir)
+  : path.join(repoRoot, "research/audits/particle-geometry-order-current");
 const minParticles = Number(args.min_particles ?? 2);
 const inversionTolerance = Number(args.inversion_tolerance ?? 8);
 const verticalTolerance = Number(args.vertical_tolerance ?? 42);
 const nOverEgeConvention = optionEnabled(args, "n_over_ege_convention", true);
 const includeTokenEquivalent = Boolean(args.include_token_equivalent ?? args["include-token-equivalent"]);
-const knownAnomaliesPath = path.resolve(args.known_anomalies ?? "cases/known-particle-geometry-anomalies.tsv");
+const knownAnomaliesPath = args.known_anomalies
+  ? path.resolve(args.known_anomalies)
+  : path.join(repoRoot, "research/audits/known-particle-geometry-anomalies.tsv");
 const knownAnomalies = readKnownAnomalies(knownAnomaliesPath);
 
 const db = openDatasetDb(args.db ?? defaultDatasetCreatorDbPath());

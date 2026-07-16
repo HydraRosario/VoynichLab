@@ -3,7 +3,7 @@ const path = require("path");
 
 const snapshotRoot = path.join("EVAComparisonLab", "artifacts", "visual-snapshots", "current", "atoms");
 const outRoot = path.join("apps", "portal", "images", "atoms-v1");
-const dataPath = path.join("apps", "portal", "data", "atoms-v1.json");
+const dataPath = path.join("apps", "portal", "source-data", "atoms-v1.json");
 const sampleCount = 48;
 
 function walk(dir) {

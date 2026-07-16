@@ -117,12 +117,17 @@ Root `cases/known-labeling-anomalies.tsv` is used by the Corpus V2 freeze/proven
 - `EVAComparisonLab/scripts/freeze-corpus-audit.js`
 - `EVAComparisonLab/README.md`
 - `EVAComparisonLab/docs/ALPHABET-V1-LABELING-MANUAL.md`
-- `evidence-cases.json`
+- `research-feed/evidence-cases.json` (migrated from root after this audit)
 - `apps/portal/data/evidence-cases.json`
 
 This was the most important repo-architecture issue found in this pass. The fix could not be a blind merge because some entries referred to the same atom windows with different statuses or historical notes.
 
 Resolution: the active current-corpus ledger now lives at `research/audits/known-labeling-anomalies.tsv`, with explicit scope, image, molecule, particle, source, and review-date columns. Historical frozen ledgers remain only inside frozen releases.
+
+Follow-up resolution: the shared particle-geometry ledger was also moved to
+`research/audits/known-particle-geometry-anomalies.tsv`, and curated portal
+cases moved from the root to `research-feed/evidence-cases.json`. The paths
+listed above describe the repository state at the time of this audit.
 
 ### P1: Lab Scripts Needed Classification
 
@@ -198,7 +203,7 @@ In particular, the following were intentionally left untouched:
 
 Goal: one source of truth for reviewed anomalies.
 
-Status: started. The current labeling ledger is now canonicalized at `research/audits/known-labeling-anomalies.tsv`; geometry-order anomalies already live in shared `cases/known-particle-geometry-anomalies.tsv`.
+Status: completed. Labeling and geometry-order ledgers are canonicalized under `research/audits/`. The geometry ledger originally lived under root `cases/` and was migrated after the Corpus V2 freeze; the historical tag preserves its original path.
 
 Steps:
 

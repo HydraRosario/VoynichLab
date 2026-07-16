@@ -150,7 +150,19 @@ npm.cmd run representation-alignment:v1
 npm.cmd run representation-comparison:v2-regions
 npm.cmd run representation-comparison:v2-question
 npm.cmd run representation-comparison:v3-ablations
+npm.cmd run prospective-atoms-eva:verify-release
 ```
+
+`prospective-atoms-eva:verify-release` is the historical release verifier. It
+checks the preregistration at its preregistration tag, validates every file in
+the published artifact bundle, and recomputes the published primary metrics
+from the frozen result tables. It does not rerun the completed folio against
+the current DatasetCreator database.
+
+The original `prospective-atoms-eva:test -- --confirm-complete` command is the
+completion-time runner. It is preserved for provenance, but it is not a current
+replay command: its guardrails intentionally reject preregistration drift and
+current live-corpus inputs.
 
 These commands are useful for maintainers and technical reviewers already
 working inside the repository environment. Clean-clone certification for the

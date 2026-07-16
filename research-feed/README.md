@@ -10,6 +10,7 @@ It is the content source for the public portal. Git keeps the scientific truth; 
 experiments.json          Published experiment index.
 milestones.json           Chronological research timeline.
 releases.json             Tag and release anchor index.
+evidence-cases.json       Curated evidence cases rendered by the public portal.
 schema/*.schema.json      Public JSON schemas.
 ```
 
@@ -27,6 +28,12 @@ superseded
 ```
 
 Negative results are first-class scientific results. They should remain visible in the portal.
+
+Timeline milestones and releases are intentionally different. A published
+scientific event may enter `milestones.json` without receiving a dedicated Git
+tag; in that case `tag` and `commit` are `null`, and the milestone must link to
+its public record. Every entry in `releases.json`, by contrast, is a real tagged
+checkpoint.
 
 ## Commands
 

@@ -34,13 +34,6 @@ const outcomeExplanations = {
   superseded: "Replaced by a later version with different design.",
 };
 
-const stepTitles = [
-  ["1. Start from ink", "We begin with the physical ink strokes on the manuscript page, not with pre-segmented letters."],
-  ["2. Label repeated components", "We manually label recurring stroke shapes as ATOMS — structural labels, not letters or phonemes."],
-  ["3. Compare sequences statistically", "We compare ATOMS sequences against EVA transcriptions over the same manuscript regions using frozen metrics."],
-  ["4. Publish the evidence trail", "Reports, tables, metrics, checksums, commits, tags, and limitations are published for inspection."],
-];
-
 const noDeciphermentNotes = [
   "VoynichLab does NOT claim to have translated or deciphered the Voynich Manuscript.",
   "ATOMS are stroke labels — not letters, phonemes, or morphemes.",
@@ -49,15 +42,6 @@ const noDeciphermentNotes = [
   "All results are based on a small, single-annotator corpus.",
   "Positive results mean preregistered criteria were met, not that the hypothesis is proven.",
   "Negative and inconclusive results are published alongside supportive ones.",
-];
-
-const traceabilitySteps = [
-  ["Manuscript folio", "Physical page from the Voynich Manuscript (Yale digitization)."],
-  ["Annotated strokes", "Ink traces labeled manually in DatasetCreator with ATOMS-V1 labels."],
-  ["Sequence data", "Strokes grouped into particles, molecules, and row streams."],
-  ["Model prediction", "Local-context model evaluates held-out regions against frozen training data."],
-  ["Metrics + report", "Normalized log-loss, top-1 accuracy, unseen context, OOV."],
-  ["Commit + tag", "Every result is anchored to a specific Git commit and tag with checksums."],
 ];
 
 const evidenceCategoryIcons = {
@@ -78,6 +62,24 @@ const claimLevelLabels = {
   audit: "Audit",
   methodological: "Method",
   negative: "Negative",
+};
+
+const evidenceEditorial = {
+  "family-a-example": { order: 1, chapter: "see", question: "Do the same structures return?", type: "Visual pattern", status: "Supported finding", experimentId: "grammar-v1-f2r-validation" },
+  "atom-g1-repeated": { order: 2, chapter: "see", question: "Does one component keep the same role?", type: "Structural observation", status: "Supported finding", experimentId: "corpus-v2-audited-robustness-replay" },
+  "molecule-ege": { order: 3, chapter: "see", question: "Can a complete form recur across pages?", type: "Visual pattern", status: "Supported finding", experimentId: "corpus-v2-audited-robustness-replay" },
+  "clean-alignment-region": { order: 4, chapter: "test", question: "Can ATOMS and EVA be compared fairly?", type: "Method", status: "Method validated", experimentId: "representation-alignment-v1" },
+  "f3r-supportive-region": { order: 5, chapter: "test", question: "Does the pattern survive a new page?", type: "Prospective test", status: "Supported finding", experimentId: "prospective-atoms-eva-test-v1" },
+  "atoms-strong-win": { order: 6, chapter: "test", question: "Where does ATOMS preserve more structure?", type: "Comparison", status: "Supported finding", experimentId: "representation-comparison-v2-regions" },
+  "eva-competitive-region": { order: 7, chapter: "challenge", question: "Where does EVA remain competitive?", type: "Counterexample", status: "Limiting evidence", experimentId: "representation-comparison-v3-ablations" },
+  "known-valid-anomaly": { order: 8, chapter: "challenge", question: "Is every unusual case an error?", type: "Audit", status: "Audit correction", experimentId: "corpus-v2-audited-robustness-replay" },
+  "null-control-v2-negative": { order: 9, chapter: "challenge", question: "Could local context explain the pattern?", type: "Negative control", status: "Claim narrowed", experimentId: "null-control-v2-contextual" }
+};
+
+const evidenceChapterLabels = {
+  see: ["01", "Structural claims"],
+  test: ["02", "Methods and tests"],
+  challenge: ["03", "Limits and corrections"]
 };
 
 const registry = { experiments: [], milestones: [], releases: [], site: null, evidence: null, atoms: [], loaded: false };
@@ -152,10 +154,8 @@ const els = {
   corpusV2Grid: $("#corpus-v2-grid"),
   corpusV2Links: $("#corpus-v2-links"),
   releaseGrid: $("#release-grid"),
-  stepsContainer: $("#how-steps"),
   evidenceList: $("#evidence-list"),
   evidenceDetail: $("#evidence-detail"),
-  traceabilityList: $("#traceability-list"),
   atomInventory: $("#atom-inventory"),
   atomModal: $("#atom-modal"),
   atomModalTitle: $("#atom-modal-title"),
@@ -186,7 +186,7 @@ async function loadAll() {
 function renderTimeline() {
   els.timelineList.innerHTML = registry.milestones.map((item) => {
     const firstLink = item.links?.[0];
-    const href = firstLink ? gh(firstLink.path) : `${repoTag}/${item.tag}`;
+    const href = firstLink ? gh(firstLink.path) : item.tag ? `${repoTag}/${item.tag}` : null;
     return `<li>
       <time datetime="${html(item.date)}">${html(item.date)}</time>
       <div>
@@ -194,7 +194,7 @@ function renderTimeline() {
         <p>${html(item.summary)}</p>
         ${item.commit && item.commit !== "pending" ? `<span class="commit-ref"><a href="${repoCommit}/${html(item.commit)}">${item.commit.slice(0, 7)}</a></span>` : ""}
       </div>
-      <a href="${href}">${html(firstLink?.label || item.tag)}</a>
+      ${href ? `<a href="${href}">${html(firstLink?.label || item.tag)}</a>` : ""}
     </li>`;
   }).join("");
 }
@@ -248,32 +248,6 @@ function closeAtomDetail() {
   if (!els.atomModal) return;
   els.atomModal.classList.remove("open");
   els.atomModal.setAttribute("aria-hidden", "true");
-}
-
-function renderHowToRead() {
-  if (els.stepsContainer) {
-    els.stepsContainer.innerHTML = stepTitles.map(([title, desc], i) => `
-      <div class="step-card">
-        <span class="step-number">${i + 1}</span>
-        <h3>${html(title)}</h3>
-        <p>${html(desc)}</p>
-      </div>
-    `).join("");
-  }
-}
-
-function renderTraceability() {
-  if (els.traceabilityList) {
-    els.traceabilityList.innerHTML = traceabilitySteps.map(([step, desc]) => `
-      <div class="trace-step">
-        <span class="trace-dot"></span>
-        <div>
-          <strong>${html(step)}</strong>
-          <p>${html(desc)}</p>
-        </div>
-      </div>
-    `).join("");
-  }
 }
 
 function renderCurrentResult() {
@@ -427,8 +401,19 @@ function renderReleases() {
 
 function renderEvidence() {
   if (!registry.evidence || !els.evidenceList) return;
-  const cases = registry.evidence.cases || [];
-  els.evidenceList.innerHTML = cases.map((c) => {
+  const cases = (registry.evidence.cases || [])
+    .filter((c) => evidenceEditorial[c.id])
+    .sort((a, b) => evidenceEditorial[a.id].order - evidenceEditorial[b.id].order);
+  els.evidenceList.innerHTML = Object.keys(evidenceChapterLabels).map((chapter) => {
+    const [number, label] = evidenceChapterLabels[chapter];
+    const chapterCases = cases.filter((c) => evidenceEditorial[c.id].chapter === chapter);
+    return `<section class="evidence-chapter"><header><span>${number}</span><strong>${label}</strong></header>${chapterCases.map((c) => {
+      const editorial = evidenceEditorial[c.id];
+      return `<button type="button" class="evidence-card" data-evidence-id="${html(c.id)}" onclick="showEvidence('${html(c.id)}')"><span class="evidence-card-number">${String(editorial.order).padStart(2, "0")}</span><span class="evidence-card-copy"><strong>${html(editorial.question)}</strong><small>${html(editorial.type)} · ${html(editorial.status)}</small></span></button>`;
+    }).join("")}</section>`;
+  }).join("");
+  /*
+  cases.map((c) => {
     const icon = evidenceCategoryIcons[c.category] || "•";
     const level = c.claimLevel || c.category;
     return `<div class="evidence-card" onclick="showEvidence('${html(c.id)}')">
@@ -440,12 +425,12 @@ function renderEvidence() {
         <span class="claim-tag ${html(level)}">${html(claimLevelLabels[level] || level)}</span>
       </div>
     </div>`;
-  }).join("");
+  }).join(""); */
 
   if (cases.length > 0) showEvidence(cases[0].id);
 }
 
-window.showEvidence = function(id) {
+function renderLegacyEvidenceDetail(id) {
   const c = registry.evidence?.cases?.find((x) => x.id === id);
   if (!c || !els.evidenceDetail) return;
   els.evidenceDetail.innerHTML = `<button class="modal-close" onclick="document.getElementById('evidence-detail').innerHTML='<p>Select a case</p>'">✕</button>
@@ -466,26 +451,54 @@ window.showEvidence = function(id) {
     ${c.slotExplanation ? `<p class="evidence-note">Slot: ${html(c.slotExplanation)}</p>` : ""}
     <ul>${(c.highlights || []).map((h) => `<li>${html(h)}</li>`).join("")}</ul>
     ${c.reportLinks ? `<div class="source-links">${c.reportLinks.map((l) => `<a href="${gh(l.path)}">${html(l.label)}</a>`).join("")}</div>` : ""}`;
-};
-
-function renderNegativeResults() {
-  const negatives = registry.experiments.filter((e) => e.outcome === "negative" || e.outcome === "inconclusive");
-  const container = document.getElementById("negative-cards");
-  if (!container) return;
-  container.innerHTML = negatives.map((e) => `
-    <div class="negative-card">
-      <span class="outcome ${html(e.outcome)}">${html(outcomeLabel(e.outcome))}</span>
-      <h3>${html(e.title)}</h3>
-      <p>${html(e.result)}</p>
-      <div class="source-links">
-        <a href="${gh(e.reportPath)}">Report</a>
-        ${e.tag ? `<a href="${repoTag}/${html(e.tag)}">Tag</a>` : ""}
-      </div>
-    </div>
-  `).join("");
 }
 
+window.showEvidence = function(id) {
+  const c = registry.evidence?.cases?.find((item) => item.id === id);
+  const editorial = evidenceEditorial[id];
+  if (!c || !editorial || !els.evidenceDetail) return;
+  $$(".evidence-card").forEach((card) => card.classList.toggle("active", card.dataset.evidenceId === id));
+  const metricVisual = Number.isFinite(c.atomsLogLoss) && Number.isFinite(c.evaLogLoss) ? `<div class="evidence-metric-visual">
+    <div><span>ATOMS</span><i style="width:${Math.min(c.atomsLogLoss * 100, 100)}%"></i><strong>${html(c.atomsLogLoss)}</strong></div>
+    <div><span>EVA</span><i style="width:${Math.min(c.evaLogLoss * 100, 100)}%"></i><strong>${html(c.evaLogLoss)}</strong></div>
+    <small>Normalized log-loss · lower is better</small>
+  </div>` : "";
+  els.evidenceDetail.innerHTML = `<div class="evidence-detail-head"><div><span><small>Evidence type</small>${html(editorial.type)}</span><span class="evidence-status"><small>Current status</small>${html(editorial.status)}</span></div><p>Evidence case ${editorial.order} of 9</p></div>
+    <p class="evidence-detail-question">The question</p>
+    <h3>${html(editorial.question)}</h3>
+    <p class="evidence-summary">${html(c.summary)}</p>
+    ${(c.atomsSequence || c.evaToken) ? `<div class="evidence-observation"><span>What we inspected</span>${c.atomsSequence ? `<p><b>ATOMS</b><code>${html(c.atomsSequence)}</code></p>` : ""}${c.evaToken ? `<p><b>EVA</b><code>${html(c.evaToken)}</code></p>` : ""}${c.folio ? `<small>Manuscript side ${html(c.folio)}</small>` : ""}</div>` : ""}
+    ${metricVisual}
+    <div class="evidence-conclusion-grid"><div><span>What this supports</span><p>${html(c.shows)}</p></div><div><span>What remains open</span><p>${html(c.doesNotShow)}</p></div></div>
+    <div class="evidence-findings"><span>Observed findings</span><ul>${(c.highlights || []).map((highlight) => `<li>${html(highlight)}</li>`).join("")}</ul></div>
+    <div class="evidence-record"><div><span>Evidence trail</span><p>${html(c.verification)}</p></div><div class="evidence-trail">${(c.reportLinks || []).map((link) => `<a href="${gh(link.path)}"><small>Source record</small><strong>${html(link.label)}</strong><i>↗</i></a>`).join("")}<button type="button" onclick="openEvidenceExperiment('${html(editorial.experimentId)}')"><small>Connected test</small><strong>Open experiment</strong><i>↓</i></button></div></div>
+    <button type="button" class="evidence-experiment-link" onclick="openEvidenceExperiment('${html(editorial.experimentId)}')">See how this observation was tested →</button>`;
+};
+
+window.openEvidenceExperiment = function(id) {
+  if (!els.experimentSelect || !registry.experiments.some((experiment) => experiment.id === id)) return;
+  els.experimentSelect.value = id;
+  renderExperiment();
+  document.getElementById("experiments")?.scrollIntoView({ behavior: "smooth", block: "start" });
+};
+
 /* ===== BOOT ===== */
+const main = document.querySelector("main");
+const narrativeOrder = [
+  document.getElementById("tested"),
+  document.getElementById("tools"),
+  document.getElementById("corpus-v2"),
+  document.querySelector(".no-decipherment"),
+  document.getElementById("evidence"),
+  document.getElementById("experiments"),
+  document.getElementById("lifecycle"),
+  document.getElementById("research"),
+  document.getElementById("timeline"),
+  document.getElementById("releases"),
+  document.getElementById("reproduce")
+];
+if (main && narrativeOrder.every(Boolean)) narrativeOrder.forEach((section) => main.append(section));
+
 initAnchorNavigation();
 els.experimentSelect?.addEventListener("change", renderExperiment);
 document.querySelectorAll("[data-close-atom-modal]").forEach((element) => element.addEventListener("click", closeAtomDetail));
@@ -493,8 +506,6 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") closeAtomDetail();
 });
 
-renderHowToRead();
-renderTraceability();
 renderNoDecipherment();
 
 loadAll().then(() => {
@@ -505,7 +516,6 @@ loadAll().then(() => {
   renderExperimentOptions();
   renderReleases();
   renderEvidence();
-  renderNegativeResults();
 }).catch((err) => {
   els.currentTitle.textContent = "Registry unavailable";
   els.currentCaption.textContent = err.message;

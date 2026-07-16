@@ -28,6 +28,12 @@ Every top-level directory must belong to exactly one architectural zone.
 | Manuscript/paper workspace | `paper/` | Claims, outline, figures, literature, preprint material | Commit intentional writing; no generated scratch |
 | Governance docs | `docs/`, `REPOSITORY-GOVERNANCE.md` | Operating rules for humans and agents | Keep short enough to be read before changes |
 
+Canonical discovery for frozen evidence lives in
+`research/FROZEN-EVIDENCE.md` and `research/frozen-evidence.json`. Historical
+freezes inside individual labs retain their published paths; they must not be
+moved solely to normalize the directory tree. All new corpus freezes beginning
+with Corpus V3 belong under `research/frozen/`.
+
 ## Dependency Direction
 
 Dependencies should flow in one direction:
@@ -181,18 +187,11 @@ Rules:
 - Reviewed decisions should be consolidated into canonical ledgers under
   `research/audits` or a future corpus freeze.
 
-### Root `cases/`
+### Shared audit ledgers
 
-This directory should not grow.
-
-Allowed:
-
-- tiny canonical anomaly ledgers used by multiple labs.
-
-Preferred future:
-
-- move shared anomaly ledgers into `research/audits/` or
-  `research/frozen/<release>/` once references are updated.
+Canonical cross-lab anomaly ledgers live in `research/audits/`. Root `cases/`
+is retired and must not be recreated. Lab-local `cases/` directories remain
+valid for stable experiment inputs and ignored `*-current` replay output.
 
 ## Naming Rules
 

@@ -19,9 +19,7 @@
         <a href="#corpus-v2">Corpus V2</a>
         <a href="#evidence">Evidence</a>
         <a href="#experiments">Experiments</a>
-        <a href="#research">Timeline</a>
-        <a href="#verify">Verify</a>
-        <a href="#repository">Repository</a>
+        <a href="#timeline">Timeline</a>
         <a href="#releases">Releases</a>
       </nav>
     </header>
@@ -295,43 +293,51 @@
       <section id="corpus-v2" class="section corpus-v2-section">
         <div class="section-heading">
           <p class="eyebrow">Corpus V2 · current frozen release</p>
-          <h2>A cleaner corpus. The same structural signal.</h2>
-          <p>Corpus V2 revisited the first six labeled folios, corrected documented annotation problems, and replayed the full analysis from the revised data.</p>
+          <h2>The same six pages, reviewed a second time.</h2>
+          <p>Corpus V1 was our first structured map of the manuscript. Corpus V2 revisits that map, corrects documented annotation mistakes, and asks whether the original result still holds.</p>
         </div>
 
         <div class="corpus-story">
+          <div class="corpus-primer">
+            <span>What is a corpus?</span>
+            <p>For this project, a corpus is the research dataset built from manuscript images: labeled strokes, the particles they form, their order on the page, and the sequences used in experiments.</p>
+          </div>
           <article class="corpus-audit-panel">
-            <div class="corpus-panel-kicker"><span>01</span><strong>What changed from V1?</strong></div>
-            <h3>The data was reviewed where manual annotation is most vulnerable.</h3>
+            <div class="corpus-panel-kicker"><span>01</span><strong>Annotation audit</strong></div>
+            <h3>First, we checked the human decisions.</h3>
+            <p class="audit-intro">ATOMS labels are drawn by hand. That makes visual judgment essential—and human error possible.</p>
+            <div class="qc-definition">
+              <strong>What QC means here</strong>
+              <p>Quality control (QC) is the visual review of an annotation against the original manuscript image. Reviewers confirm the decision or record a correction.</p>
+            </div>
             <div class="audit-lanes">
               <div>
-                <span class="audit-icon">Aa</span>
-                <strong>Atom labels</strong>
-                <p>Questionable labels were visually reviewed against the original stroke.</p>
+                <span class="audit-icon">01</span>
+                <strong>We searched for unusual cases.</strong>
+                <p>Our Atlas is an audit tool that groups repeated ATOMS patterns and highlights rare exceptions that may deserve review.</p>
               </div>
               <div>
-                <span class="audit-icon">↔</span>
-                <strong>Particle order</strong>
-                <p>Unusual particle and molecule sequences were checked instead of silently normalized.</p>
+                <span class="audit-icon">02</span>
+                <strong>We traced each exception back to the molecule.</strong>
+                <p>Each rare pattern was opened inside its labeled molecule so we could inspect the atoms, particles, and assigned order together.</p>
               </div>
               <div>
-                <span class="audit-icon">↻</span>
-                <strong>Learned memory</strong>
-                <p>One stale pattern left by a temporary segmentation state was removed before replay.</p>
+                <span class="audit-icon">03</span>
+                <strong>We separated real variation from labeling error.</strong>
+                <p>Some unusual structures were valid. Others revealed human mistakes in how the molecule had been labeled.</p>
               </div>
             </div>
-            <div class="audit-ledger" aria-label="Corpus V2 audit ledger summary">
-              <span><strong>82</strong> QC decisions reviewed</span>
-              <span><strong>1</strong> atom relabeled</span>
-              <span><strong>2</strong> artifacts recorded</span>
-              <span><strong>0</strong> candidates pending under V2 gates</span>
+            <div class="audit-outcome">
+              <strong>82</strong>
+              <div><span>QC decisions reviewed</span><p>Each decision is preserved in the audit record, including confirmations and corrections.</p></div>
             </div>
           </article>
 
           <article class="corpus-result-story">
-            <div class="corpus-panel-kicker"><span>02</span><strong>What survived the audit?</strong></div>
-            <h3>ATOMS still places its units more consistently than EVA.</h3>
-            <p class="result-explainer"><strong>Positional entropy</strong> measures how uncertain a unit's role is across a structure. Lower is more regular and more predictable.</p>
+            <div class="corpus-panel-kicker"><span>02</span><strong>Replayed results</strong></div>
+            <h3>Then, we ran the same comparison again.</h3>
+            <p class="signal-intro">The audit found real human labeling errors. After correcting them, the shared V1–V2 pages became slightly more regular, and the main ATOMS result remained intact.</p>
+            <div class="result-explainer"><strong>How to read this chart</strong><p>Positional entropy measures how much units move between structural roles. A shorter bar means a more regular, predictable pattern.</p></div>
             <div class="entropy-comparison" aria-label="Weighted positional entropy comparison">
               <div class="entropy-row atoms">
                 <div class="entropy-label"><span>ATOMS-V1</span><strong>0.5409</strong></div>
@@ -346,7 +352,7 @@
             </div>
             <div class="entropy-takeaway">
               <strong>−0.2279</strong>
-              <p>lower weighted positional entropy for ATOMS across the combined six-folio corpus.</p>
+              <p><strong>The audit slightly reduced noise in the matched V1–V2 pages.</strong> Across the complete six-folio Corpus V2, ATOMS showed lower positional entropy than EVA.</p>
             </div>
           </article>
 
@@ -354,26 +360,29 @@
             <article>
               <span>Coverage</span>
               <strong>6 folios</strong>
-              <p>639 ATOMS units compared with 660 EVA units using the same corpus-level protocol.</p>
+              <p>V2 studies six photographed sides of the manuscript: the front and back of its first two leaves, the front of the third, and the back of leaf 47. Researchers identify these pages as <b>f1r, f1v, f2r, f2v, f3r, and f47v</b>.</p>
+              <p class="evidence-definition">On those pages, we compared 639 complete forms segmented from the ink with 660 units recorded by EVA, the conventional written transcription of the Voynich text.</p>
             </article>
             <article>
               <span>Visual consistency</span>
               <strong>97.85%</strong>
-              <p>5-nearest-neighbor accuracy: most atom families can be recovered from visual morphology alone.</p>
+              <p>We hid the label of each stroke and compared its shape with previously labeled examples. Its five closest visual matches then voted on which ATOMS category it belonged to.</p>
+              <p class="evidence-definition">The vote recovered the human-assigned category in 97.85% of cases. This suggests that the labels usually correspond to visibly repeatable shapes—not arbitrary names.</p>
             </article>
             <article>
               <span>Cross-page result</span>
               <strong>6 of 6</strong>
-              <p>ATOMS has lower weighted positional entropy than EVA on every folio included in V2.</p>
+              <p>We tested each photographed manuscript side separately, comparing the stroke-based ATOMS representation with the conventional EVA transcription.</p>
+              <p class="evidence-definition">On every one of the six pages, ATOMS placed its units in more consistent structural positions. The result was not caused by one unusually strong page.</p>
             </article>
           </div>
 
           <aside class="corpus-v3-note">
             <div class="v3-mark">V3</div>
             <div>
-              <span>What “frozen” means</span>
-              <h3>Reproducible does not mean perfect.</h3>
-              <p>Corpus V2 is the current traceable reference: its data, decisions, reports, and checksums are preserved exactly. Newly detected annotation issues are not rewritten into this historical release; they will feed a broader visual audit and the future <span class="keep-together">Corpus V3.</span></p>
+              <span>Future corrections</span>
+              <h3>Like Corpus V1 before it, Corpus V2 remains unchanged after publication.</h3>
+              <p>Published corpus versions are preserved as part of the research record. Newly identified issues are documented and reserved for the next release. Corpus V3 will extend the audit and provide the reviewed dataset for the next round of experiments.</p>
             </div>
           </aside>
 
@@ -386,70 +395,27 @@
         </div>
       </section>
 
-      <!-- NO DECIPHERMENT -->
+      <!-- SCIENTIFIC BOUNDARIES -->
       <section class="no-decipherment">
         <div class="decipherment-banner">
+          <p class="eyebrow">Scientific boundaries</p>
           <h2>No decipherment claimed</h2>
           <ul id="no-decipherment-list"></ul>
         </div>
       </section>
 
-      <!-- VERIFIABILITY -->
-      <section id="verify" class="section verify-section">
-        <div class="section-heading">
-          <p class="eyebrow">Public verifiability</p>
-          <h2>What can be inspected today, and what is not promised yet.</h2>
-        </div>
-        <div class="verify-grid">
-          <article class="verify-card">
-            <span>Level 1</span>
-            <h3>Publicly inspectable</h3>
-            <p>Reports, tables, metrics, manifests, checksums, registry JSON, commits, and tags are exposed through the repository and this portal.</p>
-          </article>
-          <article class="verify-card">
-            <span>Level 2</span>
-            <h3>Maintainer replay</h3>
-            <p>Repository commands are used by maintainers to rebuild or validate current artifacts in the known project environment.</p>
-          </article>
-          <article class="verify-card caution">
-            <span>Level 3</span>
-            <h3>Clean-clone certification pending</h3>
-            <p>The full repository is not yet advertised as a guaranteed clone-and-run package for external reviewers.</p>
-          </article>
-        </div>
-      </section>
-
-      <!-- HOW TO READ -->
-      <section id="howto" class="section">
-        <div class="section-heading">
-          <p class="eyebrow">How to read this</p>
-          <h2>Four steps: from ink to a public evidence trail.</h2>
-        </div>
-        <div class="steps-grid" id="how-steps"></div>
-        <div class="not-claim">
-          <p><strong>What this is not:</strong> Not a translation. Not phonetics. Not proof of language. Not a replacement for paleography.</p>
-        </div>
-      </section>
-
-      <!-- TRACEABILITY -->
-      <section class="section traceability-section">
-        <div class="section-heading">
-          <p class="eyebrow">Traceability chain</p>
-          <h2>Every result links back to the original ink stroke.</h2>
-        </div>
-        <div class="trace-chain" id="traceability-list"></div>
-      </section>
-
       <!-- EVIDENCE BROWSER -->
       <section id="evidence" class="section evidence-section">
-        <div class="section-heading">
-          <p class="eyebrow">Evidence browser</p>
-          <h2>Ten curated cases that explain the research.</h2>
+        <div class="evidence-intro">
+          <div>
+            <p class="eyebrow">Evidence browser</p>
+            <h2>Claims are only as strong as their evidence.</h2>
+          </div>
+          <p><strong>A research claim is a statement backed by a named experiment, a frozen corpus, and inspectable evidence.</strong> These nine cases show both the evidence and the limits behind the current public record.</p>
         </div>
-        <p class="atlas-note">Each case shows a specific observation: a grammar pattern, a model comparison, a negative control, or a hypothesis seed.</p>
         <div class="evidence-layout">
-          <aside class="evidence-list" id="evidence-list"></aside>
-          <article class="evidence-detail" id="evidence-detail"><p>Select a case</p></article>
+          <div class="evidence-index"><p>Public research record</p><nav class="evidence-list" id="evidence-list" aria-label="Curated evidence cases"></nav></div>
+          <article class="evidence-detail" id="evidence-detail" aria-live="polite"><p>Select a case</p></article>
         </div>
       </section>
 
@@ -478,17 +444,8 @@
         </div>
       </section>
 
-      <!-- NEGATIVE RESULTS -->
-      <section class="section negative-section">
-        <div class="section-heading">
-          <p class="eyebrow">What weakened earlier claims</p>
-          <h2>Negative and inconclusive results are not hidden.</h2>
-        </div>
-        <div class="negative-grid" id="negative-cards"></div>
-      </section>
-
       <!-- RESEARCH TIMELINE -->
-      <section id="research" class="section">
+      <section id="timeline" class="section">
         <div class="section-heading">
           <p class="eyebrow">Research timeline</p>
           <h2>The research, as it actually happened.</h2>
@@ -497,86 +454,162 @@
         <ol class="timeline" id="timeline-list"></ol>
       </section>
 
-      <!-- PAPER -->
-      <section id="paper" class="section paper-section">
-        <div class="section-heading">
-          <p class="eyebrow">Paper workspace</p>
-          <h2>Claims, outline, figures, literature map, and novelty matrix.</h2>
+      <!-- LIVING RESEARCH -->
+      <section id="research" class="section research-section">
+        <div class="research-intro">
+          <div>
+            <p class="eyebrow">From evidence to research</p>
+            <h2>Every research claim must earn its place.</h2>
+          </div>
+          <p>VoynichLab separates observation, evidence, interpretation, and open questions. Nothing becomes a research claim simply because a model produced an interesting result.</p>
         </div>
-        <div class="paper-links">
-          <a href="https://github.com/HydraRosario/VoynichLab/blob/main/paper/CLAIMS.md">Claims</a>
-          <a href="https://github.com/HydraRosario/VoynichLab/blob/main/paper/OUTLINE.md">Outline</a>
-          <a href="https://github.com/HydraRosario/VoynichLab/blob/main/paper/FIGURES.md">Figures</a>
-          <a href="https://github.com/HydraRosario/VoynichLab/blob/main/paper/LITERATURE.md">Literature</a>
-          <a href="https://github.com/HydraRosario/VoynichLab/blob/main/paper/NOVELTY-MATRIX.md">Novelty matrix</a>
+        <div class="claim-ladder">
+          <article class="claim-level claim-level-established">
+            <span class="claim-level-number">01</span>
+            <div>
+              <p class="claim-status">Ready to claim</p>
+              <h3>What the experiments directly show</h3>
+              <p>Only results supported by a named experiment, a frozen corpus, and inspectable artifacts become research claims.</p>
+            </div>
+          </article>
+          <article class="claim-level claim-level-interpretation">
+            <span class="claim-level-number">02</span>
+            <div>
+              <p class="claim-status">Supported interpretation</p>
+              <h3>What those results may suggest</h3>
+              <p>Structural interpretations are presented as hypotheses supported by evidence. Their scope never exceeds the experiments that produced them.</p>
+            </div>
+          </article>
+          <article class="claim-level claim-level-open">
+            <span class="claim-level-number">03</span>
+            <div>
+              <p class="claim-status">Still open</p>
+              <h3>What requires new evidence</h3>
+              <p>Generalization, independent annotation, larger corpora, and linguistic meaning remain future research—not current conclusions.</p>
+            </div>
+          </article>
+        </div>
+        <div class="research-record">
+          <div class="research-record-copy">
+            <span>Living research record</span>
+            <p>The research remains public while it is being built. Each component can evolve without changing evidence that has already been published.</p>
+          </div>
+          <div class="research-record-group">
+            <strong>Claims</strong>
+            <a href="https://github.com/HydraRosario/VoynichLab/blob/main/paper/CLAIMS.md">Research claims</a>
+            <a href="https://github.com/HydraRosario/VoynichLab/blob/main/paper/OUTLINE.md">Research roadmap</a>
+          </div>
+          <div class="research-record-group">
+            <strong>Evidence</strong>
+            <a href="#experiments">Experiments</a>
+            <a href="https://github.com/HydraRosario/VoynichLab/blob/main/paper/FIGURES.md">Figures</a>
+            <a href="https://github.com/HydraRosario/VoynichLab/tree/main/artifacts/public">Metrics</a>
+          </div>
+          <div class="research-record-group">
+            <strong>Context</strong>
+            <a href="https://github.com/HydraRosario/VoynichLab/blob/main/paper/LITERATURE.md">Related literature</a>
+            <a href="https://github.com/HydraRosario/VoynichLab/blob/main/paper/CLAIMS.md">Open questions</a>
+            <a href="https://github.com/HydraRosario/VoynichLab/blob/main/paper/OUTLINE.md">Future work</a>
+          </div>
         </div>
       </section>
 
       <!-- TOOLS -->
-      <section id="tools" class="section">
-        <div class="section-heading">
-          <p class="eyebrow">Tools</p>
-          <h2>Four labs, one research instrument.</h2>
+      <section id="tools" class="section tools-section">
+        <div class="tools-intro">
+          <div>
+            <p class="eyebrow">Research system</p>
+            <h2>No program produces a conclusion by itself.</h2>
+          </div>
+          <p>Each stage begins with a scientific question. The software may change; the question and the evidence required to answer it remain.</p>
         </div>
-        <div class="tool-grid">
-          <article class="tool-card">
-            <h3>Dataset Creator</h3>
-            <p>Local Tauri annotator for ink traces, atoms, particles, molecules, row guides, cuts, joins, and exportable ATOMS data.</p>
-            <a href="https://github.com/HydraRosario/VoynichLab/blob/main/DataSetCreator/README.md">Open tool notes</a>
+        <div class="instrument-flow">
+          <div class="instrument-origin">
+            <span class="instrument-origin-mark"></span>
+            <div><span>Starting point</span><strong>Ink on the manuscript page</strong></div>
+          </div>
+          <article class="instrument-stage">
+            <div class="instrument-step"><span class="instrument-number">01</span><span class="instrument-role">Observe</span></div>
+            <div class="instrument-core">
+              <p class="instrument-question">Which strokes belong together?</p>
+              <p class="instrument-answer">The page remains visible while a human traces the physical ink and groups it into atoms, particles, and molecules.</p>
+            </div>
+            <div class="instrument-owner"><span>Instrument</span><h3>Dataset Creator</h3><a href="https://github.com/HydraRosario/VoynichLab/blob/main/DataSetCreator/README.md">See how annotation works</a></div>
           </article>
-          <article class="tool-card">
-            <h3>EVA Comparison Lab</h3>
-            <p>Entropy, morphology, visual snapshots, and ATOMS/EVA comparison reports from the labeled corpus.</p>
-            <a href="https://github.com/HydraRosario/VoynichLab/blob/main/artifacts/public/corpus-v2-audited-robustness-replay/report.md">View report</a>
+          <article class="instrument-stage">
+            <div class="instrument-step"><span class="instrument-number">02</span><span class="instrument-role">Audit</span></div>
+            <div class="instrument-core">
+              <p class="instrument-question">Real pattern or annotation error?</p>
+              <p class="instrument-answer">Repeated shapes are grouped, rare exceptions are surfaced, and proposed corrections are reviewed before a new corpus is published.</p>
+            </div>
+            <div class="instrument-owner"><span>Instruments</span><h3>Atlas + QC Review</h3><a href="https://github.com/HydraRosario/VoynichLab/tree/main/apps/qc-review">Inspect the audit surface</a></div>
           </article>
-          <article class="tool-card">
-            <h3>Grammar Discovery Lab</h3>
-            <p>Frozen GRAMMAR-V1 validation, null controls, alignment, representation comparisons, and ablation scripts.</p>
-            <a href="https://github.com/HydraRosario/VoynichLab/blob/main/GrammarDiscoveryLab/README.md">Inspect lab notes</a>
+          <article class="instrument-stage instrument-stage-test">
+            <div class="instrument-step"><span class="instrument-number">03</span><span class="instrument-role">Test</span></div>
+            <div class="instrument-core">
+              <p class="instrument-question">Does the structure survive a new page?</p>
+              <p class="instrument-answer">ATOMS is compared with EVA, structural rules are frozen, and predictions are tested on manuscript regions excluded from training.</p>
+            </div>
+            <div class="instrument-owner">
+              <span>Instruments</span><h3>Comparison + Grammar Labs</h3>
+              <div class="instrument-links"><a href="https://github.com/HydraRosario/VoynichLab/blob/main/artifacts/public/corpus-v2-audited-robustness-replay/report.md">Comparison report</a><a href="https://github.com/HydraRosario/VoynichLab/blob/main/GrammarDiscoveryLab/README.md">Grammar lab</a></div>
+            </div>
           </article>
-          <article class="tool-card">
-            <h3>QC Review</h3>
-            <p>Local visual audit surface for reviewing geometric anomaly candidates before promoting corrections into CORPUS-V2.</p>
-            <a href="https://github.com/HydraRosario/VoynichLab/tree/main/apps/qc-review">Inspect app</a>
-          </article>
-          <article class="tool-card caution">
-            <h3>Translation Lab</h3>
-            <p>Hypothesis space only. VoynichLab does not currently claim translation, phonetic values, or semantic decipherment.</p>
-            <a href="https://github.com/HydraRosario/VoynichLab/blob/main/TranslationLab/README.md">Inspect hypotheses</a>
-          </article>
+          <div class="instrument-output"><div><span>Only after all three stages</span><strong>Evidence ready to support a research claim</strong></div></div>
         </div>
       </section>
 
-      <!-- REPOSITORY MAP -->
-      <section id="repository" class="section repository-section">
-        <div class="section-heading">
-          <p class="eyebrow">Repository map</p>
-          <h2>What is source, what is evidence, and what is only local scratch.</h2>
+      <!-- EVIDENCE LIFECYCLE -->
+      <section id="lifecycle" class="section repository-section">
+        <div class="repository-intro">
+          <div>
+            <p class="eyebrow">The life of evidence</p>
+            <h2>Evidence is earned, not generated.</h2>
+          </div>
+          <p>VoynichLab records the full research process, but it gives each stage a different status. Work becomes public evidence only after it has been reviewed, documented, and explicitly frozen.</p>
         </div>
-        <div class="repo-map-grid">
-          <article class="repo-map-card">
-            <span>01</span>
-            <h3>Source code</h3>
-            <p>Tools and scripts that create, validate, publish, or display research outputs.</p>
-            <a href="https://github.com/HydraRosario/VoynichLab/tree/main/packages/lab-exporter">Publisher</a>
+        <div class="repository-contract">
+          <p class="repository-contract-label">The repository contract</p>
+          <div><strong>Local tools create candidate evidence.</strong><span>→</span><strong>Git preserves selected evidence.</strong><span>→</span><strong>The portal makes it inspectable.</strong></div>
+          <a href="https://github.com/HydraRosario/VoynichLab/blob/main/REPOSITORY-GOVERNANCE.md">Read the governance model</a>
+        </div>
+        <div class="repository-status-key" aria-label="Research lifecycle"><span>Working</span><i></i><span>Reviewed</span><i></i><span>Frozen</span><i></i><span>Public</span></div>
+        <div class="repository-lifecycle">
+          <article class="repository-zone repository-zone-local">
+            <header><span>01</span><strong>Local workspace</strong></header>
+            <div class="repository-zone-body">
+              <p class="repository-zone-kicker">Created, corrected, explored</p>
+              <h3>Where work begins</h3>
+              <p>Annotation databases, manuscript images, temporary exports, and exploratory runs live beside the tools that create them.</p>
+            </div>
+            <footer><b>Protected</b><p>Local data never becomes a public claim by accident.</p><a href="https://github.com/HydraRosario/VoynichLab/blob/main/docs/DATASETCREATOR-SAFETY.md">Protection rules</a></footer>
           </article>
-          <article class="repo-map-card">
-            <span>02</span>
-            <h3>Public evidence</h3>
-            <p>Versioned reports, metrics, tables, manifests, checksums, commits, and tags.</p>
-            <a href="https://github.com/HydraRosario/VoynichLab/tree/main/artifacts/public">Artifacts</a>
+          <article class="repository-zone repository-zone-review">
+            <header><span>02</span><strong>Research labs</strong></header>
+            <div class="repository-zone-body">
+              <p class="repository-zone-kicker">Compared, audited, challenged</p>
+              <h3>Where candidate results are challenged</h3>
+              <p>Lab scripts turn selected data into measurements, controls, anomaly reviews, and candidate results. At this stage, they are still under examination.</p>
+            </div>
+            <footer><b>Not evidence yet</b><p>A generated report is not automatically a published result.</p><a href="https://github.com/HydraRosario/VoynichLab/tree/main/research">Research workspace</a></footer>
           </article>
-          <article class="repo-map-card">
-            <span>03</span>
-            <h3>Annotation tool</h3>
-            <p>The local DatasetCreator workflow is protected because it owns valuable labeled data.</p>
-            <a href="https://github.com/HydraRosario/VoynichLab/tree/main/DataSetCreator">DatasetCreator</a>
+          <article class="repository-zone repository-zone-frozen">
+            <header><span>03</span><strong>Frozen record</strong></header>
+            <div class="repository-zone-body">
+              <p class="repository-zone-kicker">Named, documented, preserved</p>
+              <h3>Where evidence acquires an identity</h3>
+              <p>A promoted result receives a stable experiment ID, methodology, provenance, metrics, tables, and checksums that bind the bundle together.</p>
+            </div>
+            <footer><b>Append-only</b><p>Published evidence is superseded by a new version, never silently rewritten.</p><a href="https://github.com/HydraRosario/VoynichLab/tree/main/artifacts/public">Inspect frozen artifacts</a></footer>
           </article>
-          <article class="repo-map-card">
-            <span>04</span>
-            <h3>Governance</h3>
-            <p>Rules for keeping experiments, portal data, generated snapshots, and corpus audits separate.</p>
-            <a href="https://github.com/HydraRosario/VoynichLab/blob/main/REPOSITORY-GOVERNANCE.md">Read rules</a>
+          <article class="repository-zone repository-zone-public">
+            <header><span>04</span><strong>Public research</strong></header>
+            <div class="repository-zone-body">
+              <p class="repository-zone-kicker">Registered, connected, explained</p>
+              <h3>Where evidence becomes inspectable</h3>
+              <p>The research registry connects each public claim to its experiment, artifacts, limitations, release history, and portal explanation.</p>
+            </div>
+            <footer><b>Traceable</b><p>The portal explains evidence; it does not create or alter it.</p><a href="https://github.com/HydraRosario/VoynichLab/tree/main/research-feed">Open the registry</a></footer>
           </article>
         </div>
       </section>
@@ -597,7 +630,7 @@
           <h2>Maintainer replay commands, not clean-clone certification.</h2>
         </div>
         <div class="not-claim">
-          <p><strong>Current boundary:</strong> public artifacts are inspectable today. The commands below document the maintainer replay surface, but the full repository has not yet been certified as a clean-clone reproduction package.</p>
+          <p><strong>Current boundary:</strong> public artifacts and the tagged prospective release can be verified today. The current Corpus V2 analysis can be replayed in the maintainer environment. The full repository has not yet been certified as a clean-clone reproduction package.</p>
         </div>
         <pre><code>cd GrammarDiscoveryLab
 npm.cmd run validate
@@ -608,8 +641,10 @@ npm.cmd run null-control:v3:diagnostics
 npm.cmd run representation-alignment:v1
 npm.cmd run representation-comparison:v2-regions
 npm.cmd run representation-comparison:v3-ablations
-npm.cmd run prospective-atoms-eva:test -- --preflight
-npm.cmd run prospective-atoms-eva:test -- --confirm-complete</code></pre>
+npm.cmd run prospective-atoms-eva:verify-release
+
+cd ../EVAComparisonLab
+npm.cmd run corpus:v2</code></pre>
       </section>
     </main>
 

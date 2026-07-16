@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "1.0",
+  "scope": "matched-three-folio",
+  "folios": [
+    "f1r",
+    "f1v",
+    "f47v"
+  ],
+  "pages": [
+    "page-003.jpg",
+    "page-004.jpg",
+    "page-094.jpg"
+  ],
+  "metric": "atoms_weighted_relative_positional_entropy",
+  "lowerIsMoreRegular": true,
+  "v1": {
+    "units": 364,
+    "atomTokens": 3558,
+    "vocabulary": 16,
+    "weightedRelativeEntropy": 0.3365,
+    "source": "EVAComparisonLab/frozen/VOYNICHLAB-V1-FROZEN-2026-07-13/datasetcreator-v1-frozen.db"
+  },
+  "v2": {
+    "units": 371,
+    "atomTokens": 3621,
+    "vocabulary": 16,
+    "weightedRelativeEntropy": 0.3342,
+    "source": "research/frozen/CORPUS-V2-AUDITED/corpus/atoms.tsv"
+  },
+  "v2MinusV1": -0.0023,
+  "relativeChange": -0.006835
+}
