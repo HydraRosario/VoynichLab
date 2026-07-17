@@ -21,6 +21,7 @@
         <a href="#experiments">Experiments</a>
         <a href="#timeline">Timeline</a>
         <a href="#releases">Releases</a>
+        <a href="#reproduce">Verify</a>
       </nav>
     </header>
 
@@ -619,10 +620,12 @@
 
       <!-- RELEASES -->
       <section id="releases" class="section releases-section">
-        <div class="section-heading">
-          <p class="eyebrow">Releases</p>
-          <h2>Public anchors: commits, tags, and checkpoints.</h2>
+        <div class="releases-intro">
+          <div><p class="eyebrow">Frozen releases</p><h2>The record does not move.</h2></div>
+          <p>A release is not simply a saved folder. It identifies the exact corpus, model, protocol, result, or public interface that existed at a specific commit. Later corrections receive a new release; earlier evidence remains inspectable.</p>
         </div>
+        <div id="current-release"></div>
+        <div class="release-archive-head"><span>Release archive</span><span id="release-archive-count"></span></div>
         <div class="release-grid" id="release-grid"></div>
       </section>
 

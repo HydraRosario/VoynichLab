@@ -130,6 +130,17 @@ const timelineEditorial = {
   "corpus-v1-v2-matched-comparison": ["Effect measured", "The shared folios improved slightly, supporting noise removal rather than a manufactured large effect."]
 };
 
+const releaseEditorial = {
+  "v1-pre-validation": { kind: "Representation", object: "ATOMS-V1 inventory", meaning: "The initial visual label system before later validation work." },
+  "grammar-v1": { kind: "Model", object: "GRAMMAR-V1 families", meaning: "The first frozen molecular family definitions used for held-out tests." },
+  "reproducible-release-v1": { kind: "Validation", object: "Frozen validation pipeline", meaning: "Expected outputs and checksums for the GRAMMAR-V1 validation." },
+  "atoms-eva-regional-v1": { kind: "Comparison", object: "Regional ATOMS/EVA evidence", meaning: "Matched regional results together with their negative null controls." },
+  "atoms-eva-ablations-v1": { kind: "Robustness", object: "Ablation evidence", meaning: "Tests of whether the representation result depended on exact sequence length." },
+  "public-portal-v1": { kind: "Infrastructure", object: "Public portal V1", meaning: "The first public interface over the repository evidence." },
+  "prospective-atoms-eva-test-v1": { kind: "Prospective test", object: "Preregistered f3r result", meaning: "The completed unseen-folio test under rules frozen in advance." },
+  "corpus-v2-audited": { kind: "Current corpus", object: "Six audited folios", meaning: "Reviewed annotations, replayed analyses, provenance, and preserved corrections." }
+};
+
 const registry = { experiments: [], milestones: [], releases: [], site: null, evidence: null, atoms: [], loaded: false };
 
 function html(v) { return String(v ?? "").replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;"); }
@@ -201,6 +212,8 @@ const els = {
   currentCallouts: $("#current-callouts"),
   corpusV2Grid: $("#corpus-v2-grid"),
   corpusV2Links: $("#corpus-v2-links"),
+  currentRelease: $("#current-release"),
+  releaseArchiveCount: $("#release-archive-count"),
   releaseGrid: $("#release-grid"),
   evidenceList: $("#evidence-list"),
   evidenceDetail: $("#evidence-detail"),
@@ -447,17 +460,25 @@ function renderExperiment() {
 }
 
 function renderReleases() {
-  els.releaseGrid.innerHTML = registry.releases.map((r) => `
-    <article class="release-card">
-      <span>${html(r.date)}</span>
-      <h3>${html(r.title)}</h3>
-      <p>${html(r.summary)}</p>
-      <dl>
-        <div><dt>Tag</dt><dd><a href="${repoTag}/${html(r.tag)}">${html(r.tag)}</a></dd></div>
-        <div><dt>Target</dt><dd><a href="${repoCommit}/${html(r.targetCommit)}">${r.targetCommit.slice(0, 7)}</a></dd></div>
-      </dl>
-    </article>
-  `).join("");
+  const current = registry.releases.find((release) => release.tag === "corpus-v2-audited");
+  const archived = registry.releases.filter((release) => release !== current);
+  els.releaseArchiveCount.textContent = `${archived.length} preserved checkpoints`;
+  if (current) {
+    const editorial = releaseEditorial[current.tag];
+    els.currentRelease.innerHTML = `<article class="release-current">
+      <div class="release-current-mark"><span>Current</span><strong>V2</strong></div>
+      <div class="release-current-copy"><p>${html(editorial.kind)} · ${html(current.date)}</p><h3>${html(current.title)}</h3><strong>${html(editorial.object)}</strong><p>${html(editorial.meaning)}</p></div>
+      <div class="release-current-record"><span>Frozen identity</span><a href="${repoTag}/${html(current.tag)}">${html(current.tag)}</a><small>Commit <a href="${repoCommit}/${html(current.targetCommit)}">${current.targetCommit.slice(0, 7)}</a></small></div>
+    </article>`;
+  }
+  els.releaseGrid.innerHTML = archived.map((release, index) => {
+    const editorial = releaseEditorial[release.tag] || { kind: "Release", object: release.title, meaning: release.summary };
+    return `<article class="release-card">
+      <div class="release-card-index"><span>${String(index + 1).padStart(2, "0")}</span><strong>${html(editorial.kind)}</strong></div>
+      <div class="release-card-copy"><time datetime="${html(release.date)}">${html(release.date)}</time><h3>${html(release.title)}</h3><strong>${html(editorial.object)}</strong><p>${html(editorial.meaning)}</p></div>
+      <div class="release-card-record"><a href="${repoTag}/${html(release.tag)}">Open release</a><span>${html(release.tag)}</span><a class="commit-ref" href="${repoCommit}/${html(release.targetCommit)}">${release.targetCommit.slice(0, 7)}</a></div>
+    </article>`;
+  }).join("");
 }
 
 function renderEvidence() {
@@ -551,8 +572,8 @@ const narrativeOrder = [
   document.getElementById("corpus-v2"),
   document.querySelector(".no-decipherment"),
   document.getElementById("evidence"),
-  document.getElementById("experiments"),
   document.getElementById("lifecycle"),
+  document.getElementById("experiments"),
   document.getElementById("research"),
   document.getElementById("timeline"),
   document.getElementById("releases"),
