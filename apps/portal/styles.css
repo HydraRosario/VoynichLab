@@ -1517,6 +1517,7 @@ h1, h2, h3, p { overflow-wrap: break-word; }
   .reproduce-path header { grid-template-columns: 44px 1fr; gap: 14px; }
   .reproduce-number { width: 40px; height: 40px; }
   .reproduce-question, .reproduce-path > p:not(.reproduce-question) { min-height: 0; }
+  .reproduce-command code { overflow-wrap: anywhere; white-space: normal; }
   .reproduce-boundary { padding: 24px 20px; }
   .instrument-flow::before { left: 34px; top: 64px; bottom: 64px; }
   .instrument-origin, .instrument-output { padding: 16px; }
