@@ -82,6 +82,54 @@ const evidenceChapterLabels = {
   challenge: ["03", "Limits and corrections"]
 };
 
+const timelineChapters = [
+  {
+    id: "define",
+    number: "01",
+    label: "Define the object",
+    title: "Freeze the representation before testing it.",
+    summary: "ATOMS and its first structural families received stable identities, followed by a release that made their validation inspectable.",
+    milestones: ["v1-pre-validation", "grammar-v1", "reproducible-release-v1"]
+  },
+  {
+    id: "challenge",
+    number: "02",
+    label: "Challenge the signal",
+    title: "Compare it where it can lose.",
+    summary: "Matched regions and ablations asked whether the result survived fair comparison and whether it depended on one convenient modeling choice.",
+    milestones: ["atoms-eva-regional-v1", "atoms-eva-ablations-v1"]
+  },
+  {
+    id: "prospective",
+    number: "03",
+    label: "Commit in advance",
+    title: "Publish the rules before seeing the answer.",
+    summary: "The portal exposed the record, then the next protocol and interpretation rules were frozen before the new folio was completed.",
+    milestones: ["public-portal-v1", "prospective-atoms-eva-test-v1-preregistration", "prospective-atoms-eva-test-v1"]
+  },
+  {
+    id: "audit",
+    number: "04",
+    label: "Audit the data",
+    title: "Correct human errors without rewriting history.",
+    summary: "Corpus V2 preserved its corrections as a new release, then a matched-folio comparison measured what those corrections actually changed.",
+    milestones: ["corpus-v2-audited", "corpus-v1-v2-matched-comparison"]
+  }
+];
+
+const timelineEditorial = {
+  "v1-pre-validation": ["Representation frozen", "The visual vocabulary stopped moving before validation began."],
+  "grammar-v1": ["Families frozen", "Structural families became testable objects rather than patterns chosen after the fact."],
+  "reproducible-release-v1": ["Evidence published", "Expected outputs and checksums gave the frozen validation a public identity."],
+  "atoms-eva-regional-v1": ["Matched comparison", "ATOMS and EVA were compared over the same manuscript regions, including negative controls."],
+  "atoms-eva-ablations-v1": ["Dependency tested", "The observed advantage survived removal of exact regional sequence length."],
+  "public-portal-v1": ["Record opened", "Research artifacts gained a public surface designed for inspection rather than repository navigation."],
+  "prospective-atoms-eva-test-v1-preregistration": ["Rules committed", "Models, metrics, and interpretation rules were public before the next annotation was complete."],
+  "prospective-atoms-eva-test-v1": ["Prospective result", "The unseen folio reproduced the ATOMS advantage under those frozen rules."],
+  "corpus-v2-audited": ["Human error corrected", "A new corpus release preserved reviewed corrections and replayed the main analyses."],
+  "corpus-v1-v2-matched-comparison": ["Effect measured", "The shared folios improved slightly, supporting noise removal rather than a manufactured large effect."]
+};
+
 const registry = { experiments: [], milestones: [], releases: [], site: null, evidence: null, atoms: [], loaded: false };
 
 function html(v) { return String(v ?? "").replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;"); }
@@ -184,18 +232,31 @@ async function loadAll() {
 /* ===== RENDERERS ===== */
 
 function renderTimeline() {
-  els.timelineList.innerHTML = registry.milestones.map((item) => {
-    const firstLink = item.links?.[0];
-    const href = firstLink ? gh(firstLink.path) : item.tag ? `${repoTag}/${item.tag}` : null;
-    return `<li>
-      <time datetime="${html(item.date)}">${html(item.date)}</time>
-      <div>
-        <strong>${html(item.title)}</strong>
-        <p>${html(item.summary)}</p>
-        ${item.commit && item.commit !== "pending" ? `<span class="commit-ref"><a href="${repoCommit}/${html(item.commit)}">${item.commit.slice(0, 7)}</a></span>` : ""}
-      </div>
-      ${href ? `<a href="${href}">${html(firstLink?.label || item.tag)}</a>` : ""}
-    </li>`;
+  const byId = new Map(registry.milestones.map((item) => [item.id, item]));
+  els.timelineList.innerHTML = timelineChapters.map((chapter) => {
+    const events = chapter.milestones.map((id, index) => {
+      const item = byId.get(id);
+      if (!item) return "";
+      const firstLink = item.links?.[0];
+      const href = firstLink ? gh(firstLink.path) : item.tag ? `${repoTag}/${item.tag}` : null;
+      const [status, meaning] = timelineEditorial[id] || [item.type, item.summary];
+      return `<article class="timeline-event timeline-event-${html(item.type)}">
+        <div class="timeline-event-index"><span>${chapter.number}.${index + 1}</span><i></i></div>
+        <div class="timeline-event-body">
+          <div class="timeline-event-meta"><time datetime="${html(item.date)}">${html(item.date)}</time><span>${html(status)}</span></div>
+          <h4>${html(item.title)}</h4>
+          <p>${html(meaning)}</p>
+          <div class="timeline-event-refs">
+            ${href ? `<a href="${href}">${html(firstLink?.label || item.tag)}</a>` : ""}
+            ${item.commit && item.commit !== "pending" ? `<a class="commit-ref" href="${repoCommit}/${html(item.commit)}">Commit ${item.commit.slice(0, 7)}</a>` : `<span class="commit-ref">Documented result · not yet tagged</span>`}
+          </div>
+        </div>
+      </article>`;
+    }).join("");
+    return `<section class="timeline-chapter timeline-chapter-${chapter.id}">
+      <header class="timeline-chapter-head"><span>${chapter.number}</span><div><p>${html(chapter.label)}</p><h3>${html(chapter.title)}</h3></div><p>${html(chapter.summary)}</p></header>
+      <div class="timeline-events">${events}</div>
+    </section>`;
   }).join("");
 }
 
