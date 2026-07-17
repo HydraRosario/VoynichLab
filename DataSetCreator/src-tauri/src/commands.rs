@@ -21,31 +21,31 @@ pub struct RowGuideDraft {
 
 #[derive(Debug, Clone, Deserialize)]
 #[serde(rename_all = "camelCase")]
-pub struct ParticleAtomOrderDraft {
-    pub particle_id: String,
-    pub atom_ids: Vec<i64>,
+pub struct AtomParticleOrderDraft {
+    pub atom_id: String,
+    pub particle_ids: Vec<i64>,
 }
 
 #[derive(Debug, Clone, Deserialize)]
 #[serde(rename_all = "camelCase")]
-pub struct MoleculeParticleOrderDraft {
+pub struct MoleculeAtomOrderDraft {
     pub molecule_id: String,
-    pub particle_ids: Vec<String>,
+    pub atom_ids: Vec<String>,
 }
 
 #[derive(Debug, Clone, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct MoleculeGapOverrideDraft {
-    pub left_particle_index: i64,
-    pub right_particle_index: i64,
+    pub left_atom_index: i64,
+    pub right_atom_index: i64,
     pub decision: String,
 }
 
 #[derive(Debug, Clone, Deserialize)]
 #[serde(rename_all = "camelCase")]
-pub struct ParticleRowOverrideDraft {
-    pub particle_index: i64,
-    pub particle_key: Option<String>,
+pub struct AtomRowOverrideDraft {
+    pub atom_index: i64,
+    pub atom_key: Option<String>,
     pub row_index: Option<i64>,
 }
 
@@ -216,18 +216,18 @@ pub fn list_regions(
 }
 
 // =============================================================================
-// Atom engine commands
+// Particle engine commands
 // =============================================================================
 
 #[tauri::command]
-pub fn sync_atom_for_region(
+pub fn sync_particle_for_region(
     state: tauri::State<'_, DbState>,
     region_id: i64,
     family: Option<String>,
     structural_config: Option<String>,
-) -> Result<Atom, String> {
+) -> Result<Particle, String> {
     let mut conn = db_lock(&state)?;
-    database::sync_atom_for_region(
+    database::sync_particle_for_region(
         &mut conn,
         region_id,
         family.as_deref(),
@@ -236,14 +236,14 @@ pub fn sync_atom_for_region(
 }
 
 #[tauri::command]
-pub fn create_atom_strokes_batch(
+pub fn create_particle_strokes_batch(
     state: tauri::State<'_, DbState>,
     app_handle: tauri::AppHandle,
     image_id: i64,
-    strokes: Vec<BatchAtomStrokeInput>,
-) -> Result<AtomPagePacket, String> {
+    strokes: Vec<BatchParticleStrokeInput>,
+) -> Result<ParticlePagePacket, String> {
     let mut conn = db_lock(&state)?;
-    let packet = database::create_atom_strokes_batch(&mut conn, image_id, &strokes)?;
+    let packet = database::create_particle_strokes_batch(&mut conn, image_id, &strokes)?;
     app_handle
         .emit("molecules-updated", &packet)
         .map_err(|e| format!("Failed to emit molecules-updated: {e}"))?;
@@ -255,7 +255,7 @@ pub fn recalculate_molecules(
     state: tauri::State<'_, DbState>,
     app_handle: tauri::AppHandle,
     image_id: i64,
-) -> Result<AtomPagePacket, String> {
+) -> Result<ParticlePagePacket, String> {
     let mut conn = db_lock(&state)?;
     let packet = database::recalculate_molecules(&mut conn, image_id)?;
     app_handle
@@ -269,16 +269,16 @@ pub fn set_molecule_gap_override(
     state: tauri::State<'_, DbState>,
     app_handle: tauri::AppHandle,
     image_id: i64,
-    left_particle_index: i64,
-    right_particle_index: i64,
+    left_atom_index: i64,
+    right_atom_index: i64,
     decision: String,
-) -> Result<AtomPagePacket, String> {
+) -> Result<ParticlePagePacket, String> {
     let mut conn = db_lock(&state)?;
     let packet = database::set_molecule_gap_override(
         &mut conn,
         image_id,
-        left_particle_index,
-        right_particle_index,
+        left_atom_index,
+        right_atom_index,
         &decision,
     )?;
     app_handle
@@ -292,15 +292,15 @@ pub fn clear_molecule_gap_override(
     state: tauri::State<'_, DbState>,
     app_handle: tauri::AppHandle,
     image_id: i64,
-    left_particle_index: i64,
-    right_particle_index: i64,
-) -> Result<AtomPagePacket, String> {
+    left_atom_index: i64,
+    right_atom_index: i64,
+) -> Result<ParticlePagePacket, String> {
     let mut conn = db_lock(&state)?;
     let packet = database::clear_molecule_gap_override(
         &mut conn,
         image_id,
-        left_particle_index,
-        right_particle_index,
+        left_atom_index,
+        right_atom_index,
     )?;
     app_handle
         .emit("molecules-updated", &packet)
@@ -314,13 +314,13 @@ pub fn set_molecule_gap_overrides_batch(
     app_handle: tauri::AppHandle,
     image_id: i64,
     overrides: Vec<MoleculeGapOverrideDraft>,
-) -> Result<AtomPagePacket, String> {
+) -> Result<ParticlePagePacket, String> {
     let mut conn = db_lock(&state)?;
     let drafts = overrides
         .into_iter()
         .map(|draft| database::MoleculeGapOverrideDraft {
-            left_particle_index: draft.left_particle_index,
-            right_particle_index: draft.right_particle_index,
+            left_atom_index: draft.left_atom_index,
+            right_atom_index: draft.right_atom_index,
             decision: draft.decision,
         })
         .collect::<Vec<_>>();
@@ -332,18 +332,18 @@ pub fn set_molecule_gap_overrides_batch(
 }
 
 #[tauri::command]
-pub fn set_particle_row_override(
+pub fn set_atom_row_override(
     state: tauri::State<'_, DbState>,
     app_handle: tauri::AppHandle,
     image_id: i64,
-    particle_index: i64,
+    atom_index: i64,
     row_index: i64,
-) -> Result<AtomPagePacket, String> {
+) -> Result<ParticlePagePacket, String> {
     let mut conn = db_lock(&state)?;
-    let packet = database::set_particle_row_override(
+    let packet = database::set_atom_row_override(
         &mut conn,
         image_id,
-        particle_index,
+        atom_index,
         row_index,
     )?;
     app_handle
@@ -353,17 +353,17 @@ pub fn set_particle_row_override(
 }
 
 #[tauri::command]
-pub fn clear_particle_row_override(
+pub fn clear_atom_row_override(
     state: tauri::State<'_, DbState>,
     app_handle: tauri::AppHandle,
     image_id: i64,
-    particle_index: i64,
-) -> Result<AtomPagePacket, String> {
+    atom_index: i64,
+) -> Result<ParticlePagePacket, String> {
     let mut conn = db_lock(&state)?;
-    let packet = database::clear_particle_row_override(
+    let packet = database::clear_atom_row_override(
         &mut conn,
         image_id,
-        particle_index,
+        atom_index,
     )?;
     app_handle
         .emit("molecules-updated", &packet)
@@ -372,22 +372,22 @@ pub fn clear_particle_row_override(
 }
 
 #[tauri::command]
-pub fn set_particle_row_overrides_batch(
+pub fn set_atom_row_overrides_batch(
     state: tauri::State<'_, DbState>,
     app_handle: tauri::AppHandle,
     image_id: i64,
-    overrides: Vec<ParticleRowOverrideDraft>,
-) -> Result<AtomPagePacket, String> {
+    overrides: Vec<AtomRowOverrideDraft>,
+) -> Result<ParticlePagePacket, String> {
     let mut conn = db_lock(&state)?;
     let drafts = overrides
         .into_iter()
-        .map(|draft| database::ParticleRowOverrideDraft {
-            particle_index: draft.particle_index,
-            particle_key: draft.particle_key,
+        .map(|draft| database::AtomRowOverrideDraft {
+            atom_index: draft.atom_index,
+            atom_key: draft.atom_key,
             row_index: draft.row_index,
         })
         .collect::<Vec<_>>();
-    let packet = database::set_particle_row_overrides_batch(&mut conn, image_id, &drafts)?;
+    let packet = database::set_atom_row_overrides_batch(&mut conn, image_id, &drafts)?;
     app_handle
         .emit("molecules-updated", &packet)
         .map_err(|e| format!("Failed to emit molecules-updated: {e}"))?;
@@ -395,16 +395,16 @@ pub fn set_particle_row_overrides_batch(
 }
 
 #[tauri::command]
-pub fn adjust_particle_row_guide(
+pub fn adjust_atom_row_guide(
     state: tauri::State<'_, DbState>,
     app_handle: tauri::AppHandle,
     image_id: i64,
     row_index: i64,
     delta_y: f64,
     edge: Option<String>,
-) -> Result<AtomPagePacket, String> {
+) -> Result<ParticlePagePacket, String> {
     let mut conn = db_lock(&state)?;
-    let packet = database::adjust_particle_row_guide(
+    let packet = database::adjust_atom_row_guide(
         &mut conn,
         image_id,
         row_index,
@@ -418,23 +418,23 @@ pub fn adjust_particle_row_guide(
 }
 
 #[tauri::command]
-pub fn set_particle_row_guides(
+pub fn set_atom_row_guides(
     state: tauri::State<'_, DbState>,
     app_handle: tauri::AppHandle,
     image_id: i64,
     guides: Vec<RowGuideDraft>,
-) -> Result<AtomPagePacket, String> {
+) -> Result<ParticlePagePacket, String> {
     let mut conn = db_lock(&state)?;
     let drafts = guides
         .into_iter()
-        .map(|guide| database::ParticleRowGuideDraft {
+        .map(|guide| database::AtomRowGuideDraft {
             row_index: guide.row_index,
             top_y: guide.top_y,
             y: guide.y,
             bottom_y: guide.bottom_y,
         })
         .collect::<Vec<_>>();
-    let packet = database::set_particle_row_guides(&mut conn, image_id, &drafts)?;
+    let packet = database::set_atom_row_guides(&mut conn, image_id, &drafts)?;
     app_handle
         .emit("molecules-updated", &packet)
         .map_err(|e| format!("Failed to emit molecules-updated: {e}"))?;
@@ -442,15 +442,15 @@ pub fn set_particle_row_guides(
 }
 
 #[tauri::command]
-pub fn set_particle_atom_order(
+pub fn set_atom_particle_order(
     state: tauri::State<'_, DbState>,
     app_handle: tauri::AppHandle,
     image_id: i64,
-    particle_id: String,
-    atom_ids: Vec<i64>,
-) -> Result<AtomPagePacket, String> {
+    atom_id: String,
+    particle_ids: Vec<i64>,
+) -> Result<ParticlePagePacket, String> {
     let mut conn = db_lock(&state)?;
-    let packet = database::set_particle_atom_order(&mut conn, image_id, &particle_id, &atom_ids)?;
+    let packet = database::set_atom_particle_order(&mut conn, image_id, &atom_id, &particle_ids)?;
     app_handle
         .emit("molecules-updated", &packet)
         .map_err(|e| format!("Failed to emit molecules-updated: {e}"))?;
@@ -458,15 +458,15 @@ pub fn set_particle_atom_order(
 }
 
 #[tauri::command]
-pub fn set_molecule_particle_order(
+pub fn set_molecule_atom_order(
     state: tauri::State<'_, DbState>,
     app_handle: tauri::AppHandle,
     image_id: i64,
     molecule_id: String,
-    particle_ids: Vec<String>,
-) -> Result<AtomPagePacket, String> {
+    atom_ids: Vec<String>,
+) -> Result<ParticlePagePacket, String> {
     let mut conn = db_lock(&state)?;
-    let packet = database::set_molecule_particle_order(&mut conn, image_id, &molecule_id, &particle_ids)?;
+    let packet = database::set_molecule_atom_order(&mut conn, image_id, &molecule_id, &atom_ids)?;
     app_handle
         .emit("molecules-updated", &packet)
         .map_err(|e| format!("Failed to emit molecules-updated: {e}"))?;
@@ -478,29 +478,29 @@ pub fn set_order_drafts_batch(
     state: tauri::State<'_, DbState>,
     app_handle: tauri::AppHandle,
     image_id: i64,
-    particle_atom_orders: Vec<ParticleAtomOrderDraft>,
-    molecule_particle_orders: Vec<MoleculeParticleOrderDraft>,
-) -> Result<AtomPagePacket, String> {
+    atom_particle_orders: Vec<AtomParticleOrderDraft>,
+    molecule_atom_orders: Vec<MoleculeAtomOrderDraft>,
+) -> Result<ParticlePagePacket, String> {
     let mut conn = db_lock(&state)?;
-    let particle_atom_drafts = particle_atom_orders
+    let atom_particle_drafts = atom_particle_orders
         .into_iter()
-        .map(|draft| database::ParticleAtomOrderDraft {
-            particle_id: draft.particle_id,
-            atom_ids: draft.atom_ids,
+        .map(|draft| database::AtomParticleOrderDraft {
+            atom_id: draft.atom_id,
+            particle_ids: draft.particle_ids,
         })
         .collect::<Vec<_>>();
-    let molecule_particle_drafts = molecule_particle_orders
+    let molecule_atom_drafts = molecule_atom_orders
         .into_iter()
-        .map(|draft| database::MoleculeParticleOrderDraft {
+        .map(|draft| database::MoleculeAtomOrderDraft {
             molecule_id: draft.molecule_id,
-            particle_ids: draft.particle_ids,
+            atom_ids: draft.atom_ids,
         })
         .collect::<Vec<_>>();
     let packet = database::set_order_drafts_batch(
         &mut conn,
         image_id,
-        &particle_atom_drafts,
-        &molecule_particle_drafts,
+        &atom_particle_drafts,
+        &molecule_atom_drafts,
     )?;
     app_handle
         .emit("molecules-updated", &packet)
@@ -509,19 +509,19 @@ pub fn set_order_drafts_batch(
 }
 
 #[tauri::command]
-pub fn set_particle_merge_pattern(
+pub fn set_atom_merge_pattern(
     state: tauri::State<'_, DbState>,
     app_handle: tauri::AppHandle,
     image_id: i64,
-    particle_id_a: String,
-    particle_id_b: String,
-) -> Result<AtomPagePacket, String> {
+    atom_id_a: String,
+    atom_id_b: String,
+) -> Result<ParticlePagePacket, String> {
     let mut conn = db_lock(&state)?;
-    let packet = database::set_particle_merge_pattern(
+    let packet = database::set_atom_merge_pattern(
         &mut conn,
         image_id,
-        &particle_id_a,
-        &particle_id_b,
+        &atom_id_a,
+        &atom_id_b,
     )?;
     app_handle
         .emit("molecules-updated", &packet)
@@ -530,13 +530,13 @@ pub fn set_particle_merge_pattern(
 }
 
 #[tauri::command]
-pub fn clear_latest_particle_merge_pattern(
+pub fn clear_latest_atom_merge_pattern(
     state: tauri::State<'_, DbState>,
     app_handle: tauri::AppHandle,
     image_id: i64,
-) -> Result<AtomPagePacket, String> {
+) -> Result<ParticlePagePacket, String> {
     let mut conn = db_lock(&state)?;
-    let packet = database::clear_latest_particle_merge_pattern(&mut conn, image_id)?;
+    let packet = database::clear_latest_atom_merge_pattern(&mut conn, image_id)?;
     app_handle
         .emit("molecules-updated", &packet)
         .map_err(|e| format!("Failed to emit molecules-updated: {e}"))?;

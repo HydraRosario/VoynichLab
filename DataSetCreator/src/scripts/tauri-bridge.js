@@ -67,16 +67,16 @@ export const api = {
     return call('list_regions', { imageId });
   },
 
-  syncAtomForRegion(regionId, family, structuralConfig) {
-    return call('sync_atom_for_region', {
+  syncParticleForRegion(regionId, family, structuralConfig) {
+    return call('sync_particle_for_region', {
       regionId: Number(regionId),
       family: family || null,
       structuralConfig: structuralConfig || null
     });
   },
 
-  createAtomStrokesBatch(imageId, strokes) {
-    return call('create_atom_strokes_batch', {
+  createParticleStrokesBatch(imageId, strokes) {
+    return call('create_particle_strokes_batch', {
       imageId: Number(imageId),
       strokes: strokes || []
     });
@@ -86,20 +86,20 @@ export const api = {
     return call('recalculate_molecules', { imageId });
   },
 
-  setMoleculeGapOverride(imageId, leftParticleIndex, rightParticleIndex, decision) {
+  setMoleculeGapOverride(imageId, leftAtomIndex, rightAtomIndex, decision) {
     return call('set_molecule_gap_override', {
       imageId: Number(imageId),
-      leftParticleIndex: Number(leftParticleIndex),
-      rightParticleIndex: Number(rightParticleIndex),
+      leftAtomIndex: Number(leftAtomIndex),
+      rightAtomIndex: Number(rightAtomIndex),
       decision
     });
   },
 
-  clearMoleculeGapOverride(imageId, leftParticleIndex, rightParticleIndex) {
+  clearMoleculeGapOverride(imageId, leftAtomIndex, rightAtomIndex) {
     return call('clear_molecule_gap_override', {
       imageId: Number(imageId),
-      leftParticleIndex: Number(leftParticleIndex),
-      rightParticleIndex: Number(rightParticleIndex)
+      leftAtomIndex: Number(leftAtomIndex),
+      rightAtomIndex: Number(rightAtomIndex)
     });
   },
 
@@ -107,44 +107,44 @@ export const api = {
     return call('set_molecule_gap_overrides_batch', {
       imageId: Number(imageId),
       overrides: (overrides || []).map((override) => ({
-        leftParticleIndex: Number(override.leftParticleIndex ?? override.left_particle_index),
-        rightParticleIndex: Number(override.rightParticleIndex ?? override.right_particle_index),
+        leftAtomIndex: Number(override.leftAtomIndex ?? override.left_atom_index),
+        rightAtomIndex: Number(override.rightAtomIndex ?? override.right_atom_index),
         decision: override.decision
       }))
     });
   },
 
-  setParticleRowOverride(imageId, particleIndex, rowIndex) {
-    return call('set_particle_row_override', {
+  setAtomRowOverride(imageId, atomIndex, rowIndex) {
+    return call('set_atom_row_override', {
       imageId: Number(imageId),
-      particleIndex: Number(particleIndex),
+      atomIndex: Number(atomIndex),
       rowIndex: Number(rowIndex)
     });
   },
 
-  clearParticleRowOverride(imageId, particleIndex) {
-    return call('clear_particle_row_override', {
+  clearAtomRowOverride(imageId, atomIndex) {
+    return call('clear_atom_row_override', {
       imageId: Number(imageId),
-      particleIndex: Number(particleIndex)
+      atomIndex: Number(atomIndex)
     });
   },
 
-  setParticleRowOverridesBatch(imageId, overrides) {
-    return call('set_particle_row_overrides_batch', {
+  setAtomRowOverridesBatch(imageId, overrides) {
+    return call('set_atom_row_overrides_batch', {
       imageId: Number(imageId),
       overrides: (overrides || []).map((override) => {
         const rawRowIndex = override.rowIndex ?? override.row_index;
         return {
-          particleIndex: Number(override.particleIndex ?? override.particle_index),
-          particleKey: override.particleKey ?? override.particle_key ?? null,
+          atomIndex: Number(override.atomIndex ?? override.atom_index),
+          atomKey: override.atomKey ?? override.atom_key ?? null,
           rowIndex: rawRowIndex === null || rawRowIndex === undefined ? null : Number(rawRowIndex)
         };
       })
     });
   },
 
-  adjustParticleRowGuide(imageId, rowIndex, deltaY, edge = 'all') {
-    return call('adjust_particle_row_guide', {
+  adjustAtomRowGuide(imageId, rowIndex, deltaY, edge = 'all') {
+    return call('adjust_atom_row_guide', {
       imageId: Number(imageId),
       rowIndex: Number(rowIndex),
       deltaY: Number(deltaY),
@@ -152,8 +152,8 @@ export const api = {
     });
   },
 
-  setParticleRowGuides(imageId, guides) {
-    return call('set_particle_row_guides', {
+  setAtomRowGuides(imageId, guides) {
+    return call('set_atom_row_guides', {
       imageId: Number(imageId),
       guides: (guides || []).map((guide) => ({
         rowIndex: Number(guide.rowIndex ?? guide.row_index),
@@ -164,46 +164,46 @@ export const api = {
     });
   },
 
-  setParticleAtomOrder(imageId, particleId, atomIds) {
-    return call('set_particle_atom_order', {
+  setAtomParticleOrder(imageId, atomId, particleIds) {
+    return call('set_atom_particle_order', {
       imageId: Number(imageId),
-      particleId,
-      atomIds: (atomIds || []).map((atomId) => Number(atomId))
+      atomId,
+      particleIds: (particleIds || []).map((particleId) => Number(particleId))
     });
   },
 
-  setMoleculeParticleOrder(imageId, moleculeId, particleIds) {
-    return call('set_molecule_particle_order', {
+  setMoleculeAtomOrder(imageId, moleculeId, atomIds) {
+    return call('set_molecule_atom_order', {
       imageId: Number(imageId),
       moleculeId,
-      particleIds: (particleIds || []).map((particleId) => String(particleId))
+      atomIds: (atomIds || []).map((atomId) => String(atomId))
     });
   },
 
-  setOrderDraftsBatch(imageId, particleAtomOrders = [], moleculeParticleOrders = []) {
+  setOrderDraftsBatch(imageId, atomParticleOrders = [], moleculeAtomOrders = []) {
     return call('set_order_drafts_batch', {
       imageId: Number(imageId),
-      particleAtomOrders: particleAtomOrders.map((draft) => ({
-        particleId: String(draft.particleId ?? draft.particle_id ?? ''),
-        atomIds: (draft.atomIds ?? draft.atom_ids ?? []).map((atomId) => Number(atomId))
+      atomParticleOrders: atomParticleOrders.map((draft) => ({
+        atomId: String(draft.atomId ?? draft.atom_id ?? ''),
+        particleIds: (draft.particleIds ?? draft.particle_ids ?? []).map((particleId) => Number(particleId))
       })),
-      moleculeParticleOrders: moleculeParticleOrders.map((draft) => ({
+      moleculeAtomOrders: moleculeAtomOrders.map((draft) => ({
         moleculeId: String(draft.moleculeId ?? draft.molecule_id ?? ''),
-        particleIds: (draft.particleIds ?? draft.particle_ids ?? []).map((particleId) => String(particleId))
+        atomIds: (draft.atomIds ?? draft.atom_ids ?? []).map((atomId) => String(atomId))
       }))
     });
   },
 
-  setParticleMergePattern(imageId, particleIdA, particleIdB) {
-    return call('set_particle_merge_pattern', {
+  setAtomMergePattern(imageId, atomIdA, atomIdB) {
+    return call('set_atom_merge_pattern', {
       imageId: Number(imageId),
-      particleIdA,
-      particleIdB
+      atomIdA,
+      atomIdB
     });
   },
 
-  clearLatestParticleMergePattern(imageId) {
-    return call('clear_latest_particle_merge_pattern', {
+  clearLatestAtomMergePattern(imageId) {
+    return call('clear_latest_atom_merge_pattern', {
       imageId: Number(imageId)
     });
   },

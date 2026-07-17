@@ -9,8 +9,8 @@ export class ImageList {
     this.emptyEl = document.getElementById('image-list-empty');
     this.images = [];
     this.selectedImageId = null;
-    this.atomCounts = {};
-    this.showOnlyWithAtoms = false;
+    this.particleCounts = {};
+    this.showOnlyWithParticles = false;
 
     this._onImageSelected = null;
   }
@@ -25,13 +25,13 @@ export class ImageList {
     this._updateSelection();
   }
 
-  setAtomCounts(counts) {
-    this.atomCounts = counts || {};
+  setParticleCounts(counts) {
+    this.particleCounts = counts || {};
     this._render();
   }
 
-  setShowOnlyWithAtoms(showOnlyWithAtoms) {
-    this.showOnlyWithAtoms = Boolean(showOnlyWithAtoms);
+  setShowOnlyWithParticles(showOnlyWithParticles) {
+    this.showOnlyWithParticles = Boolean(showOnlyWithParticles);
     this._render();
   }
 
@@ -40,15 +40,15 @@ export class ImageList {
   }
 
   _render() {
-    const visibleImages = this.showOnlyWithAtoms
-      ? this.images.filter((image) => (this.atomCounts[image.id] || 0) > 0)
+    const visibleImages = this.showOnlyWithParticles
+      ? this.images.filter((image) => (this.particleCounts[image.id] || 0) > 0)
       : this.images;
 
     if (visibleImages.length === 0) {
       this.emptyEl.classList.remove('hidden');
       const emptyText = this.emptyEl.querySelector('span:last-child');
       if (emptyText) {
-        emptyText.textContent = this.showOnlyWithAtoms ? 'No hay paginas con atomos.' : 'Cargando paginas.';
+        emptyText.textContent = this.showOnlyWithParticles ? 'No hay paginas con particulas.' : 'Cargando paginas.';
       }
       this.container.querySelectorAll('.image-item').forEach((el) => el.remove());
       return;
@@ -72,7 +72,7 @@ export class ImageList {
       const filename = image.name || this._getFilename(
         image.source_path || image.sourcePath || image.file_path || image.filePath || image.filename || 'Unknown'
       );
-      const atomCount = this.atomCounts[image.id] || 0;
+      const particleCount = this.particleCounts[image.id] || 0;
 
       item.innerHTML = `
         <div class="image-item__thumb">
@@ -80,9 +80,9 @@ export class ImageList {
         </div>
         <div class="image-item__info">
           <div class="image-item__name" title="${this._escapeHtml(filename)}">${this._escapeHtml(filename)}</div>
-          <div class="image-item__meta">${atomCount} atomo${atomCount !== 1 ? 's' : ''}</div>
+          <div class="image-item__meta">${particleCount} particula${particleCount !== 1 ? 's' : ''}</div>
         </div>
-        <span class="image-item__badge">${atomCount}</span>
+        <span class="image-item__badge">${particleCount}</span>
       `;
 
       item.addEventListener('click', () => {

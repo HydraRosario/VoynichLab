@@ -17,6 +17,12 @@ VoynichLab does **not** currently claim translation, decipherment, phonetic valu
 | Inspect public evidence bundles | [Public artifacts](artifacts/public/) |
 | Understand the repository architecture | [Monorepo architecture](docs/MONOREPO-ARCHITECTURE.md) |
 | Review scientific scope and limitations | [Public verifiability policy](docs/PUBLIC-VERIFIABILITY.md) |
+| Understand the active V3 development boundary | [Active research foundation](docs/ACTIVE-RESEARCH-FOUNDATION.md) |
+
+The current public evidence still uses the historical ATOMS-V1 vocabulary.
+Active Corpus V3 development uses the corrected hierarchy
+`particle -> atom -> molecule` and the name PARTICLES-V1. Historical releases
+are not renamed or rewritten.
 
 ## Current Result
 

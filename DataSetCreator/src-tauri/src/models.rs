@@ -69,16 +69,16 @@ pub struct CreateLabel {
 }
 
 #[derive(Debug, Clone, Deserialize)]
-pub struct BatchAtomLabelInput {
+pub struct BatchParticleLabelInput {
     pub label_type: String,
     pub value: String,
 }
 
 #[derive(Debug, Clone, Deserialize)]
-pub struct BatchAtomStrokeInput {
+pub struct BatchParticleStrokeInput {
     pub geometry_json: String,
     pub order_index: Option<i64>,
-    pub labels: Vec<BatchAtomLabelInput>,
+    pub labels: Vec<BatchParticleLabelInput>,
     pub family: Option<String>,
     pub structural_config: Option<String>,
 }
@@ -90,7 +90,7 @@ pub struct UpdateLabel {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct Atom {
+pub struct Particle {
     pub id: i64,
     pub region_id: i64,
     pub image_id: i64,
@@ -109,8 +109,8 @@ pub struct Atom {
     pub visual_variant: Option<String>,
     pub structural_config: Option<String>,
     pub molecule_id: Option<String>,
-    pub particle_id: Option<String>,
-    pub atom_order: Option<i64>,
+    pub atom_id: Option<String>,
+    pub particle_order: Option<i64>,
     pub created_at: String,
     pub updated_at: String,
 }
@@ -120,6 +120,7 @@ pub struct Molecule {
     pub id: i64,
     pub molecule_id: String,
     pub image_id: i64,
+    pub particle_count: i64,
     pub atom_count: i64,
     pub centroid_x: f64,
     pub centroid_y: f64,
@@ -132,13 +133,13 @@ pub struct Molecule {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct Particle {
+pub struct Atom {
     pub id: i64,
-    pub particle_id: String,
+    pub atom_id: String,
     pub molecule_id: String,
     pub image_id: i64,
-    pub atom_count: i64,
-    pub particle_order: i64,
+    pub particle_count: i64,
+    pub atom_order: i64,
     pub source_index: i64,
     pub centroid_x: f64,
     pub centroid_y: f64,
@@ -154,19 +155,19 @@ pub struct Particle {
 pub struct ClusterExplanation {
     pub micro_threshold: f64,
     pub macro_threshold: f64,
-    pub training_atom_count: i64,
+    pub training_particle_count: i64,
     pub gap_count: i64,
     pub gap_centers: Vec<f64>,
     pub links: Vec<ClusterLink>,
     pub molecule_gaps: Vec<MoleculeGapAudit>,
-    pub particle_rows: Vec<ParticleRowAudit>,
+    pub atom_rows: Vec<AtomRowAudit>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ClusterLink {
     pub stage: String,
-    pub atom_id_a: i64,
-    pub atom_id_b: i64,
+    pub particle_id_a: i64,
+    pub particle_id_b: i64,
     pub accepted: bool,
     pub reason: String,
     pub horizontal_gap: f64,
@@ -180,8 +181,8 @@ pub struct ClusterLink {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct MoleculeGapAudit {
     pub row_index: i64,
-    pub left_particle_index: i64,
-    pub right_particle_index: i64,
+    pub left_atom_index: i64,
+    pub right_atom_index: i64,
     pub gap: f64,
     pub threshold: f64,
     pub next_gap: Option<f64>,
@@ -197,7 +198,7 @@ pub struct MoleculeGapAudit {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct ParticleRowAudit {
+pub struct AtomRowAudit {
     pub row_index: i64,
     pub baseline_y: f64,
     pub display_y: f64,
@@ -207,14 +208,14 @@ pub struct ParticleRowAudit {
     pub y: f64,
     pub w: f64,
     pub h: f64,
-    pub particle_count: i64,
-    pub particles: Vec<ParticlePlacementAudit>,
+    pub atom_count: i64,
+    pub atoms: Vec<AtomPlacementAudit>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct ParticlePlacementAudit {
+pub struct AtomPlacementAudit {
     pub source_index: i64,
-    pub particle_key: String,
+    pub atom_key: String,
     pub row_override: Option<i64>,
     pub x: f64,
     pub y: f64,
@@ -228,19 +229,19 @@ pub struct ParticlePlacementAudit {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct MoleculeAudit {
     pub molecule_id: String,
-    pub particle_count: i64,
     pub atom_count: i64,
+    pub particle_count: i64,
     pub signature: String,
-    pub particles: Vec<ParticleAudit>,
+    pub atoms: Vec<AtomAudit>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct ParticleAudit {
-    pub particle_id: String,
-    pub particle_order: i64,
+pub struct AtomAudit {
+    pub atom_id: String,
+    pub atom_order: i64,
     pub source_index: i64,
     pub slot: String,
-    pub atom_count: i64,
+    pub particle_count: i64,
     pub signature: String,
     pub signature_key: String,
     pub internal_contact_count: i64,
@@ -250,13 +251,13 @@ pub struct ParticleAudit {
     pub bounds_y: f64,
     pub bounds_w: f64,
     pub bounds_h: f64,
-    pub atoms: Vec<AtomAudit>,
+    pub particles: Vec<ParticleAudit>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct AtomAudit {
-    pub atom_id: i64,
-    pub atom_order: i64,
+pub struct ParticleAudit {
+    pub particle_id: i64,
+    pub particle_order: i64,
     pub family: String,
     pub structural_config: Option<String>,
     pub anchor_x: f64,
@@ -270,11 +271,11 @@ pub struct AtomAudit {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct AtomPagePacket {
+pub struct ParticlePagePacket {
     pub image_id: i64,
-    pub atoms: Vec<Atom>,
-    pub molecules: Vec<Molecule>,
     pub particles: Vec<Particle>,
+    pub molecules: Vec<Molecule>,
+    pub atoms: Vec<Atom>,
     pub cluster_explanation: ClusterExplanation,
     pub molecule_audits: Vec<MoleculeAudit>,
 }

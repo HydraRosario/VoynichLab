@@ -30,19 +30,19 @@ export class ImageViewer {
     this.pendingPaintRegions = [];
     this.pendingDeleteRegionIds = new Set();
     this.batchDeleteMode = false;
-    this.atoms = [];
-    this.molecules = [];
     this.particles = [];
-    this._atomsById = new Map();
+    this.molecules = [];
+    this.atoms = [];
+    this._particlesById = new Map();
     this._selectedRegion = null;
     this.clusterExplanation = null;
     this.moleculeGaps = [];
-    this.particleRows = [];
+    this.atomRows = [];
     this.selectedRegionId = null;
     this.selectedMoleculeId = null;
     this.hoveredMoleculeId = null;
-    this.hoveredParticleId = null;
-    this.hoveredParticleSourceIndex = 0;
+    this.hoveredAtomId = null;
+    this.hoveredAtomSourceIndex = 0;
     this.annotationsVisible = true;
     this.activeRowDrag = null;
     this.rowEditMode = false;
@@ -53,7 +53,7 @@ export class ImageViewer {
     this.strokePoints = [];
     this.strokeColor = '#64b4dc';
     this.forceDraw = false;
-    this.atomPreview = null;
+    this.particlePreview = null;
     this.keyboardStrokeHeld = false;
     this.lastMousePos = null;
 
@@ -76,7 +76,7 @@ export class ImageViewer {
 
     // Callbacks
     this._onStrokeCreated = null;
-    this._onAtomStamped = null;
+    this._onParticleStamped = null;
     this._onRegionSelected = null;
     this._onRegionChanged = null;
     this._onMoleculeSelected = null;
@@ -140,19 +140,19 @@ export class ImageViewer {
     this.pendingPaintRegions = [];
     this.pendingDeleteRegionIds = new Set();
     this.batchDeleteMode = false;
-    this.atoms = [];
-    this.molecules = [];
     this.particles = [];
-    this._atomsById = new Map();
+    this.molecules = [];
+    this.atoms = [];
+    this._particlesById = new Map();
     this._selectedRegion = null;
     this.clusterExplanation = null;
     this.moleculeGaps = [];
-    this.particleRows = [];
+    this.atomRows = [];
     this.selectedRegionId = null;
     this.selectedMoleculeId = null;
     this.hoveredMoleculeId = null;
-    this.hoveredParticleId = null;
-    this.hoveredParticleSourceIndex = 0;
+    this.hoveredAtomId = null;
+    this.hoveredAtomSourceIndex = 0;
     this._dirty = true;
   }
 
@@ -210,8 +210,8 @@ export class ImageViewer {
     this._dirty = true;
   }
 
-  getParticleRowGuides() {
-    return (this.particleRows || []).map((row) => ({
+  getAtomRowGuides() {
+    return (this.atomRows || []).map((row) => ({
       rowIndex: Number(row.rowIndex),
       topY: Number(row.topY),
       y: Number((row.topY + row.bottomY) / 2),
@@ -219,25 +219,25 @@ export class ImageViewer {
     }));
   }
 
-  setParticleRowGuides(rows = []) {
-    this.particleRows = (rows || []).map((row) => this._normalizeParticleRow(row));
+  setAtomRowGuides(rows = []) {
+    this.atomRows = (rows || []).map((row) => this._normalizeAtomRow(row));
     this._dirty = true;
   }
 
-  setMoleculeGapDraft(leftParticleIndex, rightParticleIndex, decision) {
-    this.setMoleculeGapState(leftParticleIndex, rightParticleIndex, {
+  setMoleculeGapDraft(leftAtomIndex, rightAtomIndex, decision) {
+    this.setMoleculeGapState(leftAtomIndex, rightAtomIndex, {
       cut: decision === 'cut',
       overrideDecision: decision,
       reason: 'manual',
     });
   }
 
-  setMoleculeGapState(leftParticleIndex, rightParticleIndex, state = {}) {
-    const left = Number(leftParticleIndex);
-    const right = Number(rightParticleIndex);
+  setMoleculeGapState(leftAtomIndex, rightAtomIndex, state = {}) {
+    const left = Number(leftAtomIndex);
+    const right = Number(rightAtomIndex);
     if (!left || !right) return;
     const gap = this.moleculeGaps.find((item) => (
-      Number(item.leftParticleIndex) === left && Number(item.rightParticleIndex) === right
+      Number(item.leftAtomIndex) === left && Number(item.rightAtomIndex) === right
     ));
     if (!gap) return;
     gap.cut = Boolean(state.cut);
@@ -247,18 +247,18 @@ export class ImageViewer {
   }
 
   setHierarchy(packet = {}) {
-    this.atoms = (packet.atoms || []).map((atom) => this._normalizeAtom(atom));
-    this._atomsById = new Map(this.atoms.map((atom) => [String(atom.id), atom]));
+    this.particles = (packet.particles || []).map((particle) => this._normalizeParticle(particle));
+    this._particlesById = new Map(this.particles.map((particle) => [String(particle.id), particle]));
     this.molecules = (packet.molecules || []).map((molecule) => this._normalizeBox(molecule, 'molecule'));
-    this.particles = (packet.particles || []).map((particle) => this._normalizeBox(particle, 'particle'));
+    this.atoms = (packet.atoms || []).map((atom) => this._normalizeBox(atom, 'atom'));
     this.clusterExplanation = packet.cluster_explanation || packet.clusterExplanation || null;
     this.moleculeGaps = (this.clusterExplanation?.molecule_gaps || this.clusterExplanation?.moleculeGaps || [])
       .map((gap) => this._normalizeMoleculeGap(gap));
-    this.particleRows = (this.clusterExplanation?.particle_rows || this.clusterExplanation?.particleRows || [])
-      .map((row) => this._normalizeParticleRow(row));
+    this.atomRows = (this.clusterExplanation?.atom_rows || this.clusterExplanation?.atomRows || [])
+      .map((row) => this._normalizeAtomRow(row));
     this.hoveredMoleculeId = null;
-    this.hoveredParticleId = null;
-    this.hoveredParticleSourceIndex = 0;
+    this.hoveredAtomId = null;
+    this.hoveredAtomSourceIndex = 0;
     this._dirty = true;
   }
 
@@ -273,9 +273,9 @@ export class ImageViewer {
     this._dirty = true;
   }
 
-  setHoveredParticle(id, sourceIndex = 0) {
-    this.hoveredParticleId = id || null;
-    this.hoveredParticleSourceIndex = Number(sourceIndex || 0);
+  setHoveredAtom(id, sourceIndex = 0) {
+    this.hoveredAtomId = id || null;
+    this.hoveredAtomSourceIndex = Number(sourceIndex || 0);
     this._dirty = true;
   }
 
@@ -283,8 +283,8 @@ export class ImageViewer {
     this.annotationsVisible = Boolean(visible);
     if (!this.annotationsVisible) {
       this.hoveredMoleculeId = null;
-      this.hoveredParticleId = null;
-      this.hoveredParticleSourceIndex = 0;
+      this.hoveredAtomId = null;
+      this.hoveredAtomSourceIndex = 0;
       this.canvas.style.cursor = this.spaceHeld ? 'grab' : 'default';
     } else {
       this._updateCursor();
@@ -296,8 +296,8 @@ export class ImageViewer {
     this._onStrokeCreated = callback;
   }
 
-  onAtomStamped(callback) {
-    this._onAtomStamped = callback;
+  onParticleStamped(callback) {
+    this._onParticleStamped = callback;
   }
 
   onRegionSelected(callback) {
@@ -328,8 +328,8 @@ export class ImageViewer {
     this._dirty = true;
   }
 
-  setAtomPreview(preview) {
-    this.atomPreview = preview || null;
+  setParticlePreview(preview) {
+    this.particlePreview = preview || null;
     this._dirty = true;
   }
 
@@ -581,7 +581,7 @@ export class ImageViewer {
   _handleMouseMove(e) {
     const pos = this._getMousePos(e);
     this.lastMousePos = pos;
-    if (this.atomPreview) this._dirty = true;
+    if (this.particlePreview) this._dirty = true;
 
     if (this.isPanning) {
       const dx = pos.x - this.panStartMouse.x;
@@ -605,11 +605,11 @@ export class ImageViewer {
       e.preventDefault();
       const imgPos = this._screenToImage(pos.x, pos.y);
       const deltaY = imgPos.y - this.activeRowDrag.startImageY;
-      const row = this.particleRows.find((item) => Number(item.rowIndex) === Number(this.activeRowDrag.rowIndex));
+      const row = this.atomRows.find((item) => Number(item.rowIndex) === Number(this.activeRowDrag.rowIndex));
       if (row) {
         if (this.activeRowDrag.edge === 'top') {
           row.topY = Math.min(this.activeRowDrag.originalTopY + deltaY, row.bottomY - 1);
-          const previousRow = this.particleRows.find((item) => Number(item.rowIndex) === Number(this.activeRowDrag.rowIndex) - 1);
+          const previousRow = this.atomRows.find((item) => Number(item.rowIndex) === Number(this.activeRowDrag.rowIndex) - 1);
           if (previousRow) {
             previousRow.bottomY = row.topY;
             previousRow.y = (previousRow.topY + previousRow.bottomY) / 2;
@@ -617,7 +617,7 @@ export class ImageViewer {
           }
         } else if (this.activeRowDrag.edge === 'bottom') {
           row.bottomY = Math.max(this.activeRowDrag.originalBottomY + deltaY, row.topY + 1);
-          const nextRow = this.particleRows.find((item) => Number(item.rowIndex) === Number(this.activeRowDrag.rowIndex) + 1);
+          const nextRow = this.atomRows.find((item) => Number(item.rowIndex) === Number(this.activeRowDrag.rowIndex) + 1);
           if (nextRow) {
             nextRow.topY = row.bottomY;
             nextRow.y = (nextRow.topY + nextRow.bottomY) / 2;
@@ -626,13 +626,13 @@ export class ImageViewer {
         } else if (this.activeRowDrag.edge === 'center') {
           row.topY = this.activeRowDrag.originalTopY + deltaY;
           row.bottomY = this.activeRowDrag.originalBottomY + deltaY;
-          const previousRow = this.particleRows.find((item) => Number(item.rowIndex) === Number(this.activeRowDrag.rowIndex) - 1);
+          const previousRow = this.atomRows.find((item) => Number(item.rowIndex) === Number(this.activeRowDrag.rowIndex) - 1);
           if (previousRow) {
             previousRow.bottomY = row.topY;
             previousRow.y = (previousRow.topY + previousRow.bottomY) / 2;
             previousRow.h = previousRow.bottomY - previousRow.topY;
           }
-          const nextRow = this.particleRows.find((item) => Number(item.rowIndex) === Number(this.activeRowDrag.rowIndex) + 1);
+          const nextRow = this.atomRows.find((item) => Number(item.rowIndex) === Number(this.activeRowDrag.rowIndex) + 1);
           if (nextRow) {
             nextRow.topY = row.bottomY;
             nextRow.y = (nextRow.topY + nextRow.bottomY) / 2;
@@ -653,10 +653,10 @@ export class ImageViewer {
 
     if (this.image) {
       if (!this.annotationsVisible) {
-        if (this.hoveredMoleculeId || this.hoveredParticleId || this.hoveredParticleSourceIndex) {
+        if (this.hoveredMoleculeId || this.hoveredAtomId || this.hoveredAtomSourceIndex) {
           this.hoveredMoleculeId = null;
-          this.hoveredParticleId = null;
-          this.hoveredParticleSourceIndex = 0;
+          this.hoveredAtomId = null;
+          this.hoveredAtomSourceIndex = 0;
           this._dirty = true;
         }
         this.canvas.style.cursor = this.spaceHeld ? 'grab' : 'default';
@@ -867,7 +867,7 @@ export class ImageViewer {
     const wasKeyboardStroke = this.keyboardStrokeHeld;
     this.keyboardStrokeHeld = false;
     const points = this._simplifyStrokePoints(this.strokePoints);
-    const shouldStampAtom = this.atomPreview && points.length <= 1 && !wasKeyboardStroke;
+    const shouldStampParticle = this.particlePreview && points.length <= 1 && !wasKeyboardStroke;
     const stampPoint = points[0];
     if (points.length === 1) {
       points.push({ x: points[0].x + 1, y: points[0].y + 1 });
@@ -877,12 +877,12 @@ export class ImageViewer {
     window.removeEventListener('mousemove', this._handleStrokeWindowMove);
     window.removeEventListener('mouseup', this._handleStrokeWindowUp);
 
-    if (shouldStampAtom && stampPoint && this._onAtomStamped) {
-      const stampedPoints = this._previewPointsAtCursor(this.atomPreview, stampPoint)
+    if (shouldStampParticle && stampPoint && this._onParticleStamped) {
+      const stampedPoints = this._previewPointsAtCursor(this.particlePreview, stampPoint)
         .map((point) => ({ x: Math.round(point.x), y: Math.round(point.y) }));
-      this._onAtomStamped({
+      this._onParticleStamped({
         points: stampedPoints,
-        color: this.atomPreview.color || this.strokeColor,
+        color: this.particlePreview.color || this.strokeColor,
         width: 3,
       });
       this._dirty = true;
@@ -1029,7 +1029,7 @@ export class ImageViewer {
     let bestDistance = Infinity;
 
     for (const gap of this.moleculeGaps) {
-      const row = this.particleRows.find((item) => Number(item.rowIndex) === Number(gap.rowIndex));
+      const row = this.atomRows.find((item) => Number(item.rowIndex) === Number(gap.rowIndex));
       const topY = row?.topY ?? (gap.y - 22);
       const bottomY = row?.bottomY ?? (gap.y + 22);
       const minY = Math.min(topY, bottomY) - tolerance;
@@ -1048,14 +1048,14 @@ export class ImageViewer {
 
   _hitTestRowGuide(screenX, screenY, includeBand = false) {
     if (!this.annotationsVisible) return null;
-    if (!this.particleRows.length) return null;
+    if (!this.atomRows.length) return null;
     const tolerance = 7;
     let best = null;
     const left = this._imageToScreen(0, 0).x;
     const right = this._imageToScreen(this.imageWidth || 0, 0).x;
     if (screenX < Math.min(left, right) || screenX > Math.max(left, right)) return null;
 
-    for (const row of this.particleRows) {
+    for (const row of this.atomRows) {
       const top = this._imageToScreen(0, row.topY).y;
       const bottom = this._imageToScreen(0, row.bottomY).y;
       const topDelta = Math.abs(screenY - top);
@@ -1178,8 +1178,8 @@ export class ImageViewer {
 
       if (this.isDrawing && this.drawMode === 'stroke') {
         this._drawStrokePreview(ctx);
-      } else if (this.forceDraw && this.drawMode === 'stroke' && this.atomPreview && this.lastMousePos) {
-        this._drawAtomPreview(ctx);
+      } else if (this.forceDraw && this.drawMode === 'stroke' && this.particlePreview && this.lastMousePos) {
+        this._drawParticlePreview(ctx);
       }
     }
   }
@@ -1197,19 +1197,19 @@ export class ImageViewer {
   }
 
   _drawHierarchy(ctx, viewport) {
-    this._drawParticleRows(ctx, viewport);
+    this._drawAtomRows(ctx, viewport);
     this._drawClusterLinks(ctx, viewport);
     this._drawMoleculeGapAudit(ctx, viewport);
 
-    const isHoveredParticle = (particle) => (
-      String(particle.id) === String(this.hoveredParticleId)
-      || (this.hoveredParticleSourceIndex > 0 && Number(particle.sourceIndex) === Number(this.hoveredParticleSourceIndex))
+    const isHoveredAtom = (atom) => (
+      String(atom.id) === String(this.hoveredAtomId)
+      || (this.hoveredAtomSourceIndex > 0 && Number(atom.sourceIndex) === Number(this.hoveredAtomSourceIndex))
     );
 
-    for (const particle of this.particles) {
-      if (!this._boxIntersects(particle, viewport)) continue;
-      const isHovered = isHoveredParticle(particle);
-      this._drawHierarchyBox(ctx, particle, {
+    for (const atom of this.atoms) {
+      if (!this._boxIntersects(atom, viewport)) continue;
+      const isHovered = isHoveredAtom(atom);
+      this._drawHierarchyBox(ctx, atom, {
         stroke: isHovered ? 'rgba(88, 255, 190, 1)' : 'rgba(88, 210, 164, 0.34)',
         fill: isHovered ? 'rgba(88, 255, 190, 0.22)' : 'rgba(88, 210, 164, 0.035)',
         dash: isHovered ? [] : [3, 5],
@@ -1233,9 +1233,9 @@ export class ImageViewer {
       });
     }
 
-    const hoveredParticle = this.particles.find(isHoveredParticle);
-    if (hoveredParticle) {
-      this._drawHierarchyBox(ctx, hoveredParticle, {
+    const hoveredAtom = this.atoms.find(isHoveredAtom);
+    if (hoveredAtom) {
+      this._drawHierarchyBox(ctx, hoveredAtom, {
         stroke: 'rgba(88, 255, 190, 1)',
         fill: 'rgba(88, 255, 190, 0.28)',
         dash: [],
@@ -1246,15 +1246,15 @@ export class ImageViewer {
     }
   }
 
-  _drawParticleRows(ctx, viewport) {
-    if (!this.particleRows.length) return;
+  _drawAtomRows(ctx, viewport) {
+    if (!this.atomRows.length) return;
 
     ctx.save();
     ctx.font = '800 11px Inter, sans-serif';
     ctx.textAlign = 'left';
     ctx.textBaseline = 'middle';
 
-    for (const row of this.particleRows) {
+    for (const row of this.atomRows) {
       if (viewport && (row.bottomY < viewport.y || row.topY > viewport.y + viewport.h)) continue;
       const bandLeftX = 0;
       const bandRightX = this.imageWidth || row.x + row.w;
@@ -1279,7 +1279,7 @@ export class ImageViewer {
         ctx.stroke();
       }
 
-      const label = `R${row.rowIndex} · ${row.particleCount}p`;
+      const label = `R${row.rowIndex} · ${row.atomCount}p`;
       const labelW = Math.max(44, label.length * 7);
       const labelY = bandTop.y - 18;
       ctx.fillStyle = 'rgba(10, 10, 15, 0.78)';
@@ -1294,7 +1294,7 @@ export class ImageViewer {
 
   _drawClusterLinks(ctx, viewport) {
     const links = this.clusterExplanation?.links || [];
-    if (!links.length || !this.atoms.length) return;
+    if (!links.length || !this.particles.length) return;
 
     ctx.save();
     ctx.lineCap = 'round';
@@ -1303,23 +1303,23 @@ export class ImageViewer {
       const accepted = Boolean(link.accepted);
       if (!accepted) continue;
 
-      const atomA = this._atomsById.get(String(link.atom_id_a ?? link.atomIdA));
-      const atomB = this._atomsById.get(String(link.atom_id_b ?? link.atomIdB));
-      if (!atomA || !atomB) continue;
-      if (viewport && !this._boxIntersects(atomA, viewport) && !this._boxIntersects(atomB, viewport)) continue;
+      const particleA = this._particlesById.get(String(link.particle_id_a ?? link.particleIdA));
+      const particleB = this._particlesById.get(String(link.particle_id_b ?? link.particleIdB));
+      if (!particleA || !particleB) continue;
+      if (viewport && !this._boxIntersects(particleA, viewport) && !this._boxIntersects(particleB, viewport)) continue;
 
-      const a = this._imageToScreen(atomA.x + atomA.w / 2, atomA.y + atomA.h / 2);
-      const b = this._imageToScreen(atomB.x + atomB.w / 2, atomB.y + atomB.h / 2);
+      const a = this._imageToScreen(particleA.x + particleA.w / 2, particleA.y + particleA.h / 2);
+      const b = this._imageToScreen(particleB.x + particleB.w / 2, particleB.y + particleB.h / 2);
       const stage = link.stage || 'molecule';
 
       ctx.beginPath();
       ctx.moveTo(a.x, a.y);
       ctx.lineTo(b.x, b.y);
-      ctx.strokeStyle = stage === 'particle'
+      ctx.strokeStyle = stage === 'atom'
         ? 'rgba(88, 210, 164, 0.50)'
         : 'rgba(100, 180, 220, 0.50)';
-      ctx.lineWidth = stage === 'particle' ? 1.35 : 2.1;
-      ctx.setLineDash(stage === 'particle' ? [2, 4] : []);
+      ctx.lineWidth = stage === 'atom' ? 1.35 : 2.1;
+      ctx.setLineDash(stage === 'atom' ? [2, 4] : []);
       ctx.stroke();
     }
 
@@ -1332,7 +1332,7 @@ export class ImageViewer {
     ctx.save();
 
     for (const gap of this.moleculeGaps) {
-      const row = this.particleRows.find((item) => Number(item.rowIndex) === Number(gap.rowIndex));
+      const row = this.atomRows.find((item) => Number(item.rowIndex) === Number(gap.rowIndex));
       const topY = row?.topY ?? (gap.y - 22);
       const bottomY = row?.bottomY ?? (gap.y + 22);
       if (viewport && (
@@ -1472,32 +1472,32 @@ export class ImageViewer {
     ctx.restore();
   }
 
-  _drawAtomPreview(ctx) {
-    if (!this.atomPreview || !this.lastMousePos || !this._isPointInsideCanvas(this.lastMousePos)) return;
+  _drawParticlePreview(ctx) {
+    if (!this.particlePreview || !this.lastMousePos || !this._isPointInsideCanvas(this.lastMousePos)) return;
     const cursor = this._screenToImage(this.lastMousePos.x, this.lastMousePos.y);
-    const points = this._previewPointsAtCursor(this.atomPreview, cursor);
+    const points = this._previewPointsAtCursor(this.particlePreview, cursor);
     if (points.length < 2) return;
 
     ctx.save();
     ctx.globalAlpha = 0.58;
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
-    ctx.strokeStyle = this.atomPreview.color || this.strokeColor;
+    ctx.strokeStyle = this.particlePreview.color || this.strokeColor;
     ctx.lineWidth = 4;
-    ctx.shadowColor = this.atomPreview.color || this.strokeColor;
+    ctx.shadowColor = this.particlePreview.color || this.strokeColor;
     ctx.shadowBlur = 12;
     ctx.setLineDash([8, 5]);
     this._drawSmoothStrokePath(ctx, points);
     ctx.setLineDash([]);
 
-    const label = this.atomPreview.config ? String(this.atomPreview.config) : '';
+    const label = this.particlePreview.config ? String(this.particlePreview.config) : '';
     if (label) {
       const screen = this._imageToScreen(cursor.x, cursor.y);
       ctx.font = '700 11px Inter, sans-serif';
       ctx.fillStyle = 'rgba(10, 10, 15, 0.82)';
       this._roundRect(ctx, screen.x + 10, screen.y + 10, 18, 18, 4);
       ctx.fill();
-      ctx.fillStyle = this.atomPreview.color || this.strokeColor;
+      ctx.fillStyle = this.particlePreview.color || this.strokeColor;
       ctx.fillText(label, screen.x + 16, screen.y + 23);
     }
     ctx.restore();
@@ -1586,7 +1586,7 @@ export class ImageViewer {
   }
 
   _normalizeBox(item, kind) {
-    const id = item?.molecule_id || item?.moleculeId || item?.particle_id || item?.particleId || item?.id;
+    const id = item?.molecule_id || item?.moleculeId || item?.atom_id || item?.atomId || item?.id;
     return {
       id,
       kind,
@@ -1596,15 +1596,15 @@ export class ImageViewer {
       y: Number(item?.bounds_y ?? item?.boundsY ?? 0),
       w: Number(item?.bounds_w ?? item?.boundsW ?? 0),
       h: Number(item?.bounds_h ?? item?.boundsH ?? 0),
-      atomCount: Number(item?.atom_count ?? item?.atomCount ?? 0),
+      particleCount: Number(item?.particle_count ?? item?.particleCount ?? 0),
     };
   }
 
   _normalizeMoleculeGap(gap) {
     return {
       rowIndex: Number(gap?.row_index ?? gap?.rowIndex ?? 0),
-      leftParticleIndex: Number(gap?.left_particle_index ?? gap?.leftParticleIndex ?? 0),
-      rightParticleIndex: Number(gap?.right_particle_index ?? gap?.rightParticleIndex ?? 0),
+      leftAtomIndex: Number(gap?.left_atom_index ?? gap?.leftAtomIndex ?? 0),
+      rightAtomIndex: Number(gap?.right_atom_index ?? gap?.rightAtomIndex ?? 0),
       gap: Number(gap?.gap ?? 0),
       threshold: Number(gap?.threshold ?? 0),
       nextGap: gap?.next_gap ?? gap?.nextGap ?? null,
@@ -1619,7 +1619,7 @@ export class ImageViewer {
     };
   }
 
-  _normalizeParticleRow(row) {
+  _normalizeAtomRow(row) {
     return {
       rowIndex: Number(row?.row_index ?? row?.rowIndex ?? 0),
       baselineY: Number(row?.baseline_y ?? row?.baselineY ?? 0),
@@ -1630,21 +1630,21 @@ export class ImageViewer {
       y: Number(row?.y ?? 0),
       w: Number(row?.w ?? 0),
       h: Number(row?.h ?? 0),
-      particleCount: Number(row?.particle_count ?? row?.particleCount ?? (row?.particles || []).length),
+      atomCount: Number(row?.atom_count ?? row?.atomCount ?? (row?.atoms || []).length),
     };
   }
 
-  _normalizeAtom(atom) {
+  _normalizeParticle(particle) {
     return {
-      id: atom?.id,
-      regionId: atom?.region_id ?? atom?.regionId,
-      moleculeId: atom?.molecule_id ?? atom?.moleculeId,
-      particleId: atom?.particle_id ?? atom?.particleId,
-      family: atom?.family || '',
-      x: Number(atom?.bounds_x ?? atom?.boundsX ?? 0),
-      y: Number(atom?.bounds_y ?? atom?.boundsY ?? 0),
-      w: Number(atom?.bounds_w ?? atom?.boundsW ?? 0),
-      h: Number(atom?.bounds_h ?? atom?.boundsH ?? 0),
+      id: particle?.id,
+      regionId: particle?.region_id ?? particle?.regionId,
+      moleculeId: particle?.molecule_id ?? particle?.moleculeId,
+      atomId: particle?.atom_id ?? particle?.atomId,
+      family: particle?.family || '',
+      x: Number(particle?.bounds_x ?? particle?.boundsX ?? 0),
+      y: Number(particle?.bounds_y ?? particle?.boundsY ?? 0),
+      w: Number(particle?.bounds_w ?? particle?.boundsW ?? 0),
+      h: Number(particle?.bounds_h ?? particle?.boundsH ?? 0),
     };
   }
 

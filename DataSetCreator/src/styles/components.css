@@ -540,7 +540,7 @@
   animation: fadeInUp 250ms ease forwards;
 }
 
-.atom-table {
+.particle-table {
   display: grid;
   gap: var(--space-2);
   margin: var(--space-3) 0;
@@ -550,20 +550,20 @@
   background: var(--bg-elevated);
 }
 
-.atom-table__title {
+.particle-table__title {
   color: var(--text-secondary);
   font-size: var(--font-size-xs);
   font-weight: 700;
   text-transform: uppercase;
 }
 
-.atom-table__keys {
+.particle-table__keys {
   display: flex;
   align-items: stretch;
   gap: 10px;
 }
 
-.atom-table__atom-list {
+.particle-table__particle-list {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   flex: 1 1 auto;
@@ -571,7 +571,7 @@
   min-width: 0;
 }
 
-.atom-table__create {
+.particle-table__create {
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -580,7 +580,7 @@
   border-left: 1px solid rgba(255, 255, 255, 0.78);
 }
 
-.atom-button {
+.particle-button {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -596,80 +596,80 @@
   overflow-wrap: anywhere;
 }
 
-.atom-group {
+.particle-group {
   display: inline-flex;
   align-items: stretch;
   width: 100%;
   max-width: 100%;
 }
 
-.atom-group-key {
+.particle-group-key {
   justify-content: flex-start;
   width: 100%;
-  border-color: color-mix(in srgb, var(--atom-color, #d9c2f5) 62%, transparent);
+  border-color: color-mix(in srgb, var(--particle-color, #d9c2f5) 62%, transparent);
   border-radius: var(--radius-xs);
-  background: color-mix(in srgb, var(--atom-color, #d9c2f5) 16%, transparent);
-  color: var(--atom-color, #d9c2f5);
+  background: color-mix(in srgb, var(--particle-color, #d9c2f5) 16%, transparent);
+  color: var(--particle-color, #d9c2f5);
 }
 
-.atom-key__swatch {
+.particle-key__swatch {
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  background: var(--atom-color, #d9c2f5);
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.28), 0 0 8px color-mix(in srgb, var(--atom-color, #d9c2f5) 55%, transparent);
+  background: var(--particle-color, #d9c2f5);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.28), 0 0 8px color-mix(in srgb, var(--particle-color, #d9c2f5) 55%, transparent);
   flex: 0 0 auto;
 }
 
-.atom-button:hover {
-  border-color: var(--atom-color, #b48cdc);
-  background: color-mix(in srgb, var(--atom-color, #b48cdc) 24%, transparent);
+.particle-button:hover {
+  border-color: var(--particle-color, #b48cdc);
+  background: color-mix(in srgb, var(--particle-color, #b48cdc) 24%, transparent);
   transform: translateY(-1px);
 }
 
-.atom-button--active {
+.particle-button--active {
   border-color: var(--accent);
   background: rgba(212, 160, 74, 0.18);
   color: var(--accent);
 }
 
-.atom-group-key.atom-button--active {
-  border-color: var(--atom-color, var(--accent));
-  background: color-mix(in srgb, var(--atom-color, var(--accent)) 22%, transparent);
-  color: var(--atom-color, var(--accent));
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--atom-color, var(--accent)) 45%, transparent);
+.particle-group-key.particle-button--active {
+  border-color: var(--particle-color, var(--accent));
+  background: color-mix(in srgb, var(--particle-color, var(--accent)) 22%, transparent);
+  color: var(--particle-color, var(--accent));
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--particle-color, var(--accent)) 45%, transparent);
 }
 
-.atom-table__empty {
+.particle-table__empty {
   color: var(--text-muted);
   font-size: var(--font-size-xs);
   line-height: 1.4;
 }
 
-.atomic-panel {
+.particle-panel {
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
 }
 
-.atomic-selected {
+.particle-selected {
   padding-top: var(--space-2);
 }
 
-.atomic-actions {
+.particle-actions {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-2);
 }
 
-.atom-facts {
+.particle-facts {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space-2);
   margin-bottom: var(--space-3);
 }
 
-.atom-fact {
+.particle-fact {
   min-width: 0;
   padding: var(--space-2);
   border: 1px solid var(--border-subtle);
@@ -677,7 +677,7 @@
   background: rgba(255, 255, 255, 0.03);
 }
 
-.atom-fact__label {
+.particle-fact__label {
   display: block;
   margin-bottom: 3px;
   color: var(--text-muted);
@@ -686,7 +686,7 @@
   text-transform: uppercase;
 }
 
-.atom-fact strong {
+.particle-fact strong {
   display: block;
   color: var(--text-primary);
   font-size: var(--font-size-xs);
@@ -719,21 +719,21 @@
   color: var(--accent);
 }
 
-.atom-new-btn {
+.particle-new-btn {
   justify-content: center;
   min-width: 30px;
   min-height: 30px;
   padding: 0;
-  border-color: var(--atom-color, var(--border-subtle));
-  color: var(--atom-color, var(--text-primary));
-  background: color-mix(in srgb, var(--atom-color, var(--accent)) 18%, var(--bg-surface));
+  border-color: var(--particle-color, var(--border-subtle));
+  color: var(--particle-color, var(--text-primary));
+  background: color-mix(in srgb, var(--particle-color, var(--accent)) 18%, var(--bg-surface));
   font-size: 17px;
   line-height: 1;
 }
 
-.atom-new-btn:hover {
-  border-color: var(--atom-color, var(--accent));
-  background: color-mix(in srgb, var(--atom-color, var(--accent)) 28%, var(--bg-surface-hover));
+.particle-new-btn:hover {
+  border-color: var(--particle-color, var(--accent));
+  background: color-mix(in srgb, var(--particle-color, var(--accent)) 28%, var(--bg-surface-hover));
 }
 
 .cluster-debug-panel {
@@ -794,7 +794,7 @@
   border-top: 2px solid rgba(100, 180, 220, 0.72);
 }
 
-.cluster-debug__line--particle {
+.cluster-debug__line--atom {
   border-top-color: rgba(88, 210, 164, 0.72);
   border-top-style: dashed;
 }
@@ -1062,12 +1062,12 @@
   overflow-wrap: anywhere;
 }
 
-.molecule-detail__particles {
+.molecule-detail__atoms {
   display: grid;
   gap: 6px;
 }
 
-.particle-detail {
+.atom-detail {
   display: grid;
   gap: 5px;
   padding: 6px;
@@ -1076,7 +1076,7 @@
   background: rgba(0, 0, 0, 0.12);
 }
 
-.particle-detail__head {
+.atom-detail__head {
   display: grid;
   grid-template-columns: minmax(72px, auto) auto auto minmax(0, 1fr);
   align-items: center;
@@ -1086,21 +1086,21 @@
   font-weight: 800;
 }
 
-.particle-detail__order-controls,
-.particle-detail__row-controls {
+.atom-detail__order-controls,
+.atom-detail__row-controls {
   display: inline-flex;
   flex-wrap: wrap;
   gap: 3px;
 }
 
-.particle-detail__row-controls {
+.atom-detail__row-controls {
   align-items: center;
   padding-left: 6px;
   border-left: 1px solid rgba(125, 170, 210, 0.18);
   color: rgba(220, 232, 240, 0.82);
 }
 
-.particle-detail__move-btn {
+.atom-detail__move-btn {
   height: 20px;
   padding: 0 5px;
   border: 1px solid rgba(88, 210, 164, 0.26);
@@ -1112,29 +1112,29 @@
   cursor: pointer;
 }
 
-.particle-detail__move-btn:hover:not(:disabled) {
+.atom-detail__move-btn:hover:not(:disabled) {
   border-color: rgba(88, 255, 190, 0.72);
   color: var(--text-primary);
   background: rgba(88, 210, 164, 0.13);
 }
 
-.particle-detail__move-btn:disabled {
+.atom-detail__move-btn:disabled {
   opacity: 0.32;
   cursor: default;
 }
 
-.particle-detail__move-btn--merge {
+.atom-detail__move-btn--merge {
   border-color: rgba(255, 210, 96, 0.3);
   background: rgba(255, 210, 96, 0.07);
   color: rgba(255, 226, 146, 0.95);
 }
 
-.particle-detail__move-btn--merge:hover:not(:disabled) {
+.atom-detail__move-btn--merge:hover:not(:disabled) {
   border-color: rgba(255, 210, 96, 0.72);
   background: rgba(255, 210, 96, 0.14);
 }
 
-.particle-detail__head code {
+.atom-detail__head code {
   min-width: 0;
   color: var(--text-primary);
   font-family: var(--font-mono);
@@ -1142,7 +1142,7 @@
   overflow-wrap: anywhere;
 }
 
-.particle-detail__metrics {
+.atom-detail__metrics {
   display: flex;
   flex-wrap: wrap;
   gap: 4px;
@@ -1151,7 +1151,7 @@
   font-size: 10px;
 }
 
-.particle-detail__metrics span {
+.atom-detail__metrics span {
   min-height: 18px;
   padding: 2px 5px;
   border: 1px solid rgba(255, 255, 255, 0.07);
@@ -1159,18 +1159,18 @@
   background: rgba(255, 255, 255, 0.025);
 }
 
-.particle-detail__metrics code {
+.atom-detail__metrics code {
   color: var(--text-primary);
   font-family: var(--font-mono);
   overflow-wrap: anywhere;
 }
 
-.particle-detail__atoms {
+.atom-detail__particles {
   display: grid;
   gap: 4px;
 }
 
-.particle-detail__atom {
+.atom-detail__particle {
   display: grid;
   grid-template-columns: 38px 38px minmax(70px, auto) minmax(0, 1fr);
   align-items: center;
@@ -1184,12 +1184,12 @@
   font-size: 10px;
 }
 
-.particle-detail__atom code {
+.atom-detail__particle code {
   color: var(--text-secondary);
   font-family: var(--font-mono);
 }
 
-.particle-detail__atom small {
+.atom-detail__particle small {
   min-width: 0;
   color: var(--text-muted);
   font-family: var(--font-mono);
@@ -1197,7 +1197,7 @@
   overflow-wrap: anywhere;
 }
 
-.particle-detail__atom-btn {
+.atom-detail__particle-btn {
   min-width: 0;
   height: 18px;
   padding: 0 4px;
@@ -1210,13 +1210,13 @@
   cursor: pointer;
 }
 
-.particle-detail__atom-btn:hover:not(:disabled) {
+.atom-detail__particle-btn:hover:not(:disabled) {
   border-color: var(--border-hover);
   color: var(--text-primary);
   background: rgba(255, 255, 255, 0.075);
 }
 
-.particle-detail__atom-btn:disabled {
+.atom-detail__particle-btn:disabled {
   opacity: 0.32;
   cursor: default;
 }
@@ -1242,7 +1242,7 @@
 }
 
 .molecule-audit__head,
-.molecule-audit__particle {
+.molecule-audit__atom {
   display: flex;
   align-items: center;
   gap: 6px;
@@ -1274,17 +1274,17 @@
   color: var(--accent);
 }
 
-.molecule-audit__particles {
+.molecule-audit__atoms {
   display: grid;
   gap: 4px;
 }
 
-.molecule-audit__particle {
+.molecule-audit__atom {
   color: var(--text-secondary);
   font-size: var(--font-size-xs);
 }
 
-.molecule-audit__particle code {
+.molecule-audit__atom code {
   flex: 1 1 auto;
   min-width: 0;
   color: var(--text-primary);

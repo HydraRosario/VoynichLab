@@ -3,7 +3,7 @@ import ImageList from './image-list.js';
 import ImageViewer from './image-viewer.js';
 import AnnotationPanel from './annotation-panel.js';
 
-const ATOM_LIBRARY_KEY = 'datasetcreator.atomLibrary';
+const ATOM_LIBRARY_KEY = 'datasetcreator.particleLibrary';
 
 class App {
   constructor() {
@@ -12,26 +12,26 @@ class App {
     this.images = [];
     this.regions = [];
     this.labels = [];
-    this.atomCounts = {};
-    this.atomLibrary = this.loadAtomLibrary();
-    this.activeAtomId = null;
-    this.activeAtomKey = null;
+    this.particleCounts = {};
+    this.particleLibrary = this.loadParticleLibrary();
+    this.activeParticleId = null;
+    this.activeParticleKey = null;
     this.activeStructuralConfig = '1';
-    this.pendingNewAtomColor = null;
-    this.pendingNewAtomRegionId = null;
+    this.pendingNewParticleColor = null;
+    this.pendingNewParticleRegionId = null;
     this.undoStack = [];
     this.redoStack = [];
     this.historyLimit = 80;
     this.annotationsVisible = true;
-    this.showOnlyImagesWithAtoms = false;
-    this.atomPagePacket = null;
+    this.showOnlyImagesWithParticles = false;
+    this.particlePagePacket = null;
     this.selectedMoleculeId = null;
     this.moleculeRecalculateTimer = null;
     this.moleculeEditMode = false;
     this.moleculeEditSnapshot = null;
     this.moleculeEditSnapshots = new Map();
-    this.pendingParticleAtomOrders = new Map();
-    this.pendingMoleculeParticleOrders = new Map();
+    this.pendingAtomParticleOrders = new Map();
+    this.pendingMoleculeAtomOrders = new Map();
     this.orderDraftSaving = false;
     this.editModeActive = false;
     this.editTool = null;
@@ -44,8 +44,8 @@ class App {
     this.rowEditChangedRows = new Set();
     this.gapEditSnapshot = new Map();
     this.pendingMoleculeGapOverrides = new Map();
-    this.particleRowOverrideSnapshot = new Map();
-    this.pendingParticleRowOverrides = new Map();
+    this.atomRowOverrideSnapshot = new Map();
+    this.pendingAtomRowOverrides = new Map();
 
     this.canvasEmptyEl = document.getElementById('canvas-empty');
     this.zoomInBtn = document.getElementById('zoom-in-btn');
@@ -62,12 +62,12 @@ class App {
     this.sidebarCollapseBtn = document.getElementById('sidebar-collapse-btn');
     this.sidebarFilterBtn = document.getElementById('sidebar-filter-btn');
     this.sidebarLabelsBtn = document.getElementById('sidebar-labels-btn');
-    this.atomNameModal = document.getElementById('atom-name-modal');
-    this.atomNameForm = document.getElementById('atom-name-form');
-    this.atomNameInput = document.getElementById('atom-name-input');
-    this.atomNameCancelBtn = document.getElementById('atom-name-cancel');
-    this.atomNameCancelXBtn = document.getElementById('atom-name-cancel-x');
-    this.pendingAtomNameResolver = null;
+    this.particleNameModal = document.getElementById('particle-name-modal');
+    this.particleNameForm = document.getElementById('particle-name-form');
+    this.particleNameInput = document.getElementById('particle-name-input');
+    this.particleNameCancelBtn = document.getElementById('particle-name-cancel');
+    this.particleNameCancelXBtn = document.getElementById('particle-name-cancel-x');
+    this.pendingParticleNameResolver = null;
 
     this.init();
   }
@@ -76,7 +76,7 @@ class App {
     this.imageList = new ImageList(document.getElementById('image-list-container'));
     this.imageViewer = new ImageViewer(document.getElementById('main-canvas'));
     this.annotationPanel = new AnnotationPanel(document.getElementById('annotation-panel-body'));
-    this.annotationPanel.setAtomLibrary(this.atomLibrary);
+    this.annotationPanel.setParticleLibrary(this.particleLibrary);
 
     this.setupCallbacks();
     this.setupUIEvents();
@@ -97,22 +97,22 @@ class App {
           this.queuePaintStroke(stroke);
           return;
         }
-        await this.createAtomStroke(stroke);
+        await this.createParticleStroke(stroke);
       } catch (err) {
-        this.showToast(`No pude crear el atomo: ${err}`, 'error');
+        this.showToast(`No pude crear la particula: ${err}`, 'error');
       }
     });
 
-    this.imageViewer.onAtomStamped(async (stroke) => {
+    this.imageViewer.onParticleStamped(async (stroke) => {
       if (!this.currentImage) return;
       try {
         if (this.paintModeActive) {
           this.queuePaintStroke(stroke);
           return;
         }
-        await this.createAtomStroke(stroke);
+        await this.createParticleStroke(stroke);
       } catch (err) {
-        this.showToast(`No pude estampar el atomo: ${err}`, 'error');
+        this.showToast(`No pude estampar la particula: ${err}`, 'error');
       }
     });
 
@@ -145,8 +145,8 @@ class App {
         return;
       }
       try {
-        const packet = await api.adjustParticleRowGuide(this.currentImage.id, rowIndex, deltaY, edge);
-        this.applyAtomPagePacket(packet);
+        const packet = await api.adjustAtomRowGuide(this.currentImage.id, rowIndex, deltaY, edge);
+        this.applyParticlePagePacket(packet);
       } catch (err) {
         this.showToast(`No pude ajustar renglon: ${err}`, 'error');
       }
@@ -158,13 +158,13 @@ class App {
 
     this.annotationPanel.infoContainer.addEventListener('click', async (event) => {
       const button = event.target.closest('[data-gap-action]');
-      const rowButton = event.target.closest('[data-particle-row-action]');
+      const rowButton = event.target.closest('[data-atom-row-action]');
       if (!button && !rowButton) return;
       event.preventDefault();
       if (button) {
         await this.handleGapAction(button);
       } else {
-        await this.handleParticleRowAction(rowButton);
+        await this.handleAtomRowAction(rowButton);
       }
     });
 
@@ -175,7 +175,7 @@ class App {
           geometryJson: JSON.stringify(geometry),
         });
         await this.autoClassifyCurrentImageVariants();
-        await this.syncAtomEngine(regionId);
+        await this.syncParticleEngine(regionId);
         const after = await this.snapshotRegion(regionId);
         this.pushHistory({ type: 'update', before, after });
         this.redoStack = [];
@@ -183,58 +183,58 @@ class App {
         await this.selectRegion(regionId);
         this.scheduleMoleculeRecalculate();
       } catch (err) {
-        this.showToast(`No pude ajustar el atomo: ${err}`, 'error');
+        this.showToast(`No pude ajustar la particula: ${err}`, 'error');
       }
     });
 
-    this.annotationPanel.onDrawAtomRequested(async (color) => {
-      if (this.pendingNewAtomColor) {
-        await this.cancelNewAtomCreation({ deletePendingRegion: Boolean(this.pendingNewAtomRegionId) });
+    this.annotationPanel.onDrawParticleRequested(async (color) => {
+      if (this.pendingNewParticleColor) {
+        await this.cancelNewParticleCreation({ deletePendingRegion: Boolean(this.pendingNewParticleRegionId) });
         return;
       }
-      this.startNewAtomCreation(color);
+      this.startNewParticleCreation(color);
     });
 
-    this.annotationPanel.onSaveAtomRequested(async () => {
+    this.annotationPanel.onSaveParticleRequested(async () => {
       try {
-        await this.saveSelectedAtomDefinition();
+        await this.saveSelectedParticleDefinition();
       } catch (err) {
-        this.showToast(`No pude guardar el atomo patron: ${err}`, 'error');
+        this.showToast(`No pude guardar la particula patron: ${err}`, 'error');
       }
     });
 
-    this.annotationPanel.onAtomPicked(async (atomId) => {
-      if (this.pendingNewAtomColor) {
+    this.annotationPanel.onParticlePicked(async (particleId) => {
+      if (this.pendingNewParticleColor) {
         try {
-          await this.cancelNewAtomCreation({ deletePendingRegion: Boolean(this.pendingNewAtomRegionId), silent: true });
+          await this.cancelNewParticleCreation({ deletePendingRegion: Boolean(this.pendingNewParticleRegionId), silent: true });
         } catch (err) {
-          this.showToast(`No pude cancelar el atomo nuevo: ${err}`, 'error');
+          this.showToast(`No pude cancelar la particula nueva: ${err}`, 'error');
           return;
         }
       }
 
-      if (String(this.activeAtomId || '') === String(atomId || '')) {
-        this.activeAtomId = null;
-        this.activeAtomKey = null;
-        this.pendingNewAtomColor = null;
-        this.pendingNewAtomRegionId = null;
-        this.annotationPanel.setActiveAtom(null);
-        this.imageViewer.setAtomPreview(null);
+      if (String(this.activeParticleId || '') === String(particleId || '')) {
+        this.activeParticleId = null;
+        this.activeParticleKey = null;
+        this.pendingNewParticleColor = null;
+        this.pendingNewParticleRegionId = null;
+        this.annotationPanel.setActiveParticle(null);
+        this.imageViewer.setParticlePreview(null);
         this.imageViewer.setDrawMode('select', { forceDraw: false });
-        this.showToast('Atomo desactivado', 'info');
+        this.showToast('Particula desactivado', 'info');
         return;
       }
 
-      this.activeAtomId = atomId;
-      this.pendingNewAtomColor = null;
-      this.pendingNewAtomRegionId = null;
-      const atom = this.atomLibrary.find((item) => String(item.id) === String(atomId));
-      this.activeAtomKey = this.atomGroupKey(atom);
-      this.activeStructuralConfig = this.atomConfigKey(atom);
-      this.annotationPanel.setActiveAtom(atomId);
-      this.updateAtomPreview();
-      this.imageViewer.setDrawMode('stroke', { color: this.atomColor(atomId), forceDraw: true });
-      this.showToast('Atomo activo: pinta su aparicion real', 'info');
+      this.activeParticleId = particleId;
+      this.pendingNewParticleColor = null;
+      this.pendingNewParticleRegionId = null;
+      const particle = this.particleLibrary.find((item) => String(item.id) === String(particleId));
+      this.activeParticleKey = this.particleGroupKey(particle);
+      this.activeStructuralConfig = this.particleConfigKey(particle);
+      this.annotationPanel.setActiveParticle(particleId);
+      this.updateParticlePreview();
+      this.imageViewer.setDrawMode('stroke', { color: this.particleColor(particleId), forceDraw: true });
+      this.showToast('Particula activo: pinta su aparicion real', 'info');
     });
 
     this.annotationPanel.onConfigPicked((config) => {
@@ -274,9 +274,9 @@ class App {
     });
 
     this.sidebarFilterBtn?.addEventListener('click', () => {
-      this.showOnlyImagesWithAtoms = !this.showOnlyImagesWithAtoms;
-      this.sidebarFilterBtn.classList.toggle('sidebar__filter-btn--active', this.showOnlyImagesWithAtoms);
-      this.imageList.setShowOnlyWithAtoms(this.showOnlyImagesWithAtoms);
+      this.showOnlyImagesWithParticles = !this.showOnlyImagesWithParticles;
+      this.sidebarFilterBtn.classList.toggle('sidebar__filter-btn--active', this.showOnlyImagesWithParticles);
+      this.imageList.setShowOnlyWithParticles(this.showOnlyImagesWithParticles);
     });
 
     this.sidebarLabelsBtn?.addEventListener('click', () => {
@@ -300,15 +300,15 @@ class App {
         .catch((err) => this.showToast(`No pude localizar: ${err}`, 'error'));
     });
 
-    this.atomNameForm?.addEventListener('submit', (event) => {
+    this.particleNameForm?.addEventListener('submit', (event) => {
       event.preventDefault();
-      this.resolveAtomNameModal(this.atomNameInput?.value || '');
+      this.resolveParticleNameModal(this.particleNameInput?.value || '');
     });
 
-    this.atomNameCancelBtn?.addEventListener('click', () => this.resolveAtomNameModal(null));
-    this.atomNameCancelXBtn?.addEventListener('click', () => this.resolveAtomNameModal(null));
-    this.atomNameModal?.addEventListener('click', (event) => {
-      if (event.target === this.atomNameModal) this.resolveAtomNameModal(null);
+    this.particleNameCancelBtn?.addEventListener('click', () => this.resolveParticleNameModal(null));
+    this.particleNameCancelXBtn?.addEventListener('click', () => this.resolveParticleNameModal(null));
+    this.particleNameModal?.addEventListener('click', (event) => {
+      if (event.target === this.particleNameModal) this.resolveParticleNameModal(null);
     });
 
     setInterval(() => {
@@ -319,16 +319,16 @@ class App {
   setupShortcuts() {
     window.addEventListener('keydown', (event) => {
       if (event.key === 'Escape') {
-        if (this.pendingAtomNameResolver) {
+        if (this.pendingParticleNameResolver) {
           event.preventDefault();
-          this.resolveAtomNameModal(null);
+          this.resolveParticleNameModal(null);
           return;
         }
 
-        if (this.pendingNewAtomColor) {
+        if (this.pendingNewParticleColor) {
           event.preventDefault();
-          this.cancelNewAtomCreation({ deletePendingRegion: Boolean(this.pendingNewAtomRegionId) })
-            .catch((err) => this.showToast(`No pude cancelar el atomo nuevo: ${err}`, 'error'));
+          this.cancelNewParticleCreation({ deletePendingRegion: Boolean(this.pendingNewParticleRegionId) })
+            .catch((err) => this.showToast(`No pude cancelar la particula nueva: ${err}`, 'error'));
           return;
         }
 
@@ -342,7 +342,7 @@ class App {
           return;
         }
 
-        this.clearActiveAtomTool();
+        this.clearActiveParticleTool();
         return;
       }
 
@@ -377,24 +377,24 @@ class App {
     });
   }
 
-  startNewAtomCreation(color) {
-    this.pendingNewAtomColor = this.normalizeColor(color);
-    this.pendingNewAtomRegionId = null;
-    this.activeAtomId = null;
-    this.activeAtomKey = null;
+  startNewParticleCreation(color) {
+    this.pendingNewParticleColor = this.normalizeColor(color);
+    this.pendingNewParticleRegionId = null;
+    this.activeParticleId = null;
+    this.activeParticleKey = null;
     this.activeStructuralConfig = '1';
-    this.annotationPanel.setActiveAtom(null);
-    this.imageViewer.setAtomPreview(null);
+    this.annotationPanel.setActiveParticle(null);
+    this.imageViewer.setParticlePreview(null);
     this.imageViewer.setDrawMode('stroke', { color, forceDraw: true });
     this.selectRegion(null);
-    this.showToast('Dibuja el atomo', 'info');
+    this.showToast('Dibuja la particula', 'info');
   }
 
-  async cancelNewAtomCreation({ deletePendingRegion = false, silent = false } = {}) {
-    const regionId = this.pendingNewAtomRegionId;
-    this.pendingNewAtomColor = null;
-    this.pendingNewAtomRegionId = null;
-    this.clearActiveAtomTool();
+  async cancelNewParticleCreation({ deletePendingRegion = false, silent = false } = {}) {
+    const regionId = this.pendingNewParticleRegionId;
+    this.pendingNewParticleColor = null;
+    this.pendingNewParticleRegionId = null;
+    this.clearActiveParticleTool();
 
     if (deletePendingRegion && regionId) {
       await api.deleteRegion(regionId);
@@ -406,16 +406,16 @@ class App {
     }
 
     if (!silent) {
-      this.showToast('Creacion de atomo cancelada', 'info');
+      this.showToast('Creacion de particula cancelada', 'info');
     }
   }
 
-  clearActiveAtomTool() {
-    this.activeAtomId = null;
-    this.activeAtomKey = null;
+  clearActiveParticleTool() {
+    this.activeParticleId = null;
+    this.activeParticleKey = null;
     this.activeStructuralConfig = '1';
-    this.annotationPanel.setActiveAtom(null);
-    this.imageViewer.setAtomPreview(null);
+    this.annotationPanel.setActiveParticle(null);
+    this.imageViewer.setParticlePreview(null);
     this.imageViewer.setDrawMode('select', { forceDraw: false });
     this.selectRegion(null);
   }
@@ -450,20 +450,20 @@ class App {
     this.imageViewer?.setRowEditMode(this.rowEditModeActive);
 
     if (this.rowEditModeActive && !this.rowEditSnapshot.length) {
-      this.rowEditSnapshot = this.imageViewer?.getParticleRowGuides() || [];
+      this.rowEditSnapshot = this.imageViewer?.getAtomRowGuides() || [];
     }
 
     if (this.paintModeActive) {
-      this.updateAtomPreview();
-      if (this.activeAtomId) {
-        this.imageViewer?.setDrawMode('stroke', { color: this.atomColor(this.activeAtomId), forceDraw: true });
+      this.updateParticlePreview();
+      if (this.activeParticleId) {
+        this.imageViewer?.setDrawMode('stroke', { color: this.particleColor(this.activeParticleId), forceDraw: true });
       }
-    } else if (!this.pendingNewAtomColor) {
+    } else if (!this.pendingNewParticleColor) {
       this.imageViewer?.setDrawMode('select', { forceDraw: false });
     }
 
     if (this.deleteModeActive || this.rowEditModeActive || cleanTool === 'molecule') {
-      this.clearActiveAtomTool();
+      this.clearActiveParticleTool();
     }
 
     if (cleanTool === 'molecule' && !this.moleculeEditMode) {
@@ -487,9 +487,9 @@ class App {
       + this.deleteRegionIds.size
       + this.rowEditChangedRows.size
       + this.pendingMoleculeGapOverrides.size
-      + this.pendingParticleRowOverrides.size
-      + this.pendingParticleAtomOrders.size
-      + this.pendingMoleculeParticleOrders.size;
+      + this.pendingAtomRowOverrides.size
+      + this.pendingAtomParticleOrders.size
+      + this.pendingMoleculeAtomOrders.size;
   }
 
   async commitEditSession() {
@@ -505,13 +505,13 @@ class App {
       if (this.pendingMoleculeGapOverrides.size) {
         await this.commitMoleculeGapEdits({ keepEditSession: true });
       }
-      if (this.pendingParticleRowOverrides.size) {
-        await this.commitParticleRowOverrideEdits({ keepEditSession: true });
+      if (this.pendingAtomRowOverrides.size) {
+        await this.commitAtomRowOverrideEdits({ keepEditSession: true });
       }
       if (this.rowEditChangedRows.size) {
         await this.commitRowGuideEdits({ keepEditSession: true });
       }
-      if (this.pendingParticleAtomOrders.size || this.pendingMoleculeParticleOrders.size) {
+      if (this.pendingAtomParticleOrders.size || this.pendingMoleculeAtomOrders.size) {
         await this.flushPendingOrderDrafts();
       }
       this.updateEditControls();
@@ -527,7 +527,7 @@ class App {
     if (this.deleteRegionIds.size) this.clearDeleteBuffer({ silent: true });
     if (this.rowEditChangedRows.size) this.clearRowGuideEdits({ silent: true });
     if (this.pendingMoleculeGapOverrides.size) this.clearMoleculeGapEdits({ silent: true });
-    if (this.pendingParticleRowOverrides.size) this.clearParticleRowOverrideEdits({ silent: true });
+    if (this.pendingAtomRowOverrides.size) this.clearAtomRowOverrideEdits({ silent: true });
     if (this.moleculeEditMode || this.hasPendingOrderDrafts()) {
       this.discardMoleculeOrderDrafts({ render: true });
     }
@@ -537,8 +537,8 @@ class App {
 
   togglePaintMode(force = null) {
     const next = force === null ? !this.paintModeActive : Boolean(force);
-    if (next && !this.activeAtomId) {
-      this.showToast('Selecciona un atomo guardado para pintar en bloque', 'error');
+    if (next && !this.activeParticleId) {
+      this.showToast('Selecciona una particula guardada para pintar en bloque', 'error');
       return;
     }
     if (next && this.deleteModeActive) {
@@ -565,7 +565,7 @@ class App {
     if (!next) {
       this.clearDeleteBuffer({ silent: true });
     } else {
-      this.clearActiveAtomTool();
+      this.clearActiveParticleTool();
     }
     this.updateDeleteControls();
     this.showToast(next ? 'Borrado activado: marca trazos y borra todo junto' : 'Borrado desactivado', 'info');
@@ -588,17 +588,17 @@ class App {
   }
 
   queuePaintStroke(stroke) {
-    if (!this.activeAtomId) {
-      this.showToast('Selecciona un atomo guardado para pintar en bloque', 'error');
+    if (!this.activeParticleId) {
+      this.showToast('Selecciona una particula guardada para pintar en bloque', 'error');
       this.togglePaintMode(false);
       return;
     }
-    const labelSnapshot = this.paintLabelsForActiveAtom();
+    const labelSnapshot = this.paintLabelsForActiveParticle();
     if (!labelSnapshot.family) {
-      this.showToast('El atomo activo no tiene familia base', 'error');
+      this.showToast('La particula activa no tiene familia base', 'error');
       return;
     }
-    const color = this.normalizeColor(stroke.color) || stroke.color || this.atomColor(this.activeAtomId);
+    const color = this.normalizeColor(stroke.color) || stroke.color || this.particleColor(this.activeParticleId);
     this.paintStrokeBuffer.push({
       ...stroke,
       color,
@@ -606,20 +606,20 @@ class App {
       labels: labelSnapshot.labels.map((label) => ({ ...label })),
       family: labelSnapshot.family,
       structuralConfig: labelSnapshot.structuralConfig,
-      orderIndex: this.nextAtomOrder() + this.paintStrokeBuffer.length,
+      orderIndex: this.nextParticleOrder() + this.paintStrokeBuffer.length,
     });
     this.imageViewer.setPendingPaintStrokes(this.paintStrokeBuffer);
     this.updatePaintControls();
   }
 
-  paintLabelsForActiveAtom() {
-    const atom = this.atomLibrary.find((item) => String(item.id) === String(this.activeAtomId));
-    if (!atom) return { labels: [], family: '', structuralConfig: this.activeStructuralConfig || '1' };
+  paintLabelsForActiveParticle() {
+    const particle = this.particleLibrary.find((item) => String(item.id) === String(this.activeParticleId));
+    if (!particle) return { labels: [], family: '', structuralConfig: this.activeStructuralConfig || '1' };
 
     const labels = [];
     const seen = new Set();
-    for (const label of atom.labels || []) {
-      if (this.isComputedAtomLabel(label)) continue;
+    for (const label of particle.labels || []) {
+      if (this.isComputedParticleLabel(label)) continue;
       const labelType = String(label.label_type || label.labelType || '').trim();
       const value = String(label.value || '').trim();
       if (!labelType || !value) continue;
@@ -629,12 +629,12 @@ class App {
       labels.push({ label_type: labelType, value });
     }
 
-    const family = this.labelValue(labels, ['base_family']) || this.atomGroupKey(atom);
+    const family = this.labelValue(labels, ['base_family']) || this.particleGroupKey(particle);
     if (family && !labels.some((label) => (label.label_type || label.labelType) === 'base_family')) {
       labels.push({ label_type: 'base_family', value: family });
     }
 
-    const structuralConfig = String(this.activeStructuralConfig || this.atomConfigKey(atom) || '1').trim() || '1';
+    const structuralConfig = String(this.activeStructuralConfig || this.particleConfigKey(particle) || '1').trim() || '1';
     labels.push({ label_type: 'structural_config', value: structuralConfig });
     return { labels, family, structuralConfig };
   }
@@ -660,11 +660,11 @@ class App {
       family: stroke.family,
       structural_config: stroke.structuralConfig || '1',
     }));
-    const packet = await api.createAtomStrokesBatch(this.currentImage.id, strokes);
+    const packet = await api.createParticleStrokesBatch(this.currentImage.id, strokes);
     const createdCount = this.paintStrokeBuffer.length;
     this.clearPaintBuffer({ silent: true });
     await this.loadRegions(this.currentImage.id);
-    this.applyAtomPagePacket(packet);
+    this.applyParticlePagePacket(packet);
     if (!options.keepEditSession) this.showToast(`${createdCount} trazos aplicados`, 'success');
   }
 
@@ -692,7 +692,7 @@ class App {
       await this.loadRegions(this.currentImage.id);
       await this.selectRegion(null);
       const packet = await this.recalculateCurrentImageMolecules();
-      this.applyAtomPagePacket(packet);
+      this.applyParticlePagePacket(packet);
       if (!options.keepEditSession) this.showToast(`${deletedCount} trazos borrados`, 'success');
     } finally {
       this.updateDeleteControls();
@@ -719,8 +719,8 @@ class App {
     this.rowEditModeActive = next;
     this.imageViewer?.setRowEditMode(next);
     if (next) {
-      this.clearActiveAtomTool();
-      this.rowEditSnapshot = this.imageViewer?.getParticleRowGuides() || [];
+      this.clearActiveParticleTool();
+      this.rowEditSnapshot = this.imageViewer?.getAtomRowGuides() || [];
       this.captureMoleculeGapEditSnapshot();
       this.rowEditChangedRows.clear();
     } else if (this.rowEditChangedRows.size) {
@@ -742,22 +742,22 @@ class App {
 
   async commitRowGuideEdits(options = {}) {
     if (!this.currentImage || !this.rowEditChangedRows.size) return;
-    const guides = this.imageViewer?.getParticleRowGuides() || [];
+    const guides = this.imageViewer?.getAtomRowGuides() || [];
     if (!guides.length) return;
 
     if (this.editCommitBtn) this.editCommitBtn.disabled = true;
-    const packet = await api.setParticleRowGuides(this.currentImage.id, guides);
+    const packet = await api.setAtomRowGuides(this.currentImage.id, guides);
     const changedCount = this.rowEditChangedRows.size;
     this.rowEditChangedRows.clear();
-    this.applyAtomPagePacket(packet);
-    this.rowEditSnapshot = this.imageViewer?.getParticleRowGuides() || [];
+    this.applyParticlePagePacket(packet);
+    this.rowEditSnapshot = this.imageViewer?.getAtomRowGuides() || [];
     this.updateRowEditControls();
     if (!options.keepEditSession) this.showToast(`${changedCount} renglones guardados`, 'success');
   }
 
   clearRowGuideEdits({ silent = false } = {}) {
     if (this.rowEditSnapshot.length) {
-      this.imageViewer?.setParticleRowGuides(this.rowEditSnapshot);
+      this.imageViewer?.setAtomRowGuides(this.rowEditSnapshot);
     }
     this.rowEditChangedRows.clear();
     this.updateRowEditControls();
@@ -769,7 +769,7 @@ class App {
     this.gapEditSnapshot.clear();
     const gaps = this.currentMoleculeGaps();
     for (const gap of gaps) {
-      const key = this.moleculeGapKey(gap.left_particle_index ?? gap.leftParticleIndex, gap.right_particle_index ?? gap.rightParticleIndex);
+      const key = this.moleculeGapKey(gap.left_atom_index ?? gap.leftAtomIndex, gap.right_atom_index ?? gap.rightAtomIndex);
       if (!key) continue;
       this.gapEditSnapshot.set(key, {
         cut: Boolean(gap.cut),
@@ -780,19 +780,19 @@ class App {
   }
 
   currentMoleculeGaps() {
-    const explanation = this.atomPagePacket?.cluster_explanation || this.atomPagePacket?.clusterExplanation || {};
+    const explanation = this.particlePagePacket?.cluster_explanation || this.particlePagePacket?.clusterExplanation || {};
     return explanation.molecule_gaps || explanation.moleculeGaps || [];
   }
 
-  moleculeGapKey(leftParticleIndex, rightParticleIndex) {
-    const left = Number(leftParticleIndex || 0);
-    const right = Number(rightParticleIndex || 0);
+  moleculeGapKey(leftAtomIndex, rightAtomIndex) {
+    const left = Number(leftAtomIndex || 0);
+    const right = Number(rightAtomIndex || 0);
     return left && right ? `${left}:${right}` : '';
   }
 
   queueMoleculeGapEdit(gap, action) {
-    const left = Number(gap.leftParticleIndex || gap.left_particle_index || 0);
-    const right = Number(gap.rightParticleIndex || gap.right_particle_index || 0);
+    const left = Number(gap.leftAtomIndex || gap.left_atom_index || 0);
+    const right = Number(gap.rightAtomIndex || gap.right_atom_index || 0);
     const key = this.moleculeGapKey(left, right);
     if (!key || !['cut', 'join', 'auto'].includes(action)) return;
 
@@ -801,7 +801,7 @@ class App {
     if (existing) {
       const snapshot = this.gapEditSnapshot.get(key);
       if (snapshot?.overrideDecision) {
-        this.pendingMoleculeGapOverrides.set(key, { leftParticleIndex: left, rightParticleIndex: right, decision: 'auto' });
+        this.pendingMoleculeGapOverrides.set(key, { leftAtomIndex: left, rightAtomIndex: right, decision: 'auto' });
         this.restoreMoleculeGapSnapshot(left, right, { ...snapshot, overrideDecision: null, reason: 'auto pendiente' });
       } else {
         this.pendingMoleculeGapOverrides.delete(key);
@@ -816,7 +816,7 @@ class App {
     if (action === 'auto') {
       const snapshot = this.gapEditSnapshot.get(key);
       if (snapshot?.overrideDecision) {
-        this.pendingMoleculeGapOverrides.set(key, { leftParticleIndex: left, rightParticleIndex: right, decision: 'auto' });
+        this.pendingMoleculeGapOverrides.set(key, { leftAtomIndex: left, rightAtomIndex: right, decision: 'auto' });
         this.restoreMoleculeGapSnapshot(left, right, { ...snapshot, overrideDecision: null, reason: 'auto pendiente' });
       } else if (snapshot) {
         this.restoreMoleculeGapSnapshot(left, right, snapshot);
@@ -825,22 +825,22 @@ class App {
       this.updateRowEditControls();
       return;
     }
-    this.pendingMoleculeGapOverrides.set(key, { leftParticleIndex: left, rightParticleIndex: right, decision: action });
+    this.pendingMoleculeGapOverrides.set(key, { leftAtomIndex: left, rightAtomIndex: right, decision: action });
     this.applyMoleculeGapDraft(left, right, action);
     this.updateRowEditControls();
   }
 
-  restoreMoleculeGapSnapshot(leftParticleIndex, rightParticleIndex, snapshot = {}) {
-    const key = this.moleculeGapKey(leftParticleIndex, rightParticleIndex);
+  restoreMoleculeGapSnapshot(leftAtomIndex, rightAtomIndex, snapshot = {}) {
+    const key = this.moleculeGapKey(leftAtomIndex, rightAtomIndex);
     const gaps = this.currentMoleculeGaps();
-    const gap = gaps.find((item) => this.moleculeGapKey(item.left_particle_index ?? item.leftParticleIndex, item.right_particle_index ?? item.rightParticleIndex) === key);
+    const gap = gaps.find((item) => this.moleculeGapKey(item.left_atom_index ?? item.leftAtomIndex, item.right_atom_index ?? item.rightAtomIndex) === key);
     if (gap) {
       gap.cut = Boolean(snapshot.cut);
       gap.override_decision = snapshot.overrideDecision;
       gap.overrideDecision = snapshot.overrideDecision;
       gap.reason = snapshot.reason || '';
     }
-    this.imageViewer?.setMoleculeGapState(leftParticleIndex, rightParticleIndex, {
+    this.imageViewer?.setMoleculeGapState(leftAtomIndex, rightAtomIndex, {
       cut: Boolean(snapshot.cut),
       overrideDecision: snapshot.overrideDecision,
       reason: snapshot.reason || '',
@@ -848,17 +848,17 @@ class App {
     this.renderClusterDebugPanel({ lightweight: true });
   }
 
-  applyMoleculeGapDraft(leftParticleIndex, rightParticleIndex, decision) {
-    const key = this.moleculeGapKey(leftParticleIndex, rightParticleIndex);
+  applyMoleculeGapDraft(leftAtomIndex, rightAtomIndex, decision) {
+    const key = this.moleculeGapKey(leftAtomIndex, rightAtomIndex);
     const gaps = this.currentMoleculeGaps();
-    const gap = gaps.find((item) => this.moleculeGapKey(item.left_particle_index ?? item.leftParticleIndex, item.right_particle_index ?? item.rightParticleIndex) === key);
+    const gap = gaps.find((item) => this.moleculeGapKey(item.left_atom_index ?? item.leftAtomIndex, item.right_atom_index ?? item.rightAtomIndex) === key);
     if (gap) {
       gap.cut = decision === 'cut';
       gap.override_decision = decision;
       gap.overrideDecision = decision;
       gap.reason = 'manual';
     }
-    this.imageViewer?.setMoleculeGapDraft(leftParticleIndex, rightParticleIndex, decision);
+    this.imageViewer?.setMoleculeGapDraft(leftAtomIndex, rightAtomIndex, decision);
     this.renderClusterDebugPanel({ lightweight: true });
   }
 
@@ -870,7 +870,7 @@ class App {
     const changedCount = overrides.length;
     this.pendingMoleculeGapOverrides.clear();
     this.gapEditSnapshot.clear();
-    this.applyAtomPagePacket(packet);
+    this.applyParticlePagePacket(packet);
     this.updateRowEditControls();
     if (!options.keepEditSession) this.showToast(`${changedCount} cortes/uniones guardados`, 'success');
   }
@@ -879,7 +879,7 @@ class App {
     for (const [key, snapshot] of this.gapEditSnapshot.entries()) {
       const draft = this.pendingMoleculeGapOverrides.get(key);
       if (!draft) continue;
-      this.restoreMoleculeGapSnapshot(draft.leftParticleIndex, draft.rightParticleIndex, snapshot);
+      this.restoreMoleculeGapSnapshot(draft.leftAtomIndex, draft.rightAtomIndex, snapshot);
     }
     this.pendingMoleculeGapOverrides.clear();
     this.gapEditSnapshot.clear();
@@ -888,86 +888,86 @@ class App {
     if (!silent) this.showToast('Edicion de cortes cancelada', 'info');
   }
 
-  particleRowDraftKey(sourceIndex, particleKey = null) {
-    const cleanKey = String(particleKey || '').trim();
+  atomRowDraftKey(sourceIndex, atomKey = null) {
+    const cleanKey = String(atomKey || '').trim();
     return cleanKey ? `key:${cleanKey}` : `source:${Number(sourceIndex || 0)}`;
   }
 
-  queueParticleRowOverrideEdit(sourceIndex, rowIndex, particleKey = null) {
-    const particleIndex = Number(sourceIndex || 0);
-    const cleanParticleKey = String(particleKey || '').trim() || null;
-    const draftKey = this.particleRowDraftKey(particleIndex, cleanParticleKey);
+  queueAtomRowOverrideEdit(sourceIndex, rowIndex, atomKey = null) {
+    const atomIndex = Number(sourceIndex || 0);
+    const cleanAtomKey = String(atomKey || '').trim() || null;
+    const draftKey = this.atomRowDraftKey(atomIndex, cleanAtomKey);
     const cleanRow = rowIndex === null ? null : Number(rowIndex || 0);
-    if (!particleIndex || (cleanRow !== null && !cleanRow)) return;
-    if (!this.particleRowOverrideSnapshot.has(draftKey)) {
-      this.particleRowOverrideSnapshot.set(draftKey, {
-        sourceIndex: particleIndex,
-        particleKey: cleanParticleKey,
-        rowIndex: this.currentParticleRowOverrideValue(particleIndex, cleanParticleKey),
+    if (!atomIndex || (cleanRow !== null && !cleanRow)) return;
+    if (!this.atomRowOverrideSnapshot.has(draftKey)) {
+      this.atomRowOverrideSnapshot.set(draftKey, {
+        sourceIndex: atomIndex,
+        atomKey: cleanAtomKey,
+        rowIndex: this.currentAtomRowOverrideValue(atomIndex, cleanAtomKey),
       });
     }
-    this.pendingParticleRowOverrides.set(draftKey, { particleIndex, particleKey: cleanParticleKey, rowIndex: cleanRow });
-    this.applyLocalParticleRowOverride(particleIndex, cleanRow, cleanParticleKey);
+    this.pendingAtomRowOverrides.set(draftKey, { atomIndex, atomKey: cleanAtomKey, rowIndex: cleanRow });
+    this.applyLocalAtomRowOverride(atomIndex, cleanRow, cleanAtomKey);
     this.updateEditControls();
   }
 
-  currentParticleRowOverrideValue(sourceIndex, particleKey = null) {
-    const explanation = this.atomPagePacket?.cluster_explanation || this.atomPagePacket?.clusterExplanation || {};
-    const particleRows = explanation.particle_rows || explanation.particleRows || [];
-    const cleanParticleKey = String(particleKey || '').trim();
-    for (const row of particleRows) {
-      for (const particle of row.particles || []) {
-        const matchKey = String(particle.particle_key ?? particle.particleKey ?? '').trim();
-        const matches = cleanParticleKey
-          ? matchKey === cleanParticleKey
-          : Number(particle.source_index ?? particle.sourceIndex ?? 0) === Number(sourceIndex);
+  currentAtomRowOverrideValue(sourceIndex, atomKey = null) {
+    const explanation = this.particlePagePacket?.cluster_explanation || this.particlePagePacket?.clusterExplanation || {};
+    const atomRows = explanation.atom_rows || explanation.atomRows || [];
+    const cleanAtomKey = String(atomKey || '').trim();
+    for (const row of atomRows) {
+      for (const atom of row.atoms || []) {
+        const matchKey = String(atom.atom_key ?? atom.atomKey ?? '').trim();
+        const matches = cleanAtomKey
+          ? matchKey === cleanAtomKey
+          : Number(atom.source_index ?? atom.sourceIndex ?? 0) === Number(sourceIndex);
         if (matches) {
-          return particle.row_override ?? particle.rowOverride ?? null;
+          return atom.row_override ?? atom.rowOverride ?? null;
         }
       }
     }
     return null;
   }
 
-  applyLocalParticleRowOverride(sourceIndex, rowIndex, particleKey = null) {
-    const explanation = this.atomPagePacket?.cluster_explanation || this.atomPagePacket?.clusterExplanation || {};
-    const particleRows = explanation.particle_rows || explanation.particleRows || [];
-    const cleanParticleKey = String(particleKey || '').trim();
-    for (const row of particleRows) {
-      for (const particle of row.particles || []) {
-        const matchKey = String(particle.particle_key ?? particle.particleKey ?? '').trim();
-        const matches = cleanParticleKey
-          ? matchKey === cleanParticleKey
-          : Number(particle.source_index ?? particle.sourceIndex ?? 0) === Number(sourceIndex);
+  applyLocalAtomRowOverride(sourceIndex, rowIndex, atomKey = null) {
+    const explanation = this.particlePagePacket?.cluster_explanation || this.particlePagePacket?.clusterExplanation || {};
+    const atomRows = explanation.atom_rows || explanation.atomRows || [];
+    const cleanAtomKey = String(atomKey || '').trim();
+    for (const row of atomRows) {
+      for (const atom of row.atoms || []) {
+        const matchKey = String(atom.atom_key ?? atom.atomKey ?? '').trim();
+        const matches = cleanAtomKey
+          ? matchKey === cleanAtomKey
+          : Number(atom.source_index ?? atom.sourceIndex ?? 0) === Number(sourceIndex);
         if (!matches) continue;
-        particle.row_override = rowIndex;
-        particle.rowOverride = rowIndex;
+        atom.row_override = rowIndex;
+        atom.rowOverride = rowIndex;
       }
     }
     this.renderClusterDebugPanel({ lightweight: true });
   }
 
-  async commitParticleRowOverrideEdits(options = {}) {
-    if (!this.currentImage || !this.pendingParticleRowOverrides.size) return;
+  async commitAtomRowOverrideEdits(options = {}) {
+    if (!this.currentImage || !this.pendingAtomRowOverrides.size) return;
     if (this.editCommitBtn) this.editCommitBtn.disabled = true;
-    const overrides = [...this.pendingParticleRowOverrides.values()];
-    const packet = await api.setParticleRowOverridesBatch(this.currentImage.id, overrides);
+    const overrides = [...this.pendingAtomRowOverrides.values()];
+    const packet = await api.setAtomRowOverridesBatch(this.currentImage.id, overrides);
     const changedCount = overrides.length;
-    this.pendingParticleRowOverrides.clear();
-    this.particleRowOverrideSnapshot.clear();
-    this.applyAtomPagePacket(packet);
+    this.pendingAtomRowOverrides.clear();
+    this.atomRowOverrideSnapshot.clear();
+    this.applyParticlePagePacket(packet);
     this.updateEditControls();
     if (!options.keepEditSession) this.showToast(`${changedCount} cambios de renglon guardados`, 'success');
   }
 
-  clearParticleRowOverrideEdits({ silent = false } = {}) {
-    for (const snapshot of this.particleRowOverrideSnapshot.values()) {
-      this.applyLocalParticleRowOverride(snapshot.sourceIndex, snapshot.rowIndex, snapshot.particleKey);
+  clearAtomRowOverrideEdits({ silent = false } = {}) {
+    for (const snapshot of this.atomRowOverrideSnapshot.values()) {
+      this.applyLocalAtomRowOverride(snapshot.sourceIndex, snapshot.rowIndex, snapshot.atomKey);
     }
-    this.pendingParticleRowOverrides.clear();
-    this.particleRowOverrideSnapshot.clear();
+    this.pendingAtomRowOverrides.clear();
+    this.atomRowOverrideSnapshot.clear();
     this.updateEditControls();
-    if (!silent) this.showToast('Edicion de renglones de particula cancelada', 'info');
+    if (!silent) this.showToast('Edicion de renglones de atomo cancelada', 'info');
   }
 
   updatePaintControls() {
@@ -1009,7 +1009,7 @@ class App {
     await api.listenMoleculesUpdated(async (packet) => {
       if (!this.currentImage) return;
       if (Number(packet?.image_id ?? packet?.imageId) !== Number(this.currentImage.id)) return;
-      this.applyAtomPagePacket(packet);
+      this.applyParticlePagePacket(packet);
     });
   }
 
@@ -1027,13 +1027,13 @@ class App {
 
   async loadImages() {
     this.images = await api.listImages();
-    this.atomCounts = {};
+    this.particleCounts = {};
     for (const image of this.images) {
       const regions = await api.listRegions(image.id);
-      this.atomCounts[image.id] = regions.length;
+      this.particleCounts[image.id] = regions.length;
     }
     this.imageList.setImages(this.images);
-    this.imageList.setAtomCounts(this.atomCounts);
+    this.imageList.setParticleCounts(this.particleCounts);
     if (this.images.length > 0 && !this.currentImage) {
       await this.selectImage(this.images[0].id);
     }
@@ -1066,9 +1066,9 @@ class App {
       this.gapEditSnapshot.clear();
       this.updateEditControls();
     }
-    if (this.pendingParticleRowOverrides.size) {
-      this.pendingParticleRowOverrides.clear();
-      this.particleRowOverrideSnapshot.clear();
+    if (this.pendingAtomRowOverrides.size) {
+      this.pendingAtomRowOverrides.clear();
+      this.atomRowOverrideSnapshot.clear();
       this.updateEditControls();
     }
     if (this.editModeActive || this.editTool) {
@@ -1093,15 +1093,15 @@ class App {
     await this.loadRegions(imageId);
     await this.autoClassifyCurrentImageVariants();
     const packet = await this.recalculateCurrentImageMolecules();
-    this.applyAtomPagePacket(packet);
+    this.applyParticlePagePacket(packet);
   }
 
   async loadRegions(imageId) {
     const allRegions = await api.listRegions(imageId);
     this.regions = allRegions;
     this.imageViewer.setRegions(this.regions);
-    this.atomCounts[imageId] = this.regions.length;
-    this.imageList.setAtomCounts(this.atomCounts);
+    this.particleCounts[imageId] = this.regions.length;
+    this.imageList.setParticleCounts(this.particleCounts);
   }
 
   async selectRegion(regionId) {
@@ -1142,93 +1142,93 @@ class App {
     }
   }
 
-  async applyActiveAtomLabels(regionId) {
-    const atom = this.atomLibrary.find((item) => String(item.id) === String(this.activeAtomId));
-    if (!atom) return;
-    for (const label of atom.labels || []) {
-      if (this.isComputedAtomLabel(label)) continue;
+  async applyActiveParticleLabels(regionId) {
+    const particle = this.particleLibrary.find((item) => String(item.id) === String(this.activeParticleId));
+    if (!particle) return;
+    for (const label of particle.labels || []) {
+      if (this.isComputedParticleLabel(label)) continue;
       await api.createLabel(regionId, label.label_type, label.value);
     }
   }
 
   async applyActiveStructuralConfig(regionId) {
-    if (!this.activeAtomId) return;
+    if (!this.activeParticleId) return;
     const labels = await api.listLabels(regionId);
     await this.setAutoLabel(regionId, labels, 'structural_config', this.activeStructuralConfig || '1');
   }
 
-  async createAtomStroke(stroke) {
-    const color = !this.activeAtomId && this.pendingNewAtomColor
-      ? this.pendingNewAtomColor
+  async createParticleStroke(stroke) {
+    const color = !this.activeParticleId && this.pendingNewParticleColor
+      ? this.pendingNewParticleColor
       : this.normalizeColor(stroke.color) || stroke.color;
     const region = await api.createRegion(
       this.currentImage.id,
       JSON.stringify({ ...stroke, color, closed: false }),
-      this.nextAtomOrder()
+      this.nextParticleOrder()
     );
-    await this.applyActiveAtomLabels(region.id);
+    await this.applyActiveParticleLabels(region.id);
     await this.applyActiveStructuralConfig(region.id);
     await this.autoClassifyCurrentImageVariants();
-    await this.syncAtomEngine(region.id);
+    await this.syncParticleEngine(region.id);
     await this.recordCreateAction(region.id);
-    if (!this.activeAtomId && this.pendingNewAtomColor) {
-      this.pendingNewAtomRegionId = Number(region.id);
+    if (!this.activeParticleId && this.pendingNewParticleColor) {
+      this.pendingNewParticleRegionId = Number(region.id);
     }
     await this.loadRegions(this.currentImage.id);
     await this.selectRegion(region.id);
     this.scheduleMoleculeRecalculate();
   }
 
-  async saveSelectedAtomDefinition() {
+  async saveSelectedParticleDefinition() {
     if (!this.currentRegion) {
-      this.showToast('Selecciona un atomo primero', 'error');
+      this.showToast('Selecciona una particula primero', 'error');
       return;
     }
     const labels = await api.listLabels(this.currentRegion.id);
     const family = this.labelValue(labels, ['base_family']);
-    const defaultName = this.friendlyAtomKey(family || 'atomo');
-    const name = await this.requestAtomName(defaultName);
+    const defaultName = this.friendlyParticleKey(family || 'particula');
+    const name = await this.requestParticleName(defaultName);
     if (name === null) {
       if (
-        this.pendingNewAtomColor &&
-        Number(this.currentRegion.id) === Number(this.pendingNewAtomRegionId)
+        this.pendingNewParticleColor &&
+        Number(this.currentRegion.id) === Number(this.pendingNewParticleRegionId)
       ) {
-        await this.cancelNewAtomCreation({ deletePendingRegion: true });
+        await this.cancelNewParticleCreation({ deletePendingRegion: true });
       }
       return;
     }
-    const atomKey = this.friendlyAtomKey(name.trim());
-    if (!atomKey) return;
+    const particleKey = this.friendlyParticleKey(name.trim());
+    if (!particleKey) return;
     const color = this.regionColor(this.currentRegion);
     if (
-      this.pendingNewAtomColor &&
-      Number(this.currentRegion.id) !== Number(this.pendingNewAtomRegionId)
+      this.pendingNewParticleColor &&
+      Number(this.currentRegion.id) !== Number(this.pendingNewParticleRegionId)
     ) {
       this.showToast('Dibuja o selecciona el trazo nuevo antes de guardarlo', 'error');
       return;
     }
-    if (this.pendingNewAtomColor && color !== this.pendingNewAtomColor) {
-      await this.updateRegionColor(this.currentRegion.id, this.pendingNewAtomColor);
+    if (this.pendingNewParticleColor && color !== this.pendingNewParticleColor) {
+      await this.updateRegionColor(this.currentRegion.id, this.pendingNewParticleColor);
       const refreshed = await this.snapshotRegion(this.currentRegion.id);
       this.currentRegion = refreshed?.region || this.currentRegion;
     }
     const finalColor = this.regionColor(this.currentRegion);
-    const colorOwner = this.atomColorOwner(finalColor);
-    if (colorOwner && colorOwner !== atomKey) {
+    const colorOwner = this.particleColorOwner(finalColor);
+    if (colorOwner && colorOwner !== particleKey) {
       this.showToast(`Ese color ya pertenece a ${colorOwner}`, 'error');
       return;
     }
-    await this.upsertLabel(this.currentRegion.id, ['base_family'], 'base_family', atomKey);
+    await this.upsertLabel(this.currentRegion.id, ['base_family'], 'base_family', particleKey);
     await this.setStructuralConfig(this.currentRegion.id, this.activeStructuralConfig || '1', { silent: true });
     await this.autoClassifyCurrentImageVariants();
     const updatedLabels = await api.listLabels(this.currentRegion.id);
-    const updatedVariant = this.atomVariantKeyFromLabels(updatedLabels);
-    const configKey = this.atomConfigKeyFromLabels(updatedLabels);
+    const updatedVariant = this.particleVariantKeyFromLabels(updatedLabels);
+    const configKey = this.particleConfigKeyFromLabels(updatedLabels);
 
-    const atom = {
-      id: `${this.safeFilePart(`${atomKey}-${configKey}`)}-${Date.now()}`,
-      name: atomKey,
-      atomKey,
+    const particle = {
+      id: `${this.safeFilePart(`${particleKey}-${configKey}`)}-${Date.now()}`,
+      name: particleKey,
+      particleKey,
       configKey,
       variantKey: updatedVariant,
       region: { ...this.currentRegion },
@@ -1237,48 +1237,48 @@ class App {
       createdAt: new Date().toISOString(),
     };
 
-    this.atomLibrary = [
-      atom,
-      ...this.atomLibrary.filter((item) => (
-        this.atomGroupKey(item) !== atomKey || this.atomConfigKey(item) !== configKey
+    this.particleLibrary = [
+      particle,
+      ...this.particleLibrary.filter((item) => (
+        this.particleGroupKey(item) !== particleKey || this.particleConfigKey(item) !== configKey
       )),
     ].slice(0, 300);
-    this.saveAtomLibrary();
-    this.activeAtomId = atom.id;
-    this.activeAtomKey = atomKey;
-    this.pendingNewAtomColor = null;
-    this.pendingNewAtomRegionId = null;
+    this.saveParticleLibrary();
+    this.activeParticleId = particle.id;
+    this.activeParticleKey = particleKey;
+    this.pendingNewParticleColor = null;
+    this.pendingNewParticleRegionId = null;
     this.activeStructuralConfig = configKey;
-    this.annotationPanel.setAtomLibrary(this.atomLibrary);
-    this.annotationPanel.setActiveAtom(atom.id);
-    this.updateAtomPreview();
-    this.showToast(`${atomKey} / config ${configKey} guardado`, 'success');
+    this.annotationPanel.setParticleLibrary(this.particleLibrary);
+    this.annotationPanel.setActiveParticle(particle.id);
+    this.updateParticlePreview();
+    this.showToast(`${particleKey} / config ${configKey} guardado`, 'success');
   }
 
-  requestAtomName(defaultName = '') {
-    if (!this.atomNameModal || !this.atomNameInput) {
+  requestParticleName(defaultName = '') {
+    if (!this.particleNameModal || !this.particleNameInput) {
       return Promise.resolve(defaultName);
     }
 
-    this.atomNameInput.value = '';
-    this.atomNameModal.classList.add('modal-overlay--visible');
-    this.atomNameModal.setAttribute('aria-hidden', 'false');
+    this.particleNameInput.value = '';
+    this.particleNameModal.classList.add('modal-overlay--visible');
+    this.particleNameModal.setAttribute('aria-hidden', 'false');
     window.setTimeout(() => {
-      this.atomNameInput.focus();
-      this.atomNameInput.select();
+      this.particleNameInput.focus();
+      this.particleNameInput.select();
     }, 0);
 
     return new Promise((resolve) => {
-      this.pendingAtomNameResolver = resolve;
+      this.pendingParticleNameResolver = resolve;
     });
   }
 
-  resolveAtomNameModal(value) {
-    if (!this.pendingAtomNameResolver) return;
-    const resolve = this.pendingAtomNameResolver;
-    this.pendingAtomNameResolver = null;
-    this.atomNameModal?.classList.remove('modal-overlay--visible');
-    this.atomNameModal?.setAttribute('aria-hidden', 'true');
+  resolveParticleNameModal(value) {
+    if (!this.pendingParticleNameResolver) return;
+    const resolve = this.pendingParticleNameResolver;
+    this.pendingParticleNameResolver = null;
+    this.particleNameModal?.classList.remove('modal-overlay--visible');
+    this.particleNameModal?.setAttribute('aria-hidden', 'true');
     resolve(value);
   }
 
@@ -1400,12 +1400,12 @@ class App {
     }
   }
 
-  nextAtomOrder() {
+  nextParticleOrder() {
     const orders = this.regions.map((region) => Number(region.order_index ?? region.orderIndex)).filter(Number.isFinite);
     return orders.length ? Math.max(...orders) + 1 : 1;
   }
 
-  loadAtomLibrary() {
+  loadParticleLibrary() {
     try {
       const parsed = JSON.parse(window.localStorage.getItem(ATOM_LIBRARY_KEY) || '[]');
       if (!Array.isArray(parsed)) return [];
@@ -1415,8 +1415,8 @@ class App {
     }
   }
 
-  saveAtomLibrary() {
-    window.localStorage.setItem(ATOM_LIBRARY_KEY, JSON.stringify(this.atomLibrary));
+  saveParticleLibrary() {
+    window.localStorage.setItem(ATOM_LIBRARY_KEY, JSON.stringify(this.particleLibrary));
   }
 
   async autoClassifyCurrentImageVariants() {
@@ -1427,7 +1427,7 @@ class App {
       return {
         region,
         labels,
-        key: this.friendlyAtomKey(this.labelValue(labels, ['base_family'])),
+        key: this.friendlyParticleKey(this.labelValue(labels, ['base_family'])),
         bounds: this.regionBounds(region),
       };
     }));
@@ -1435,12 +1435,12 @@ class App {
     for (const target of rows) {
       if (!target.key) continue;
       const targetRadius = this.classificationRadius(target.bounds);
-      const hasNearbyDifferentAtom = rows.some((other) => {
+      const hasNearbyDifferentParticle = rows.some((other) => {
         if (Number(other.region.id) === Number(target.region.id)) return false;
         if (!other.key || other.key === target.key) return false;
         return this.boundsDistance(target.bounds, other.bounds) <= targetRadius;
       });
-      await this.setVariantLabel(target.region.id, target.labels, hasNearbyDifferentAtom ? 'incrustada' : 'aislada');
+      await this.setVariantLabel(target.region.id, target.labels, hasNearbyDifferentParticle ? 'incrustada' : 'aislada');
     }
   }
 
@@ -1465,21 +1465,21 @@ class App {
   applyConfigChoice(value) {
     this.activeStructuralConfig = String(value || '1');
     this.annotationPanel.setActiveConfig(this.activeStructuralConfig);
-    this.selectActiveAtomPattern();
-    this.updateAtomPreview();
+    this.selectActiveParticlePattern();
+    this.updateParticlePreview();
     if (this.currentRegion) {
       this.setStructuralConfig(this.currentRegion.id, this.activeStructuralConfig)
         .catch((err) => this.showToast(`No pude marcar configuracion: ${err}`, 'error'));
-    } else if (this.activeAtomId) {
+    } else if (this.activeParticleId) {
       this.showToast(`Preview ${this.activeStructuralConfig}`, 'info');
     }
   }
 
-  async syncAtomEngine(regionId) {
+  async syncParticleEngine(regionId) {
     const labels = await api.listLabels(regionId);
-    const family = this.friendlyAtomKey(this.labelValue(labels, ['base_family']));
+    const family = this.friendlyParticleKey(this.labelValue(labels, ['base_family']));
     const structuralConfig = this.labelValue(labels, ['structural_config']) || this.activeStructuralConfig || '1';
-    await api.syncAtomForRegion(regionId, family, structuralConfig);
+    await api.syncParticleForRegion(regionId, family, structuralConfig);
   }
 
   async recalculateCurrentImageMolecules() {
@@ -1493,33 +1493,33 @@ class App {
     this.moleculeRecalculateTimer = window.setTimeout(async () => {
       try {
         const packet = await this.recalculateCurrentImageMolecules();
-        this.applyAtomPagePacket(packet);
+        this.applyParticlePagePacket(packet);
       } catch (err) {
         this.showToast(`No pude recalcular moleculas: ${err}`, 'error');
       }
     }, 300);
   }
 
-  applyAtomPagePacket(packet, options = {}) {
-    this.atomPagePacket = packet || null;
+  applyParticlePagePacket(packet, options = {}) {
+    this.particlePagePacket = packet || null;
     const preserveOrderDrafts = options.preserveOrderDrafts
       || (this.editModeActive && this.hasPendingOrderDrafts() && !options.clearOrderDrafts);
     if (!preserveOrderDrafts) {
-      this.pendingParticleAtomOrders.clear();
-      this.pendingMoleculeParticleOrders.clear();
+      this.pendingAtomParticleOrders.clear();
+      this.pendingMoleculeAtomOrders.clear();
       this.moleculeEditMode = false;
       this.moleculeEditSnapshot = null;
       this.moleculeEditSnapshots.clear();
     }
-    this.imageViewer.setHierarchy(packet || { molecules: [], particles: [] });
+    this.imageViewer.setHierarchy(packet || { molecules: [], atoms: [] });
     if (this.pendingMoleculeGapOverrides.size) {
       for (const draft of this.pendingMoleculeGapOverrides.values()) {
-        this.applyMoleculeGapDraft(draft.leftParticleIndex, draft.rightParticleIndex, draft.decision);
+        this.applyMoleculeGapDraft(draft.leftAtomIndex, draft.rightAtomIndex, draft.decision);
       }
     }
-    if (this.pendingParticleRowOverrides.size) {
-      for (const draft of this.pendingParticleRowOverrides.values()) {
-        this.applyLocalParticleRowOverride(draft.particleIndex, draft.rowIndex, draft.particleKey);
+    if (this.pendingAtomRowOverrides.size) {
+      for (const draft of this.pendingAtomRowOverrides.values()) {
+        this.applyLocalAtomRowOverride(draft.atomIndex, draft.rowIndex, draft.atomKey);
       }
     }
     this.imageViewer.setSelectedMolecule(this.selectedMoleculeId);
@@ -1529,14 +1529,14 @@ class App {
 
   async locateCurrentPageTarget(rawQuery) {
     const query = String(rawQuery || '').trim();
-    if (!query || !this.currentImage || !this.atomPagePacket) return;
+    if (!query || !this.currentImage || !this.particlePagePacket) return;
 
     const normalized = query.toLowerCase().replace(/\s+/g, '');
-    const atomIdMatch = normalized.match(/^(?:atom|atomo|a|id)[:#-]?(\d+)$/) || normalized.match(/^(\d+)$/);
-    if (atomIdMatch) {
-      const atom = this.findAtomById(Number(atomIdMatch[1]));
-      if (atom) {
-        await this.focusAtom(atom);
+    const particleIdMatch = normalized.match(/^(?:particle|particula|a|id)[:#-]?(\d+)$/) || normalized.match(/^(\d+)$/);
+    if (particleIdMatch) {
+      const particle = this.findParticleById(Number(particleIdMatch[1]));
+      if (particle) {
+        await this.focusParticle(particle);
         return;
       }
     }
@@ -1547,22 +1547,22 @@ class App {
       return;
     }
 
-    const particle = this.findParticleByQuery(normalized);
-    if (particle) {
-      this.focusParticle(particle);
+    const atom = this.findAtomByQuery(normalized);
+    if (atom) {
+      this.focusAtom(atom);
       return;
     }
 
     this.showToast(`No encontre "${query}" en esta pagina`, 'warning');
   }
 
-  findAtomById(atomId) {
-    const atoms = this.atomPagePacket?.atoms || [];
-    return atoms.find((atom) => Number(atom.id) === Number(atomId));
+  findParticleById(particleId) {
+    const particles = this.particlePagePacket?.particles || [];
+    return particles.find((particle) => Number(particle.id) === Number(particleId));
   }
 
   findMoleculeByQuery(normalizedQuery) {
-    const molecules = this.atomPagePacket?.molecules || [];
+    const molecules = this.particlePagePacket?.molecules || [];
     const moleculeIds = this.moleculeQueryCandidates(normalizedQuery);
     return molecules.find((molecule) => {
       const id = String(molecule.molecule_id ?? molecule.moleculeId ?? '').toLowerCase();
@@ -1570,10 +1570,10 @@ class App {
     });
   }
 
-  findParticleByQuery(normalizedQuery) {
-    const particles = this.atomPagePacket?.particles || [];
-    return particles.find((particle) => {
-      const id = String(particle.particle_id ?? particle.particleId ?? '').toLowerCase();
+  findAtomByQuery(normalizedQuery) {
+    const atoms = this.particlePagePacket?.atoms || [];
+    return atoms.find((atom) => {
+      const id = String(atom.atom_id ?? atom.atomId ?? '').toLowerCase();
       return id === normalizedQuery;
     });
   }
@@ -1588,16 +1588,16 @@ class App {
     return [...candidates];
   }
 
-  async focusAtom(atom) {
-    const moleculeId = atom.molecule_id ?? atom.moleculeId ?? null;
+  async focusParticle(particle) {
+    const moleculeId = particle.molecule_id ?? particle.moleculeId ?? null;
     if (moleculeId) {
       this.selectedMoleculeId = moleculeId;
       this.imageViewer.setSelectedMolecule(moleculeId);
     }
-    await this.selectRegion(atom.region_id ?? atom.regionId);
-    this.imageViewer.focusBox(this.atomBounds(atom), { minZoom: 1.35, maxZoom: 4.5, padding: 120 });
+    await this.selectRegion(particle.region_id ?? particle.regionId);
+    this.imageViewer.focusBox(this.particleBounds(particle), { minZoom: 1.35, maxZoom: 4.5, padding: 120 });
     this.renderClusterDebugPanel();
-    this.showToast(`Atomo ${atom.id} localizado${moleculeId ? ` en ${moleculeId}` : ''}`, 'success');
+    this.showToast(`Particula ${particle.id} localizado${moleculeId ? ` en ${moleculeId}` : ''}`, 'success');
   }
 
   focusMolecule(molecule) {
@@ -1609,24 +1609,24 @@ class App {
     this.showToast(`Molecula ${moleculeId} localizada`, 'success');
   }
 
-  focusParticle(particle) {
-    const moleculeId = particle.molecule_id ?? particle.moleculeId ?? null;
+  focusAtom(atom) {
+    const moleculeId = atom.molecule_id ?? atom.moleculeId ?? null;
     if (moleculeId) {
       this.selectedMoleculeId = moleculeId;
       this.imageViewer.setSelectedMolecule(moleculeId);
     }
-    this.imageViewer.setHoveredParticle(particle.particle_id ?? particle.particleId ?? null, particle.source_index ?? particle.sourceIndex ?? 0);
-    this.imageViewer.focusBox(this.boxFromEntity(particle), { minZoom: 1.1, maxZoom: 3.2, padding: 120 });
+    this.imageViewer.setHoveredAtom(atom.atom_id ?? atom.atomId ?? null, atom.source_index ?? atom.sourceIndex ?? 0);
+    this.imageViewer.focusBox(this.boxFromEntity(atom), { minZoom: 1.1, maxZoom: 3.2, padding: 120 });
     this.renderClusterDebugPanel();
-    this.showToast(`Particula ${particle.particle_id ?? particle.particleId} localizada`, 'success');
+    this.showToast(`Atomo ${atom.atom_id ?? atom.atomId} localizada`, 'success');
   }
 
-  atomBounds(atom) {
+  particleBounds(particle) {
     return {
-      x: Number(atom.bounds_x ?? atom.boundsX ?? 0),
-      y: Number(atom.bounds_y ?? atom.boundsY ?? 0),
-      w: Number(atom.bounds_w ?? atom.boundsW ?? 0),
-      h: Number(atom.bounds_h ?? atom.boundsH ?? 0),
+      x: Number(particle.bounds_x ?? particle.boundsX ?? 0),
+      y: Number(particle.bounds_y ?? particle.boundsY ?? 0),
+      w: Number(particle.bounds_w ?? particle.boundsW ?? 0),
+      h: Number(particle.bounds_h ?? particle.boundsH ?? 0),
     };
   }
 
@@ -1640,13 +1640,13 @@ class App {
   }
 
   renderClusterDebugPanel(options = {}) {
-    const packet = this.atomPagePacket || {};
+    const packet = this.particlePagePacket || {};
     const lightweight = Boolean(options.lightweight);
     const explanation = packet.cluster_explanation || packet.clusterExplanation || {};
-    const particles = packet.particles || [];
+    const atoms = packet.atoms || [];
     const molecules = packet.molecules || [];
     const links = explanation.links || [];
-    const particleLinks = links.filter((link) => (link.stage || '') === 'particle' && link.accepted);
+    const atomLinks = links.filter((link) => (link.stage || '') === 'atom' && link.accepted);
     const gapCount = Number(explanation.gap_count ?? explanation.gapCount ?? 0);
     const centers = gapCount >= 12 ? (explanation.gap_centers || explanation.gapCenters || [])
       .map((value) => this.formatMetric(value))
@@ -1654,45 +1654,45 @@ class App {
     const microThreshold = explanation.micro_threshold ?? explanation.microThreshold;
     const macroThreshold = explanation.macro_threshold ?? explanation.macroThreshold;
     const moleculeGaps = explanation.molecule_gaps || explanation.moleculeGaps || [];
-    const particleRows = explanation.particle_rows || explanation.particleRows || [];
+    const atomRows = explanation.atom_rows || explanation.atomRows || [];
     const moleculeAudits = packet.molecule_audits || packet.moleculeAudits || [];
-    const hasSegmentation = particles.length > 0 || molecules.length > 0 || particleRows.length > 0 || moleculeAudits.length > 0;
+    const hasSegmentation = atoms.length > 0 || molecules.length > 0 || atomRows.length > 0 || moleculeAudits.length > 0;
     const hasCalibratedGaps = gapCount >= 12;
     if (!hasSegmentation) {
       this.annotationPanel.setClusterDebugHtml('');
       return;
     }
     const suspiciousMolecules = moleculeAudits.filter((molecule) => {
-      const particles = molecule.particles || [];
-      return Number(molecule.particle_count ?? molecule.particleCount ?? particles.length) === 1;
+      const atoms = molecule.atoms || [];
+      return Number(molecule.atom_count ?? molecule.atomCount ?? atoms.length) === 1;
     });
 
     this.annotationPanel.setClusterDebugHtml(`
       <section class="cluster-debug-panel">
         <div class="cluster-debug__summary">
-          ${this.renderClusterMetric('Atomos', (packet.atoms || []).length)}
-          ${this.renderClusterMetric('Particulas', particles.length)}
+          ${this.renderClusterMetric('Particulas', (packet.particles || []).length)}
+          ${this.renderClusterMetric('Atomos', atoms.length)}
           ${this.renderClusterMetric('Moleculas', molecules.length)}
           ${this.renderClusterMetric('Revisar', suspiciousMolecules.length)}
-          ${this.renderClusterMetric('Contactos', particleLinks.length)}
+          ${this.renderClusterMetric('Contactos', atomLinks.length)}
           ${hasCalibratedGaps ? this.renderOptionalClusterMetric('Micro gap', microThreshold) : ''}
           ${hasCalibratedGaps ? this.renderOptionalClusterMetric('Macro gap', macroThreshold) : ''}
         </div>
         <div class="cluster-debug__legend">
-          <span class="cluster-debug__key"><i class="cluster-debug__line cluster-debug__line--particle"></i>particula</span>
+          <span class="cluster-debug__key"><i class="cluster-debug__line cluster-debug__line--atom"></i>atomo</span>
           <span class="cluster-debug__key"><i class="cluster-debug__line cluster-debug__line--join"></i>une</span>
           <span class="cluster-debug__key"><i class="cluster-debug__line cluster-debug__line--cut"></i>corte</span>
         </div>
         <div class="cluster-debug__notes">
-          <span>${particleLinks.length} contactos aceptados forman ${particles.length} particula${particles.length !== 1 ? 's' : ''}.</span>
+          <span>${atomLinks.length} contactos aceptados forman ${atoms.length} atomo${atoms.length !== 1 ? 's' : ''}.</span>
           <span>${molecules.length} molecula${molecules.length !== 1 ? 's' : ''} por renglon y gap horizontal.</span>
-          ${suspiciousMolecules.length ? `<span>${suspiciousMolecules.length} molecula${suspiciousMolecules.length !== 1 ? 's' : ''} de una sola particula: revisar posible corte sobrante.</span>` : ''}
+          ${suspiciousMolecules.length ? `<span>${suspiciousMolecules.length} molecula${suspiciousMolecules.length !== 1 ? 's' : ''} de un solo atomo: revisar posible corte sobrante.</span>` : ''}
           ${centers ? `<span>Centros: ${this.escapeHtml(centers)}.</span>` : ''}
-          <button class="cluster-debug__undo-btn" type="button" data-clear-latest-particle-merge>deshacer ultima fusion</button>
+          <button class="cluster-debug__undo-btn" type="button" data-clear-latest-atom-merge>deshacer ultima fusion</button>
         </div>
-        ${this.renderSelectedMoleculeAudit(moleculeAudits, packet, moleculeGaps, particleRows)}
+        ${this.renderSelectedMoleculeAudit(moleculeAudits, packet, moleculeGaps, atomRows)}
         ${lightweight ? '<div class="cluster-debug__notes"><span>Edicion de molecula: auditoria global pausada hasta guardar.</span></div>' : ''}
-        ${lightweight ? '' : this.renderRowBoundaryAudit(particleRows, moleculeGaps)}
+        ${lightweight ? '' : this.renderRowBoundaryAudit(atomRows, moleculeGaps)}
         ${lightweight ? '' : this.renderMoleculeGapAudit(moleculeGaps)}
         ${lightweight ? '' : this.renderMoleculeAudit(moleculeAudits)}
       </section>
@@ -1718,12 +1718,12 @@ class App {
       });
     });
 
-    document.querySelectorAll('[data-clear-latest-particle-merge]').forEach((button) => {
+    document.querySelectorAll('[data-clear-latest-atom-merge]').forEach((button) => {
       button.addEventListener('click', async () => {
         if (!this.currentImage) return;
         try {
-          const packet = await api.clearLatestParticleMergePattern(this.currentImage.id);
-          this.applyAtomPagePacket(packet);
+          const packet = await api.clearLatestAtomMergePattern(this.currentImage.id);
+          this.applyParticlePagePacket(packet);
           this.showToast('Ultima fusion aprendida deshecha', 'success');
         } catch (err) {
           this.showToast(`No pude deshacer fusion: ${err}`, 'error');
@@ -1751,15 +1751,15 @@ class App {
       });
     });
 
-    document.querySelectorAll('[data-atom-order-action]').forEach((button) => {
+    document.querySelectorAll('[data-particle-order-action]').forEach((button) => {
       button.addEventListener('click', async () => {
-        const particleId = button.dataset.particleId || '';
-        const atomId = Number(button.dataset.atomId || 0);
-        const direction = button.dataset.atomOrderAction || '';
-        if (!particleId || !atomId || !this.currentImage) return;
+        const atomId = button.dataset.atomId || '';
+        const particleId = Number(button.dataset.particleId || 0);
+        const direction = button.dataset.particleOrderAction || '';
+        if (!atomId || !particleId || !this.currentImage) return;
         try {
           button.disabled = true;
-          await this.reorderParticleAtom(particleId, atomId, direction);
+          await this.reorderAtomParticle(atomId, particleId, direction);
         } catch (err) {
           this.showToast(`No pude guardar el orden: ${err}`, 'error');
         } finally {
@@ -1768,41 +1768,41 @@ class App {
       });
     });
 
-    document.querySelectorAll('[data-particle-order-action]').forEach((button) => {
+    document.querySelectorAll('[data-atom-order-action]').forEach((button) => {
       button.addEventListener('click', async () => {
-        const particleId = button.dataset.particleId || '';
-        const direction = button.dataset.particleOrderAction || '';
-        if (!particleId || !this.currentImage) return;
+        const atomId = button.dataset.atomId || '';
+        const direction = button.dataset.atomOrderAction || '';
+        if (!atomId || !this.currentImage) return;
         try {
           button.disabled = true;
-          await this.reorderMoleculeParticle(particleId, direction);
+          await this.reorderMoleculeAtom(atomId, direction);
         } catch (err) {
-          this.showToast(`No pude guardar el orden de particulas: ${err}`, 'error');
+          this.showToast(`No pude guardar el orden de atomos: ${err}`, 'error');
         } finally {
           button.disabled = false;
         }
       });
     });
 
-    document.querySelectorAll('[data-particle-merge-action]').forEach((button) => {
+    document.querySelectorAll('[data-atom-merge-action]').forEach((button) => {
       button.addEventListener('click', async () => {
-        const particleId = button.dataset.particleId || '';
-        const direction = button.dataset.particleMergeAction || '';
-        if (!particleId || !this.currentImage) return;
+        const atomId = button.dataset.atomId || '';
+        const direction = button.dataset.atomMergeAction || '';
+        if (!atomId || !this.currentImage) return;
         try {
-          await this.learnParticleMerge(particleId, direction);
+          await this.learnAtomMerge(atomId, direction);
         } catch (err) {
-          this.showToast(`No pude ensenar fusion de particulas: ${err}`, 'error');
+          this.showToast(`No pude ensenar fusion de atomos: ${err}`, 'error');
         }
       });
     });
 
-    document.querySelectorAll('[data-hover-particle-id]').forEach((item) => {
+    document.querySelectorAll('[data-hover-atom-id]').forEach((item) => {
       item.addEventListener('mouseenter', () => {
-        this.imageViewer.setHoveredParticle(item.dataset.hoverParticleId || null, item.dataset.hoverParticleSourceIndex || 0);
+        this.imageViewer.setHoveredAtom(item.dataset.hoverAtomId || null, item.dataset.hoverAtomSourceIndex || 0);
       });
       item.addEventListener('mouseleave', () => {
-        this.imageViewer.setHoveredParticle(null, 0);
+        this.imageViewer.setHoveredAtom(null, 0);
       });
     });
   }
@@ -1810,12 +1810,12 @@ class App {
   async handleGapAction(button) {
     if (!this.currentImage || !button) return;
     if (!this.rowEditModeActive) return;
-    const left = Number(button.dataset.leftParticleIndex || 0);
-    const right = Number(button.dataset.rightParticleIndex || 0);
+    const left = Number(button.dataset.leftAtomIndex || 0);
+    const right = Number(button.dataset.rightAtomIndex || 0);
     const action = button.dataset.gapAction || '';
     if (!left || !right || !['cut', 'join', 'auto'].includes(action)) return;
 
-    this.queueMoleculeGapEdit({ leftParticleIndex: left, rightParticleIndex: right }, action);
+    this.queueMoleculeGapEdit({ leftAtomIndex: left, rightAtomIndex: right }, action);
     this.showToast(
       action === 'auto'
         ? 'Correccion marcada para auto'
@@ -1827,8 +1827,8 @@ class App {
   async handleCanvasGapAction(gap) {
     if (!this.currentImage || !gap) return;
     if (!this.rowEditModeActive) return;
-    const left = Number(gap.leftParticleIndex || gap.left_particle_index || 0);
-    const right = Number(gap.rightParticleIndex || gap.right_particle_index || 0);
+    const left = Number(gap.leftAtomIndex || gap.left_atom_index || 0);
+    const right = Number(gap.rightAtomIndex || gap.right_atom_index || 0);
     if (!left || !right) return;
 
     const action = gap.cut ? 'join' : 'cut';
@@ -1842,104 +1842,104 @@ class App {
     );
   }
 
-  async handleParticleRowAction(button) {
+  async handleAtomRowAction(button) {
     if (!this.currentImage || !button) return;
     if (!this.canSwitchMoleculeDuringEdit()) return;
-    const sourceIndex = Number(button.dataset.particleSourceIndex || 0);
-    const particleKey = String(button.dataset.particleKey || '').trim() || null;
+    const sourceIndex = Number(button.dataset.atomSourceIndex || 0);
+    const atomKey = String(button.dataset.atomKey || '').trim() || null;
     const rowIndex = Number(button.dataset.rowIndex || 0);
-    const action = button.dataset.particleRowAction || '';
+    const action = button.dataset.atomRowAction || '';
     if (!sourceIndex || !rowIndex || !['up', 'down', 'auto'].includes(action)) return;
 
     const targetRow = action === 'auto' ? null : action === 'up' ? rowIndex - 1 : rowIndex + 1;
-    this.queueParticleRowOverrideEdit(sourceIndex, targetRow, particleKey);
+    this.queueAtomRowOverrideEdit(sourceIndex, targetRow, atomKey);
     this.showToast(
       action === 'auto'
-        ? 'Particula marcada para renglon automatico'
-        : `Particula marcada para R${targetRow}`,
+        ? 'Atomo marcada para renglon automatico'
+        : `Atomo marcada para R${targetRow}`,
       'info'
     );
   }
 
-  async reorderParticleAtom(particleId, atomId, direction) {
+  async reorderAtomParticle(atomId, particleId, direction) {
     if (!this.moleculeEditMode) return;
     const molecule = this.selectedMoleculeAudit();
-    const particle = (molecule?.particles || []).find((item) => String(item.particle_id ?? item.particleId) === String(particleId));
-    if (!particle) return;
+    const atom = (molecule?.atoms || []).find((item) => String(item.atom_id ?? item.atomId) === String(atomId));
+    if (!atom) return;
 
-    const atomIds = (particle.atoms || []).map((atom) => Number(atom.atom_id ?? atom.atomId ?? 0)).filter(Boolean);
-    const index = atomIds.indexOf(Number(atomId));
-    const target = this.orderTargetIndex(atomIds.length, index, direction);
-    if (index < 0 || target < 0 || target >= atomIds.length || target === index) return;
-
-    const nextAtomIds = atomIds.slice();
-    const [moved] = nextAtomIds.splice(index, 1);
-    nextAtomIds.splice(target, 0, moved);
-    this.applyLocalParticleAtomOrder(particleId, nextAtomIds);
-    this.pendingParticleAtomOrders.set(String(particleId), nextAtomIds);
-    this.markOrderDraftChanged();
-  }
-
-  async reorderMoleculeParticle(particleId, direction) {
-    if (!this.moleculeEditMode) return;
-    const molecule = this.selectedMoleculeAudit();
-    if (!molecule) return;
-
-    const particles = molecule.particles || [];
-    const particleIds = particles
-      .map((particle) => String(particle.particle_id ?? particle.particleId ?? ''))
-      .filter(Boolean);
-    const index = particleIds.indexOf(String(particleId));
-    const target = this.particleOrderTargetIndex(particles, index, direction);
+    const particleIds = (atom.particles || []).map((particle) => Number(particle.particle_id ?? particle.particleId ?? 0)).filter(Boolean);
+    const index = particleIds.indexOf(Number(particleId));
+    const target = this.orderTargetIndex(particleIds.length, index, direction);
     if (index < 0 || target < 0 || target >= particleIds.length || target === index) return;
 
     const nextParticleIds = particleIds.slice();
     const [moved] = nextParticleIds.splice(index, 1);
     nextParticleIds.splice(target, 0, moved);
-    const moleculeId = molecule.molecule_id ?? molecule.moleculeId;
-    this.applyLocalMoleculeParticleOrder(moleculeId, nextParticleIds);
-    this.pendingMoleculeParticleOrders.set(String(moleculeId), nextParticleIds);
+    this.applyLocalAtomParticleOrder(atomId, nextParticleIds);
+    this.pendingAtomParticleOrders.set(String(atomId), nextParticleIds);
     this.markOrderDraftChanged();
   }
 
-  applyLocalParticleAtomOrder(particleId, nextAtomIds) {
+  async reorderMoleculeAtom(atomId, direction) {
+    if (!this.moleculeEditMode) return;
     const molecule = this.selectedMoleculeAudit();
-    const particle = (molecule?.particles || []).find((item) => String(item.particle_id ?? item.particleId) === String(particleId));
-    if (!particle) return;
-    const order = new Map(nextAtomIds.map((atomId, index) => [Number(atomId), index]));
-    particle.atoms = (particle.atoms || [])
-      .slice()
-      .sort((a, b) => {
-        const aId = Number(a.atom_id ?? a.atomId ?? 0);
-        const bId = Number(b.atom_id ?? b.atomId ?? 0);
-        return (order.get(aId) ?? Number.MAX_SAFE_INTEGER) - (order.get(bId) ?? Number.MAX_SAFE_INTEGER);
-      })
-      .map((atom, index) => ({
-        ...atom,
-        atom_order: index + 1,
-        atomOrder: index + 1,
-    }));
-    particle.signature = this.particleSignatureFromAtoms(particle.atoms);
+    if (!molecule) return;
+
+    const atoms = molecule.atoms || [];
+    const atomIds = atoms
+      .map((atom) => String(atom.atom_id ?? atom.atomId ?? ''))
+      .filter(Boolean);
+    const index = atomIds.indexOf(String(atomId));
+    const target = this.atomOrderTargetIndex(atoms, index, direction);
+    if (index < 0 || target < 0 || target >= atomIds.length || target === index) return;
+
+    const nextAtomIds = atomIds.slice();
+    const [moved] = nextAtomIds.splice(index, 1);
+    nextAtomIds.splice(target, 0, moved);
+    const moleculeId = molecule.molecule_id ?? molecule.moleculeId;
+    this.applyLocalMoleculeAtomOrder(moleculeId, nextAtomIds);
+    this.pendingMoleculeAtomOrders.set(String(moleculeId), nextAtomIds);
+    this.markOrderDraftChanged();
   }
 
-  applyLocalMoleculeParticleOrder(moleculeId, nextParticleIds) {
+  applyLocalAtomParticleOrder(atomId, nextParticleIds) {
     const molecule = this.selectedMoleculeAudit();
-    if (!molecule || String(molecule.molecule_id ?? molecule.moleculeId) !== String(moleculeId)) return;
-    const order = new Map(nextParticleIds.map((particleId, index) => [String(particleId), index]));
-    molecule.particles = (molecule.particles || [])
+    const atom = (molecule?.atoms || []).find((item) => String(item.atom_id ?? item.atomId) === String(atomId));
+    if (!atom) return;
+    const order = new Map(nextParticleIds.map((particleId, index) => [Number(particleId), index]));
+    atom.particles = (atom.particles || [])
       .slice()
       .sort((a, b) => {
-        const aId = String(a.particle_id ?? a.particleId ?? '');
-        const bId = String(b.particle_id ?? b.particleId ?? '');
+        const aId = Number(a.particle_id ?? a.particleId ?? 0);
+        const bId = Number(b.particle_id ?? b.particleId ?? 0);
         return (order.get(aId) ?? Number.MAX_SAFE_INTEGER) - (order.get(bId) ?? Number.MAX_SAFE_INTEGER);
       })
       .map((particle, index) => ({
         ...particle,
         particle_order: index + 1,
         particleOrder: index + 1,
-        slot: this.particleSlot(index, nextParticleIds.length),
     }));
-    molecule.signature = molecule.particles.map((particle) => particle.signature || '').filter(Boolean).join(' | ');
+    atom.signature = this.atomSignatureFromParticles(atom.particles);
+  }
+
+  applyLocalMoleculeAtomOrder(moleculeId, nextAtomIds) {
+    const molecule = this.selectedMoleculeAudit();
+    if (!molecule || String(molecule.molecule_id ?? molecule.moleculeId) !== String(moleculeId)) return;
+    const order = new Map(nextAtomIds.map((atomId, index) => [String(atomId), index]));
+    molecule.atoms = (molecule.atoms || [])
+      .slice()
+      .sort((a, b) => {
+        const aId = String(a.atom_id ?? a.atomId ?? '');
+        const bId = String(b.atom_id ?? b.atomId ?? '');
+        return (order.get(aId) ?? Number.MAX_SAFE_INTEGER) - (order.get(bId) ?? Number.MAX_SAFE_INTEGER);
+      })
+      .map((atom, index) => ({
+        ...atom,
+        atom_order: index + 1,
+        atomOrder: index + 1,
+        slot: this.atomSlot(index, nextAtomIds.length),
+    }));
+    molecule.signature = molecule.atoms.map((atom) => atom.signature || '').filter(Boolean).join(' | ');
   }
 
   markOrderDraftChanged() {
@@ -1967,7 +1967,7 @@ class App {
   ensureMoleculeEditSnapshot(moleculeId) {
     const key = String(moleculeId || '');
     if (!key || this.moleculeEditSnapshots.has(key)) return;
-    const packet = this.atomPagePacket || {};
+    const packet = this.particlePagePacket || {};
     const audits = packet.molecule_audits || packet.moleculeAudits || [];
     const molecule = audits.find((item) => String(item.molecule_id ?? item.moleculeId) === key);
     if (!molecule) return;
@@ -1980,19 +1980,19 @@ class App {
 
   discardMoleculeOrderDrafts(options = {}) {
     const { render = true } = options;
-    this.pendingParticleAtomOrders.clear();
-    this.pendingMoleculeParticleOrders.clear();
+    this.pendingAtomParticleOrders.clear();
+    this.pendingMoleculeAtomOrders.clear();
 
-    if (this.atomPagePacket && this.moleculeEditSnapshots.size) {
-      const audits = this.atomPagePacket.molecule_audits || this.atomPagePacket.moleculeAudits || [];
+    if (this.particlePagePacket && this.moleculeEditSnapshots.size) {
+      const audits = this.particlePagePacket.molecule_audits || this.particlePagePacket.moleculeAudits || [];
       for (const [moleculeId, snapshot] of this.moleculeEditSnapshots.entries()) {
         const index = audits.findIndex((item) => String(item.molecule_id ?? item.moleculeId) === String(moleculeId));
         if (index >= 0) {
           audits[index] = this.cloneOrderDraftValue(snapshot);
         }
       }
-    } else if (this.moleculeEditSnapshot && this.atomPagePacket) {
-      const audits = this.atomPagePacket.molecule_audits || this.atomPagePacket.moleculeAudits || [];
+    } else if (this.moleculeEditSnapshot && this.particlePagePacket) {
+      const audits = this.particlePagePacket.molecule_audits || this.particlePagePacket.moleculeAudits || [];
       const index = audits.findIndex((item) => String(item.molecule_id ?? item.moleculeId) === String(this.selectedMoleculeId));
       if (index >= 0) audits[index] = this.cloneOrderDraftValue(this.moleculeEditSnapshot);
     }
@@ -2010,28 +2010,28 @@ class App {
 
   async flushPendingOrderDrafts() {
     if (!this.currentImage || this.orderDraftSaving) return;
-    if (!this.pendingParticleAtomOrders.size && !this.pendingMoleculeParticleOrders.size) {
+    if (!this.pendingAtomParticleOrders.size && !this.pendingMoleculeAtomOrders.size) {
       this.moleculeEditMode = false;
       this.moleculeEditSnapshot = null;
       this.renderClusterDebugPanel();
       return;
     }
 
-    const particleAtomOrders = [...this.pendingParticleAtomOrders.entries()];
-    const moleculeParticleOrders = [...this.pendingMoleculeParticleOrders.entries()];
-    this.pendingParticleAtomOrders.clear();
-    this.pendingMoleculeParticleOrders.clear();
+    const atomParticleOrders = [...this.pendingAtomParticleOrders.entries()];
+    const moleculeAtomOrders = [...this.pendingMoleculeAtomOrders.entries()];
+    this.pendingAtomParticleOrders.clear();
+    this.pendingMoleculeAtomOrders.clear();
     this.orderDraftSaving = true;
     this.renderClusterDebugPanel({ lightweight: true });
 
     try {
       const latestPacket = await api.setOrderDraftsBatch(
         this.currentImage.id,
-        particleAtomOrders.map(([particleId, atomIds]) => ({ particleId, atomIds })),
-        moleculeParticleOrders.map(([moleculeId, particleIds]) => ({ moleculeId, particleIds })),
+        atomParticleOrders.map(([atomId, particleIds]) => ({ atomId, particleIds })),
+        moleculeAtomOrders.map(([moleculeId, atomIds]) => ({ moleculeId, atomIds })),
       );
       if (latestPacket) {
-        this.applyAtomPagePacket(latestPacket, { clearOrderDrafts: true });
+        this.applyParticlePagePacket(latestPacket, { clearOrderDrafts: true });
         this.moleculeEditSnapshots.clear();
         this.showToast(this.editModeActive ? 'Orden guardado' : 'Orden aprendido', 'success');
       } else {
@@ -2040,11 +2040,11 @@ class App {
         this.moleculeEditSnapshots.clear();
       }
     } catch (err) {
-      for (const [particleId, atomIds] of particleAtomOrders) {
-        this.pendingParticleAtomOrders.set(particleId, atomIds);
+      for (const [atomId, particleIds] of atomParticleOrders) {
+        this.pendingAtomParticleOrders.set(atomId, particleIds);
       }
-      for (const [moleculeId, particleIds] of moleculeParticleOrders) {
-        this.pendingMoleculeParticleOrders.set(moleculeId, particleIds);
+      for (const [moleculeId, atomIds] of moleculeAtomOrders) {
+        this.pendingMoleculeAtomOrders.set(moleculeId, atomIds);
       }
       throw err;
     } finally {
@@ -2055,18 +2055,18 @@ class App {
   }
 
   hasPendingOrderDrafts() {
-    return this.pendingParticleAtomOrders.size > 0 || this.pendingMoleculeParticleOrders.size > 0 || this.orderDraftSaving;
+    return this.pendingAtomParticleOrders.size > 0 || this.pendingMoleculeAtomOrders.size > 0 || this.orderDraftSaving;
   }
 
-  particleSignatureFromAtoms(atoms = []) {
-    return atoms.map((atom) => {
-      const family = atom.family || '?';
-      const config = atom.structural_config ?? atom.structuralConfig ?? '';
+  atomSignatureFromParticles(particles = []) {
+    return particles.map((particle) => {
+      const family = particle.family || '?';
+      const config = particle.structural_config ?? particle.structuralConfig ?? '';
       return config ? `${family}:${config}` : family;
     }).join(' ');
   }
 
-  particleSlot(index, count) {
+  atomSlot(index, count) {
     if (count <= 1) return 'singleton';
     if (index <= 0) return 'initial';
     if (index >= count - 1) return 'final';
@@ -2082,49 +2082,49 @@ class App {
     return index;
   }
 
-  particleOrderTargetIndex(particles = [], index = -1, direction = '') {
+  atomOrderTargetIndex(atoms = [], index = -1, direction = '') {
     if (index < 0) return index;
     if (direction === 'first') return 0;
-    if (direction === 'last') return particles.length - 1;
+    if (direction === 'last') return atoms.length - 1;
     const step = direction === 'up' ? -1 : direction === 'down' ? 1 : 0;
     if (!step) return index;
-    const currentSignature = this.particleOrderSignature(particles[index]);
+    const currentSignature = this.atomOrderSignature(atoms[index]);
     let target = index + step;
     while (
       target >= 0
-      && target < particles.length
-      && this.particleOrderSignature(particles[target]) === currentSignature
+      && target < atoms.length
+      && this.atomOrderSignature(atoms[target]) === currentSignature
     ) {
       target += step;
     }
     return target;
   }
 
-  particleOrderSignature(particle = {}) {
-    return String(particle.signature_key ?? particle.signatureKey ?? particle.signature ?? '');
+  atomOrderSignature(atom = {}) {
+    return String(atom.signature_key ?? atom.signatureKey ?? atom.signature ?? '');
   }
 
-  async learnParticleMerge(particleId, direction) {
+  async learnAtomMerge(atomId, direction) {
     const molecule = this.selectedMoleculeAudit();
-    const particles = molecule?.particles || [];
-    const particleIds = particles
-      .map((particle) => String(particle.particle_id ?? particle.particleId ?? ''))
+    const atoms = molecule?.atoms || [];
+    const atomIds = atoms
+      .map((atom) => String(atom.atom_id ?? atom.atomId ?? ''))
       .filter(Boolean);
-    const index = particleIds.indexOf(String(particleId));
+    const index = atomIds.indexOf(String(atomId));
     const target = direction === 'previous' ? index - 1 : direction === 'next' ? index + 1 : index;
-    if (index < 0 || target < 0 || target >= particleIds.length || target === index) return;
+    if (index < 0 || target < 0 || target >= atomIds.length || target === index) return;
 
-    const packet = await api.setParticleMergePattern(
+    const packet = await api.setAtomMergePattern(
       this.currentImage.id,
-      particleIds[index],
-      particleIds[target],
+      atomIds[index],
+      atomIds[target],
     );
-    this.applyAtomPagePacket(packet);
-    this.showToast('Excepcion de particula aprendida', 'success');
+    this.applyParticlePagePacket(packet);
+    this.showToast('Excepcion de atomo aprendida', 'success');
   }
 
   selectedMoleculeAudit() {
-    const packet = this.atomPagePacket || {};
+    const packet = this.particlePagePacket || {};
     const audits = packet.molecule_audits || packet.moleculeAudits || [];
     return audits.find((item) => String(item.molecule_id ?? item.moleculeId) === String(this.selectedMoleculeId));
   }
@@ -2143,8 +2143,8 @@ class App {
   renderMoleculeGapAuditItem(gap) {
     const cut = Boolean(gap.cut);
     const row = Number(gap.row_index ?? gap.rowIndex ?? 0);
-    const left = Number(gap.left_particle_index ?? gap.leftParticleIndex ?? 0);
-    const right = Number(gap.right_particle_index ?? gap.rightParticleIndex ?? 0);
+    const left = Number(gap.left_atom_index ?? gap.leftAtomIndex ?? 0);
+    const right = Number(gap.right_atom_index ?? gap.rightAtomIndex ?? 0);
     const gapValue = this.formatMetric(gap.gap);
     const threshold = this.formatMetric(gap.threshold);
     const reason = gap.reason || (cut ? 'corte' : 'une');
@@ -2153,41 +2153,41 @@ class App {
     return `
       <div class="gap-audit__item gap-audit__item--${cut ? 'cut' : 'join'} ${override ? 'gap-audit__item--manual' : ''}">
         <span class="gap-audit__decision">${cut ? 'corte' : 'une'}</span>
-        <code>R${row} P${left}->P${right}</code>
+        <code>R${row} A${left}->A${right}</code>
         <span>${gapValue}/${threshold}</span>
         <small>${this.escapeHtml(reason)}${override ? ' · manual' : ''}</small>
         ${showActions ? `<div class="gap-audit__actions">
-          <button class="gap-audit__btn" type="button" data-gap-action="cut" data-left-particle-index="${left}" data-right-particle-index="${right}">cortar</button>
-          <button class="gap-audit__btn" type="button" data-gap-action="join" data-left-particle-index="${left}" data-right-particle-index="${right}">unir</button>
-          <button class="gap-audit__btn" type="button" data-gap-action="auto" data-left-particle-index="${left}" data-right-particle-index="${right}">auto</button>
+          <button class="gap-audit__btn" type="button" data-gap-action="cut" data-left-atom-index="${left}" data-right-atom-index="${right}">cortar</button>
+          <button class="gap-audit__btn" type="button" data-gap-action="join" data-left-atom-index="${left}" data-right-atom-index="${right}">unir</button>
+          <button class="gap-audit__btn" type="button" data-gap-action="auto" data-left-atom-index="${left}" data-right-atom-index="${right}">auto</button>
         </div>` : ''}
       </div>
     `;
   }
 
-  renderSelectedMoleculeAudit(audits = [], packet = {}, gaps = [], particleRows = []) {
+  renderSelectedMoleculeAudit(audits = [], packet = {}, gaps = [], atomRows = []) {
     if (!this.selectedMoleculeId) return '';
     const molecule = audits.find((item) => String(item.molecule_id ?? item.moleculeId) === String(this.selectedMoleculeId));
     if (!molecule) return '';
-    const particles = molecule.particles || [];
-    const isSuspicious = Number(molecule.particle_count ?? molecule.particleCount ?? particles.length) === 1;
+    const atoms = molecule.atoms || [];
+    const isSuspicious = Number(molecule.atom_count ?? molecule.atomCount ?? atoms.length) === 1;
     const fixGaps = isSuspicious ? this.suspiciousMoleculeGapCandidates(molecule, packet, gaps) : [];
-    const rowInfo = isSuspicious ? this.selectedMoleculeRowInfo(molecule, packet, particleRows) : null;
+    const rowInfo = isSuspicious ? this.selectedMoleculeRowInfo(molecule, packet, atomRows) : null;
     const editStatus = this.orderDraftSaving ? 'guardando...' : this.hasPendingOrderDrafts() ? 'cambios sin guardar' : 'editando';
     return `
       <section class="molecule-detail ${isSuspicious ? 'molecule-detail--warning' : ''}">
         <div class="molecule-detail__head">
           <strong>${this.escapeHtml(this.selectedMoleculeId)}</strong>
-          <span>${Number(molecule.particle_count ?? molecule.particleCount ?? particles.length)} particulas / ${Number(molecule.atom_count ?? molecule.atomCount ?? 0)} atomos</span>
+          <span>${Number(molecule.atom_count ?? molecule.atomCount ?? atoms.length)} atomos / ${Number(molecule.particle_count ?? molecule.particleCount ?? 0)} particulas</span>
           ${this.canSwitchMoleculeDuringEdit() ? `<small>${editStatus}</small>` : ''}
         </div>
-        ${isSuspicious ? '<div class="molecule-detail__warning">Revisar: molecula de una sola particula.</div>' : ''}
+        ${isSuspicious ? '<div class="molecule-detail__warning">Revisar: molecula de un solo atomo.</div>' : ''}
         ${fixGaps.length ? this.renderSuspiciousMoleculeFixes(fixGaps) : ''}
         ${isSuspicious && !fixGaps.length ? '<div class="molecule-detail__warning">Sin gap exacto para corregir: revisar asignacion de renglon.</div>' : ''}
         ${rowInfo ? this.renderSelectedMoleculeRowInfo(rowInfo) : ''}
         <code class="molecule-detail__signature">${this.escapeHtml(molecule.signature || '')}</code>
-        <div class="molecule-detail__particles">
-          ${particles.map((particle, index) => this.renderParticleDetailItem(particle, index, particles.length)).join('')}
+        <div class="molecule-detail__atoms">
+          ${atoms.map((atom, index) => this.renderAtomDetailItem(atom, index, atoms.length)).join('')}
         </div>
       </section>
     `;
@@ -2195,8 +2195,8 @@ class App {
 
   suspiciousMoleculeGapCandidates(molecule, packet = {}, gaps = []) {
     const moleculeId = molecule.molecule_id ?? molecule.moleculeId;
-    const singleton = (packet.particles || []).find((particle) => (
-      String(particle.molecule_id ?? particle.moleculeId) === String(moleculeId)
+    const singleton = (packet.atoms || []).find((atom) => (
+      String(atom.molecule_id ?? atom.moleculeId) === String(moleculeId)
     ));
     if (!singleton) return [];
 
@@ -2204,76 +2204,76 @@ class App {
     const sourceIndex = Number(singleton.source_index ?? singleton.sourceIndex ?? 0);
     if (!sourceIndex) return [];
 
-    let previous = (gaps || []).find((gap) => Number(gap.right_particle_index ?? gap.rightParticleIndex ?? 0) === sourceIndex);
-    let next = (gaps || []).find((gap) => Number(gap.left_particle_index ?? gap.leftParticleIndex ?? 0) === sourceIndex);
+    let previous = (gaps || []).find((gap) => Number(gap.right_atom_index ?? gap.rightAtomIndex ?? 0) === sourceIndex);
+    let next = (gaps || []).find((gap) => Number(gap.left_atom_index ?? gap.leftAtomIndex ?? 0) === sourceIndex);
     if (previous) previous = { ...previous, side: 'molecula anterior', exact: true };
     if (next) next = { ...next, side: 'molecula siguiente', exact: true };
 
     return [previous, next].filter(Boolean);
   }
 
-  selectedMoleculeRowInfo(molecule, packet = {}, particleRows = []) {
+  selectedMoleculeRowInfo(molecule, packet = {}, atomRows = []) {
     const moleculeId = molecule.molecule_id ?? molecule.moleculeId;
-    const singleton = (packet.particles || []).find((particle) => (
-      String(particle.molecule_id ?? particle.moleculeId) === String(moleculeId)
+    const singleton = (packet.atoms || []).find((atom) => (
+      String(atom.molecule_id ?? atom.moleculeId) === String(moleculeId)
     ));
     const sourceIndex = Number(singleton?.source_index ?? singleton?.sourceIndex ?? 0);
     if (!sourceIndex) return null;
-    for (const row of particleRows || []) {
-      const match = (row.particles || []).find((particle) => Number(particle.source_index ?? particle.sourceIndex ?? 0) === sourceIndex);
+    for (const row of atomRows || []) {
+      const match = (row.atoms || []).find((atom) => Number(atom.source_index ?? atom.sourceIndex ?? 0) === sourceIndex);
       if (match) {
         return {
           rowIndex: Number(row.row_index ?? row.rowIndex ?? 0),
           baselineY: Number(row.baseline_y ?? row.baselineY ?? 0),
           sourceIndex,
-          particleY: Number(match.y ?? 0),
-          particleBottomY: Number(match.bottom_y ?? match.bottomY ?? (Number(match.y ?? 0) + Number(match.h ?? 0))),
-          particleBodyY: Number(match.body_y ?? match.bodyY ?? match.baseline_y ?? match.baselineY ?? 0),
-          particleHeight: Number(match.h ?? 0),
+          atomY: Number(match.y ?? 0),
+          atomBottomY: Number(match.bottom_y ?? match.bottomY ?? (Number(match.y ?? 0) + Number(match.h ?? 0))),
+          atomBodyY: Number(match.body_y ?? match.bodyY ?? match.baseline_y ?? match.baselineY ?? 0),
+          atomHeight: Number(match.h ?? 0),
         };
       }
     }
     return null;
   }
 
-  particleRowInfoForSource(sourceIndex) {
-    const packet = this.atomPagePacket || {};
+  atomRowInfoForSource(sourceIndex) {
+    const packet = this.particlePagePacket || {};
     const explanation = packet.cluster_explanation || packet.clusterExplanation || {};
-    const particleRows = explanation.particle_rows || explanation.particleRows || [];
-    const rowCount = particleRows.length;
-    for (const row of particleRows || []) {
-      const match = (row.particles || []).find((particle) => Number(particle.source_index ?? particle.sourceIndex ?? 0) === sourceIndex);
+    const atomRows = explanation.atom_rows || explanation.atomRows || [];
+    const rowCount = atomRows.length;
+    for (const row of atomRows || []) {
+      const match = (row.atoms || []).find((atom) => Number(atom.source_index ?? atom.sourceIndex ?? 0) === sourceIndex);
       if (match) {
-        const particleKey = String(match.particle_key ?? match.particleKey ?? '').trim();
-        const pendingRow = this.pendingParticleRowOverrides.get(this.particleRowDraftKey(sourceIndex, particleKey))
-          || this.pendingParticleRowOverrides.get(String(sourceIndex));
+        const atomKey = String(match.atom_key ?? match.atomKey ?? '').trim();
+        const pendingRow = this.pendingAtomRowOverrides.get(this.atomRowDraftKey(sourceIndex, atomKey))
+          || this.pendingAtomRowOverrides.get(String(sourceIndex));
         const baseRowIndex = Number(row.row_index ?? row.rowIndex ?? 0);
         const displayRowIndex = pendingRow && pendingRow.rowIndex !== null ? Number(pendingRow.rowIndex) : baseRowIndex;
         return {
           rowIndex: displayRowIndex,
           rowCount,
           rowOverride: pendingRow ? pendingRow.rowIndex : match.row_override ?? match.rowOverride ?? null,
-          particleKey,
+          atomKey,
         };
       }
     }
     return { rowIndex: 0, rowCount, rowOverride: null };
   }
 
-  renderParticleRowControls(sourceIndex, rowInfo) {
+  renderAtomRowControls(sourceIndex, rowInfo) {
     if (!this.canSwitchMoleculeDuringEdit()) return '';
     if (!sourceIndex || !rowInfo?.rowIndex) return '';
     const rowIndex = Number(rowInfo.rowIndex || 0);
     const rowCount = Number(rowInfo.rowCount || 0);
-    const particleKey = String(rowInfo.particleKey || '').trim();
-    const particleKeyAttr = this.escapeHtml(particleKey);
+    const atomKey = String(rowInfo.atomKey || '').trim();
+    const atomKeyAttr = this.escapeHtml(atomKey);
     const hasOverride = rowInfo.rowOverride !== null && rowInfo.rowOverride !== undefined;
     return `
-      <span class="particle-detail__row-controls">
+      <span class="atom-detail__row-controls">
         <span>R${rowIndex}${hasOverride ? ' manual' : ''}</span>
-        <button class="particle-detail__move-btn" type="button" data-particle-row-action="up" data-particle-source-index="${sourceIndex}" data-particle-key="${particleKeyAttr}" data-row-index="${rowIndex}" ${rowIndex <= 1 ? 'disabled' : ''}>part. arriba</button>
-        <button class="particle-detail__move-btn" type="button" data-particle-row-action="down" data-particle-source-index="${sourceIndex}" data-particle-key="${particleKeyAttr}" data-row-index="${rowIndex}" ${rowCount && rowIndex >= rowCount ? 'disabled' : ''}>part. abajo</button>
-        <button class="particle-detail__move-btn" type="button" data-particle-row-action="auto" data-particle-source-index="${sourceIndex}" data-particle-key="${particleKeyAttr}" data-row-index="${rowIndex}" ${!hasOverride ? 'disabled' : ''}>part. auto</button>
+        <button class="atom-detail__move-btn" type="button" data-atom-row-action="up" data-atom-source-index="${sourceIndex}" data-atom-key="${atomKeyAttr}" data-row-index="${rowIndex}" ${rowIndex <= 1 ? 'disabled' : ''}>at. arriba</button>
+        <button class="atom-detail__move-btn" type="button" data-atom-row-action="down" data-atom-source-index="${sourceIndex}" data-atom-key="${atomKeyAttr}" data-row-index="${rowIndex}" ${rowCount && rowIndex >= rowCount ? 'disabled' : ''}>at. abajo</button>
+        <button class="atom-detail__move-btn" type="button" data-atom-row-action="auto" data-atom-source-index="${sourceIndex}" data-atom-key="${atomKeyAttr}" data-row-index="${rowIndex}" ${!hasOverride ? 'disabled' : ''}>at. auto</button>
       </span>
     `;
   }
@@ -2281,32 +2281,32 @@ class App {
   renderSelectedMoleculeRowInfo(rowInfo) {
     return `
       <div class="molecule-detail__row">
-        <span>R${rowInfo.rowIndex} · P${rowInfo.sourceIndex}</span>
-        <span>row ${this.formatMetric(rowInfo.baselineY)} · anchor ${this.formatMetric(rowInfo.particleBodyY)}</span>
-        <span>y ${this.formatMetric(rowInfo.particleY)} · bottom ${this.formatMetric(rowInfo.particleBottomY)} · h ${this.formatMetric(rowInfo.particleHeight)}</span>
+        <span>R${rowInfo.rowIndex} · A${rowInfo.sourceIndex}</span>
+        <span>row ${this.formatMetric(rowInfo.baselineY)} · anchor ${this.formatMetric(rowInfo.atomBodyY)}</span>
+        <span>y ${this.formatMetric(rowInfo.atomY)} · bottom ${this.formatMetric(rowInfo.atomBottomY)} · h ${this.formatMetric(rowInfo.atomHeight)}</span>
       </div>
     `;
   }
 
-  renderRowBoundaryAudit(particleRows = [], gaps = []) {
-    if (!particleRows.length) return '';
+  renderRowBoundaryAudit(atomRows = [], gaps = []) {
+    if (!atomRows.length) return '';
     const rows = new Map();
-    for (const row of particleRows) {
+    for (const row of atomRows) {
       rows.set(Number(row.row_index ?? row.rowIndex ?? 0), row);
     }
     const gapByPair = new Map((gaps || []).map((gap) => [
-      `${Number(gap.left_particle_index ?? gap.leftParticleIndex ?? 0)}:${Number(gap.right_particle_index ?? gap.rightParticleIndex ?? 0)}`,
+      `${Number(gap.left_atom_index ?? gap.leftAtomIndex ?? 0)}:${Number(gap.right_atom_index ?? gap.rightAtomIndex ?? 0)}`,
       gap,
     ]));
 
     return `
       <div class="row-audit">
         ${Array.from(rows.entries()).sort((a, b) => a[0] - b[0]).map(([row, rowAudit]) => {
-          const ordered = (rowAudit.particles || []).slice().sort((a, b) => Number(a.x ?? 0) - Number(b.x ?? 0));
+          const ordered = (rowAudit.atoms || []).slice().sort((a, b) => Number(a.x ?? 0) - Number(b.x ?? 0));
           const tokens = [];
           for (let index = 0; index < ordered.length; index += 1) {
             const current = ordered[index];
-            tokens.push(`P${Number(current.source_index ?? current.sourceIndex ?? 0)}`);
+            tokens.push(`A${Number(current.source_index ?? current.sourceIndex ?? 0)}`);
             const next = ordered[index + 1];
             if (!next) continue;
             const key = `${Number(current.source_index ?? current.sourceIndex ?? 0)}:${Number(next.source_index ?? next.sourceIndex ?? 0)}`;
@@ -2337,13 +2337,13 @@ class App {
       <div class="molecule-detail__fixes">
         ${gaps.map((gap) => {
           const row = Number(gap.row_index ?? gap.rowIndex ?? 0);
-          const left = Number(gap.left_particle_index ?? gap.leftParticleIndex ?? 0);
-          const right = Number(gap.right_particle_index ?? gap.rightParticleIndex ?? 0);
+          const left = Number(gap.left_atom_index ?? gap.leftAtomIndex ?? 0);
+          const right = Number(gap.right_atom_index ?? gap.rightAtomIndex ?? 0);
           return `
             <div class="molecule-detail__fix">
-              <span>Unir con ${this.escapeHtml(gap.side)}: R${row} P${left}->P${right}</span>
-              <button class="gap-audit__btn" type="button" data-gap-action="join" data-left-particle-index="${left}" data-right-particle-index="${right}">unir</button>
-              <button class="gap-audit__btn" type="button" data-gap-action="auto" data-left-particle-index="${left}" data-right-particle-index="${right}">auto</button>
+              <span>Unir con ${this.escapeHtml(gap.side)}: R${row} A${left}->A${right}</span>
+              <button class="gap-audit__btn" type="button" data-gap-action="join" data-left-atom-index="${left}" data-right-atom-index="${right}">unir</button>
+              <button class="gap-audit__btn" type="button" data-gap-action="auto" data-left-atom-index="${left}" data-right-atom-index="${right}">auto</button>
             </div>
           `;
         }).join('')}
@@ -2351,58 +2351,58 @@ class App {
     `;
   }
 
-  renderParticleDetailItem(particle, particleIndex = 0, particleCount = 0) {
-    const atoms = particle.atoms || [];
-    const particleId = particle.particle_id ?? particle.particleId ?? '';
-    const sourceIndex = Number(particle.source_index ?? particle.sourceIndex ?? 0);
+  renderAtomDetailItem(atom, atomIndex = 0, atomCount = 0) {
+    const particles = atom.particles || [];
+    const atomId = atom.atom_id ?? atom.atomId ?? '';
+    const sourceIndex = Number(atom.source_index ?? atom.sourceIndex ?? 0);
     const bounds = {
-      x: Number(particle.bounds_x ?? particle.boundsX ?? 0),
-      y: Number(particle.bounds_y ?? particle.boundsY ?? 0),
-      w: Number(particle.bounds_w ?? particle.boundsW ?? 0),
-      h: Number(particle.bounds_h ?? particle.boundsH ?? 0),
+      x: Number(atom.bounds_x ?? atom.boundsX ?? 0),
+      y: Number(atom.bounds_y ?? atom.boundsY ?? 0),
+      w: Number(atom.bounds_w ?? atom.boundsW ?? 0),
+      h: Number(atom.bounds_h ?? atom.boundsH ?? 0),
     };
     const centroid = {
-      x: Number(particle.centroid_x ?? particle.centroidX ?? 0),
-      y: Number(particle.centroid_y ?? particle.centroidY ?? 0),
+      x: Number(atom.centroid_x ?? atom.centroidX ?? 0),
+      y: Number(atom.centroid_y ?? atom.centroidY ?? 0),
     };
-    const contactCount = Number(particle.internal_contact_count ?? particle.internalContactCount ?? 0);
-    const rowInfo = this.particleRowInfoForSource(sourceIndex);
+    const contactCount = Number(atom.internal_contact_count ?? atom.internalContactCount ?? 0);
+    const rowInfo = this.atomRowInfoForSource(sourceIndex);
     const showOrderControls = this.canSwitchMoleculeDuringEdit();
     const orderDisabled = !showOrderControls || this.orderDraftSaving;
     return `
-      <section class="particle-detail" data-hover-particle-id="${this.escapeHtml(particleId)}" data-hover-particle-source-index="${sourceIndex}">
-        <div class="particle-detail__head">
-          <span>${this.escapeHtml(particle.slot || '?')} #${Number(particle.particle_order ?? particle.particleOrder ?? 0)} / P${Number(particle.source_index ?? particle.sourceIndex ?? 0)}</span>
-          ${showOrderControls ? `<span class="particle-detail__order-controls">
-            <button class="particle-detail__move-btn" type="button" data-particle-order-action="first" data-particle-id="${this.escapeHtml(particleId)}" ${orderDisabled || particleIndex === 0 ? 'disabled' : ''}>inicio</button>
-            <button class="particle-detail__move-btn" type="button" data-particle-order-action="up" data-particle-id="${this.escapeHtml(particleId)}" ${orderDisabled || particleIndex === 0 ? 'disabled' : ''}>subir</button>
-            <button class="particle-detail__move-btn" type="button" data-particle-order-action="down" data-particle-id="${this.escapeHtml(particleId)}" ${orderDisabled || particleIndex >= particleCount - 1 ? 'disabled' : ''}>bajar</button>
-            <button class="particle-detail__move-btn" type="button" data-particle-order-action="last" data-particle-id="${this.escapeHtml(particleId)}" ${orderDisabled || particleIndex >= particleCount - 1 ? 'disabled' : ''}>final</button>
-            <button class="particle-detail__move-btn particle-detail__move-btn--merge" type="button" data-particle-merge-action="previous" data-particle-id="${this.escapeHtml(particleId)}" ${particleIndex === 0 ? 'disabled' : ''}>fusionar ant.</button>
-            <button class="particle-detail__move-btn particle-detail__move-btn--merge" type="button" data-particle-merge-action="next" data-particle-id="${this.escapeHtml(particleId)}" ${particleIndex >= particleCount - 1 ? 'disabled' : ''}>fusionar sig.</button>
+      <section class="atom-detail" data-hover-atom-id="${this.escapeHtml(atomId)}" data-hover-atom-source-index="${sourceIndex}">
+        <div class="atom-detail__head">
+          <span>${this.escapeHtml(atom.slot || '?')} #${Number(atom.atom_order ?? atom.atomOrder ?? 0)} / A${Number(atom.source_index ?? atom.sourceIndex ?? 0)}</span>
+          ${showOrderControls ? `<span class="atom-detail__order-controls">
+            <button class="atom-detail__move-btn" type="button" data-atom-order-action="first" data-atom-id="${this.escapeHtml(atomId)}" ${orderDisabled || atomIndex === 0 ? 'disabled' : ''}>inicio</button>
+            <button class="atom-detail__move-btn" type="button" data-atom-order-action="up" data-atom-id="${this.escapeHtml(atomId)}" ${orderDisabled || atomIndex === 0 ? 'disabled' : ''}>subir</button>
+            <button class="atom-detail__move-btn" type="button" data-atom-order-action="down" data-atom-id="${this.escapeHtml(atomId)}" ${orderDisabled || atomIndex >= atomCount - 1 ? 'disabled' : ''}>bajar</button>
+            <button class="atom-detail__move-btn" type="button" data-atom-order-action="last" data-atom-id="${this.escapeHtml(atomId)}" ${orderDisabled || atomIndex >= atomCount - 1 ? 'disabled' : ''}>final</button>
+            <button class="atom-detail__move-btn atom-detail__move-btn--merge" type="button" data-atom-merge-action="previous" data-atom-id="${this.escapeHtml(atomId)}" ${atomIndex === 0 ? 'disabled' : ''}>fusionar ant.</button>
+            <button class="atom-detail__move-btn atom-detail__move-btn--merge" type="button" data-atom-merge-action="next" data-atom-id="${this.escapeHtml(atomId)}" ${atomIndex >= atomCount - 1 ? 'disabled' : ''}>fusionar sig.</button>
           </span>` : ''}
-          ${this.renderParticleRowControls(sourceIndex, rowInfo)}
-          <code>${this.escapeHtml(particle.signature || '?')}</code>
+          ${this.renderAtomRowControls(sourceIndex, rowInfo)}
+          <code>${this.escapeHtml(atom.signature || '?')}</code>
         </div>
-        <div class="particle-detail__metrics">
-          <span>id <code>${this.escapeHtml(particleId)}</code></span>
-          <span>firma <code>${this.escapeHtml(particle.signature_key ?? particle.signatureKey ?? particle.signature ?? '?')}</code></span>
-          <span>${atoms.length} atomos</span>
+        <div class="atom-detail__metrics">
+          <span>id <code>${this.escapeHtml(atomId)}</code></span>
+          <span>firma <code>${this.escapeHtml(atom.signature_key ?? atom.signatureKey ?? atom.signature ?? '?')}</code></span>
+          <span>${particles.length} particulas</span>
           <span>${contactCount} contactos internos</span>
           <span>box ${this.formatMetric(bounds.x)},${this.formatMetric(bounds.y)} ${this.formatMetric(bounds.w)}x${this.formatMetric(bounds.h)}</span>
           <span>centro ${this.formatMetric(centroid.x)},${this.formatMetric(centroid.y)}</span>
         </div>
-        <div class="particle-detail__atoms">
-          ${atoms.map((atom, index) => `
-            <span class="particle-detail__atom">
+        <div class="atom-detail__particles">
+          ${particles.map((particle, index) => `
+            <span class="atom-detail__particle">
               ${showOrderControls ? `
-                <button class="particle-detail__atom-btn" type="button" data-atom-order-action="first" data-particle-id="${this.escapeHtml(particleId)}" data-atom-id="${Number(atom.atom_id ?? atom.atomId ?? 0)}" ${orderDisabled || index === 0 ? 'disabled' : ''}>inicio</button>
-                <button class="particle-detail__atom-btn" type="button" data-atom-order-action="up" data-particle-id="${this.escapeHtml(particleId)}" data-atom-id="${Number(atom.atom_id ?? atom.atomId ?? 0)}" ${orderDisabled || index === 0 ? 'disabled' : ''}>subir</button>
-                <button class="particle-detail__atom-btn" type="button" data-atom-order-action="down" data-particle-id="${this.escapeHtml(particleId)}" data-atom-id="${Number(atom.atom_id ?? atom.atomId ?? 0)}" ${orderDisabled || index === atoms.length - 1 ? 'disabled' : ''}>bajar</button>
-                <button class="particle-detail__atom-btn" type="button" data-atom-order-action="last" data-particle-id="${this.escapeHtml(particleId)}" data-atom-id="${Number(atom.atom_id ?? atom.atomId ?? 0)}" ${orderDisabled || index === atoms.length - 1 ? 'disabled' : ''}>final</button>
+                <button class="atom-detail__particle-btn" type="button" data-particle-order-action="first" data-atom-id="${this.escapeHtml(atomId)}" data-particle-id="${Number(particle.particle_id ?? particle.particleId ?? 0)}" ${orderDisabled || index === 0 ? 'disabled' : ''}>inicio</button>
+                <button class="atom-detail__particle-btn" type="button" data-particle-order-action="up" data-atom-id="${this.escapeHtml(atomId)}" data-particle-id="${Number(particle.particle_id ?? particle.particleId ?? 0)}" ${orderDisabled || index === 0 ? 'disabled' : ''}>subir</button>
+                <button class="atom-detail__particle-btn" type="button" data-particle-order-action="down" data-atom-id="${this.escapeHtml(atomId)}" data-particle-id="${Number(particle.particle_id ?? particle.particleId ?? 0)}" ${orderDisabled || index === particles.length - 1 ? 'disabled' : ''}>bajar</button>
+                <button class="atom-detail__particle-btn" type="button" data-particle-order-action="last" data-atom-id="${this.escapeHtml(atomId)}" data-particle-id="${Number(particle.particle_id ?? particle.particleId ?? 0)}" ${orderDisabled || index === particles.length - 1 ? 'disabled' : ''}>final</button>
               ` : ''}
-              <code>${Number(atom.atom_order ?? atom.atomOrder ?? 0)}:${this.escapeHtml(atom.family || '?')}${atom.structural_config || atom.structuralConfig ? `:${this.escapeHtml(atom.structural_config ?? atom.structuralConfig)}` : ''}</code>
-              <small>#${Number(atom.atom_id ?? atom.atomId ?? 0)} a:${this.formatMetric(atom.anchor_x ?? atom.anchorX)},${this.formatMetric(atom.anchor_y ?? atom.anchorY)} box:${this.formatMetric(atom.bounds_x ?? atom.boundsX)},${this.formatMetric(atom.bounds_y ?? atom.boundsY)} ${this.formatMetric(atom.bounds_w ?? atom.boundsW)}x${this.formatMetric(atom.bounds_h ?? atom.boundsH)} ang:${this.formatMetric(atom.angle)}</small>
+              <code>${Number(particle.particle_order ?? particle.particleOrder ?? 0)}:${this.escapeHtml(particle.family || '?')}${particle.structural_config || particle.structuralConfig ? `:${this.escapeHtml(particle.structural_config ?? particle.structuralConfig)}` : ''}</code>
+              <small>#${Number(particle.particle_id ?? particle.particleId ?? 0)} a:${this.formatMetric(particle.anchor_x ?? particle.anchorX)},${this.formatMetric(particle.anchor_y ?? particle.anchorY)} box:${this.formatMetric(particle.bounds_x ?? particle.boundsX)},${this.formatMetric(particle.bounds_y ?? particle.boundsY)} ${this.formatMetric(particle.bounds_w ?? particle.boundsW)}x${this.formatMetric(particle.bounds_h ?? particle.boundsH)} ang:${this.formatMetric(particle.angle)}</small>
             </span>
           `).join('')}
         </div>
@@ -2422,30 +2422,30 @@ class App {
   }
 
   renderMoleculeAuditItem(molecule, index) {
-    const particles = molecule.particles || [];
-    const isSuspicious = Number(molecule.particle_count ?? molecule.particleCount ?? particles.length) === 1;
+    const atoms = molecule.atoms || [];
+    const isSuspicious = Number(molecule.atom_count ?? molecule.atomCount ?? atoms.length) === 1;
     return `
       <section class="molecule-audit__item ${isSuspicious ? 'molecule-audit__item--warning' : ''}">
         <div class="molecule-audit__head">
           <button class="molecule-audit__select" type="button" data-select-molecule="${this.escapeHtml(molecule.molecule_id ?? molecule.moleculeId ?? '')}">M${index + 1}</button>
-          <span>${isSuspicious ? 'revisar - ' : ''}${Number(molecule.particle_count ?? molecule.particleCount ?? particles.length)}p / ${Number(molecule.atom_count ?? molecule.atomCount ?? 0)}a</span>
+          <span>${isSuspicious ? 'revisar - ' : ''}${Number(molecule.atom_count ?? molecule.atomCount ?? atoms.length)}a / ${Number(molecule.particle_count ?? molecule.particleCount ?? 0)}p</span>
         </div>
-        <div class="molecule-audit__particles">
-          ${particles.map((particle) => this.renderParticleAuditItem(particle)).join('')}
+        <div class="molecule-audit__atoms">
+          ${atoms.map((atom) => this.renderAtomAuditItem(atom)).join('')}
         </div>
       </section>
     `;
   }
 
-  renderParticleAuditItem(particle) {
-    const slot = particle.slot || '?';
-    const signature = particle.signature || '?';
-    const atomCount = Number(particle.atom_count ?? particle.atomCount ?? 0);
+  renderAtomAuditItem(atom) {
+    const slot = atom.slot || '?';
+    const signature = atom.signature || '?';
+    const particleCount = Number(atom.particle_count ?? atom.particleCount ?? 0);
     return `
-      <div class="molecule-audit__particle">
+      <div class="molecule-audit__atom">
         <span class="molecule-audit__slot">${this.escapeHtml(slot)}</span>
         <code>${this.escapeHtml(signature)}</code>
-        <span>${atomCount}a</span>
+        <span>${particleCount}a</span>
       </div>
     `;
   }
@@ -2513,7 +2513,7 @@ class App {
     labels.push({ label_type: labelType, value });
   }
 
-  isComputedAtomLabel(label) {
+  isComputedParticleLabel(label) {
     return [
       'visual_variant',
       'geometry_length',
@@ -2521,18 +2521,18 @@ class App {
       'geometry_points',
       'molecule_id',
       'molecule_size',
-      'atom_order',
+      'particle_order',
       'structural_config',
     ].includes(label.label_type || label.labelType);
   }
 
-  atomColor(atomId) {
-    const atom = this.atomLibrary.find((item) => String(item.id) === String(atomId));
-    return this.atomDefinitionColor(atom) || '#64b4dc';
+  particleColor(particleId) {
+    const particle = this.particleLibrary.find((item) => String(item.id) === String(particleId));
+    return this.particleDefinitionColor(particle) || '#64b4dc';
   }
 
-  atomDefinitionColor(atom) {
-    return this.regionColor(atom?.region);
+  particleDefinitionColor(particle) {
+    return this.regionColor(particle?.region);
   }
 
   regionColor(region) {
@@ -2558,53 +2558,53 @@ class App {
     return /^#[0-9a-f]{6}$/.test(clean) ? clean : '';
   }
 
-  atomColorOwner(color) {
+  particleColorOwner(color) {
     const clean = this.normalizeColor(color);
     if (!clean) return null;
-    const owner = this.atomLibrary.find((item) => this.atomDefinitionColor(item) === clean);
-    return owner ? this.atomGroupKey(owner) : null;
+    const owner = this.particleLibrary.find((item) => this.particleDefinitionColor(item) === clean);
+    return owner ? this.particleGroupKey(owner) : null;
   }
 
-  selectActiveAtomPattern() {
-    if (!this.activeAtomKey) return;
-    const exact = this.atomForConfig(this.activeAtomKey, this.activeStructuralConfig);
-    const fallback = this.atomForConfig(this.activeAtomKey, '1') || this.atomLibrary.find((item) => this.atomGroupKey(item) === this.activeAtomKey);
+  selectActiveParticlePattern() {
+    if (!this.activeParticleKey) return;
+    const exact = this.particleForConfig(this.activeParticleKey, this.activeStructuralConfig);
+    const fallback = this.particleForConfig(this.activeParticleKey, '1') || this.particleLibrary.find((item) => this.particleGroupKey(item) === this.activeParticleKey);
     const next = exact || fallback;
     if (!next) return;
-    this.activeAtomId = next.id;
-    this.annotationPanel.setActiveAtom(next.id);
-    this.imageViewer.setDrawMode('stroke', { color: this.atomColor(next.id), forceDraw: true });
+    this.activeParticleId = next.id;
+    this.annotationPanel.setActiveParticle(next.id);
+    this.imageViewer.setDrawMode('stroke', { color: this.particleColor(next.id), forceDraw: true });
   }
 
-  atomForConfig(atomKey, configKey) {
-    return this.atomLibrary.find((item) => (
-      this.atomGroupKey(item) === atomKey &&
-      this.atomConfigKey(item) === String(configKey || '1')
+  particleForConfig(particleKey, configKey) {
+    return this.particleLibrary.find((item) => (
+      this.particleGroupKey(item) === particleKey &&
+      this.particleConfigKey(item) === String(configKey || '1')
     ));
   }
 
-  updateAtomPreview() {
-    if (!this.activeAtomId && !this.activeAtomKey) {
-      this.imageViewer.setAtomPreview(null);
+  updateParticlePreview() {
+    if (!this.activeParticleId && !this.activeParticleKey) {
+      this.imageViewer.setParticlePreview(null);
       return;
     }
-    const atom = this.atomForConfig(this.activeAtomKey, this.activeStructuralConfig) ||
-      this.atomLibrary.find((item) => String(item.id) === String(this.activeAtomId));
-    if (!atom?.region) {
-      this.imageViewer.setAtomPreview(null);
+    const particle = this.particleForConfig(this.activeParticleKey, this.activeStructuralConfig) ||
+      this.particleLibrary.find((item) => String(item.id) === String(this.activeParticleId));
+    if (!particle?.region) {
+      this.imageViewer.setParticlePreview(null);
       return;
     }
-    const geometry = this.parseGeometry(atom.region.geometry_json || atom.region.geometryJson || '{}');
+    const geometry = this.parseGeometry(particle.region.geometry_json || particle.region.geometryJson || '{}');
     if (!Array.isArray(geometry.points) || geometry.points.length < 2) {
-      this.imageViewer.setAtomPreview(null);
+      this.imageViewer.setParticlePreview(null);
       return;
     }
-    this.imageViewer.setAtomPreview({
+    this.imageViewer.setParticlePreview({
       points: geometry.points,
       bounds: this.boundsFromGeometry(geometry),
       color: geometry.color || '#64b4dc',
       config: this.activeStructuralConfig,
-      exact: this.atomConfigKey(atom) === String(this.activeStructuralConfig || '1'),
+      exact: this.particleConfigKey(particle) === String(this.activeStructuralConfig || '1'),
     });
   }
 
@@ -2628,34 +2628,34 @@ class App {
     return label?.value || '';
   }
 
-  labelValueFromAtom(atom, types) {
-    const labels = Array.isArray(atom?.labels) ? atom.labels : [];
+  labelValueFromParticle(particle, types) {
+    const labels = Array.isArray(particle?.labels) ? particle.labels : [];
     return String(this.labelValue(labels, types) || '').trim();
   }
 
-  atomGroupKey(atom) {
-    const explicit = String(atom?.atomKey || '').trim();
-    if (explicit) return this.friendlyAtomKey(explicit);
-    const family = this.labelValueFromAtom(atom, ['base_family']);
-    const name = String(atom?.name || '').trim();
-    return this.friendlyAtomKey(name || family || 'atomo');
+  particleGroupKey(particle) {
+    const explicit = String(particle?.particleKey || '').trim();
+    if (explicit) return this.friendlyParticleKey(explicit);
+    const family = this.labelValueFromParticle(particle, ['base_family']);
+    const name = String(particle?.name || '').trim();
+    return this.friendlyParticleKey(name || family || 'particula');
   }
 
-  atomVariantKeyFromLabels(labels) {
+  particleVariantKeyFromLabels(labels) {
     return String(this.labelValue(labels, ['visual_variant']) || 'base').trim() || 'base';
   }
 
-  atomConfigKey(atom) {
-    const explicit = String(atom?.configKey || '').trim();
+  particleConfigKey(particle) {
+    const explicit = String(particle?.configKey || '').trim();
     if (explicit) return explicit;
-    return this.labelValueFromAtom(atom, ['structural_config']) || '1';
+    return this.labelValueFromParticle(particle, ['structural_config']) || '1';
   }
 
-  atomConfigKeyFromLabels(labels) {
+  particleConfigKeyFromLabels(labels) {
     return String(this.labelValue(labels, ['structural_config']) || '1').trim() || '1';
   }
 
-  friendlyAtomKey(value) {
+  friendlyParticleKey(value) {
     const clean = String(value || '').trim();
     const normalized = clean.endsWith('_base') ? clean.slice(0, -5) : clean;
     return normalized.toLowerCase();
@@ -2685,7 +2685,7 @@ class App {
   }
 
   safeFilePart(value) {
-    return String(value || 'atom')
+    return String(value || 'particle')
       .replace(/[^a-z0-9_-]+/gi, '-')
       .replace(/^-+|-+$/g, '')
       .toLowerCase();

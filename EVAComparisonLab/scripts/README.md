@@ -15,6 +15,9 @@ This directory contains the active analysis surface plus manual utilities used d
 | Script | Status | Purpose |
 |---|---|---|
 | `run-corpus-v2-analysis.js` | active | Main local replay for the six-folio Corpus V2 analysis. |
+| `export-datasetcreator-v3.js` | active V3 | Read-only schema-V3 exporter for canonical particles, atoms, molecules, and identifier crosswalks. |
+| `prepare-corpus-v3.js` | active V3 | Produces a checksummed working export explicitly marked as unaudited and unfrozen. |
+| `verify-v3-export-equivalence.js` | active V3 | Requires byte-identical V3 corpus exports before and after recalculation. |
 | `run-corpus-v1-v2-matched-comparison.js` | active | Replays a matched three-folio V1-to-V2 positional entropy comparison from frozen inputs. |
 | `export-datasetcreator-atoms.js` | active | Exports ATOMS rows from the live DatasetCreator DB. |
 | `extract-ivtff-page.js` | active | Extracts EVA/IVTFF page text into comparable case files. |
@@ -42,6 +45,7 @@ This directory contains the active analysis surface plus manual utilities used d
 | `cleanup-stale-learning-memory.js` | repair | Deletes stale learned-memory rows only after audit output and backup. |
 | `detect-atom-anomalies.js` | audit | Scans visual snapshot exports for atom-level morphology outliers. |
 | `crop-qc-context.py` | utility | Crops manuscript context images for QC review. |
+| `crop-v3-qc-context.py` | utility V3 | Pairs a V3 visual-outlier queue with manuscript-context crops without changing the corpus. |
 
 ## Read-Only Utilities
 

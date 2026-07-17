@@ -21,6 +21,11 @@ Retirement reason:
 - future visual evidence should be rebuilt as a curated, versioned release with
   manifest, checksums, provenance, and explicit selection criteria.
 
+`apps/functional-atlas` is a new successor instrument, not a restoration of the
+retired SVG bundle. It renders a small set of examples directly from canonical
+Corpus V3 geometry and adds counterfactual equivalence, composition, repetition,
+held-out evaluation, and visual-anomaly channels.
+
 ## EVAComparisonLab Current Report Scripts
 
 Status: retired after the CORPUS-V2 audit campaign.

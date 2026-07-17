@@ -6,6 +6,7 @@
   "scripts": {
     "compare": "node scripts/positional-entropy.js",
     "export:atoms": "node scripts/export-datasetcreator-atoms.js",
+    "export:v3": "node scripts/export-datasetcreator-v3.js",
     "build:parallel": "node scripts/build-parallel.js",
     "role-entropy": "node scripts/role-entropy.js",
     "extract:ivtff": "node scripts/extract-ivtff-page.js",
@@ -15,6 +16,8 @@
     "snapshots": "node scripts/export-visual-snapshots.js",
     "morphology": "node scripts/morphology-family-analysis.js",
     "corpus:v2": "node scripts/run-corpus-v2-analysis.js",
+    "corpus:v3:prepare": "node scripts/prepare-corpus-v3.js",
+    "corpus:v3:verify-recalculation": "node scripts/verify-v3-export-equivalence.js",
     "audit:labeling": "node scripts/labeling-anomaly-audit.js"
   }
 }

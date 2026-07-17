@@ -5,16 +5,16 @@ export class AnnotationPanel {
 
     this.region = null;
     this.labels = [];
-    this.atomLibrary = [];
-    this.activeAtomId = null;
-    this.activeAtomGroup = null;
+    this.particleLibrary = [];
+    this.activeParticleId = null;
+    this.activeParticleGroup = null;
     this.activeConfig = '1';
     this.clusterDebugHtml = '';
 
-    this._onDrawAtomRequested = null;
-    this._onSaveAtomRequested = null;
+    this._onDrawParticleRequested = null;
+    this._onSaveParticleRequested = null;
     this._onDeleteRequested = null;
-    this._onAtomPicked = null;
+    this._onParticlePicked = null;
     this._onConfigPicked = null;
   }
 
@@ -24,16 +24,16 @@ export class AnnotationPanel {
     this._render();
   }
 
-  setAtomLibrary(items = []) {
-    this.atomLibrary = items || [];
+  setParticleLibrary(items = []) {
+    this.particleLibrary = items || [];
     this._render();
   }
 
-  setActiveAtom(id) {
-    this.activeAtomId = id || null;
-    const atom = this.atomLibrary.find((item) => String(item.id) === String(id || ''));
-    this.activeAtomGroup = atom ? this._atomGroupKey(atom) : null;
-    this.activeConfig = atom ? this._atomConfigKey(atom) : this.activeConfig;
+  setActiveParticle(id) {
+    this.activeParticleId = id || null;
+    const particle = this.particleLibrary.find((item) => String(item.id) === String(id || ''));
+    this.activeParticleGroup = particle ? this._particleGroupKey(particle) : null;
+    this.activeConfig = particle ? this._particleConfigKey(particle) : this.activeConfig;
     this._render();
   }
 
@@ -53,43 +53,43 @@ export class AnnotationPanel {
     this._render();
   }
 
-  onDrawAtomRequested(callback) { this._onDrawAtomRequested = callback; }
-  onSaveAtomRequested(callback) { this._onSaveAtomRequested = callback; }
+  onDrawParticleRequested(callback) { this._onDrawParticleRequested = callback; }
+  onSaveParticleRequested(callback) { this._onSaveParticleRequested = callback; }
   onDeleteRequested(callback) { this._onDeleteRequested = callback; }
-  onAtomPicked(callback) { this._onAtomPicked = callback; }
+  onParticlePicked(callback) { this._onParticlePicked = callback; }
   onConfigPicked(callback) { this._onConfigPicked = callback; }
 
   _render() {
     this.infoContainer.classList.remove('hidden');
     this.infoContainer.innerHTML = `
-      <div class="trace-panel atomic-panel">
-        ${this._renderAtomTable()}
+      <div class="trace-panel particle-panel">
+        ${this._renderParticleTable()}
         ${this.clusterDebugHtml}
-        ${this._renderSelectedAtom()}
+        ${this._renderSelectedParticle()}
       </div>
     `;
     this._attachEvents();
   }
 
-  _renderAtomTable() {
-    const groups = this._groupAtoms();
-    const activeGroup = this.activeAtomGroup || this._atomGroupKey(this.atomLibrary.find((atom) => String(atom.id) === String(this.activeAtomId)));
-    const newAtomColor = this._nextAvailableColor();
-    const atoms = groups
+  _renderParticleTable() {
+    const groups = this._groupParticles();
+    const activeGroup = this.activeParticleGroup || this._particleGroupKey(this.particleLibrary.find((particle) => String(particle.id) === String(this.activeParticleId)));
+    const newParticleColor = this._nextAvailableColor();
+    const particles = groups
       .map((group) => {
-        const color = this._atomGroupColor(group);
+        const color = this._particleGroupColor(group);
         return `
         <span
-          class="atom-group"
-          style="--atom-color:${this._escapeHtml(color)}"
+          class="particle-group"
+          style="--particle-color:${this._escapeHtml(color)}"
         >
           <button
-            class="atom-button atom-group-key ${group.key === activeGroup ? 'atom-button--active' : ''}"
-            data-atom-group="${this._escapeHtml(group.key)}"
+            class="particle-button particle-group-key ${group.key === activeGroup ? 'particle-button--active' : ''}"
+            data-particle-group="${this._escapeHtml(group.key)}"
             type="button"
             title="${this._escapeHtml(`${group.key}: ${group.items.length} variante${group.items.length !== 1 ? 's' : ''}`)}"
           >
-            <span class="atom-key__swatch" aria-hidden="true"></span>
+            <span class="particle-key__swatch" aria-hidden="true"></span>
             <span>${this._escapeHtml(group.key)}</span>
           </button>
         </span>
@@ -98,20 +98,20 @@ export class AnnotationPanel {
       .join('');
 
     return `
-      <section class="atom-table atom-table--atoms">
-        <div class="atom-table__title">Tabla atomica</div>
-        <div class="atom-table__keys">
-          <div class="atom-table__atom-list">
-            ${atoms || '<span class="atom-table__empty">Sin atomos guardados.</span>'}
+      <section class="particle-table particle-table--particles">
+        <div class="particle-table__title">Tabla de particulas</div>
+        <div class="particle-table__keys">
+          <div class="particle-table__particle-list">
+            ${particles || '<span class="particle-table__empty">Sin particulas guardadas.</span>'}
           </div>
-          <div class="atom-table__create">
+          <div class="particle-table__create">
             <button
-              class="atom-button atom-new-btn"
+              class="particle-button particle-new-btn"
               type="button"
-              data-draw-color="${newAtomColor}"
-              style="--atom-color:${newAtomColor}"
-              title="Dibujar atomo nuevo"
-              aria-label="Dibujar atomo nuevo"
+              data-draw-color="${newParticleColor}"
+              style="--particle-color:${newParticleColor}"
+              title="Dibujar particula nueva"
+              aria-label="Dibujar particula nueva"
             >+</button>
           </div>
         </div>
@@ -119,7 +119,7 @@ export class AnnotationPanel {
     `;
   }
 
-  _renderSelectedAtom() {
+  _renderSelectedParticle() {
     if (!this.region) {
       return '';
     }
@@ -129,19 +129,19 @@ export class AnnotationPanel {
     const config = this._labelValue(['structural_config']) || this.activeConfig || '1';
 
     return `
-      <section class="trace-panel__section atomic-selected">
+      <section class="trace-panel__section particle-selected">
         <div class="trace-panel__section-title">Trazo seleccionado</div>
-        <div class="atom-facts">
-          <div class="atom-fact">
-            <span class="atom-fact__label">Atomo</span>
-            <strong>${this._escapeHtml(this._friendlyAtomKey(family) || 'sin familia')}</strong>
+        <div class="particle-facts">
+          <div class="particle-fact">
+            <span class="particle-fact__label">Particula</span>
+            <strong>${this._escapeHtml(this._friendlyParticleKey(family) || 'sin familia')}</strong>
           </div>
-          <div class="atom-fact">
-            <span class="atom-fact__label">Variante</span>
+          <div class="particle-fact">
+            <span class="particle-fact__label">Variante</span>
             <strong>${this._escapeHtml(variant || 'calculando')}</strong>
           </div>
-          <div class="atom-fact">
-            <span class="atom-fact__label">Config</span>
+          <div class="particle-fact">
+            <span class="particle-fact__label">Config</span>
             <strong>${this._escapeHtml(config)}</strong>
           </div>
         </div>
@@ -157,8 +157,8 @@ export class AnnotationPanel {
             `;
           }).join('')}
         </div>
-        <div class="atomic-actions">
-          <button class="btn btn--sm" id="ap-save-atom" type="button">Guardar patron</button>
+        <div class="particle-actions">
+          <button class="btn btn--sm" id="ap-save-particle" type="button">Guardar patron</button>
           <button class="btn btn--sm btn--danger" id="ap-delete-region" type="button">Borrar trazo</button>
         </div>
       </section>
@@ -168,22 +168,22 @@ export class AnnotationPanel {
   _attachEvents() {
     this.container.querySelectorAll('[data-draw-color]').forEach((button) => {
       button.addEventListener('click', () => {
-        this._onDrawAtomRequested?.(button.dataset.drawColor || '#64b4dc');
+        this._onDrawParticleRequested?.(button.dataset.drawColor || '#64b4dc');
       });
     });
 
-    this.container.querySelectorAll('.atom-group-key').forEach((button) => {
+    this.container.querySelectorAll('.particle-group-key').forEach((button) => {
       button.addEventListener('click', () => {
-        const groupKey = button.dataset.atomGroup;
-        const group = this._groupAtoms().find((item) => item.key === groupKey);
+        const groupKey = button.dataset.particleGroup;
+        const group = this._groupParticles().find((item) => item.key === groupKey);
         if (!group) return;
-        this.activeAtomGroup = group.key;
-        this._onAtomPicked?.(group.items[0].id);
+        this.activeParticleGroup = group.key;
+        this._onParticlePicked?.(group.items[0].id);
       });
     });
 
-    document.getElementById('ap-save-atom')?.addEventListener('click', () => {
-      this._onSaveAtomRequested?.();
+    document.getElementById('ap-save-particle')?.addEventListener('click', () => {
+      this._onSaveParticleRequested?.();
     });
 
     document.getElementById('ap-delete-region')?.addEventListener('click', () => {
@@ -203,13 +203,13 @@ export class AnnotationPanel {
     return label?.value || '';
   }
 
-  _groupAtoms() {
+  _groupParticles() {
     const groups = new Map();
-    this.atomLibrary.forEach((atom) => {
-      const key = this._atomGroupKey(atom);
+    this.particleLibrary.forEach((particle) => {
+      const key = this._particleGroupKey(particle);
       if (!key) return;
       if (!groups.has(key)) groups.set(key, []);
-      groups.get(key).push(atom);
+      groups.get(key).push(particle);
     });
 
     return Array.from(groups.entries())
@@ -217,42 +217,42 @@ export class AnnotationPanel {
         key,
         items: items
           .slice()
-          .sort((a, b) => this._atomConfigKey(a).localeCompare(this._atomConfigKey(b), undefined, { numeric: true })),
+          .sort((a, b) => this._particleConfigKey(a).localeCompare(this._particleConfigKey(b), undefined, { numeric: true })),
       }))
       .sort((a, b) => a.key.localeCompare(b.key));
   }
 
-  _atomGroupKey(atom) {
-    if (!atom) return '';
-    const explicit = String(atom.atomKey || '').trim();
-    if (explicit) return this._friendlyAtomKey(explicit);
-    const family = this._labelValueFromAtom(atom, ['base_family']);
-    const name = String(atom.name || '').trim();
-    return this._friendlyAtomKey(name || family || 'atomo');
+  _particleGroupKey(particle) {
+    if (!particle) return '';
+    const explicit = String(particle.particleKey || '').trim();
+    if (explicit) return this._friendlyParticleKey(explicit);
+    const family = this._labelValueFromParticle(particle, ['base_family']);
+    const name = String(particle.name || '').trim();
+    return this._friendlyParticleKey(name || family || 'particula');
   }
 
-  _atomConfigKey(atom) {
-    if (!atom) return '1';
-    const explicit = String(atom.configKey || '').trim();
+  _particleConfigKey(particle) {
+    if (!particle) return '1';
+    const explicit = String(particle.configKey || '').trim();
     if (explicit) return explicit;
-    return this._labelValueFromAtom(atom, ['structural_config']) || '1';
+    return this._labelValueFromParticle(particle, ['structural_config']) || '1';
   }
 
-  _labelValueFromAtom(atom, types) {
-    const labels = Array.isArray(atom?.labels) ? atom.labels : [];
+  _labelValueFromParticle(particle, types) {
+    const labels = Array.isArray(particle?.labels) ? particle.labels : [];
     const label = labels.find((item) => types.includes(item.label_type || item.labelType || ''));
     return String(label?.value || '').trim();
   }
 
-  _atomGroupColor(group) {
-    const atom = group?.items?.find((item) => this._atomColor(item)) || group?.items?.[0];
-    return this._atomColor(atom) || '#d9c2f5';
+  _particleGroupColor(group) {
+    const particle = group?.items?.find((item) => this._particleColor(item)) || group?.items?.[0];
+    return this._particleColor(particle) || '#d9c2f5';
   }
 
-  _usedAtomColors() {
+  _usedParticleColors() {
     const colors = new Set();
-    this._groupAtoms().forEach((group) => {
-      const color = this._normalizeColor(this._atomGroupColor(group));
+    this._groupParticles().forEach((group) => {
+      const color = this._normalizeColor(this._particleGroupColor(group));
       if (color) colors.add(color);
     });
     return colors;
@@ -274,7 +274,7 @@ export class AnnotationPanel {
       '#ffffff',
       '#ff00ff',
     ];
-    const usedColors = this._usedAtomColors();
+    const usedColors = this._usedParticleColors();
     const available = palette.find((item) => !usedColors.has(this._normalizeColor(item)));
     if (available) return available;
     return this._generatedColor(usedColors.size);
@@ -300,8 +300,8 @@ export class AnnotationPanel {
     return `#${[r, g, b].map((value) => Math.round((value + m) * 255).toString(16).padStart(2, '0')).join('')}`;
   }
 
-  _atomColor(atom) {
-    const geometry = this._parseGeometry(atom?.region?.geometry_json || atom?.region?.geometryJson || '{}');
+  _particleColor(particle) {
+    const geometry = this._parseGeometry(particle?.region?.geometry_json || particle?.region?.geometryJson || '{}');
     return this._normalizeColor(geometry.color);
   }
 
@@ -318,7 +318,7 @@ export class AnnotationPanel {
     return /^#[0-9a-f]{6}$/.test(clean) ? clean : '';
   }
 
-  _friendlyAtomKey(value) {
+  _friendlyParticleKey(value) {
     const clean = String(value || '').trim();
     const normalized = clean.endsWith('_base') ? clean.slice(0, -5) : clean;
     return normalized.toLowerCase();

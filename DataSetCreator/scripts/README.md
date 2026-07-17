@@ -19,6 +19,8 @@ This directory contains local inspection and repair scripts for the DatasetCreat
 | `cleanup-contaminated-paint-batch.cjs` | repair-current | write with dry-run default | `labels`, `atoms`, `regions`, `particles`, `molecules` | Deletes one contaminated paint batch only when candidate molecules contain no non-batch atoms. Requires `--apply` and writes a backup first. |
 | `cleanup-stale-merge-patterns.cjs` | historical-repair | writes immediately | `particle_merge_patterns` | Historical cleanup for hardcoded stale merge signatures, including retired `j:2` patterns. Do not use for new cleanup; use the EVAComparisonLab learned-memory audit/cleanup path instead. |
 | `repair-page094-row-overrides.cjs` | historical-repair | writes immediately | `particle_row_overrides` | One-off page-094 row override repair using a hardcoded timestamp. Do not use unless reconstructing that exact historical incident from backup. |
+| `migrate-v2-to-v3.cjs` | current migration | reads V2; creates a separate V3 file | all canonical V3 tables | Creates a new particle -> atom -> molecule database, an ID crosswalk, and a validation report. Refuses to overwrite either its source or an existing target. |
+| `inspect-v3-db.cjs` | current validation | read-only | all canonical V3 tables | Reports schema version, hierarchy counts, identifier-map coverage, unassigned particles, canonical atom IDs, and foreign-key violations. |
 
 ## Current Preferred Cleanup Path
 
@@ -40,4 +42,3 @@ Before changing or removing these scripts, document:
 - whether it has dry-run behavior;
 - whether it creates a backup;
 - whether its target condition is still possible in the current schema/corpus.
-

@@ -36,6 +36,7 @@ research/audits/*-current/
 research/audits/page*-check-*
 research/audits/qc-decisions-v*.json
 research/audits/qc-next-candidates.json
+apps/functional-atlas/out/
 research/audits/particle-geometry-order-*/
 research/corpus-revisions/*-WORKING/
 apps/portal/data/qc-context/

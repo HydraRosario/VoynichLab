@@ -61,7 +61,8 @@ The exporter must never commit, tag, push, or delete files automatically.
 The public portal is the front door, not the laboratory. It should:
 
 - explain the current strongest result without claiming decipherment;
-- make ATOMS visually inspectable;
+- make the currently published ATOMS evidence visually inspectable while new
+  V3 work uses the canonical PARTICLES vocabulary;
 - show negative and inconclusive experiments honestly;
 - link every claim to reproducible artifacts;
 - keep technical details available without forcing them on casual readers.
@@ -82,7 +83,10 @@ Instance-level corrections belong in a correction ledger, not in silent edits. A
 - verification script or checksums;
 - an explicit statement that frozen V1 outputs were not overwritten.
 
-Changing an instance label is not the same as redefining ATOMS. A new ATOMS version is only needed when class definitions or the inventory change.
+Changing an instance label is not the same as redefining the visual inventory.
+Historical releases call that inventory ATOMS-V1; active V3 work calls its
+one-to-one successor PARTICLES-V1. A new PARTICLES version is needed only when
+class definitions or the inventory change.
 
 ## Worktree Hygiene
 

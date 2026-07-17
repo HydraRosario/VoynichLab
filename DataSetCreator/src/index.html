@@ -30,7 +30,7 @@
         <button class="btn btn--primary edit-controls__commit" id="edit-commit-btn" type="button" disabled>Guardar</button>
         <button class="btn btn--secondary edit-controls__cancel" id="edit-cancel-btn" type="button" disabled>Cancelar</button>
       </div>
-      <form class="locator" id="locator-form" role="search" aria-label="Localizar molecula o atomo">
+      <form class="locator" id="locator-form" role="search" aria-label="Localizar molecula o particula">
         <input class="locator__input" id="locator-search-input" type="search" placeholder="m39 / 1651" autocomplete="off" spellcheck="false" />
         <button class="btn btn--secondary locator__btn" id="locator-search-btn" type="submit">Buscar</button>
       </form>
@@ -42,7 +42,7 @@
         <button class="btn btn--icon sidebar__collapse-btn" id="sidebar-collapse-btn" data-tooltip="Plegar paginas" aria-label="Plegar paginas">
           <span class="sidebar__collapse-icon" aria-hidden="true"></span>
         </button>
-        <button class="btn btn--icon sidebar__filter-btn" id="sidebar-filter-btn" data-tooltip="Mostrar solo paginas con atomos" aria-label="Mostrar solo paginas con atomos">
+        <button class="btn btn--icon sidebar__filter-btn" id="sidebar-filter-btn" data-tooltip="Mostrar solo paginas con particulas" aria-label="Mostrar solo paginas con particulas">
           <span class="sidebar__filter-icon" aria-hidden="true"></span>
         </button>
         <button class="btn btn--icon sidebar__labels-btn" id="sidebar-labels-btn" data-tooltip="Ocultar capas" aria-label="Ocultar capas">
@@ -83,19 +83,19 @@
 
   </div>
 
-  <div class="modal-overlay" id="atom-name-modal" aria-hidden="true">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="atom-name-title">
-      <form id="atom-name-form">
+  <div class="modal-overlay" id="particle-name-modal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="particle-name-title">
+      <form id="particle-name-form">
         <div class="modal__header">
-          <div class="modal__title" id="atom-name-title">Guardar patron</div>
-          <button class="modal__close" id="atom-name-cancel-x" type="button" aria-label="Cerrar">x</button>
+          <div class="modal__title" id="particle-name-title">Guardar patron</div>
+          <button class="modal__close" id="particle-name-cancel-x" type="button" aria-label="Cerrar">x</button>
         </div>
         <div class="modal__body">
-          <label class="field__label" for="atom-name-input">Nombre</label>
-          <input class="field__input" id="atom-name-input" name="atom-name" autocomplete="off" spellcheck="false" />
+          <label class="field__label" for="particle-name-input">Nombre</label>
+          <input class="field__input" id="particle-name-input" name="particle-name" autocomplete="off" spellcheck="false" />
         </div>
         <div class="modal__footer">
-          <button class="btn btn--secondary" id="atom-name-cancel" type="button">Cancelar</button>
+          <button class="btn btn--secondary" id="particle-name-cancel" type="button">Cancelar</button>
           <button class="btn btn--primary" type="submit">Guardar</button>
         </div>
       </form>

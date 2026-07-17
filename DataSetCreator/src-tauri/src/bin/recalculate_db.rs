@@ -33,10 +33,10 @@ fn main() {
         match database::recalculate_molecules(&mut conn, image_id) {
             Ok(packet) => {
                 println!(
-                    "recalculated image_id={} atoms={} particles={} molecules={}",
+                    "recalculated image_id={} particles={} atoms={} molecules={}",
                     image_id,
-                    packet.atoms.len(),
                     packet.particles.len(),
+                    packet.atoms.len(),
                     packet.molecules.len()
                 );
             }
