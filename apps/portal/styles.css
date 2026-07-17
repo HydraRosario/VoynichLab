@@ -1514,6 +1514,10 @@ h1, h2, h3, p { overflow-wrap: break-word; }
 .footer p { margin: 4px 0; }
 
 /* RESPONSIVE */
+@media (max-width: 1300px) {
+  .dashboard { min-height: auto; grid-template-columns: 1fr; }
+  .dashboard-copy { max-width: 780px; }
+}
 @media (max-width: 1100px) {
   html { scroll-padding-top: 190px; }
   [id] { scroll-margin-top: 190px; }
