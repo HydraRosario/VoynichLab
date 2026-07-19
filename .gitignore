@@ -7,7 +7,7 @@ __pycache__/
 dist/
 dist-ssr/
 target/
-DataSetCreator/src-tauri/target/
+apps/dataset-creator/src-tauri/target/
 
 # Logs and local env
 *.log
@@ -23,15 +23,15 @@ yarn-debug.log*
 pnpm-debug.log*
 
 # Local manuscript assets and generated research artifacts
-DataSetCreator/manuscript-pages-yale/
-DataSetCreator/evidence/
-DataSetCreator/backups/
-DataSetCreator/*.db
-EVAComparisonLab/backups/
-EVAComparisonLab/artifacts/visual-snapshots/current/
-EVAComparisonLab/artifacts/visual-snapshots/pre-audit-*/
-EVAComparisonLab/cases/*-current/
-GrammarDiscoveryLab/out/
+apps/dataset-creator/manuscript-pages-yale/
+apps/dataset-creator/evidence/
+apps/dataset-creator/backups/
+apps/dataset-creator/*.db
+labs/eva-comparison/backups/
+labs/eva-comparison/artifacts/visual-snapshots/current/
+labs/eva-comparison/artifacts/visual-snapshots/pre-audit-*/
+labs/eva-comparison/cases/*-current/
+labs/grammar-discovery/out/
 research/audits/*-current/
 research/audits/page*-check-*
 research/audits/qc-decisions-v*.json
@@ -40,9 +40,9 @@ apps/functional-atlas/out/
 research/audits/particle-geometry-order-*/
 research/corpus-revisions/*-WORKING/
 apps/portal/data/qc-context/
-TranslationLab/outputs/
-TranslationLab/translator/cache/
-TranslationLab/inputs/run-*.txt
+labs/translation/outputs/
+labs/translation/translator/cache/
+labs/translation/inputs/run-*.txt
 PROJECT-SUMMARY.md
 
 # Local Git scratch directories created outside `git init`

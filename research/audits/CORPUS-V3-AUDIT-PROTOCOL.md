@@ -19,7 +19,7 @@ only through the review ledger below.
 - A validated schema-V3 database produced from the frozen V2 source.
 - The complete V2→V3 identifier crosswalk.
 - A checksummed working export created by `npm run corpus:v3:prepare` in
-  `EVAComparisonLab`.
+  `labs/eva-comparison`.
 - Candidates from a V3-compatible anomaly detector, ranked by rarity and
   geometric inconsistency.
 - The original manuscript image for visual adjudication after a candidate is

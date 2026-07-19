@@ -43,8 +43,8 @@ name. See `docs/NOMENCLATURE-TRANSITION.md`.
 | V3 schema and relations | `docs/CORPUS-V3-DATA-CONTRACT.md` | Normative design |
 | Known annotation decisions | `research/audits/` | Canonical reviewed ledgers |
 | Frozen corpus/model evidence | `research/FROZEN-EVIDENCE.md` and paths it indexes | Immutable |
-| Published experiment metadata | `research-feed/experiments.json` | Public registry |
-| Published result bundles | `artifacts/public/<experiment-id>/` | Public derived evidence |
+| Published experiment metadata | `research/registry/experiments.json` | Public registry |
+| Published result bundles | `research/artifacts/public/<experiment-id>/` | Public derived evidence |
 | Public explanation | `apps/portal/` | Derived surface, not evidence source |
 | Exploratory structural candidates | `apps/functional-atlas/` outputs | Local, not frozen evidence |
 

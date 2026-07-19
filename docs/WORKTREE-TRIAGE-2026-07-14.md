@@ -24,11 +24,11 @@ This should be cleaned by campaign, not by bulk deletion.
 | Bucket | Examples | Suggested action |
 |---|---|---|
 | Governance/source changes from this pass | `.gitignore`, `package.json`, `packages/lab-exporter/src/cli.js`, `docs/`, `REPOSITORY-GOVERNANCE.md`, `apps/portal/.gitignore` | Candidate for a small cleanup/guardrails commit |
-| High-risk DataSetCreator source | `DataSetCreator/src-tauri/src/database.rs` | Do not include in cleanup commit; audit separately |
-| Regenerated visual snapshots | `EVAComparisonLab/artifacts/visual-snapshots/current/**` | Decide whether to freeze a curated snapshot bundle or keep as local/generated |
+| High-risk DataSetCreator source | `apps/dataset-creator/src-tauri/src/database.rs` | Do not include in cleanup commit; audit separately |
+| Regenerated visual snapshots | `labs/eva-comparison/artifacts/visual-snapshots/current/**` | Decide whether to freeze a curated snapshot bundle or keep as local/generated |
 | Atom Atlas visual examples | `atom-atlas/**` | Retired after Corpus V2 QC; do not restore unless rebuilt as a curated visual-evidence release |
-| Public artifact rebuilds | `artifacts/public/**` | Commit only as part of a named scientific release/replay |
-| Current lab case outputs | `EVAComparisonLab/cases/*-current/**` | Promote only selected reports/tables; otherwise treat as scratch |
+| Public artifact rebuilds | `research/artifacts/public/**` | Commit only as part of a named scientific release/replay |
+| Current lab case outputs | `labs/eva-comparison/cases/*-current/**` | Promote only selected reports/tables; otherwise treat as scratch |
 | QC/audit scratch | `research/audits/**`, `research/corpus-revisions/*-WORKING/**` | Keep correction ledgers; quarantine temporary candidates |
 | Portal local state | `apps/portal/.vercel/` | Ignore permanently; never commit |
 | Generated project summary | `PROJECT-SUMMARY.md` | Removed from the working tree because it described the older five-folio state |
@@ -62,7 +62,7 @@ each example.
 
 ### Commit 3: Scientific Artifact Replay
 
-Only after deciding which rebuilt `artifacts/public` outputs correspond to a
+Only after deciding which rebuilt `research/artifacts/public` outputs correspond to a
 named release or replay. Include registry and generated portal data together.
 
 ### Commit 4: DataSetCreator Technical Fixes
@@ -77,8 +77,8 @@ Only after a dedicated read-only audit of:
 
 ## Current Red Flags
 
-- A modified DB exists under `EVAComparisonLab/artifacts/visual-snapshots/current/`.
-- `DataSetCreator/src-tauri/src/database.rs` is modified.
+- A modified DB exists under `labs/eva-comparison/artifacts/visual-snapshots/current/`.
+- `apps/dataset-creator/src-tauri/src/database.rs` is modified.
 - There are thousands of visual snapshot diffs, enough to hide real source
   changes if committed together.
 - New untracked files under `visual-snapshots/current/` are ignored from now on,

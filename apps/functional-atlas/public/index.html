@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Functional Atlas · VoynichLab</title>
-  <meta name="description" content="A local research instrument for testing particle equivalence, composition, repetition, and annotation anomalies.">
+  <meta name="description" content="A local research instrument for finding possible human annotation errors through unusual visual and structural patterns.">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -17,21 +17,22 @@
     <aside class="sidebar">
       <div class="ontology"><span>PARTICLES-V1</span><strong>particle</strong><i>→</i><strong>atom</strong><i>→</i><strong>molecule</strong></div>
       <nav id="nav" aria-label="Atlas views">
-        <button class="active" data-view="overview"><span>01</span>Overview</button>
-        <button data-view="particles"><span>02</span>Particle atlas</button>
-        <button data-view="equivalence"><span>03</span>Equivalence</button>
-        <button data-view="composition"><span>04</span>Composition</button>
-        <button data-view="operators"><span>05</span>Repetition</button>
-        <button data-view="grammar"><span>06</span>Structural rules</button>
-        <button data-view="qc"><span>07</span>Visual audit</button>
+        <button class="active" data-view="audit"><span>01</span>Annotation audit</button>
+        <button data-view="overview"><span>02</span>Overview</button>
+        <button data-view="particles"><span>03</span>Particle atlas</button>
+        <button data-view="equivalence"><span>04</span>Equivalence</button>
+        <button data-view="composition"><span>05</span>Composition</button>
+        <button data-view="operators"><span>06</span>Repetition</button>
+        <button data-view="grammar"><span>07</span>Structural rules</button>
+        <button data-view="qc"><span>08</span>Geometry audit</button>
       </nav>
       <div class="sidebar-note"><strong>One rule</strong><p>A ranked result is a question to inspect, not a correction and not a claim.</p></div>
     </aside>
     <main id="main">
       <section class="empty-state">
         <span class="eyebrow">WAITING FOR AN ANALYSIS</span>
-        <h1>Question the representation without touching the corpus.</h1>
-        <p>Run the Functional Atlas analyzer on a Corpus V3 working export, or load a generated analysis JSON here.</p>
+        <h1>Find suspicious annotations without changing the corpus.</h1>
+        <p>Atlas searches a Corpus V3 working export for unusual visual and structural patterns. Every result remains a question for a human reviewer.</p>
       </section>
     </main>
   </div>

@@ -17,15 +17,16 @@ Every top-level directory must belong to exactly one architectural zone.
 
 | Zone | Paths | Purpose | Commit policy |
 |---|---|---|---|
-| Annotation product | `DataSetCreator/` | Local Tauri/Rust/JS tool used to create and correct labeled ATOMS data | Source changes only; never commit local DBs, page assets, backups, or generated annotation assets |
+| Annotation product | `apps/dataset-creator/` | Local Tauri/Rust/JS tool used to create and correct labeled ATOMS data | Source changes only; never commit local DBs, page assets, backups, or generated annotation assets |
 | Public product | `apps/portal/` | Static public portal deployed at `https://voynich-lab.vercel.app/` | Commit source and generated portal data only when publishing a research milestone |
 | Internal review apps | `apps/qc-review/` | Local or semi-local review tools for candidate audits | Keep lean; promote only if still useful after the audit campaign |
-| Active laboratories | `EVAComparisonLab/`, `GrammarDiscoveryLab/`, `TranslationLab/` | Scripts, experiments, and exploratory workflows | Commit live scripts and frozen lab docs; keep scratch outputs ignored |
+| Active laboratories | `labs/eva-comparison/`, `labs/grammar-discovery/`, `labs/translation/` | Scripts, experiments, and exploratory workflows | Commit live scripts and frozen lab docs; keep scratch outputs ignored |
+| Future laboratories | `labs/` | Canonical namespace for new research laboratories | Add question-driven labs here; do not create new root-level lab directories |
 | Shared tooling | `packages/` | Reusable repo tooling, registry exporter, validators, guardrails | Normal source-code policy |
-| Research registry | `research-feed/` | Canonical public experiment/milestone/release metadata | Commit when publishing or correcting public metadata |
+| Research registry | `research/registry/` | Canonical public experiment/milestone/release metadata | Commit when publishing or correcting public metadata |
 | Frozen evidence | `research/frozen/` | Immutable scientific snapshots and corpus releases | Append-only; supersede, do not rewrite |
-| Public artifacts | `artifacts/public/` | Portal-consumable experiment bundles with report, tables, provenance, checksums | Generated from registry; commit only as part of named public milestones |
-| Manuscript/paper workspace | `paper/` | Claims, outline, figures, literature, preprint material | Commit intentional writing; no generated scratch |
+| Public artifacts | `research/artifacts/public/` | Portal-consumable experiment bundles with report, tables, provenance, checksums | Generated from registry; commit only as part of named public milestones |
+| Publications workspace | `research/publications/` | Claims, outline, figures, literature, and future publication material | Commit intentional writing; no generated scratch |
 | Governance docs | `docs/`, `REPOSITORY-GOVERNANCE.md` | Operating rules for humans and agents | Keep short enough to be read before changes |
 
 Canonical discovery for frozen evidence lives in
@@ -39,20 +40,20 @@ with Corpus V3 belong under `research/frozen/`.
 Dependencies should flow in one direction:
 
 ```text
-DataSetCreator
-  -> EVAComparisonLab
-  -> GrammarDiscoveryLab
-  -> research-feed
-  -> artifacts/public
+apps/dataset-creator
+  -> labs/eva-comparison
+  -> labs/grammar-discovery
+  -> research/registry
+  -> research/artifacts/public
   -> apps/portal/data
   -> apps/portal
 ```
 
 Allowed exceptions:
 
-- `packages/lab-exporter` may read `research-feed`, `artifacts/public`, and
+- `packages/lab-exporter` may read `research/registry`, `research/artifacts/public`, and
   `apps/portal/data` because it is the publisher.
-- `TranslationLab` may read frozen/public ATOMS data, but it must not feed
+- `labs/translation` may read frozen/public ATOMS data, but it must not feed
   translation hypotheses back into ATOMS labeling or representation claims.
 - Frozen releases may preserve historical paths for provenance, but active
   scripts should not depend on obsolete scratch directories.
@@ -61,11 +62,11 @@ Forbidden dependencies:
 
 - Portal code must not read local DBs, live `*-current` folders, or scratch QC
   exports.
-- DatasetCreator must not depend on `research-feed`, `artifacts/public`, or
+- DatasetCreator must not depend on `research/registry`, `research/artifacts/public`, or
   portal code.
 - Public experiment claims must not depend on files under ignored output
   folders unless those files are first promoted into `research/frozen` or
-  `artifacts/public`.
+  `research/artifacts/public`.
 
 ## Promotion Pipeline
 
@@ -85,8 +86,8 @@ Promotion requirements:
 | Target | Required files |
 |---|---|
 | `research/frozen/<release>/` | `MANIFEST.md`, provenance, checksums, source corpus/tables, report, changelog or methodology when relevant |
-| `artifacts/public/<experiment>/` | `manifest.json`, `report.md`, `summary.md`, `metrics.json`, `provenance.json`, `checksums.txt`, `tables/` when applicable |
-| `research-feed/experiments.json` | stable id, question, result, interpretation, limitations, commands, source script, report path, table paths |
+| `research/artifacts/public/<experiment>/` | `manifest.json`, `report.md`, `summary.md`, `metrics.json`, `provenance.json`, `checksums.txt`, `tables/` when applicable |
+| `research/registry/experiments.json` | stable id, question, result, interpretation, limitations, commands, source script, report path, table paths |
 | `apps/portal/data/` | generated by `npm.cmd run research:build`, not edited by hand except emergency repair followed by rebuild |
 
 No experiment is considered public because a script produced a Markdown file.
@@ -95,7 +96,7 @@ verification, and portal data rebuild.
 
 ## Directory Rules
 
-### `DataSetCreator/`
+### `apps/dataset-creator/`
 
 This is the highest-risk area. It owns the annotation workflow and can affect
 the corpus.
@@ -121,7 +122,7 @@ Current read-only map: `docs/DATASETCREATOR-ARCHITECTURE.md`.
 
 Current local-state inventory: `docs/LOCAL-STATE-INVENTORY.md`.
 
-### `EVAComparisonLab/`
+### `labs/eva-comparison/`
 
 This is the ATOMS/EVA comparison and corpus-audit lab.
 
@@ -133,22 +134,22 @@ Rules:
 - `cases/*-current/` remains scratch.
 - Old one-off cleanup scripts should be retired, not left as active entry
   points.
-- Full scientific releases belong in `research/frozen` or `artifacts/public`,
+- Full scientific releases belong in `research/frozen` or `research/artifacts/public`,
   not in ad hoc case folders.
 
-### `GrammarDiscoveryLab/`
+### `labs/grammar-discovery/`
 
 This is the grammar, null-control, alignment, and representation-comparison lab.
 
 Rules:
 
 - `out/` is ignored scratch.
-- Public results must live in `artifacts/public`.
-- Frozen GRAMMAR-V1 material lives in `GrammarDiscoveryLab/frozen`.
+- Public results must live in `research/artifacts/public`.
+- Frozen GRAMMAR-V1 material lives in `labs/grammar-discovery/frozen`.
 - Scripts should default to frozen/public inputs where possible, not local
   current outputs.
 
-### `TranslationLab/`
+### `labs/translation/`
 
 This is a hypothesis workspace.
 
@@ -168,7 +169,7 @@ This is the public face.
 
 Rules:
 
-- The portal should be data-driven from `research-feed` and `artifacts/public`.
+- The portal should be data-driven from `research/registry` and `research/artifacts/public`.
 - It should not hardcode scientific numbers already present in registry data.
 - It should show evidence visually where possible, but only from curated public
   artifacts.
@@ -200,7 +201,7 @@ Use names that declare lifecycle:
 - `*-current` means ignored scratch.
 - `*-WORKING` means ignored scratch.
 - `frozen/` means stable historical evidence.
-- `artifacts/public/<id>` means portal-consumable public bundle.
+- `research/artifacts/public/<id>` means portal-consumable public bundle.
 - `research/preregistrations/<id>` means locked protocol.
 - `research/notes/<topic>` means exploratory note, not evidence.
 
@@ -268,15 +269,16 @@ test. Do not rely on repo-level checks alone.
 
 ## Current Architectural Pressure Points
 
-1. `DataSetCreator/` is physically huge locally because ignored app/build/data
+1. `apps/dataset-creator/` is physically huge locally because ignored app/build/data
    state lives beside source. This is acceptable only if ignore rules and audit
    checks remain strict.
-2. `apps/portal/data/` duplicates `artifacts/public` for static deployment. This
+2. `apps/portal/data/` duplicates `research/artifacts/public` for static deployment. This
    is intentional for now, but it should always be generated, not manually
    edited.
-3. Root `cases/` is ambiguous. It should either remain tiny and canonical or be
-   absorbed into `research/audits`.
-4. `TranslationLab/` contains speculative work. It should stay isolated until a
+3. Root `cases/` is retired. Any remaining ignored local directories must be
+   reviewed manually and either retained as protected scratch or migrated into
+   a named audit workspace.
+4. `labs/translation/` contains speculative work. It should stay isolated until a
    future protocol promotes any of it.
 5. Lab scripts still need a classification pass: live, frozen reproduction,
    utility, exploratory, retired.

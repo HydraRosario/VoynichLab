@@ -19,6 +19,6 @@ npm.cmd run research:publish -- --experiment representation-comparison-v3-ablati
 The exporter treats source laboratory files as read-only inputs and writes only:
 
 ```text
-artifacts/public/
+research/artifacts/public/
 apps/portal/data/
 ```

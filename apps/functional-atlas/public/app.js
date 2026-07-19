@@ -2,7 +2,7 @@ const main = document.querySelector('#main');
 const fileInput = document.querySelector('#analysis-file');
 const nav = document.querySelector('#nav');
 let analysis = null;
-let activeView = 'overview';
+let activeView = 'audit';
 let selectedToken = null;
 let selectedPair = 0;
 
@@ -38,12 +38,24 @@ function loadAnalysis(data) {
 
 function render() {
   if (!analysis) return;
-  const views = { overview, particles, equivalence, composition, operators, grammar, qc };
+  const views = { audit, overview, particles, equivalence, composition, operators, grammar, qc };
   main.innerHTML = views[activeView]();
 }
 
 function header(eyebrow, title, description) {
   return `<div class="view-head"><div><span class="eyebrow">${eyebrow}</span><h2>${title}</h2><p class="lede">${description}</p></div><div class="fingerprint" title="${analysis.input_fingerprint_sha256}">input ${analysis.input_fingerprint_sha256}</div></div>`;
+}
+
+function audit() {
+  const audit = analysis.annotation_audit;
+  if (!audit) return `${header('ANNOTATION AUDIT','No contextual audit loaded','Regenerate the analysis with the current Functional Atlas engine.')}`;
+  const candidates = audit.candidates ?? [];
+  return `${header('HUMAN ANNOTATION AUDIT','Where does the local pattern look wrong?','Atlas compares declared visually ambiguous readings with patterns learned from the other folios. It ranks manuscript cases for human inspection; it never corrects them.')}
+    <div class="metric-grid">${metric(candidates.length,'cases to inspect')}${metric(audit.hypotheses.length,'declared ambiguity')}${metric(analysis.summary.images,'folios compared')}${metric(audit.minimum_log_score_delta,'minimum score gap')}${metric('0','automatic edits')}${metric('human','final decision')}</div>
+    <section class="research-question"><div><span class="eyebrow">HOW THE PILOT WORKS</span><h2>Could <code>e:1 + b:1</code> be a mistaken split of <code>m:1</code>?</h2></div><p>Both readings are common and visually difficult to distinguish. For each occurrence, Atlas learns their surrounding patterns without using that occurrence's folio, then asks whether the alternative reading fits substantially better.</p></section>
+    <div class="warning"><strong>Candidate, not correction.</strong> Context can identify a useful place to look, but only inspection of the manuscript trace and annotation geometry can establish a human error.</div>
+    <div class="actions"><button class="action primary" data-export="qc">Export audit candidates</button><button class="action" data-export="analysis">Export full analysis</button></div>
+    ${candidates.length ? `<div class="candidate-grid">${candidates.map((row) => `<article class="candidate-card"><span class="eyebrow">REVIEW CANDIDATE · ${row.image_name}</span><div class="equation">${row.current_tokens.join(' + ')} → ${row.alternative_tokens.join(' + ')}</div><div class="examples">${(row.current_visuals ?? []).map(trace).join('')}</div><p><strong>${row.external_previous}</strong> · [${row.current_tokens.join(' + ')}] · <strong>${row.external_next}</strong></p><small>${row.atom_id} · particles ${row.particle_ids.join(', ')} · held-out score gap +${fmt(row.context_delta)}</small></article>`).join('')}</div>` : `<section class="detail-panel"><span class="eyebrow">NO CASE CROSSED THE REVIEW THRESHOLD</span><h2>The declared ambiguity produced no contextual candidate.</h2><p class="lede">That is a valid negative result. It does not prove every annotation is correct.</p></section>`}`;
 }
 
 function overview() {
@@ -98,8 +110,7 @@ function grammar() {
 }
 
 function qc() {
-  return `${header('SEPARATE AUDIT CHANNEL','Visual anomalies are not functional hypotheses','Geometry outliers can be handed to QC Review. They remain candidates until a person compares the trace with its family and manuscript context.')}
-    <div class="actions"><button class="action primary" data-export="qc">Export QC candidates</button><button class="action" data-export="analysis">Export full analysis</button></div>
+  return `${header('GEOMETRY AUDIT','Which traces look unlike their assigned family?','This second audit channel ranks unusual length, angle, and bounds. It complements contextual audit without treating rarity as an error.')}
     <div class="table"><div class="table-row header"><span>Particle</span><span>Label</span><span>Feature</span><span>Robust z</span><span>Destination</span></div>${analysis.visual_outliers.slice(0,200).map((row) => `<div class="table-row"><span class="token">#${row.particle_id}</span><span>${row.token}</span><span>${row.feature}</span><span class="score">${fmt(row.robust_z)}</span><span>QC Review</span></div>`).join('')}</div>`;
 }
 
@@ -115,4 +126,4 @@ function fmt(value){return Number(value).toFixed(4)}
 function pct(value){return `${(Number(value)*100).toFixed(1)}%`}
 function signed(value){return `${Number(value)>=0?'+':''}${Number(value).toFixed(4)}`}
 function statusClass(status){return status.startsWith('supported')?'supported':status}
-function exportJson(kind){const payload=kind==='qc'?{schema_version:1,status:'CANDIDATES_NOT_DECISIONS',source_fingerprint_sha256:analysis.input_fingerprint_sha256,candidates:analysis.visual_outliers}:analysis;const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});const link=document.createElement('a');link.href=URL.createObjectURL(blob);link.download=kind==='qc'?'functional-atlas-qc-candidates.json':'functional-atlas-analysis.json';link.click();URL.revokeObjectURL(link.href)}
+function exportJson(kind){const payload=kind==='qc'?{schema_version:1,status:'CANDIDATES_NOT_DECISIONS',source_fingerprint_sha256:analysis.input_fingerprint_sha256,contextual_annotation_candidates:analysis.annotation_audit?.candidates??[],visual_geometry_candidates:analysis.visual_outliers}:analysis;const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});const link=document.createElement('a');link.href=URL.createObjectURL(blob);link.download=kind==='qc'?'functional-atlas-qc-candidates.json':'functional-atlas-analysis.json';link.click();URL.revokeObjectURL(link.href)}

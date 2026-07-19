@@ -14,7 +14,7 @@ Initial inspection on 2026-07-14 found:
 
 - the worktree is dominated by regenerated visual snapshots and `current` lab
   outputs;
-- `DataSetCreator/src-tauri/src/database.rs` is modified and must be treated as
+- `apps/dataset-creator/src-tauri/src/database.rs` is modified and must be treated as
   high risk;
 - local Vercel state exists under `apps/portal/.vercel/` and must stay ignored;
 - the canonical public portal is `https://voynich-lab.vercel.app/`;
@@ -74,7 +74,7 @@ Deliverables:
 
 - curated visual-evidence page only if examples are promoted as a formal
   release with manifest, provenance, checksums, and selection criteria;
-- experiment timeline fed by `research-feed`;
+- experiment timeline fed by `research/registry`;
 - result pages that link to reports, tables, checksums, and source scripts;
 - clear "not a decipherment claim" language;
 - canonical Vercel project linkage.
@@ -106,7 +106,7 @@ Deliverables:
 1. Run `npm.cmd run repo:audit`.
 2. Run `npm.cmd run research:doctor`.
 3. Inspect high-risk changes manually.
-4. Keep `DataSetCreator/` changes out of cleanup commits unless the commit is
+4. Keep `apps/dataset-creator/` changes out of cleanup commits unless the commit is
    specifically about DataSetCreator source code.
 5. Fix portal deployment linkage to the canonical Vercel project.
 6. Only then plan any file moves.

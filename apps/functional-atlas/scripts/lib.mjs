@@ -68,6 +68,13 @@ export function analyzeCorpus(corpus, options = {}) {
 
   const compositionCandidates = compositionAnalysis(occurrences, minSupport);
   attachCompositionPermutationControls(compositionCandidates, occurrences, compositionPermutations, minSupport);
+  const annotationAudit = contextualAnnotationAudit(corpus, occurrences, compositionCandidates, {
+    minSupport,
+    minimumDelta: Number(options.auditMinimumDelta ?? 1.25),
+    hypotheses: options.auditHypotheses ?? [
+      { single: "m:1", composition: ["e:1", "b:1"], provenance: "declared_visual_ambiguity" },
+    ],
+  });
   const operatorCandidates = profiles.map((profile) => operatorProfile(profile, occurrences))
     .sort((a, b) => b.operator_score - a.operator_score);
   attachOperatorPermutationControls(operatorCandidates, occurrences, operatorPermutations);
@@ -95,10 +102,12 @@ export function analyzeCorpus(corpus, options = {}) {
       slot_frames: structuralGrammar.slot_frames.length,
       atom_role_pairs: structuralGrammar.atom_role_pairs.length,
       molecule_transformations: structuralGrammar.molecule_transformations.length,
+      annotation_audit_candidates: annotationAudit.candidates.length,
     },
     profiles,
     pair_comparisons: pairComparisons,
     composition_candidates: compositionCandidates,
+    annotation_audit: annotationAudit,
     operator_candidates: operatorCandidates,
     repeated_templates: repeatedTemplates,
     structural_grammar: structuralGrammar,
@@ -437,6 +446,13 @@ function buildOccurrences(corpus) {
       atom_role: role(atomIndex, moleculeAtoms.length),
       index,
       atom_length: particles.length,
+      points_json: particle.points_json,
+      bounds_x: Number(particle.bounds_x),
+      bounds_y: Number(particle.bounds_y),
+      bounds_w: Number(particle.bounds_w),
+      bounds_h: Number(particle.bounds_h),
+      length: Number(particle.length),
+      angle: Number(particle.angle),
     }));
   }
   return result;
@@ -566,10 +582,151 @@ function withinAtomPairContexts(occurrences) {
       const right = orderedRows[index + 1];
       const key = `${left.token}\u0000${right.token}`;
       if (!pairs.has(key)) pairs.set(key, []);
-      pairs.get(key).push({ prev: left.prev, next: right.next, atom_role: left.atom_role, image_name: left.image_name });
+      pairs.get(key).push({
+        prev: left.prev,
+        next: right.next,
+        atom_role: left.atom_role,
+        particle_role: spanRole(index, orderedRows.length),
+        image_name: left.image_name,
+        atom_id: left.atom_id,
+        molecule_id: left.molecule_id,
+        particle_ids: [left.particle_id, right.particle_id],
+        tokens: [left.token, right.token],
+        visuals: [visualPayload(left), visualPayload(right)],
+        index,
+      });
     }
   }
   return pairs;
+}
+
+function contextualAnnotationAudit(corpus, occurrences, compositionCandidates, options) {
+  const minSupport = options.minSupport;
+  const minimumDelta = options.minimumDelta;
+  const singles = groupBy(occurrences, (row) => row.token);
+  const pairs = withinAtomPairContexts(occurrences);
+  const compositionIndex = new Map(compositionCandidates.map((row) => [
+    `${row.single}\u0000${pairKey(...row.composition)}`,
+    row,
+  ]));
+  const hypotheses = options.hypotheses.map((declared) => {
+    const measured = compositionIndex.get(`${declared.single}\u0000${pairKey(...declared.composition)}`);
+    return {
+      type: "split_join",
+      single: declared.single,
+      composition: declared.composition,
+      provenance: declared.provenance ?? "declared_for_audit",
+      aggregate_context_similarity: measured?.context_similarity ?? null,
+      single_support: measured?.single_support ?? (singles.get(declared.single)?.length ?? 0),
+      composition_support: measured?.composition_support ?? (pairs.get(pairKey(...declared.composition))?.length ?? 0),
+    };
+  }).filter((row) => row.single_support >= minSupport && row.composition_support >= minSupport);
+
+  const candidates = [];
+  const evaluated = [];
+  for (const hypothesis of hypotheses) {
+    const singleRows = singles.get(hypothesis.single) ?? [];
+    const pairRows = pairs.get(pairKey(...hypothesis.composition)) ?? [];
+    const scored = [];
+    for (const row of singleRows) scored.push(scoreAuditOccurrence(row, "single", singleRows, pairRows, hypothesis, minimumDelta));
+    for (const row of pairRows) scored.push(scoreAuditOccurrence(row, "composition", pairRows, singleRows, hypothesis, minimumDelta));
+    const valid = scored.filter(Boolean);
+    candidates.push(...valid.filter((row) => row.status === "review_candidate"));
+    evaluated.push({
+      ...hypothesis,
+      evaluated_occurrences: valid.length,
+      review_candidates: valid.filter((row) => row.status === "review_candidate").length,
+      held_out_folios: new Set(valid.map((row) => row.image_name)).size,
+    });
+  }
+
+  candidates.sort((a, b) => b.context_delta - a.context_delta || b.alternative_training_support - a.alternative_training_support);
+  return {
+    status: "CANDIDATES_NOT_DECISIONS",
+    mission: "Find individual human annotation or segmentation errors through held-out structural context.",
+    method: "Naive-Bayes context score trained on every folio except the occurrence's own folio.",
+    minimum_log_score_delta: minimumDelta,
+    hypothesis_policy: "Only explicitly declared visual ambiguities are audited. Exploratory composition similarity cannot create correction candidates by itself.",
+    safeguards: [
+      "The evaluated folio is excluded from training.",
+      "No candidate edits the corpus automatically.",
+      "A split/join hypothesis changes segmentation and requires manuscript inspection.",
+      "Rare but correct structures may be flagged and must be confirmable as valid.",
+    ],
+    hypotheses: evaluated,
+    candidates: candidates.slice(0, 500),
+  };
+}
+
+function scoreAuditOccurrence(row, currentForm, currentRows, alternativeRows, hypothesis, minimumDelta) {
+  const heldOut = row.image_name;
+  const currentTraining = currentRows.filter((item) => item.image_name !== heldOut);
+  const alternativeTraining = alternativeRows.filter((item) => item.image_name !== heldOut);
+  if (currentTraining.length < 3 || alternativeTraining.length < 3) return null;
+  if (new Set(alternativeTraining.map((item) => item.image_name)).size < 2) return null;
+
+  const universe = [...currentTraining, ...alternativeTraining];
+  const currentScore = contextualClassScore(row, currentTraining, universe);
+  const alternativeScore = contextualClassScore(row, alternativeTraining, universe);
+  const delta = alternativeScore - currentScore;
+  const alternativeForm = currentForm === "single" ? "composition" : "single";
+  const currentTokens = currentForm === "single" ? [hypothesis.single] : hypothesis.composition;
+  const alternativeTokens = alternativeForm === "single" ? [hypothesis.single] : hypothesis.composition;
+  return {
+    candidate_type: "split_join",
+    image_name: row.image_name,
+    atom_id: row.atom_id,
+    molecule_id: row.molecule_id,
+    particle_ids: row.particle_ids ?? [row.particle_id],
+    current_visuals: row.visuals ?? [visualPayload(row)],
+    current_form: currentForm,
+    current_tokens: currentTokens,
+    alternative_form: alternativeForm,
+    alternative_tokens: alternativeTokens,
+    external_previous: row.prev,
+    external_next: row.next,
+    atom_role: row.atom_role,
+    particle_role: row.particle_role,
+    current_log_score: round(currentScore),
+    alternative_log_score: round(alternativeScore),
+    context_delta: round(delta),
+    current_training_support: currentTraining.length,
+    alternative_training_support: alternativeTraining.length,
+    held_out_folio: heldOut,
+    reason: `${alternativeTokens.join(" + ")} is better supported than ${currentTokens.join(" + ")} by context learned without ${heldOut}`,
+    status: delta >= minimumDelta ? "review_candidate" : "not_flagged",
+  };
+}
+
+function visualPayload(row) {
+  return {
+    particle_id: row.particle_id,
+    image_name: row.image_name,
+    points_json: row.points_json,
+    bounds_x: row.bounds_x,
+    bounds_y: row.bounds_y,
+    bounds_w: row.bounds_w,
+    bounds_h: row.bounds_h,
+  };
+}
+
+function contextualClassScore(row, classRows, universe) {
+  const features = ["prev", "next", "atom_role", "particle_role"];
+  let score = Math.log((classRows.length + 1) / (universe.length + 2));
+  for (const feature of features) {
+    const values = new Set(universe.map((item) => item[feature] ?? "<UNKNOWN>"));
+    const value = row[feature] ?? "<UNKNOWN>";
+    const matches = classRows.filter((item) => (item[feature] ?? "<UNKNOWN>") === value).length;
+    score += Math.log((matches + 1) / (classRows.length + values.size));
+  }
+  return score;
+}
+
+function spanRole(index, length) {
+  if (length <= 2) return "single";
+  if (index === 0) return "initial";
+  if (index + 2 === length) return "final";
+  return "medial";
 }
 
 function operatorProfile(profile, occurrences) {

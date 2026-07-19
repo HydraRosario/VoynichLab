@@ -35,7 +35,7 @@ New model or protocol freezes also belong under `research/frozen/<release>/`
 unless preserving them inside a self-contained package is necessary for an
 already published reproduction contract.
 
-Published experiment bundles remain under `artifacts/public/<experiment-id>/`.
+Published experiment bundles remain under `research/artifacts/public/<experiment-id>/`.
 They are derived, portal-consumable evidence bundles—not additional corpus
 versions.
 

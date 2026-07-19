@@ -5,8 +5,8 @@ import path from "node:path";
 import { execSync } from "node:child_process";
 
 const root = process.cwd();
-const registryDir = path.join(root, "research-feed");
-const publicDir = path.join(root, "artifacts", "public");
+const registryDir = path.join(root, "research", "registry");
+const publicDir = path.join(root, "research", "artifacts", "public");
 const portalDataDir = path.join(root, "apps", "portal", "data");
 const repoBlob = "https://github.com/HydraRosario/VoynichLab/blob/main";
 
@@ -23,23 +23,23 @@ const experimentRequired = [
 const milestoneRequired = ["id", "title", "date", "summary", "type", "tag", "sequenceIndex"];
 const releaseRequired = ["tag", "title", "date", "tagObject", "targetCommit", "summary"];
 
-const HIGH_RISK_DIRS = ["DataSetCreator", "EVAComparisonLab/backups"];
+const HIGH_RISK_DIRS = ["apps/dataset-creator", "labs/eva-comparison/backups"];
 const DB_PATTERNS = ["*.db", "*.sqlite", "*.sqlite3"];
 const GENERATED_DIRS = [
-  "EVAComparisonLab/artifacts/visual-snapshots/current",
-  "EVAComparisonLab/artifacts/visual-snapshots/pre-audit-",
+  "labs/eva-comparison/artifacts/visual-snapshots/current",
+  "labs/eva-comparison/artifacts/visual-snapshots/pre-audit-",
   "apps/portal/data",
-  "EVAComparisonLab/cases/",
+  "labs/eva-comparison/cases/",
   "research/audits/",
   "research/corpus-revisions/",
 ];
-const PUBLIC_ARTIFACT_DIRS = ["artifacts/public"];
+const PUBLIC_ARTIFACT_DIRS = ["research/artifacts/public"];
 
 const LOCAL_STATE_DIRS = [
   ".vercel",
   "apps/portal/.vercel",
   "node_modules",
-  "DataSetCreator/src-tauri/target",
+  "apps/dataset-creator/src-tauri/target",
   "target",
 ];
 
@@ -78,6 +78,10 @@ function normalizedTextSha256(filePath) {
   return createHash("sha256").update(text).digest("hex");
 }
 
+function portableArtifactSha256(filePath) {
+  return isTextLikeFile(filePath) ? normalizedTextSha256(filePath) : sha256(filePath);
+}
+
 function walkFiles(dir) {
   if (!fs.existsSync(dir)) return [];
   const files = [];
@@ -102,6 +106,7 @@ function isTextLikeFile(filePath) {
     ".svg",
     ".ts",
     ".tsx",
+    ".tsv",
     ".txt",
     ".xml",
     ".yml",
@@ -205,9 +210,9 @@ function isDirty(dir) {
 function validateRegistry({ strictArtifacts = true, strictPending = true } = {}) {
   const errors = [];
   const warnings = [];
-  const experiments = readJson("research-feed/experiments.json");
-  const milestones = readJson("research-feed/milestones.json");
-  const releases = readJson("research-feed/releases.json");
+  const experiments = readJson("research/registry/experiments.json");
+  const milestones = readJson("research/registry/milestones.json");
+  const releases = readJson("research/registry/releases.json");
 
   const experimentIds = new Set();
   for (const experiment of experiments) {
@@ -290,7 +295,7 @@ function validateRegistry({ strictArtifacts = true, strictPending = true } = {})
     errors.push(`non-canonical known-labeling anomaly ledger: ${hit}`);
   }
   for (const script of unregisteredEvaComparisonScripts()) {
-    errors.push(`EVAComparisonLab script missing from registry: ${script}`);
+    errors.push(`EVA comparison script missing from registry: ${script}`);
   }
   for (const script of unregisteredDatasetCreatorScripts()) {
     errors.push(`DataSetCreator script missing from registry: ${script}`);
@@ -323,8 +328,11 @@ function validateChecksums(errors) {
         errors.push(`${experimentDir}: checksum target missing ${relative}`);
         continue;
       }
-      const actual = sha256(file);
-      if (actual !== expected) errors.push(`${experimentDir}: checksum mismatch ${relative}`);
+      const rawActual = sha256(file);
+      const normalizedActual = isTextLikeFile(file) ? normalizedTextSha256(file) : rawActual;
+      if (rawActual !== expected && normalizedActual !== expected) {
+        errors.push(`${experimentDir}: checksum mismatch ${relative}`);
+      }
     }
   }
 }
@@ -472,7 +480,7 @@ function exportExperiment(experiment) {
   for (const f of includedFiles) {
     const fullPath = path.join(dir, f);
     if (fs.existsSync(fullPath)) {
-      manifest.checksums[f] = sha256(fullPath);
+      manifest.checksums[f] = portableArtifactSha256(fullPath);
     }
   }
   writeJson(path.join(dir, "manifest.json"), manifest);
@@ -485,7 +493,7 @@ function writeArtifactChecksums(dir) {
     .filter((file) => path.basename(file) !== "checksums.txt")
     .sort();
   const checksums = checksumTargets
-    .map((file) => `${sha256(file)}  ${posixPath(path.relative(dir, file))}`)
+    .map((file) => `${portableArtifactSha256(file)}  ${posixPath(path.relative(dir, file))}`)
     .join("\n");
   fs.writeFileSync(path.join(dir, "checksums.txt"), `${checksums}\n`);
 }
@@ -503,13 +511,13 @@ function refreshPublicChecksums() {
 
 function buildPortalData() {
   fs.rmSync(portalDataDir, { recursive: true, force: true });
-  ensureDir(path.join(portalDataDir, "research-feed"));
+  ensureDir(path.join(portalDataDir, "registry"));
   ensureDir(path.join(portalDataDir, "artifacts", "public"));
 
   for (const file of ["experiments.json", "milestones.json", "releases.json", "site.json"]) {
-    const src = path.join("research-feed", file);
+    const src = path.join("research", "registry", file);
     if (fs.existsSync(rel(src))) {
-      copyFile(src, path.join(portalDataDir, "research-feed", file));
+      copyFile(src, path.join(portalDataDir, "registry", file));
     }
   }
 
@@ -526,7 +534,7 @@ function buildPortalData() {
     }
   }
 
-  const evidenceCases = "research-feed/evidence-cases.json";
+  const evidenceCases = "research/registry/evidence-cases.json";
   if (fs.existsSync(rel(evidenceCases))) {
     copyFile(evidenceCases, path.join(portalDataDir, "evidence-cases.json"));
   }
@@ -536,14 +544,14 @@ function buildPortalData() {
 }
 
 function buildAll() {
-  const experiments = readJson("research-feed/experiments.json");
+  const experiments = readJson("research/registry/experiments.json");
   for (const experiment of experiments) exportExperiment(experiment);
   buildPortalData();
   console.log(`Built ${experiments.length} public experiment artifacts and portal data.`);
 }
 
 function publishOne(id) {
-  const experiments = readJson("research-feed/experiments.json");
+  const experiments = readJson("research/registry/experiments.json");
   const experiment = experiments.find((entry) => entry.id === id);
   if (!experiment) {
     console.error(`Unknown experiment: ${id}`);
@@ -560,7 +568,7 @@ function doctor() {
   const changedFiles = gitChangedFiles();
   const dirtyHighRisk = changedFiles.filter((f) => isHighRiskChange(f.file));
   const dirtyDbFiles = changedFiles.filter((f) => isDbFile(f.file));
-  const dsCreatorDirty = isDirty("DataSetCreator");
+  const dsCreatorDirty = isDirty("apps/dataset-creator");
 
   printChangeSummary(changedFiles, "Working tree changes");
 
@@ -578,7 +586,7 @@ function doctor() {
     console.warn(`WARN DataSetCreator has uncommitted changes — review before publishing.`);
   }
 
-  const experiments = readJson("research-feed/experiments.json");
+  const experiments = readJson("research/registry/experiments.json");
   for (const experiment of experiments) {
     if (!fs.existsSync(rel(experiment.reportPath))) {
       console.error(`ERROR ${experiment.id}: reportPath missing — ${experiment.reportPath}`);
@@ -612,7 +620,7 @@ function doctor() {
     }
   }
 
-  const portalExperiments = path.join(portalDataDir, "research-feed", "experiments.json");
+  const portalExperiments = path.join(portalDataDir, "registry", "experiments.json");
   if (!fs.existsSync(portalExperiments)) {
     console.warn(`WARN Portal data missing (run research:build)`);
   } else {
@@ -622,11 +630,11 @@ function doctor() {
     }
   }
 
-  const paperDir = rel("paper");
-  if (fs.existsSync(paperDir)) {
+  const publicationsDir = rel("research/publications");
+  if (fs.existsSync(publicationsDir)) {
     for (const file of ["CLAIMS.md", "OUTLINE.md", "FIGURES.md", "LITERATURE.md", "NOVELTY-MATRIX.md"]) {
-      if (!fs.existsSync(path.join(paperDir, file))) {
-        console.warn(`WARN paper/${file} not found`);
+      if (!fs.existsSync(path.join(publicationsDir, file))) {
+        console.warn(`WARN research/publications/${file} not found`);
       }
     }
   }
@@ -636,7 +644,7 @@ function doctor() {
 }
 
 function stagePlan(id) {
-  const experiments = readJson("research-feed/experiments.json");
+  const experiments = readJson("research/registry/experiments.json");
   const experiment = experiments.find((entry) => entry.id === id);
   if (!experiment) {
     console.error(`Unknown experiment: ${id}`);
@@ -651,14 +659,14 @@ function stagePlan(id) {
   console.log("");
 
   const proposedFiles = [
-    "research-feed/experiments.json",
-    "research-feed/milestones.json",
-    "research-feed/releases.json",
-    "research-feed/site.json",
+    "research/registry/experiments.json",
+    "research/registry/milestones.json",
+    "research/registry/releases.json",
+    "research/registry/site.json",
     experiment.reportPath,
     experiment.sourceScript,
     ...experiment.dataTablePaths,
-    `artifacts/public/${experiment.id}/`,
+    `research/artifacts/public/${experiment.id}/`,
     `apps/portal/data/`,
   ];
 
@@ -688,7 +696,7 @@ function stagePlan(id) {
     for (const f of dbFiles) console.warn(`     ${f.status} ${f.file}`);
   }
 
-  if (isDirty("DataSetCreator")) {
+  if (isDirty("apps/dataset-creator")) {
     console.warn("WARN DataSetCreator has changes. Review before staging.");
   }
 }
@@ -817,11 +825,11 @@ function repoAudit() {
 
   const unregisteredScripts = unregisteredEvaComparisonScripts();
   if (unregisteredScripts.length) {
-    console.warn("WARN EVAComparisonLab scripts missing from registry:");
+    console.warn("WARN EVA comparison scripts missing from registry:");
     for (const script of unregisteredScripts) console.warn(`  ${script}`);
     process.exitCode = 1;
   } else {
-    console.log("EVAComparisonLab script registry: complete.");
+    console.log("EVA comparison script registry: complete.");
   }
 
   const unregisteredDatasetScripts = unregisteredDatasetCreatorScripts();
@@ -866,7 +874,7 @@ function repoAudit() {
     for (const error of speculativeBoundaryErrors) console.warn(`  ${error}`);
     process.exitCode = 1;
   } else {
-    console.log("TranslationLab boundary: isolated from public evidence.");
+    console.log("Translation lab boundary: isolated from public evidence.");
   }
 
   console.log("");
@@ -909,11 +917,11 @@ function nonCanonicalGeometryLedgers() {
 }
 
 function unregisteredEvaComparisonScripts() {
-  return unregisteredScriptsIn("EVAComparisonLab/scripts");
+  return unregisteredScriptsIn("labs/eva-comparison/scripts");
 }
 
 function unregisteredDatasetCreatorScripts() {
-  return unregisteredScriptsIn("DataSetCreator/scripts");
+  return unregisteredScriptsIn("apps/dataset-creator/scripts");
 }
 
 function unregisteredScriptsIn(relativeDir) {
@@ -956,26 +964,26 @@ function validateFrozenEvidenceCatalog() {
 
 function validatePublicBundleInventory() {
   const errors = [];
-  const experiments = readJson("research-feed/experiments.json");
+  const experiments = readJson("research/registry/experiments.json");
   const expected = new Set(experiments.map((entry) => entry.id));
   const actual = new Set(
     fs.readdirSync(publicDir, { withFileTypes: true })
       .filter((entry) => entry.isDirectory())
       .map((entry) => entry.name)
   );
-  for (const id of expected) if (!actual.has(id)) errors.push(`missing bundle: artifacts/public/${id}`);
-  for (const id of actual) if (!expected.has(id)) errors.push(`orphan bundle: artifacts/public/${id}`);
+  for (const id of expected) if (!actual.has(id)) errors.push(`missing bundle: research/artifacts/public/${id}`);
+  for (const id of actual) if (!expected.has(id)) errors.push(`orphan bundle: research/artifacts/public/${id}`);
   return errors;
 }
 
 function validatePortalDataMirrors() {
   const errors = [];
   const pairs = [
-    ["research-feed/experiments.json", "apps/portal/data/research-feed/experiments.json"],
-    ["research-feed/milestones.json", "apps/portal/data/research-feed/milestones.json"],
-    ["research-feed/releases.json", "apps/portal/data/research-feed/releases.json"],
-    ["research-feed/site.json", "apps/portal/data/research-feed/site.json"],
-    ["research-feed/evidence-cases.json", "apps/portal/data/evidence-cases.json"],
+    ["research/registry/experiments.json", "apps/portal/data/registry/experiments.json"],
+    ["research/registry/milestones.json", "apps/portal/data/registry/milestones.json"],
+    ["research/registry/releases.json", "apps/portal/data/registry/releases.json"],
+    ["research/registry/site.json", "apps/portal/data/registry/site.json"],
+    ["research/registry/evidence-cases.json", "apps/portal/data/evidence-cases.json"],
     ["apps/portal/source-data/atoms-v1.json", "apps/portal/data/atoms-v1.json"],
   ];
   for (const [source, mirror] of pairs) {
@@ -991,14 +999,14 @@ function validatePortalDataMirrors() {
 function validateSpeculativeBoundary() {
   const errors = [];
   const publicSources = [
-    "research-feed/experiments.json",
-    "research-feed/milestones.json",
-    "research-feed/releases.json",
-    "research-feed/evidence-cases.json",
+    "research/registry/experiments.json",
+    "research/registry/milestones.json",
+    "research/registry/releases.json",
+    "research/registry/evidence-cases.json",
   ];
   for (const source of publicSources) {
     const text = fs.readFileSync(rel(source), "utf8");
-    if (/TranslationLab[\\/]/i.test(text)) errors.push(`${source} references unpromoted TranslationLab material`);
+    if (/labs[\\/]translation[\\/]/i.test(text)) errors.push(`${source} references unpromoted translation-lab material`);
   }
   return errors;
 }

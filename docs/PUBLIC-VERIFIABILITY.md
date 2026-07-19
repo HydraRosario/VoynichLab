@@ -29,7 +29,7 @@ Examples:
 
 - `npm.cmd run research:validate`;
 - `npm.cmd run research:build`;
-- GrammarDiscoveryLab replay commands used during publication.
+- `labs/grammar-discovery` replay commands used during publication.
 
 These commands are useful for maintainers and reviewers working with the same
 environment, but they are not yet a fully certified clean-clone protocol.

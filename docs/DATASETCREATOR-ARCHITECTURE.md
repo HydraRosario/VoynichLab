@@ -11,9 +11,9 @@ This document maps DataSetCreator without changing its code or local data. DataS
 Do not casually move, delete, or rewrite:
 
 - local SQLite databases under the Tauri app data directory;
-- `DataSetCreator/*.db`;
-- `DataSetCreator/backups/`;
-- `DataSetCreator/manuscript-pages-yale/`;
+- `apps/dataset-creator/*.db`;
+- `apps/dataset-creator/backups/`;
+- `apps/dataset-creator/manuscript-pages-yale/`;
 - learned order/merge memory tables;
 - row guide and row override tables.
 
@@ -31,7 +31,7 @@ DataSetCreator is a Tauri 2 desktop app.
 
 | Layer | Files | Role |
 |---|---|---|
-| Shell/runtime | `DataSetCreator/package.json`, `src-tauri/Cargo.toml`, `src-tauri/tauri.conf.json` | Tauri application wiring |
+| Shell/runtime | `apps/dataset-creator/package.json`, `src-tauri/Cargo.toml`, `src-tauri/tauri.conf.json` | Tauri application wiring |
 | Backend commands | `src-tauri/src/commands.rs` | Tauri command API exposed to frontend |
 | Backend persistence/recalculation | `src-tauri/src/database.rs` | SQLite schema, migrations, molecule/particle recalculation, learning memory |
 | Backend models | `src-tauri/src/models.rs` | Serialized Rust types shared through commands |
@@ -39,7 +39,7 @@ DataSetCreator is a Tauri 2 desktop app.
 | Frontend canvas/viewer | `src/scripts/image-viewer.js` | Manuscript viewer, overlays, painting, row/gap hit testing |
 | Frontend bridge | `src/scripts/tauri-bridge.js` | JavaScript wrapper around Tauri `invoke` |
 | Frontend panels | `src/scripts/annotation-panel.js`, `image-list.js` | Atom palette and image list |
-| Local repair scripts | `DataSetCreator/scripts/*.cjs` | Emergency inspection/repair tools; high caution |
+| Local repair scripts | `apps/dataset-creator/scripts/*.cjs` | Emergency inspection/repair tools; high caution |
 
 ## Database Location
 
@@ -138,7 +138,7 @@ The current direction is correct: user edits should be staged locally and commit
 
 ## Local Scripts
 
-`DataSetCreator/scripts/` currently contains high-risk inspection and repair tools:
+`apps/dataset-creator/scripts/` currently contains high-risk inspection and repair tools:
 
 | Script | Current class | Notes |
 |---|---|---|
@@ -148,7 +148,7 @@ The current direction is correct: user edits should be staged locally and commit
 | `cleanup-stale-merge-patterns.cjs` | repair | Deletes stale rows from `particle_merge_patterns` |
 | `repair-page094-row-overrides.cjs` | repair | Historical targeted row override repair |
 
-Registry: `DataSetCreator/scripts/README.md`.
+Registry: `apps/dataset-creator/scripts/README.md`.
 
 Each script declares read/write behavior, affected tables, backup behavior, and whether it is still current. `repo:audit` fails if a new script appears in this directory without a registry entry.
 
@@ -172,7 +172,7 @@ Molecule IDs and particle source indexes can change after boundary edits. Stable
 
 ### Local Backups Are Valuable But Unmanaged
 
-`DataSetCreator/backups/` is ignored and currently protects DB repair work. It should remain ignored, but future cleanup should define retention rules and a manual archive path before deleting anything.
+`apps/dataset-creator/backups/` is ignored and currently protects DB repair work. It should remain ignored, but future cleanup should define retention rules and a manual archive path before deleting anything.
 
 ## Recommended Next Refactor Plan
 
@@ -196,7 +196,7 @@ Molecule IDs and particle source indexes can change after boundary edits. Stable
    - gap override edit/save;
    - atom order draft/save;
    - molecule particle order draft/save;
-   - export through EVAComparisonLab.
+   - export through `labs/eva-comparison`.
 
 ## Current Verdict
 

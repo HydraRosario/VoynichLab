@@ -54,7 +54,7 @@ identifier-map.tsv  c98e405016eef187028fe61f1c047d87da59b511677f3feb4959cf11d087
 
 The generated package is intentionally ignored by Git:
 
-`DataSetCreator/backups/corpus-v3-audit-candidate-20260717/`
+`apps/dataset-creator/backups/corpus-v3-audit-candidate-20260717/`
 
 Start with:
 

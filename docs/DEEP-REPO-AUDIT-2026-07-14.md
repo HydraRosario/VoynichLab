@@ -10,7 +10,7 @@ The repository is in much better shape after the recent cleanup campaign. The tr
 
 Current tracked file count: 525.
 
-Main remaining issue: the repo still has a few places where scientific source-of-truth boundaries are blurry. The first concrete example was the known-anomaly ledger split between root `cases/` and `EVAComparisonLab/cases/`; that split has now been consolidated into `research/audits/known-labeling-anomalies.tsv`.
+Main remaining issue: the repo still has a few places where scientific source-of-truth boundaries are blurry. The first concrete example was the known-anomaly ledger split between root `cases/` and `labs/eva-comparison/cases/`; that split has now been consolidated into `research/audits/known-labeling-anomalies.tsv`.
 
 ## What Was Checked
 
@@ -40,7 +40,7 @@ Tracked files by top-level area:
 | `GrammarDiscoveryLab` | 39 | Active/frozen grammar lab |
 | `research` | 38 | Research notes, audits, frozen V2 corpus |
 | `docs` | 9 | Governance and architecture docs |
-| `research-feed` | 8 | Public milestone feed |
+| `research/registry` | 8 | Public milestone registry (migrated after this audit) |
 | `packages` | 6 | Shared tooling |
 | `paper` | 5 | Paper planning |
 | `cases` | 1 | Shared geometry-order anomaly ledger |
@@ -51,10 +51,10 @@ Largest intentional tracked artifacts:
 
 | File | Size | Verdict |
 |---|---:|---|
-| `EVAComparisonLab/frozen/VOYNICHLAB-V1-FROZEN-2026-07-13/datasetcreator-v1-frozen.db` | 15.7 MB | Intentional frozen evidence DB |
+| `labs/eva-comparison/frozen/VOYNICHLAB-V1-FROZEN-2026-07-13/datasetcreator-v1-frozen.db` | 15.7 MB | Intentional frozen evidence DB |
 | `apps/portal/images/la-diosa-tau.png` | 1.1 MB | Intentional portal image |
 | `research/audits/anomaly-candidates.json` | 0.88 MB | Research audit artifact |
-| `EVAComparisonLab/sources/IT2a-n.txt` | 0.34 MB | EVA source transcription |
+| `labs/eva-comparison/sources/IT2a-n.txt` | 0.34 MB | EVA source transcription |
 | duplicated portal/public TSV artifacts | 0.07-0.21 MB each | Intentional deployment copy, but should remain generated |
 
 No tracked `node_modules`, `target`, `dist`, `.vercel`, logs, temporary backups, or ignored DatasetCreator databases were found.
@@ -65,9 +65,9 @@ DatasetCreator dominates local disk usage because it correctly keeps large worki
 
 | Path | Local count | Local size | Verdict |
 |---|---:|---:|---|
-| `DataSetCreator/manuscript-pages-yale/` | 213 files | ~561 MB | Local source images; ignored intentionally |
-| `DataSetCreator/backups/` | 11 files | ~212 MB | Valuable safety backups; ignored intentionally |
-| `DataSetCreator/*.db` | local DB files | not tracked | Critical working data; do not delete casually |
+| `apps/dataset-creator/manuscript-pages-yale/` | 213 files | ~561 MB | Local source images; ignored intentionally |
+| `apps/dataset-creator/backups/` | 11 files | ~212 MB | Valuable safety backups; ignored intentionally |
+| `apps/dataset-creator/*.db` | local DB files | not tracked | Critical working data; do not delete casually |
 
 This is acceptable for now, but it deserves a later backup policy. "Ignored" should mean either local source material or intentional safety backup, not a junk drawer.
 
@@ -77,14 +77,14 @@ This is acceptable for now, but it deserves a later backup policy. "Ignored" sho
 
 Several TranslationLab case documents contained hardcoded local paths pointing at the original Windows user profile. They were replaced with repository-relative paths:
 
-- `DataSetCreator/evidence/paragraph-2-page-3/...`
-- `TranslationLab/translator/roots.tsv`
+- `apps/dataset-creator/evidence/paragraph-2-page-3/...`
+- `labs/translation/translator/roots.tsv`
 
 This makes the documents portable and prevents the public repo from encoding the local machine layout.
 
 ### 2. Generalized EVA DB Path Documentation
 
-`EVAComparisonLab/README.md` now documents the DatasetCreator DB with `%APPDATA%\com.voynichlab.datasetcreator\datasetcreator.db` instead of a user-specific absolute path.
+`labs/eva-comparison/README.md` now documents the DatasetCreator DB with `%APPDATA%\com.voynichlab.datasetcreator\datasetcreator.db` instead of a user-specific absolute path.
 
 ### 3. Strengthened Repo Audit Coverage
 
@@ -102,7 +102,7 @@ Previously, `repo:audit` and `research:validate` only scanned a narrower set of 
 The audit found two tracked known-labeling anomaly ledgers:
 
 - `cases/known-labeling-anomalies.tsv`
-- `EVAComparisonLab/cases/known-labeling-anomalies.tsv`
+- `labs/eva-comparison/cases/known-labeling-anomalies.tsv`
 
 They were not identical, and they were both referenced by active or public code paths.
 
@@ -111,13 +111,13 @@ Root `cases/known-labeling-anomalies.tsv` is used by the Corpus V2 freeze/proven
 - `packages/lab-exporter/src/freeze-corpus-v2-audited.js`
 - `research/frozen/CORPUS-V2-AUDITED/provenance.json`
 
-`EVAComparisonLab/cases/known-labeling-anomalies.tsv` is used by the EVA lab default audit scripts and public evidence links:
+`labs/eva-comparison/cases/known-labeling-anomalies.tsv` is used by the EVA lab default audit scripts and public evidence links:
 
-- `EVAComparisonLab/scripts/labeling-anomaly-audit.js`
-- `EVAComparisonLab/scripts/freeze-corpus-audit.js`
-- `EVAComparisonLab/README.md`
-- `EVAComparisonLab/docs/ALPHABET-V1-LABELING-MANUAL.md`
-- `research-feed/evidence-cases.json` (migrated from root after this audit)
+- `labs/eva-comparison/scripts/labeling-anomaly-audit.js`
+- `labs/eva-comparison/scripts/freeze-corpus-audit.js`
+- `labs/eva-comparison/README.md`
+- `labs/eva-comparison/docs/ALPHABET-V1-LABELING-MANUAL.md`
+- `research/registry/evidence-cases.json` (migrated from root after this audit)
 - `apps/portal/data/evidence-cases.json`
 
 This was the most important repo-architecture issue found in this pass. The fix could not be a blind merge because some entries referred to the same atom windows with different statuses or historical notes.
@@ -126,12 +126,12 @@ Resolution: the active current-corpus ledger now lives at `research/audits/known
 
 Follow-up resolution: the shared particle-geometry ledger was also moved to
 `research/audits/known-particle-geometry-anomalies.tsv`, and curated portal
-cases moved from the root to `research-feed/evidence-cases.json`. The paths
+cases moved from the root to `research/registry/evidence-cases.json`. The paths
 listed above describe the repository state at the time of this audit.
 
 ### P1: Lab Scripts Needed Classification
 
-`EVAComparisonLab/scripts/` contained active pipeline scripts plus one-off diagnostics and historical experiments. They needed classification before deletion:
+`labs/eva-comparison/scripts/` contained active pipeline scripts plus one-off diagnostics and historical experiments. They needed classification before deletion:
 
 - `active`: used by current reproducible reports.
 - `utility`: useful manual inspection tools.
@@ -139,7 +139,7 @@ listed above describe the repository state at the time of this audit.
 - `historical`: kept only for provenance.
 - `retired`: safe to remove after no references remain.
 
-Resolution started: `EVAComparisonLab/scripts/README.md` now classifies scripts as active, utility, audit, repair, or historical. `repo:audit` now fails if a new script appears without being listed in that registry. Two superseded DB cleanup scripts were retired: `experiment-remove-j2-merges.py` and `cleanup-learning-memory.py`.
+Resolution started: `labs/eva-comparison/scripts/README.md` now classifies scripts as active, utility, audit, repair, or historical. `repo:audit` now fails if a new script appears without being listed in that registry. Two superseded DB cleanup scripts were retired: `experiment-remove-j2-merges.py` and `cleanup-learning-memory.py`.
 
 ### P1: DatasetCreator Is Protected But Needs A Read-Only Architecture Audit
 
@@ -158,12 +158,12 @@ Recommended next step: create a read-only map of DatasetCreator tables, commands
 
 The portal contains copies of public artifact data:
 
-- `artifacts/public/...`
+- `research/artifacts/public/...`
 - `apps/portal/data/artifacts/public/...`
 
 This is currently intentional for static deployment. The repo should preserve a clear rule:
 
-`artifacts/public` is the canonical published artifact store; `apps/portal/data/artifacts/public` is a generated deployment mirror.
+`research/artifacts/public` is the canonical published artifact store; `apps/portal/data/artifacts/public` is a generated deployment mirror.
 
 The mirror should be updated only through tooling, not hand-edited.
 
@@ -179,7 +179,7 @@ That is acceptable only if the repo keeps a clear boundary:
 
 ### P2: Frozen V1 DB Is Large But Legitimate
 
-`EVAComparisonLab/frozen/VOYNICHLAB-V1-FROZEN-2026-07-13/datasetcreator-v1-frozen.db` is the largest tracked file. It should stay unless a deliberate artifact-storage migration is planned. It is historical evidence, not random bulk.
+`labs/eva-comparison/frozen/VOYNICHLAB-V1-FROZEN-2026-07-13/datasetcreator-v1-frozen.db` is the largest tracked file. It should stay unless a deliberate artifact-storage migration is planned. It is historical evidence, not random bulk.
 
 ## What Was Not Removed
 
@@ -218,11 +218,11 @@ Steps:
 
 Goal: every lab script has a declared status and owner.
 
-Status: started. `EVAComparisonLab/scripts/README.md` now provides the registry, and `repo:audit` enforces script registration.
+Status: started. `labs/eva-comparison/scripts/README.md` now provides the registry, and `repo:audit` enforces script registration.
 
 Steps:
 
-1. Add `EVAComparisonLab/scripts/README.md`.
+1. Add `labs/eva-comparison/scripts/README.md`.
 2. Classify each script as `active`, `utility`, `repair`, `historical`, or `retired`.
 3. Add command examples for active scripts.
 4. Move repair scripts behind explicit backup instructions.
@@ -234,7 +234,7 @@ Goal: understand the annotation engine before touching it again.
 
 Status: started. The read-only map now lives at `docs/DATASETCREATOR-ARCHITECTURE.md`.
 
-The local repair/inspection scripts are now registered in `DataSetCreator/scripts/README.md`, and `repo:audit` enforces that new scripts in that directory are declared.
+The local repair/inspection scripts are now registered in `apps/dataset-creator/scripts/README.md`, and `repo:audit` enforces that new scripts in that directory are declared.
 
 Steps:
 
@@ -251,7 +251,7 @@ Goal: make the portal feel like a scientific interface, not a copied folder.
 
 Steps:
 
-1. Define `artifacts/public` as canonical.
+1. Define `research/artifacts/public` as canonical.
 2. Define `apps/portal/data/artifacts/public` as generated.
 3. Add a checksum or manifest check for portal mirror freshness.
 4. Make the portal consume registry metadata consistently.

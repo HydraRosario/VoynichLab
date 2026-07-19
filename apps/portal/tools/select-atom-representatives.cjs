@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const snapshotRoot = path.join("EVAComparisonLab", "artifacts", "visual-snapshots", "current", "atoms");
+const snapshotRoot = path.join("labs", "eva-comparison", "artifacts", "visual-snapshots", "current", "atoms");
 const outRoot = path.join("apps", "portal", "images", "atoms-v1");
 const dataPath = path.join("apps", "portal", "source-data", "atoms-v1.json");
 const sampleCount = 48;

@@ -5,7 +5,7 @@ import path from "node:path";
 
 const root = process.cwd();
 const outDir = path.join(root, "research", "frozen", "CORPUS-V2-AUDITED");
-const sourceDir = path.join(root, "EVAComparisonLab", "cases", "corpus-v2-audited-current");
+const sourceDir = path.join(root, "labs", "eva-comparison", "cases", "corpus-v2-audited-current");
 const auditDir = path.join(root, "research", "audits");
 
 const folioRows = [
@@ -235,22 +235,22 @@ function writeDocs() {
       absolutePathOmitted: true,
     },
     sourceOutputs: {
-      corpusV2Current: "EVAComparisonLab/cases/corpus-v2-audited-current",
+      corpusV2Current: "labs/eva-comparison/cases/corpus-v2-audited-current",
       qcLedger: "research/audits/qc-reviewed-ledger.json",
       knownGeometryExceptions: "research/audits/known-particle-geometry-anomalies.tsv",
       knownLabelingExceptions: "research/audits/known-labeling-anomalies.tsv",
     },
     scripts: [
-      "EVAComparisonLab/scripts/run-corpus-v2-analysis.js --include-morphology",
-      "EVAComparisonLab/scripts/learning-memory-audit.js",
-      "EVAComparisonLab/scripts/particle-geometry-order-audit.js",
-      "EVAComparisonLab/scripts/labeling-anomaly-audit.js",
-      "EVAComparisonLab/scripts/cleanup-stale-learning-memory.js --apply",
+      "labs/eva-comparison/scripts/run-corpus-v2-analysis.js --include-morphology",
+      "labs/eva-comparison/scripts/learning-memory-audit.js",
+      "labs/eva-comparison/scripts/particle-geometry-order-audit.js",
+      "labs/eva-comparison/scripts/labeling-anomaly-audit.js",
+      "labs/eva-comparison/scripts/cleanup-stale-learning-memory.js --apply",
       "packages/lab-exporter/src/freeze-corpus-v2-audited.js",
     ],
     excludedFromFreeze: [
       "local SQLite database files",
-      "DataSetCreator/backups/*.db",
+      "apps/dataset-creator/backups/*.db",
       "full raw visual snapshot scratch directories",
     ],
     scientificBoundary: "This milestone is a corpus audit and robustness replay. It is not a decipherment claim.",

@@ -51,13 +51,13 @@ the corpus. Its outputs remain `EXPLORATORY_NOT_FROZEN`.
 
 The following remain outside Git intentionally:
 
-- `DataSetCreator/backups/`;
+- `apps/dataset-creator/backups/`;
 - local DatasetCreator databases;
-- `DataSetCreator/manuscript-pages-yale/`;
-- `DataSetCreator/node_modules/`;
-- `DataSetCreator/src-tauri/target/` and generated Tauri files;
+- `apps/dataset-creator/manuscript-pages-yale/`;
+- `apps/dataset-creator/node_modules/`;
+- `apps/dataset-creator/src-tauri/target/` and generated Tauri files;
 - EVA current outputs and backups;
-- `GrammarDiscoveryLab/out/`;
+- `labs/grammar-discovery/out/`;
 - `apps/portal/.vercel/`;
 - current geometry-audit output.
 

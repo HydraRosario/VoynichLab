@@ -500,20 +500,20 @@
           </div>
           <div class="research-record-group">
             <strong>Claims</strong>
-            <a href="https://github.com/HydraRosario/VoynichLab/blob/main/paper/CLAIMS.md">Research claims</a>
-            <a href="https://github.com/HydraRosario/VoynichLab/blob/main/paper/OUTLINE.md">Research roadmap</a>
+            <a href="https://github.com/HydraRosario/VoynichLab/blob/main/research/publications/CLAIMS.md">Research claims</a>
+            <a href="https://github.com/HydraRosario/VoynichLab/blob/main/research/publications/OUTLINE.md">Research roadmap</a>
           </div>
           <div class="research-record-group">
             <strong>Evidence</strong>
             <a href="#experiments">Experiments</a>
-            <a href="https://github.com/HydraRosario/VoynichLab/blob/main/paper/FIGURES.md">Figures</a>
-            <a href="https://github.com/HydraRosario/VoynichLab/tree/main/artifacts/public">Metrics</a>
+            <a href="https://github.com/HydraRosario/VoynichLab/blob/main/research/publications/FIGURES.md">Figures</a>
+            <a href="https://github.com/HydraRosario/VoynichLab/tree/main/research/artifacts/public">Metrics</a>
           </div>
           <div class="research-record-group">
             <strong>Context</strong>
-            <a href="https://github.com/HydraRosario/VoynichLab/blob/main/paper/LITERATURE.md">Related literature</a>
-            <a href="https://github.com/HydraRosario/VoynichLab/blob/main/paper/CLAIMS.md">Open questions</a>
-            <a href="https://github.com/HydraRosario/VoynichLab/blob/main/paper/OUTLINE.md">Future work</a>
+            <a href="https://github.com/HydraRosario/VoynichLab/blob/main/research/publications/LITERATURE.md">Related literature</a>
+            <a href="https://github.com/HydraRosario/VoynichLab/blob/main/research/publications/CLAIMS.md">Open questions</a>
+            <a href="https://github.com/HydraRosario/VoynichLab/blob/main/research/publications/OUTLINE.md">Future work</a>
           </div>
         </div>
       </section>
@@ -538,7 +538,7 @@
               <p class="instrument-question">Which strokes belong together?</p>
               <p class="instrument-answer">The page remains visible while a human traces the physical ink and groups it into atoms, particles, and molecules.</p>
             </div>
-            <div class="instrument-owner"><span>Instrument</span><h3>Dataset Creator</h3><a href="https://github.com/HydraRosario/VoynichLab/blob/main/DataSetCreator/README.md">See how annotation works</a></div>
+            <div class="instrument-owner"><span>Instrument</span><h3>Dataset Creator</h3><a href="https://github.com/HydraRosario/VoynichLab/blob/main/apps/dataset-creator/README.md">See how annotation works</a></div>
           </article>
           <article class="instrument-stage">
             <div class="instrument-step"><span class="instrument-number">02</span><span class="instrument-role">Audit</span></div>
@@ -556,7 +556,7 @@
             </div>
             <div class="instrument-owner">
               <span>Instruments</span><h3>Comparison + Grammar Labs</h3>
-              <div class="instrument-links"><a href="https://github.com/HydraRosario/VoynichLab/blob/main/artifacts/public/corpus-v2-audited-robustness-replay/report.md">Comparison report</a><a href="https://github.com/HydraRosario/VoynichLab/blob/main/GrammarDiscoveryLab/README.md">Grammar lab</a></div>
+              <div class="instrument-links"><a href="https://github.com/HydraRosario/VoynichLab/blob/main/research/artifacts/public/corpus-v2-audited-robustness-replay/report.md">Comparison report</a><a href="https://github.com/HydraRosario/VoynichLab/blob/main/labs/grammar-discovery/README.md">Grammar lab</a></div>
             </div>
           </article>
           <div class="instrument-output"><div><span>Only after all three stages</span><strong>Evidence ready to support a research claim</strong></div></div>
@@ -604,7 +604,7 @@
               <h3>Where evidence acquires an identity</h3>
               <p>A promoted result receives a stable experiment ID, methodology, provenance, metrics, tables, and checksums that bind the bundle together.</p>
             </div>
-            <footer><b>Append-only</b><p>Published evidence is superseded by a new version, never silently rewritten.</p><a href="https://github.com/HydraRosario/VoynichLab/tree/main/artifacts/public">Inspect frozen artifacts</a></footer>
+            <footer><b>Append-only</b><p>Published evidence is superseded by a new version, never silently rewritten.</p><a href="https://github.com/HydraRosario/VoynichLab/tree/main/research/artifacts/public">Inspect frozen artifacts</a></footer>
           </article>
           <article class="repository-zone repository-zone-public">
             <header><span>04</span><strong>Public research</strong></header>
@@ -613,7 +613,7 @@
               <h3>Where evidence becomes inspectable</h3>
               <p>The research registry connects each public claim to its experiment, artifacts, limitations, release history, and portal explanation.</p>
             </div>
-            <footer><b>Traceable</b><p>The portal explains evidence; it does not create or alter it.</p><a href="https://github.com/HydraRosario/VoynichLab/tree/main/research-feed">Open the registry</a></footer>
+            <footer><b>Traceable</b><p>The portal explains evidence; it does not create or alter it.</p><a href="https://github.com/HydraRosario/VoynichLab/tree/main/research/registry">Open the registry</a></footer>
           </article>
         </div>
       </section>
@@ -641,19 +641,19 @@
             <header><span class="reproduce-number">01</span><div><p class="reproduce-status">Published release · frozen</p><h3>Verify what was published</h3></div></header>
             <p class="reproduce-question">Do the frozen registration, public files, and reported numbers still agree?</p>
             <p>The verifier reads the preregistration from its Git tag, checks every published artifact checksum, and recomputes the primary metrics from the frozen result table.</p>
-            <div class="reproduce-command"><span>Run from the repository root</span><code>cd GrammarDiscoveryLab<br>npm.cmd run prospective-atoms-eva:verify-release</code></div>
+            <div class="reproduce-command"><span>Run from the repository root</span><code>cd labs/grammar-discovery<br>npm.cmd run prospective-atoms-eva:verify-release</code></div>
             <div class="reproduce-result"><span>Expected result</span><strong>Release verification passed</strong><small>ATOMS 0.348262 · EVA 0.564957 · Δ −0.216696</small></div>
             <ul class="reproduce-checklist"><li>Preregistration recovered from its frozen tag</li><li>Public bundle checked file by file</li><li>Published primary metrics recalculated</li></ul>
-            <div class="reproduce-links"><a href="https://github.com/HydraRosario/VoynichLab/blob/main/GrammarDiscoveryLab/scripts/verify-prospective-atoms-eva-release-v1.js">Verifier source</a><a href="https://github.com/HydraRosario/VoynichLab/tree/main/artifacts/public/prospective-atoms-eva-test-v1">Frozen evidence</a><a href="https://github.com/HydraRosario/VoynichLab/releases/tag/prospective-atoms-eva-test-v1">Release tag</a></div>
+            <div class="reproduce-links"><a href="https://github.com/HydraRosario/VoynichLab/blob/main/labs/grammar-discovery/scripts/verify-prospective-atoms-eva-release-v1.js">Verifier source</a><a href="https://github.com/HydraRosario/VoynichLab/tree/main/research/artifacts/public/prospective-atoms-eva-test-v1">Frozen evidence</a><a href="https://github.com/HydraRosario/VoynichLab/releases/tag/prospective-atoms-eva-test-v1">Release tag</a></div>
           </article>
           <article class="reproduce-path reproduce-path-current">
             <header><span class="reproduce-number">02</span><div><p class="reproduce-status">Corpus V2 · current replay</p><h3>Rebuild the current analysis</h3></div></header>
             <p class="reproduce-question">Can the current six-folio report be regenerated from the audited corpus?</p>
             <p>This replay rebuilds the Corpus V2 tables, metrics, report, provenance, and checksums using the current maintained analysis environment.</p>
-            <div class="reproduce-command"><span>Run from the repository root</span><code>cd EVAComparisonLab<br>npm.cmd run corpus:v2</code></div>
+            <div class="reproduce-command"><span>Run from the repository root</span><code>cd labs/eva-comparison<br>npm.cmd run corpus:v2</code></div>
             <div class="reproduce-result"><span>Expected output</span><strong>A complete public evidence bundle</strong><small>Report · tables · metrics · provenance · checksums</small></div>
             <ul class="reproduce-checklist"><li>Six audited folios analyzed together</li><li>ATOMS and EVA recomputed under one protocol</li><li>Generated bundle ready for checksum inspection</li></ul>
-            <div class="reproduce-links"><a href="https://github.com/HydraRosario/VoynichLab/blob/main/EVAComparisonLab/scripts/run-corpus-v2-analysis.js">Replay source</a><a href="https://github.com/HydraRosario/VoynichLab/tree/main/artifacts/public/corpus-v2-audited-robustness-replay">Published bundle</a><a href="https://github.com/HydraRosario/VoynichLab/releases/tag/corpus-v2-audited">Corpus tag</a></div>
+            <div class="reproduce-links"><a href="https://github.com/HydraRosario/VoynichLab/blob/main/labs/eva-comparison/scripts/run-corpus-v2-analysis.js">Replay source</a><a href="https://github.com/HydraRosario/VoynichLab/tree/main/research/artifacts/public/corpus-v2-audited-robustness-replay">Published bundle</a><a href="https://github.com/HydraRosario/VoynichLab/releases/tag/corpus-v2-audited">Corpus tag</a></div>
           </article>
         </div>
         <aside class="reproduce-boundary"><div><p class="eyebrow">Current boundary</p><h3>Verified release. Maintainer replay. Clean-clone certification still pending.</h3></div><p>The historical check is designed to verify the published record without silently substituting today's database. The Corpus V2 command is a maintained replay in the known project environment. We do not yet promise that an external reviewer can clone the repository on an arbitrary machine and reproduce every experiment with one command.</p></aside>

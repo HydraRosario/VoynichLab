@@ -35,10 +35,10 @@ The old `run-current-analysis.js`, `build-current-report.js`, and
 `cases/*current` while the corpus was still changing rapidly. They were replaced
 by:
 
-- `EVAComparisonLab/scripts/run-corpus-v2-analysis.js` for local regenerated
+- `labs/eva-comparison/scripts/run-corpus-v2-analysis.js` for local regenerated
   analysis from the current DatasetCreator DB;
 - `research/frozen/CORPUS-V2-AUDITED/` for frozen corpus evidence;
-- `artifacts/public/` for portal-visible public reports.
+- `research/artifacts/public/` for portal-visible public reports.
 
 Retirement reason:
 
@@ -52,8 +52,8 @@ Status: retired during the monorepo cleanup campaign.
 
 Removed scripts:
 
-- `EVAComparisonLab/scripts/experiment-remove-j2-merges.py`
-- `EVAComparisonLab/scripts/cleanup-learning-memory.py`
+- `labs/eva-comparison/scripts/experiment-remove-j2-merges.py`
+- `labs/eva-comparison/scripts/cleanup-learning-memory.py`
 
 Retirement reason:
 

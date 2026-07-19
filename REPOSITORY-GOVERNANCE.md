@@ -21,9 +21,9 @@ Companion operating docs:
 
 | Category | Examples | Git policy |
 |---|---|---|
-| Source code | `DataSetCreator/`, `GrammarDiscoveryLab/scripts/`, `packages/lab-exporter/`, `apps/portal/` | Commit intentionally, in small thematic changes |
-| Research registry | `research-feed/*.json` | Commit when publishing or correcting public experiment metadata |
-| Public artifacts | `artifacts/public/<experiment>/` | Commit only when produced by a named experiment or release |
+| Source code | `apps/dataset-creator/`, `labs/grammar-discovery/scripts/`, `packages/lab-exporter/`, `apps/portal/` | Commit intentionally, in small thematic changes |
+| Research registry | `research/registry/*.json` | Commit when publishing or correcting public experiment metadata |
+| Public artifacts | `research/artifacts/public/<experiment>/` | Commit only when produced by a named experiment or release |
 | Portal build data | `apps/portal/data/` | Generated from registry/artifacts; commit only when needed for static deployment |
 | Frozen evidence | tagged releases, checksums, frozen reports | Never rewrite; supersede with a new version |
 | Local annotation data | DatasetCreator databases, backups, Yale page assets | Do not commit |
@@ -31,7 +31,7 @@ Companion operating docs:
 
 ## DataSetCreator Protection Rule
 
-`DataSetCreator/` is high-risk because it owns the manual annotation workflow and local labeled data. Before modifying it:
+`apps/dataset-creator/` is high-risk because it owns the manual annotation workflow and local labeled data. Before modifying it:
 
 1. Read the relevant code path completely.
 2. Confirm the database will not be rewritten unexpectedly.
@@ -39,14 +39,14 @@ Companion operating docs:
 4. Run the app or the narrowest available validation.
 5. Never move database files, manuscript pages, backups, or generated annotation assets as part of repo cleanup.
 
-If a change is only for the public portal, it should not touch `DataSetCreator/`.
+If a change is only for the public portal, it should not touch `apps/dataset-creator/`.
 
 ## Experiment Publishing Flow
 
 Publishing a result should be boring and reproducible:
 
 1. Generate or update the experiment output inside its lab.
-2. Register the experiment in `research-feed/experiments.json`.
+2. Register the experiment in `research/registry/experiments.json`.
 3. Run `npm.cmd run research:validate`.
 4. Run `npm.cmd run research:build`.
 5. Run `npm.cmd run research:stage-plan -- --experiment <id>`.
@@ -67,7 +67,7 @@ The public portal is the front door, not the laboratory. It should:
 - link every claim to reproducible artifacts;
 - keep technical details available without forcing them on casual readers.
 
-Prefer data-driven sections from `research-feed/` and `artifacts/public/`. Avoid hardcoding experiment claims in HTML/JS when the same fact already lives in the registry.
+Prefer data-driven sections from `research/registry/` and `research/artifacts/public/`. Avoid hardcoding experiment claims in HTML/JS when the same fact already lives in the registry.
 
 The canonical portal URL is `https://voynich-lab.vercel.app/`. Local Vercel state
 under `apps/portal/.vercel/` is machine state and must not be committed.

@@ -13,8 +13,8 @@ VoynichLab does **not** currently claim translation, decipherment, phonetic valu
 | Understand the project visually | [Public portal](https://voynich-lab.vercel.app/) |
 | Inspect the current frozen corpus | [Corpus V2 manifest](research/frozen/CORPUS-V2-AUDITED/MANIFEST.md) |
 | Find every corpus, model, and validation freeze | [Frozen evidence catalog](research/FROZEN-EVIDENCE.md) |
-| Browse every registered experiment | [Research registry](research-feed/experiments.json) |
-| Inspect public evidence bundles | [Public artifacts](artifacts/public/) |
+| Browse every registered experiment | [Research registry](research/registry/experiments.json) |
+| Inspect public evidence bundles | [Public artifacts](research/artifacts/public/) |
 | Understand the repository architecture | [Monorepo architecture](docs/MONOREPO-ARCHITECTURE.md) |
 | Review scientific scope and limitations | [Public verifiability policy](docs/PUBLIC-VERIFIABILITY.md) |
 | Understand the active V3 development boundary | [Active research foundation](docs/ACTIVE-RESEARCH-FOUNDATION.md) |
@@ -50,16 +50,17 @@ and model freezes, start at
 |---|---|---|
 | Public interface | `apps/portal/` | Static public portal generated from selected evidence |
 | Internal interface | `apps/qc-review/` | Maintainer-only anomaly review surface |
-| Annotation product | `DataSetCreator/` | Local Tauri application for creating ATOMS annotations |
-| Active laboratory | `EVAComparisonLab/` | Corpus audit, morphology, entropy, and ATOMS/EVA comparison |
-| Active laboratory | `GrammarDiscoveryLab/` | Frozen-family validation, controls, alignment, and representation tests |
+| Annotation product | `apps/dataset-creator/` | Local Tauri application for creating ATOMS annotations |
+| Active laboratory | `labs/eva-comparison/` | Corpus audit, morphology, entropy, and ATOMS/EVA comparison |
+| Active laboratory | `labs/grammar-discovery/` | Frozen-family validation, controls, alignment, and representation tests |
+| Future laboratories | `labs/` | Canonical location for new question-driven research laboratories |
 | Scientific record | `research/` | Audits, preregistrations, correction work, and frozen releases |
-| Public evidence | `artifacts/public/` | One inspectable bundle per registered experiment |
-| Public registry | `research-feed/` | Experiments, milestones, releases, and curated evidence cases |
+| Public evidence | `research/artifacts/public/` | One inspectable bundle per registered experiment |
+| Public registry | `research/registry/` | Experiments, milestones, releases, and curated evidence cases |
 | Shared infrastructure | `packages/` | Export, validation, build, and repository guardrails |
-| Working context | `paper/` | Claims, figures, literature, and possible future publications |
+| Publications workspace | `research/publications/` | Claims, figures, literature, and possible future publications |
 | Governance | `docs/` | Architecture, safety, deployment, and repository policy |
-| Isolated hypothesis space | `TranslationLab/` | Early speculative work; not part of the validated public evidence pipeline |
+| Isolated hypothesis space | `labs/translation/` | Early speculative work; not part of the validated public evidence pipeline |
 
 Historical V1 and GRAMMAR-V1 freezes remain inside the labs that published
 them. They are indexed centrally under `research/`; from Corpus V3 onward, all
@@ -111,7 +112,7 @@ Do not treat the commands below as a guaranteed clean-clone protocol until a
 dedicated external reproduction test has been performed and documented.
 
 ```bash
-cd GrammarDiscoveryLab
+cd labs/grammar-discovery
 npm.cmd run validate
 npm.cmd run null-control:v1
 npm.cmd run null-control:v2
@@ -122,7 +123,7 @@ npm.cmd run representation-comparison:v2-regions
 npm.cmd run representation-comparison:v3-ablations
 npm.cmd run prospective-atoms-eva:verify-release
 
-cd ../EVAComparisonLab
+cd ../eva-comparison
 npm.cmd run corpus:v2
 ```
 
@@ -142,7 +143,7 @@ npm.cmd run corpus:v2
 
 ## How to Publish an Experiment
 
-1. Ensure the experiment is registered in `research-feed/experiments.json` with valid paths
+1. Ensure the experiment is registered in `research/registry/experiments.json` with valid paths
 2. Run `npm.cmd run research:validate` to check registry integrity
 3. Run `npm.cmd run research:publish -- --experiment <id>` to generate public artifacts
 4. Review changes with `npm.cmd run research:stage-plan -- --experiment <id>`
@@ -151,19 +152,19 @@ npm.cmd run corpus:v2
 
 ## DataSetCreator Guidelines
 
-The `DataSetCreator/` directory contains the local annotation tool and its database. **Do not** modify database files, move labeled data, or rewrite annotation logic without understanding the full impact. Changes to `DataSetCreator` must be surgical and tested. The local database is git-ignored and must never be committed.
+The `apps/dataset-creator/` directory contains the local annotation tool and its database. **Do not** modify database files, move labeled data, or rewrite annotation logic without understanding the full impact. Changes to `DataSetCreator` must be surgical and tested. The local database is git-ignored and must never be committed.
 
 Architecture and safety map: [docs/DATASETCREATOR-ARCHITECTURE.md](docs/DATASETCREATOR-ARCHITECTURE.md).
 
 ## Portal
 
-The public portal is in `apps/portal/` and is deployed via Vercel. It reads from `apps/portal/data/`, which is generated by `research:build`. Avoid hardcoding experiment IDs in portal code; use `research-feed/site.json` for configuration.
+The public portal is in `apps/portal/` and is deployed via Vercel. It reads from `apps/portal/data/`, which is generated by `research:build`. Avoid hardcoding experiment IDs in portal code; use `research/registry/site.json` for configuration.
 
 ## Scientific Boundaries
 
 - ATOMS-V1 components are not interpreted as letters, phonemes, morphemes, or semantic units
 - Molecular units are not claimed to be words
-- Translation hypotheses belong in `TranslationLab`
+- Translation hypotheses belong in `labs/translation`
 - Negative and inconclusive results are preserved as part of the scientific record
 - The corpus is single-annotator and small; independent replication is needed
 - VoynichLab is offered as open research infrastructure

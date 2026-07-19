@@ -3,15 +3,16 @@
 Status: active implementation protocol; exploratory results are not corpus
 corrections or research claims.
 
-## Question
+## Primary question
 
-Functional Atlas tests whether the manually distinguished PARTICLES-V1 visual
-families also behave as distinct structural units.
+Functional Atlas asks where a human annotation may be inconsistent with both
+its drawn form and the recurring structure of the corpus. Its purpose is to
+produce a small, inspectable review queue—not to rewrite labels statistically.
 
 It separates four questions:
 
-1. **Visual audit** — was an individual particle labeled consistently with its
-   visual family?
+1. **Annotation audit** — is an individual reading suspicious enough to return
+   to the manuscript and annotation geometry?
 2. **Functional equivalence** — do two correctly labeled particle families
    occupy interchangeable structural contexts?
 3. **Composition** — does one family behave like an ordered pair of families?
@@ -20,6 +21,20 @@ It separates four questions:
 
 Only the first question can propose a Corpus V3 annotation correction. The
 other three produce experimental hypotheses.
+
+### Contextual annotation protocol
+
+Contextual audit is hypothesis-driven. A visually plausible ambiguity must be
+declared before scoring; an exploratory similarity cannot nominate itself as a
+correction. The first declared ambiguity is the one-versus-two segmentation
+`m:1 ↔ e:1 + b:1`.
+
+For every occurrence, Atlas compares previous neighbor, next neighbor,
+position inside the atom, and atom position inside the molecule. Training
+examples from the occurrence's own folio are excluded. A case becomes a review
+candidate only when the alternative exceeds the current reading by the frozen
+minimum log-score gap. The score chooses where to inspect; it does not decide
+what the ink is.
 
 ## Units and boundaries
 
@@ -63,7 +78,10 @@ be promoted beyond exploratory status.
 - Outputs are marked exploratory and carry an input fingerprint.
 - Minimum support is enforced before ranking.
 - Functional hypotheses never enter the QC correction ledger automatically.
-- Visual outliers are exported separately as QC candidates.
+- Only explicitly declared visual ambiguities enter contextual audit.
+- The evaluated folio is excluded from contextual training.
+- Contextual candidates and geometry outliers are exported as separate lists.
+- No audit candidate changes a corpus file or database automatically.
 - Frozen releases, historical reports, and checksums are never modified.
 
 ## Interpretation vocabulary

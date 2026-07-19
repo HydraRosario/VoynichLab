@@ -226,10 +226,10 @@ const els = {
 
 async function loadAll() {
   const [experiments, milestones, releases, site, evidence, atoms] = await Promise.all([
-    loadJson("./data/research-feed/experiments.json"),
-    loadJson("./data/research-feed/milestones.json"),
-    loadJson("./data/research-feed/releases.json"),
-    loadJson("./data/research-feed/site.json").catch(() => ({ currentExperimentId: null, featuredMilestoneId: null })),
+    loadJson("./data/registry/experiments.json"),
+    loadJson("./data/registry/milestones.json"),
+    loadJson("./data/registry/releases.json"),
+    loadJson("./data/registry/site.json").catch(() => ({ currentExperimentId: null, featuredMilestoneId: null })),
     loadJson("./data/evidence-cases.json").catch(() => null),
     loadJson("./data/atoms-v1.json").catch(() => []),
   ]);

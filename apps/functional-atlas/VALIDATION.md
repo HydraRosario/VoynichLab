@@ -21,6 +21,29 @@ Input fingerprint:
 422ed571cc234c27dfd38ba0511b206166454c65506d857ed6d09d3fdd68da49
 ```
 
+## Contextual annotation audit pilot
+
+The first declared visual ambiguity is `m:1` versus the within-atom pair
+`e:1 + b:1`. The corpus contains 92 single-form occurrences and 88 pair-form
+occurrences across all six folios. Atlas evaluated all 180 using
+leave-one-folio-out context scoring.
+
+One occurrence crossed the frozen review threshold of `1.25` log-score units:
+
+```text
+folio       page-003.jpg
+atom        img3-m122-a3
+particles   3376, 3365
+current     e:1 + b:1
+alternative m:1
+context     a:1 [current] c:1
+score gap   +1.420442
+```
+
+This is a review candidate, not a detected error. Atlas has identified a place
+where the alternative is structurally better supported by the other five
+folios. A human must still inspect the manuscript and annotation geometry.
+
 ## Retrospective 14-vs-16 result
 
 ```text
@@ -110,14 +133,16 @@ Other recurrent operations include optional initial `n:1`, substitution of
 ## Software verification
 
 - Corpus V3 referential validation passes.
-- Four synthetic tests pass.
+- Seven synthetic tests pass, including recovery of an injected contextual
+  split/join anomaly while excluding its folio from training.
 - All 120 supported label pairs are evaluated deterministically.
 - Composition candidates preserve atom boundaries.
 - Operator candidates include a deterministic within-folio permutation null
   and false-discovery correction.
 - Structural-rule candidates require repeated support across folios and never
   rewrite particle identities.
-- Visual anomalies are exported separately from functional hypotheses.
+- Contextual annotation candidates and geometry anomalies are exported as
+  separate audit channels from functional hypotheses.
 - The local server returns the application and analysis with status 200.
 - Generated output is explicitly marked `EXPLORATORY_NOT_FROZEN`.
 

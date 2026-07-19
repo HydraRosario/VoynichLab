@@ -1,6 +1,6 @@
 {
-  "source": "EVAComparisonLab/artifacts/visual-snapshots/current",
-  "generatedFrom": "DatasetCreator geometry via EVAComparisonLab/scripts/export-visual-snapshots.js",
+  "source": "labs/eva-comparison/artifacts/visual-snapshots/current",
+  "generatedFrom": "DatasetCreator geometry via labs/eva-comparison/scripts/export-visual-snapshots.js",
   "image": "page-003.jpg",
   "molecule": {
     "id": "img3-m31",

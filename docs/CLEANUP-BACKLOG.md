@@ -35,8 +35,8 @@ Acceptance criteria:
 
 Targets:
 
-- `EVAComparisonLab/artifacts/visual-snapshots/current/**`
-- `artifacts/public/**`
+- `labs/eva-comparison/artifacts/visual-snapshots/current/**`
+- `research/artifacts/public/**`
 - `research/audits/**`
 
 Decision rule:
@@ -58,7 +58,7 @@ Targets:
 
 Known issues:
 
-- Some copy is static even though the same facts live in `research-feed`.
+- Some copy is static even though the same facts live in `research/registry`.
 - Atom Atlas has been removed from the public portal; future visual evidence
   should return only as a curated release.
 - The portal should show a clean public timeline and scientific cards without
@@ -76,8 +76,8 @@ Targets:
 
 - `apps/qc-review/index.html`
 - `research/audits/*.json`
-- `EVAComparisonLab/scripts/crop-qc-context.py`
-- `EVAComparisonLab/scripts/detect-atom-anomalies.js`
+- `labs/eva-comparison/scripts/crop-qc-context.py`
+- `labs/eva-comparison/scripts/detect-atom-anomalies.js`
 
 Known issues:
 
@@ -97,10 +97,10 @@ Acceptance criteria:
 
 Targets:
 
-- `DataSetCreator/src-tauri/src/database.rs`
-- `DataSetCreator/src/scripts/app.js`
-- `DataSetCreator/src/scripts/image-viewer.js`
-- `DataSetCreator/src/scripts/annotation-panel.js`
+- `apps/dataset-creator/src-tauri/src/database.rs`
+- `apps/dataset-creator/src/scripts/app.js`
+- `apps/dataset-creator/src/scripts/image-viewer.js`
+- `apps/dataset-creator/src/scripts/annotation-panel.js`
 
 Known risks:
 
@@ -124,9 +124,9 @@ No source changes in this phase until the map exists.
 
 Targets:
 
-- `EVAComparisonLab/scripts/*.js`
-- `GrammarDiscoveryLab/scripts/*.js`
-- `TranslationLab/scripts/*.js`
+- `labs/eva-comparison/scripts/*.js`
+- `labs/grammar-discovery/scripts/*.js`
+- `labs/translation/scripts/*.js`
 
 Known issues:
 
@@ -152,7 +152,7 @@ Possible structure:
 
 ```text
 research/frozen/<release>/
-artifacts/public/<experiment>/
+research/artifacts/public/<experiment>/
 apps/portal/data/
 local/generated/
 ```

@@ -3,7 +3,7 @@
   "canonicalCatalog": "research/FROZEN-EVIDENCE.md",
   "policy": {
     "futureCorpusRoot": "research/frozen",
-    "publicArtifactRoot": "artifacts/public",
+    "publicArtifactRoot": "research/artifacts/public",
     "publishedFreezeMutation": "forbidden"
   },
   "entries": [
@@ -11,7 +11,7 @@
       "id": "corpus-v1-development-freeze",
       "type": "corpus-snapshot",
       "version": "V1",
-      "path": "EVAComparisonLab/frozen/VOYNICHLAB-V1-FROZEN-2026-07-13",
+      "path": "labs/eva-comparison/frozen/VOYNICHLAB-V1-FROZEN-2026-07-13",
       "tag": "v1-pre-validation",
       "status": "historical"
     },
@@ -27,7 +27,7 @@
       "id": "grammar-v1",
       "type": "model-freeze",
       "version": "V1",
-      "path": "GrammarDiscoveryLab/frozen/GRAMMAR-V1-2026-07-13",
+      "path": "labs/grammar-discovery/frozen/GRAMMAR-V1-2026-07-13",
       "tag": "grammar-v1",
       "status": "historical-active"
     },
@@ -35,7 +35,7 @@
       "id": "reproducible-release-v1",
       "type": "validation-release",
       "version": "V1",
-      "path": "GrammarDiscoveryLab/frozen/REPRODUCIBLE-RELEASE-V1",
+      "path": "labs/grammar-discovery/frozen/REPRODUCIBLE-RELEASE-V1",
       "tag": "reproducible-release-v1",
       "status": "historical-active"
     }

@@ -18,7 +18,7 @@ This portal is a navigable front door over the current repository artifacts:
 - V3 ablations;
 - null controls;
 - tool map;
-- paper workspace;
+- publications workspace;
 - public verifiability status.
 
 It does not replace the existing labs. It links to public repository files and reports.
@@ -26,8 +26,8 @@ It does not replace the existing labs. It links to public repository files and r
 ## Data contract
 
 - `source-data/atoms-v1.json` is the curated source for the visual ATOMS inventory.
-- `research-feed/` is the canonical source for experiments, milestones, releases, and evidence cases.
-- `artifacts/public/` is the canonical source for public experiment bundles.
+- `research/registry/` is the canonical source for experiments, milestones, releases, and evidence cases.
+- `research/artifacts/public/` is the canonical source for public experiment bundles.
 - `data/` is the generated static mirror consumed by the browser and rebuilt by `npm.cmd run research:build`.
 
 Do not edit files under `data/` directly.

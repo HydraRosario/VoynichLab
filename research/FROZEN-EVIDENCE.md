@@ -9,13 +9,13 @@ directories.
 
 - Scientific type: frozen annotation-database snapshot.
 - Scope: f1r, f1v, f47v.
-- Canonical historical path: `EVAComparisonLab/frozen/VOYNICHLAB-V1-FROZEN-2026-07-13/`.
+- Canonical historical path: `labs/eva-comparison/frozen/VOYNICHLAB-V1-FROZEN-2026-07-13/`.
 - Primary file: `datasetcreator-v1-frozen.db`.
 - Tag: `v1-pre-validation`.
 - Status: immutable historical input; not the current corpus.
 
-It remains inside EVAComparisonLab because that is the path recorded by the V1
-manifest, later comparison provenance, and historical tag.
+It remains inside the EVA comparison laboratory because its lab-local location
+is part of the V1 manifest, later comparison provenance, and historical tag.
 
 ### Corpus V2 audited release
 
@@ -34,20 +34,20 @@ belong to a future Corpus V3 release.
 ### GRAMMAR-V1
 
 - Scientific type: frozen structural-family model.
-- Canonical historical path: `GrammarDiscoveryLab/frozen/GRAMMAR-V1-2026-07-13/`.
+- Canonical historical path: `labs/grammar-discovery/frozen/GRAMMAR-V1-2026-07-13/`.
 - Tag: `grammar-v1`.
 - Status: immutable model input, not a corpus release.
 
 ### Reproducible Release V1
 
 - Scientific type: frozen validation inputs and expected replay contract.
-- Canonical historical path: `GrammarDiscoveryLab/frozen/REPRODUCIBLE-RELEASE-V1/`.
+- Canonical historical path: `labs/grammar-discovery/frozen/REPRODUCIBLE-RELEASE-V1/`.
 - Tag: `reproducible-release-v1`.
 - Status: immutable validation release, not a corpus release.
 
 ## Public experiment artifacts
 
-`artifacts/public/<experiment-id>/` contains inspectable bundles derived from a
+`research/artifacts/public/<experiment-id>/` contains inspectable bundles derived from a
 named experiment. A normal bundle contains a report, summary, metrics,
 provenance, manifest, checksums, and tables.
 

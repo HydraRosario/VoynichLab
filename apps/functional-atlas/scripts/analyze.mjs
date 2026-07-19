@@ -18,6 +18,7 @@ const analysis = analyzeCorpus(corpus, {
   permutations: args.permutations ?? 50,
   compositionPermutations: args.composition_permutations ?? 30,
   operatorPermutations: args.operator_permutations ?? 30,
+  auditMinimumDelta: args.audit_minimum_delta ?? 1.25,
 });
 fs.mkdirSync(path.dirname(outPath), { recursive: true });
 fs.writeFileSync(outPath, `${JSON.stringify(analysis, null, 2)}\n`);
@@ -28,7 +29,8 @@ if (args.qc_out) {
     schema_version: 1,
     status: "CANDIDATES_NOT_DECISIONS",
     source_fingerprint_sha256: analysis.input_fingerprint_sha256,
-    candidates: analysis.visual_outliers,
+    contextual_annotation_candidates: analysis.annotation_audit.candidates,
+    visual_geometry_candidates: analysis.visual_outliers,
   }, null, 2)}\n`);
 }
 console.log(JSON.stringify({ output: outPath, ...analysis.summary }, null, 2));
